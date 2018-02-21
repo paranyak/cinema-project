@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
-import "../styles/movie-image.less";
+import "../../styles/actors.less";
 
 
-class MovieImage extends Component {
+
+class Actors extends Component {
     constructor(props) {
         super(props);
         this.state = {}
@@ -10,9 +11,9 @@ class MovieImage extends Component {
 
     render() {
         return (
-            <div className="movie-image">Movie Image</div>
+            <div className="actors">Actors</div>
         )
     }
 }
 
-export default MovieImage
+export default Actors

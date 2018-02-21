@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import "../../styles/home-layout.less";
-import Header from "./Header";
+import Header from "../Header";
 import MovieCarousel from "./MovieCarousel";
-import Footer from "./Footer";
+import Footer from "../Footer";
 import AllMovies from "./AllMovies";
 
 class HomeLayout extends Component {

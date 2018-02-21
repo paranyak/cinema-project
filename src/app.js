@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./styles/common.less"
-import MovieLayout from "./components/MovieLayout";
+import MovieLayout from "./components/MoviePage/MovieLayout";
 // import HomeLayout from "./components/HomeLayout";
 
 ReactDOM.render(
