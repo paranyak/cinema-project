@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import "../styles/shedule-filters.less";
+import "../../styles/shedule-filters.less";
 
 
 class SheduleFilters extends Component {

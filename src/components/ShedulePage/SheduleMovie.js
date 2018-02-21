@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-// import "../styles/movie-info.less";
+import "../../styles/shedule-movie.less";
 
 
 class SheduleMovie extends Component {

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-// import "../styles/movie-info.less";
+import "../../styles/shedule-table.less";
 
 
 class SheduleTable extends Component {

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import SheduleTable from "./SheduleTable";
-// import "../styles/movie-info.less";
+import "../../styles/shedule-time-table-tab.less";
 
 
 class SheduleTimeTableTab extends Component {
