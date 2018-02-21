@@ -1,13 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./styles/common.less"
-import MovieLayout from "./components/MovieLayout";
-import SheduleLayout from "./components/SheduleLayout";
+// import MovieLayout from "./components/MoviePage/MovieLayout";
+import HomeLayout from "./components/HomePage/HomeLayout";
 
+// ReactDOM.render(
+  {/*<MovieLayout/>,*/}
+  // document.getElementById("root")
+// );
+//
 ReactDOM.render(
-  <div>
-    <MovieLayout/>
-    <SheduleLayout/>
-  </div>,
+  <HomeLayout/>,
   document.getElementById("root")
 );
