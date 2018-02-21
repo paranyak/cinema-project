@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import Actors from "./Actors";
+import "../styles/movie-info.less";
+
 
 class MovieInfo extends Component {
     constructor(props) {

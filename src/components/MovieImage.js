@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import "../styles/movie-image.less";
+
 
 class MovieImage extends Component {
     constructor(props) {

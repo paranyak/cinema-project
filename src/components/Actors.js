@@ -1,4 +1,7 @@
 import React, {Component} from 'react'
+import "../styles/actors.less";
+
+
 
 class Actors extends Component {
     constructor(props) {
