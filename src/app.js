@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Layout from "./components/Layout";
 import "./styles/common.less"
+import MovieLayout from "./components/MovieLayout";
 ReactDOM.render(
-  <Layout/>,
+  <MovieLayout/>,
   document.getElementById("root")
 );
