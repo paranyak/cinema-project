@@ -1,6 +1,5 @@
 export default {
-
-    "Movie": [{
+    "Movies": [{
         "name": "Superman",
         "image": "",
         "rating": 9.7,

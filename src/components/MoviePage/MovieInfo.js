@@ -11,7 +11,7 @@ class MovieInfo extends Component {
     }
 
     jsonParsing() {
-        console.log(data.Movie[0].cast);
+        console.log(data.Movies[0].cast);
 
     };
 
