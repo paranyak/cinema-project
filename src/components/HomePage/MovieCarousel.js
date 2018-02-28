@@ -12,10 +12,6 @@ class MovieCarousel extends Component {
         return <div className={"movie-carousel"}>
             MovieCarousel
             <MoviePoster/>
-            <MoviePoster/>
-            <MoviePoster/>
-            <MoviePoster/>
-            <MoviePoster/>
         </div>;
     }
 }

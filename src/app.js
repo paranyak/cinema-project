@@ -8,11 +8,11 @@ import SheduleLayout from "./components/ShedulePage/SheduleLayout";
 ReactDOM.render(
   <div>
     <h1>HOME PAGE</h1>
-    <HomeLayout/>
+    <HomeLayout />
     <h1>MOVIE PAGE</h1>
-    <MovieLayout/>
-    <h1>SHEDULE PAGE</h1>
-    <SheduleLayout/>
+    <MovieLayout />
+    <h1>SCHEDULE PAGE</h1>
+    <SheduleLayout />
   </div>,
   document.getElementById("root")
 );
