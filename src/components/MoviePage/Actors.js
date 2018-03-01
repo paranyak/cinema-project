@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import "../../styles/actors.less";
+import "../../styles/Actors.less";
 
 
 
@@ -11,7 +11,7 @@ class Actors extends Component {
 
     render() {
         return (
-            <div className="actors">Actors</div>
+            <div className="Actors">Actors</div>
         )
     }
 }

@@ -5,7 +5,7 @@ const movies = (state = data.Movies, action) => {
     default:
       return state;
   }
-}
+};
 
 
 export default movies;

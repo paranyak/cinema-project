@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import "../../styles/movie-image.less";
+import "../../styles/MovieImage.less";
 
 
 class MovieImage extends Component {
@@ -10,7 +10,7 @@ class MovieImage extends Component {
 
     render() {
         return (
-            <div className="movie-image">Movie Image</div>
+            <div className="MovieImage">Movie Image</div>
         )
     }
 }

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../../styles/home-layout.less";
+import "../../styles/HomeLayout.less";
 import Header from "../Header";
 import MovieCarousel from "./MovieCarousel";
 import Footer from "../Footer";
@@ -12,7 +12,7 @@ class HomeLayout extends Component {
     }
 
     render() {
-        return <div className={"home-layout"}>
+        return <div className={"HomeLayout"}>
             <Header />
             <h3>Popular</h3>
             <MovieCarousel/>

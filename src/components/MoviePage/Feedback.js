@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import "../../styles/feedback.less";
+import "../../styles/Feedback.less";
 
 
 class Feedback extends Component {
@@ -10,7 +10,7 @@ class Feedback extends Component {
 
     render() {
         return (
-            <div className="feedback">Feedback</div>
+            <div className="Feedback">Feedback</div>
         )
     }
 }

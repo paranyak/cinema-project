@@ -5,6 +5,6 @@ import filters from './filters';
 const moviesApp = combineReducers({
   movies,
   filters
-})
+});
 
 export default moviesApp;

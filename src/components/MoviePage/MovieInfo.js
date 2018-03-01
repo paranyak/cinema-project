@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import Actors from "./Actors";
-import "../../styles/movie-info.less";
-import data from "../../data/data.js"
-
+import "../../styles/MovieInfo.less";
 
 class MovieInfo extends Component {
     constructor(props) {
@@ -10,15 +8,9 @@ class MovieInfo extends Component {
         this.state = {}
     }
 
-    jsonParsing() {
-        console.log(data.Movies[0].cast);
-
-    };
-
     render() {
         return (
-            <div className="movie-info">Movie Info
-                {this.jsonParsing()}
+            <div className="MovieInfo">Movie Info
                 <Actors/>
             </div>
         )

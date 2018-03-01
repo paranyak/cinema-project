@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../../styles/movie-carousel.less";
+import "../../styles/MovieCarousel.less";
 import MoviePoster from "./MoviePoster";
 
 class MovieCarousel extends Component {
@@ -9,7 +9,7 @@ class MovieCarousel extends Component {
     }
 
     render() {
-        return <div className={"movie-carousel"}>
+        return <div className={"MovieCarousel"}>
             MovieCarousel
             <MoviePoster/>
         </div>;

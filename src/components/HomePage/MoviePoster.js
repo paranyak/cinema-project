@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../../styles/movie-poster.less";
+import "../../styles/MoviePoster.less";
 
 class MoviePoster extends Component {
     constructor(props) {
@@ -8,7 +8,7 @@ class MoviePoster extends Component {
     }
 
     render() {
-        return <span className={"movie-poster"}>MoviePoster</span>;
+        return <span className={"MoviePoster"}>MoviePoster</span>;
     }
 }
 

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../../styles/all-movies.less";
+import "../../styles/AllMovies.less";
 import MoviePoster from "./MoviePoster";
 
 
@@ -10,26 +10,9 @@ class AllMovies extends Component {
     }
 
     render() {
-        return <div className={"all-movies"}>AllMovies
+        return <div className={"AllMovies"}>AllMovies
             <MoviePoster/>
-            <MoviePoster/>
-            <MoviePoster/>
-            <MoviePoster/>
-            <MoviePoster/>
-            <br/>
-            <MoviePoster/>
-            <MoviePoster/>
-            <MoviePoster/>
-            <MoviePoster/>
-            <MoviePoster/>
-            <br/>
-            <MoviePoster/>
-            <MoviePoster/>
-            <MoviePoster/>
-            <MoviePoster/>
-            <MoviePoster/>
-            <br/>
-            <a className={"all-movies__more"} href={"#"}>View All</a>
+            <a className={"AllMovies__more"} href={"#"}>View All</a>
         </div>;
     }
 }

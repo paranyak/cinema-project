@@ -4,6 +4,7 @@ import MovieInfo from "./MovieInfo";
 import Feedback from "./Feedback";
 import Footer from "../Footer";
 import Header from "../Header";
+import "../../styles/MovieLayout.less"
 
 
 class MovieLayout extends Component {
@@ -14,7 +15,7 @@ class MovieLayout extends Component {
 
     render() {
         return (
-            <div className = "movie-layout">
+            <div className="MovieLayout">
                 <Header/>
                 <MovieImage/>
                 <MovieInfo/>

@@ -6,7 +6,7 @@ import moviesApp from './reducers';
 import "./styles/common.less"
 import MovieLayout from "./components/MoviePage/MovieLayout";
 import HomeLayout from "./components/HomePage/HomeLayout";
-import SheduleLayout from "./components/ShedulePage/SheduleLayout";
+import ScheduleLayout from "./components/SchedulePage/ScheduleLayout";
 
 let store = createStore(moviesApp);
 
@@ -18,7 +18,7 @@ ReactDOM.render(
       <h1>MOVIE PAGE</h1>
       <MovieLayout />
       <h1>SCHEDULE PAGE</h1>
-      <SheduleLayout />
+      <ScheduleLayout />
     </div>
   </Provider>,
   document.getElementById("root")
