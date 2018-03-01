@@ -2,9 +2,9 @@ import { combineReducers } from 'redux';
 import movies from './movies';
 import filters from './filters';
 
-const moviesApp = combineReducers({
+const rootReducer = combineReducers({
   movies,
   filters
 });
 
-export default moviesApp;
+export default rootReducer;
