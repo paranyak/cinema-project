@@ -26,7 +26,8 @@
     "webpack": "^3.11.0"
   },
   "dependencies": {
-    "npm-install-all": "^1.1.21",
+    "luxon": "0.5.3",
+    "ramda": "0.25.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",

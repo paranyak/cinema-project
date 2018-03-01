@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import movies from './movies';
+import movies, * as fromMovies from './movies';
 import filters from './filters';
 
 const moviesApp = combineReducers({
@@ -8,3 +8,6 @@ const moviesApp = combineReducers({
 });
 
 export default moviesApp;
+
+
+export const getAllMovies = (state) => fromMovies.getAllMovies(state.movies);

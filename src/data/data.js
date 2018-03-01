@@ -18,7 +18,7 @@ export default {
         "genre": "Action",
         "Schedule": [
             "10:00",
-            "15:00",
+            "15:15",
             "17:00",
             "20:00"
         ],

@@ -7,5 +7,6 @@ const movies = (state = data.Movies, action) => {
   }
 };
 
-
 export default movies;
+
+export const getAllMovies = (state) => state;
