@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {getAllMovies} from "../reducers";
-import {removeMovie} from "../actions";
+import {removeMovie, addMovie} from "../actions";
 import {Interval} from "luxon/src/interval.js";
 import {Duration} from "luxon/src/duration.js";
 import {DateTime} from "luxon/src/datetime.js";
@@ -90,14 +90,14 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(state => {
         const movies = getAllMovies(state);
-
+        console.log(movies);
         return {
             films: movies.map(movie => ({
                 name: movie.name,
                 schedule: movie.Schedule.map(start =>
                     Interval.after(DateTime.fromFormat(start, "HH:mm"), {
-                        hour: 2,
-                        minute: 0
+                        hour: movie.duration.hour,
+                        minute: movie.duration.minute
                     })
                 ),
                 id: movie.id
