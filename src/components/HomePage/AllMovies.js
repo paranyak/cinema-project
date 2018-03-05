@@ -1,20 +1,34 @@
 import React, {Component} from "react";
 import "../../styles/AllMovies.less";
+import block from "../../helpers/BEM";
+import {getAllMovies} from "../../reducers";
+import {connect} from "react-redux";
 import MoviePoster from "./MoviePoster";
 
+const b = block("AllMovies");
 
 class AllMovies extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {}
-    }
-
     render() {
-        return <div className={"AllMovies"}>AllMovies
-            <MoviePoster/>
-            <a className={"AllMovies__more"} href={"#"}>View All</a>
-        </div>;
+        const {films} = this.props;
+        return (
+            <div className={b()}>
+                {films.map(film => <MoviePoster film={film} />)}
+            </div>
+        )
     }
 }
 
-export default AllMovies;
+export default connect(state => {
+        const movies = getAllMovies(state);
+        console.log(movies);
+        return {
+            films: movies.map(movie => ({
+                name: movie.name,
+                image: movie.image,
+                rating: movie.rating,
+                genre: movie.genre,
+                id: movie.id
+            }))
+        };
+    }
+)(AllMovies);

@@ -1,6 +1,5 @@
 import data from "../data/data.js"
 
-
 const movies = (state = data.Movies, action) => {
     switch (action.type) {
         case "ADD_MOVIE":
