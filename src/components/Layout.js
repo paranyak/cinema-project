@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/Layout.less";
 import "../styles/common.less";
 
-import Schedule from "./Schedule";
+import Schedule from "./SchedulePage/Schedule";
 
 const Layout = () => (
   <div>

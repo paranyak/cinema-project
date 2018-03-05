@@ -1,15 +1,15 @@
 import React, {Component} from "react";
-import {getAllMovies} from "../reducers";
-import {removeMovie, addMovie} from "../actions";
+import {getAllMovies} from "../../reducers";
+import {removeMovie, addMovie} from "../../actions";
 import {Interval} from "luxon/src/interval.js";
 import {Duration} from "luxon/src/duration.js";
 import {DateTime} from "luxon/src/datetime.js";
 
 import {connect} from "react-redux";
 
-import "../styles/Schedule.less";
+import "../../styles/Schedule.less";
 
-import block from "../helpers/BEM";
+import block from "../../helpers/BEM";
 
 const b = block("Schedule");
 
@@ -18,10 +18,7 @@ class Schedule extends Component {
         super(props);
 
         const sessionStart = DateTime.fromObject({
-            year: 2018,
-            month: 3,
-            day: 1,
-            hour: 8,
+            hour: 9,
             minute: 0
         });
 
