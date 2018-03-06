@@ -27,11 +27,9 @@ class MovieLayout extends Component {
 
         return (
             <div className={b()}>
-                <Header/>
                 <MovieImage film={film}/>
                 <MovieInfo film={film}/>
                 <Feedback film={film}/>
-                <Footer/>
             </div>
         )
     }
