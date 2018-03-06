@@ -2,12 +2,12 @@ import React, {Component} from 'react'
 import MovieImage from "./MovieImage";
 import MovieInfo from "./MovieInfo";
 import Feedback from "./Feedback";
-import Footer from "../Footer";
-import Header from "../Header";
 import "../../styles/MovieLayout.less"
 import block from "../../helpers/BEM";
 import {getById} from "../../reducers";
 import {connect} from "react-redux";
+import Header from "../Header";
+import Footer from "../Footer";
 
 
 const b = block("MovieLayout");
@@ -26,10 +26,14 @@ class MovieLayout extends Component {
         const {film} = this.props;
 
         return (
-            <div className={b()}>
-                <MovieImage film={film}/>
-                <MovieInfo film={film}/>
-                <Feedback film={film}/>
+            <div>
+                <Header/>
+                <div className={b()}>
+                    <MovieImage film={film}/>
+                    <MovieInfo film={film}/>
+
+                </div>
+                <Footer/>
             </div>
         )
     }
