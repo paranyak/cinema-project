@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import "../../styles/ScheduleFilter.less";
+import "../../styles/Filter.less";
 
 
-class ScheduleFilters extends Component {
+class Filter extends Component {
   constructor(props) {
     super(props);
     this.state = {}
@@ -10,11 +10,11 @@ class ScheduleFilters extends Component {
 
   render() {
     return (
-      <div className="ScheduleFilter">
+      <div className="Filter">
         Schedule Filters
       </div>
     )
   }
 }
 
-export default ScheduleFilters
+export default Filter;

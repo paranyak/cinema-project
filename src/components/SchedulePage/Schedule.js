@@ -28,7 +28,7 @@ class Schedule extends Component {
 
         this.state = {
             startTime: sessionStart,
-            session: scheduleInterval.splitBy({minutes: 30})
+            session: scheduleInterval.splitBy({minutes: 60})
         };
     }
 
@@ -54,11 +54,11 @@ class Schedule extends Component {
                         <div key={"div-1lev" + i.toString()} className={b("film")}>
                             <span key={i} className={b("film-name")}
                                   onClick={() => onMovieClick(films.id)}>{film.name}</span>
-                            <div key={"div-2lev" + i.toString()} className={b("film-schedule")}>
+                            <div  style={{height: film.schedule.length * 10}} key={"div-2lev" + i.toString()} className={b("film-schedule")}>
                                 {film.schedule.map((s, i) => (
-                                    <span key={i} className={b("film-schedule-item")}
+                                    <div key={i} className={b("film-schedule-item")}
                                           style={{
-                                              top: i * 7,
+                                              top: i * 10,
                                               width: this.scale(s.toDuration().milliseconds) + "%",
                                               left: this.scale(
                                                   Interval.fromDateTimes(

@@ -7,6 +7,7 @@ import block from "../helpers/BEM";
 import Schedule from "./SchedulePage/Schedule";
 import Footer from "./Footer";
 import Header from "./Header";
+import ScheduleLayout from "./SchedulePage/ScheduleLayout";
 const b = block("Layout");
 
 // import Schedule from "./Schedule";
@@ -14,7 +15,7 @@ const b = block("Layout");
 const Layout = () => (
   <div className={b()}>
     <Header />
-    <MovieCarousel />
+    <ScheduleLayout />
     <Footer />
   </div>
 );
