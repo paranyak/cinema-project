@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 
 import "../../styles/MovieImage.less";
-
 import block from "../../helpers/BEM";
 
 const b = block("MovieImage");

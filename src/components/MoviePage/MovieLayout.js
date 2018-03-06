@@ -5,7 +5,6 @@ import Feedback from "./Feedback";
 import Footer from "../Footer";
 import Header from "../Header";
 import "../../styles/MovieLayout.less"
-import MoviePoster from "../HomePage/MoviePoster";
 import block from "../../helpers/BEM";
 import {getById} from "../../reducers";
 import {connect} from "react-redux";
@@ -24,11 +23,10 @@ class MovieLayout extends Component {
     }
 
     render() {
-        console.log("here3", this.props);
         const {film} = this.props;
 
         return (
-            <div className="MovieLayout">
+            <div className={b()}>
                 <Header/>
                 <MovieImage film={film}/>
                 <MovieInfo film={film}/>
@@ -42,7 +40,6 @@ class MovieLayout extends Component {
 
 export default connect(state => {
         const movie = getById(state, id);
-        console.log(movie);
         return {film: movie};
     }
 )(MovieLayout);
