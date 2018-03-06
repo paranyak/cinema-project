@@ -11,8 +11,7 @@ class Header extends Component {
     }
 
     render() {
-        return
-        <div className={b()}>
+        return <div className={b()}>
             <NavLink to="/" exact className={b('tab')} activeClassName={b('tab', ['active'])}>Home</NavLink>
             <NavLink to="/schedule" className={b('tab')} activeClassName={b('tab', ['active'])}>Schedule</NavLink>
             <input className={b('search')} placeholder={'Search'}/>
