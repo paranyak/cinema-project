@@ -1,3 +1,27 @@
 .MovieCarousel {
-  color: firebrick;
+  display: flex;
+  &__movies {
+    overflow-y: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  &__button {
+    background-color: #FAE807; // #484848
+    color: transparent;
+    width: 60px;
+    border: none;
+  }
+  &__icon {
+    width: 40px;
+    height: 50px;
+    display: inline-block;
+    &_left {
+      background: url("../icons/left.svg") no-repeat left; //left-arrow
+      background-size: 34px 50px;
+    }
+    &_right {
+      background: url("../icons/right.svg") no-repeat right;  //right-arrow
+      background-size: 34px 50px;
+    }
+  }
 }

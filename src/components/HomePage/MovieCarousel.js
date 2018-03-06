@@ -12,9 +12,15 @@ class MovieCarousel extends Component {
         const {films} = this.props;
         return (
             <div className={b()}>
-                <button className={b('button', ['left'])}>left</button>
-                {films.map(film => <MoviePoster film={film} />)}
-                <button className={b('button', ['right'])}>right</button>
+                <button className={b('button')}>
+                    <span className={b('icon', ['left'])}></span>
+                </button>
+                <div className={b('movies')}>
+                    {films.map(film => <MoviePoster film={film} />)}
+                </div>
+                <button className={b('button')}>
+                    <span className={b('icon', ['right'])}></span>
+                </button>
             </div>
         )
     }

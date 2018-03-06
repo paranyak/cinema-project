@@ -8,7 +8,11 @@ const b = block("HomeLayout");
 
 const HomeLayout = () => (
     <div className={b()}>
+        <h1 className={b('title')}>Popular</h1>
         <MovieCarousel/>
+        <h1 className={b('title')}>Soon on the screens</h1>
+        <MovieCarousel/>
+        <h1 className={b('title')}>All movies</h1>
         <AllMovies/>
     </div>
 
