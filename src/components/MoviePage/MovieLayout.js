@@ -5,6 +5,16 @@ import Feedback from "./Feedback";
 import Footer from "../Footer";
 import Header from "../Header";
 import "../../styles/MovieLayout.less"
+import MoviePoster from "../HomePage/MoviePoster";
+import block from "../../helpers/BEM";
+import {getById} from "../../reducers";
+import {connect} from "react-redux";
+
+
+const b = block("MovieLayout");
+
+//TODO: Change id
+const id = 1;
 
 
 class MovieLayout extends Component {
@@ -14,16 +24,25 @@ class MovieLayout extends Component {
     }
 
     render() {
+        console.log("here3", this.props);
+        const {film} = this.props;
+
         return (
             <div className="MovieLayout">
                 <Header/>
-                <MovieImage/>
-                <MovieInfo/>
-                <Feedback/>
+                <MovieImage film={film}/>
+                <MovieInfo film={film}/>
+                <Feedback film={film}/>
                 <Footer/>
             </div>
         )
     }
 }
 
-export default MovieLayout
+
+export default connect(state => {
+        const movie = getById(state, id);
+        console.log(movie);
+        return {film: movie};
+    }
+)(MovieLayout);
