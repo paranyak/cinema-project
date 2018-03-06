@@ -6,9 +6,6 @@ import "../../styles/MovieLayout.less"
 import block from "../../helpers/BEM";
 import {getById} from "../../reducers";
 import {connect} from "react-redux";
-import Header from "../Header";
-import Footer from "../Footer";
-
 
 const b = block("MovieLayout");
 
@@ -19,7 +16,6 @@ const id = 1;
 class MovieLayout extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
     }
 
     render() {
@@ -27,7 +23,7 @@ class MovieLayout extends Component {
 
         return (
             <div>
-                  <div className={b()}>
+                <div className={b()}>
                     <MovieImage film={film}/>
                     <MovieInfo film={film}/>
 
@@ -40,7 +36,7 @@ class MovieLayout extends Component {
 
 export default connect((state, props) => {
         console.log(props.match.params.id);
-        const movie = getById(state, +props.match.params.id || id);
+        const movie = getById(state, +props.match.params.id);
         return {film: movie};
     }
 )(MovieLayout);
