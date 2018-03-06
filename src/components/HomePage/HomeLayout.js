@@ -1,28 +1,17 @@
-import React, {Component} from "react";
+import React from "react";
 import "../../styles/HomeLayout.less";
-import Header from "../Header";
 import MovieCarousel from "./MovieCarousel";
-import Footer from "../Footer";
 import AllMovies from "./AllMovies";
+import block from "../../helpers/BEM";
 
-class HomeLayout extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {}
-    }
+const b = block("HomeLayout");
 
-    render() {
-        return <div className={"HomeLayout"}>
-            <Header />
-            <h3>Popular</h3>
-            <MovieCarousel/>
-            <h3>Available Soon</h3>
-            <MovieCarousel/>
-            <h3>All Available Movies</h3>
-            <AllMovies/>
-            <Footer/>
-        </div>;
-    }
-}
+const HomeLayout = () => (
+    <div className={b()}>
+        <MovieCarousel/>
+        <AllMovies/>
+    </div>
+
+);
 
 export default HomeLayout;
