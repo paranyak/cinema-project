@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
-import ScheduleFilters from "./ScheduleFilter";
-import ScheduleMoviesTab from "./ScheduleMoviesTab";
-import ScheduleTimeTableTab from "./ScheduleTimeTableTab";
-import Footer from "../Footer";
-import Header from "../Header";
+import Filter from "./Filter";
+import Schedule from "./Schedule";
 import "../../styles/ScheduleLayout.less"
 
 
@@ -15,7 +12,7 @@ class ScheduleLayout extends Component {
   render() {
     return (
       <div className="ScheduleLayout">
-        <Filter/>
+        <Filter />
         <Schedule/>
       </div>
     )

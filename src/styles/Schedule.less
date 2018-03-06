@@ -1,42 +1,56 @@
 .Schedule {
+  padding: 20px;
   &__day {
     float: left;
     width: 150px;
-    background: gold;
+    padding: 4px 0;
+    color:  #D0D0D0;
   }
-  &__time-string {}
+  &__time-string {
+    display: flex;
+  }
   &__film-schedule-item {
     position: absolute;
     height: 5px;
-      background: black;
+    background: #fbdb33;
+    margin-top: 12px;
+    border-radius: 5px;
   }
 
   &__film-schedule {
     display: block;
-    height: 40px;
     position: relative;
-    background: red;
-    margin-left: 153px;
+    margin-left: 148px;
+    padding: 10px 0;
+    background-color: #373737;
+    border: 1px solid #D0D0D0;
   }
 
   &__time-item {
     display: inline-block;
-    width: 18px;
-    font-size: 12px;
+    width: calc(100% / 16);
+    font-size: 17px;
     text-align: center;
-    margin: 0 5px;
     border-left: 1px solid #ccc;
     padding: 3px;
+    color:  #D0D0D0;
   }
   &__film-list {}
-  &__film {}
+  &__film {
+    background-color: #D0D0D0;
+    border: 2px solid  #373737;
+  }
   &__film-name {
     float: left;
     display: block;
     width: 150px;
-    background: gold;
+    color: #343434;
+    margin: 5px 10px;
   }
   &__header {
     overflow: hidden;
+    background-color:#575757;
+    border: 1px solid #D0D0D0;
+    margin-bottom: 2px;
   }
 }

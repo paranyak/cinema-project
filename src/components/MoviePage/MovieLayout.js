@@ -27,21 +27,20 @@ class MovieLayout extends Component {
 
         return (
             <div>
-                <Header/>
-                <div className={b()}>
+                  <div className={b()}>
                     <MovieImage film={film}/>
                     <MovieInfo film={film}/>
 
                 </div>
-                <Footer/>
             </div>
         )
     }
 }
 
 
-export default connect(state => {
-        const movie = getById(state, id);
+export default connect((state, props) => {
+        console.log(props.match.params.id);
+        const movie = getById(state, +props.match.params.id || id);
         return {film: movie};
     }
 )(MovieLayout);

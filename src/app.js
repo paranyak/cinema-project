@@ -4,10 +4,13 @@ import { Provider } from 'react-redux';
 
 import Layout from "./components/Layout";
 import initStore from "./initStore";
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <Provider store={initStore()}>
-    <Layout />
+    <BrowserRouter>
+      <Layout />
+    </BrowserRouter>
   </Provider>,
   document.getElementById("root")
 );
