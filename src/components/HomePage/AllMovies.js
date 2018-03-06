@@ -4,6 +4,7 @@ import block from "../../helpers/BEM";
 import {getAllMovies} from "../../reducers";
 import {connect} from "react-redux";
 import MoviePoster from "./MoviePoster";
+import { Link } from 'react-router-dom'
 
 const b = block("AllMovies");
 
@@ -12,7 +13,11 @@ class AllMovies extends Component {
         const {films} = this.props;
         return (
             <div className={b()}>
-                {films.map(film => <MoviePoster film={film} />)}
+                {films.map(film =>
+                  <Link key={film.id} to={`/movie/${film.id}`}>
+                    <MoviePoster film={film} />
+                  </Link>
+                )}
             </div>
         )
     }

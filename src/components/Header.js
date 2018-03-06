@@ -1,5 +1,8 @@
 import React, {Component} from "react";
 import "../styles/Header.less";
+import block from "../helpers/BEM";
+import { NavLink } from 'react-router-dom'
+const b = block("Header");
 
 class Header extends Component {
     constructor(props) {
@@ -8,7 +11,12 @@ class Header extends Component {
     }
 
     render() {
-        return <div className={"Header"}>Header</div>;
+        return <div className={b()}>
+            <NavLink to="/" exact className={b('tab')} activeClassName={b('tab', ['active'])}>Home</NavLink>
+            <NavLink to="/schedule" className={b('tab')} activeClassName={b('tab', ['active'])}>Schedule</NavLink>
+            <input className={b('search')} placeholder={'Search'}/>
+            <a href={'#'} className={b('icon')}></a>
+        </div>;
     }
 }
 

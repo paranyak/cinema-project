@@ -1,21 +1,23 @@
 import React from "react";
 import "../styles/Layout.less";
 import "../styles/common.less";
-import AllMovies from "./HomePage/AllMovies";
-import MovieCarousel from "./HomePage/MovieCarousel";
 import block from "../helpers/BEM";
-import Schedule from "./SchedulePage/Schedule";
 import Footer from "./Footer";
 import Header from "./Header";
 import ScheduleLayout from "./SchedulePage/ScheduleLayout";
+import HomeLayout from "./HomePage/HomeLayout";
+import MovieLayout from "./MoviePage/MovieLayout";
+import { Switch, Route } from 'react-router-dom'
 const b = block("Layout");
-
-// import Schedule from "./Schedule";
 
 const Layout = () => (
   <div className={b()}>
     <Header />
-    <ScheduleLayout />
+    <Switch>
+      <Route exact path='/' component={HomeLayout}/>
+      <Route path='/movie/:id' component={MovieLayout}/>
+      <Route path='/schedule' component={ScheduleLayout}/>
+    </Switch>
     <Footer />
   </div>
 );

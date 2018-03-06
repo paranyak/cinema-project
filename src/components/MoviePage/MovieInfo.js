@@ -14,14 +14,14 @@ class MovieInfo extends Component {
                 <h1 className={b("name")}>{film.name}</h1>
                 <p className={b("description")}> {film.description}</p>
                 <div className={b("extra")}>
-                    <div><span>{film.rating}</span></div>
-                    <p className={b("genre")}><span className={b("key")}>Genre</span> {film.genre}</p>
-                    <p className={b("duration")}><span className={b("key")}>Duration</span> {film.duration.hour}
-                        hour {film.duration.minute} minutes</p>
-                    <p className={b("format")}><span className={b("key")}>Format</span> {film.format}</p>
-                    <p className={b("technology")}><span className={b("key")}>Technology</span> {film.technology}</p>
+                    <div className={b("rating")}><span>{film.rating}</span></div>
+                    <p className={b("genre")}>Genre <span className={b("value")}>{film.genre}</span></p>
+                    <p className={b("duration")}>Duration <span className={b("value")}> {film.duration.hour}
+                        hour {film.duration.minute} minutes </span></p>
+                    <p className={b("format")}>Format <span className={b("value")}>  {film.format}</span></p>
+                    <p className={b("technology")}>Technology <span className={b("value")}>  {film.technology} </span></p>
                 </div>
-                <Actors film={film}/>
+                <Actors film={film} />
             </div>
         )
     }

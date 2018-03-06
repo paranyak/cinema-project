@@ -3,6 +3,7 @@ import "../../styles/MovieCarousel.less";
 import block from "../../helpers/BEM";
 import {getAllMovies} from "../../reducers";
 import {connect} from "react-redux";
+import { Link } from 'react-router-dom'
 import MoviePoster from "./MoviePoster";
 
 const b = block("MovieCarousel");
@@ -12,7 +13,13 @@ class MovieCarousel extends Component {
         const {films} = this.props;
         return (
             <div className={b()}>
-                {films.map(film => <MoviePoster film={film} />)}
+                <button className={b('button', ['left'])}>left</button>
+                {films.map(film =>
+                  <Link key={film.id} to={`/movie/${film.id}`}>
+                    <MoviePoster film={film} />
+                  </Link>
+                )}
+                <button className={b('button', ['right'])}>right</button>
             </div>
         )
     }
