@@ -15,11 +15,8 @@ class ScheduleLayout extends Component {
   render() {
     return (
       <div className="ScheduleLayout">
-        <Header/>
-        <ScheduleFilters/>
-        <ScheduleMoviesTab/>
-        <ScheduleTimeTableTab/>
-        <Footer/>
+        <Filter/>
+        <Schedule/>
       </div>
     )
   }

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../styles/footer.less";
+import "../styles/Footer.less";
 
 class Footer extends Component {
     constructor(props) {
