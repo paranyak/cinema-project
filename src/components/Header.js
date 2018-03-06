@@ -13,7 +13,6 @@ class Header extends Component {
         return <div className={b()}>
             <a href={'#'} className={b('tab', ['active'])}>Home</a>
             <a href={'#'} className={b('tab')}>Schedule</a>
-            <a href={'#'} className={b('tab')}>Movies</a>
             <input className={b('search')} placeholder={'Search'}/>
             <a href={'#'} className={b('icon')}></a>
         </div>;

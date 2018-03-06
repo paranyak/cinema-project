@@ -2,9 +2,14 @@
   background-color: #FAE807;
   text-align: center;
   height: 80px;
-  padding: 20px;
+  padding: 20px 40px;
   box-sizing: border-box;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
   z-index: 100;
+
   &__tab {
     padding: 10px;
     border-radius: 3px;
@@ -12,9 +17,12 @@
     background-color: #FAE807;
     color: #484848;
     float: left;
+    margin-right: 8px;
     &_active {
       background-color: #484848;
       color: #FAE807;
+      font-weight: bold;
+      box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.21);
     }
   }
   &__search {
