@@ -9,8 +9,6 @@ import {connect} from "react-redux";
 
 const b = block("MovieLayout");
 
-//TODO: Change id
-const id = 1;
 
 
 class MovieLayout extends Component {
@@ -20,13 +18,12 @@ class MovieLayout extends Component {
 
     render() {
         const {film} = this.props;
-
         return (
             <div>
                 <div className={b()}>
-                    <MovieImage film={film}/>
                     <MovieInfo film={film}/>
-
+                    <MovieImage film={film}/>
+                    <Feedback id={film.id}/>
                 </div>
             </div>
         )

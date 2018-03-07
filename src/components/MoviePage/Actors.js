@@ -13,9 +13,9 @@ class Actors extends Component {
         const {film} = this.props;
         return (
             <div className={b()}>
-                {film.cast.map((actor, ind) => <div className={b("item")}>
+                {film.cast.map((actor, ind) => <div className={b("item")} key={ind}>
                     <img className={b("image")} src={actor.image}/>
-                    <p className={b("name")} key={ind}>{actor.name}</p>
+                    <p className={b("name")}>{actor.name}</p>
                     <p className={b("separator")}>as...</p>
                     <p className={b("role")}>{actor.role}</p>
                 </div>)}
