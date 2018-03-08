@@ -13,10 +13,12 @@ class AllMovies extends Component {
         const {films} = this.props;
         return (
             <div className={b()}>
-                {films.map(film =>
-                  <Link key={film.id} to={`/movie/${film.id}`}>
-                    <MoviePoster film={film} />
-                  </Link>
+                {films
+                    .filter(film => film.label !== 'soon')
+                    .map(film =>
+                          <Link key={film.id} to={`/movie/${film.id}`}>
+                            <MoviePoster film={film} />
+                          </Link>
                 )}
             </div>
         )
@@ -32,7 +34,8 @@ export default connect(state => {
                 image: movie.image,
                 rating: movie.rating,
                 genre: movie.genre,
-                id: movie.id
+                id: movie.id,
+                label: movie.label
             }))
         };
     }

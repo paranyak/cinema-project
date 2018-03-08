@@ -9,8 +9,13 @@ import MoviePoster from "./MoviePoster";
 const b = block("MovieCarousel");
 
 class MovieCarousel extends Component {
+    filterByLabel() {
+        const {label, films} = this.props;
+        return films.filter(film => film.label === label);
+    }
     render() {
-        const {films} = this.props;
+        // const {films} = this.props;
+        const films = this.filterByLabel();
         return (
             <div className={b()}>
                 <button className={b('button')}>
@@ -40,7 +45,8 @@ export default connect(state => {
                 image: movie.image,
                 rating: movie.rating,
                 genre: movie.genre,
-                id: movie.id
+                id: movie.id,
+                label: movie.label
             }))
         };
     }
