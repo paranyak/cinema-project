@@ -33476,21 +33476,40 @@ function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, dis
 
 
 
+
 const b = Object(__WEBPACK_IMPORTED_MODULE_3__helpers_BEM__["a" /* default */])("Layout");
 
-const Layout = () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-  "div",
-  { className: b() },
-  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Header__["a" /* default */], null),
-  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    __WEBPACK_IMPORTED_MODULE_9_react_router_dom__["e" /* Switch */],
-    null,
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_react_router_dom__["d" /* Route */], { exact: true, path: "/", component: __WEBPACK_IMPORTED_MODULE_7__HomePage_HomeLayout__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_react_router_dom__["d" /* Route */], { path: "/movie/:id", component: __WEBPACK_IMPORTED_MODULE_8__MoviePage_MovieLayout__["a" /* default */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_react_router_dom__["d" /* Route */], { path: "/schedule", component: __WEBPACK_IMPORTED_MODULE_6__SchedulePage_ScheduleLayout__["a" /* default */] })
-  ),
-  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Footer__["a" /* default */], null)
-);
+class Layout extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
+    constructor() {
+        super();
+        this.state = {
+            movies: []
+        };
+    }
+
+    componentWillMount() {
+        fetch('http://localhost:3000/db').then(results => {
+            return results.json();
+        }).then(data => this.setState({ movies: data.movies }));
+    }
+
+    render() {
+        const { movies } = this.state;
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: b() },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Header__["a" /* default */], null),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_9_react_router_dom__["e" /* Switch */],
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_react_router_dom__["d" /* Route */], { exact: true, path: "/", render: () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__HomePage_HomeLayout__["a" /* default */], { db: movies }) }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_react_router_dom__["d" /* Route */], { path: "/movie/:id", render: () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__MoviePage_MovieLayout__["a" /* default */], { db: movies }) }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_react_router_dom__["d" /* Route */], { path: "/schedule", render: () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__SchedulePage_ScheduleLayout__["a" /* default */], { db: movies }) })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Footer__["a" /* default */], null)
+        );
+    }
+}
 
 /* harmony default export */ __webpack_exports__["a"] = (Layout);
 
@@ -33712,7 +33731,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "body {\n  margin: 0;\n  background-color: #878787;\n  font-family: \"SourceSansPro\", sans-serif;\n}\n::-webkit-scrollbar {\n  display: none;\n}\n", ""]);
+exports.push([module.i, "body {\n  margin: 0;\n  background-color: #878787;\n  font-family: \"SourceSansPro\", sans-serif;\n  padding-top: 160px;\n}\n", ""]);
 
 // exports
 
@@ -42616,7 +42635,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".Header {\n  background-color: #FAE807;\n  text-align: center;\n  height: 80px;\n  padding: 20px 40px;\n  box-sizing: border-box;\n  box-shadow: 0px 5px 50px 6px rgba(0, 0, 1, 0.4);\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  z-index: 100;\n}\n.Header__tab {\n  padding: 10px;\n  border-radius: 3px;\n  text-decoration: none;\n  background-color: #FAE807;\n  color: #484848;\n  float: left;\n  margin-right: 8px;\n}\n.Header__tab_active {\n  background-color: #484848;\n  color: #FAE807;\n  font-weight: bold;\n  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.21);\n}\n.Header__search {\n  border: none;\n  float: right;\n  margin-top: 3px;\n  padding: 8px 20px;\n  box-sizing: border-box;\n  background-color: white;\n  border-radius: 19px;\n  width: 250px;\n  box-shadow: 2px 5px 13px 0 rgba(189, 159, 189, 0.31);\n}\n.Header__search::placeholder {\n  color: #878787;\n}\n.Header__icon {\n  width: 15px;\n  height: 15px;\n  background: url(" + escape(__webpack_require__(439)) + ") no-repeat;\n  background-size: 14px 14px;\n  display: inline-block;\n  float: right;\n  margin-top: 13px;\n  margin-right: -235px;\n}\n", ""]);
+exports.push([module.i, ".Header {\n  background-color: #FAE807;\n  text-align: center;\n  height: 80px;\n  padding: 20px 40px;\n  box-sizing: border-box;\n  box-shadow: 0 5px 50px 6px rgba(0, 0, 1, 0.4);\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  z-index: 100;\n}\n.Header__tab {\n  padding: 10px;\n  border-radius: 3px;\n  text-decoration: none;\n  background-color: #FAE807;\n  color: #484848;\n  float: left;\n  margin-right: 8px;\n}\n.Header__tab_active {\n  background-color: #484848;\n  color: #FAE807;\n  font-weight: bold;\n  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.21);\n}\n.Header__search {\n  border: none;\n  float: right;\n  margin-top: 3px;\n  padding: 8px 20px;\n  box-sizing: border-box;\n  background-color: white;\n  border-radius: 19px;\n  width: 250px;\n  box-shadow: 2px 5px 13px 0 rgba(189, 159, 189, 0.31);\n}\n.Header__search::placeholder {\n  color: #878787;\n}\n.Header__icon {\n  width: 15px;\n  height: 15px;\n  background: url(" + escape(__webpack_require__(439)) + ") no-repeat;\n  background-size: 14px 14px;\n  display: inline-block;\n  float: right;\n  margin-top: 13px;\n  margin-right: -235px;\n}\n", ""]);
 
 // exports
 
@@ -47090,7 +47109,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".ScheduleLayout {\n  display: flex;\n  margin: 150px 60px 90px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  background-color: #373737;\n  justify-content: space-between;\n}\n", ""]);
+exports.push([module.i, ".ScheduleLayout {\n  display: flex;\n  width: 90%;\n  margin: auto auto 90px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  background-color: #373737;\n  justify-content: space-between;\n}\n", ""]);
 
 // exports
 
@@ -47115,7 +47134,7 @@ exports.push([module.i, ".ScheduleLayout {\n  display: flex;\n  margin: 150px 60
 
 const b = Object(__WEBPACK_IMPORTED_MODULE_4__helpers_BEM__["a" /* default */])("HomeLayout");
 
-const HomeLayout = () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+const HomeLayout = ({ db }) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     "div",
     { className: b() },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -47123,19 +47142,19 @@ const HomeLayout = () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createEle
         { className: b('title') },
         "Popular"
     ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__MovieCarousel__["a" /* default */], null),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__MovieCarousel__["a" /* default */], { label: "popular", films: db }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "h1",
         { className: b('title') },
         "Soon on the screens"
     ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__MovieCarousel__["a" /* default */], null),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__MovieCarousel__["a" /* default */], { label: "soon", films: db }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "h1",
         { className: b('title') },
         "All movies"
     ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__AllMovies__["a" /* default */], null)
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__AllMovies__["a" /* default */], { films: db })
 );
 
 /* harmony default export */ __webpack_exports__["a"] = (HomeLayout);
@@ -47199,7 +47218,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".HomeLayout {\n  position: relative;\n  top: 80px;\n}\n.HomeLayout__title {\n  margin-top: 60px;\n  color: white;\n  text-align: center;\n}\n", ""]);
+exports.push([module.i, ".HomeLayout {\n  width: 90%;\n  background-color: #373737;\n  margin: auto auto 90px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  padding-top: 40px;\n  padding-bottom: 20px;\n}\n.HomeLayout__title {\n  color: white;\n  text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -47214,11 +47233,9 @@ exports.push([module.i, ".HomeLayout {\n  position: relative;\n  top: 80px;\n}\n
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles_MovieCarousel_less__ = __webpack_require__(488);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles_MovieCarousel_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__styles_MovieCarousel_less__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__helpers_BEM__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__reducers__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_redux__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router_dom__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__MoviePoster__ = __webpack_require__(189);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_router_dom__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__MoviePoster__ = __webpack_require__(189);
 
 
 
@@ -47230,7 +47247,7 @@ const b = Object(__WEBPACK_IMPORTED_MODULE_2__helpers_BEM__["a" /* default */])(
 
 class MovieCarousel extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     render() {
-        const { films } = this.props;
+        const { label, films } = this.props;
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "div",
             { className: b() },
@@ -47242,10 +47259,10 @@ class MovieCarousel extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
                 { className: b('movies') },
-                films.map(film => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* Link */],
+                films.filter(film => film.label === label).map(film => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_4_react_router_dom__["b" /* Link */],
                     { key: film.id, to: `/movie/${film.id}` },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__MoviePoster__["a" /* default */], { film: film })
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__MoviePoster__["a" /* default */], { film: film })
                 ))
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -47257,19 +47274,7 @@ class MovieCarousel extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     }
 }
 
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_4_react_redux__["b" /* connect */])(state => {
-    const movies = Object(__WEBPACK_IMPORTED_MODULE_3__reducers__["b" /* getAllMovies */])(state);
-    console.log(movies);
-    return {
-        films: movies.map(movie => ({
-            name: movie.name,
-            image: movie.image,
-            rating: movie.rating,
-            genre: movie.genre,
-            id: movie.id
-        }))
-    };
-})(MovieCarousel));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_3_react_redux__["b" /* connect */])()(MovieCarousel));
 
 /***/ }),
 /* 488 */
@@ -47331,7 +47336,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".MovieCarousel {\n  display: flex;\n}\n.MovieCarousel__movies {\n  overflow-y: hidden;\n  overflow-x: auto;\n  white-space: nowrap;\n}\n.MovieCarousel__button {\n  background-color: #FAE807;\n  color: transparent;\n  width: 60px;\n  border: none;\n}\n.MovieCarousel__icon {\n  width: 40px;\n  height: 50px;\n  display: inline-block;\n}\n.MovieCarousel__icon_left {\n  background: url(" + escape(__webpack_require__(490)) + ") no-repeat left;\n  background-size: 34px 50px;\n}\n.MovieCarousel__icon_right {\n  background: url(" + escape(__webpack_require__(491)) + ") no-repeat right;\n  background-size: 34px 50px;\n}\n", ""]);
+exports.push([module.i, ".MovieCarousel {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 60px;\n}\n.MovieCarousel__movies {\n  overflow-y: hidden;\n  overflow-x: auto;\n  white-space: nowrap;\n}\n.MovieCarousel__button {\n  background-color: #FAE807;\n  color: transparent;\n  width: 60px;\n  border: none;\n}\n.MovieCarousel__icon {\n  width: 40px;\n  height: 50px;\n  display: inline-block;\n}\n.MovieCarousel__icon_left {\n  background: url(" + escape(__webpack_require__(490)) + ") no-repeat left;\n  background-size: 34px 50px;\n}\n.MovieCarousel__icon_right {\n  background: url(" + escape(__webpack_require__(491)) + ") no-repeat right;\n  background-size: 34px 50px;\n}\n", ""]);
 
 // exports
 
@@ -47407,7 +47412,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".MoviePoster {\n  margin: 5px;\n  display: inline-block;\n  background-color: #484848;\n  font-size: 14px;\n  box-shadow: 0 2px 35px 0 rgba(255, 255, 255, 0.25);\n}\n.MoviePoster__image {\n  width: 275px;\n  height: 408px;\n}\n.MoviePoster__additional-info {\n  margin: 10px;\n}\n.MoviePoster__name {\n  font-size: 20px;\n  color: white;\n  width: 200px;\n  margin-bottom: 3px;\n}\n.MoviePoster__genre {\n  color: #fae807;\n  width: 200px;\n}\n.MoviePoster__rating {\n  border: 1px solid;\n  padding: 5px 7px;\n  border-radius: 3px;\n  color: yellow;\n  float: right;\n  margin-top: -38px;\n}\n", ""]);
+exports.push([module.i, ".MoviePoster {\n  margin: 5px;\n  display: inline-block;\n  background-color: #484848;\n  font-size: 14px;\n}\n.MoviePoster__image {\n  width: 275px;\n  height: 408px;\n}\n.MoviePoster__additional-info {\n  margin: 10px;\n}\n.MoviePoster__name {\n  font-size: 20px;\n  color: white;\n  width: 200px;\n  margin-bottom: 3px;\n}\n.MoviePoster__genre {\n  color: #fae807;\n  width: 200px;\n}\n.MoviePoster__rating {\n  border: 1px solid;\n  padding: 5px 7px;\n  border-radius: 3px;\n  color: yellow;\n  float: right;\n  margin-top: -38px;\n}\n", ""]);
 
 // exports
 
@@ -47422,11 +47427,9 @@ exports.push([module.i, ".MoviePoster {\n  margin: 5px;\n  display: inline-block
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles_AllMovies_less__ = __webpack_require__(495);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles_AllMovies_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__styles_AllMovies_less__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__helpers_BEM__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__reducers__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_redux__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__MoviePoster__ = __webpack_require__(189);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_router_dom__ = __webpack_require__(42);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__MoviePoster__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router_dom__ = __webpack_require__(42);
 
 
 
@@ -47442,28 +47445,16 @@ class AllMovies extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "div",
             { className: b() },
-            films.map(film => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_6_react_router_dom__["b" /* Link */],
+            films.filter(film => film.label !== 'soon').map(film => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* Link */],
                 { key: film.id, to: `/movie/${film.id}` },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__MoviePoster__["a" /* default */], { film: film })
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__MoviePoster__["a" /* default */], { film: film })
             ))
         );
     }
 }
 
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_4_react_redux__["b" /* connect */])(state => {
-    const movies = Object(__WEBPACK_IMPORTED_MODULE_3__reducers__["b" /* getAllMovies */])(state);
-    console.log(movies);
-    return {
-        films: movies.map(movie => ({
-            name: movie.name,
-            image: movie.image,
-            rating: movie.rating,
-            genre: movie.genre,
-            id: movie.id
-        }))
-    };
-})(AllMovies));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_3_react_redux__["b" /* connect */])()(AllMovies));
 
 /***/ }),
 /* 495 */
@@ -47524,7 +47515,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".AllMovies {\n  color: red;\n  margin: 5px;\n}\n.AllMovies__more {\n  font-size: 12px;\n}\n", ""]);
+exports.push([module.i, ".AllMovies {\n  margin: 5px;\n}\n.AllMovies__more {\n  font-size: 12px;\n}\n", ""]);
 
 // exports
 
@@ -48150,7 +48141,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".MovieLayout {\n  width: 90%;\n  min-height: 600px;\n  background-color: #373737;\n  margin: 100px auto;\n  box-shadow: 10px 21px 94px 6px #000001;\n  margin-top: 160px;\n}\nbody {\n  background-color: #656565;\n}\n", ""]);
+exports.push([module.i, ".MovieLayout {\n  width: 90%;\n  min-height: 600px;\n  background-color: #373737;\n  margin: auto auto 90px;\n  box-shadow: 10px 21px 94px 6px #000001;\n}\n", ""]);
 
 // exports
 
