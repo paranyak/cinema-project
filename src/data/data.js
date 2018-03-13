@@ -31,19 +31,19 @@ export default {
             "trailer": "http://www.imdb.com/videoplayer/vi4237277209",
             "genre": " Mystery, Thriller",
             "Schedule": [
-                "10:15",
-                "11:00",
-                "12:50",
-                "13:40",
-                "15:25",
-                "16:20",
-                "18:00",
-                "19:00",
-                "21:40",
-                "22:30"
+                "12-03-2018 10:15",
+                "12-03-2018 11:00",
+                "12-03-2018 12:50",
+                "12-03-2018 13:40",
+                "12-03-2018 15:25",
+                "13-03-2018 16:20",
+                "13-03-2018 18:00",
+                "13-03-2018 19:00",
+                "13-03-2018 21:40",
+                "13-03-2018 22:30"
             ],
-            "format": "2D",
-            "technology": "Cinetech+",
+            "format": ["2D"],
+            "technology": ["Cinetech+"],
             "duration": {
                 "hour": 2,
                 "minute": 19
@@ -87,13 +87,13 @@ export default {
             "trailer": "http://www.imdb.com/videoplayer/vi3874076697",
             "genre": "Action, Thriller",
             "Schedule": [
-                "10:00",
-                "18:35",
-                "20:20",
-                "22:35"
+                "13-03-2018 10:00",
+                "13-03-2018 18:35",
+                "13-03-2018 20:20",
+                "12-03-2018 22:35"
             ],
-            "format": "2D",
-            "technology": "Cinetech+",
+            "format": ["2D"],
+            "technology": ["Cinetech+"],
             "duration": {
                 "hour": 1,
                 "minute": 40
@@ -138,12 +138,12 @@ export default {
             "trailer": "http://www.imdb.com/videoplayer/vi2748495897",
             "genre": "Comedy, Crime, Mystery",
             "Schedule": [
-                "16:40",
-                "20:35",
-                "22:15"
+                "12-03-2018 16:40",
+                "13-03-2018 20:35",
+                "12-03-2018 22:15"
             ],
-            "format": "2D",
-            "technology": "Cinetech+",
+            "format": ["2D"],
+            "technology": ["Cinetech+"],
             "duration": {
                 "hour": 1,
                 "minute": 40
@@ -189,13 +189,13 @@ export default {
             "trailer": "http://www.imdb.com/title/tt1825683/videoplayer/vi2046343193",
             "genre": "Action, Adventure, Sci-Fi",
             "Schedule": [
-                "11:00",
-                "13:40",
-                "16:20",
-                "19:00",
-                "21:40"
+                "12-03-2018 11:00",
+                "13-03-2018 13:40",
+                "13-03-2018 16:20",
+                "12-03-2018 19:00",
+                "12-03-2018 21:40"
             ],
-            "format": "3D",
+            "format": ["3D"],
             "technology": ["Cinetech+", "IMAX"],
             "duration": {
                 "hour": 2,
@@ -240,11 +240,11 @@ export default {
             "trailer": "http://www.imdb.com/title/tt4477536/videoplayer/vi2967320601",
             "genre": "Drama, Romance, Thriller",
             "Schedule": [
-                "14:05",
-                "18:15"
+                "12-03-2018 14:05",
+                "12-03-2018 18:15"
             ],
-            "format": "2D",
-            "technology": "Cinetech+",
+            "format": ["2D"],
+            "technology": ["Cinetech+"],
             "duration": {
                 "hour": 1,
                 "minute": 45
@@ -288,11 +288,11 @@ export default {
             "trailer": "http://www.imdb.com/title/tt3563262/videoplayer/vi3678124057",
             "genre": "Drama, Romance, Thriller",
             "Schedule": [
-                "10:00",
-                "20:50"
+                "12-03-2018 10:00",
+                "12-03-2018 20:50"
             ],
-            "format": "2D",
-            "technology": "Cinetech+",
+            "format": ["2D"],
+            "technology": ["Cinetech+"],
             "duration": {
                 "hour": 1,
                 "minute": 52
@@ -336,12 +336,12 @@ export default {
             "trailer": "http://www.imdb.com/title/tt6294822/videoplayer/vi11581465",
             "genre": "Biography, Drama, History",
             "Schedule": [
-                "10:15",
-                "13:35",
-                "15:10"
+                "12-03-2018 10:15",
+                "13-03-2018 13:35",
+                "13-03-2018 15:10"
             ],
-            "format": "2D",
-            "technology": "Cinetech+",
+            "format": ["2D"],
+            "technology": ["Cinetech+"],
             "duration": {
                 "hour": 1,
                 "minute": 56
@@ -385,15 +385,15 @@ export default {
             "trailer": "http://www.imdb.com/title/tt1365519/videoplayer/vi3590174745",
             "genre": "Action, Adventure",
             "Schedule": [
-                "10:00",
-                "12:15",
-                "14:30",
-                "16:45",
-                "19:00",
-                "21:15"
+                "12-03-2018 10:00",
+                "12-03-2018 12:15",
+                "13-03-2018 14:30",
+                "13-03-2018 16:45",
+                "13-03-2018 19:00",
+                "12-03-2018 21:15"
             ],
-            "format": "3D",
-            "technology": "IMAX",
+            "format": ["3D"],
+            "technology": ["IMAX"],
             "duration": {
                 "hour": 1,
                 "minute": 58
@@ -437,9 +437,9 @@ export default {
             "trailer": "http://www.imdb.com/title/tt1620680/videoplayer/vi1357101081",
             "genre": "Adventure, Family, Fantasy",
             "Schedule": [
-                "10:30",
-                "14:40",
-                "15:00"
+                "12-03-2018 10:30",
+                "12-03-2018 14:40",
+                "12-03-2018 15:00"
             ],
             "format": ["3D", "2D"],
             "technology": ["Cinetech+", "IMAX"],
@@ -486,12 +486,12 @@ export default {
             "trailer": "http://www.imdb.com/videoplayer/vi2782640153",
             "genre": "Action, Adventure, Comedy",
             "Schedule": [
-                "13:25",
-                "19:00",
-                "19:15"
+                "12-03-2018 13:25",
+                "12-03-2018 19:00",
+                "12-03-2018 19:15"
             ],
-            "format": "2D",
-            "technology": "IMAX",
+            "format": ["2D"],
+            "technology": ["IMAX"],
             "duration":  {
                 "hour": 1,
                 "minute": 20
@@ -534,11 +534,11 @@ export default {
             "trailer": "http://www.imdb.com/title/tt2231461/videoplayer/vi4173641753",
             "genre": "Action, Adventure, Sci-Fi",
             "Schedule": [
-                "13:15",
-                "18:00"
+                "12-03-2018 13:15",
+                "12-03-2018 18:00"
             ],
-            "format": "3D",
-            "technology": "IMAX",
+            "format": ["3D"],
+            "technology": ["IMAX"],
             "duration":  {
                 "hour": 2,
                 "minute": 10

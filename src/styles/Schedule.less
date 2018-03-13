@@ -1,18 +1,35 @@
 .Schedule {
   padding: 20px;
+  width: 80%;
+  &__day-container {
+    width: 15%;
+    position: relative;
+  }
   &__day {
-    float: left;
-    width: 150px;
-    padding: 4px 0;
-    color:  #D0D0D0;
+    padding: 15px 3px;
+    color:  #343434;
+    background-color: #D0D0D0;
+    border: none;
+    position: absolute;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+    width: 105%;
+    box-sizing: border-box;
+    box-shadow: 6px 6px 30px 5px #000001;
+    outline: none;
   }
   &__time-string {
     display: flex;
+    width: 85%;
+    border: 1px solid #D0D0D0;
+    border-bottom: none;
+    background-color:#575757;
   }
   &__film-schedule-item {
     position: absolute;
     height: 5px;
-    background: #fbdb33;
+    background: #FAE807;
     margin-top: 12px;
     border-radius: 5px;
   }
@@ -20,37 +37,42 @@
   &__film-schedule {
     display: block;
     position: relative;
-    margin-left: 148px;
     padding: 10px 0;
     background-color: #373737;
     border: 1px solid #D0D0D0;
+    width: 85%;
   }
 
   &__time-item {
-    display: inline-block;
     width: calc(100% / 16);
-    font-size: 17px;
+    font-size: 14px;
     text-align: center;
     border-left: 1px solid #ccc;
-    padding: 3px;
+    padding: 3px 0;
     color:  #D0D0D0;
+    &:first-child {
+      border-left: none;
+    }
   }
   &__film-list {}
   &__film {
     background-color: #D0D0D0;
-    border: 2px solid  #373737;
+    border-top: 2px solid  #373737;
+    border-bottom: 2px solid  #373737;
+    display: flex;
+    &:first-child {
+      border-top: none;
+    }
   }
   &__film-name {
-    float: left;
-    display: block;
-    width: 150px;
+    width: 15%;
     color: #343434;
-    margin: 5px 10px;
+    padding: 5px;
+    box-sizing: border-box;
   }
   &__header {
-    overflow: hidden;
-    background-color:#575757;
-    border: 1px solid #D0D0D0;
-    margin-bottom: 2px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
   }
 }

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import {getAllMovies} from "../../reducers";
-import {removeMovie, addMovie} from "../../actions";
+import {getAllMovies, getAllFilters} from "../../reducers";
+import {removeMovie, addMovie, changeDate} from "../../actions";
 import {Interval} from "luxon/src/interval.js";
 import {Duration} from "luxon/src/duration.js";
 import {DateTime} from "luxon/src/datetime.js";
@@ -16,30 +16,29 @@ const b = block("Schedule");
 class Schedule extends Component {
     constructor(props) {
         super(props);
+    }
 
-        const sessionStart = DateTime.fromObject({
-            hour: 9,
-            minute: 0
+    render() {
+        const {films, onMovieClick, onDateChange, date} = this.props;
+
+        const sessionStart = date.set({
+          hour: 9,
+          minute: 0,
+          seconds: 0,
+          milliseconds: 0
         });
 
         const scheduleInterval = Interval.after(sessionStart, {hours: 16});
 
         this.scale = (t) => 100 * t / scheduleInterval.toDuration().milliseconds;
 
-        this.state = {
-            startTime: sessionStart,
-            session: scheduleInterval.splitBy({minutes: 60})
-        };
-    }
+        const session = scheduleInterval.splitBy({minutes: 60});
 
-    render() {
-        const {session, startTime} = this.state;
-        const {films, onMovieClick} = this.props;
         return (
             <div className={b()}>
                 <div className={b("header")}>
-                    <div className={b("day")}>
-                        DAY: {startTime.toFormat("yyyy LLL dd")}
+                    <div className={b("day-container")}>
+                      <input className={b("day")} type="date" value={date.toFormat('yyyy-MM-dd')} onChange={onDateChange}></input>
                     </div>
                     <div className={b("time-string")}>
                         {session.map((time, i) => (
@@ -54,7 +53,7 @@ class Schedule extends Component {
                         <div key={"div-1lev" + i.toString()} className={b("film")}>
                             <span key={i} className={b("film-name")}
                                   onClick={() => onMovieClick(films.id)}>{film.name}</span>
-                            <div  style={{height: film.schedule.length * 10}} key={"div-2lev" + i.toString()} className={b("film-schedule")}>
+                            <div  style={{'minHeight': film.schedule.length * 10}} key={"div-2lev" + i.toString()} className={b("film-schedule")}>
                                 {film.schedule.map((s, i) => (
                                     <div key={i} className={b("film-schedule-item")}
                                           style={{
@@ -62,7 +61,7 @@ class Schedule extends Component {
                                               width: this.scale(s.toDuration().milliseconds) + "%",
                                               left: this.scale(
                                                   Interval.fromDateTimes(
-                                                      startTime, s.start
+                                                      sessionStart, s.start
                                                   ).toDuration().milliseconds
                                               ) + "%"
                                           }}
@@ -81,24 +80,77 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onMovieClick: (id) => {
             dispatch(removeMovie(id))
+        },
+        onDateChange: (event) => {
+          console.log(event.target.value);
+          dispatch(changeDate(event.target.value));
         }
     }
 };
 
 export default connect(state => {
         const movies = getAllMovies(state);
+        const filters = getAllFilters(state);
+        const date = filters.date ?
+                    DateTime.fromFormat(filters.date, 'yyyy-MM-dd') :
+                    DateTime.local();
         console.log(movies);
         return {
-            films: movies.map(movie => ({
+            date,
+            films: movies
+              .filter((movie) => {
+                if (filters.genres.length === 0) {
+                  return true;
+                }
+                let movieGenres = movie.genre.split(', ');
+                console.log(movieGenres)
+                for(let i = 0; i < movieGenres.length; i++) {
+                  if(filters.genres.includes(movieGenres[i])) {
+                    return true;
+                  }
+                }
+                return false;
+              })
+              .filter((movie) => {
+                if (filters.technologies.length === 0) {
+                  return true;
+                }
+                console.log(movie.technology)
+                for(let i = 0; i < movie.technology.length; i++) {
+                  if(filters.technologies.includes(movie.technology[i])) {
+                    return true;
+                  }
+                }
+                return false;
+              })
+              .filter((movie) => {
+                if (filters.formats.length === 0) {
+                  return true;
+                }
+                console.log(movie.format)
+                for(let i = 0; i < movie.format.length; i++) {
+                  if(filters.formats.includes(movie.format[i])) {
+                    return true;
+                  }
+                }
+                return false;
+              })
+              .map(movie => ({
                 name: movie.name,
-                schedule: movie.Schedule.map(start =>
-                    Interval.after(DateTime.fromFormat(start, "HH:mm"), {
+                schedule: movie.Schedule
+                  .filter(start => {
+                    console.log(DateTime.fromFormat(start, "dd-MM-yyyy HH:mm").hasSame(date, 'day'))
+                    return DateTime.fromFormat(start, "dd-MM-yyyy HH:mm").hasSame(date, 'day')
+                  })
+                  .map(start =>
+                    Interval.after(DateTime.fromFormat(start, "dd-MM-yyyy HH:mm"), {
                         hour: movie.duration.hour,
                         minute: movie.duration.minute
                     })
                 ),
                 id: movie.id
-            }))
+              }))
+              .filter(movie => movie.schedule.length !== 0)
         };
     },
     mapDispatchToProps

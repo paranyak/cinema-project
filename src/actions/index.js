@@ -1,17 +1,25 @@
 import data from "../data/data.js"
 
+export const changeDate = (date) => {
+  return {
+    type: 'CHANGE_DATE',
+    date
+  };
+};
 
-export const addFilter = (filter) => {
+export const addFilter = (key, value) => {
     return {
         type: 'ADD_FILTER',
-        filter
+        key,
+        value
     }
 };
 
-export const removeFilter = (filter) => {
+export const removeFilter = (key, value) => {
     return {
         type: 'REMOVE_FILTER',
-        filter
+        key,
+        value
     }
 };
 

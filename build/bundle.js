@@ -2146,15 +2146,19 @@ const moviesApp = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["b" /* combineReduc
 /* harmony default export */ __webpack_exports__["a"] = (moviesApp);
 
 const getAllMovies = state => __WEBPACK_IMPORTED_MODULE_1__movies__["b" /* getAllMovies */](state.movies);
-/* harmony export (immutable) */ __webpack_exports__["b"] = getAllMovies;
+/* harmony export (immutable) */ __webpack_exports__["c"] = getAllMovies;
 
 
 const getById = (state, id) => __WEBPACK_IMPORTED_MODULE_1__movies__["c" /* getById */](state.movies, id);
-/* harmony export (immutable) */ __webpack_exports__["c"] = getById;
+/* harmony export (immutable) */ __webpack_exports__["d"] = getById;
 
 
 const getFeedbackById = (state, id) => __WEBPACK_IMPORTED_MODULE_3__feedbacks__["b" /* getFeedbackById */](state.feedbacks, id);
-/* harmony export (immutable) */ __webpack_exports__["d"] = getFeedbackById;
+/* harmony export (immutable) */ __webpack_exports__["e"] = getFeedbackById;
+
+
+const getAllFilters = state => __WEBPACK_IMPORTED_MODULE_2__filters__["b" /* getAllFilters */](state.filters);
+/* harmony export (immutable) */ __webpack_exports__["b"] = getAllFilters;
 
 
 /***/ }),
@@ -13160,9 +13164,9 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
         "screenshots": ["https://images-na.ssl-images-amazon.com/images/M/MV5BOWU3OGJjZjEtN2JkYS00MTZmLTkyY2EtYzY4OTIwZTlkM2Q1XkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1497,1000_AL_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BMjA0MDQ3ZWUtMTdhNS00ODFlLTgxZmEtZWM5ZmQxMTU3ZDdmXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1497,1000_AL_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BMjIwZDgwYTctMTA3Zi00N2I0LTgxYTYtNTQ1MWRmZGU2NjcxXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1499,1000_AL_.jpg"],
         "trailer": "http://www.imdb.com/videoplayer/vi4237277209",
         "genre": " Mystery, Thriller",
-        "Schedule": ["10:15", "11:00", "12:50", "13:40", "15:25", "16:20", "18:00", "19:00", "21:40", "22:30"],
-        "format": "2D",
-        "technology": "Cinetech+",
+        "Schedule": ["12-03-2018 10:15", "12-03-2018 11:00", "12-03-2018 12:50", "12-03-2018 13:40", "12-03-2018 15:25", "13-03-2018 16:20", "13-03-2018 18:00", "13-03-2018 19:00", "13-03-2018 21:40", "13-03-2018 22:30"],
+        "format": ["2D"],
+        "technology": ["Cinetech+"],
         "duration": {
             "hour": 2,
             "minute": 19
@@ -13195,9 +13199,9 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
         "screenshots": ["https://images-na.ssl-images-amazon.com/images/M/MV5BMjA1MjcwNTE2N15BMl5BanBnXkFtZTgwOTk5NTM2NDM@._V1_SY1000_SX1500_AL_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BNmQ0NDdkZjctMDAxNS00ZGRkLWI4MGMtZDJmYjRhNjI0ZGFjXkEyXkFqcGdeQXVyNTc5OTMwOTQ@._V1_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BNzVlNzNhOWQtYWVlZS00MmFlLTlhOWMtNTY5MWJiMjk4NGQ0XkEyXkFqcGdeQXVyNTc5OTMwOTQ@._V1_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BZWEwMWI2NDUtZmM0YS00MWMzLTk3ZTAtZTA0YWIwOWM0YzQ3XkEyXkFqcGdeQXVyMTU2MDA4NQ@@._V1_.jpg"],
         "trailer": "http://www.imdb.com/videoplayer/vi3874076697",
         "genre": "Action, Thriller",
-        "Schedule": ["10:00", "18:35", "20:20", "22:35"],
-        "format": "2D",
-        "technology": "Cinetech+",
+        "Schedule": ["13-03-2018 10:00", "13-03-2018 18:35", "13-03-2018 20:20", "12-03-2018 22:35"],
+        "format": ["2D"],
+        "technology": ["Cinetech+"],
         "duration": {
             "hour": 1,
             "minute": 40
@@ -13230,9 +13234,9 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
         "screenshots": ["https://images-na.ssl-images-amazon.com/images/M/MV5BOTc3ODU0NTI5MV5BMl5BanBnXkFtZTgwNTQ4Nzc3NDM@._V1_SY1000_CR0,0,1498,1000_AL_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BMTY2MDYwMTIwN15BMl5BanBnXkFtZTgwMDM4Nzc3NDM@._V1_SX1777_CR0,0,1777,746_AL_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BMTk4MzMyMjIwNV5BMl5BanBnXkFtZTgwMjM4Nzc3NDM@._V1_SX1777_CR0,0,1777,746_AL_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BMTk4ODcyMTM1MV5BMl5BanBnXkFtZTgwNTM4Nzc3NDM@._V1_SX1777_CR0,0,1777,746_AL_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BMTAyMTYxNzg4NDZeQTJeQWpwZ15BbWU4MDkzODc3NzQz._V1_SY1000_CR0,0,1498,1000_AL_.jpg"],
         "trailer": "http://www.imdb.com/videoplayer/vi2748495897",
         "genre": "Comedy, Crime, Mystery",
-        "Schedule": ["16:40", "20:35", "22:15"],
-        "format": "2D",
-        "technology": "Cinetech+",
+        "Schedule": ["12-03-2018 16:40", "13-03-2018 20:35", "12-03-2018 22:15"],
+        "format": ["2D"],
+        "technology": ["Cinetech+"],
         "duration": {
             "hour": 1,
             "minute": 40
@@ -13265,8 +13269,8 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
         "screenshots": ["https://images-na.ssl-images-amazon.com/images/M/MV5BMjIzNzYwNjkyOF5BMl5BanBnXkFtZTgwODM3MDM5NDM@._V1_SX1777_CR0,0,1777,937_AL_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BMjQyMDc0NTI0Ml5BMl5BanBnXkFtZTgwODE3MDM5NDM@._V1_SX1777_CR0,0,1777,937_AL_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BMjQzNTM2MzEwOF5BMl5BanBnXkFtZTgwOTE3MDM5NDM@._V1_SX1777_CR0,0,1777,937_AL_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BMTg3NTc5MzA0OV5BMl5BanBnXkFtZTgwMDI3MDM5NDM@._V1_SX1777_CR0,0,1777,937_AL_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BMjMzNjc4MzM1NF5BMl5BanBnXkFtZTgwODI3MDM5NDM@._V1_SX1777_CR0,0,1777,937_AL_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BMTAyOTcyMTkzMjJeQTJeQWpwZ15BbWU4MDExNzAzOTQz._V1_SX1500_CR0,0,1500,999_AL_.jpg"],
         "trailer": "http://www.imdb.com/title/tt1825683/videoplayer/vi2046343193",
         "genre": "Action, Adventure, Sci-Fi",
-        "Schedule": ["11:00", "13:40", "16:20", "19:00", "21:40"],
-        "format": "3D",
+        "Schedule": ["12-03-2018 11:00", "13-03-2018 13:40", "13-03-2018 16:20", "12-03-2018 19:00", "12-03-2018 21:40"],
+        "format": ["3D"],
         "technology": ["Cinetech+", "IMAX"],
         "duration": {
             "hour": 2,
@@ -13300,9 +13304,9 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
         "screenshots": ["https://images-na.ssl-images-amazon.com/images/M/MV5BNjAwNDg5MzM2M15BMl5BanBnXkFtZTgwMjgwMzIxNDM@._V1_SY1000_CR0,0,1499,1000_AL_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BZjQ2N2UzMmQtMWU1Zi00Y2U3LWJiZDYtMzBmYjlkMTliNDlhXkEyXkFqcGdeQXVyODM2NDI5MDI@._V1_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BMzdiYzNjZDAtODY5Ny00YTg1LWIwMWItYTA2ZWIyYzUxNGMzXkEyXkFqcGdeQXVyNTY2OTA1Mg@@._V1_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BZTkwYWJiZWMtYmNmMi00NzNiLThhNzEtOTdkYWRhN2UzNTY0XkEyXkFqcGdeQXVyNTgxMzcxMjA@._V1_.jpg"],
         "trailer": "http://www.imdb.com/title/tt4477536/videoplayer/vi2967320601",
         "genre": "Drama, Romance, Thriller",
-        "Schedule": ["14:05", "18:15"],
-        "format": "2D",
-        "technology": "Cinetech+",
+        "Schedule": ["12-03-2018 14:05", "12-03-2018 18:15"],
+        "format": ["2D"],
+        "technology": ["Cinetech+"],
         "duration": {
             "hour": 1,
             "minute": 45
@@ -13335,9 +13339,9 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
         "screenshots": ["https://images-na.ssl-images-amazon.com/images/M/MV5BY2M0M2Q3YmQtYzIzZC00ZWZmLThjN2UtN2RiNTEyNTkyZmM1XkEyXkFqcGdeQXVyNjYyNDM3MTY@._V1_SY1000_CR0,0,1586,1000_AL_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BMjUwMjRhMDEtZjI3Mi00N2IyLWE0YTktMWU1MDVjNWY5NjM0XkEyXkFqcGdeQXVyNjA0MzkwMjU@._V1_.jpg", "https://planetakino.ua/f/1/movies/submergence/Submergence-kadr_3.R1366x909.jpg", "https://planetakino.ua/f/1/movies/submergence/Submergence-kadr_6.R1366x910.jpg"],
         "trailer": "http://www.imdb.com/title/tt3563262/videoplayer/vi3678124057",
         "genre": "Drama, Romance, Thriller",
-        "Schedule": ["10:00", "20:50"],
-        "format": "2D",
-        "technology": "Cinetech+",
+        "Schedule": ["12-03-2018 10:00", "12-03-2018 20:50"],
+        "format": ["2D"],
+        "technology": ["Cinetech+"],
         "duration": {
             "hour": 1,
             "minute": 52
@@ -13370,9 +13374,9 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
         "screenshots": ["https://planetakino.ua/f/1/movies/the_post/Post-the_kadr-1.R1366x876.jpg", "https://planetakino.ua/f/1/movies/the_post/Post-the_kadr-2.R1366x842.jpg", "https://planetakino.ua/f/1/movies/the_post/Post-the_kadr_3.R1366x840.jpg", "https://planetakino.ua/f/1/movies/the_post/Post-the_kadr-5.R1366x839.jpg"],
         "trailer": "http://www.imdb.com/title/tt6294822/videoplayer/vi11581465",
         "genre": "Biography, Drama, History",
-        "Schedule": ["10:15", "13:35", "15:10"],
-        "format": "2D",
-        "technology": "Cinetech+",
+        "Schedule": ["12-03-2018 10:15", "13-03-2018 13:35", "13-03-2018 15:10"],
+        "format": ["2D"],
+        "technology": ["Cinetech+"],
         "duration": {
             "hour": 1,
             "minute": 56
@@ -13405,9 +13409,9 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
         "screenshots": ["https://planetakino.ua/f/1/movies/tomb_raider/lara-kroft-kadr1.R1366x911.jpg", "https://planetakino.ua/f/1/movies/tomb_raider/lara-kroft-kadr2.R1366x909.jpg", "https://planetakino.ua/f/1/movies/tomb_raider/Tomb-Raider_kadr3.R1366x914.jpg", "https://planetakino.ua/f/1/movies/tomb_raider/lara-kroft-kadr4.R1366x909.jpg"],
         "trailer": "http://www.imdb.com/title/tt1365519/videoplayer/vi3590174745",
         "genre": "Action, Adventure",
-        "Schedule": ["10:00", "12:15", "14:30", "16:45", "19:00", "21:15"],
-        "format": "3D",
-        "technology": "IMAX",
+        "Schedule": ["12-03-2018 10:00", "12-03-2018 12:15", "13-03-2018 14:30", "13-03-2018 16:45", "13-03-2018 19:00", "12-03-2018 21:15"],
+        "format": ["3D"],
+        "technology": ["IMAX"],
         "duration": {
             "hour": 1,
             "minute": 58
@@ -13440,7 +13444,7 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
         "screenshots": ["https://planetakino.ua/f/1/movies/a_wrinkle_in_time/AWIT-kadr1.R1366x910.jpg", "https://planetakino.ua/f/1/movies/a_wrinkle_in_time/AWIT-kadr6.R1366x910.jpg", "https://planetakino.ua/f/1/movies/a_wrinkle_in_time/AWIT-kadr8.R1366x911.jpg", "https://planetakino.ua/f/1/movies/a_wrinkle_in_time/AWIT-kadr4.R1366x911.jpg"],
         "trailer": "http://www.imdb.com/title/tt1620680/videoplayer/vi1357101081",
         "genre": "Adventure, Family, Fantasy",
-        "Schedule": ["10:30", "14:40", "15:00"],
+        "Schedule": ["12-03-2018 10:30", "12-03-2018 14:40", "12-03-2018 15:00"],
         "format": ["3D", "2D"],
         "technology": ["Cinetech+", "IMAX"],
         "duration": {
@@ -13475,9 +13479,9 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
         "screenshots": ["data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUSEhIVFRUXFxgVGBUXFxcYFxcaFRoXFxUXFRgaHSggGBolHRUXITEhJSkrLi4uFx8zODMtNygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAOEA4QMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQIH/8QAIBABAQEAAgICAwEAAAAAAAAAABEBAvAhMUGxEoHhwf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDtUUUAMAUQBQACBAQAAACIsAAABFBFQgKIsAEAVAoJ+ODXgBF+0AUqLQVMCgoICkAEAAAACACKgKhoBSAAQAAABFBRKoIABVABagAoAaAAACCoAAAVAFQKAAAF7/AAAAAD8u9wS98gKIoGaqKAACgAAAAaBUVAAAEUgILiAGgBoqAAUAAEoUAVMUBUXAMABQACgBoAIAAigAAAACKAkFATRUAgAHkJqgzipgC1UAXBFAVIoAAAACAABQAoAAABgAAAIBuAAv4hAGcKFBYEAUxFAIALRFABAUQAKAAAAAFCgFAARQEFQDwqUBMKKCZimYAL6SGAoYAVUAWiAKioAUAAAAgAAAAAACKIArNUEUoABnfQCooBhAAMANVF0EFQAAAACAABAAgAAAIqQFEnZqggAGi1APoFAgAGCoCosQAACgAAAAAAAAAFABCgKEAQUBFEBUxUBQIAAACggAEAAIAIugAQACACKACaALMAAEqgCAKJqgGBQFQAVAAAEWgCAUFQUAAAAAAEVABUvfKggHe+QBUgAAC4gC0QBSooCKAgAAAAAKAAAAAAACeVSKCYYzn6awAzVNARQEUAMAAA0EFQAAAAAwwAqwAAAAAAASd8qnhQOPynfsATj6Tj8gDfH2fAAus761QF1nj/AKAHL3+jh6UBMN9/pQE5LyAEw4/KgM8veHP0ALhxADj7NUBdTn8AC8k4gCAA/9k=", "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUSEhIVFRUXFxgVGBUXFxcYFxcaFRoXFxUXFRgaHSggGBolHRUXITEhJSkrLi4uFx8zODMtNygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAOEA4QMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQIH/8QAIBABAQEAAgICAwEAAAAAAAAAABEBAvAhMUGxEoHhwf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDtUUUAMAUQBQACBAQAAACIsAAABFBFQgKIsAEAVAoJ+ODXgBF+0AUqLQVMCgoICkAEAAAACACKgKhoBSAAQAAABFBRKoIABVABagAoAaAAACCoAAAVAFQKAAAF7/AAAAAD8u9wS98gKIoGaqKAACgAAAAaBUVAAAEUgILiAGgBoqAAUAAEoUAVMUBUXAMABQACgBoAIAAigAAAACKAkFATRUAgAHkJqgzipgC1UAXBFAVIoAAAACAABQAoAAABgAAAIBuAAv4hAGcKFBYEAUxFAIALRFABAUQAKAAAAAFCgFAARQEFQDwqUBMKKCZimYAL6SGAoYAVUAWiAKioAUAAAAgAAAAAACKIArNUEUoABnfQCooBhAAMANVF0EFQAAAACAABAAgAAAIqQFEnZqggAGi1APoFAgAGCoCosQAACgAAAAAAAAAFABCgKEAQUBFEBUxUBQIAAACggAEAAIAIugAQACACKACaALMAAEqgCAKJqgGBQFQAVAAAEWgCAUFQUAAAAAAEVABUvfKggHe+QBUgAAC4gC0QBSooCKAgAAAAAKAAAAAAACeVSKCYYzn6awAzVNARQEUAMAAA0EFQAAAAAwwAqwAAAAAAASd8qnhQOPynfsATj6Tj8gDfH2fAAus761QF1nj/AKAHL3+jh6UBMN9/pQE5LyAEw4/KgM8veHP0ALhxADj7NUBdTn8AC8k4gCAA/9k=", "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUSEhIVFRUXFxgVGBUXFxcYFxcaFRoXFxUXFRgaHSggGBolHRUXITEhJSkrLi4uFx8zODMtNygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAOEA4QMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQIH/8QAIBABAQEAAgICAwEAAAAAAAAAABEBAvAhMUGxEoHhwf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDtUUUAMAUQBQACBAQAAACIsAAABFBFQgKIsAEAVAoJ+ODXgBF+0AUqLQVMCgoICkAEAAAACACKgKhoBSAAQAAABFBRKoIABVABagAoAaAAACCoAAAVAFQKAAAF7/AAAAAD8u9wS98gKIoGaqKAACgAAAAaBUVAAAEUgILiAGgBoqAAUAAEoUAVMUBUXAMABQACgBoAIAAigAAAACKAkFATRUAgAHkJqgzipgC1UAXBFAVIoAAAACAABQAoAAABgAAAIBuAAv4hAGcKFBYEAUxFAIALRFABAUQAKAAAAAFCgFAARQEFQDwqUBMKKCZimYAL6SGAoYAVUAWiAKioAUAAAAgAAAAAACKIArNUEUoABnfQCooBhAAMANVF0EFQAAAACAABAAgAAAIqQFEnZqggAGi1APoFAgAGCoCosQAACgAAAAAAAAAFABCgKEAQUBFEBUxUBQIAAACggAEAAIAIugAQACACKACaALMAAEqgCAKJqgGBQFQAVAAAEWgCAUFQUAAAAAAEVABUvfKggHe+QBUgAAC4gC0QBSooCKAgAAAAAKAAAAAAACeVSKCYYzn6awAzVNARQEUAMAAA0EFQAAAAAwwAqwAAAAAAASd8qnhQOPynfsATj6Tj8gDfH2fAAus761QF1nj/AKAHL3+jh6UBMN9/pQE5LyAEw4/KgM8veHP0ALhxADj7NUBdTn8AC8k4gCAA/9k=", "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUSEhIVFRUXFxgVGBUXFxcYFxcaFRoXFxUXFRgaHSggGBolHRUXITEhJSkrLi4uFx8zODMtNygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAOEA4QMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQIH/8QAIBABAQEAAgICAwEAAAAAAAAAABEBAvAhMUGxEoHhwf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDtUUUAMAUQBQACBAQAAACIsAAABFBFQgKIsAEAVAoJ+ODXgBF+0AUqLQVMCgoICkAEAAAACACKgKhoBSAAQAAABFBRKoIABVABagAoAaAAACCoAAAVAFQKAAAF7/AAAAAD8u9wS98gKIoGaqKAACgAAAAaBUVAAAEUgILiAGgBoqAAUAAEoUAVMUBUXAMABQACgBoAIAAigAAAACKAkFATRUAgAHkJqgzipgC1UAXBFAVIoAAAACAABQAoAAABgAAAIBuAAv4hAGcKFBYEAUxFAIALRFABAUQAKAAAAAFCgFAARQEFQDwqUBMKKCZimYAL6SGAoYAVUAWiAKioAUAAAAgAAAAAACKIArNUEUoABnfQCooBhAAMANVF0EFQAAAACAABAAgAAAIqQFEnZqggAGi1APoFAgAGCoCosQAACgAAAAAAAAAFABCgKEAQUBFEBUxUBQIAAACggAEAAIAIugAQACACKACaALMAAEqgCAKJqgGBQFQAVAAAEWgCAUFQUAAAAAAEVABUvfKggHe+QBUgAAC4gC0QBSooCKAgAAAAAKAAAAAAACeVSKCYYzn6awAzVNARQEUAMAAA0EFQAAAAAwwAqwAAAAAAASd8qnhQOPynfsATj6Tj8gDfH2fAAus761QF1nj/AKAHL3+jh6UBMN9/pQE5LyAEw4/KgM8veHP0ALhxADj7NUBdTn8AC8k4gCAA/9k="],
         "trailer": "http://www.imdb.com/videoplayer/vi2782640153",
         "genre": "Action, Adventure, Comedy",
-        "Schedule": ["13:25", "19:00", "19:15"],
-        "format": "2D",
-        "technology": "IMAX",
+        "Schedule": ["12-03-2018 13:25", "12-03-2018 19:00", "12-03-2018 19:15"],
+        "format": ["2D"],
+        "technology": ["IMAX"],
         "duration": {
             "hour": 1,
             "minute": 20
@@ -13510,9 +13514,9 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
         "screenshots": ["https://images-na.ssl-images-amazon.com/images/M/MV5BNWFhZjU1NGQtZjQ3Yy00Mjk5LWJhZWUtOGUzODYzMDIzMjUyXkEyXkFqcGdeQXVyNjAyNzI2OTY@._V1_SY1000_CR0,0,1003,1000_AL_.jpg", "https://planetakino.ua/f/1/movies/rampage/rampage-kadr-1.R1366x909.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BOGRmNDQyNjctOGY4NS00YmQzLWFjYzQtZDFiODA4YTY3NDNlXkEyXkFqcGdeQXVyNzMwMDg1OTE@._V1_.jpg"],
         "trailer": "http://www.imdb.com/title/tt2231461/videoplayer/vi4173641753",
         "genre": "Action, Adventure, Sci-Fi",
-        "Schedule": ["13:15", "18:00"],
-        "format": "3D",
-        "technology": "IMAX",
+        "Schedule": ["12-03-2018 13:15", "12-03-2018 18:00"],
+        "format": ["3D"],
+        "technology": ["IMAX"],
         "duration": {
             "hour": 2,
             "minute": 10
@@ -33712,7 +33716,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "body {\n  margin: 0;\n  background-color: #878787;\n  font-family: \"SourceSansPro\", sans-serif;\n}\n::-webkit-scrollbar {\n  display: none;\n}\n", ""]);
+exports.push([module.i, "body {\n  margin: 0;\n  background-color: #878787;\n  font-family: \"SourceSansPro\", sans-serif;\n  padding-top: 160px;\n}\n", ""]);
 
 // exports
 
@@ -42616,7 +42620,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".Header {\n  background-color: #FAE807;\n  text-align: center;\n  height: 80px;\n  padding: 20px 40px;\n  box-sizing: border-box;\n  box-shadow: 0px 5px 50px 6px rgba(0, 0, 1, 0.4);\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  z-index: 100;\n}\n.Header__tab {\n  padding: 10px;\n  border-radius: 3px;\n  text-decoration: none;\n  background-color: #FAE807;\n  color: #484848;\n  float: left;\n  margin-right: 8px;\n}\n.Header__tab_active {\n  background-color: #484848;\n  color: #FAE807;\n  font-weight: bold;\n  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.21);\n}\n.Header__search {\n  border: none;\n  float: right;\n  margin-top: 3px;\n  padding: 8px 20px;\n  box-sizing: border-box;\n  background-color: white;\n  border-radius: 19px;\n  width: 250px;\n  box-shadow: 2px 5px 13px 0 rgba(189, 159, 189, 0.31);\n}\n.Header__search::placeholder {\n  color: #878787;\n}\n.Header__icon {\n  width: 15px;\n  height: 15px;\n  background: url(" + escape(__webpack_require__(439)) + ") no-repeat;\n  background-size: 14px 14px;\n  display: inline-block;\n  float: right;\n  margin-top: 13px;\n  margin-right: -235px;\n}\n", ""]);
+exports.push([module.i, ".Header {\n  background-color: #FAE807;\n  text-align: center;\n  height: 80px;\n  padding: 20px 40px;\n  box-sizing: border-box;\n  box-shadow: 0 5px 50px 6px rgba(0, 0, 1, 0.4);\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  z-index: 100;\n}\n.Header__tab {\n  padding: 10px;\n  border-radius: 3px;\n  text-decoration: none;\n  background-color: #FAE807;\n  color: #484848;\n  float: left;\n  margin-right: 8px;\n}\n.Header__tab_active {\n  background-color: #484848;\n  color: #FAE807;\n  font-weight: bold;\n  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.21);\n}\n.Header__search {\n  border: none;\n  float: right;\n  margin-top: 3px;\n  padding: 8px 20px;\n  box-sizing: border-box;\n  background-color: white;\n  border-radius: 19px;\n  width: 250px;\n  box-shadow: 2px 5px 13px 0 rgba(189, 159, 189, 0.31);\n}\n.Header__search::placeholder {\n  color: #878787;\n}\n.Header__icon {\n  width: 15px;\n  height: 15px;\n  background: url(" + escape(__webpack_require__(439)) + ") no-repeat;\n  background-size: 14px 14px;\n  display: inline-block;\n  float: right;\n  margin-top: 13px;\n  margin-right: -235px;\n}\n", ""]);
 
 // exports
 
@@ -45628,25 +45632,112 @@ class ScheduleLayout extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles_Filter_less__ = __webpack_require__(467);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles_Filter_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__styles_Filter_less__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__helpers_BEM__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions__ = __webpack_require__(474);
 
 
+
+
+
+
+const b = Object(__WEBPACK_IMPORTED_MODULE_2__helpers_BEM__["a" /* default */])("Filter");
 
 class Filter extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
   constructor(props) {
     super(props);
     this.state = {};
+    this.availableGenres = ['Mystery', 'Thriller', 'Action', 'Comedy', 'Crime', 'Adventure', 'Sci-Fi', 'Drama', 'Romance', 'Biography', 'History', 'Family', 'Fantasy'];
+    this.availableTechnologies = ['Cinetech+', 'IMAX'];
+    this.availableFormats = ['2D', '3D'];
   }
 
   render() {
+    const { onSwitchFilter } = this.props;
+
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       "div",
-      { className: "Filter" },
-      "Schedule Filters"
+      { className: b() },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "header",
+        { className: b("header") },
+        "Filters"
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "section",
+        { className: b("group") },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "span",
+          { className: b("name") },
+          "Genres"
+        ),
+        this.availableGenres.map((el, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "div",
+          { key: i, className: b("filter") },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", id: el, value: "genres", onChange: onSwitchFilter }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "label",
+            { htmlFor: el },
+            el
+          )
+        ))
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "section",
+        { className: b("group") },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "span",
+          { className: b("name") },
+          "Technologies"
+        ),
+        this.availableTechnologies.map((el, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "div",
+          { key: i, className: b("filter") },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", value: "technologies", id: el, onChange: onSwitchFilter }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "label",
+            { htmlFor: el },
+            el
+          )
+        ))
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "section",
+        { className: b("group") },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "span",
+          { className: b("name") },
+          "Format"
+        ),
+        this.availableFormats.map((el, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "div",
+          { key: i, className: b("filter") },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", value: "formats", id: el, onChange: onSwitchFilter }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "label",
+            { htmlFor: el },
+            el
+          )
+        ))
+      )
     );
   }
 }
 
-/* harmony default export */ __webpack_exports__["a"] = (Filter);
+const mapDispatchToProps = dispatch => {
+  return {
+    onSwitchFilter: event => {
+      if (event.target.checked === true) {
+        dispatch(Object(__WEBPACK_IMPORTED_MODULE_4__actions__["a" /* addFilter */])(event.target.value, event.target.id));
+      }
+      if (event.target.checked === false) {
+        dispatch(Object(__WEBPACK_IMPORTED_MODULE_4__actions__["c" /* removeFilter */])(event.target.value, event.target.id));
+      }
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_3_react_redux__["b" /* connect */])(state => () => ({}), mapDispatchToProps)(Filter));
 
 /***/ }),
 /* 467 */
@@ -45707,7 +45798,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".Filter {\n  color: #af0e0e;\n  background-color: #fbdb33;\n}\n", ""]);
+exports.push([module.i, ".Filter {\n  background-color: #FAE807;\n  width: 14%;\n  box-shadow: 5px 0px 15px 2px #000001;\n  color: #373737;\n  padding: 20px;\n  box-sizing: border-box;\n  padding-bottom: 10px;\n}\n.Filter__group {\n  border-top: 2px solid #373737;\n  padding: 10px 0;\n}\n.Filter__header {\n  font-size: 20px;\n  font-weight: bold;\n}\n.Filter__name {\n  padding: 5px;\n  font-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -45746,25 +45837,24 @@ const b = Object(__WEBPACK_IMPORTED_MODULE_8__helpers_BEM__["a" /* default */])(
 class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     constructor(props) {
         super(props);
+    }
 
-        const sessionStart = __WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].fromObject({
+    render() {
+        const { films, onMovieClick, onDateChange, date } = this.props;
+
+        const sessionStart = date.set({
             hour: 9,
-            minute: 0
+            minute: 0,
+            seconds: 0,
+            milliseconds: 0
         });
 
         const scheduleInterval = __WEBPACK_IMPORTED_MODULE_3_luxon_src_interval_js__["a" /* Interval */].after(sessionStart, { hours: 16 });
 
         this.scale = t => 100 * t / scheduleInterval.toDuration().milliseconds;
 
-        this.state = {
-            startTime: sessionStart,
-            session: scheduleInterval.splitBy({ minutes: 60 })
-        };
-    }
+        const session = scheduleInterval.splitBy({ minutes: 60 });
 
-    render() {
-        const { session, startTime } = this.state;
-        const { films, onMovieClick } = this.props;
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "div",
             { className: b() },
@@ -45773,9 +45863,8 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 { className: b("header") },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "div",
-                    { className: b("day") },
-                    "DAY: ",
-                    startTime.toFormat("yyyy LLL dd")
+                    { className: b("day-container") },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: b("day"), type: "date", value: date.toFormat('yyyy-MM-dd'), onChange: onDateChange })
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "div",
@@ -45801,12 +45890,12 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         "div",
-                        { style: { height: film.schedule.length * 10 }, key: "div-2lev" + i.toString(), className: b("film-schedule") },
+                        { style: { 'minHeight': film.schedule.length * 10 }, key: "div-2lev" + i.toString(), className: b("film-schedule") },
                         film.schedule.map((s, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { key: i, className: b("film-schedule-item"),
                             style: {
                                 top: i * 10,
                                 width: this.scale(s.toDuration().milliseconds) + "%",
-                                left: this.scale(__WEBPACK_IMPORTED_MODULE_3_luxon_src_interval_js__["a" /* Interval */].fromDateTimes(startTime, s.start).toDuration().milliseconds) + "%"
+                                left: this.scale(__WEBPACK_IMPORTED_MODULE_3_luxon_src_interval_js__["a" /* Interval */].fromDateTimes(sessionStart, s.start).toDuration().milliseconds) + "%"
                             }
                         }))
                     )
@@ -45819,23 +45908,67 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 const mapDispatchToProps = dispatch => {
     return {
         onMovieClick: id => {
-            dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions__["a" /* removeMovie */])(id));
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions__["d" /* removeMovie */])(id));
+        },
+        onDateChange: event => {
+            console.log(event.target.value);
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions__["b" /* changeDate */])(event.target.value));
         }
     };
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_6_react_redux__["b" /* connect */])(state => {
-    const movies = Object(__WEBPACK_IMPORTED_MODULE_1__reducers__["b" /* getAllMovies */])(state);
+    const movies = Object(__WEBPACK_IMPORTED_MODULE_1__reducers__["c" /* getAllMovies */])(state);
+    const filters = Object(__WEBPACK_IMPORTED_MODULE_1__reducers__["b" /* getAllFilters */])(state);
+    const date = filters.date ? __WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].fromFormat(filters.date, 'yyyy-MM-dd') : __WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].local();
     console.log(movies);
     return {
-        films: movies.map(movie => ({
+        date,
+        films: movies.filter(movie => {
+            if (filters.genres.length === 0) {
+                return true;
+            }
+            let movieGenres = movie.genre.split(', ');
+            console.log(movieGenres);
+            for (let i = 0; i < movieGenres.length; i++) {
+                if (filters.genres.includes(movieGenres[i])) {
+                    return true;
+                }
+            }
+            return false;
+        }).filter(movie => {
+            if (filters.technologies.length === 0) {
+                return true;
+            }
+            console.log(movie.technology);
+            for (let i = 0; i < movie.technology.length; i++) {
+                if (filters.technologies.includes(movie.technology[i])) {
+                    return true;
+                }
+            }
+            return false;
+        }).filter(movie => {
+            if (filters.formats.length === 0) {
+                return true;
+            }
+            console.log(movie.format);
+            for (let i = 0; i < movie.format.length; i++) {
+                if (filters.formats.includes(movie.format[i])) {
+                    return true;
+                }
+            }
+            return false;
+        }).map(movie => ({
             name: movie.name,
-            schedule: movie.Schedule.map(start => __WEBPACK_IMPORTED_MODULE_3_luxon_src_interval_js__["a" /* Interval */].after(__WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].fromFormat(start, "HH:mm"), {
+            schedule: movie.Schedule.filter(start => {
+                console.log(__WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].fromFormat(start, "dd-MM-yyyy HH:mm").hasSame(date, 'day'));
+                return __WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].fromFormat(start, "dd-MM-yyyy HH:mm").hasSame(date, 'day');
+            }).map(start => __WEBPACK_IMPORTED_MODULE_3_luxon_src_interval_js__["a" /* Interval */].after(__WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].fromFormat(start, "dd-MM-yyyy HH:mm"), {
                 hour: movie.duration.hour,
                 minute: movie.duration.minute
             })),
             id: movie.id
-        }))
+        })).filter(movie => movie.schedule.length !== 0)
     };
 }, mapDispatchToProps)(Schedule));
 
@@ -45881,18 +46014,42 @@ const getById = (state, id) => {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-const filters = (state = [], action) => {
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+const initialState = {
+  date: '',
+  genres: [],
+  technologies: [],
+  formats: []
+};
+
+const filters = (state = initialState, action) => {
   switch (action.type) {
+    case 'CHANGE_DATE':
+      return _extends({}, state, {
+        date: action.date
+      });
     case 'ADD_FILTER':
-      return [...state, action.filter];
+      let array = state[action.key].slice(0);
+      array.push(action.value);
+
+      let newState = _extends({}, state);
+      newState[action.key] = array;
+      return newState;
     case 'REMOVE_FILTER':
-      return state.filter(el => el !== filter);
-    case 'CLEAR_FILTERS':
-      return [];
+      let array1 = state[action.key].filter(el => el !== action.value);
+      let newState1 = _extends({}, state);
+      newState1[action.key] = array1;
+      return newState1;
+
     default:
       return state;
   }
 };
+
+const getAllFilters = state => state;
+/* harmony export (immutable) */ __webpack_exports__["b"] = getAllFilters;
+
 
 /* harmony default export */ __webpack_exports__["a"] = (filters);
 
@@ -46124,22 +46281,33 @@ const getFeedbackById = (state, id) => {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__data_data_js__ = __webpack_require__(186);
 
 
-const addFilter = filter => {
+const changeDate = date => {
+    return {
+        type: 'CHANGE_DATE',
+        date
+    };
+};
+/* harmony export (immutable) */ __webpack_exports__["b"] = changeDate;
+
+
+const addFilter = (key, value) => {
     return {
         type: 'ADD_FILTER',
-        filter
+        key,
+        value
     };
 };
-/* unused harmony export addFilter */
+/* harmony export (immutable) */ __webpack_exports__["a"] = addFilter;
 
 
-const removeFilter = filter => {
+const removeFilter = (key, value) => {
     return {
         type: 'REMOVE_FILTER',
-        filter
+        key,
+        value
     };
 };
-/* unused harmony export removeFilter */
+/* harmony export (immutable) */ __webpack_exports__["c"] = removeFilter;
 
 
 const clearFilters = () => {
@@ -46169,7 +46337,7 @@ const removeMovie = id => {
         id
     };
 };
-/* harmony export (immutable) */ __webpack_exports__["a"] = removeMovie;
+/* harmony export (immutable) */ __webpack_exports__["d"] = removeMovie;
 
 
 /***/ }),
@@ -47026,7 +47194,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".Schedule {\n  padding: 20px;\n}\n.Schedule__day {\n  float: left;\n  width: 150px;\n  padding: 4px 0;\n  color: #D0D0D0;\n}\n.Schedule__time-string {\n  display: flex;\n}\n.Schedule__film-schedule-item {\n  position: absolute;\n  height: 5px;\n  background: #fbdb33;\n  margin-top: 12px;\n  border-radius: 5px;\n}\n.Schedule__film-schedule {\n  display: block;\n  position: relative;\n  margin-left: 148px;\n  padding: 10px 0;\n  background-color: #373737;\n  border: 1px solid #D0D0D0;\n}\n.Schedule__time-item {\n  display: inline-block;\n  width: calc(100% / 16);\n  font-size: 17px;\n  text-align: center;\n  border-left: 1px solid #ccc;\n  padding: 3px;\n  color: #D0D0D0;\n}\n.Schedule__film {\n  background-color: #D0D0D0;\n  border: 2px solid  #373737;\n}\n.Schedule__film-name {\n  float: left;\n  display: block;\n  width: 150px;\n  color: #343434;\n  margin: 5px 10px;\n}\n.Schedule__header {\n  overflow: hidden;\n  background-color: #575757;\n  border: 1px solid #D0D0D0;\n  margin-bottom: 2px;\n}\n", ""]);
+exports.push([module.i, ".Schedule {\n  padding: 20px;\n  width: 80%;\n}\n.Schedule__day-container {\n  width: 15%;\n  position: relative;\n}\n.Schedule__day {\n  padding: 15px 3px;\n  color: #343434;\n  background-color: #D0D0D0;\n  border: none;\n  position: absolute;\n  height: 50px;\n  bottom: 20px;\n  right: 20px;\n  width: 105%;\n  box-sizing: border-box;\n  box-shadow: 6px 6px 30px 5px #000001;\n  outline: none;\n}\n.Schedule__time-string {\n  display: flex;\n  width: 85%;\n  border: 1px solid #D0D0D0;\n  border-bottom: none;\n  background-color: #575757;\n}\n.Schedule__film-schedule-item {\n  position: absolute;\n  height: 5px;\n  background: #FAE807;\n  margin-top: 12px;\n  border-radius: 5px;\n}\n.Schedule__film-schedule {\n  display: block;\n  position: relative;\n  padding: 10px 0;\n  background-color: #373737;\n  border: 1px solid #D0D0D0;\n  width: 85%;\n}\n.Schedule__time-item {\n  width: calc(100% / 16);\n  font-size: 14px;\n  text-align: center;\n  border-left: 1px solid #ccc;\n  padding: 3px 0;\n  color: #D0D0D0;\n}\n.Schedule__time-item:first-child {\n  border-left: none;\n}\n.Schedule__film {\n  background-color: #D0D0D0;\n  border-top: 2px solid  #373737;\n  border-bottom: 2px solid  #373737;\n  display: flex;\n}\n.Schedule__film:first-child {\n  border-top: none;\n}\n.Schedule__film-name {\n  width: 15%;\n  color: #343434;\n  padding: 5px;\n  box-sizing: border-box;\n}\n.Schedule__header {\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n}\n", ""]);
 
 // exports
 
@@ -47090,7 +47258,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".ScheduleLayout {\n  display: flex;\n  margin: 150px 60px 90px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  background-color: #373737;\n  justify-content: space-between;\n}\n", ""]);
+exports.push([module.i, ".ScheduleLayout {\n  display: flex;\n  width: 90%;\n  margin: auto auto 90px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  background-color: #373737;\n  justify-content: space-between;\n}\n", ""]);
 
 // exports
 
@@ -47123,13 +47291,13 @@ const HomeLayout = () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createEle
         { className: b('title') },
         "Popular"
     ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__MovieCarousel__["a" /* default */], null),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__MovieCarousel__["a" /* default */], { label: "popular" }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "h1",
         { className: b('title') },
         "Soon on the screens"
     ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__MovieCarousel__["a" /* default */], null),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__MovieCarousel__["a" /* default */], { label: "soon" }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "h1",
         { className: b('title') },
@@ -47199,7 +47367,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".HomeLayout {\n  position: relative;\n  top: 80px;\n}\n.HomeLayout__title {\n  margin-top: 60px;\n  color: white;\n  text-align: center;\n}\n", ""]);
+exports.push([module.i, ".HomeLayout {\n  width: 90%;\n  background-color: #373737;\n  margin: auto auto 90px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  padding-top: 40px;\n  padding-bottom: 20px;\n}\n.HomeLayout__title {\n  color: white;\n  text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -47229,8 +47397,13 @@ exports.push([module.i, ".HomeLayout {\n  position: relative;\n  top: 80px;\n}\n
 const b = Object(__WEBPACK_IMPORTED_MODULE_2__helpers_BEM__["a" /* default */])("MovieCarousel");
 
 class MovieCarousel extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
+    filterByLabel() {
+        const { label, films } = this.props;
+        return films.filter(film => film.label === label);
+    }
     render() {
-        const { films } = this.props;
+        // const {films} = this.props;
+        const films = this.filterByLabel();
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "div",
             { className: b() },
@@ -47258,7 +47431,7 @@ class MovieCarousel extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_4_react_redux__["b" /* connect */])(state => {
-    const movies = Object(__WEBPACK_IMPORTED_MODULE_3__reducers__["b" /* getAllMovies */])(state);
+    const movies = Object(__WEBPACK_IMPORTED_MODULE_3__reducers__["c" /* getAllMovies */])(state);
     console.log(movies);
     return {
         films: movies.map(movie => ({
@@ -47266,7 +47439,8 @@ class MovieCarousel extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             image: movie.image,
             rating: movie.rating,
             genre: movie.genre,
-            id: movie.id
+            id: movie.id,
+            label: movie.label
         }))
     };
 })(MovieCarousel));
@@ -47331,7 +47505,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".MovieCarousel {\n  display: flex;\n}\n.MovieCarousel__movies {\n  overflow-y: hidden;\n  overflow-x: auto;\n  white-space: nowrap;\n}\n.MovieCarousel__button {\n  background-color: #FAE807;\n  color: transparent;\n  width: 60px;\n  border: none;\n}\n.MovieCarousel__icon {\n  width: 40px;\n  height: 50px;\n  display: inline-block;\n}\n.MovieCarousel__icon_left {\n  background: url(" + escape(__webpack_require__(490)) + ") no-repeat left;\n  background-size: 34px 50px;\n}\n.MovieCarousel__icon_right {\n  background: url(" + escape(__webpack_require__(491)) + ") no-repeat right;\n  background-size: 34px 50px;\n}\n", ""]);
+exports.push([module.i, ".MovieCarousel {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 60px;\n}\n.MovieCarousel__movies {\n  overflow-y: hidden;\n  overflow-x: auto;\n  white-space: nowrap;\n}\n.MovieCarousel__button {\n  background-color: #FAE807;\n  color: transparent;\n  width: 60px;\n  border: none;\n}\n.MovieCarousel__icon {\n  width: 40px;\n  height: 50px;\n  display: inline-block;\n}\n.MovieCarousel__icon_left {\n  background: url(" + escape(__webpack_require__(490)) + ") no-repeat left;\n  background-size: 34px 50px;\n}\n.MovieCarousel__icon_right {\n  background: url(" + escape(__webpack_require__(491)) + ") no-repeat right;\n  background-size: 34px 50px;\n}\n", ""]);
 
 // exports
 
@@ -47407,7 +47581,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".MoviePoster {\n  margin: 5px;\n  display: inline-block;\n  background-color: #484848;\n  font-size: 14px;\n  box-shadow: 0 2px 35px 0 rgba(255, 255, 255, 0.25);\n}\n.MoviePoster__image {\n  width: 275px;\n  height: 408px;\n}\n.MoviePoster__additional-info {\n  margin: 10px;\n}\n.MoviePoster__name {\n  font-size: 20px;\n  color: white;\n  width: 200px;\n  margin-bottom: 3px;\n}\n.MoviePoster__genre {\n  color: #fae807;\n  width: 200px;\n}\n.MoviePoster__rating {\n  border: 1px solid;\n  padding: 5px 7px;\n  border-radius: 3px;\n  color: yellow;\n  float: right;\n  margin-top: -38px;\n}\n", ""]);
+exports.push([module.i, ".MoviePoster {\n  margin: 5px;\n  display: inline-block;\n  background-color: #484848;\n  font-size: 14px;\n}\n.MoviePoster__image {\n  width: 275px;\n  height: 408px;\n}\n.MoviePoster__additional-info {\n  margin: 10px;\n}\n.MoviePoster__name {\n  font-size: 20px;\n  color: white;\n  width: 200px;\n  margin-bottom: 3px;\n}\n.MoviePoster__genre {\n  color: #fae807;\n  width: 200px;\n}\n.MoviePoster__rating {\n  border: 1px solid;\n  padding: 5px 7px;\n  border-radius: 3px;\n  color: yellow;\n  float: right;\n  margin-top: -38px;\n}\n", ""]);
 
 // exports
 
@@ -47442,7 +47616,7 @@ class AllMovies extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "div",
             { className: b() },
-            films.map(film => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            films.filter(film => film.label !== 'soon').map(film => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_6_react_router_dom__["b" /* Link */],
                 { key: film.id, to: `/movie/${film.id}` },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__MoviePoster__["a" /* default */], { film: film })
@@ -47452,7 +47626,7 @@ class AllMovies extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_4_react_redux__["b" /* connect */])(state => {
-    const movies = Object(__WEBPACK_IMPORTED_MODULE_3__reducers__["b" /* getAllMovies */])(state);
+    const movies = Object(__WEBPACK_IMPORTED_MODULE_3__reducers__["c" /* getAllMovies */])(state);
     console.log(movies);
     return {
         films: movies.map(movie => ({
@@ -47460,7 +47634,8 @@ class AllMovies extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             image: movie.image,
             rating: movie.rating,
             genre: movie.genre,
-            id: movie.id
+            id: movie.id,
+            label: movie.label
         }))
     };
 })(AllMovies));
@@ -47524,7 +47699,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".AllMovies {\n  color: red;\n  margin: 5px;\n}\n.AllMovies__more {\n  font-size: 12px;\n}\n", ""]);
+exports.push([module.i, ".AllMovies {\n  margin: 5px;\n}\n.AllMovies__more {\n  font-size: 12px;\n}\n", ""]);
 
 // exports
 
@@ -47578,7 +47753,7 @@ class MovieLayout extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_7_react_redux__["b" /* connect */])((state, props) => {
     console.log(props.match.params.id);
-    const movie = Object(__WEBPACK_IMPORTED_MODULE_6__reducers__["c" /* getById */])(state, +props.match.params.id);
+    const movie = Object(__WEBPACK_IMPORTED_MODULE_6__reducers__["d" /* getById */])(state, +props.match.params.id);
     return { film: movie };
 })(MovieLayout));
 
@@ -48023,7 +48198,7 @@ class Feedback extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["b" /* connect */])((state, id) => {
-    const feedback = Object(__WEBPACK_IMPORTED_MODULE_3__reducers__["d" /* getFeedbackById */])(state, id.id);
+    const feedback = Object(__WEBPACK_IMPORTED_MODULE_3__reducers__["e" /* getFeedbackById */])(state, id.id);
     return { feedback: feedback };
 })(Feedback));
 
@@ -48150,7 +48325,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".MovieLayout {\n  width: 90%;\n  min-height: 600px;\n  background-color: #373737;\n  margin: 100px auto;\n  box-shadow: 10px 21px 94px 6px #000001;\n  margin-top: 160px;\n}\nbody {\n  background-color: #656565;\n}\n", ""]);
+exports.push([module.i, ".MovieLayout {\n  width: 90%;\n  min-height: 600px;\n  background-color: #373737;\n  margin: auto auto 90px;\n  box-shadow: 10px 21px 94px 6px #000001;\n}\n", ""]);
 
 // exports
 
