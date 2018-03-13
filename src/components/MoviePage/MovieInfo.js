@@ -22,6 +22,17 @@ class MovieInfo extends Component {
                     <p className={b("technology")}>Technology <span className={b("value")}>  {film.technology} </span></p>
                 </div>
                 <Actors film={film} />
+
+                {/*<div class="item html">*/}
+                    {/*<h2>HTML</h2>*/}
+                    {/*<svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">*/}
+                        {/*<g>*/}
+                            {/*<title>Layer 1</title>*/}
+                            {/*<circle id="circle" class="circle_animation" r="69.85699" cy="81" cx="81" strokeWidth="8" stroke="#6fdb6f" fill="none"/>*/}
+                        {/*</g>*/}
+                    {/*</svg>*/}
+                {/*</div>*/}
+
             </div>
         )
     }
