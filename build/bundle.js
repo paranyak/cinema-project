@@ -45547,7 +45547,7 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
     render() {
         const { films, onDateChange, date } = this.props;
-        console.log(this.props, "PROPS");
+
         const sessionStart = date.set({
             hour: 9,
             minute: 0,
@@ -45620,7 +45620,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_6_react_redux__["b" /* connect */])(state => {
-    console.log("STATE", state);
     const movies = Object(__WEBPACK_IMPORTED_MODULE_1__reducers__["c" /* getAllMovies */])(state);
     const filters = Object(__WEBPACK_IMPORTED_MODULE_1__reducers__["b" /* getAllFilters */])(state);
     const date = filters.date ? __WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].fromFormat(filters.date, 'yyyy-MM-dd') : __WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].local();
@@ -45653,6 +45652,7 @@ const mapDispatchToProps = dispatch => {
             if (filters.formats.length === 0) {
                 return true;
             }
+
             for (let i = 0; i < movie.format.length; i++) {
                 if (filters.formats.includes(movie.format[i])) {
                     return true;
@@ -47718,6 +47718,9 @@ class MovieLayout extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
     render() {
         const { film } = this.props;
+        if (!film) {
+            return null;
+        }
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "div",
             null,
