@@ -53,6 +53,14 @@
     &:first-child {
       border-left: none;
     }
+    @media screen and (max-width: 950px) {
+      writing-mode: vertical-rl;
+      white-space: nowrap;
+      display: inline-block;
+      overflow: visible;
+      box-sizing: border-box;
+      padding: 7px 0;
+    }
   }
   &__film-list {}
   &__film {
