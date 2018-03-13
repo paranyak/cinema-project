@@ -1,4 +1,15 @@
 # cinema-project
 
-- [x] - Add json file with simple info for the project
-- [x] - Less MoviePoster in Components
+- [ ] - вантажити картинки з cloudinary
+- [ ] - постери одного формату
+- [ ] - snap scroll
+- [ ] - fetch data
+- [ ] - infinity scroll
+- [ ] - зробити лінію в schedule (+ "Артьомій Горбунов таблиці")
+- [ ] - поправити верстку
+
+
+
+
+
+
