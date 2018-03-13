@@ -45889,8 +45889,7 @@ const getAllMovies = state => state;
 
 
 const getById = (state, id) => {
-    console.log("get_by_id");
-    return state.filter(m => m.id === id)[0];
+    return state.filter(m => m.id == id)[0];
 };
 /* harmony export (immutable) */ __webpack_exports__["c"] = getById;
 
@@ -47563,7 +47562,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".AllMovies {\n  margin: 5px;\n}\n.AllMovies__more {\n  font-size: 12px;\n}\n::-webkit-scrollbar {\n  display: none;\n}\n", ""]);
+exports.push([module.i, ".AllMovies {\n  margin: 5px;\n}\n.AllMovies__more {\n  font-size: 12px;\n}\n", ""]);
 
 // exports
 
@@ -47851,7 +47850,7 @@ class MovieLayout extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_7_react_redux__["b" /* connect */])((state, props) => {
 
-    console.log(state, "PROPS ", props);
+    console.log(state, "PROPS ", props.match.params.id);
     const movie = Object(__WEBPACK_IMPORTED_MODULE_6__reducers__["c" /* getById */])(state, props.match.params.id);
     return { film: movie };
 })(MovieLayout));

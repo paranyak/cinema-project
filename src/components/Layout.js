@@ -31,7 +31,7 @@ class Layout extends Component {
             <Header/>
             <Switch>
                 <Route exact path='/' render={() => <HomeLayout db={movies}/>}/>
-                <Route path='/movie/:id' render={() => <MovieLayout db={movies}/>}/>
+                <Route path='/movie/:id' component={MovieLayout}/>
                 <Route path='/schedule' render={() => <ScheduleLayout db={movies}/>}/>
             </Switch>
             <Footer/>

@@ -24,6 +24,5 @@ export default movies;
 export const getAllMovies = (state) => state;
 
 export const getById = (state, id) =>{
-    console.log("get_by_id");
-    return state.filter(m => m.id === id)[0];
+    return state.filter(m => m.id == id)[0];
 };
