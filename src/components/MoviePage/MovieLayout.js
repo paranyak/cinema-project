@@ -32,9 +32,8 @@ class MovieLayout extends Component {
 
 
 export default connect((state, props) => {
-
-        console.log(state, "PROPS ", props.match.params.id);
-        const movie = getById(state, props.match.params.id);
+        const movie = getById(props.db, props.id);
         return {film: movie};
     }
 )(MovieLayout);
+

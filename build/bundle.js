@@ -6344,7 +6344,7 @@ const getAllMovies = state => __WEBPACK_IMPORTED_MODULE_1__movies__["b" /* getAl
 /* harmony export (immutable) */ __webpack_exports__["b"] = getAllMovies;
 
 
-const getById = (state, id) => __WEBPACK_IMPORTED_MODULE_1__movies__["c" /* getById */](state.movies, id);
+const getById = (state, id) => __WEBPACK_IMPORTED_MODULE_1__movies__["c" /* getById */](state, id);
 /* harmony export (immutable) */ __webpack_exports__["c"] = getById;
 
 
@@ -33503,7 +33503,7 @@ class Layout extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 __WEBPACK_IMPORTED_MODULE_9_react_router_dom__["e" /* Switch */],
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_react_router_dom__["d" /* Route */], { exact: true, path: "/", render: () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__HomePage_HomeLayout__["a" /* default */], { db: movies }) }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_react_router_dom__["d" /* Route */], { path: "/movie/:id", component: __WEBPACK_IMPORTED_MODULE_8__MoviePage_MovieLayout__["a" /* default */] }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_react_router_dom__["d" /* Route */], { path: "/movie/:id", render: props => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__MoviePage_MovieLayout__["a" /* default */], { id: props.match.params.id, db: movies }) }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_react_router_dom__["d" /* Route */], { path: "/schedule", render: () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__SchedulePage_ScheduleLayout__["a" /* default */], { db: movies }) })
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Footer__["a" /* default */], null)
@@ -46131,6 +46131,106 @@ const getFeedbackById = (state, id) => {
             "text": "Bad movie. I hate it!!!!!"
         }]
 
+    }, {
+        "id": 11,
+        "feedbacks": [{
+            "name": "Black Panther",
+            "image": "http://cdn.shopify.com/s/files/1/0209/7756/products/crown-stencil_2_grande.gif?v=1484069310",
+            "rating": 7,
+            "text": "Very good movie"
+        }, {
+            "name": "Black Panther",
+            "image": "http://vbdance.com/wp-content/uploads/2016/05/Screen-Shot-2016-05-27-at-12.00.41.png",
+            "rating": 9,
+            "text": "Very interesting movie"
+        }, {
+            "name": "Black Panther",
+            "image": "http://vbdance.com/wp-content/uploads/2016/05/Screen-Shot-2016-05-27-at-12.00.41.png",
+            "rating": 3,
+            "text": "Bad movie. I hate it!!!!!"
+        }]
+
+    }, {
+        "id": 12,
+        "feedbacks": [{
+            "name": "Black Panther",
+            "image": "http://cdn.shopify.com/s/files/1/0209/7756/products/crown-stencil_2_grande.gif?v=1484069310",
+            "rating": 7,
+            "text": "Very good movie"
+        }]
+
+    }, {
+        "id": 13,
+        "feedbacks": [{
+            "name": "Black Panther",
+            "image": "http://cdn.shopify.com/s/files/1/0209/7756/products/crown-stencil_2_grande.gif?v=1484069310",
+            "rating": 7,
+            "text": "Very good movie"
+        }]
+
+    }, {
+        "id": 14,
+        "feedbacks": [{
+            "name": "Black Panther",
+            "image": "http://cdn.shopify.com/s/files/1/0209/7756/products/crown-stencil_2_grande.gif?v=1484069310",
+            "rating": 7,
+            "text": "Very good movie"
+        }]
+
+    }, {
+        "id": 15,
+        "feedbacks": [{
+            "name": "Black Panther",
+            "image": "http://cdn.shopify.com/s/files/1/0209/7756/products/crown-stencil_2_grande.gif?v=1484069310",
+            "rating": 7,
+            "text": "Very good movie"
+        }]
+
+    }, {
+        "id": 16,
+        "feedbacks": [{
+            "name": "Black Panther",
+            "image": "http://cdn.shopify.com/s/files/1/0209/7756/products/crown-stencil_2_grande.gif?v=1484069310",
+            "rating": 7,
+            "text": "Very good movie"
+        }]
+
+    }, {
+        "id": 17,
+        "feedbacks": [{
+            "name": "Black Panther",
+            "image": "http://cdn.shopify.com/s/files/1/0209/7756/products/crown-stencil_2_grande.gif?v=1484069310",
+            "rating": 7,
+            "text": "Very good movie"
+        }]
+
+    }, {
+        "id": 18,
+        "feedbacks": [{
+            "name": "Black Panther",
+            "image": "http://cdn.shopify.com/s/files/1/0209/7756/products/crown-stencil_2_grande.gif?v=1484069310",
+            "rating": 7,
+            "text": "Very good movie"
+        }]
+
+    }, {
+        "id": 19,
+        "feedbacks": [{
+            "name": "Black Panther",
+            "image": "http://cdn.shopify.com/s/files/1/0209/7756/products/crown-stencil_2_grande.gif?v=1484069310",
+            "rating": 7,
+            "text": "Very good movie"
+        }]
+
+    }, {
+        "id": 20,
+        "feedbacks": [{
+            "name": "Black Panther",
+            "image": "http://cdn.shopify.com/s/files/1/0209/7756/products/crown-stencil_2_grande.gif?v=1484069310",
+            "rating": 7,
+            "text": "Very good movie"
+        }]
+
     }]
 });
 
@@ -47849,9 +47949,7 @@ class MovieLayout extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_7_react_redux__["b" /* connect */])((state, props) => {
-
-    console.log(state, "PROPS ", props.match.params.id);
-    const movie = Object(__WEBPACK_IMPORTED_MODULE_6__reducers__["c" /* getById */])(state, props.match.params.id);
+    const movie = Object(__WEBPACK_IMPORTED_MODULE_6__reducers__["c" /* getById */])(props.db, props.id);
     return { film: movie };
 })(MovieLayout));
 
