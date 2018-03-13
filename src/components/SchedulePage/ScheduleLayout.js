@@ -19,4 +19,4 @@ class ScheduleLayout extends Component {
   }
 }
 
-export default ScheduleLayout
+export default ScheduleLayout;

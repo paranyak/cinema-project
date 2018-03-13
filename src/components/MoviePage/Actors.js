@@ -5,8 +5,6 @@ import block from "../../helpers/BEM";
 
 const b = block("Actors");
 
-//todo: change actors structure in data
-// actor + photo + role in movie
 
 class Actors extends Component {
     render() {

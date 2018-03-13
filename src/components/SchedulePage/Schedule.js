@@ -19,7 +19,7 @@ class Schedule extends Component {
     }
 
     render() {
-        const {films, onMovieClick, onDateChange, date} = this.props;
+        const {films, onDateChange, date} = this.props;
 
         const sessionStart = date.set({
           hour: 9,
@@ -51,8 +51,7 @@ class Schedule extends Component {
                 <div className={b("film-list")}>
                     {films.map((film, i) => (
                         <div key={"div-1lev" + i.toString()} className={b("film")}>
-                            <span key={i} className={b("film-name")}
-                                  onClick={() => onMovieClick(films.id)}>{film.name}</span>
+                            <span key={i} className={b("film-name")}>{film.name}</span>
                             <div  style={{'minHeight': film.schedule.length * 10}} key={"div-2lev" + i.toString()} className={b("film-schedule")}>
                                 {film.schedule.map((s, i) => (
                                     <div key={i} className={b("film-schedule-item")}
@@ -78,9 +77,6 @@ class Schedule extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onMovieClick: (id) => {
-            dispatch(removeMovie(id))
-        },
         onDateChange: (event) => {
           console.log(event.target.value);
           dispatch(changeDate(event.target.value));
@@ -94,7 +90,7 @@ export default connect(state => {
         const date = filters.date ?
                     DateTime.fromFormat(filters.date, 'yyyy-MM-dd') :
                     DateTime.local();
-        console.log(movies);
+        console.log(movies.length);
         return {
             date,
             films: movies
@@ -103,7 +99,6 @@ export default connect(state => {
                   return true;
                 }
                 let movieGenres = movie.genre.split(', ');
-                console.log(movieGenres)
                 for(let i = 0; i < movieGenres.length; i++) {
                   if(filters.genres.includes(movieGenres[i])) {
                     return true;
@@ -115,7 +110,7 @@ export default connect(state => {
                 if (filters.technologies.length === 0) {
                   return true;
                 }
-                console.log(movie.technology)
+
                 for(let i = 0; i < movie.technology.length; i++) {
                   if(filters.technologies.includes(movie.technology[i])) {
                     return true;
@@ -127,7 +122,7 @@ export default connect(state => {
                 if (filters.formats.length === 0) {
                   return true;
                 }
-                console.log(movie.format)
+
                 for(let i = 0; i < movie.format.length; i++) {
                   if(filters.formats.includes(movie.format[i])) {
                     return true;
@@ -139,7 +134,6 @@ export default connect(state => {
                 name: movie.name,
                 schedule: movie.Schedule
                   .filter(start => {
-                    console.log(DateTime.fromFormat(start, "dd-MM-yyyy HH:mm").hasSame(date, 'day'))
                     return DateTime.fromFormat(start, "dd-MM-yyyy HH:mm").hasSame(date, 'day')
                   })
                   .map(start =>
