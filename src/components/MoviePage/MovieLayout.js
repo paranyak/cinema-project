@@ -4,7 +4,7 @@ import MovieInfo from "./MovieInfo";
 import Feedback from "./Feedback";
 import "../../styles/MovieLayout.less"
 import block from "../../helpers/BEM";
-import {getById} from "../../reducers";
+import {getById, getAllMovies} from "../../reducers";
 import {connect} from "react-redux";
 
 const b = block("MovieLayout");
@@ -32,7 +32,8 @@ class MovieLayout extends Component {
 
 
 export default connect((state, props) => {
-        const movie = getById(props.db, props.id);
+    console.log("CONNECT", state);
+    const movie = getById(state, props.match.params.id);
         return {film: movie};
     }
 )(MovieLayout);
