@@ -32,6 +32,9 @@
     background: #FAE807;
     margin-top: 12px;
     border-radius: 5px;
+    &:hover {
+      background-color: #D0D0D0;
+    }
   }
 
   &__film-schedule {
@@ -52,6 +55,14 @@
     color:  #D0D0D0;
     &:first-child {
       border-left: none;
+    }
+    @media screen and (max-width: 950px) {
+      writing-mode: vertical-rl;
+      white-space: nowrap;
+      display: inline-block;
+      overflow: visible;
+      box-sizing: border-box;
+      padding: 7px 0;
     }
   }
   &__film-list {}

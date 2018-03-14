@@ -18,6 +18,9 @@ class MovieLayout extends Component {
 
     render() {
         const {film} = this.props;
+        if (!film) {
+          return null;
+        }
         return (
             <div>
                 <div className={b()}>
@@ -37,4 +40,3 @@ export default connect((state, props) => {
         return {film: movie};
     }
 )(MovieLayout);
-

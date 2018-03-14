@@ -45504,7 +45504,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".Filter {\n  background-color: #FAE807;\n  width: 14%;\n  box-shadow: 5px 0px 15px 2px #000001;\n  color: #373737;\n  padding: 20px;\n  box-sizing: border-box;\n  padding-bottom: 10px;\n}\n.Filter__group {\n  border-top: 2px solid #373737;\n  padding: 10px 0;\n}\n.Filter__header {\n  font-size: 20px;\n  font-weight: bold;\n}\n.Filter__name {\n  padding: 5px;\n  font-weight: bold;\n}\n", ""]);
+exports.push([module.i, ".Filter {\n  background-color: #FAE807;\n  width: 14%;\n  box-shadow: 5px 0px 15px 2px #000001;\n  color: #373737;\n  padding: 20px;\n  box-sizing: border-box;\n  padding-bottom: 10px;\n}\n.Filter__group {\n  border-top: 2px solid #373737;\n  padding: 10px 0;\n}\n.Filter__header {\n  font-size: 20px;\n  font-weight: bold;\n}\n.Filter__name {\n  padding: 5px;\n  font-weight: bold;\n}\n.Filter__filter .input {\n  background-color: red;\n}\n", ""]);
 
 // exports
 
@@ -45521,10 +45521,13 @@ exports.push([module.i, ".Filter {\n  background-color: #FAE807;\n  width: 14%;\
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_luxon_src_interval_js__ = __webpack_require__(187);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_luxon_src_duration_js__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_redux__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__styles_Schedule_less__ = __webpack_require__(479);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__styles_Schedule_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__styles_Schedule_less__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__helpers_BEM__ = __webpack_require__(13);
+throw new Error("Cannot find module \"react-tooltip\"");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_dom__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react_dom__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react_redux__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styles_Schedule_less__ = __webpack_require__(479);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styles_Schedule_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__styles_Schedule_less__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__helpers_BEM__ = __webpack_require__(13);
 
 
 
@@ -45538,7 +45541,9 @@ exports.push([module.i, ".Filter {\n  background-color: #FAE807;\n  width: 14%;\
 
 
 
-const b = Object(__WEBPACK_IMPORTED_MODULE_8__helpers_BEM__["a" /* default */])("Schedule");
+
+
+const b = Object(__WEBPACK_IMPORTED_MODULE_10__helpers_BEM__["a" /* default */])("Schedule");
 
 class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     constructor(props) {
@@ -45596,13 +45601,19 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         "div",
                         { style: { 'minHeight': film.schedule.length * 10 }, key: "div-2lev" + i.toString(), className: b("film-schedule") },
-                        film.schedule.map((s, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { key: i, className: b("film-schedule-item"),
-                            style: {
-                                top: i * 10,
-                                width: this.scale(s.toDuration().milliseconds) + "%",
-                                left: this.scale(__WEBPACK_IMPORTED_MODULE_3_luxon_src_interval_js__["a" /* Interval */].fromDateTimes(sessionStart, s.start).toDuration().milliseconds) + "%"
-                            }
-                        }))
+                        film.schedule.map((s, i, j) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "div",
+                            { key: i },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { className: b("film-schedule-item"),
+                                "data-tip": s.toFormat('HH:mm'),
+                                style: {
+                                    top: i * 10,
+                                    width: this.scale(s.toDuration().milliseconds) + "%",
+                                    left: this.scale(__WEBPACK_IMPORTED_MODULE_3_luxon_src_interval_js__["a" /* Interval */].fromDateTimes(sessionStart, s.start).toDuration().milliseconds) + "%"
+                                }
+                            }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_react_tooltip___default.a, null)
+                        ))
                     )
                 ))
             )
@@ -45619,7 +45630,7 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_6_react_redux__["b" /* connect */])(state => {
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_8_react_redux__["b" /* connect */])(state => {
     const movies = Object(__WEBPACK_IMPORTED_MODULE_1__reducers__["c" /* getAllMovies */])(state);
     const filters = Object(__WEBPACK_IMPORTED_MODULE_1__reducers__["b" /* getAllFilters */])(state);
     const date = filters.date ? __WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].fromFormat(filters.date, 'yyyy-MM-dd') : __WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].local();
@@ -45878,6 +45889,25 @@ const getFeedbackById = (state, id) => {
 
     }, {
         "id": 5,
+        "feedbacks": [{
+            "name": "Black Panther",
+            "image": "http://cdn.shopify.com/s/files/1/0209/7756/products/crown-stencil_2_grande.gif?v=1484069310",
+            "rating": 7,
+            "text": "Very good movie"
+        }, {
+            "name": "Black Panther",
+            "image": "http://vbdance.com/wp-content/uploads/2016/05/Screen-Shot-2016-05-27-at-12.00.41.png",
+            "rating": 9,
+            "text": "Very interesting movie"
+        }, {
+            "name": "Black Panther",
+            "image": "http://vbdance.com/wp-content/uploads/2016/05/Screen-Shot-2016-05-27-at-12.00.41.png",
+            "rating": 3,
+            "text": "Bad movie. I hate it!!!!!"
+        }]
+
+    }, {
+        "id": 6,
         "feedbacks": [{
             "name": "Black Panther",
             "image": "http://cdn.shopify.com/s/files/1/0209/7756/products/crown-stencil_2_grande.gif?v=1484069310",
@@ -46928,7 +46958,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".Schedule {\n  padding: 20px;\n  width: 80%;\n}\n.Schedule__day-container {\n  width: 15%;\n  position: relative;\n}\n.Schedule__day {\n  padding: 15px 3px;\n  color: #343434;\n  background-color: #D0D0D0;\n  border: none;\n  position: absolute;\n  height: 50px;\n  bottom: 20px;\n  right: 20px;\n  width: 105%;\n  box-sizing: border-box;\n  box-shadow: 6px 6px 30px 5px #000001;\n  outline: none;\n}\n.Schedule__time-string {\n  display: flex;\n  width: 85%;\n  border: 1px solid #D0D0D0;\n  border-bottom: none;\n  background-color: #575757;\n}\n.Schedule__film-schedule-item {\n  position: absolute;\n  height: 5px;\n  background: #FAE807;\n  margin-top: 12px;\n  border-radius: 5px;\n}\n.Schedule__film-schedule {\n  display: block;\n  position: relative;\n  padding: 10px 0;\n  background-color: #373737;\n  border: 1px solid #D0D0D0;\n  width: 85%;\n}\n.Schedule__time-item {\n  width: calc(100% / 16);\n  font-size: 14px;\n  text-align: center;\n  border-left: 1px solid #ccc;\n  padding: 3px 0;\n  color: #D0D0D0;\n}\n.Schedule__time-item:first-child {\n  border-left: none;\n}\n.Schedule__film {\n  background-color: #D0D0D0;\n  border-top: 2px solid  #373737;\n  border-bottom: 2px solid  #373737;\n  display: flex;\n}\n.Schedule__film:first-child {\n  border-top: none;\n}\n.Schedule__film-name {\n  width: 15%;\n  color: #343434;\n  padding: 5px;\n  box-sizing: border-box;\n}\n.Schedule__header {\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n}\n", ""]);
+exports.push([module.i, ".Schedule {\n  padding: 20px;\n  width: 80%;\n}\n.Schedule__day-container {\n  width: 15%;\n  position: relative;\n}\n.Schedule__day {\n  padding: 15px 3px;\n  color: #343434;\n  background-color: #D0D0D0;\n  border: none;\n  position: absolute;\n  height: 50px;\n  bottom: 20px;\n  right: 20px;\n  width: 105%;\n  box-sizing: border-box;\n  box-shadow: 6px 6px 30px 5px #000001;\n  outline: none;\n}\n.Schedule__time-string {\n  display: flex;\n  width: 85%;\n  border: 1px solid #D0D0D0;\n  border-bottom: none;\n  background-color: #575757;\n}\n.Schedule__film-schedule-item {\n  position: absolute;\n  height: 5px;\n  background: #FAE807;\n  margin-top: 12px;\n  border-radius: 5px;\n}\n.Schedule__film-schedule-item:hover {\n  background-color: #D0D0D0;\n}\n.Schedule__film-schedule {\n  display: block;\n  position: relative;\n  padding: 10px 0;\n  background-color: #373737;\n  border: 1px solid #D0D0D0;\n  width: 85%;\n}\n.Schedule__time-item {\n  width: calc(100% / 16);\n  font-size: 14px;\n  text-align: center;\n  border-left: 1px solid #ccc;\n  padding: 3px 0;\n  color: #D0D0D0;\n}\n.Schedule__time-item:first-child {\n  border-left: none;\n}\n@media screen and (max-width: 950px) {\n  .Schedule__time-item {\n    writing-mode: vertical-rl;\n    white-space: nowrap;\n    display: inline-block;\n    overflow: visible;\n    box-sizing: border-box;\n    padding: 7px 0;\n  }\n}\n.Schedule__film {\n  background-color: #D0D0D0;\n  border-top: 2px solid  #373737;\n  border-bottom: 2px solid  #373737;\n  display: flex;\n}\n.Schedule__film:first-child {\n  border-top: none;\n}\n.Schedule__film-name {\n  width: 15%;\n  color: #343434;\n  padding: 5px;\n  box-sizing: border-box;\n}\n.Schedule__header {\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n}\n", ""]);
 
 // exports
 
@@ -47745,6 +47775,9 @@ class MovieLayout extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
     render() {
         const { film } = this.props;
+        if (!film) {
+            return null;
+        }
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "div",
             null,
@@ -47783,14 +47816,16 @@ class MovieLayout extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 const b = Object(__WEBPACK_IMPORTED_MODULE_2__helpers_BEM__["a" /* default */])("MovieImage");
 
 class MovieImage extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
+
     render() {
+
         const { film } = this.props;
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "div",
+            "section",
             { className: b() },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: film.image, className: b("main") }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "div",
+                "section",
                 { className: b("screenshots") },
                 film.screenshots.map((screen, ind) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: screen, key: ind, className: b("screen") }))
             )
@@ -47859,7 +47894,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".MovieImage {\n  width: 100%;\n  max-width: 450px;\n}\n.MovieImage__main {\n  object-fit: cover;\n  height: 350px;\n  width: 350px;\n  margin-left: 40px;\n  margin-top: -40px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  border-bottom: #fae807 10px solid;\n}\n.MovieImage__screenshots {\n  width: 350px;\n  margin: 40px auto 0 auto;\n}\n.MovieImage__screen {\n  object-fit: cover;\n  margin-right: 5px;\n  height: 100px;\n  width: 160px;\n  opacity: 0.6;\n}\n.MovieImage__screen:hover {\n  opacity: 1;\n}\n", ""]);
+exports.push([module.i, ".MovieImage {\n  width: 100%;\n  max-width: 450px;\n}\n.MovieImage__main {\n  margin-left: 40px;\n  margin-top: -40px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  border-bottom: #fae807 10px solid;\n}\n.MovieImage__screenshots {\n  width: 350px;\n  margin: 40px auto 0 auto;\n}\n.MovieImage__screen {\n  object-fit: cover;\n  margin-right: 5px;\n  height: 100px;\n  width: 160px;\n  opacity: 0.6;\n}\n.MovieImage__screen:hover {\n  opacity: 1;\n}\n", ""]);
 
 // exports
 
@@ -47886,8 +47921,12 @@ const b = Object(__WEBPACK_IMPORTED_MODULE_3__helpers_BEM__["a" /* default */])(
 class MovieInfo extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     render() {
         const { film } = this.props;
+
+        const strokeFull = film.rating * 10;
+        const strokeEmpty = 100 - strokeFull;
+        const strokeArray = "" + strokeFull + " " + strokeEmpty + "";
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "div",
+            "section",
             { className: b() },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "h1",
@@ -47908,8 +47947,14 @@ class MovieInfo extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                     { className: b("rating") },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         "span",
-                        null,
+                        { className: b("rating-value") },
                         film.rating
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "svg",
+                        { width: "100%", height: "100%", viewBox: "0 0 42 42", className: b("donut") },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("circle", { className: b("donut-ring"), cx: "21", cy: "21", r: "15.91549430918954", fill: "transparent", stroke: "tranparent", strokeWidth: "3" }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("circle", { className: b("donut-segment"), cx: "21", cy: "21", r: "15.91549430918954", fill: "transparent", stroke: "#FAE807", strokeWidth: "3", strokeDasharray: strokeArray, strokeDashoffset: "25" })
                     )
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -47988,7 +48033,7 @@ class Actors extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     render() {
         const { film } = this.props;
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "div",
+            "section",
             { className: b() },
             film.cast.map((actor, ind) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
@@ -48139,7 +48184,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".MovieInfo {\n  font-family: 'Roboto Condensed', sans-serif;\n  color: white;\n  margin-right: 40px ;\n  padding-top: 20px;\n  float: right;\n  max-width: 600px;\n}\n.MovieInfo__name {\n  font-weight: bold;\n  font-size: 50px;\n  margin: 0;\n}\n.MovieInfo__description {\n  font-size: 16px;\n  color: #ffffff;\n  opacity: 0.6;\n}\n.MovieInfo__extra {\n  display: grid;\n  grid-template-columns: 20% 40% 40%;\n  color: #ffffff;\n  font-weight: bold;\n  padding-top: 40px;\n}\n.MovieInfo__value {\n  float: right;\n  margin-right: 20px;\n  opacity: 0.6;\n  font-weight: normal;\n}\n.MovieInfo__rating {\n  grid-row-start: 1;\n  grid-row-end: 3;\n}\n.item {\n  position: relative;\n  float: left;\n}\n.item h2 {\n  text-align: center;\n  position: absolute;\n  line-height: 125px;\n  width: 100%;\n}\nsvg {\n  transform: rotate(-90deg);\n}\n.circle_animation {\n  stroke-dasharray: 440;\n  stroke-dashoffset: 440;\n}\n.html .circle_animation {\n  animation: html 1s ease-out forwards;\n}\n@keyframes html {\n  to {\n    stroke-dashoffset: 220;\n  }\n}\n", ""]);
+exports.push([module.i, ".MovieInfo {\n  font-family: 'Roboto Condensed', sans-serif;\n  color: white;\n  margin-right: 40px ;\n  padding-top: 20px;\n  float: right;\n  max-width: 600px;\n}\n.MovieInfo__name {\n  font-weight: bold;\n  font-size: 50px;\n  margin: 0;\n}\n.MovieInfo__description {\n  font-size: 16px;\n  color: #ffffff;\n  opacity: 0.6;\n}\n.MovieInfo__extra {\n  display: grid;\n  grid-template-columns: 20% 40% 40%;\n  color: #ffffff;\n  font-weight: bold;\n  padding-top: 40px;\n}\n.MovieInfo__value {\n  float: right;\n  margin-right: 20px;\n  opacity: 0.6;\n  font-weight: normal;\n}\n.MovieInfo__rating {\n  grid-row-start: 1;\n  grid-row-end: 3;\n}\n.MovieInfo__rating {\n  position: relative;\n  float: left;\n}\n.MovieInfo__rating-value {\n  text-align: center;\n  position: absolute;\n  line-height: 125px;\n  width: 100%;\n}\n", ""]);
 
 // exports
 
@@ -48171,9 +48216,12 @@ class Feedback extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     }
     render() {
         const { feedback } = this.props;
+        if (!feedback) {
+            return null;
+        }
         console.log(feedback.feedbacks);
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "div",
+            "section",
             { className: b() },
             feedback.feedbacks.map((f, ind) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
@@ -48266,7 +48314,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".Feedback {\n  color: white;\n  clear: both;\n}\n.Feedback__img {\n  width: 80px;\n  height: 80px;\n  object-fit: cover;\n}\n", ""]);
+exports.push([module.i, ".Feedback {\n  color: white;\n  clear: both;\n}\n.Feedback__img {\n  width: 80px;\n  height: 80px;\n  object-fit: cover;\n}\n.Feedback__item {\n  padding: 10px;\n}\n", ""]);
 
 // exports
 
