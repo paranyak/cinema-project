@@ -45547,7 +45547,7 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
     render() {
         const { films, onDateChange, date } = this.props;
-        console.log(this.props, "PROPS");
+
         const sessionStart = date.set({
             hour: 9,
             minute: 0,
@@ -45652,6 +45652,7 @@ const mapDispatchToProps = dispatch => {
             if (filters.formats.length === 0) {
                 return true;
             }
+
             for (let i = 0; i < movie.format.length; i++) {
                 if (filters.formats.includes(movie.format[i])) {
                     return true;
