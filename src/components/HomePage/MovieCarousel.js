@@ -4,6 +4,7 @@ import block from "../../helpers/BEM";
 import {connect} from "react-redux";
 import {Link} from 'react-router-dom'
 import MoviePoster from "./MoviePoster";
+import {getAllMovies} from '../../reducers';
 
 const b = block("MovieCarousel");
 
@@ -11,7 +12,7 @@ class MovieCarousel extends Component {
     render() {
         const {label, films} = this.props;
         return (
-            <div className={b()}>
+            <section className={b()}>
                 <button className={b('button')}>
                     <span className={b('icon', ['left'])}></span>
                 </button>
@@ -27,9 +28,21 @@ class MovieCarousel extends Component {
                 <button className={b('button')}>
                     <span className={b('icon', ['right'])}></span>
                 </button>
-            </div>
+            </section>
         )
     }
 }
 
-export default connect()(MovieCarousel);
+export default connect(state => {
+    const movies = getAllMovies(state);
+    return {
+        films: movies.map(movie => ({
+            id: movie.id,
+            name: movie.name,
+            image: movie.image,
+            rating: movie.rating,
+            genre: movie.genre,
+            label: movie.label
+        }))
+    }
+})(MovieCarousel);

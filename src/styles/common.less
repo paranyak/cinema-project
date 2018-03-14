@@ -5,6 +5,21 @@ body {
   padding-top: 160px;
 }
 
-//::-webkit-scrollbar {
-//  display: none;
-//}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  &-track {
+    border-radius: 10px;
+    background: #595959;
+  }
+
+  &-thumb {
+    box-shadow: inset 0 0 5px black;
+    background: #484848;
+    border-radius: 10px;
+
+    &:hover {
+      background: #fdf700;
+    }
+  }
+}

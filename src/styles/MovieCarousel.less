@@ -2,13 +2,21 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 60px;
+
+  //-webkit-scroll-snap-type: mandatory;
+  scroll-snap-type: mandatory;
+
+  //-webkit-scroll-snap-points-x: repeat(calc(~'90% - 120px'));
+  scroll-snap-points-x: repeat(100%);
+
+  //scroll-snap-destination: 275px 0%;
   &__movies {
     overflow-y: hidden;
     overflow-x: auto;
     white-space: nowrap;
   }
   &__button {
-    background-color: #FAE807; // #484848
+    background-color: #FAE807;
     color: transparent;
     width: 60px;
     border: none;
@@ -18,11 +26,11 @@
     height: 50px;
     display: inline-block;
     &_left {
-      background: url("../icons/left.svg") no-repeat left; //left-arrow
+      background: url("../icons/left.svg") no-repeat left;
       background-size: 34px 50px;
     }
     &_right {
-      background: url("../icons/right.svg") no-repeat right;  //right-arrow
+      background: url("../icons/right.svg") no-repeat right;
       background-size: 34px 50px;
     }
   }

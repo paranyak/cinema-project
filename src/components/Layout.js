@@ -37,7 +37,7 @@ class Layout extends Component {
         return <div className={b()}>
             <Header/>
             <Switch>
-                <Route exact path='/' render={() => <HomeLayout db={movies}/>}/>
+                <Route exact path='/' component={HomeLayout}/>
                 <Route path='/movie/:id' component={MovieLayout}/>
                 <Route path='/schedule' component={ScheduleLayout}/>
             </Switch>

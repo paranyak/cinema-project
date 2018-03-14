@@ -3,9 +3,9 @@ import "../../styles/AllMovies.less";
 import block from "../../helpers/BEM";
 import {connect} from "react-redux";
 import MoviePoster from "./MoviePoster";
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import InfiniteScroll from "react-infinite-scroller";
-
+import {getAllMovies} from "../../reducers";
 
 const b = block("AllMovies");
 
@@ -13,7 +13,7 @@ class AllMovies extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: 20,
+            items: 9,
             hasMoreItems: true
         };
     }
@@ -39,28 +39,43 @@ class AllMovies extends Component {
             this.setState({hasMoreItems: false});
         } else {
             setTimeout(() => {
-                this.setState({items: this.state.items + 20});
-            }, 2000);
+                this.setState({items: this.state.items + 9});
+            }, 1000);
         }
 
     }
 
     render() {
         return (
-            <div>
-                <div style={{height: '1200px', overflow: 'auto'}}>
-                    <InfiniteScroll
-                        loadMore={this.loadMore.bind(this)}
-                        hasMore={this.state.hasMoreItems}
-                        loader={<div className="loader"> Loading... </div>}
-                        useWindow={false}
-                    >
-                        {this.showItems()}{" "}
-                    </InfiniteScroll>{" "}
-                </div>
-            </div>
+            <section style={{height: '1200px', overflow: 'auto'}}>
+                <InfiniteScroll
+                    loadMore={this.loadMore.bind(this)}
+                    hasMore={this.state.hasMoreItems}
+                    loader={<div className={b("loader")}>
+                                <span className={b("loader-dot")}></span>
+                                <span className={b("loader-dot")}></span>
+                                <span className={b("loader-dot")}></span>
+                                <span className={b("loader-dot")}></span>
+                            </div>}
+                    useWindow={false}
+                >
+                    {this.showItems()}{" "}
+                </InfiniteScroll>{" "}
+            </section>
         )
     }
 }
 
-export default connect()(AllMovies);
+export default connect(state => {
+    const movies = getAllMovies(state);
+    return {
+        films: movies.map(movie => ({
+            id: movie.id,
+            name: movie.name,
+            image: movie.image,
+            rating: movie.rating,
+            genre: movie.genre,
+            label: movie.label
+        }))
+    }
+})(AllMovies);
