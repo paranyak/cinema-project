@@ -4,6 +4,8 @@ import {removeMovie, addMovie, changeDate} from "../../actions";
 import {Interval} from "luxon/src/interval.js";
 import {Duration} from "luxon/src/duration.js";
 import {DateTime} from "luxon/src/datetime.js";
+import ReactTooltip from 'react-tooltip';
+import {findDOMNode} from 'react-dom';
 
 import {connect} from "react-redux";
 
@@ -53,18 +55,22 @@ class Schedule extends Component {
                         <div key={"div-1lev" + i.toString()} className={b("film")}>
                             <span key={i} className={b("film-name")}>{film.name}</span>
                             <div  style={{'minHeight': film.schedule.length * 10}} key={"div-2lev" + i.toString()} className={b("film-schedule")}>
-                                {film.schedule.map((s, i) => (
-                                    <div key={i} className={b("film-schedule-item")}
-                                          style={{
-                                              top: i * 10,
-                                              width: this.scale(s.toDuration().milliseconds) + "%",
-                                              left: this.scale(
-                                                  Interval.fromDateTimes(
-                                                      sessionStart, s.start
-                                                  ).toDuration().milliseconds
-                                              ) + "%"
-                                          }}
-                                    />
+                                {film.schedule.map((s, i, j) => (
+                                  <div key={i}>
+                                      <div className={b("film-schedule-item")}
+                                            data-tip={s.toFormat('HH:mm')}
+                                            style={{
+                                                top: i * 10,
+                                                width: this.scale(s.toDuration().milliseconds) + "%",
+                                                left: this.scale(
+                                                    Interval.fromDateTimes(
+                                                        sessionStart, s.start
+                                                    ).toDuration().milliseconds
+                                                ) + "%"
+                                            }}
+                                      />
+                                      <ReactTooltip />
+                                  </div>
                                 ))}
                             </div>
                         </div>
