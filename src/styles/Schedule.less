@@ -1,3 +1,5 @@
+@import "SiteColors.less";
+
 .Schedule {
   padding: 20px;
   width: 80%;
@@ -7,8 +9,8 @@
   }
   &__day {
     padding: 15px 3px;
-    color:  #343434;
-    background-color: #D0D0D0;
+    color: #343434;
+    background-color: @time;
     border: none;
     position: absolute;
     height: 50px;
@@ -22,18 +24,18 @@
   &__time-string {
     display: flex;
     width: 85%;
-    border: 1px solid #D0D0D0;
+    border: 1px solid @time;
     border-bottom: none;
-    background-color:#575757;
+    background-color: #575757;
   }
   &__film-schedule-item {
     position: absolute;
     height: 5px;
-    background: #FAE807;
+    background: @main-yellow;
     margin-top: 12px;
     border-radius: 5px;
     &:hover {
-      background-color: #D0D0D0;
+      background-color: @time;
     }
   }
 
@@ -41,8 +43,8 @@
     display: block;
     position: relative;
     padding: 10px 0;
-    background-color: #373737;
-    border: 1px solid #D0D0D0;
+    background-color: @layout-grey;
+    border: 1px solid @time;
     width: 85%;
   }
 
@@ -52,7 +54,7 @@
     text-align: center;
     border-left: 1px solid #ccc;
     padding: 3px 0;
-    color:  #D0D0D0;
+    color: @time;
     &:first-child {
       border-left: none;
     }
@@ -65,11 +67,12 @@
       padding: 7px 0;
     }
   }
-  &__film-list {}
+  &__film-list {
+  }
   &__film {
-    background-color: #D0D0D0;
-    border-top: 2px solid  #373737;
-    border-bottom: 2px solid  #373737;
+    background-color: @time;
+    border-top: 2px solid @layout-grey;
+    border-bottom: 2px solid @layout-grey;
     display: flex;
     &:first-child {
       border-top: none;

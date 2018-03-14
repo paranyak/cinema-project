@@ -1,22 +1,16 @@
+@import "SiteColors.less";
+
 .MovieCarousel {
   display: flex;
   justify-content: space-between;
   margin-bottom: 60px;
-
-  //-webkit-scroll-snap-type: mandatory;
-  scroll-snap-type: mandatory;
-
-  //-webkit-scroll-snap-points-x: repeat(calc(~'90% - 120px'));
-  scroll-snap-points-x: repeat(100%);
-
-  //scroll-snap-destination: 275px 0%;
   &__movies {
     overflow-y: hidden;
     overflow-x: auto;
     white-space: nowrap;
   }
   &__button {
-    background-color: #FAE807;
+    background-color: @main-yellow;
     color: transparent;
     width: 60px;
     border: none;

@@ -1,7 +1,9 @@
+@import "SiteColors.less";
+
 .MoviePoster {
   margin: 5px;
   display: inline-block;
-  background-color: #484848;
+  background-color: @poster-grey;
   font-size: 14px;
   height: 491px;
   &__image {
@@ -9,24 +11,26 @@
     height: 408px;
   }
   &__additional-info {
-    margin: 10px;
+    margin: 13px;
   }
   &__name {
     font-size: 20px;
-    color: white;
+    color: @white-text;
     width: 200px;
-    margin-bottom: 3px;
+    margin: 0;
   }
   &__genre {
-    color: #fae807;
+    color: @main-yellow;
     width: 200px;
+    margin: 10px 0;
+    font-size: 16px;
   }
   &__rating {
     border: 1px solid;
     padding: 5px 7px;
     border-radius: 3px;
-    color: #fae807;
+    color: @main-yellow;
     float: right;
-    margin-top: -38px;
+    margin-top: -50px;
   }
 }

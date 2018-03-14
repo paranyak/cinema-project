@@ -1,28 +1,29 @@
-.Actors{
-  color:white;
+@import "SiteColors.less";
+
+.Actors {
+  color: @white-text;
   margin-top: 70px;
   margin-bottom: 50px;
-}
+  &__image {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
 
-.Actors__image{
-  height:50px;
-  width: 50px;
-  object-fit: cover;
-  border-radius: 50%;
-}
+  &__item {
+    display: grid;
+    grid-template-columns: 20% 40% 10% 30%;
+    font-size: 16px;
+    font-weight: normal;
+    padding-top: 20px;
+  }
 
-.Actors__item{
-  display: grid;
-  grid-template-columns: 20% 40% 10% 30%;
-  font-size: 16px;
-  font-weight: normal;
-  padding-top: 20px;
-}
+  &__name, &__separator {
+    opacity: 0.6;
+  }
 
-.Actors__name, .Actors__separator{
-  opacity: 0.6;
-}
-
-.Actors__role{
-  justify-self: end;
+  &__role {
+    justify-self: end;
+  }
 }
