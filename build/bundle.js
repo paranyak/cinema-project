@@ -49350,6 +49350,10 @@ const b = Object(__WEBPACK_IMPORTED_MODULE_3__helpers_BEM__["a" /* default */])(
 class MovieInfo extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     render() {
         const { film } = this.props;
+
+        const strokeFull = film.rating * 10;
+        const strokeEmpty = 100 - strokeFull;
+        const strokeArray = "" + strokeFull + " " + strokeEmpty + "";
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "section",
             { className: b() },
@@ -49372,8 +49376,14 @@ class MovieInfo extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                     { className: b("rating") },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         "span",
-                        null,
+                        { className: b("rating-value") },
                         film.rating
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "svg",
+                        { width: "100%", height: "100%", viewBox: "0 0 42 42", className: b("donut") },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("circle", { className: b("donut-ring"), cx: "21", cy: "21", r: "15.91549430918954", fill: "transparent", stroke: "tranparent", strokeWidth: "3" }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("circle", { className: b("donut-segment"), cx: "21", cy: "21", r: "15.91549430918954", fill: "transparent", stroke: "#FAE807", strokeWidth: "3", strokeDasharray: strokeArray, strokeDashoffset: "25" })
                     )
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -49603,7 +49613,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, ".MovieInfo {\n  font-family: 'Roboto Condensed', sans-serif;\n  color: white;\n  margin-right: 40px ;\n  padding-top: 20px;\n  float: right;\n  max-width: 600px;\n}\n.MovieInfo__name {\n  font-weight: bold;\n  font-size: 50px;\n  margin: 0;\n}\n.MovieInfo__description {\n  font-size: 16px;\n  color: #ffffff;\n  opacity: 0.6;\n}\n.MovieInfo__extra {\n  display: grid;\n  grid-template-columns: 20% 40% 40%;\n  color: #ffffff;\n  font-weight: bold;\n  padding-top: 40px;\n}\n.MovieInfo__value {\n  float: right;\n  margin-right: 20px;\n  opacity: 0.6;\n  font-weight: normal;\n}\n.MovieInfo__rating {\n  grid-row-start: 1;\n  grid-row-end: 3;\n}\n.item {\n  position: relative;\n  float: left;\n}\n.item h2 {\n  text-align: center;\n  position: absolute;\n  line-height: 125px;\n  width: 100%;\n}\nsvg {\n  transform: rotate(-90deg);\n}\n.circle_animation {\n  stroke-dasharray: 440;\n  stroke-dashoffset: 440;\n}\n.html .circle_animation {\n  animation: html 1s ease-out forwards;\n}\n@keyframes html {\n  to {\n    stroke-dashoffset: 220;\n  }\n}\n", ""]);
+exports.push([module.i, ".MovieInfo {\n  font-family: 'Roboto Condensed', sans-serif;\n  color: white;\n  margin-right: 40px ;\n  padding-top: 20px;\n  float: right;\n  max-width: 600px;\n}\n.MovieInfo__name {\n  font-weight: bold;\n  font-size: 50px;\n  margin: 0;\n}\n.MovieInfo__description {\n  font-size: 16px;\n  color: #ffffff;\n  opacity: 0.6;\n}\n.MovieInfo__extra {\n  display: grid;\n  grid-template-columns: 20% 40% 40%;\n  color: #ffffff;\n  font-weight: bold;\n  padding-top: 40px;\n}\n.MovieInfo__value {\n  float: right;\n  margin-right: 20px;\n  opacity: 0.6;\n  font-weight: normal;\n}\n.MovieInfo__rating {\n  grid-row-start: 1;\n  grid-row-end: 3;\n}\n.MovieInfo__rating {\n  position: relative;\n  float: left;\n}\n.MovieInfo__rating-value {\n  text-align: center;\n  position: absolute;\n  line-height: 125px;\n  width: 100%;\n}\n", ""]);
 
 // exports
 

@@ -43,35 +43,15 @@
 }
 
 
-.item {
+.MovieInfo__rating {
   position: relative;
   float: left;
 }
 
-.item h2 {
+.MovieInfo__rating-value {
   text-align:center;
   position: absolute;
   line-height: 125px;
   width: 100%;
 }
 
-svg {
-  transform: rotate(-90deg);
-}
-
-.circle_animation {
-  stroke-dasharray: 440;
-  stroke-dashoffset: 440;
-}
-
-.html .circle_animation {
-  animation: html 1s ease-out forwards;
-}
-
-
-
-@keyframes html {
-  to {
-    stroke-dashoffset: 44*(10-@var);
-  }
-}
