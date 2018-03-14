@@ -10,7 +10,7 @@ class MovieInfo extends Component {
     render() {
         const {film} = this.props;
         return (
-            <div className={b()}>
+            <section className={b()}>
                 <h1 className={b("name")}>{film.name}</h1>
                 <p className={b("description")}> {film.description}</p>
                 <div className={b("extra")}>
@@ -33,7 +33,7 @@ class MovieInfo extends Component {
                     {/*</svg>*/}
                 {/*</div>*/}
 
-            </div>
+            </section>
         )
     }
 }

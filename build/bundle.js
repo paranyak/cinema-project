@@ -45927,6 +45927,25 @@ const getFeedbackById = (state, id) => {
         }]
 
     }, {
+        "id": 6,
+        "feedbacks": [{
+            "name": "Black Panther",
+            "image": "http://cdn.shopify.com/s/files/1/0209/7756/products/crown-stencil_2_grande.gif?v=1484069310",
+            "rating": 7,
+            "text": "Very good movie"
+        }, {
+            "name": "Black Panther",
+            "image": "http://vbdance.com/wp-content/uploads/2016/05/Screen-Shot-2016-05-27-at-12.00.41.png",
+            "rating": 9,
+            "text": "Very interesting movie"
+        }, {
+            "name": "Black Panther",
+            "image": "http://vbdance.com/wp-content/uploads/2016/05/Screen-Shot-2016-05-27-at-12.00.41.png",
+            "rating": 3,
+            "text": "Bad movie. I hate it!!!!!"
+        }]
+
+    }, {
         "id": 7,
         "feedbacks": [{
             "name": "Black Panther",
@@ -49226,14 +49245,16 @@ class MovieLayout extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 const b = Object(__WEBPACK_IMPORTED_MODULE_2__helpers_BEM__["a" /* default */])("MovieImage");
 
 class MovieImage extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
+
     render() {
+
         const { film } = this.props;
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "div",
+            "section",
             { className: b() },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: film.image, className: b("main") }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "div",
+                "section",
                 { className: b("screenshots") },
                 film.screenshots.map((screen, ind) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: screen, key: ind, className: b("screen") }))
             )
@@ -49330,7 +49351,7 @@ class MovieInfo extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     render() {
         const { film } = this.props;
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "div",
+            "section",
             { className: b() },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "h1",
@@ -49431,7 +49452,7 @@ class Actors extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     render() {
         const { film } = this.props;
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "div",
+            "section",
             { className: b() },
             film.cast.map((actor, ind) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
@@ -49614,9 +49635,12 @@ class Feedback extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     }
     render() {
         const { feedback } = this.props;
+        if (!feedback) {
+            return null;
+        }
         console.log(feedback.feedbacks);
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "div",
+            "section",
             { className: b() },
             feedback.feedbacks.map((f, ind) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
@@ -49709,7 +49733,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, ".Feedback {\n  color: white;\n  clear: both;\n}\n.Feedback__img {\n  width: 80px;\n  height: 80px;\n  object-fit: cover;\n}\n", ""]);
+exports.push([module.i, ".Feedback {\n  color: white;\n  clear: both;\n}\n.Feedback__img {\n  width: 80px;\n  height: 80px;\n  object-fit: cover;\n}\n.Feedback__item {\n  padding: 10px;\n}\n", ""]);
 
 // exports
 
