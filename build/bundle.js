@@ -45547,7 +45547,7 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
     render() {
         const { films, onDateChange, date } = this.props;
-
+        console.log(this.props, "PROPS");
         const sessionStart = date.set({
             hour: 9,
             minute: 0,
@@ -45652,7 +45652,6 @@ const mapDispatchToProps = dispatch => {
             if (filters.formats.length === 0) {
                 return true;
             }
-
             for (let i = 0; i < movie.format.length; i++) {
                 if (filters.formats.includes(movie.format[i])) {
                     return true;
@@ -47835,7 +47834,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".MovieImage {\n  width: 100%;\n  max-width: 450px;\n}\n.MovieImage__main {\n  object-fit: cover;\n  height: 350px;\n  width: 350px;\n  margin-left: 40px;\n  margin-top: -40px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  border-bottom: #fae807 10px solid;\n}\n.MovieImage__screenshots {\n  width: 350px;\n  margin: 40px auto 0 auto;\n}\n.MovieImage__screen {\n  object-fit: cover;\n  margin-right: 5px;\n  height: 100px;\n  width: 160px;\n  opacity: 0.6;\n}\n.MovieImage__screen:hover {\n  opacity: 1;\n}\n", ""]);
+exports.push([module.i, ".MovieImage {\n  width: 100%;\n  max-width: 450px;\n}\n.MovieImage__main {\n  margin-left: 40px;\n  margin-top: -40px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  border-bottom: #fae807 10px solid;\n}\n.MovieImage__screenshots {\n  width: 350px;\n  margin: 40px auto 0 auto;\n}\n.MovieImage__screen {\n  object-fit: cover;\n  margin-right: 5px;\n  height: 100px;\n  width: 160px;\n  opacity: 0.6;\n}\n.MovieImage__screen:hover {\n  opacity: 1;\n}\n", ""]);
 
 // exports
 
