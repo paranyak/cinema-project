@@ -75,7 +75,8 @@ class Schedule extends Component {
                                                     Interval.fromDateTimes(
                                                         sessionStart, s.start
                                                     ).toDuration().milliseconds
-                                                ) + "%"
+                                                ) + "%",
+                                                background: s.isAfter(DateTime.local()) ? '#FAE807' : '#727273'
                                             }}
                                       />
                                       <ReactTooltip />
