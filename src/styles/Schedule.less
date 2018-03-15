@@ -38,6 +38,14 @@
       background-color: @time;
     }
   }
+  &__real-time-line {
+    width: 2px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: #FAE807;
+    z-index: 1;
+  }
 
   &__film-schedule {
     display: block;
@@ -68,15 +76,12 @@
     }
   }
   &__film-list {
+    position: relative;
   }
   &__film {
     background-color: @time;
-    border-top: 2px solid @layout-grey;
-    border-bottom: 2px solid @layout-grey;
     display: flex;
-    &:first-child {
-      border-top: none;
-    }
+    margin-bottom: 4px;
   }
   &__film-name {
     width: 15%;

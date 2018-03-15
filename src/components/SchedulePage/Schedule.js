@@ -33,9 +33,9 @@ class Schedule extends Component {
         const scheduleInterval = Interval.after(sessionStart, {hours: 16});
 
         this.scale = (t) => 100 * t / scheduleInterval.toDuration().milliseconds;
+        this.globalScale = (t) => 85 * t / scheduleInterval.toDuration().milliseconds  + 15;
 
-        const session = scheduleInterval.splitBy({minutes: 60});
-
+        const session = scheduleInterval.splitBy({minutes: 60})
         return (
             <div className={b()}>
                 <div className={b("header")}>
@@ -51,6 +51,15 @@ class Schedule extends Component {
                     </div>
                 </div>
                 <div className={b("film-list")}>
+                    <div className={b("real-time-line")}
+                    style={{
+                        left: this.globalScale(
+                            Interval.fromDateTimes(
+                                sessionStart, DateTime.local()
+                            ).toDuration().milliseconds
+                        ) + "%",
+                        display: sessionStart.hasSame(DateTime.local(), 'day') ? 'block' : 'none'
+                    }}></div>
                     {films.map((film, i) => (
                         <div key={"div-1lev" + i.toString()} className={b("film")}>
                             <span key={i} className={b("film-name")}>{film.name}</span>
