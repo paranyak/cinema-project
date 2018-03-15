@@ -36,6 +36,14 @@
       background-color: #D0D0D0;
     }
   }
+  &__real-time-line {
+    width: 2px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: #FAE807;
+    z-index: 1;
+  }
 
   &__film-schedule {
     display: block;
@@ -65,15 +73,13 @@
       padding: 7px 0;
     }
   }
-  &__film-list {}
+  &__film-list {
+    position: relative;
+  }
   &__film {
     background-color: #D0D0D0;
-    border-top: 2px solid  #373737;
-    border-bottom: 2px solid  #373737;
     display: flex;
-    &:first-child {
-      border-top: none;
-    }
+    margin-bottom: 4px;
   }
   &__film-name {
     width: 15%;

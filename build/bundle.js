@@ -45583,9 +45583,9 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         const scheduleInterval = __WEBPACK_IMPORTED_MODULE_3_luxon_src_interval_js__["a" /* Interval */].after(sessionStart, { hours: 16 });
 
         this.scale = t => 100 * t / scheduleInterval.toDuration().milliseconds;
+        this.globalScale = t => 85 * t / scheduleInterval.toDuration().milliseconds + 15;
 
         const session = scheduleInterval.splitBy({ minutes: 60 });
-
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "div",
             { className: b() },
@@ -45610,6 +45610,11 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
                 { className: b("film-list") },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { className: b("real-time-line"),
+                    style: {
+                        left: this.globalScale(__WEBPACK_IMPORTED_MODULE_3_luxon_src_interval_js__["a" /* Interval */].fromDateTimes(sessionStart, __WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].local()).toDuration().milliseconds) + "%",
+                        display: sessionStart.hasSame(__WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].local(), 'day') ? 'block' : 'none'
+                    } }),
                 films.map((film, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "div",
                     { key: "div-1lev" + i.toString(), className: b("film") },
@@ -48395,7 +48400,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, ".Schedule {\n  padding: 20px;\n  width: 80%;\n}\n.Schedule__day-container {\n  width: 15%;\n  position: relative;\n}\n.Schedule__day {\n  padding: 15px 3px;\n  color: #343434;\n  background-color: #D0D0D0;\n  border: none;\n  position: absolute;\n  height: 50px;\n  bottom: 20px;\n  right: 20px;\n  width: 105%;\n  box-sizing: border-box;\n  box-shadow: 6px 6px 30px 5px #000001;\n  outline: none;\n}\n.Schedule__time-string {\n  display: flex;\n  width: 85%;\n  border: 1px solid #D0D0D0;\n  border-bottom: none;\n  background-color: #575757;\n}\n.Schedule__film-schedule-item {\n  position: absolute;\n  height: 5px;\n  background: #FAE807;\n  margin-top: 12px;\n  border-radius: 5px;\n}\n.Schedule__film-schedule-item:hover {\n  background-color: #D0D0D0;\n}\n.Schedule__film-schedule {\n  display: block;\n  position: relative;\n  padding: 10px 0;\n  background-color: #373737;\n  border: 1px solid #D0D0D0;\n  width: 85%;\n}\n.Schedule__time-item {\n  width: calc(100% / 16);\n  font-size: 14px;\n  text-align: center;\n  border-left: 1px solid #ccc;\n  padding: 3px 0;\n  color: #D0D0D0;\n}\n.Schedule__time-item:first-child {\n  border-left: none;\n}\n@media screen and (max-width: 950px) {\n  .Schedule__time-item {\n    writing-mode: vertical-rl;\n    white-space: nowrap;\n    display: inline-block;\n    overflow: visible;\n    box-sizing: border-box;\n    padding: 7px 0;\n  }\n}\n.Schedule__film {\n  background-color: #D0D0D0;\n  border-top: 2px solid  #373737;\n  border-bottom: 2px solid  #373737;\n  display: flex;\n}\n.Schedule__film:first-child {\n  border-top: none;\n}\n.Schedule__film-name {\n  width: 15%;\n  color: #343434;\n  padding: 5px;\n  box-sizing: border-box;\n}\n.Schedule__header {\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n}\n", ""]);
+exports.push([module.i, ".Schedule {\n  padding: 20px;\n  width: 80%;\n}\n.Schedule__day-container {\n  width: 15%;\n  position: relative;\n}\n.Schedule__day {\n  padding: 15px 3px;\n  color: #343434;\n  background-color: #D0D0D0;\n  border: none;\n  position: absolute;\n  height: 50px;\n  bottom: 20px;\n  right: 20px;\n  width: 105%;\n  box-sizing: border-box;\n  box-shadow: 6px 6px 30px 5px #000001;\n  outline: none;\n}\n.Schedule__time-string {\n  display: flex;\n  width: 85%;\n  border: 1px solid #D0D0D0;\n  border-bottom: none;\n  background-color: #575757;\n}\n.Schedule__film-schedule-item {\n  position: absolute;\n  height: 5px;\n  background: #FAE807;\n  margin-top: 12px;\n  border-radius: 5px;\n}\n.Schedule__film-schedule-item:hover {\n  background-color: #D0D0D0;\n}\n.Schedule__real-time-line {\n  width: 2px;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  background-color: #FAE807;\n  z-index: 1;\n}\n.Schedule__film-schedule {\n  display: block;\n  position: relative;\n  padding: 10px 0;\n  background-color: #373737;\n  border: 1px solid #D0D0D0;\n  width: 85%;\n}\n.Schedule__time-item {\n  width: calc(100% / 16);\n  font-size: 14px;\n  text-align: center;\n  border-left: 1px solid #ccc;\n  padding: 3px 0;\n  color: #D0D0D0;\n}\n.Schedule__time-item:first-child {\n  border-left: none;\n}\n@media screen and (max-width: 950px) {\n  .Schedule__time-item {\n    writing-mode: vertical-rl;\n    white-space: nowrap;\n    display: inline-block;\n    overflow: visible;\n    box-sizing: border-box;\n    padding: 7px 0;\n  }\n}\n.Schedule__film-list {\n  position: relative;\n}\n.Schedule__film {\n  background-color: #D0D0D0;\n  display: flex;\n  margin-bottom: 4px;\n}\n.Schedule__film-name {\n  width: 15%;\n  color: #343434;\n  padding: 5px;\n  box-sizing: border-box;\n}\n.Schedule__header {\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n}\n", ""]);
 
 // exports
 
