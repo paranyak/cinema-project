@@ -31,11 +31,16 @@
   &__film-schedule-item {
     position: absolute;
     height: 5px;
-    background: @main-yellow;
     margin-top: 12px;
     border-radius: 5px;
+    &_after {
+      background: @main-yellow;
+    }
+    &_before {
+      background: #575757;
+    }
     &:hover {
-      background-color: @time;
+      background: @time;
     }
   }
   &__real-time-line {

@@ -26,28 +26,28 @@ class Filter extends Component {
         <section className={b("group")} >
           <span className={b("name")}>Genres</span>
           {this.availableGenres.map((el, i) => (
-            <div key={i} className={b("filter")}>
+            <section key={i} className={b("filter")}>
               <input type="checkbox" id={el} value="genres" onChange={onSwitchFilter}/>
               <label htmlFor={el}>{el}</label>
-            </div>
+            </section>
           ))}
         </section>
         <section className={b("group")} >
           <span className={b("name")}>Technologies</span>
           {this.availableTechnologies.map((el, i) => (
-            <div key={i} className={b("filter")}>
+            <section key={i} className={b("filter")}>
               <input type="checkbox" value="technologies" id={el} onChange={onSwitchFilter}/>
               <label htmlFor={el}>{el}</label>
-            </div>
+            </section>
           ))}
         </section>
         <section className={b("group")} >
           <span className={b("name")}>Format</span>
           {this.availableFormats.map((el, i) => (
-            <div key={i} className={b("filter")}>
+            <section key={i} className={b("filter")}>
               <input type="checkbox" value="formats" id={el} onChange={onSwitchFilter}/>
               <label htmlFor={el}>{el}</label>
-            </div>
+            </section>
           ))}
         </section>
       </div>
