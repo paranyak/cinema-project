@@ -22,7 +22,7 @@ class Feedback extends Component {
                 {feedback.feedbacks.map((f, ind)=> <div className={b("item")} key={ind}>
                         <img className={b("img")} src={f.image}/>
                         <p className={b("name")}> {f.name}</p>
-                        <p className={b("rating")} > {f.rating}</p>
+                        <p className={b("rating")} >Rating: <span className={b("rating-value")}>{f.rating}</span></p>
                         <p className={b("text")} > {f.text}</p>
                     </div>)}
             </section>
