@@ -49644,7 +49644,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, ".MovieInfo {\n  font-family: 'Roboto Condensed', sans-serif;\n  color: white;\n  margin-right: 40px;\n  padding-top: 20px;\n  float: right;\n  max-width: 600px;\n}\n.MovieInfo__name {\n  font-weight: bold;\n  font-size: 50px;\n  margin: 0;\n}\n.MovieInfo__description {\n  font-size: 16px;\n  color: white;\n  opacity: 0.6;\n}\n.MovieInfo__extra {\n  display: grid;\n  grid-template-columns: 20% 40% 40%;\n  color: white;\n  font-weight: bold;\n  padding-top: 40px;\n}\n.MovieInfo__value {\n  float: right;\n  margin-right: 20px;\n  opacity: 0.6;\n  font-weight: normal;\n}\n.MovieInfo__rating {\n  grid-row-start: 1;\n  grid-row-end: 3;\n  position: relative;\n  float: left;\n}\n.MovieInfo__rating-value {\n  text-align: center;\n  position: absolute;\n  line-height: 125px;\n  width: 100%;\n}\n", ""]);
+exports.push([module.i, ".MovieInfo {\n  font-family: 'Roboto Condensed', sans-serif;\n  color: white;\n  margin-right: 40px;\n  padding-top: 20px;\n  float: right;\n  width: 60%;\n  min-width: 600px;\n}\n.MovieInfo__name {\n  font-weight: bold;\n  font-size: 50px;\n  margin: 0;\n}\n.MovieInfo__description {\n  font-size: 16px;\n  color: white;\n  opacity: 0.6;\n}\n.MovieInfo__extra {\n  display: grid;\n  grid-template-columns: 20% 40% 40%;\n  color: white;\n  font-weight: bold;\n  padding-top: 40px;\n}\n.MovieInfo__value {\n  float: right;\n  margin-right: 20px;\n  opacity: 0.6;\n  font-weight: normal;\n}\n.MovieInfo__donut {\n  animation: hideshow  11s ease ;\n}\n@keyframes hideshow {\n  0% {\n    opacity: 0;\n  }\n  10% {\n    opacity: 0.25;\n  }\n  15% {\n    opacity: 0.5;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n.MovieInfo__rating {\n  grid-row-start: 1;\n  grid-row-end: 3;\n  position: relative;\n  float: left;\n  height: 125px;\n}\n.MovieInfo__rating-value {\n  text-align: center;\n  position: absolute;\n  line-height: 125px;\n  width: 100%;\n}\n", ""]);
 
 // exports
 
@@ -49696,8 +49696,12 @@ class Feedback extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "p",
                     { className: b("rating") },
-                    " ",
-                    f.rating
+                    "Rating: ",
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "span",
+                        { className: b("rating-value") },
+                        f.rating
+                    )
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "p",
@@ -49774,7 +49778,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, ".Feedback {\n  color: white;\n  clear: both;\n}\n.Feedback__img {\n  width: 80px;\n  height: 80px;\n  object-fit: cover;\n}\n.Feedback__item {\n  padding: 10px;\n}\n", ""]);
+exports.push([module.i, ".Feedback {\n  color: white;\n  clear: both;\n  margin-top: 20px;\n}\n.Feedback__img {\n  width: 80px;\n  height: 80px;\n  object-fit: cover;\n  border-radius: 50%;\n  border: 1px black solid;\n  box-shadow: 10px 21px 94px 6px #000001;\n  float: left;\n  margin-right: 10px;\n}\n.Feedback__item {\n  padding: 20px;\n  margin: 20px auto;\n  width: 70%;\n  min-width: 600px;\n  background-color: #4D4D4D;\n}\n.Feedback__name {\n  font-weight: bold;\n}\n.Feedback__rating {\n  font-weight: bold;\n}\n.Feedback__rating-value {\n  opacity: 0.6;\n}\n.Feedback__text {\n  clear: both;\n  margin-top: 30px;\n  margin-bottom: 0;\n}\n", ""]);
 
 // exports
 

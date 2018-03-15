@@ -3,12 +3,37 @@
 .Feedback {
   color: @white-text;
   clear: both;
+  margin-top: 20px;
   &__img {
     width: 80px;
     height: 80px;
     object-fit: cover;
+    border-radius: 50%;
+    border: 1px black solid;
+    box-shadow: 10px 21px 94px 6px rgba(0, 0, 1, 1);
+    float:left;
+    margin-right: 10px;
   }
   &__item {
-    padding: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    width:70%;
+    min-width: 600px;
+    background-color: #4D4D4D;
+  }
+  &__name{
+    font-weight: bold;
+
+  }
+  &__rating{
+    font-weight: bold;
+  }
+  &__rating-value{
+    opacity: 0.6
+  }
+  &__text{
+    clear:both;
+    margin-top: 30px;
+    margin-bottom:0;
   }
 }

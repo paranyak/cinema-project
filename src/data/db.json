@@ -7,17 +7,17 @@
       "rating": 6.7,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BOTU3NDE5MDQ4MV5BMl5BanBnXkFtZTgwMzE5ODQ3MDI@._V1_SY1000_CR0,0,626,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BOTU3NDE5MDQ4MV5BMl5BanBnXkFtZTgwMzE5ODQ3MDI@._V1_SY1000_CR0,0,626,1000_AL_.jpg",
           "name": "Jennifer Lawrence",
           "role": "Dominika Egorova"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTA0ODI1ODk4NzdeQTJeQWpwZ15BbWU3MDkwNjkzOTY@._V1._SX214_SY317_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTA0ODI1ODk4NzdeQTJeQWpwZ15BbWU3MDkwNjkzOTY@._V1._SX214_SY317_.jpg",
           "name": "Joel Edgerton",
           "role": "Nate Nash"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjMyNTQ0MDgwOF5BMl5BanBnXkFtZTcwOTUxNzA3OA@@._V1_SY1000_CR0,0,753,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjMyNTQ0MDgwOF5BMl5BanBnXkFtZTcwOTUxNzA3OA@@._V1_SY1000_CR0,0,753,1000_AL_.jpg",
           "name": "Matthias Schoenaerts",
           "role": "Vanya Egorov"
         }
@@ -62,17 +62,17 @@
       "rating": 4.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
           "name": "Toby Kebbell",
           "role": "Will"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
           "name": "Maggie Grace",
           "role": "Casey"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Ryan Kwanten",
           "role": "Breeze"
         }
@@ -112,17 +112,17 @@
       "rating": 7.5,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwOTQ0MDUyNF5BMl5BanBnXkFtZTcwNTQ1MzY1Mw@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwOTQ0MDUyNF5BMl5BanBnXkFtZTcwNTQ1MzY1Mw@@._V1_.jpg",
           "name": "Jason Bateman",
           "role": "Max"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5ODcxMDU4NV5BMl5BanBnXkFtZTcwMjAzNjQyNQ@@._V1_SY1000_CR0,0,689,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5ODcxMDU4NV5BMl5BanBnXkFtZTcwMjAzNjQyNQ@@._V1_SY1000_CR0,0,689,1000_AL_.jpg",
           "name": "Rachel McAdams",
           "role": "Annie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNTM5NDM4ODg3MV5BMl5BanBnXkFtZTcwNTA3MTk3Mw@@._V1_SY1000_CR0,0,679,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNTM5NDM4ODg3MV5BMl5BanBnXkFtZTcwNTA3MTk3Mw@@._V1_SY1000_CR0,0,679,1000_AL_.jpg",
           "name": "Kyle Chandler",
           "role": "Brooks"
         }
@@ -162,17 +162,17 @@
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
           "name": "Chadwick Boseman",
           "role": "T'Challa / Black Panther "
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjExOTY3NzExM15BMl5BanBnXkFtZTgwOTg1OTAzMTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjExOTY3NzExM15BMl5BanBnXkFtZTgwOTg1OTAzMTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
           "name": "Michael B. Jordan",
           "role": "Erik Killmonger"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0NTQ4MDY2Nl5BMl5BanBnXkFtZTgwNDk1MTEyMDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0NTQ4MDY2Nl5BMl5BanBnXkFtZTgwNDk1MTEyMDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Lupita Nyong'o",
           "role": "Nakia"
         }
@@ -218,17 +218,17 @@
       "rating": 4.4,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjAxOTcxMjg0OV5BMl5BanBnXkFtZTgwMjg1Mjg1NDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjAxOTcxMjg0OV5BMl5BanBnXkFtZTgwMjg1Mjg1NDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Dakota Johnson",
           "role": "Anastasia Steele"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwMDAzMjAyM15BMl5BanBnXkFtZTgwMjAxMzc0MjE@._V1_SY1000_SX786_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwMDAzMjAyM15BMl5BanBnXkFtZTgwMjAxMzc0MjE@._V1_SY1000_SX786_AL_.jpg",
           "name": "Jamie Dornan",
           "role": "Christian Grey"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3NTc2MDMxNV5BMl5BanBnXkFtZTgwNzIyNjIzMDI@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3NTc2MDMxNV5BMl5BanBnXkFtZTgwNzIyNjIzMDI@._V1_.jpg",
           "name": "Eric Johnson",
           "role": "Jack Hyde"
         }
@@ -266,17 +266,17 @@
       "rating": 5.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
           "name": "Alicia Vikander",
           "role": "Danielle Flinders"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQzNzIxOTYzMl5BMl5BanBnXkFtZTcwNjYxNTk1Nw@@._V1_SY1000_CR0,0,766,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQzNzIxOTYzMl5BMl5BanBnXkFtZTcwNjYxNTk1Nw@@._V1_SY1000_CR0,0,766,1000_AL_.jpg",
           "name": "James McAvoy",
           "role": "James More"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTIxMjYwMTA3MV5BMl5BanBnXkFtZTcwNDQxODYzMQ@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTIxMjYwMTA3MV5BMl5BanBnXkFtZTcwNDQxODYzMQ@@._V1_.jpg",
           "name": "Alexander Siddig",
           "role": "Dr. Shadid"
         }
@@ -314,17 +314,17 @@
       "rating": 7.3,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg/1200px-Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg/1200px-Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg",
           "name": "Meryl Streep",
           "role": "Katharine Graham"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/6/66/Tom_Hanks_2014.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/6/66/Tom_Hanks_2014.jpg",
           "name": "Tom Hanks",
           "role": "Ben Bradlee"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Bob_Odenkirk_by_Gage_Skidmore.jpg/800px-Bob_Odenkirk_by_Gage_Skidmore.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Bob_Odenkirk_by_Gage_Skidmore.jpg/800px-Bob_Odenkirk_by_Gage_Skidmore.jpg",
           "name": "Bob Odenkirk",
           "role": "Ben Bagdikian"
         }
@@ -363,17 +363,17 @@
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
           "name": "Alicia Vikander",
           "role": "Lara Croft"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
           "name": "Hannah John-Kamen",
           "role": "Sophie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
           "name": "Walton Goggins",
           "role": "Mathias Vogel"
         }
@@ -415,17 +415,17 @@
       "rating": 4.2,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://rollingout.com/wp-content/uploads/2016/06/Storm-Reid-2-640x960.jpg?x47911",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://rollingout.com/wp-content/uploads/2016/06/Storm-Reid-2-640x960.jpg?x47911",
           "name": "Storm Reid",
           "role": "Meg"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTgzODE3MzYxNF5BMl5BanBnXkFtZTYwMzEyNjc4._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTgzODE3MzYxNF5BMl5BanBnXkFtZTYwMzEyNjc4._V1_.jpg",
           "name": "Oprah Winfrey",
           "role": "Mrs. Which"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://pbs.twimg.com/profile_images/839882618682290176/tja4NBb5_400x400.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://pbs.twimg.com/profile_images/839882618682290176/tja4NBb5_400x400.jpg",
           "name": "Reese Witherspoon",
           "role": "Mrs. Whatsit"
         }
@@ -470,17 +470,17 @@
       "rating": "-.-",
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BOTI3ODk1MTMyNV5BMl5BanBnXkFtZTcwNDEyNTE2Mg@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BOTI3ODk1MTMyNV5BMl5BanBnXkFtZTcwNDEyNTE2Mg@@._V1_.jpg",
           "name": "Ryan Reynolds",
           "role": "Vanessa"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyODY3MzM2OV5BMl5BanBnXkFtZTgwMDM1OTk5MDE@._V1_SY1000_CR0,0,667,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyODY3MzM2OV5BMl5BanBnXkFtZTgwMDM1OTk5MDE@._V1_SY1000_CR0,0,667,1000_AL_.jpg",
           "name": "Morena Baccarin",
           "role": "Wade / Deadpool"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ1MzYyMjQ0Nl5BMl5BanBnXkFtZTcwMTA0ODkyMg@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ1MzYyMjQ0Nl5BMl5BanBnXkFtZTcwMTA0ODkyMg@@._V1_.jpg",
           "name": "Josh Brolin",
           "role": "Nathan Summers / Cable"
         }
@@ -519,17 +519,17 @@
       "rating": 4.4,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyNDQ3NzAxM15BMl5BanBnXkFtZTgwODIwMTQ0NTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyNDQ3NzAxM15BMl5BanBnXkFtZTgwODIwMTQ0NTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
           "name": "Dwayne Johnson",
           "role": "Davis Okoye"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BM2QwNjhkYzMtNjQ5Mi00OTk2LTg4N2ItZjUzYmU4MWViMDkxXkEyXkFqcGdeQXVyODY2NjYzNA@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BM2QwNjhkYzMtNjQ5Mi00OTk2LTg4N2ItZjUzYmU4MWViMDkxXkEyXkFqcGdeQXVyODY2NjYzNA@@._V1_.jpg",
           "name": "Jeffrey Dean Morgan",
           "role": "Agent Russell"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyMTU3MzY3Ml5BMl5BanBnXkFtZTgwMDc0MjQ2NjE@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyMTU3MzY3Ml5BMl5BanBnXkFtZTgwMDc0MjQ2NjE@._V1_.jpg",
           "name": "Will Yun Lee",
           "role": "Agent Park"
         }
@@ -565,17 +565,17 @@
       "rating": 6.7,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BOTU3NDE5MDQ4MV5BMl5BanBnXkFtZTgwMzE5ODQ3MDI@._V1_SY1000_CR0,0,626,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BOTU3NDE5MDQ4MV5BMl5BanBnXkFtZTgwMzE5ODQ3MDI@._V1_SY1000_CR0,0,626,1000_AL_.jpg",
           "name": "Jennifer Lawrence",
           "role": "Dominika Egorova"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTA0ODI1ODk4NzdeQTJeQWpwZ15BbWU3MDkwNjkzOTY@._V1._SX214_SY317_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTA0ODI1ODk4NzdeQTJeQWpwZ15BbWU3MDkwNjkzOTY@._V1._SX214_SY317_.jpg",
           "name": "Joel Edgerton",
           "role": "Nate Nash"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjMyNTQ0MDgwOF5BMl5BanBnXkFtZTcwOTUxNzA3OA@@._V1_SY1000_CR0,0,753,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjMyNTQ0MDgwOF5BMl5BanBnXkFtZTcwOTUxNzA3OA@@._V1_SY1000_CR0,0,753,1000_AL_.jpg",
           "name": "Matthias Schoenaerts",
           "role": "Vanya Egorov"
         }
@@ -620,17 +620,17 @@
       "rating": 4.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
           "name": "Toby Kebbell",
           "role": "Will"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
           "name": "Maggie Grace",
           "role": "Casey"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Ryan Kwanten",
           "role": "Breeze"
         }
@@ -670,17 +670,17 @@
       "rating": 4.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
           "name": "Toby Kebbell",
           "role": "Will"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
           "name": "Maggie Grace",
           "role": "Casey"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Ryan Kwanten",
           "role": "Breeze"
         }
@@ -720,17 +720,17 @@
       "rating": 7.5,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwOTQ0MDUyNF5BMl5BanBnXkFtZTcwNTQ1MzY1Mw@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwOTQ0MDUyNF5BMl5BanBnXkFtZTcwNTQ1MzY1Mw@@._V1_.jpg",
           "name": "Jason Bateman",
           "role": "Max"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5ODcxMDU4NV5BMl5BanBnXkFtZTcwMjAzNjQyNQ@@._V1_SY1000_CR0,0,689,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5ODcxMDU4NV5BMl5BanBnXkFtZTcwMjAzNjQyNQ@@._V1_SY1000_CR0,0,689,1000_AL_.jpg",
           "name": "Rachel McAdams",
           "role": "Annie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNTM5NDM4ODg3MV5BMl5BanBnXkFtZTcwNTA3MTk3Mw@@._V1_SY1000_CR0,0,679,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNTM5NDM4ODg3MV5BMl5BanBnXkFtZTcwNTA3MTk3Mw@@._V1_SY1000_CR0,0,679,1000_AL_.jpg",
           "name": "Kyle Chandler",
           "role": "Brooks"
         }
@@ -770,17 +770,17 @@
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
           "name": "Chadwick Boseman",
           "role": "T'Challa / Black Panther "
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjExOTY3NzExM15BMl5BanBnXkFtZTgwOTg1OTAzMTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjExOTY3NzExM15BMl5BanBnXkFtZTgwOTg1OTAzMTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
           "name": "Michael B. Jordan",
           "role": "Erik Killmonger"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0NTQ4MDY2Nl5BMl5BanBnXkFtZTgwNDk1MTEyMDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0NTQ4MDY2Nl5BMl5BanBnXkFtZTgwNDk1MTEyMDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Lupita Nyong'o",
           "role": "Nakia"
         }
@@ -826,17 +826,17 @@
       "rating": 4.4,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjAxOTcxMjg0OV5BMl5BanBnXkFtZTgwMjg1Mjg1NDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjAxOTcxMjg0OV5BMl5BanBnXkFtZTgwMjg1Mjg1NDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Dakota Johnson",
           "role": "Anastasia Steele"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwMDAzMjAyM15BMl5BanBnXkFtZTgwMjAxMzc0MjE@._V1_SY1000_SX786_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwMDAzMjAyM15BMl5BanBnXkFtZTgwMjAxMzc0MjE@._V1_SY1000_SX786_AL_.jpg",
           "name": "Jamie Dornan",
           "role": "Christian Grey"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3NTc2MDMxNV5BMl5BanBnXkFtZTgwNzIyNjIzMDI@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3NTc2MDMxNV5BMl5BanBnXkFtZTgwNzIyNjIzMDI@._V1_.jpg",
           "name": "Eric Johnson",
           "role": "Jack Hyde"
         }
@@ -874,17 +874,17 @@
       "rating": 5.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
           "name": "Alicia Vikander",
           "role": "Danielle Flinders"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQzNzIxOTYzMl5BMl5BanBnXkFtZTcwNjYxNTk1Nw@@._V1_SY1000_CR0,0,766,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQzNzIxOTYzMl5BMl5BanBnXkFtZTcwNjYxNTk1Nw@@._V1_SY1000_CR0,0,766,1000_AL_.jpg",
           "name": "James McAvoy",
           "role": "James More"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTIxMjYwMTA3MV5BMl5BanBnXkFtZTcwNDQxODYzMQ@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTIxMjYwMTA3MV5BMl5BanBnXkFtZTcwNDQxODYzMQ@@._V1_.jpg",
           "name": "Alexander Siddig",
           "role": "Dr. Shadid"
         }
@@ -922,17 +922,17 @@
       "rating": 7.3,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg/1200px-Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg/1200px-Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg",
           "name": "Meryl Streep",
           "role": "Katharine Graham"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/6/66/Tom_Hanks_2014.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/6/66/Tom_Hanks_2014.jpg",
           "name": "Tom Hanks",
           "role": "Ben Bradlee"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Bob_Odenkirk_by_Gage_Skidmore.jpg/800px-Bob_Odenkirk_by_Gage_Skidmore.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Bob_Odenkirk_by_Gage_Skidmore.jpg/800px-Bob_Odenkirk_by_Gage_Skidmore.jpg",
           "name": "Bob Odenkirk",
           "role": "Ben Bagdikian"
         }
@@ -971,17 +971,17 @@
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
           "name": "Alicia Vikander",
           "role": "Lara Croft"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
           "name": "Hannah John-Kamen",
           "role": "Sophie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
           "name": "Walton Goggins",
           "role": "Mathias Vogel"
         }
@@ -1023,17 +1023,17 @@
       "rating": 4.2,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://rollingout.com/wp-content/uploads/2016/06/Storm-Reid-2-640x960.jpg?x47911",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://rollingout.com/wp-content/uploads/2016/06/Storm-Reid-2-640x960.jpg?x47911",
           "name": "Storm Reid",
           "role": "Meg"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTgzODE3MzYxNF5BMl5BanBnXkFtZTYwMzEyNjc4._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTgzODE3MzYxNF5BMl5BanBnXkFtZTYwMzEyNjc4._V1_.jpg",
           "name": "Oprah Winfrey",
           "role": "Mrs. Which"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://pbs.twimg.com/profile_images/839882618682290176/tja4NBb5_400x400.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://pbs.twimg.com/profile_images/839882618682290176/tja4NBb5_400x400.jpg",
           "name": "Reese Witherspoon",
           "role": "Mrs. Whatsit"
         }
@@ -1078,17 +1078,17 @@
       "rating": "-.-",
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BOTI3ODk1MTMyNV5BMl5BanBnXkFtZTcwNDEyNTE2Mg@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BOTI3ODk1MTMyNV5BMl5BanBnXkFtZTcwNDEyNTE2Mg@@._V1_.jpg",
           "name": "Ryan Reynolds",
           "role": "Vanessa"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyODY3MzM2OV5BMl5BanBnXkFtZTgwMDM1OTk5MDE@._V1_SY1000_CR0,0,667,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyODY3MzM2OV5BMl5BanBnXkFtZTgwMDM1OTk5MDE@._V1_SY1000_CR0,0,667,1000_AL_.jpg",
           "name": "Morena Baccarin",
           "role": "Wade / Deadpool"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ1MzYyMjQ0Nl5BMl5BanBnXkFtZTcwMTA0ODkyMg@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ1MzYyMjQ0Nl5BMl5BanBnXkFtZTcwMTA0ODkyMg@@._V1_.jpg",
           "name": "Josh Brolin",
           "role": "Nathan Summers / Cable"
         }
@@ -1127,17 +1127,17 @@
       "rating": 4.4,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyNDQ3NzAxM15BMl5BanBnXkFtZTgwODIwMTQ0NTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyNDQ3NzAxM15BMl5BanBnXkFtZTgwODIwMTQ0NTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
           "name": "Dwayne Johnson",
           "role": "Davis Okoye"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BM2QwNjhkYzMtNjQ5Mi00OTk2LTg4N2ItZjUzYmU4MWViMDkxXkEyXkFqcGdeQXVyODY2NjYzNA@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BM2QwNjhkYzMtNjQ5Mi00OTk2LTg4N2ItZjUzYmU4MWViMDkxXkEyXkFqcGdeQXVyODY2NjYzNA@@._V1_.jpg",
           "name": "Jeffrey Dean Morgan",
           "role": "Agent Russell"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyMTU3MzY3Ml5BMl5BanBnXkFtZTgwMDc0MjQ2NjE@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyMTU3MzY3Ml5BMl5BanBnXkFtZTgwMDc0MjQ2NjE@._V1_.jpg",
           "name": "Will Yun Lee",
           "role": "Agent Park"
         }
@@ -1174,17 +1174,17 @@
       "rating": 4.4,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyNDQ3NzAxM15BMl5BanBnXkFtZTgwODIwMTQ0NTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyNDQ3NzAxM15BMl5BanBnXkFtZTgwODIwMTQ0NTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
           "name": "Dwayne Johnson",
           "role": "Davis Okoye"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BM2QwNjhkYzMtNjQ5Mi00OTk2LTg4N2ItZjUzYmU4MWViMDkxXkEyXkFqcGdeQXVyODY2NjYzNA@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BM2QwNjhkYzMtNjQ5Mi00OTk2LTg4N2ItZjUzYmU4MWViMDkxXkEyXkFqcGdeQXVyODY2NjYzNA@@._V1_.jpg",
           "name": "Jeffrey Dean Morgan",
           "role": "Agent Russell"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyMTU3MzY3Ml5BMl5BanBnXkFtZTgwMDc0MjQ2NjE@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyMTU3MzY3Ml5BMl5BanBnXkFtZTgwMDc0MjQ2NjE@._V1_.jpg",
           "name": "Will Yun Lee",
           "role": "Agent Park"
         }
@@ -1221,17 +1221,17 @@
       "rating": "-.-",
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BOTI3ODk1MTMyNV5BMl5BanBnXkFtZTcwNDEyNTE2Mg@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BOTI3ODk1MTMyNV5BMl5BanBnXkFtZTcwNDEyNTE2Mg@@._V1_.jpg",
           "name": "Ryan Reynolds",
           "role": "Vanessa"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyODY3MzM2OV5BMl5BanBnXkFtZTgwMDM1OTk5MDE@._V1_SY1000_CR0,0,667,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyODY3MzM2OV5BMl5BanBnXkFtZTgwMDM1OTk5MDE@._V1_SY1000_CR0,0,667,1000_AL_.jpg",
           "name": "Morena Baccarin",
           "role": "Wade / Deadpool"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ1MzYyMjQ0Nl5BMl5BanBnXkFtZTcwMTA0ODkyMg@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ1MzYyMjQ0Nl5BMl5BanBnXkFtZTcwMTA0ODkyMg@@._V1_.jpg",
           "name": "Josh Brolin",
           "role": "Nathan Summers / Cable"
         }
@@ -1270,17 +1270,17 @@
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
           "name": "Alicia Vikander",
           "role": "Lara Croft"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
           "name": "Hannah John-Kamen",
           "role": "Sophie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
           "name": "Walton Goggins",
           "role": "Mathias Vogel"
         }
@@ -1322,17 +1322,17 @@
       "rating": 7.3,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg/1200px-Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg/1200px-Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg",
           "name": "Meryl Streep",
           "role": "Katharine Graham"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/6/66/Tom_Hanks_2014.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/6/66/Tom_Hanks_2014.jpg",
           "name": "Tom Hanks",
           "role": "Ben Bradlee"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Bob_Odenkirk_by_Gage_Skidmore.jpg/800px-Bob_Odenkirk_by_Gage_Skidmore.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Bob_Odenkirk_by_Gage_Skidmore.jpg/800px-Bob_Odenkirk_by_Gage_Skidmore.jpg",
           "name": "Bob Odenkirk",
           "role": "Ben Bagdikian"
         }
@@ -1371,17 +1371,17 @@
       "rating": 5.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
           "name": "Alicia Vikander",
           "role": "Danielle Flinders"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQzNzIxOTYzMl5BMl5BanBnXkFtZTcwNjYxNTk1Nw@@._V1_SY1000_CR0,0,766,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQzNzIxOTYzMl5BMl5BanBnXkFtZTcwNjYxNTk1Nw@@._V1_SY1000_CR0,0,766,1000_AL_.jpg",
           "name": "James McAvoy",
           "role": "James More"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTIxMjYwMTA3MV5BMl5BanBnXkFtZTcwNDQxODYzMQ@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTIxMjYwMTA3MV5BMl5BanBnXkFtZTcwNDQxODYzMQ@@._V1_.jpg",
           "name": "Alexander Siddig",
           "role": "Dr. Shadid"
         }
@@ -1419,17 +1419,17 @@
       "rating": 4.4,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjAxOTcxMjg0OV5BMl5BanBnXkFtZTgwMjg1Mjg1NDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjAxOTcxMjg0OV5BMl5BanBnXkFtZTgwMjg1Mjg1NDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Dakota Johnson",
           "role": "Anastasia Steele"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwMDAzMjAyM15BMl5BanBnXkFtZTgwMjAxMzc0MjE@._V1_SY1000_SX786_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwMDAzMjAyM15BMl5BanBnXkFtZTgwMjAxMzc0MjE@._V1_SY1000_SX786_AL_.jpg",
           "name": "Jamie Dornan",
           "role": "Christian Grey"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3NTc2MDMxNV5BMl5BanBnXkFtZTgwNzIyNjIzMDI@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3NTc2MDMxNV5BMl5BanBnXkFtZTgwNzIyNjIzMDI@._V1_.jpg",
           "name": "Eric Johnson",
           "role": "Jack Hyde"
         }
@@ -1467,17 +1467,17 @@
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
           "name": "Chadwick Boseman",
           "role": "T'Challa / Black Panther "
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjExOTY3NzExM15BMl5BanBnXkFtZTgwOTg1OTAzMTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjExOTY3NzExM15BMl5BanBnXkFtZTgwOTg1OTAzMTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
           "name": "Michael B. Jordan",
           "role": "Erik Killmonger"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0NTQ4MDY2Nl5BMl5BanBnXkFtZTgwNDk1MTEyMDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0NTQ4MDY2Nl5BMl5BanBnXkFtZTgwNDk1MTEyMDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Lupita Nyong'o",
           "role": "Nakia"
         }
@@ -1523,17 +1523,17 @@
       "rating": 7.5,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwOTQ0MDUyNF5BMl5BanBnXkFtZTcwNTQ1MzY1Mw@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwOTQ0MDUyNF5BMl5BanBnXkFtZTcwNTQ1MzY1Mw@@._V1_.jpg",
           "name": "Jason Bateman",
           "role": "Max"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5ODcxMDU4NV5BMl5BanBnXkFtZTcwMjAzNjQyNQ@@._V1_SY1000_CR0,0,689,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5ODcxMDU4NV5BMl5BanBnXkFtZTcwMjAzNjQyNQ@@._V1_SY1000_CR0,0,689,1000_AL_.jpg",
           "name": "Rachel McAdams",
           "role": "Annie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNTM5NDM4ODg3MV5BMl5BanBnXkFtZTcwNTA3MTk3Mw@@._V1_SY1000_CR0,0,679,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNTM5NDM4ODg3MV5BMl5BanBnXkFtZTcwNTA3MTk3Mw@@._V1_SY1000_CR0,0,679,1000_AL_.jpg",
           "name": "Kyle Chandler",
           "role": "Brooks"
         }
@@ -1573,17 +1573,17 @@
       "rating": 7.5,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwOTQ0MDUyNF5BMl5BanBnXkFtZTcwNTQ1MzY1Mw@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwOTQ0MDUyNF5BMl5BanBnXkFtZTcwNTQ1MzY1Mw@@._V1_.jpg",
           "name": "Jason Bateman",
           "role": "Max"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5ODcxMDU4NV5BMl5BanBnXkFtZTcwMjAzNjQyNQ@@._V1_SY1000_CR0,0,689,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5ODcxMDU4NV5BMl5BanBnXkFtZTcwMjAzNjQyNQ@@._V1_SY1000_CR0,0,689,1000_AL_.jpg",
           "name": "Rachel McAdams",
           "role": "Annie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNTM5NDM4ODg3MV5BMl5BanBnXkFtZTcwNTA3MTk3Mw@@._V1_SY1000_CR0,0,679,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNTM5NDM4ODg3MV5BMl5BanBnXkFtZTcwNTA3MTk3Mw@@._V1_SY1000_CR0,0,679,1000_AL_.jpg",
           "name": "Kyle Chandler",
           "role": "Brooks"
         }
@@ -1623,17 +1623,17 @@
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
           "name": "Chadwick Boseman",
           "role": "T'Challa / Black Panther "
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjExOTY3NzExM15BMl5BanBnXkFtZTgwOTg1OTAzMTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjExOTY3NzExM15BMl5BanBnXkFtZTgwOTg1OTAzMTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
           "name": "Michael B. Jordan",
           "role": "Erik Killmonger"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0NTQ4MDY2Nl5BMl5BanBnXkFtZTgwNDk1MTEyMDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0NTQ4MDY2Nl5BMl5BanBnXkFtZTgwNDk1MTEyMDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Lupita Nyong'o",
           "role": "Nakia"
         }
@@ -1679,17 +1679,17 @@
       "rating": 4.4,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjAxOTcxMjg0OV5BMl5BanBnXkFtZTgwMjg1Mjg1NDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjAxOTcxMjg0OV5BMl5BanBnXkFtZTgwMjg1Mjg1NDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Dakota Johnson",
           "role": "Anastasia Steele"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwMDAzMjAyM15BMl5BanBnXkFtZTgwMjAxMzc0MjE@._V1_SY1000_SX786_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwMDAzMjAyM15BMl5BanBnXkFtZTgwMjAxMzc0MjE@._V1_SY1000_SX786_AL_.jpg",
           "name": "Jamie Dornan",
           "role": "Christian Grey"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3NTc2MDMxNV5BMl5BanBnXkFtZTgwNzIyNjIzMDI@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3NTc2MDMxNV5BMl5BanBnXkFtZTgwNzIyNjIzMDI@._V1_.jpg",
           "name": "Eric Johnson",
           "role": "Jack Hyde"
         }
@@ -1727,17 +1727,17 @@
       "rating": 5.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
           "name": "Alicia Vikander",
           "role": "Danielle Flinders"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQzNzIxOTYzMl5BMl5BanBnXkFtZTcwNjYxNTk1Nw@@._V1_SY1000_CR0,0,766,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQzNzIxOTYzMl5BMl5BanBnXkFtZTcwNjYxNTk1Nw@@._V1_SY1000_CR0,0,766,1000_AL_.jpg",
           "name": "James McAvoy",
           "role": "James More"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTIxMjYwMTA3MV5BMl5BanBnXkFtZTcwNDQxODYzMQ@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTIxMjYwMTA3MV5BMl5BanBnXkFtZTcwNDQxODYzMQ@@._V1_.jpg",
           "name": "Alexander Siddig",
           "role": "Dr. Shadid"
         }
@@ -1775,17 +1775,17 @@
       "rating": 7.3,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg/1200px-Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg/1200px-Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg",
           "name": "Meryl Streep",
           "role": "Katharine Graham"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/6/66/Tom_Hanks_2014.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/6/66/Tom_Hanks_2014.jpg",
           "name": "Tom Hanks",
           "role": "Ben Bradlee"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Bob_Odenkirk_by_Gage_Skidmore.jpg/800px-Bob_Odenkirk_by_Gage_Skidmore.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Bob_Odenkirk_by_Gage_Skidmore.jpg/800px-Bob_Odenkirk_by_Gage_Skidmore.jpg",
           "name": "Bob Odenkirk",
           "role": "Ben Bagdikian"
         }
@@ -1824,17 +1824,17 @@
       "rating": 7.3,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg/1200px-Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg/1200px-Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg",
           "name": "Meryl Streep",
           "role": "Katharine Graham"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/6/66/Tom_Hanks_2014.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/6/66/Tom_Hanks_2014.jpg",
           "name": "Tom Hanks",
           "role": "Ben Bradlee"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Bob_Odenkirk_by_Gage_Skidmore.jpg/800px-Bob_Odenkirk_by_Gage_Skidmore.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Bob_Odenkirk_by_Gage_Skidmore.jpg/800px-Bob_Odenkirk_by_Gage_Skidmore.jpg",
           "name": "Bob Odenkirk",
           "role": "Ben Bagdikian"
         }
@@ -1873,17 +1873,17 @@
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
           "name": "Alicia Vikander",
           "role": "Lara Croft"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
           "name": "Hannah John-Kamen",
           "role": "Sophie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
           "name": "Walton Goggins",
           "role": "Mathias Vogel"
         }
@@ -1925,17 +1925,17 @@
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
           "name": "Alicia Vikander",
           "role": "Lara Croft"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
           "name": "Hannah John-Kamen",
           "role": "Sophie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
           "name": "Walton Goggins",
           "role": "Mathias Vogel"
         }
@@ -1977,17 +1977,17 @@
       "rating": 4.2,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://rollingout.com/wp-content/uploads/2016/06/Storm-Reid-2-640x960.jpg?x47911",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://rollingout.com/wp-content/uploads/2016/06/Storm-Reid-2-640x960.jpg?x47911",
           "name": "Storm Reid",
           "role": "Meg"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTgzODE3MzYxNF5BMl5BanBnXkFtZTYwMzEyNjc4._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTgzODE3MzYxNF5BMl5BanBnXkFtZTYwMzEyNjc4._V1_.jpg",
           "name": "Oprah Winfrey",
           "role": "Mrs. Which"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://pbs.twimg.com/profile_images/839882618682290176/tja4NBb5_400x400.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://pbs.twimg.com/profile_images/839882618682290176/tja4NBb5_400x400.jpg",
           "name": "Reese Witherspoon",
           "role": "Mrs. Whatsit"
         }
@@ -2032,17 +2032,17 @@
       "rating": 4.2,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://rollingout.com/wp-content/uploads/2016/06/Storm-Reid-2-640x960.jpg?x47911",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://rollingout.com/wp-content/uploads/2016/06/Storm-Reid-2-640x960.jpg?x47911",
           "name": "Storm Reid",
           "role": "Meg"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTgzODE3MzYxNF5BMl5BanBnXkFtZTYwMzEyNjc4._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTgzODE3MzYxNF5BMl5BanBnXkFtZTYwMzEyNjc4._V1_.jpg",
           "name": "Oprah Winfrey",
           "role": "Mrs. Which"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://pbs.twimg.com/profile_images/839882618682290176/tja4NBb5_400x400.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://pbs.twimg.com/profile_images/839882618682290176/tja4NBb5_400x400.jpg",
           "name": "Reese Witherspoon",
           "role": "Mrs. Whatsit"
         }
@@ -2087,17 +2087,17 @@
       "rating": "-.-",
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BOTI3ODk1MTMyNV5BMl5BanBnXkFtZTcwNDEyNTE2Mg@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BOTI3ODk1MTMyNV5BMl5BanBnXkFtZTcwNDEyNTE2Mg@@._V1_.jpg",
           "name": "Ryan Reynolds",
           "role": "Vanessa"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyODY3MzM2OV5BMl5BanBnXkFtZTgwMDM1OTk5MDE@._V1_SY1000_CR0,0,667,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyODY3MzM2OV5BMl5BanBnXkFtZTgwMDM1OTk5MDE@._V1_SY1000_CR0,0,667,1000_AL_.jpg",
           "name": "Morena Baccarin",
           "role": "Wade / Deadpool"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ1MzYyMjQ0Nl5BMl5BanBnXkFtZTcwMTA0ODkyMg@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ1MzYyMjQ0Nl5BMl5BanBnXkFtZTcwMTA0ODkyMg@@._V1_.jpg",
           "name": "Josh Brolin",
           "role": "Nathan Summers / Cable"
         }
@@ -2136,17 +2136,17 @@
       "rating": "-.-",
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BOTI3ODk1MTMyNV5BMl5BanBnXkFtZTcwNDEyNTE2Mg@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BOTI3ODk1MTMyNV5BMl5BanBnXkFtZTcwNDEyNTE2Mg@@._V1_.jpg",
           "name": "Ryan Reynolds",
           "role": "Vanessa"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyODY3MzM2OV5BMl5BanBnXkFtZTgwMDM1OTk5MDE@._V1_SY1000_CR0,0,667,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyODY3MzM2OV5BMl5BanBnXkFtZTgwMDM1OTk5MDE@._V1_SY1000_CR0,0,667,1000_AL_.jpg",
           "name": "Morena Baccarin",
           "role": "Wade / Deadpool"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ1MzYyMjQ0Nl5BMl5BanBnXkFtZTcwMTA0ODkyMg@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ1MzYyMjQ0Nl5BMl5BanBnXkFtZTcwMTA0ODkyMg@@._V1_.jpg",
           "name": "Josh Brolin",
           "role": "Nathan Summers / Cable"
         }
@@ -2185,17 +2185,17 @@
       "rating": 4.4,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyNDQ3NzAxM15BMl5BanBnXkFtZTgwODIwMTQ0NTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyNDQ3NzAxM15BMl5BanBnXkFtZTgwODIwMTQ0NTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
           "name": "Dwayne Johnson",
           "role": "Davis Okoye"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BM2QwNjhkYzMtNjQ5Mi00OTk2LTg4N2ItZjUzYmU4MWViMDkxXkEyXkFqcGdeQXVyODY2NjYzNA@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BM2QwNjhkYzMtNjQ5Mi00OTk2LTg4N2ItZjUzYmU4MWViMDkxXkEyXkFqcGdeQXVyODY2NjYzNA@@._V1_.jpg",
           "name": "Jeffrey Dean Morgan",
           "role": "Agent Russell"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyMTU3MzY3Ml5BMl5BanBnXkFtZTgwMDc0MjQ2NjE@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyMTU3MzY3Ml5BMl5BanBnXkFtZTgwMDc0MjQ2NjE@._V1_.jpg",
           "name": "Will Yun Lee",
           "role": "Agent Park"
         }
@@ -2232,17 +2232,17 @@
       "rating": 4.4,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyNDQ3NzAxM15BMl5BanBnXkFtZTgwODIwMTQ0NTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyNDQ3NzAxM15BMl5BanBnXkFtZTgwODIwMTQ0NTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
           "name": "Dwayne Johnson",
           "role": "Davis Okoye"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BM2QwNjhkYzMtNjQ5Mi00OTk2LTg4N2ItZjUzYmU4MWViMDkxXkEyXkFqcGdeQXVyODY2NjYzNA@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BM2QwNjhkYzMtNjQ5Mi00OTk2LTg4N2ItZjUzYmU4MWViMDkxXkEyXkFqcGdeQXVyODY2NjYzNA@@._V1_.jpg",
           "name": "Jeffrey Dean Morgan",
           "role": "Agent Russell"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyMTU3MzY3Ml5BMl5BanBnXkFtZTgwMDc0MjQ2NjE@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyMTU3MzY3Ml5BMl5BanBnXkFtZTgwMDc0MjQ2NjE@._V1_.jpg",
           "name": "Will Yun Lee",
           "role": "Agent Park"
         }
@@ -2279,17 +2279,17 @@
       "rating": 6.7,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BOTU3NDE5MDQ4MV5BMl5BanBnXkFtZTgwMzE5ODQ3MDI@._V1_SY1000_CR0,0,626,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BOTU3NDE5MDQ4MV5BMl5BanBnXkFtZTgwMzE5ODQ3MDI@._V1_SY1000_CR0,0,626,1000_AL_.jpg",
           "name": "Jennifer Lawrence",
           "role": "Dominika Egorova"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTA0ODI1ODk4NzdeQTJeQWpwZ15BbWU3MDkwNjkzOTY@._V1._SX214_SY317_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTA0ODI1ODk4NzdeQTJeQWpwZ15BbWU3MDkwNjkzOTY@._V1._SX214_SY317_.jpg",
           "name": "Joel Edgerton",
           "role": "Nate Nash"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjMyNTQ0MDgwOF5BMl5BanBnXkFtZTcwOTUxNzA3OA@@._V1_SY1000_CR0,0,753,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjMyNTQ0MDgwOF5BMl5BanBnXkFtZTcwOTUxNzA3OA@@._V1_SY1000_CR0,0,753,1000_AL_.jpg",
           "name": "Matthias Schoenaerts",
           "role": "Vanya Egorov"
         }
@@ -2334,17 +2334,17 @@
       "rating": 6.7,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BOTU3NDE5MDQ4MV5BMl5BanBnXkFtZTgwMzE5ODQ3MDI@._V1_SY1000_CR0,0,626,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BOTU3NDE5MDQ4MV5BMl5BanBnXkFtZTgwMzE5ODQ3MDI@._V1_SY1000_CR0,0,626,1000_AL_.jpg",
           "name": "Jennifer Lawrence",
           "role": "Dominika Egorova"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTA0ODI1ODk4NzdeQTJeQWpwZ15BbWU3MDkwNjkzOTY@._V1._SX214_SY317_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTA0ODI1ODk4NzdeQTJeQWpwZ15BbWU3MDkwNjkzOTY@._V1._SX214_SY317_.jpg",
           "name": "Joel Edgerton",
           "role": "Nate Nash"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjMyNTQ0MDgwOF5BMl5BanBnXkFtZTcwOTUxNzA3OA@@._V1_SY1000_CR0,0,753,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjMyNTQ0MDgwOF5BMl5BanBnXkFtZTcwOTUxNzA3OA@@._V1_SY1000_CR0,0,753,1000_AL_.jpg",
           "name": "Matthias Schoenaerts",
           "role": "Vanya Egorov"
         }
@@ -2389,17 +2389,17 @@
       "rating": 4.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
           "name": "Toby Kebbell",
           "role": "Will"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
           "name": "Maggie Grace",
           "role": "Casey"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Ryan Kwanten",
           "role": "Breeze"
         }
@@ -2439,17 +2439,17 @@
       "rating": 4.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
           "name": "Toby Kebbell",
           "role": "Will"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
           "name": "Maggie Grace",
           "role": "Casey"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Ryan Kwanten",
           "role": "Breeze"
         }
@@ -2489,17 +2489,17 @@
       "rating": 4.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
           "name": "Toby Kebbell",
           "role": "Will"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
           "name": "Maggie Grace",
           "role": "Casey"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Ryan Kwanten",
           "role": "Breeze"
         }
@@ -2539,17 +2539,17 @@
       "rating": 4.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
           "name": "Toby Kebbell",
           "role": "Will"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
           "name": "Maggie Grace",
           "role": "Casey"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Ryan Kwanten",
           "role": "Breeze"
         }
@@ -2589,17 +2589,17 @@
       "rating": "-.-",
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BOTI3ODk1MTMyNV5BMl5BanBnXkFtZTcwNDEyNTE2Mg@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BOTI3ODk1MTMyNV5BMl5BanBnXkFtZTcwNDEyNTE2Mg@@._V1_.jpg",
           "name": "Ryan Reynolds",
           "role": "Vanessa"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyODY3MzM2OV5BMl5BanBnXkFtZTgwMDM1OTk5MDE@._V1_SY1000_CR0,0,667,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyODY3MzM2OV5BMl5BanBnXkFtZTgwMDM1OTk5MDE@._V1_SY1000_CR0,0,667,1000_AL_.jpg",
           "name": "Morena Baccarin",
           "role": "Wade / Deadpool"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ1MzYyMjQ0Nl5BMl5BanBnXkFtZTcwMTA0ODkyMg@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ1MzYyMjQ0Nl5BMl5BanBnXkFtZTcwMTA0ODkyMg@@._V1_.jpg",
           "name": "Josh Brolin",
           "role": "Nathan Summers / Cable"
         }
@@ -2638,17 +2638,17 @@
       "rating": 4.2,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://rollingout.com/wp-content/uploads/2016/06/Storm-Reid-2-640x960.jpg?x47911",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://rollingout.com/wp-content/uploads/2016/06/Storm-Reid-2-640x960.jpg?x47911",
           "name": "Storm Reid",
           "role": "Meg"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTgzODE3MzYxNF5BMl5BanBnXkFtZTYwMzEyNjc4._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTgzODE3MzYxNF5BMl5BanBnXkFtZTYwMzEyNjc4._V1_.jpg",
           "name": "Oprah Winfrey",
           "role": "Mrs. Which"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://pbs.twimg.com/profile_images/839882618682290176/tja4NBb5_400x400.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://pbs.twimg.com/profile_images/839882618682290176/tja4NBb5_400x400.jpg",
           "name": "Reese Witherspoon",
           "role": "Mrs. Whatsit"
         }
@@ -2693,17 +2693,17 @@
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
           "name": "Alicia Vikander",
           "role": "Lara Croft"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
           "name": "Hannah John-Kamen",
           "role": "Sophie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
           "name": "Walton Goggins",
           "role": "Mathias Vogel"
         }
@@ -2745,17 +2745,17 @@
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
           "name": "Alicia Vikander",
           "role": "Lara Croft"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
           "name": "Hannah John-Kamen",
           "role": "Sophie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
           "name": "Walton Goggins",
           "role": "Mathias Vogel"
         }
@@ -2797,17 +2797,17 @@
       "rating": 7.3,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg/1200px-Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg/1200px-Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg",
           "name": "Meryl Streep",
           "role": "Katharine Graham"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/6/66/Tom_Hanks_2014.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/6/66/Tom_Hanks_2014.jpg",
           "name": "Tom Hanks",
           "role": "Ben Bradlee"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Bob_Odenkirk_by_Gage_Skidmore.jpg/800px-Bob_Odenkirk_by_Gage_Skidmore.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Bob_Odenkirk_by_Gage_Skidmore.jpg/800px-Bob_Odenkirk_by_Gage_Skidmore.jpg",
           "name": "Bob Odenkirk",
           "role": "Ben Bagdikian"
         }
@@ -2846,17 +2846,17 @@
       "rating": 7.3,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg/1200px-Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg/1200px-Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg",
           "name": "Meryl Streep",
           "role": "Katharine Graham"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/6/66/Tom_Hanks_2014.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/6/66/Tom_Hanks_2014.jpg",
           "name": "Tom Hanks",
           "role": "Ben Bradlee"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Bob_Odenkirk_by_Gage_Skidmore.jpg/800px-Bob_Odenkirk_by_Gage_Skidmore.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Bob_Odenkirk_by_Gage_Skidmore.jpg/800px-Bob_Odenkirk_by_Gage_Skidmore.jpg",
           "name": "Bob Odenkirk",
           "role": "Ben Bagdikian"
         }
@@ -2895,17 +2895,17 @@
       "rating": 4.4,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjAxOTcxMjg0OV5BMl5BanBnXkFtZTgwMjg1Mjg1NDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjAxOTcxMjg0OV5BMl5BanBnXkFtZTgwMjg1Mjg1NDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Dakota Johnson",
           "role": "Anastasia Steele"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwMDAzMjAyM15BMl5BanBnXkFtZTgwMjAxMzc0MjE@._V1_SY1000_SX786_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwMDAzMjAyM15BMl5BanBnXkFtZTgwMjAxMzc0MjE@._V1_SY1000_SX786_AL_.jpg",
           "name": "Jamie Dornan",
           "role": "Christian Grey"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3NTc2MDMxNV5BMl5BanBnXkFtZTgwNzIyNjIzMDI@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3NTc2MDMxNV5BMl5BanBnXkFtZTgwNzIyNjIzMDI@._V1_.jpg",
           "name": "Eric Johnson",
           "role": "Jack Hyde"
         }
@@ -2943,17 +2943,17 @@
       "rating": 4.4,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjAxOTcxMjg0OV5BMl5BanBnXkFtZTgwMjg1Mjg1NDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjAxOTcxMjg0OV5BMl5BanBnXkFtZTgwMjg1Mjg1NDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Dakota Johnson",
           "role": "Anastasia Steele"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwMDAzMjAyM15BMl5BanBnXkFtZTgwMjAxMzc0MjE@._V1_SY1000_SX786_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwMDAzMjAyM15BMl5BanBnXkFtZTgwMjAxMzc0MjE@._V1_SY1000_SX786_AL_.jpg",
           "name": "Jamie Dornan",
           "role": "Christian Grey"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3NTc2MDMxNV5BMl5BanBnXkFtZTgwNzIyNjIzMDI@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3NTc2MDMxNV5BMl5BanBnXkFtZTgwNzIyNjIzMDI@._V1_.jpg",
           "name": "Eric Johnson",
           "role": "Jack Hyde"
         }
@@ -2991,17 +2991,17 @@
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
           "name": "Chadwick Boseman",
           "role": "T'Challa / Black Panther "
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjExOTY3NzExM15BMl5BanBnXkFtZTgwOTg1OTAzMTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjExOTY3NzExM15BMl5BanBnXkFtZTgwOTg1OTAzMTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
           "name": "Michael B. Jordan",
           "role": "Erik Killmonger"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0NTQ4MDY2Nl5BMl5BanBnXkFtZTgwNDk1MTEyMDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0NTQ4MDY2Nl5BMl5BanBnXkFtZTgwNDk1MTEyMDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Lupita Nyong'o",
           "role": "Nakia"
         }
@@ -3047,17 +3047,17 @@
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
           "name": "Chadwick Boseman",
           "role": "T'Challa / Black Panther "
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjExOTY3NzExM15BMl5BanBnXkFtZTgwOTg1OTAzMTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjExOTY3NzExM15BMl5BanBnXkFtZTgwOTg1OTAzMTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
           "name": "Michael B. Jordan",
           "role": "Erik Killmonger"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0NTQ4MDY2Nl5BMl5BanBnXkFtZTgwNDk1MTEyMDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0NTQ4MDY2Nl5BMl5BanBnXkFtZTgwNDk1MTEyMDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Lupita Nyong'o",
           "role": "Nakia"
         }
@@ -3103,17 +3103,17 @@
       "rating": 7.5,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwOTQ0MDUyNF5BMl5BanBnXkFtZTcwNTQ1MzY1Mw@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwOTQ0MDUyNF5BMl5BanBnXkFtZTcwNTQ1MzY1Mw@@._V1_.jpg",
           "name": "Jason Bateman",
           "role": "Max"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5ODcxMDU4NV5BMl5BanBnXkFtZTcwMjAzNjQyNQ@@._V1_SY1000_CR0,0,689,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5ODcxMDU4NV5BMl5BanBnXkFtZTcwMjAzNjQyNQ@@._V1_SY1000_CR0,0,689,1000_AL_.jpg",
           "name": "Rachel McAdams",
           "role": "Annie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNTM5NDM4ODg3MV5BMl5BanBnXkFtZTcwNTA3MTk3Mw@@._V1_SY1000_CR0,0,679,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNTM5NDM4ODg3MV5BMl5BanBnXkFtZTcwNTA3MTk3Mw@@._V1_SY1000_CR0,0,679,1000_AL_.jpg",
           "name": "Kyle Chandler",
           "role": "Brooks"
         }
@@ -3153,17 +3153,17 @@
       "rating": 7.5,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwOTQ0MDUyNF5BMl5BanBnXkFtZTcwNTQ1MzY1Mw@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwOTQ0MDUyNF5BMl5BanBnXkFtZTcwNTQ1MzY1Mw@@._V1_.jpg",
           "name": "Jason Bateman",
           "role": "Max"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5ODcxMDU4NV5BMl5BanBnXkFtZTcwMjAzNjQyNQ@@._V1_SY1000_CR0,0,689,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5ODcxMDU4NV5BMl5BanBnXkFtZTcwMjAzNjQyNQ@@._V1_SY1000_CR0,0,689,1000_AL_.jpg",
           "name": "Rachel McAdams",
           "role": "Annie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNTM5NDM4ODg3MV5BMl5BanBnXkFtZTcwNTA3MTk3Mw@@._V1_SY1000_CR0,0,679,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNTM5NDM4ODg3MV5BMl5BanBnXkFtZTcwNTA3MTk3Mw@@._V1_SY1000_CR0,0,679,1000_AL_.jpg",
           "name": "Kyle Chandler",
           "role": "Brooks"
         }
@@ -3203,17 +3203,17 @@
       "rating": 7.5,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwOTQ0MDUyNF5BMl5BanBnXkFtZTcwNTQ1MzY1Mw@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwOTQ0MDUyNF5BMl5BanBnXkFtZTcwNTQ1MzY1Mw@@._V1_.jpg",
           "name": "Jason Bateman",
           "role": "Max"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5ODcxMDU4NV5BMl5BanBnXkFtZTcwMjAzNjQyNQ@@._V1_SY1000_CR0,0,689,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5ODcxMDU4NV5BMl5BanBnXkFtZTcwMjAzNjQyNQ@@._V1_SY1000_CR0,0,689,1000_AL_.jpg",
           "name": "Rachel McAdams",
           "role": "Annie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNTM5NDM4ODg3MV5BMl5BanBnXkFtZTcwNTA3MTk3Mw@@._V1_SY1000_CR0,0,679,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNTM5NDM4ODg3MV5BMl5BanBnXkFtZTcwNTA3MTk3Mw@@._V1_SY1000_CR0,0,679,1000_AL_.jpg",
           "name": "Kyle Chandler",
           "role": "Brooks"
         }
@@ -3253,17 +3253,17 @@
       "rating": 5.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
           "name": "Alicia Vikander",
           "role": "Danielle Flinders"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQzNzIxOTYzMl5BMl5BanBnXkFtZTcwNjYxNTk1Nw@@._V1_SY1000_CR0,0,766,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQzNzIxOTYzMl5BMl5BanBnXkFtZTcwNjYxNTk1Nw@@._V1_SY1000_CR0,0,766,1000_AL_.jpg",
           "name": "James McAvoy",
           "role": "James More"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTIxMjYwMTA3MV5BMl5BanBnXkFtZTcwNDQxODYzMQ@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTIxMjYwMTA3MV5BMl5BanBnXkFtZTcwNDQxODYzMQ@@._V1_.jpg",
           "name": "Alexander Siddig",
           "role": "Dr. Shadid"
         }
@@ -3301,17 +3301,17 @@
       "rating": 5.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
           "name": "Alicia Vikander",
           "role": "Danielle Flinders"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQzNzIxOTYzMl5BMl5BanBnXkFtZTcwNjYxNTk1Nw@@._V1_SY1000_CR0,0,766,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQzNzIxOTYzMl5BMl5BanBnXkFtZTcwNjYxNTk1Nw@@._V1_SY1000_CR0,0,766,1000_AL_.jpg",
           "name": "James McAvoy",
           "role": "James More"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTIxMjYwMTA3MV5BMl5BanBnXkFtZTcwNDQxODYzMQ@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTIxMjYwMTA3MV5BMl5BanBnXkFtZTcwNDQxODYzMQ@@._V1_.jpg",
           "name": "Alexander Siddig",
           "role": "Dr. Shadid"
         }
@@ -3349,17 +3349,17 @@
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
           "name": "Alicia Vikander",
           "role": "Lara Croft"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
           "name": "Hannah John-Kamen",
           "role": "Sophie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
           "name": "Walton Goggins",
           "role": "Mathias Vogel"
         }
@@ -3401,17 +3401,17 @@
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
           "name": "Alicia Vikander",
           "role": "Lara Croft"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
           "name": "Hannah John-Kamen",
           "role": "Sophie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
           "name": "Walton Goggins",
           "role": "Mathias Vogel"
         }
@@ -3453,17 +3453,17 @@
       "rating": "-.-",
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BOTI3ODk1MTMyNV5BMl5BanBnXkFtZTcwNDEyNTE2Mg@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BOTI3ODk1MTMyNV5BMl5BanBnXkFtZTcwNDEyNTE2Mg@@._V1_.jpg",
           "name": "Ryan Reynolds",
           "role": "Vanessa"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyODY3MzM2OV5BMl5BanBnXkFtZTgwMDM1OTk5MDE@._V1_SY1000_CR0,0,667,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyODY3MzM2OV5BMl5BanBnXkFtZTgwMDM1OTk5MDE@._V1_SY1000_CR0,0,667,1000_AL_.jpg",
           "name": "Morena Baccarin",
           "role": "Wade / Deadpool"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ1MzYyMjQ0Nl5BMl5BanBnXkFtZTcwMTA0ODkyMg@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ1MzYyMjQ0Nl5BMl5BanBnXkFtZTcwMTA0ODkyMg@@._V1_.jpg",
           "name": "Josh Brolin",
           "role": "Nathan Summers / Cable"
         }
@@ -3502,17 +3502,17 @@
       "rating": "-.-",
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BOTI3ODk1MTMyNV5BMl5BanBnXkFtZTcwNDEyNTE2Mg@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BOTI3ODk1MTMyNV5BMl5BanBnXkFtZTcwNDEyNTE2Mg@@._V1_.jpg",
           "name": "Ryan Reynolds",
           "role": "Vanessa"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyODY3MzM2OV5BMl5BanBnXkFtZTgwMDM1OTk5MDE@._V1_SY1000_CR0,0,667,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyODY3MzM2OV5BMl5BanBnXkFtZTgwMDM1OTk5MDE@._V1_SY1000_CR0,0,667,1000_AL_.jpg",
           "name": "Morena Baccarin",
           "role": "Wade / Deadpool"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ1MzYyMjQ0Nl5BMl5BanBnXkFtZTcwMTA0ODkyMg@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ1MzYyMjQ0Nl5BMl5BanBnXkFtZTcwMTA0ODkyMg@@._V1_.jpg",
           "name": "Josh Brolin",
           "role": "Nathan Summers / Cable"
         }
@@ -3551,17 +3551,17 @@
       "rating": 4.2,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://rollingout.com/wp-content/uploads/2016/06/Storm-Reid-2-640x960.jpg?x47911",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://rollingout.com/wp-content/uploads/2016/06/Storm-Reid-2-640x960.jpg?x47911",
           "name": "Storm Reid",
           "role": "Meg"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTgzODE3MzYxNF5BMl5BanBnXkFtZTYwMzEyNjc4._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTgzODE3MzYxNF5BMl5BanBnXkFtZTYwMzEyNjc4._V1_.jpg",
           "name": "Oprah Winfrey",
           "role": "Mrs. Which"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://pbs.twimg.com/profile_images/839882618682290176/tja4NBb5_400x400.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://pbs.twimg.com/profile_images/839882618682290176/tja4NBb5_400x400.jpg",
           "name": "Reese Witherspoon",
           "role": "Mrs. Whatsit"
         }
@@ -3606,17 +3606,17 @@
       "rating": 4.2,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://rollingout.com/wp-content/uploads/2016/06/Storm-Reid-2-640x960.jpg?x47911",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://rollingout.com/wp-content/uploads/2016/06/Storm-Reid-2-640x960.jpg?x47911",
           "name": "Storm Reid",
           "role": "Meg"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTgzODE3MzYxNF5BMl5BanBnXkFtZTYwMzEyNjc4._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTgzODE3MzYxNF5BMl5BanBnXkFtZTYwMzEyNjc4._V1_.jpg",
           "name": "Oprah Winfrey",
           "role": "Mrs. Which"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://pbs.twimg.com/profile_images/839882618682290176/tja4NBb5_400x400.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://pbs.twimg.com/profile_images/839882618682290176/tja4NBb5_400x400.jpg",
           "name": "Reese Witherspoon",
           "role": "Mrs. Whatsit"
         }
@@ -3661,17 +3661,17 @@
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
           "name": "Alicia Vikander",
           "role": "Lara Croft"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
           "name": "Hannah John-Kamen",
           "role": "Sophie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
           "name": "Walton Goggins",
           "role": "Mathias Vogel"
         }
@@ -3713,17 +3713,17 @@
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
           "name": "Alicia Vikander",
           "role": "Lara Croft"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
           "name": "Hannah John-Kamen",
           "role": "Sophie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
           "name": "Walton Goggins",
           "role": "Mathias Vogel"
         }
@@ -3765,17 +3765,17 @@
       "rating": 5.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
           "name": "Alicia Vikander",
           "role": "Danielle Flinders"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQzNzIxOTYzMl5BMl5BanBnXkFtZTcwNjYxNTk1Nw@@._V1_SY1000_CR0,0,766,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQzNzIxOTYzMl5BMl5BanBnXkFtZTcwNjYxNTk1Nw@@._V1_SY1000_CR0,0,766,1000_AL_.jpg",
           "name": "James McAvoy",
           "role": "James More"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTIxMjYwMTA3MV5BMl5BanBnXkFtZTcwNDQxODYzMQ@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTIxMjYwMTA3MV5BMl5BanBnXkFtZTcwNDQxODYzMQ@@._V1_.jpg",
           "name": "Alexander Siddig",
           "role": "Dr. Shadid"
         }
@@ -3813,17 +3813,17 @@
       "rating": 4.4,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjAxOTcxMjg0OV5BMl5BanBnXkFtZTgwMjg1Mjg1NDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjAxOTcxMjg0OV5BMl5BanBnXkFtZTgwMjg1Mjg1NDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Dakota Johnson",
           "role": "Anastasia Steele"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwMDAzMjAyM15BMl5BanBnXkFtZTgwMjAxMzc0MjE@._V1_SY1000_SX786_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwMDAzMjAyM15BMl5BanBnXkFtZTgwMjAxMzc0MjE@._V1_SY1000_SX786_AL_.jpg",
           "name": "Jamie Dornan",
           "role": "Christian Grey"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3NTc2MDMxNV5BMl5BanBnXkFtZTgwNzIyNjIzMDI@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3NTc2MDMxNV5BMl5BanBnXkFtZTgwNzIyNjIzMDI@._V1_.jpg",
           "name": "Eric Johnson",
           "role": "Jack Hyde"
         }
@@ -3861,17 +3861,17 @@
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
           "name": "Chadwick Boseman",
           "role": "T'Challa / Black Panther "
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjExOTY3NzExM15BMl5BanBnXkFtZTgwOTg1OTAzMTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjExOTY3NzExM15BMl5BanBnXkFtZTgwOTg1OTAzMTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
           "name": "Michael B. Jordan",
           "role": "Erik Killmonger"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0NTQ4MDY2Nl5BMl5BanBnXkFtZTgwNDk1MTEyMDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0NTQ4MDY2Nl5BMl5BanBnXkFtZTgwNDk1MTEyMDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Lupita Nyong'o",
           "role": "Nakia"
         }
@@ -3917,17 +3917,17 @@
       "rating": 7.5,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwOTQ0MDUyNF5BMl5BanBnXkFtZTcwNTQ1MzY1Mw@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwOTQ0MDUyNF5BMl5BanBnXkFtZTcwNTQ1MzY1Mw@@._V1_.jpg",
           "name": "Jason Bateman",
           "role": "Max"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5ODcxMDU4NV5BMl5BanBnXkFtZTcwMjAzNjQyNQ@@._V1_SY1000_CR0,0,689,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5ODcxMDU4NV5BMl5BanBnXkFtZTcwMjAzNjQyNQ@@._V1_SY1000_CR0,0,689,1000_AL_.jpg",
           "name": "Rachel McAdams",
           "role": "Annie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNTM5NDM4ODg3MV5BMl5BanBnXkFtZTcwNTA3MTk3Mw@@._V1_SY1000_CR0,0,679,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNTM5NDM4ODg3MV5BMl5BanBnXkFtZTcwNTA3MTk3Mw@@._V1_SY1000_CR0,0,679,1000_AL_.jpg",
           "name": "Kyle Chandler",
           "role": "Brooks"
         }
@@ -3967,17 +3967,17 @@
       "rating": 4.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
           "name": "Toby Kebbell",
           "role": "Will"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
           "name": "Maggie Grace",
           "role": "Casey"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Ryan Kwanten",
           "role": "Breeze"
         }
@@ -4017,17 +4017,17 @@
       "rating": 6.7,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BOTU3NDE5MDQ4MV5BMl5BanBnXkFtZTgwMzE5ODQ3MDI@._V1_SY1000_CR0,0,626,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BOTU3NDE5MDQ4MV5BMl5BanBnXkFtZTgwMzE5ODQ3MDI@._V1_SY1000_CR0,0,626,1000_AL_.jpg",
           "name": "Jennifer Lawrence",
           "role": "Dominika Egorova"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMTA0ODI1ODk4NzdeQTJeQWpwZ15BbWU3MDkwNjkzOTY@._V1._SX214_SY317_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTA0ODI1ODk4NzdeQTJeQWpwZ15BbWU3MDkwNjkzOTY@._V1._SX214_SY317_.jpg",
           "name": "Joel Edgerton",
           "role": "Nate Nash"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BMjMyNTQ0MDgwOF5BMl5BanBnXkFtZTcwOTUxNzA3OA@@._V1_SY1000_CR0,0,753,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjMyNTQ0MDgwOF5BMl5BanBnXkFtZTcwOTUxNzA3OA@@._V1_SY1000_CR0,0,753,1000_AL_.jpg",
           "name": "Matthias Schoenaerts",
           "role": "Vanya Egorov"
         }
@@ -4072,17 +4072,17 @@
       "rating": 4.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
           "name": "Toby Kebbell",
           "role": "Will"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
           "name": "Maggie Grace",
           "role": "Casey"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
           "name": "Ryan Kwanten",
           "role": "Breeze"
         }
