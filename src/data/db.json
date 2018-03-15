@@ -4115,56 +4115,6 @@
         "day": 1
       },
       "id": 80
-    },
-    {
-      "name": "The Hurricane Heist",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BMzg3Y2MyNjgtMzk4ZS00OTU3LWEwZmMtN2Y0NTdlZjU0NGFiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,675,1000_AL_.jpg",
-      "rating": 4.8,
-      "cast": [
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
-          "name": "Toby Kebbell",
-          "role": "Will"
-        },
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
-          "name": "Maggie Grace",
-          "role": "Casey"
-        },
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
-          "name": "Ryan Kwanten",
-          "role": "Breeze"
-        }
-      ],
-      "description": "Thieves attempt a massive heist against the U.S. Treasury as a Category 5 hurricane approaches one of its Mint facilities.",
-      "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_350/https://images-na.ssl-images-amazon.com/images/M/MV5BMjA1MjcwNTE2N15BMl5BanBnXkFtZTgwOTk5NTM2NDM@._V1_SY1000_SX1500_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_350/https://images-na.ssl-images-amazon.com/images/M/MV5BNmQ0NDdkZjctMDAxNS00ZGRkLWI4MGMtZDJmYjRhNjI0ZGFjXkEyXkFqcGdeQXVyNTc5OTMwOTQ@._V1_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_350/https://images-na.ssl-images-amazon.com/images/M/MV5BNzVlNzNhOWQtYWVlZS00MmFlLTlhOWMtNTY5MWJiMjk4NGQ0XkEyXkFqcGdeQXVyNTc5OTMwOTQ@._V1_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_350/https://images-na.ssl-images-amazon.com/images/M/MV5BZWEwMWI2NDUtZmM0YS00MWMzLTk3ZTAtZTA0YWIwOWM0YzQ3XkEyXkFqcGdeQXVyMTU2MDA4NQ@@._V1_.jpg"
-      ],
-      "trailer": "http://www.imdb.com/videoplayer/vi3874076697",
-      "genre": "Action, Thriller",
-      "Schedule": [
-        "13-03-2018 10:00",
-        "13-03-2018 18:35",
-        "13-03-2018 20:20",
-        "12-03-2018 22:35"
-      ],
-      "format": ["2D"],
-      "technology": ["Cinetech+"],
-      "duration": {
-        "hour": 1,
-        "minute": 40
-      },
-      "label": "",
-      "startDate": {
-        "year": 2018,
-        "month": 3,
-        "day": 1
-      },
-      "id": 81
     }
   ]
 }

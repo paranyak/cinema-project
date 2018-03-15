@@ -1,33 +1,26 @@
-.MovieImage{
+@import "SiteColors.less";
+
+.MovieImage {
   width: 100%;
   max-width: 450px;
-}
-
-.MovieImage__main {
-  object-fit: cover; //scale-down: скейлиться картинка відносно розмірів без розширення (пропорції норм)
-  // cover: то пропорції ок, поки це можливо -> тоді object-position не треба
-  //object-position: center;  // відносно контейнеру
-  height: 350px;
-  width: 350px;
-  margin-left: 40px;
-  margin-top: -40px;
-  box-shadow: 10px 21px 94px 6px rgba(0, 0, 1, 1);
-  border-bottom: #fae807 10px solid;
-}
-
-.MovieImage__screenshots{
-  width: 350px;
-  margin: 40px auto 0 auto;
-}
-
-.MovieImage__screen{
-  object-fit: cover;
-  margin-right:5px;
-  height: 100px;
-  width: 160px;
-  opacity: 0.6;
-}
-
-.MovieImage__screen:hover{
- opacity: 1;
+  &__main {
+    margin-left: 40px;
+    margin-top: -40px;
+    box-shadow: 10px 21px 94px 6px rgba(0, 0, 1, 1);
+    border-bottom: @main-yellow 10px solid;
+  }
+  &__screenshots {
+    width: 350px;
+    margin: 40px auto 0 auto;
+  }
+  &__screen {
+    object-fit: cover;
+    margin-right: 5px;
+    height: 100px;
+    width: 160px;
+    opacity: 0.6;
+    &:hover {
+      opacity: 1;
+    }
+  }
 }

@@ -1,5 +1,8 @@
 import React, {Component} from "react";
 import "../styles/Footer.less";
+import block from "../helpers/BEM";
+
+const b = block("Footer");
 
 class Footer extends Component {
     constructor(props) {
@@ -8,7 +11,9 @@ class Footer extends Component {
     }
 
     render() {
-        return <div className={"Footer"}>Footer</div>;
+        return <div className={b()}>
+            Footer
+        </div>;
     }
 }
 

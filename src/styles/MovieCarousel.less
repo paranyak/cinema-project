@@ -1,3 +1,5 @@
+@import "SiteColors.less";
+
 .MovieCarousel {
   display: flex;
   justify-content: space-between;
@@ -8,7 +10,7 @@
     white-space: nowrap;
   }
   &__button {
-    background-color: #FAE807; // #484848
+    background-color: @main-yellow;
     color: transparent;
     width: 60px;
     border: none;
@@ -18,11 +20,11 @@
     height: 50px;
     display: inline-block;
     &_left {
-      background: url("../icons/left.svg") no-repeat left; //left-arrow
+      background: url("../icons/left.svg") no-repeat left;
       background-size: 34px 50px;
     }
     &_right {
-      background: url("../icons/right.svg") no-repeat right;  //right-arrow
+      background: url("../icons/right.svg") no-repeat right;
       background-size: 34px 50px;
     }
   }

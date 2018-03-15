@@ -7,14 +7,14 @@ class MoviePoster extends Component {
     render() {
         const {film} = this.props;
         return (
-            <div className={b()}>
+            <article className={b()}>
                 <img src={film.image} className={b("image")}/>
-                <div className={b("additional-info")}>
-                    <div className={b('name')}>{film.name}</div>
-                    <div className={b('genre')}>{film.genre}</div>
+                <footer className={b("additional-info")}>
+                    <h3 className={b('name')}>{film.name}</h3>
+                    <p className={b('genre')}>{film.genre}</p>
                     <span className={b('rating')}>{film.rating}</span>
-                </div>
-            </div>
+                </footer>
+            </article>
         )
     }
 }

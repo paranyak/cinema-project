@@ -27,7 +27,6 @@ class Layout extends Component {
         fetch('http://localhost:3000/db')
             .then(results => {return results.json()})
             .then(data => {
-              this.setState({movies: data.movies})
               this.props.onSetMovies(data.movies)
             });
     }
@@ -37,7 +36,7 @@ class Layout extends Component {
         return <div className={b()}>
             <Header/>
             <Switch>
-                <Route exact path='/' render={() => <HomeLayout db={movies}/>}/>
+                <Route exact path='/' component={HomeLayout}/>
                 <Route path='/movie/:id' component={MovieLayout}/>
                 <Route path='/schedule' component={ScheduleLayout}/>
             </Switch>

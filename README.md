@@ -1,10 +1,10 @@
 # cinema-project
 
-- [ ] - вантажити картинки з cloudinary
-- [ ] - постери одного формату
+- [x] - вантажити картинки з cloudinary
+- [x] - постери одного формату
 - [ ] - snap scroll
-- [ ] - fetch data
-- [ ] - infinity scroll
+- [x] - fetch data
+- [x] - infinity scroll
 - [ ] - зробити лінію в schedule (+ "Артьомій Горбунов таблиці")
 - [ ] - поправити верстку
 

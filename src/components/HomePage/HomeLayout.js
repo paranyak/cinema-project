@@ -6,14 +6,14 @@ import block from "../../helpers/BEM";
 
 const b = block("HomeLayout");
 
-const HomeLayout = ({db}) => (
+const HomeLayout = () => (
     <div className={b()}>
         <h1 className={b('title')}>Popular</h1>
-        <MovieCarousel label={"popular"} films={db}/>
+        <MovieCarousel label={"popular"}/>
         <h1 className={b('title')}>Soon on the screens</h1>
-        <MovieCarousel label={"soon"} films={db}/>
+        <MovieCarousel label={"soon"}/>
         <h1 className={b('title')}>All movies</h1>
-        <AllMovies films={db}/>
+        <AllMovies/>
     </div>
 
 );

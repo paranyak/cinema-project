@@ -13,16 +13,19 @@ class Feedback extends Component {
     }
     render() {
         const {feedback} = this.props;
+        if(!feedback){
+            return null;
+        }
         console.log(feedback.feedbacks);
         return (
-            <div className={b()}>
+            <section className={b()}>
                 {feedback.feedbacks.map((f, ind)=> <div className={b("item")} key={ind}>
                         <img className={b("img")} src={f.image}/>
                         <p className={b("name")}> {f.name}</p>
                         <p className={b("rating")} > {f.rating}</p>
                         <p className={b("text")} > {f.text}</p>
                     </div>)}
-            </div>
+            </section>
         )
     }
 }

@@ -1,10 +1,14 @@
-.Feedback{
-  color: white;
-  clear: both;
-}
+@import "SiteColors.less";
 
-.Feedback__img{
-  width:80px;
-  height:80px;
-  object-fit: cover;
+.Feedback {
+  color: @white-text;
+  clear: both;
+  &__img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+  &__item {
+    padding: 10px;
+  }
 }
