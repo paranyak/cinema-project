@@ -37,21 +37,21 @@ class Schedule extends Component {
 
         const session = scheduleInterval.splitBy({minutes: 60})
         return (
-            <div className={b()}>
-                <div className={b("header")}>
-                    <div className={b("day-container")}>
+            <section className={b()}>
+                <header className={b("header")}>
+                    <time className={b("day-container")}>
                       <input className={b("day")} type="date" value={date.toFormat('yyyy-MM-dd')} onChange={onDateChange}></input>
-                    </div>
-                    <div className={b("time-string")}>
+                    </time>
+                    <nav className={b("time-string")}>
                         {session.map((time, i) => (
-                            <span className={b("time-item")} key={i}>
+                            <time className={b("time-item")} key={i}>
                                {time.start.toFormat("HH:mm")}
-                            </span>
+                            </time>
                         ))}
-                    </div>
-                </div>
-                <div className={b("film-list")}>
-                    <div className={b("real-time-line")}
+                    </nav>
+                </header>
+                <main className={b("film-list")}>
+                    <time className={b("real-time-line")}
                     style={{
                         left: this.globalScale(
                             Interval.fromDateTimes(
@@ -59,14 +59,14 @@ class Schedule extends Component {
                             ).toDuration().milliseconds
                         ) + "%",
                         display: sessionStart.hasSame(DateTime.local(), 'day') ? 'block' : 'none'
-                    }}></div>
+                    }}></time>
                     {films.map((film, i) => (
-                        <div key={"div-1lev" + i.toString()} className={b("film")}>
+                        <article key={"div-1lev" + i.toString()} className={b("film")}>
                             <span key={i} className={b("film-name")}>{film.name}</span>
-                            <div  style={{'minHeight': film.schedule.length * 10}} key={"div-2lev" + i.toString()} className={b("film-schedule")}>
+                            <section  style={{'minHeight': film.schedule.length * 10}} key={"div-2lev" + i.toString()} className={b("film-schedule")}>
                                 {film.schedule.map((s, i, j) => (
                                   <div key={i}>
-                                      <div className={b("film-schedule-item")}
+                                      <time className={b("film-schedule-item", s.isAfter(DateTime.local()) ? ['after'] : ['before'])}
                                             data-tip={s.toFormat('HH:mm')}
                                             style={{
                                                 top: i * 10,
@@ -75,18 +75,17 @@ class Schedule extends Component {
                                                     Interval.fromDateTimes(
                                                         sessionStart, s.start
                                                     ).toDuration().milliseconds
-                                                ) + "%",
-                                                background: s.isAfter(DateTime.local()) ? '#FAE807' : '#727273'
+                                                ) + "%"
                                             }}
                                       />
                                       <ReactTooltip />
                                   </div>
                                 ))}
-                            </div>
-                        </div>
+                            </section>
+                        </article>
                     ))}
-                </div>
-            </div>
+                </main>
+            </section>
         );
     }
 }

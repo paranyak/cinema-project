@@ -13,7 +13,7 @@ class AllMovies extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: 9,
+            items: 12,
             hasMoreItems: true
         };
     }
@@ -39,7 +39,7 @@ class AllMovies extends Component {
             this.setState({hasMoreItems: false});
         } else {
             setTimeout(() => {
-                this.setState({items: this.state.items + 9});
+                this.setState({items: this.state.items + 12});
             }, 1000);
         }
 
@@ -47,7 +47,7 @@ class AllMovies extends Component {
 
     render() {
         return (
-            <section style={{height: '1200px', overflow: 'auto'}}>
+            <section style={{height: '1503px', overflow: 'auto'}}>
                 <InfiniteScroll
                     loadMore={this.loadMore.bind(this)}
                     hasMore={this.state.hasMoreItems}
