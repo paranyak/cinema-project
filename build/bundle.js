@@ -49289,36 +49289,38 @@ class MovieImage extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         this.state = { sources: [], currentId: 0 };
     }
 
-    handleKeyPress(event, id) {
-        console.log(id, event.key, event);
-        if (event.key == "ArrowRight") {
-            let newId = id >= this.state.sources.length - 1 ? 0 : id + 1;
-            console.log(newId);
-            this.mainImageHandler(event, newId);
+    handleKeyPress(event) {
+        let newId;
+        let id = this.state.currentId;
+        if (event.clientX >= event.path[event.path.length - 1].innerWidth / 2) {
+            newId = id >= this.state.sources.length - 1 ? 0 : id + 1;
+        } else {
+            newId = id - 1 < 0 ? this.state.sources.length - 1 : id - 1;
         }
-        if (event.key == "ArrowLeft") {
-            let newId = id - 1 < 0 ? this.state.sources.length - 1 : id - 1;
-            console.log(newId);
-
-            this.mainImageHandler(event, newId);
-        }
+        this.setState({ currentId: newId });
+        let modalImg = document.getElementById("img01");
+        modalImg.src = this.state.sources[newId];
     }
 
     mainImageHandler(e, id) {
-        console.log("image handler", id);
+        this.setState({ currentId: id });
         let modal = document.getElementById('myModal');
         let modalImg = document.getElementById("img01");
         modal.style.display = "block";
         modalImg.src = this.state.sources[id];
-        document.addEventListener('keydown', e => this.handleKeyPress(e, id));
+        modal.addEventListener("click", e => this.handleKeyPress(e, id), false);
     }
 
     closeHandler() {
         let modal = document.getElementById('myModal');
         modal.style.display = 'none';
-        console.log("REMOVED");
-        document.onkeydown = null;
-        console.log("REMOVED");
+        //REMOVE ALL EVENT LISTENERS
+        let clone = modal.cloneNode();
+        while (modal.firstChild) {
+            clone.appendChild(modal.lastChild);
+        }
+        modal.parentNode.replaceChild(clone, modal);
+        //
     }
 
     componentWillMount() {
@@ -49342,13 +49344,13 @@ class MovieImage extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
-                { id: "myModal", "class": "modal" },
+                { id: "myModal", className: "modal" },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "span",
-                    { "class": "close", onClick: e => this.closeHandler(e) },
+                    { className: "close", onClick: e => this.closeHandler(e) },
                     "\xD7"
                 ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { "class": "modal-content", id: "img01" })
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { className: "modal-content", id: "img01" })
             )
         );
     }
@@ -49415,7 +49417,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, ".MovieImage {\n  width: 100%;\n  max-width: 450px;\n}\n.MovieImage__main {\n  margin-left: 40px;\n  margin-top: -40px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  border-bottom: #FAE807 10px solid;\n}\n.MovieImage__screenshots {\n  width: 350px;\n  margin: 40px auto 0 auto;\n}\n.MovieImage__screen {\n  object-fit: cover;\n  margin-right: 5px;\n  height: 100px;\n  width: 160px;\n  opacity: 0.6;\n}\n.MovieImage__screen:hover {\n  opacity: 1;\n}\n.MovieImage__main:hover {\n  opacity: 0.7;\n}\n/* The Modal (background) */\n.modal {\n  display: none;\n  /* Hidden by default */\n  position: fixed;\n  /* Stay in place */\n  z-index: 1;\n  /* Sit on top */\n  padding-top: 100px;\n  /* Location of the box */\n  left: 0;\n  top: 0;\n  width: 100%;\n  /* Full width */\n  height: 100%;\n  /* Full height */\n  overflow: auto;\n  /* Enable scroll if needed */\n  background-color: #000000;\n  /* Fallback color */\n  background-color: rgba(0, 0, 0, 0.9);\n  /* Black w/ opacity */\n}\n/* Modal Content (image) */\n.modal-content {\n  margin: auto;\n  display: block;\n  height: 80%;\n  max-height: 700px;\n}\n/* Add Animation */\n.modal-content {\n  -webkit-animation-name: zoom;\n  -webkit-animation-duration: 0.6s;\n  animation-name: zoom;\n  animation-duration: 0.6s;\n}\n@-webkit-keyframes zoom {\n  from {\n    -webkit-transform: scale(0);\n  }\n  to {\n    -webkit-transform: scale(1);\n  }\n}\n@keyframes zoom {\n  from {\n    transform: scale(0);\n  }\n  to {\n    transform: scale(1);\n  }\n}\n/* The Close Button */\n.close {\n  position: absolute;\n  top: 100px;\n  right: 35px;\n  color: #f1f1f1;\n  font-size: 40px;\n  font-weight: bold;\n  transition: 0.3s;\n}\n.close:hover,\n.close:focus {\n  color: #bbb;\n  text-decoration: none;\n  cursor: pointer;\n}\n/* 100% Image Width on Smaller Screens */\n@media only screen and (max-width: 700px) {\n  .modal-content {\n    width: 100%;\n  }\n}\n", ""]);
+exports.push([module.i, ".MovieImage {\n  width: 100%;\n  max-width: 450px;\n}\n.MovieImage__main {\n  margin-left: 40px;\n  margin-top: -40px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  border-bottom: #FAE807 10px solid;\n}\n.MovieImage__screenshots {\n  width: 350px;\n  margin: 40px auto 0 auto;\n}\n.MovieImage__screen {\n  object-fit: cover;\n  margin-right: 5px;\n  height: 100px;\n  width: 160px;\n  opacity: 0.6;\n}\n.MovieImage__screen:hover {\n  opacity: 1;\n}\n.MovieImage__main:hover {\n  opacity: 0.7;\n}\n/* The Modal (background) */\n.modal {\n  display: none;\n  /* Hidden by default */\n  position: fixed;\n  /* Stay in place */\n  z-index: 1;\n  /* Sit on top */\n  padding-top: 100px;\n  /* Location of the box */\n  left: 0;\n  top: 0;\n  width: 100%;\n  /* Full width */\n  height: 100%;\n  /* Full height */\n  overflow: auto;\n  /* Enable scroll if needed */\n  background-color: #000000;\n  /* Fallback color */\n  background-color: rgba(0, 0, 0, 0.9);\n  /* Black w/ opacity */\n}\n/* Modal Content (image) */\n.modal-content {\n  margin: auto;\n  display: block;\n  margin-top: 50px;\n}\n/* Add Animation */\n.modal-content {\n  -webkit-animation-name: zoom;\n  -webkit-animation-duration: 0.6s;\n  animation-name: zoom;\n  animation-duration: 0.6s;\n}\n@-webkit-keyframes zoom {\n  from {\n    -webkit-transform: scale(0);\n  }\n  to {\n    -webkit-transform: scale(1);\n  }\n}\n@keyframes zoom {\n  from {\n    transform: scale(0);\n  }\n  to {\n    transform: scale(1);\n  }\n}\n/* The Close Button */\n.close {\n  position: absolute;\n  top: 100px;\n  right: 35px;\n  color: #f1f1f1;\n  font-size: 40px;\n  font-weight: bold;\n  transition: 0.3s;\n}\n.close:hover,\n.close:focus {\n  color: #bbb;\n  text-decoration: none;\n  cursor: pointer;\n}\n/* 100% Image Width on Smaller Screens */\n@media only screen and (max-width: 700px) {\n  .modal-content {\n    width: 100%;\n  }\n}\n", ""]);
 
 // exports
 
