@@ -1,10 +1,7 @@
 import data from "../data/feedbacks"
 
-const feedbacks = (state = data.Feedbacks, action) => {
-    switch (action.type) {
-        default:
-            return state;
-    }
+const feedbacks = (state = data.Feedbacks) => {
+    return state;
 };
 
 export default feedbacks;

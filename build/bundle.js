@@ -45541,7 +45541,7 @@ exports.push([module.i, ".Filter {\n  background-color: #FAE807;\n  width: 14%;\
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__reducers__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_luxon_src_interval_js__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_luxon_src_duration_js__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_router_dom__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_tooltip__ = __webpack_require__(480);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_tooltip___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react_tooltip__);
@@ -45598,7 +45598,8 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "time",
                     { className: b("day-container") },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: b("day"), type: "date", value: date.toFormat('yyyy-MM-dd'), onChange: onDateChange })
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: b("day"), type: "date", value: date.toFormat('yyyy-MM-dd'),
+                        onChange: onDateChange })
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "nav",
@@ -45624,15 +45625,21 @@ class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         "span",
                         { key: i, className: b("film-name") },
-                        film.name
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            __WEBPACK_IMPORTED_MODULE_4_react_router_dom__["b" /* Link */],
+                            { className: b("film-link"), key: film.id, to: `/movie/${film.id}` },
+                            film.name
+                        )
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         "section",
-                        { style: { 'minHeight': film.schedule.length * 10 }, key: "div-2lev" + i.toString(), className: b("film-schedule") },
+                        { style: { 'minHeight': film.schedule.length * 10 }, key: "div-2lev" + i.toString(),
+                            className: b("film-schedule") },
                         film.schedule.map((s, i, j) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             "div",
                             { key: i },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("time", { className: b("film-schedule-item", s.isAfter(__WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].local()) ? ['after'] : ['before']),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("time", {
+                                className: b("film-schedule-item", s.isAfter(__WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].local()) ? ['after'] : ['before']),
                                 "data-tip": s.toFormat('HH:mm'),
                                 style: {
                                     top: i * 10,
@@ -45801,11 +45808,8 @@ const getAllFilters = state => state;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__data_feedbacks__ = __webpack_require__(474);
 
 
-const feedbacks = (state = __WEBPACK_IMPORTED_MODULE_0__data_feedbacks__["a" /* default */].Feedbacks, action) => {
-    switch (action.type) {
-        default:
-            return state;
-    }
+const feedbacks = (state = __WEBPACK_IMPORTED_MODULE_0__data_feedbacks__["a" /* default */].Feedbacks) => {
+    return state;
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (feedbacks);
@@ -48422,7 +48426,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, ".Schedule {\n  padding: 20px;\n  width: 80%;\n}\n.Schedule__day-container {\n  width: 15%;\n  position: relative;\n}\n.Schedule__day {\n  padding: 15px 3px;\n  color: #343434;\n  background-color: #D0D0D0;\n  border: none;\n  position: absolute;\n  height: 50px;\n  bottom: 20px;\n  right: 20px;\n  width: 105%;\n  box-sizing: border-box;\n  box-shadow: 6px 6px 30px 5px #000001;\n  outline: none;\n}\n.Schedule__time-string {\n  display: flex;\n  width: 85%;\n  border: 1px solid #D0D0D0;\n  border-bottom: none;\n  background-color: #575757;\n}\n.Schedule__film-schedule-item {\n  position: absolute;\n  height: 5px;\n  margin-top: 12px;\n  border-radius: 5px;\n}\n.Schedule__film-schedule-item_after {\n  background: #FAE807;\n}\n.Schedule__film-schedule-item_before {\n  background: #575757;\n}\n.Schedule__film-schedule-item:hover {\n  background: #D0D0D0;\n}\n.Schedule__real-time-line {\n  width: 2px;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  background-color: #FAE807;\n  z-index: 1;\n}\n.Schedule__film-schedule {\n  display: block;\n  position: relative;\n  padding: 10px 0;\n  background-color: #373737;\n  border: 1px solid #D0D0D0;\n  width: 85%;\n}\n.Schedule__time-item {\n  width: calc(100% / 16);\n  font-size: 14px;\n  text-align: center;\n  border-left: 1px solid #ccc;\n  padding: 3px 0;\n  color: #D0D0D0;\n}\n.Schedule__time-item:first-child {\n  border-left: none;\n}\n@media screen and (max-width: 950px) {\n  .Schedule__time-item {\n    writing-mode: vertical-rl;\n    white-space: nowrap;\n    display: inline-block;\n    overflow: visible;\n    box-sizing: border-box;\n    padding: 7px 0;\n  }\n}\n.Schedule__film-list {\n  position: relative;\n}\n.Schedule__film {\n  background-color: #D0D0D0;\n  display: flex;\n  margin-bottom: 4px;\n}\n.Schedule__film-name {\n  width: 15%;\n  color: #343434;\n  padding: 5px;\n  box-sizing: border-box;\n}\n.Schedule__header {\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n}\n", ""]);
+exports.push([module.i, ".Schedule {\n  padding: 20px;\n  width: 80%;\n}\n.Schedule__day-container {\n  width: 15%;\n  position: relative;\n}\n.Schedule__day {\n  padding: 15px 3px;\n  color: #343434;\n  background-color: #D0D0D0;\n  border: none;\n  position: absolute;\n  height: 50px;\n  bottom: 20px;\n  right: 20px;\n  width: 105%;\n  box-sizing: border-box;\n  box-shadow: 6px 6px 30px 5px #000001;\n  outline: none;\n}\n.Schedule__time-string {\n  display: flex;\n  width: 85%;\n  border: 1px solid #D0D0D0;\n  border-bottom: none;\n  background-color: #575757;\n}\n.Schedule__film-schedule-item {\n  position: absolute;\n  height: 5px;\n  margin-top: 12px;\n  border-radius: 5px;\n}\n.Schedule__film-schedule-item_after {\n  background: #FAE807;\n}\n.Schedule__film-schedule-item_before {\n  background: #575757;\n}\n.Schedule__film-schedule-item:hover {\n  background: #D0D0D0;\n}\n.Schedule__real-time-line {\n  width: 2px;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  background-color: #FAE807;\n  z-index: 1;\n}\n.Schedule__film-schedule {\n  display: block;\n  position: relative;\n  padding: 10px 0;\n  background-color: #373737;\n  border: 1px solid #D0D0D0;\n  width: 85%;\n}\n.Schedule__time-item {\n  width: calc(100% / 16);\n  font-size: 14px;\n  text-align: center;\n  border-left: 1px solid #ccc;\n  padding: 3px 0;\n  color: #D0D0D0;\n}\n.Schedule__time-item:first-child {\n  border-left: none;\n}\n@media screen and (max-width: 950px) {\n  .Schedule__time-item {\n    writing-mode: vertical-rl;\n    white-space: nowrap;\n    display: inline-block;\n    overflow: visible;\n    box-sizing: border-box;\n    padding: 7px 0;\n  }\n}\n.Schedule__film-list {\n  position: relative;\n}\n.Schedule__film {\n  background-color: #D0D0D0;\n  display: flex;\n  margin-bottom: 4px;\n}\n.Schedule__film-name {\n  width: 15%;\n  color: #343434;\n  padding: 5px;\n  box-sizing: border-box;\n}\n.Schedule__film-link {\n  text-decoration: none;\n  color: #343434;\n}\n.Schedule__header {\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n}\n", ""]);
 
 // exports
 
