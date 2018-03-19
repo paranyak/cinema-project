@@ -33183,6 +33183,14 @@ function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, dis
 const b = Object(__WEBPACK_IMPORTED_MODULE_3__helpers_BEM__["a" /* default */])("Layout");
 
 class Layout extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
+    constructor() {
+        super();
+        console.log('LAYOUT');
+        this.state = {
+            movies: []
+        };
+    }
+
     componentWillMount() {
         fetch('http://localhost:3000/db').then(results => {
             return results.json();
@@ -33192,6 +33200,7 @@ class Layout extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     }
 
     render() {
+        const { movies } = this.state;
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "div",
             { className: b() },
@@ -33202,7 +33211,8 @@ class Layout extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_react_router_dom__["d" /* Route */], { exact: true, path: "/", component: __WEBPACK_IMPORTED_MODULE_7__HomePage_HomeLayout__["a" /* default */] }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_react_router_dom__["d" /* Route */], { path: "/movie/:id", component: __WEBPACK_IMPORTED_MODULE_8__MoviePage_MovieLayout__["a" /* default */] }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_react_router_dom__["d" /* Route */], { path: "/schedule", component: __WEBPACK_IMPORTED_MODULE_6__SchedulePage_ScheduleLayout__["a" /* default */] })
-            )
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Footer__["a" /* default */], null)
         );
     }
 }
@@ -33278,7 +33288,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, ".Layout {\n  overflow: hidden;\n}\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -42174,7 +42184,7 @@ class Footer extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     }
 }
 
-/* unused harmony default export */ var _unused_webpack_default_export = (Footer);
+/* harmony default export */ __webpack_exports__["a"] = (Footer);
 
 /***/ }),
 /* 436 */
@@ -48503,125 +48513,39 @@ exports.push([module.i, ".ScheduleLayout {\n  display: flex;\n  width: 90%;\n  m
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles_HomeLayout_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__styles_HomeLayout_less__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__MovieCarousel__ = __webpack_require__(501);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AllMovies__ = __webpack_require__(510);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_infinite_scroller__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_infinite_scroller___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_infinite_scroller__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__helpers_BEM__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__reducers__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_redux__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__MoviePoster__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_router_dom__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__helpers_BEM__ = __webpack_require__(12);
 
 
 
 
 
 
+const b = Object(__WEBPACK_IMPORTED_MODULE_4__helpers_BEM__["a" /* default */])("HomeLayout");
 
+const HomeLayout = () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    "div",
+    { className: b() },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "h1",
+        { className: b('title') },
+        "Popular"
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__MovieCarousel__["a" /* default */], { label: "popular" }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "h1",
+        { className: b('title') },
+        "Soon on the screens"
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__MovieCarousel__["a" /* default */], { label: "soon" }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "h1",
+        { className: b('title') },
+        "All movies"
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__AllMovies__["a" /* default */], null)
+);
 
-
-
-
-const b = Object(__WEBPACK_IMPORTED_MODULE_5__helpers_BEM__["a" /* default */])("HomeLayout");
-
-class HomeLayout extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
-    constructor(props) {
-        super(props);
-        this.state = {
-            items: 9,
-            hasMoreItems: true
-        };
-    }
-
-    // showItems() {
-    //     const {films} = this.props;
-    //     return (
-    //         <div className={b()}>
-    //             {films
-    //                 .slice(0, this.state.items)
-    //                 .filter(film => film.label !== 'soon')
-    //                 .map(film =>
-    //                     <Link key={film.id} to={`/movie/${film.id}`}>
-    //                         <MoviePoster film={film}/>
-    //                     </Link>
-    //                 )}
-    //         </div>
-    //     );
-    // }
-
-    loadMore() {
-        if (this.state.items === 81) {
-            this.setState({ hasMoreItems: false });
-        } else {
-            setTimeout(() => {
-                this.setState({ items: this.state.items + 9 });
-            }, 1000);
-        }
-    }
-
-    render() {
-        const { films } = this.props;
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "div",
-            { className: b(), style: { height: '3000px', overflow: 'auto' } },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_4_react_infinite_scroller___default.a,
-                {
-                    loadMore: this.loadMore.bind(this),
-                    hasMore: this.state.hasMoreItems,
-                    loader: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        "div",
-                        { className: b("loader") },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: b("loader-dot") }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: b("loader-dot") }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: b("loader-dot") }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: b("loader-dot") })
-                    ),
-                    useWindow: false
-                },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "h1",
-                    { className: b('title') },
-                    "Popular"
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__MovieCarousel__["a" /* default */], { label: "popular" }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "h1",
-                    { className: b('title') },
-                    "Soon on the screens"
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__MovieCarousel__["a" /* default */], { label: "soon" }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "h1",
-                    { className: b('title') },
-                    "All movies"
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "div",
-                    { className: b('all-movies') },
-                    films.slice(0, this.state.items + 1).filter(film => film.label !== 'soon').map(film => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        __WEBPACK_IMPORTED_MODULE_9_react_router_dom__["b" /* Link */],
-                        { key: film.id, to: `/movie/${film.id}` },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__MoviePoster__["a" /* default */], { film: film })
-                    ))
-                )
-            )
-        );
-    }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_7_react_redux__["b" /* connect */])(state => {
-    const movies = Object(__WEBPACK_IMPORTED_MODULE_6__reducers__["c" /* getAllMovies */])(state);
-    return {
-        films: movies.map(movie => ({
-            id: movie.id,
-            name: movie.name,
-            image: movie.image,
-            rating: movie.rating,
-            genre: movie.genre,
-            label: movie.label
-        }))
-    };
-})(HomeLayout));
+/* harmony default export */ __webpack_exports__["a"] = (HomeLayout);
 
 /***/ }),
 /* 499 */
@@ -48682,7 +48606,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, ".HomeLayout {\n  width: 90%;\n  background-color: #373737;\n  margin: auto;\n  box-shadow: 10px 21px 94px 6px #000001;\n  padding-top: 40px;\n  padding-bottom: 20px;\n}\n.HomeLayout__title {\n  color: white;\n  text-align: center;\n}\n.HomeLayout__all-movies {\n  margin: 5px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n}\n.HomeLayout__loader {\n  font-size: 20px;\n  /* change size here */\n  position: relative;\n  width: 4em;\n  height: 1em;\n  margin: 10px auto;\n}\n.HomeLayout__loader-dot {\n  display: block;\n  width: 1em;\n  height: 1em;\n  border-radius: 0.5em;\n  background: #555;\n  /* change color here */\n  position: absolute;\n  animation-duration: 0.5s;\n  animation-timing-function: ease;\n  animation-iteration-count: infinite;\n}\n.HomeLayout__loader-dot:nth-child(1),\n.HomeLayout__loader-dot:nth-child(2) {\n  left: 0;\n}\n.HomeLayout__loader-dot:nth-child(3) {\n  left: 1.5em;\n}\n.HomeLayout__loader-dot:nth-child(4) {\n  left: 3em;\n}\n.HomeLayout__loader-dot:nth-child(1) {\n  animation-name: reveal;\n}\n.HomeLayout__loader-dot:nth-child(2),\n.HomeLayout__loader-dot:nth-child(3) {\n  animation-name: slide;\n}\n.HomeLayout__loader-dot:nth-child(4) {\n  animation-name: reveal;\n  animation-direction: reverse;\n}\n@keyframes reveal {\n  from {\n    transform: scale(0.001);\n  }\n  to {\n    transform: scale(1);\n  }\n}\n@keyframes slide {\n  to {\n    transform: translateX(1.5em);\n  }\n}\n", ""]);
+exports.push([module.i, ".HomeLayout {\n  width: 90%;\n  background-color: #373737;\n  margin: auto auto 90px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  padding-top: 40px;\n  padding-bottom: 20px;\n}\n.HomeLayout__title {\n  color: white;\n  text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -66129,67 +66053,57 @@ class AllMovies extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         };
     }
 
-    // showItems() {
-    //     const {films} = this.props;
-    //     return (
-    //         <div className={b()}>
-    //             {films
-    //                 .slice(0, this.state.items)
-    //                 .filter(film => film.label !== 'soon')
-    //                 .map(film =>
-    //                     <Link key={film.id} to={`/movie/${film.id}`}>
-    //                         <MoviePoster film={film}/>
-    //                     </Link>
-    //                 )}
-    //         </div>
-    //     );
-    // }
-    //
-    // loadMore() {
-    //     if (this.state.items === 100) {
-    //         this.setState({hasMoreItems: false});
-    //     } else {
-    //         setTimeout(() => {
-    //             this.setState({items: this.state.items + 12});
-    //         }, 1000);
-    //     }
-    //
-    // }
-    //
-    // render() {
-    //     return (
-    //         <section style={{height: '1503px', overflow: 'auto'}}>
-    //             <InfiniteScroll
-    //                 loadMore={this.loadMore.bind(this)}
-    //                 hasMore={this.state.hasMoreItems}
-    //                 loader={<div className={b("loader")}>
-    //                     <span className={b("loader-dot")}></span>
-    //                     <span className={b("loader-dot")}></span>
-    //                     <span className={b("loader-dot")}></span>
-    //                     <span className={b("loader-dot")}></span>
-    //                 </div>}
-    //                 useWindow={false}
-    //             >
-    //                 {this.showItems()}{" "}
-    //             </InfiniteScroll>{" "}
-    //         </section>
-    //     )
-    // }
-    render() {
+    showItems() {
         const { films } = this.props;
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "div",
             { className: b() },
-            films.slice(0, this.state.items + 1).filter(film => film.label !== 'soon').map(film => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            films.slice(0, this.state.items).filter(film => film.label !== 'soon').map(film => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["b" /* Link */],
                 { key: film.id, to: `/movie/${film.id}` },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__MoviePoster__["a" /* default */], { film: film })
             ))
         );
     }
+
+    loadMore() {
+        if (this.state.items === 100) {
+            this.setState({ hasMoreItems: false });
+        } else {
+            setTimeout(() => {
+                this.setState({ items: this.state.items + 12 });
+            }, 1000);
+        }
+    }
+
+    render() {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "section",
+            { style: { height: '1503px', overflow: 'auto' } },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_6_react_infinite_scroller___default.a,
+                {
+                    loadMore: this.loadMore.bind(this),
+                    hasMore: this.state.hasMoreItems,
+                    loader: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: b("loader") },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: b("loader-dot") }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: b("loader-dot") }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: b("loader-dot") }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: b("loader-dot") })
+                    ),
+                    useWindow: false
+                },
+                this.showItems(),
+                " "
+            ),
+            " "
+        );
+    }
 }
 
-/* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_3_react_redux__["b" /* connect */])(state => {
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_3_react_redux__["b" /* connect */])(state => {
     const movies = Object(__WEBPACK_IMPORTED_MODULE_7__reducers__["c" /* getAllMovies */])(state);
     return {
         films: movies.map(movie => ({
@@ -66262,7 +66176,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, ".AllMovies {\n  margin: 5px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n}\n", ""]);
+exports.push([module.i, ".AllMovies {\n  margin: 5px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n}\n.AllMovies__more {\n  font-size: 12px;\n}\n.AllMovies__loader {\n  font-size: 20px;\n  /* change size here */\n  position: relative;\n  width: 4em;\n  height: 1em;\n  margin: 10px auto;\n}\n.AllMovies__loader-dot {\n  display: block;\n  width: 1em;\n  height: 1em;\n  border-radius: 0.5em;\n  background: #555;\n  /* change color here */\n  position: absolute;\n  animation-duration: 0.5s;\n  animation-timing-function: ease;\n  animation-iteration-count: infinite;\n}\n.AllMovies__loader-dot:nth-child(1),\n.AllMovies__loader-dot:nth-child(2) {\n  left: 0;\n}\n.AllMovies__loader-dot:nth-child(3) {\n  left: 1.5em;\n}\n.AllMovies__loader-dot:nth-child(4) {\n  left: 3em;\n}\n.AllMovies__loader-dot:nth-child(1) {\n  animation-name: reveal;\n}\n.AllMovies__loader-dot:nth-child(2),\n.AllMovies__loader-dot:nth-child(3) {\n  animation-name: slide;\n}\n.AllMovies__loader-dot:nth-child(4) {\n  animation-name: reveal;\n  animation-direction: reverse;\n}\n@keyframes reveal {\n  from {\n    transform: scale(0.001);\n  }\n  to {\n    transform: scale(1);\n  }\n}\n@keyframes slide {\n  to {\n    transform: translateX(1.5em);\n  }\n}\n", ""]);
 
 // exports
 
@@ -66585,8 +66499,17 @@ class MovieImage extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         let modalImg = document.getElementById("img01");
         modalImg.src = this.state.sources[newId];
     }
+    // setInterval(function() {
+    //     console.log("here");
+    //     let modal = document.getElementById('myModal');
+    //     let evt = document.createEvent("HTMLEvents");
+    //     evt.initEvent("click", false, true);
+    //     modal.dispatchEvent(evt);
+    // }, 6000);
+
 
     mainImageHandler(e, id) {
+        console.log("THIS ID:", id, "STATE:", this.state.currentId);
         this.setState({ currentId: id });
         let modal = document.getElementById('myModal');
         let modalImg = document.getElementById("img01");
@@ -66624,7 +66547,8 @@ class MovieImage extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "section",
                 { className: b("screenshots") },
-                film.screenshots.map((screen, ind) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: screen, key: ind, className: b("screen"), onClick: (e, src) => this.mainImageHandler(e, ind) }))
+                film.screenshots.map((screen, ind) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: screen, key: ind, className: b("screen"),
+                    onClick: (e, src) => this.mainImageHandler(e, ind) }))
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
@@ -66634,7 +66558,15 @@ class MovieImage extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                     { className: "close", onClick: e => this.closeHandler(e) },
                     "\xD7"
                 ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { className: "modal-content", id: "img01" })
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { className: "modal-content", id: "img01" }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { "class": "arrow-left" }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { "class": "arrow-right" }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "section",
+                    { className: b("screenshots-modal") },
+                    film.screenshots.map((screen, ind) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: screen, key: ind,
+                        className: b("screen-modal") }))
+                )
             )
         );
     }
@@ -66701,7 +66633,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, ".MovieImage {\n  max-width: 450px;\n}\n.MovieImage__main {\n  margin-left: 40px;\n  margin-top: -40px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  border-bottom: #FAE807 10px solid;\n}\n.MovieImage__screenshots {\n  width: 350px;\n  margin: 40px auto 0 auto;\n}\n.MovieImage__screen {\n  object-fit: cover;\n  margin-right: 5px;\n  height: 100px;\n  width: 160px;\n  opacity: 0.6;\n}\n.MovieImage__screen:hover {\n  opacity: 1;\n}\n.MovieImage__main:hover {\n  opacity: 0.7;\n}\n/* The Modal (background) */\n.modal {\n  display: none;\n  /* Hidden by default */\n  position: fixed;\n  /* Stay in place */\n  z-index: 1;\n  /* Sit on top */\n  padding-top: 100px;\n  /* Location of the box */\n  left: 0;\n  top: 0;\n  width: 100%;\n  /* Full width */\n  height: 100%;\n  /* Full height */\n  overflow: auto;\n  /* Enable scroll if needed */\n  background-color: #000000;\n  /* Fallback color */\n  background-color: rgba(0, 0, 0, 0.9);\n  /* Black w/ opacity */\n}\n/* Modal Content (image) */\n.modal-content {\n  margin: auto;\n  display: block;\n  margin-top: 50px;\n}\n/* Add Animation */\n.modal-content {\n  -webkit-animation-name: zoom;\n  -webkit-animation-duration: 0.6s;\n  animation-name: zoom;\n  animation-duration: 0.6s;\n}\n@-webkit-keyframes zoom {\n  from {\n    -webkit-transform: scale(0);\n  }\n  to {\n    -webkit-transform: scale(1);\n  }\n}\n@keyframes zoom {\n  from {\n    transform: scale(0);\n  }\n  to {\n    transform: scale(1);\n  }\n}\n/* The Close Button */\n.close {\n  position: absolute;\n  top: 100px;\n  right: 35px;\n  color: #f1f1f1;\n  font-size: 40px;\n  font-weight: bold;\n  transition: 0.3s;\n}\n.close:hover,\n.close:focus {\n  color: #bbb;\n  text-decoration: none;\n  cursor: pointer;\n}\n/* 100% Image Width on Smaller Screens */\n@media only screen and (max-width: 700px) {\n  .modal-content {\n    width: 100%;\n  }\n}\n", ""]);
+exports.push([module.i, ".MovieImage {\n  max-width: 450px;\n}\n.MovieImage__main {\n  margin-left: 40px;\n  margin-top: -40px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  border-bottom: #FAE807 10px solid;\n}\n.MovieImage__main:hover {\n  opacity: 0.7;\n}\n.MovieImage__screenshots {\n  width: 350px;\n  margin: 40px auto 0 auto;\n}\n.MovieImage__screenshots-modal {\n  position: absolute;\n  top: 560px;\n  left: 0;\n  right: 0;\n  display: flex;\n  justify-content: center;\n}\n.MovieImage__screen-modal {\n  height: 80px;\n  margin: 0 10px;\n}\n.MovieImage__screen {\n  object-fit: cover;\n  margin-right: 5px;\n  height: 100px;\n  width: 160px;\n  opacity: 0.6;\n}\n.MovieImage__screen:hover {\n  opacity: 1;\n}\n/* The Modal (background) */\n.modal {\n  display: none;\n  /* Hidden by default */\n  position: fixed;\n  /* Stay in place */\n  z-index: 1;\n  /* Sit on top */\n  padding-top: 100px;\n  /* Location of the box */\n  left: 0;\n  top: 0;\n  width: 100%;\n  /* Full width */\n  height: 100%;\n  /* Full height */\n  overflow: auto;\n  /* Enable scroll if needed */\n  background-color: #000000;\n  /* Fallback color */\n  background-color: rgba(0, 0, 0, 0.9);\n  /* Black w/ opacity */\n  /* Modal Content (image) */\n}\n.modal-content {\n  margin: auto;\n  display: block;\n  height: 380px;\n  margin-top: 30px;\n  /* Add Animation */\n  -webkit-animation-name: zoom;\n  -webkit-animation-duration: 0.6s;\n  animation-name: zoom;\n  animation-duration: 0.6s;\n}\n@-webkit-keyframes zoom {\n  from {\n    -webkit-transform: scale(0);\n  }\n  to {\n    -webkit-transform: scale(1);\n  }\n}\n@keyframes zoom {\n  from {\n    transform: scale(0);\n  }\n  to {\n    transform: scale(1);\n  }\n}\n/* The Close Button */\n.close {\n  position: absolute;\n  top: 100px;\n  right: 35px;\n  color: #FAE807;\n  font-size: 60px;\n  font-weight: bold;\n  transition: 0.3s;\n}\n.close:hover,\n.close:focus {\n  opacity: 0.6;\n  text-decoration: none;\n  cursor: pointer;\n}\n/* 100% Image Width on Smaller Screens */\n@media only screen and (max-width: 700px) {\n  .modal-content {\n    width: 100%;\n  }\n}\n.arrow-right {\n  position: absolute;\n  top: 300px;\n  right: 40px;\n  width: 0;\n  height: 0;\n  border-top: 40px solid transparent;\n  border-bottom: 40px solid transparent;\n  border-left: 40px solid #FAE807;\n}\n.arrow-left {\n  position: absolute;\n  top: 300px;\n  left: 40px;\n  width: 0;\n  height: 0;\n  border-top: 40px solid transparent;\n  border-bottom: 40px solid transparent;\n  border-right: 40px solid #FAE807;\n}\n", ""]);
 
 // exports
 
