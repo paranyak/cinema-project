@@ -9,23 +9,25 @@ const b = block("MovieImage");
 class MovieImage extends Component {
     constructor(props) {
         super(props);
-        this.state = {sources: [], currentId : 0};
+        this.state = {sources: [], currentId: 0};
     }
+
 
     handleKeyPress(event) {
         let newId;
         let id = this.state.currentId;
-        if(event.clientX >= event.path[event.path.length-1].innerWidth/2){
-            newId = id >= this.state.sources.length-1 ? 0: id+1;
+        if (event.clientX >= event.path[event.path.length - 1].innerWidth / 2) {
+            newId = id >= this.state.sources.length - 1 ? 0 : id + 1;
         }
-        else{
-             newId = id-1 < 0 ? this.state.sources.length-1 : id-1;
+        else {
+            newId = id - 1 < 0 ? this.state.sources.length - 1 : id - 1;
         }
         this.setState({currentId: newId});
         let modalImg = document.getElementById("img01");
         modalImg.src = this.state.sources[newId];
 
     }
+
 
     mainImageHandler(e, id) {
         this.setState({currentId: id});
@@ -34,6 +36,13 @@ class MovieImage extends Component {
         modal.style.display = "block";
         modalImg.src = this.state.sources[id];
         modal.addEventListener("click", (e) => this.handleKeyPress(e, id), false);
+    }
+
+    changeImage(e, id){
+        this.setState({currentId: id});
+        let modalImg = document.getElementById("img01");
+        modalImg.src = this.state.sources[id];
+
     }
 
     closeHandler() {
@@ -63,12 +72,21 @@ class MovieImage extends Component {
             <section className={b()}>
                 <img src={film.image} className={b("main")} onClick={(e, src) => this.mainImageHandler(e, 0)}/>
                 <section className={b("screenshots")}>
-                    {film.screenshots.map((screen, ind) => <img src={screen} key={ind} className={b("screen")} onClick={(e, src) => this.mainImageHandler(e, ind)}/>)}
+                    {film.screenshots.map((screen, ind) => <img src={screen} key={ind} className={b("screen")}
+                                                                onClick={(e, src) => this.mainImageHandler(e, ind)}/>)}
                 </section>
 
                 <div id="myModal" className="modal">
                     <span className="close" onClick={(e) => this.closeHandler(e)}>&times;</span>
                     <img className="modal-content" id="img01"/>
+                    <div class="arrow-left"></div>
+                    <div class="arrow-right"></div>
+
+                    <section className={b("screenshots-modal")}>
+                        {film.screenshots.map((screen, ind) => <img src={screen} key={ind}
+                                                                    className={b("screen-modal")}
+                                                                    onClick={(e) => this.changeImage(e, ind)}/>)}
+                    </section>
                 </div>
             </section>
         )

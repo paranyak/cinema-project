@@ -27,7 +27,7 @@ class Layout extends Component {
         fetch('http://localhost:3000/db')
             .then(results => {return results.json()})
             .then(data => {
-              this.props.onSetMovies(data.movies)
+                this.props.onSetMovies(data.movies)
             });
     }
 
@@ -48,13 +48,12 @@ class Layout extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         onSetMovies: (movies) => {
-          dispatch(setMovies(movies))
+            dispatch(setMovies(movies))
         }
     }
 };
 
-Layout = withRouter(connect(state =>
-    () => ({}),
+Layout = withRouter(connect(null,
     mapDispatchToProps
 )(Layout));
 

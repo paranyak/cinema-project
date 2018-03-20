@@ -59,11 +59,11 @@ class MovieCarousel extends Component {
     }
 
     leftClick() {
-        this.handleClick(-1)
+        throttle(this.handleClick(-1), 500);
     };
 
     rightClick() {
-        this.handleClick();
+        throttle(this.handleClick(), 500);
     };
 
     render() {

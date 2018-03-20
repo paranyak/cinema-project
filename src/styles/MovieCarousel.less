@@ -13,9 +13,13 @@
   }
   &__button {
     background-color: @main-yellow;
-    color: transparent;
     width: 60px;
     border: none;
+    opacity: 0.8;
+    transition: opacity 0.15s ease-in-out;
+    &:hover {
+      opacity: 1;
+    }
   }
   &__icon {
     width: 40px;
