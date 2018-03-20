@@ -66462,8 +66462,8 @@ class MovieLayout extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_7_react_redux__["b" /* connect */])((state, props) => {
-    console.log("CONNECT", state);
     const movie = Object(__WEBPACK_IMPORTED_MODULE_6__reducers__["d" /* getById */])(state, props.match.params.id);
+    console.log("CONNECT in MOVIELAYOUT", movie);
     return { film: movie };
 })(MovieLayout));
 
@@ -66559,13 +66559,12 @@ class MovieImage extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                     "\xD7"
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { className: "modal-content", id: "img01" }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { "class": "arrow-left" }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { "class": "arrow-right" }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { className: "arrow-left" }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { className: "arrow-right" }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "section",
                     { className: b("screenshots-modal") },
-                    film.screenshots.map((screen, ind) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: screen, key: ind,
-                        className: b("screen-modal"),
+                    film.screenshots.map((screen, ind) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: screen, key: ind, className: b("screen-modal"),
                         onClick: e => this.changeImage(e, ind) }))
                 )
             )

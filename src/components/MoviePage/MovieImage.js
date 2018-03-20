@@ -38,7 +38,7 @@ class MovieImage extends Component {
         modal.addEventListener("click", (e) => this.handleKeyPress(e, id), false);
     }
 
-    changeImage(e, id){
+    changeImage(e, id) {
         this.setState({currentId: id});
         let modalImg = document.getElementById("img01");
         modalImg.src = this.state.sources[id];
@@ -79,12 +79,10 @@ class MovieImage extends Component {
                 <div id="myModal" className="modal">
                     <span className="close" onClick={(e) => this.closeHandler(e)}>&times;</span>
                     <img className="modal-content" id="img01"/>
-                    <div class="arrow-left"></div>
-                    <div class="arrow-right"></div>
-
+                    <div className="arrow-left"></div>
+                    <div className="arrow-right"></div>
                     <section className={b("screenshots-modal")}>
-                        {film.screenshots.map((screen, ind) => <img src={screen} key={ind}
-                                                                    className={b("screen-modal")}
+                        {film.screenshots.map((screen, ind) => <img src={screen} key={ind}  className={b("screen-modal")}
                                                                     onClick={(e) => this.changeImage(e, ind)}/>)}
                     </section>
                 </div>
