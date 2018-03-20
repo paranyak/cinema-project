@@ -39,7 +39,7 @@ class Layout extends Component {
             <Switch>
                 <Route exact path='/' component={HomeLayout}/>
                 <Route path='/movie/:id' component={MovieLayout}/>
-                <Route path='/schedule' component={ScheduleLayout}/>
+                <Route path='/schedule/:day?' component={ScheduleLayout}/>
                 <Route path='/actor/:id' component={ActorLayout}/>
             </Switch>
             <Footer/>

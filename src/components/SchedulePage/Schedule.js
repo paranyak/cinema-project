@@ -6,6 +6,8 @@ import {Link} from 'react-router-dom'
 import {DateTime} from "luxon/src/datetime.js";
 import ReactTooltip from 'react-tooltip';
 import {findDOMNode} from 'react-dom';
+import { push } from 'react-router-redux';
+
 
 import {connect} from "react-redux";
 
@@ -64,8 +66,8 @@ class Schedule extends Component {
                     {films.map((film, i) => (
                         <article key={"div-1lev" + i.toString()} className={b("film")}>
                                 <span key={i} className={b("film-name")}>
-                                                                <Link className={b("film-link")} key={film.id} to={`/movie/${film.id}`}>
-                                                                    {film.name}</Link></span>
+                                <Link className={b("film-link")} key={film.id} to={`/movie/${film.id}`}>
+                                {film.name}</Link></span>
 
                             <section style={{'minHeight': film.schedule.length * 10}} key={"div-2lev" + i.toString()}
                                      className={b("film-schedule")}>
@@ -96,11 +98,12 @@ class Schedule extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
     return {
         onDateChange: (event) => {
-            console.log(event.target.value);
+            console.log(props.history);
             dispatch(changeDate(event.target.value));
+            dispatch(push('/schedule/' + event.target.value));
         }
     }
 };
@@ -111,7 +114,6 @@ export default connect(state => {
         const date = filters.date ?
             DateTime.fromFormat(filters.date, 'yyyy-MM-dd') :
             DateTime.local();
-        console.log(movies.length);
         return {
             date,
             films: movies
