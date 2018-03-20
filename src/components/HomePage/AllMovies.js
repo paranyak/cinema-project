@@ -52,11 +52,11 @@ class AllMovies extends Component {
                     loadMore={this.loadMore.bind(this)}
                     hasMore={this.state.hasMoreItems}
                     loader={<div className={b("loader")}>
-                                <span className={b("loader-dot")}></span>
-                                <span className={b("loader-dot")}></span>
-                                <span className={b("loader-dot")}></span>
-                                <span className={b("loader-dot")}></span>
-                            </div>}
+                        <span className={b("loader-dot")}></span>
+                        <span className={b("loader-dot")}></span>
+                        <span className={b("loader-dot")}></span>
+                        <span className={b("loader-dot")}></span>
+                    </div>}
                     useWindow={false}
                 >
                     {this.showItems()}{" "}
