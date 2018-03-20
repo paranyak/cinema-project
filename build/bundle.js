@@ -66499,23 +66499,20 @@ class MovieImage extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         let modalImg = document.getElementById("img01");
         modalImg.src = this.state.sources[newId];
     }
-    // setInterval(function() {
-    //     console.log("here");
-    //     let modal = document.getElementById('myModal');
-    //     let evt = document.createEvent("HTMLEvents");
-    //     evt.initEvent("click", false, true);
-    //     modal.dispatchEvent(evt);
-    // }, 6000);
-
 
     mainImageHandler(e, id) {
-        console.log("THIS ID:", id, "STATE:", this.state.currentId);
         this.setState({ currentId: id });
         let modal = document.getElementById('myModal');
         let modalImg = document.getElementById("img01");
         modal.style.display = "block";
         modalImg.src = this.state.sources[id];
         modal.addEventListener("click", e => this.handleKeyPress(e, id), false);
+    }
+
+    changeImage(e, id) {
+        this.setState({ currentId: id });
+        let modalImg = document.getElementById("img01");
+        modalImg.src = this.state.sources[id];
     }
 
     closeHandler() {
@@ -66565,7 +66562,8 @@ class MovieImage extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                     "section",
                     { className: b("screenshots-modal") },
                     film.screenshots.map((screen, ind) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: screen, key: ind,
-                        className: b("screen-modal") }))
+                        className: b("screen-modal"),
+                        onClick: e => this.changeImage(e, ind) }))
                 )
             )
         );

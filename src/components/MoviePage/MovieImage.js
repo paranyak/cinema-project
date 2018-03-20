@@ -13,7 +13,6 @@ class MovieImage extends Component {
     }
 
 
-
     handleKeyPress(event) {
         let newId;
         let id = this.state.currentId;
@@ -28,23 +27,22 @@ class MovieImage extends Component {
         modalImg.src = this.state.sources[newId];
 
     }
-    // setInterval(function() {
-    //     console.log("here");
-    //     let modal = document.getElementById('myModal');
-    //     let evt = document.createEvent("HTMLEvents");
-    //     evt.initEvent("click", false, true);
-    //     modal.dispatchEvent(evt);
-    // }, 6000);
 
 
     mainImageHandler(e, id) {
-        console.log("THIS ID:", id, "STATE:", this.state.currentId);
         this.setState({currentId: id});
         let modal = document.getElementById('myModal');
         let modalImg = document.getElementById("img01");
         modal.style.display = "block";
         modalImg.src = this.state.sources[id];
         modal.addEventListener("click", (e) => this.handleKeyPress(e, id), false);
+    }
+
+    changeImage(e, id){
+        this.setState({currentId: id});
+        let modalImg = document.getElementById("img01");
+        modalImg.src = this.state.sources[id];
+
     }
 
     closeHandler() {
@@ -86,7 +84,8 @@ class MovieImage extends Component {
 
                     <section className={b("screenshots-modal")}>
                         {film.screenshots.map((screen, ind) => <img src={screen} key={ind}
-                                                                    className={b("screen-modal")}/>)}
+                                                                    className={b("screen-modal")}
+                                                                    onClick={(e) => this.changeImage(e, ind)}/>)}
                     </section>
                 </div>
             </section>
