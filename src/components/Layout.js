@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import "../styles/Layout.less";
 import "../styles/common.less";
 import block from "../helpers/BEM";
-import Footer from "./Footer";
+import AddMovieLayout from './AddMoviePage/AddMovieLayout'
 import Header from "./Header";
 import ScheduleLayout from "./SchedulePage/ScheduleLayout";
 import HomeLayout from "./HomePage/HomeLayout";
@@ -41,8 +41,8 @@ class Layout extends Component {
                 <Route path='/movie/:id' component={MovieLayout}/>
                 <Route path='/schedule/:day?' component={ScheduleLayout}/>
                 <Route path='/actor/:id' component={ActorLayout}/>
+                <Route path='/add-movie' component={AddMovieLayout}/>
             </Switch>
-            <Footer/>
         </div>
     }
 }

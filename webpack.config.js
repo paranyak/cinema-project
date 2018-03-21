@@ -5,7 +5,11 @@ module.exports = {
     },
     module: {
         rules: [
-            {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"},
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: "babel-loader"
+            },
             {
                 test: /\.less$/,
                 use: [{
@@ -13,7 +17,7 @@ module.exports = {
                 }, {
                     loader: "css-loader" // translates CSS into CommonJS
                 }, {
-                    loader: "less-loader" // compiles Less to CSS
+                    loader: "less-loader" // compiles Less to CSS,
                 }]
             },
             {
