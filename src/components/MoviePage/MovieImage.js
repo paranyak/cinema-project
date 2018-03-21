@@ -15,8 +15,9 @@ class MovieImage extends Component {
 
     handleKeyPress(event) {
         let newId;
+        console.log("EVENT:", event);
         let id = this.state.currentId;
-        if (event.clientX >= event.path[event.path.length - 1].innerWidth / 2) {
+        if (event.clientX >= event.target.clientWidth / 2) {
             newId = id >= this.state.sources.length - 1 ? 0 : id + 1;
         }
         else {
