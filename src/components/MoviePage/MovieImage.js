@@ -77,11 +77,11 @@ class MovieImage extends Component {
                                                                 onClick={(e, src) => this.mainImageHandler(e, ind)}/>)}
                 </section>
 
-                <div id="myModal" className="modal">
-                    <span className="close" onClick={(e) => this.closeHandler(e)}>&times;</span>
-                    <img className="modal-content" id="img01"/>
-                    <div className="arrow-left"></div>
-                    <div className="arrow-right"></div>
+                <div id="myModal" className={b("modal")}>
+                    <span className={b("close")} onClick={(e) => this.closeHandler(e)}>&times;</span>
+                    <img className={b("modal-content")} id="img01"/>
+                    <div className={b("arrow-left")}></div>
+                    <div className={b("arrow-right")}></div>
                     <section className={b("screenshots-modal")}>
                         {film.screenshots.map((screen, ind) => <img src={screen} key={ind}  className={b("screen-modal")}
                                                                     onClick={(e) => this.changeImage(e, ind)}/>)}

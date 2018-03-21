@@ -4,6 +4,9 @@
   color: @white-text;
   margin-top: 70px;
   margin-bottom: 50px;
+  @media (max-width: 768px) {
+    margin: 0;
+  }
   &__image {
     height: 50px;
     width: 50px;
@@ -17,13 +20,25 @@
     font-size: 16px;
     font-weight: normal;
     padding-top: 20px;
+    @media (max-width: 768px) {
+      grid-template-columns: 30% 70%;
+    }
   }
 
-  &__name, &__separator {
+  &__name {
     opacity: 0.6;
+  }
+  &__separator {
+    opacity: 0.6;
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   &__role {
     justify-self: end;
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 }
