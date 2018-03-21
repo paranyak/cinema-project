@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import "../../styles/AddMovieLayout.less";
 import block from '../../helpers/BEM';
-import Select from 'react-select';
 import InputField from "./InputField";
 
 const b = block("AddMovieLayout");
