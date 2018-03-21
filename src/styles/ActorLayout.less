@@ -1,0 +1,59 @@
+@import "SiteColors.less";
+
+.ActorLayout {
+  width: 90%;
+  min-height: 600px;
+  background-color: @layout-grey;
+  margin: auto auto 90px;
+  box-shadow: 10px 21px 94px 6px rgba(0, 0, 1, 1);
+  &__image{
+    max-width: 450px;
+    margin-left: 40px;
+    margin-top: -40px;
+    box-shadow: 10px 21px 94px 6px rgba(0, 0, 1, 1);
+    border-bottom: @main-yellow 10px solid;
+  }
+  &__general{
+    color: @white-text;
+    margin-right: 40px;
+    padding-top: 20px;
+    float: right;
+    width: 60%;
+    min-width: 600px;
+  }
+  &__name{
+    font-weight: bold;
+    font-size: 50px;
+    margin: 0;
+  }
+  &__info{
+    font-size: 16px;
+    color: @white-text;
+    opacity: 0.6;
+  }
+  &__extra {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    color: @white-text;
+    font-weight: bold;
+    padding-top: 40px;
+  }
+  &__value {
+    float: right;
+    margin-right: 20px;
+    opacity: 0.6;
+    font-weight: normal;
+  }
+  &__nominations, &__movies{
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  &__movie-link{
+    color: @white-text;
+    float: right;
+    margin-right: 20px;
+    opacity: 0.6;
+    font-weight: normal;
+    text-decoration: none;
+  }
+}

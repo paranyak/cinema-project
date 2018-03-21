@@ -83,16 +83,106 @@ export const fetchMoviesFail = (movies) => {
     }
 }
 
+export const fetchAdditionalMoviesStart = (limit, page) => {
+    return {
+      type: 'FETCH_ADDITIONAL_MOVIES',
+      id: 'addition_movies',
+      limit,
+      page
+    }
+}
+
+export const fetchAdditionalMoviesSuccess = (movies) => {
+    return {
+      type: 'FETCH_ADDITIONAL_MOVIES_SUCCESS',
+      id: 'addition_movies',
+      movies
+    }
+}
+
+export const fetchAdditionalMoviesFail = (movies) => {
+    return {
+      type: 'FETCH_ADDITIONAL_MOVIES_FAIL',
+      id: 'addition_movies',
+      movies
+    }
+}
+
+export const fetchPopularMoviesStart = () => {
+    return {
+      type: 'FETCH_POPULAR_MOVIES',
+      id: 'popular_movies',
+    }
+}
+
+export const fetchPopularMoviesSuccess = (movies) => {
+    return {
+      type: 'FETCH_POPULAR_MOVIES_SUCCESS',
+      id: 'popular_movies',
+      movies
+    }
+}
+
+export const fetchPopularMoviesFail = (movies) => {
+    return {
+      type: 'FETCH_POPULAR_MOVIES_FAIL',
+      id: 'popular_movies',
+      movies
+    }
+}
+
+export const fetchComingsoonMoviesStart = () => {
+    return {
+      type: 'FETCH_COMMINGSOON_MOVIES',
+      id: 'popular_movies',
+    }
+}
+
+export const fetchComingsoonMoviesSuccess = (movies) => {
+    return {
+      type: 'FETCH_COMMINGSOON_MOVIES_SUCCESS',
+      id: 'popular_movies',
+      movies
+    }
+}
+
+export const fetchComingsoonMoviesFail = (movies) => {
+    return {
+      type: 'FETCH_COMMINGSOON_MOVIES_FAIL',
+      id: 'popular_movies',
+      movies
+    }
+}
+
+
+
 export const fetchMovie = (id) => async (dispatch) => {
-    console.log('new fetch movie');
     dispatch(fetchMovieStart(id));
     const movie = await ((await fetch(`http://localhost:3000/movies/${id}`)).json());
     dispatch(fetchMovieSuccess(id, movie));
 }
 
 export const fetchMoviesSchedule = (day) => async (dispatch) => {
-    console.log('new fetch movies');
     dispatch(fetchMoviesStart());
     const movies = await ((await fetch(`http://localhost:3000/movies?Schedule_like=${day}`)).json());
     dispatch(fetchMoviesSuccess(movies));
+}
+
+export const fetchPopularMovies = () => async (dispatch) => {
+    dispatch(fetchPopularMoviesStart());
+    const movies = await ((await fetch(`http://localhost:3000/movies?label=popular`)).json());
+    dispatch(fetchPopularMoviesSuccess(movies));
+}
+
+export const fetchComingsoonMovies = () => async (dispatch) => {
+    dispatch(fetchComingsoonMoviesStart());
+    const movies = await ((await fetch(`http://localhost:3000/movies?label=soon`)).json());
+    dispatch(fetchComingsoonMoviesSuccess(movies));
+}
+
+export const fetchAdditionalMovies = (limit, page) => async (dispatch) => {
+    console.log('new fetch movies');
+    dispatch(fetchAdditionalMoviesStart(limit, page));
+    const movies = await ((await fetch(`http://localhost:3000/movies/?_page=${page}&_limit=${limit}`)).json());
+    dispatch(fetchAdditionalMoviesSuccess(movies));
 }

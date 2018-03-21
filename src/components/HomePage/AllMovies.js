@@ -5,7 +5,8 @@ import {connect} from "react-redux";
 import MoviePoster from "./MoviePoster";
 import {Link} from 'react-router-dom';
 import InfiniteScroll from "react-infinite-scroller";
-import {getAllMovies} from "../../reducers";
+import {getAllMovies, isMovieFetching} from "../../reducers";
+import {allMovies, fetchAdditionalMovies} from '../../actions'
 
 const b = block("AllMovies");
 
@@ -16,6 +17,18 @@ class AllMovies extends Component {
             items: 12,
             hasMoreItems: true
         };
+        // this.loadMore = ;
+    }
+
+    componentWillMount() {
+      this.props.resetMovies();
+      this.props.fetchAllMovies(this.state.items, 1);
+    }
+
+    componentWillReceiveProps(nextProps) {
+      if (nextProps.films.length === this.props.films.length && this.props.isFetching && !nextProps.isFetching) {
+        this.setState({...this.state, hasMoreItems: false});
+      }
     }
 
     showItems() {
@@ -23,7 +36,6 @@ class AllMovies extends Component {
         return (
             <div className={b()}>
                 {films
-                    .slice(0, this.state.items)
                     .filter(film => film.label !== 'soon')
                     .map(film =>
                         <Link key={film.id} to={`/movie/${film.id}`}>
@@ -34,30 +46,27 @@ class AllMovies extends Component {
         );
     }
 
-    loadMore() {
-        if (this.state.items === 100) {
-            this.setState({hasMoreItems: false});
-        } else {
-            setTimeout(() => {
-                this.setState({items: this.state.items + 12});
-            }, 1000);
-        }
-
+    loadMore(page) {
+      this.props.fetchAllMovies(this.state.items, page);
     }
 
     render() {
+      if (this.props.films.length === 0) {
+        return null;
+      }
         return (
-            <section style={{height: '1503px', overflow: 'auto'}}>
+            <section>
                 <InfiniteScroll
                     loadMore={this.loadMore.bind(this)}
                     hasMore={this.state.hasMoreItems}
+                    initialLoad={false}
+                    pageStart={1}
                     loader={<div className={b("loader")}>
                         <span className={b("loader-dot")}></span>
                         <span className={b("loader-dot")}></span>
                         <span className={b("loader-dot")}></span>
                         <span className={b("loader-dot")}></span>
                     </div>}
-                    useWindow={false}
                 >
                     {this.showItems()}{" "}
                 </InfiniteScroll>{" "}
@@ -65,9 +74,16 @@ class AllMovies extends Component {
         )
     }
 }
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    resetMovies: () => dispatch(allMovies([])),
+    fetchAllMovies: (labels, pages) => fetchAdditionalMovies(labels, pages)(dispatch)
+  }
+};
 
 export default connect(state => {
     const movies = getAllMovies(state);
+    const isFetching = isMovieFetching('addition_movies', state);
     return {
         films: movies.map(movie => ({
             id: movie.id,
@@ -76,6 +92,7 @@ export default connect(state => {
             rating: movie.rating,
             genre: movie.genre,
             label: movie.label
-        }))
+        })),
+        isFetching
     }
-})(AllMovies);
+}, mapDispatchToProps)(AllMovies);

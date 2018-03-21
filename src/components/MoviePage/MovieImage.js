@@ -15,8 +15,9 @@ class MovieImage extends Component {
 
     handleKeyPress(event) {
         let newId;
+        console.log("EVENT:", event);
         let id = this.state.currentId;
-        if (event.clientX >= event.path[event.path.length - 1].innerWidth / 2) {
+        if (event.clientX >= event.target.clientWidth / 2) {
             newId = id >= this.state.sources.length - 1 ? 0 : id + 1;
         }
         else {
@@ -38,7 +39,7 @@ class MovieImage extends Component {
         modal.addEventListener("click", (e) => this.handleKeyPress(e, id), false);
     }
 
-    changeImage(e, id){
+    changeImage(e, id) {
         this.setState({currentId: id});
         let modalImg = document.getElementById("img01");
         modalImg.src = this.state.sources[id];
@@ -81,10 +82,8 @@ class MovieImage extends Component {
                     <img className="modal-content" id="img01"/>
                     <div className="arrow-left"></div>
                     <div className="arrow-right"></div>
-
                     <section className={b("screenshots-modal")}>
-                        {film.screenshots.map((screen, ind) => <img src={screen} key={ind}
-                                                                    className={b("screen-modal")}
+                        {film.screenshots.map((screen, ind) => <img src={screen} key={ind}  className={b("screen-modal")}
                                                                     onClick={(e) => this.changeImage(e, ind)}/>)}
                     </section>
                 </div>
