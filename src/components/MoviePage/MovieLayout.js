@@ -4,7 +4,8 @@ import MovieInfo from "./MovieInfo";
 import Feedback from "./Feedback";
 import "../../styles/MovieLayout.less"
 import block from "../../helpers/BEM";
-import {getById, getAllMovies} from "../../reducers";
+import {getSelectedMovie} from "../../reducers";
+import {fetchMovie} from '../../actions';
 import {connect} from "react-redux";
 
 const b = block("MovieLayout");
@@ -14,11 +15,12 @@ const b = block("MovieLayout");
 class MovieLayout extends Component {
     constructor(props) {
         super(props);
+        this.props.fetchMovieById(this.props.match.params.id);
     }
 
     render() {
         const {film} = this.props;
-        if (!film) {
+        if (!film.id) {
           return null;
         }
         return (
@@ -34,9 +36,12 @@ class MovieLayout extends Component {
 }
 
 
+
 export default connect((state, props) => {
-    console.log("CONNECT", state);
-    const movie = getById(state, props.match.params.id);
+    const movie = getSelectedMovie(state);
+    // fetchMovie(props.match.params.id);
         return {film: movie};
-    }
+    }, (dispatch) => ({
+      fetchMovieById: (id) => fetchMovie(id)(dispatch)
+    })
 )(MovieLayout);

@@ -8,7 +8,7 @@ import ScheduleLayout from "./SchedulePage/ScheduleLayout";
 import HomeLayout from "./HomePage/HomeLayout";
 import MovieLayout from "./MoviePage/MovieLayout";
 import {Switch, Route} from 'react-router-dom'
-import {setMovies} from '../actions/index'
+import {allMovies} from '../actions/index'
 import {connect} from "react-redux";
 import { withRouter } from 'react-router-dom';
 import ActorLayout from "./ActorPage/ActorLayout";
@@ -24,13 +24,13 @@ class Layout extends Component {
         }
     }
 
-    componentWillMount() {
-        fetch('http://localhost:3000/db')
-            .then(results => {return results.json()})
-            .then(data => {
-                this.props.onSetMovies(data.movies)
-            });
-    }
+    // componentWillMount() {
+    //     fetch('http://localhost:3000/db')
+    //         .then(results => {return results.json()})
+    //         .then(data => {
+    //             this.props.onSetMovies(data.movies)
+    //         });
+    // }
 
     render() {
         const {movies} = this.state;
@@ -50,7 +50,7 @@ class Layout extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         onSetMovies: (movies) => {
-            dispatch(setMovies(movies))
+            dispatch(allMovies(movies))
         }
     }
 };

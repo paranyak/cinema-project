@@ -79,8 +79,8 @@ class MovieImage extends Component {
                 <div id="myModal" className="modal">
                     <span className="close" onClick={(e) => this.closeHandler(e)}>&times;</span>
                     <img className="modal-content" id="img01"/>
-                    <div class="arrow-left"></div>
-                    <div class="arrow-right"></div>
+                    <div className="arrow-left"></div>
+                    <div className="arrow-right"></div>
 
                     <section className={b("screenshots-modal")}>
                         {film.screenshots.map((screen, ind) => <img src={screen} key={ind}
