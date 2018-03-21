@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
+
 
 import "../../styles/Actors.less";
 import block from "../../helpers/BEM";
@@ -12,7 +14,8 @@ class Actors extends Component {
         return (
             <section className={b()}>
                 {film.cast.map((actor, ind) => <div className={b("item")} key={ind}>
-                    <img className={b("image")} src={actor.image}/>
+                    <Link className={b("actor-link")} key={ind} to={`/actor/${actor.name}`}>
+                        <img className={b("image")} src={actor.image}/></Link>
                     <p className={b("name")}>{actor.name}</p>
                     <p className={b("separator")}>as...</p>
                     <p className={b("role")}>{actor.role}</p>

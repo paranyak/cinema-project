@@ -2,11 +2,13 @@ import {combineReducers} from 'redux';
 import movies, * as fromMovies from './movies';
 import filters, * as fromFilters from './filters';
 import feedbacks, * as fromFeedbacks from './feedbacks';
+import { routerReducer } from 'react-router-redux';
 
 const moviesApp = combineReducers({
     movies,
     filters,
-    feedbacks
+    feedbacks,
+    router: routerReducer
 });
 
 export default moviesApp;

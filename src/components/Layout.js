@@ -11,6 +11,7 @@ import {Switch, Route} from 'react-router-dom'
 import {setMovies} from '../actions/index'
 import {connect} from "react-redux";
 import { withRouter } from 'react-router-dom';
+import ActorLayout from "./ActorPage/ActorLayout";
 
 const b = block("Layout");
 
@@ -38,7 +39,8 @@ class Layout extends Component {
             <Switch>
                 <Route exact path='/' component={HomeLayout}/>
                 <Route path='/movie/:id' component={MovieLayout}/>
-                <Route path='/schedule' component={ScheduleLayout}/>
+                <Route path='/schedule/:day?' component={ScheduleLayout}/>
+                <Route path='/actor/:id' component={ActorLayout}/>
                 <Route path='/add-movie' component={AddMovieLayout}/>
             </Switch>
         </div>
