@@ -197,7 +197,7 @@ class InputFields extends Component {
             name: this.refs.title.value,    // +
             image: cloudinaryImage + this.refs.image.value,   // ++++
             rating: parseFloat(this.refs.rating.value),     // +
-            cast: '',
+            cast: [],
             description: this.refs.description.value,   // +
             screenshots: [],
             trailer: this.refs.trailer.value,   // +++
