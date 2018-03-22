@@ -1,0 +1,50 @@
+@import "SiteColors.less";
+
+.InputField {
+  margin: 0 auto;
+  width: 80%;
+  &__input {
+    width: 100%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    &_dynamic {
+      width: 80%;
+      border-radius: 4px 0 0 4px;
+      padding: 5px 20px;
+    }
+  }
+  &__button {
+    background-color: #FAE807;
+    color: #373737;
+    font-weight: bold;
+    padding: 5.5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0.9;
+    &_remove {
+      border-radius: 0 4px 4px 0;
+    }
+    &_add {
+
+    }
+    &_submit {
+      width: 100%;
+      padding: 14px 20px;
+      margin: 10px 0 3px;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &__title {
+    color: @main-yellow;
+    margin: 20px 0 5px;
+  }
+}
