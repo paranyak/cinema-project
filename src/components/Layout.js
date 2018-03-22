@@ -49,9 +49,9 @@ class Layout extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSetMovies: (movies) => {
-            dispatch(allMovies(movies))
-        }
+        // onSetMovies: (movies) => {
+        //     dispatch(allMovies(movies))
+        // }
     }
 };
 
