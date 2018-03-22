@@ -4,7 +4,8 @@ import block from "../../helpers/BEM";
 import {connect} from "react-redux";
 import {Link} from 'react-router-dom'
 import MoviePoster from "./MoviePoster";
-import {getAllMovies} from '../../reducers';
+import {getPopularMovies, getComingsoonrMovies} from '../../reducers';
+import {fetchPopularMovies, fetchComingsoonMovies} from '../../actions';
 import scrollTo from './scrollTo';
 import throttle from 'lodash';
 
@@ -12,6 +13,10 @@ const b = block("MovieCarousel");
 
 
 class MovieCarousel extends Component {
+
+    componentWillMount() {
+      this.props.fetchMovies();
+    }
 
     handleClick(k = 1) {
         const {carousel} = this.refs;
@@ -66,8 +71,27 @@ class MovieCarousel extends Component {
     }
 }
 
-export default connect(state => {
-    const movies = getAllMovies(state);
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    fetchMovies: () => {
+      if (props.label === 'popular') {
+        return fetchPopularMovies()(dispatch);
+      }
+      return fetchComingsoonMovies()(dispatch);
+    },
+  }
+};
+
+
+export default connect((state, props) => {
+    let movies = [];
+    if (props.label === 'popular') {
+      movies = getPopularMovies(state);
+    } else {
+      movies = getComingsoonrMovies(state);
+    }
+
+    console.log(movies);
     return {
         films: movies.map(movie => ({
             id: movie.id,
@@ -78,4 +102,4 @@ export default connect(state => {
             label: movie.label
         }))
     }
-})(MovieCarousel);
+}, mapDispatchToProps)(MovieCarousel);
