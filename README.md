@@ -39,5 +39,5 @@
 - [ ] - action розбити по файлах
 - [ ] - папка api, яка відповідає за дію fetch (addMovie, fetchMovie...)
 - [ ] - додати обробку помилки при fetch error
-- [ ] - scrollTO винести до helper
+- [x] - scrollTO винести до helper
 - [ ] - редагування фільму

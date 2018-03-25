@@ -598,34 +598,36 @@
       }
     },
     {
-      "name": "Red Sparrow",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BMTA3MDkxOTc4NDdeQTJeQWpwZ15BbWU4MDAxNzgyNTQz._V1_SY1000_CR0,0,674,1000_AL_.jpg",
-      "rating": 6.7,
+      "name": "Peter Rabbit",
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://i1.wp.com/teaser-trailer.com/wp-content/uploads/Peter-Rabbit-new-poster.jpg?ssl=1",
+      "rating": 6.4,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BOTU3NDE5MDQ4MV5BMl5BanBnXkFtZTgwMzE5ODQ3MDI@._V1_SY1000_CR0,0,626,1000_AL_.jpg",
-          "name": "Jennifer Lawrence",
-          "role": "Dominika Egorova"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTcyMDA2MTgwMF5BMl5BanBnXkFtZTgwODgyNDM2NDE@._V1_.jpg",
+          "name": "James Corden",
+          "role": "Peter Rabbit (voice)"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTA0ODI1ODk4NzdeQTJeQWpwZ15BbWU3MDkwNjkzOTY@._V1._SX214_SY317_.jpg",
-          "name": "Joel Edgerton",
-          "role": "Nate Nash"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjMyMzk0MDQ1NF5BMl5BanBnXkFtZTgwNzAwNTcyNzE@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "name": "Fayssal Bazzi",
+          "role": "Mr. Tod (voice)"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjMyNTQ0MDgwOF5BMl5BanBnXkFtZTcwOTUxNzA3OA@@._V1_SY1000_CR0,0,753,1000_AL_.jpg",
-          "name": "Matthias Schoenaerts",
-          "role": "Vanya Egorov"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjA5MjI0MzY2MF5BMl5BanBnXkFtZTcwMzM3ODM3OA@@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "name": "Domhnall Gleeson",
+          "role": "Mr. Jeremy Fisher / Mr. Thomas McGregor"
         }
       ],
-      "description": "Ballerina Dominika Egorova is recruited to 'Sparrow School,' a Russian intelligence service where she is forced to use her body as a weapon. Her first mission, targeting a C.I.A. agent, threatens to unravel the security of both nations.",
+      "description": "Feature adaptation of Beatrix Potter's classic tale of a rebellious rabbit trying to sneak into a farmer's vegetable garden.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BOWU3OGJjZjEtN2JkYS00MTZmLTkyY2EtYzY4OTIwZTlkM2Q1XkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1497,1000_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjA0MDQ3ZWUtMTdhNS00ODFlLTgxZmEtZWM5ZmQxMTU3ZDdmXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1497,1000_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjIwZDgwYTctMTA3Zi00N2I0LTgxYTYtNTQ1MWRmZGU2NjcxXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1499,1000_AL_.jpg"
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/peter_rabbit/Peter-Rabbit-kadr-1.R1366x758.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/peter_rabbit/Peter-Rabbit-kadr-2.R1366x758.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/peter_rabbit/Peter-Rabbit-kadr-3.R1366x758.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/peter_rabbit/Peter-Rabbit-kadr-4.R1366x758.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/peter_rabbit/Peter-Rabbit-kadr-5.R1366x756.jpg"
       ],
-      "trailer": "http://www.imdb.com/videoplayer/vi4237277209",
-      "genre": " Mystery, Thriller",
+      "trailer": "http://www.imdb.com/title/tt5117670/videoplayer/vi2445195289",
+      "genre": "Adventure, Comedy",
       "Schedule": [
         "12-03-2018 10:15",
         "12-03-2018 11:00",
@@ -645,52 +647,55 @@
         "Cinetech+"
       ],
       "duration": {
-        "hour": 2,
-        "minute": 19
+        "hour": 1,
+        "minute": 35
       },
       "label": "popular",
       "startDate": {
         "year": 2018,
         "month": 3,
-        "day": 1
+        "day": 22
       },
       "id": 11
     },
     {
-      "name": "The Hurricane Heist",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BMzg3Y2MyNjgtMzk4ZS00OTU3LWEwZmMtN2Y0NTdlZjU0NGFiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,675,1000_AL_.jpg",
-      "rating": 4.8,
+      "name": "The Commuter",
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/http://bahraincinema.com/wp-content/uploads/2018/01/The-Commuter--500x760.jpg",
+      "rating": 6.5,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
-          "name": "Toby Kebbell",
-          "role": "Will"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjA1MTQ3NzU1MV5BMl5BanBnXkFtZTgwMDE3Mjg0MzE@._V1_.jpg",
+          "name": "Liam Neeson",
+          "role": "Michael MacCauley"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
-          "name": "Maggie Grace",
-          "role": "Casey"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTM3NzMwNTc1MV5BMl5BanBnXkFtZTcwNDE2ODU2OA@@._V1_.jpg",
+          "name": "Vera Farmiga",
+          "role": "Joanna"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
-          "name": "Ryan Kwanten",
-          "role": "Breeze"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTkzNzcxNzcxMF5BMl5BanBnXkFtZTgwOTM1ODUzMTE@._V1_SY1000_CR0,0,685,1000_AL_.jpg",
+          "name": "Patrick Wilson",
+          "role": "Alex Murphy"
         }
       ],
-      "description": "Thieves attempt a massive heist against the U.S. Treasury as a Category 5 hurricane approaches one of its Mint facilities.",
+      "description": "A businessman is caught up in a criminal conspiracy during his daily commute home.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjA1MjcwNTE2N15BMl5BanBnXkFtZTgwOTk5NTM2NDM@._V1_SY1000_SX1500_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BNmQ0NDdkZjctMDAxNS00ZGRkLWI4MGMtZDJmYjRhNjI0ZGFjXkEyXkFqcGdeQXVyNTc5OTMwOTQ@._V1_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BNzVlNzNhOWQtYWVlZS00MmFlLTlhOWMtNTY5MWJiMjk4NGQ0XkEyXkFqcGdeQXVyNTc5OTMwOTQ@._V1_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BZWEwMWI2NDUtZmM0YS00MWMzLTk3ZTAtZTA0YWIwOWM0YzQ3XkEyXkFqcGdeQXVyMTU2MDA4NQ@@._V1_.jpg"
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://ia.media-imdb.com/images/M/MV5BNWViN2E0Y2MtZTExYi00NTFkLTk2MGEtMWJjN2UxOWFmMmNhXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1553,1000_AL_.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://ia.media-imdb.com/images/M/MV5BNjcyM2ViZmUtMGRhZC00Zjk1LWFmOTItZTg3Y2JmY2EwM2ZkXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1502,1000_AL_.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://ia.media-imdb.com/images/M/MV5BYTE5NDI0MjMtZjVlMy00NDg0LThlYmUtMjAwMWJhZmU2YWE4XkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1502,1000_AL_.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://ia.media-imdb.com/images/M/MV5BMjExNzNkNTEtM2E3Yi00NDczLWEwOGEtZDMxMWEyZDI2MmQzXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1502,1000_AL_.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://ia.media-imdb.com/images/M/MV5BMGM0ZDM1ZmQtNDY3Ni00YzFkLWJlMjAtMWVmMTFhZTU3Nzc5XkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1503,1000_AL_.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://ia.media-imdb.com/images/M/MV5BNWVlMzZlYjAtMmE1NS00ZTg1LTlhZGUtNDZiNzYyYjA0YTlkXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1502,1000_AL_.jpg"
       ],
-      "trailer": "http://www.imdb.com/videoplayer/vi3874076697",
-      "genre": "Action, Thriller",
+      "trailer": "http://www.imdb.com/title/tt1590193/videoplayer/vi1300019481",
+      "genre": "Action, Crime, Drama",
       "Schedule": [
-        "13-03-2018 10:00",
-        "13-03-2018 18:35",
-        "13-03-2018 20:20",
-        "12-03-2018 22:35"
+        "28-03-2018 10:00",
+        "28-03-2018 12:00",
+        "28-03-2018 14:00",
+        "28-03-2018 18:35",
+        "29-03-2018 20:35"
       ],
       "format": [
         "2D"
@@ -700,51 +705,51 @@
       ],
       "duration": {
         "hour": 1,
-        "minute": 40
+        "minute": 45
       },
       "label": "",
       "startDate": {
         "year": 2018,
         "month": 3,
-        "day": 1
+        "day": 22
       },
       "id": 12
     },
     {
-      "name": "The Hurricane Heist",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BMzg3Y2MyNjgtMzk4ZS00OTU3LWEwZmMtN2Y0NTdlZjU0NGFiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,675,1000_AL_.jpg",
-      "rating": 4.8,
+      "name": "Dear Dictator",
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BNDVlZWU2ZDMtMWYzOC00ODA1LTk2N2EtMGJmYjdjY2IwN2I5XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,675,1000_AL_.jpg",
+      "rating": 4.6,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
-          "name": "Toby Kebbell",
-          "role": "Will"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjAwNzIwNTQ4Ml5BMl5BanBnXkFtZTYwMzE1MTUz._V1_.jpg",
+          "name": "Michael Caine",
+          "role": "General Anton Vincent"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
-          "name": "Maggie Grace",
-          "role": "Casey"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjI1NDIzNDIyOF5BMl5BanBnXkFtZTgwNzg3ODQyNzE@._V1_.jpg",
+          "name": "Odeya Rush",
+          "role": "Tatiana Mills"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
-          "name": "Ryan Kwanten",
-          "role": "Breeze"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BNTA2NjY5OTkzNl5BMl5BanBnXkFtZTcwMDE2NTkxNA@@._V1_.jpg",
+          "name": "Katie Holmes",
+          "role": "Darlene Mills"
         }
       ],
-      "description": "Thieves attempt a massive heist against the U.S. Treasury as a Category 5 hurricane approaches one of its Mint facilities.",
+      "description": "When political turmoil forces a British-Caribbean dictator to flee his island nation, he seeks refuge and hides with a rebellious teenage girl in suburban America, and ends up teaching the young teen how to start a revolution and overthrow the "mean girls" in her high school.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjA1MjcwNTE2N15BMl5BanBnXkFtZTgwOTk5NTM2NDM@._V1_SY1000_SX1500_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BNmQ0NDdkZjctMDAxNS00ZGRkLWI4MGMtZDJmYjRhNjI0ZGFjXkEyXkFqcGdeQXVyNTc5OTMwOTQ@._V1_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BNzVlNzNhOWQtYWVlZS00MmFlLTlhOWMtNTY5MWJiMjk4NGQ0XkEyXkFqcGdeQXVyNTc5OTMwOTQ@._V1_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BZWEwMWI2NDUtZmM0YS00MWMzLTk3ZTAtZTA0YWIwOWM0YzQ3XkEyXkFqcGdeQXVyMTU2MDA4NQ@@._V1_.jpg"
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/dear-dictator/dear-dictator-kadr-1.R1366x768.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/dear-dictator/dear-dictator-kadr-2.R1366x768.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/dear-dictator/dear-dictator-kadr-3.R1366x768.jpg"
       ],
-      "trailer": "http://www.imdb.com/videoplayer/vi3874076697",
-      "genre": "Action, Thriller",
+      "trailer": "http://www.imdb.com/title/tt5779540/videoplayer/vi4294686745",
+      "genre": "Comedy",
       "Schedule": [
-        "13-03-2018 10:00",
-        "13-03-2018 18:35",
-        "13-03-2018 20:20",
-        "12-03-2018 22:35"
+        "28-03-2018 21:10",
+        "29-03-2018 21:10",
+        "30-03-2018 21:10",
+        "31-03-2018 21:10",
+        "1-04-2018 21:10"
       ],
       "format": [
         "2D"
@@ -754,13 +759,13 @@
       ],
       "duration": {
         "hour": 1,
-        "minute": 40
+        "minute": 30
       },
       "label": "",
       "startDate": {
         "year": 2018,
         "month": 3,
-        "day": 1
+        "day": 16
       },
       "id": 13
     },
