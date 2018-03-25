@@ -19,7 +19,7 @@ class MovieLayout extends Component {
 
     render() {
         const {film} = this.props;
-        if (!film.id) {
+        if (film.id === undefined) {
           return null;
         }
         return (
@@ -37,7 +37,6 @@ class MovieLayout extends Component {
 
 export default connect((state, props) => {
     const movie = getSelectedMovie(state);
-    // fetchMovie(props.match.params.id);
         return {film: movie};
     }, (dispatch) => ({
       fetchMovieById: (id) => fetchMovie(id)(dispatch)
