@@ -4397,23 +4397,55 @@
         "day": 1
       },
       "id": 80
+    },
+    {
+      "name": "Костя",
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://pp.userapi.com/c639326/v639326927/9464/8kBeu1mK2LE.jpg",
+      "rating": 10,
+      "cast": [],
+      "description": "Наталіна любов!! <3",
+      "screenshots": [],
+      "trailer": "https://pp.userapi.com/c639326/v639326927/9464/8kBeu1mK2LE.jpg",
+      "genre": "Adventure, Romance, Biography, Family",
+      "Schedule": [
+        "22-03-2018 18:00",
+        "22-03-2018 13:15"
+      ],
+      "format": [
+        "DolbyDigital"
+      ],
+      "technology": [
+        "Cinematech+",
+        "IMAX"
+      ],
+      "duration": {
+        "hour": 1,
+        "minute": 20
+      },
+      "label": "",
+      "startDate": {
+        "year": 2018,
+        "month": 3,
+        "day": 22
+      },
+      "id": 81
     }
   ],
   "actors": [
     {
       "id": "Maggie Grace",
-      "movies": [
-        1,
-        2,
-        3
-      ],
+      "movies": {
+        "1": "name",
+        "2": "name"
+      },
       "info": "Maggie Grace (born Margaret Grace Denig; September 21, 1983)[1] is an American actress and model, best known for her roles as Shannon Rutherford on the ABC television series Lost and Kim Mills in the Taken trilogy. She has also appeared on The Twilight Saga as Irina. Originally from Worthington, Ohio, she went on to earn a Young Artist Award nomination in 2002 with her portrayal of 15-year-old murder victim Martha Moxley in the television movie Murder in Greenwich. In 2004, Grace was cast as Shannon Rutherford in the television series Lost, on which she was a main cast member for the first two seasons, winning a Screen Actors Guild Award shared with the ensemble cast. Leaving the series, Grace was keen to work more prominently in film, she appeared in The Jane Austen Book Club (both 2007), and opposite Liam Neeson as Kim Mills in Taken in 2008. She reprised the role in Taken 2 (2012) and Taken 3 (2015).",
-        "born": {
-          "date": "September 21, 1983 (age 34)",
-          "city" : "Worthington, Ohio, U.S."
-        },
-      "nominations" : ["Teen Choice Award в номінації Найкращий прорив року: жіноча роль у серіалі",
-      "Teen Choice Award в номінації Найкраща актриса екшну/пригодницького фільму"]
+      "date": "September 21, 1983 (age 34)",
+      "city": "Worthington, Ohio, U.S.",
+      "nominations": [
+        "Teen Choice Award в номінації Найкращий прорив року: жіноча роль у серіалі",
+        "Teen Choice Award в номінації Найкраща актриса екшну/пригодницького фільму"
+      ],
+      "image" : "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg"
     }
   ]
 }
