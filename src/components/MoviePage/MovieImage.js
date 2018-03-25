@@ -58,12 +58,30 @@ class MovieImage extends Component {
         //
     }
 
-
-    componentWillMount() {
+    componentWillMount(){
         const {film} = this.props;
-        let sourcesArray = film.screenshots;
-        sourcesArray.unshift(film.image);
+        console.log("FILM CWM: ", film);
+        let sourcesArray = [film.image];
+        film.screenshots.map(
+            screen => sourcesArray.push(screen)
+        );
         this.setState({sources: sourcesArray});
+    }
+
+    componentWillUpdate(nextProps) {
+        console.log("NEXT CWU: ", nextProps);
+        if (nextProps != this.props) {
+            console.log("UPDATE in MI");
+            const {film} = nextProps;
+            console.log("FILM: ", film);
+            let sourcesArray = [film.image];
+            film.screenshots.map(
+                screen => sourcesArray.push(screen)
+            );
+            this.setState({sources: sourcesArray});
+            return true;
+        }
+        return false;
     }
 
     render() {
@@ -74,7 +92,7 @@ class MovieImage extends Component {
                 <img src={film.image} className={b("main")} onClick={(e, src) => this.mainImageHandler(e, 0)}/>
                 <section className={b("screenshots")}>
                     {film.screenshots.map((screen, ind) => <img src={screen} key={ind} className={b("screen")}
-                                                                onClick={(e, src) => this.mainImageHandler(e, ind)}/>)}
+                                                                onClick={(e, src) => this.mainImageHandler(e, ind + 1)}/>)}
                 </section>
 
                 <div id="myModal" className={b("modal")}>
@@ -83,8 +101,9 @@ class MovieImage extends Component {
                     <div className={b("arrow-left")}></div>
                     <div className={b("arrow-right")}></div>
                     <section className={b("screenshots-modal")}>
-                        {film.screenshots.map((screen, ind) => <img src={screen} key={ind}  className={b("screen-modal")}
-                                                                    onClick={(e) => this.changeImage(e, ind)}/>)}
+                        {this.state.sources.map((screen, ind) => <img src={screen} key={ind}
+                                                                      className={b("screen-modal")}
+                                                                      onClick={(e) => this.changeImage(e, ind)}/>)}
                     </section>
                 </div>
             </section>

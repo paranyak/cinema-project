@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import MovieImage from "./MovieImage";
 import MovieInfo from "./MovieInfo";
-import Feedback from "./Feedback";
 import "../../styles/MovieLayout.less"
 import block from "../../helpers/BEM";
 import {getSelectedMovie} from "../../reducers";
@@ -28,7 +27,6 @@ class MovieLayout extends Component {
                 <div className={b()}>
                     <MovieInfo film={film}/>
                     <MovieImage film={film}/>
-                    <Feedback id={film.id}/>
                 </div>
             </div>
         )

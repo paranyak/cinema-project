@@ -67,11 +67,28 @@ export const fetchMoviesStart = () => {
     }
 }
 
+//HERE
+export const fetchActorsStart =() =>{
+    return {
+        type: 'FETCH_ACTOR',
+        id: 'actor'
+    }
+}
+
 export const fetchMoviesSuccess = (movies) => {
     return {
       type: 'FETCH_MOVIES_SUCCESS',
       id: 'movies',
       movies
+    }
+}
+
+//HERE
+export const fetchActorsSucess = (id, actor) =>{
+    return {
+        type: 'FETCH_ACTOR__SUCCESS',
+        id: 'actor',
+        actor
     }
 }
 
@@ -162,11 +179,22 @@ export const fetchMovie = (id) => async (dispatch) => {
     dispatch(fetchMovieSuccess(id, movie));
 }
 
+
+//HERE
+export const fetchActors = (id) => async (dispatch) => {
+    dispatch(fetchActorsStart(id));
+    const actor = await ((await fetch(`http://localhost:3000/actors/${id}`)).json());
+    dispatch(fetchActorsSucess(id, actor));
+}
+
+//HERE ^
+
 export const fetchMoviesSchedule = (day) => async (dispatch) => {
     dispatch(fetchMoviesStart());
     const movies = await ((await fetch(`http://localhost:3000/movies?Schedule_like=${day}`)).json());
     dispatch(fetchMoviesSuccess(movies));
 }
+
 
 export const fetchPopularMovies = () => async (dispatch) => {
     dispatch(fetchPopularMoviesStart());
