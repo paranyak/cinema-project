@@ -1,12 +1,12 @@
 import React, {Component} from "react";
 import "../../styles/MovieCarousel.less";
 import block from "../../helpers/BEM";
+import scrollTo from '../../helpers/scrollTo';
 import {connect} from "react-redux";
 import {Link} from 'react-router-dom'
 import MoviePoster from "./MoviePoster";
 import {getPopularMovies, getComingsoonrMovies} from '../../reducers';
 import {fetchPopularMovies, fetchComingsoonMovies} from '../../actions';
-import scrollTo from './scrollTo';
 import throttle from 'lodash';
 
 const b = block("MovieCarousel");
