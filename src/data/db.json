@@ -176,7 +176,7 @@
         {
           "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
           "name": "Chadwick Boseman",
-          "role": "T'Challa / Black Panther "
+          "role": "T'Challa / Black Panther"
         },
         {
           "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjExOTY3NzExM15BMl5BanBnXkFtZTgwOTg1OTAzMTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
@@ -954,34 +954,34 @@
     },
     {
       "name": "Avengers: Infinity War",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BMjEyNTQyNzY3NF5BMl5BanBnXkFtZTgwODcxMzY1NDM@._V1_SY1000_SX668_AL_.jpg",
-      "rating": 5.8,
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
+      "rating": "-.-",
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
-          "name": "Alicia Vikander",
-          "role": "Danielle Flinders"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTQwMDQ0NDk1OV5BMl5BanBnXkFtZTcwNDcxOTExNg@@._V1_SY1000_CR0,0,688,1000_AL_.jpg",
+          "name": "Karen Gillan",
+          "role": "Nebula"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQzNzIxOTYzMl5BMl5BanBnXkFtZTcwNjYxNTk1Nw@@._V1_SY1000_CR0,0,766,1000_AL_.jpg",
-          "name": "James McAvoy",
-          "role": "James More"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjIyMzgxMzc5N15BMl5BanBnXkFtZTgwNDg3NzYzMDI@._V1_.jpg",
+          "name": "Letitia Wright",
+          "role": "Shuri"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTIxMjYwMTA3MV5BMl5BanBnXkFtZTcwNDQxODYzMQ@@._V1_.jpg",
-          "name": "Alexander Siddig",
-          "role": "Dr. Shadid"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "name": "Chadwick Boseman",
+          "role": "T'Challa / Black Panther"
         }
       ],
-      "description": "In a room with no windows on the eastern coast of Africa, a Scotsman, James More, is held captive by jihadist fighters. Thousands of miles away in the Greenland Sea, Danielle Flinders prepares to dive in a submersible to the ocean floor. In their confines they are drawn back to the Christmas of the previous year, where a chance encounter on a beach in France led to an intense and enduring romance.",
+      "description": "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BY2M0M2Q3YmQtYzIzZC00ZWZmLThjN2UtN2RiNTEyNTkyZmM1XkEyXkFqcGdeQXVyNjYyNDM3MTY@._V1_SY1000_CR0,0,1586,1000_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjUwMjRhMDEtZjI3Mi00N2IyLWE0YTktMWU1MDVjNWY5NjM0XkEyXkFqcGdeQXVyNjA0MzkwMjU@._V1_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/submergence/Submergence-kadr_3.R1366x909.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/submergence/Submergence-kadr_6.R1366x910.jpg"
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/avengers_infinity_war/Avengers-kadr1.R1366x911.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/avengers_infinity_war/Avengers-kadr2.R1366x911.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/avengers_infinity_war/Avengers-kadr3.R1366x911.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/avengers_infinity_war/Avengers1-kadr-4.R1366x911.jpg"
       ],
-      "trailer": "http://www.imdb.com/title/tt3563262/videoplayer/vi3678124057",
-      "genre": "Drama, Romance, Thriller",
+      "trailer": "http://www.imdb.com/title/tt4154756/videoplayer/vi974436377",
+      "genre": "Action, Adventure, Fantasy",
       "Schedule": [
         "26-04-2018 10:00",
         "26-04-2018 13:00",
@@ -1008,102 +1008,82 @@
       "id": 17
     },
     {
-      "name": "The Post",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://upload.wikimedia.org/wikipedia/en/0/0b/The_Post_%28film%29.png",
-      "rating": 7.3,
+      "name": "Jurassic World: Fallen Kingdom",
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BMTc3Nzc3OTgxMl5BMl5BanBnXkFtZTgwNzgzNzk2MjI@._V1_.jpg",
+      "rating": "-.-",
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg/1200px-Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg",
-          "name": "Meryl Streep",
-          "role": "Katharine Graham"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BODEzNzBhODYtOWEzNi00Y2I3LWFjMGEtNzAxNzU5ZjZiMDRiXkEyXkFqcGdeQXVyMjQ0MTg4Nw@@._V1_.jpg",
+          "name": "Bryce Dallas Howard",
+          "role": "Claire Dearing"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/6/66/Tom_Hanks_2014.jpg",
-          "name": "Tom Hanks",
-          "role": "Ben Bradlee"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BNzg3MTgwOTgzMV5BMl5BanBnXkFtZTgwODIxMTUwMjE@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "name": "Chris Pratt",
+          "role": "Owen Grady"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Bob_Odenkirk_by_Gage_Skidmore.jpg/800px-Bob_Odenkirk_by_Gage_Skidmore.jpg",
-          "name": "Bob Odenkirk",
-          "role": "Ben Bagdikian"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTE5NzkyODg1Nl5BMl5BanBnXkFtZTYwMTY2OTE0._V1_.jpg",
+          "name": "Jeff Goldblum",
+          "role": "Ian Malcolm"
         }
       ],
-      "description": "A cover-up that spanned four U.S. Presidents pushed the country's first female newspaper publisher and a hard-driving editor to join an unprecedented battle between the press and the government.",
+      "description": "When the island's dormant volcano begins roaring to life, Owen and Claire mount a campaign to rescue the remaining dinosaurs from this extinction-level event.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/the_post/Post-the_kadr-1.R1366x876.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/the_post/Post-the_kadr-2.R1366x842.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/the_post/Post-the_kadr_3.R1366x840.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/the_post/Post-the_kadr-5.R1366x839.jpg"
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/jurassic_world_2/Jurassic-World-2-kadr-1.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/jurassic_world_2/Jurassic-World-2-kadr-2.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/jurassic_world_2/Jurassic-World-2-kadr-3.jpg"
       ],
-      "trailer": "http://www.imdb.com/title/tt6294822/videoplayer/vi11581465",
-      "genre": "Biography, Drama, History",
-      "Schedule": [
-        "12-03-2018 10:15",
-        "13-03-2018 13:35",
-        "13-03-2018 15:10"
-      ],
-      "format": [
-        "2D"
-      ],
-      "technology": [
-        "Cinetech+"
-      ],
+      "trailer": "http://www.imdb.com/title/tt4881806/videoplayer/vi3487021081",
+      "genre": "Action, Adventure, Sci-Fi",
+      "Schedule": [],
+      "format": [],
+      "technology": [],
       "duration": {
         "hour": 1,
         "minute": 56
       },
-      "label": "popular",
+      "label": "soon",
       "startDate": {
         "year": 2018,
-        "month": 2,
-        "day": 22
+        "month": 6,
+        "day": 7
       },
       "id": 18
     },
     {
-      "name": "Tomb Raider",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BOTY4NDcyZGQtYmVlNy00ODgwLTljYTMtYzQ2OTE3NDhjODMwXkEyXkFqcGdeQXVyNzYzODM3Mzg@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
-      "rating": 7.8,
+      "name": "Ant-Man and the Wasp",
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BMjM1NDEzMzgxMl5BMl5BanBnXkFtZTgwNzg5NTk2NDM@._V1_SY1000_SX675_AL_.jpg",
+      "rating": "-.-",
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
-          "name": "Alicia Vikander",
-          "role": "Lara Croft"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTY4NTEwNDg1MV5BMl5BanBnXkFtZTgwODMwMDA0ODE@._V1_SY1000_CR0,0,799,1000_AL_.jpg",
+          "name": "Paul Rudd",
+          "role": "Scott Lang / Ant-Man"
         },
         {
           "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
           "name": "Hannah John-Kamen",
-          "role": "Sophie"
+          "role": "Ghost"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
-          "name": "Walton Goggins",
-          "role": "Mathias Vogel"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTc2MDMzODU0OV5BMl5BanBnXkFtZTgwODIwOTAxMzI@._V1_SY1000_CR0,0,868,1000_AL_.jpgMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "name": "Evangeline Lilly",
+          "role": "Hope van Dyne / The Wasp"
         }
       ],
-      "description": "Lara Croft, the fiercely independent daughter of a missing adventurer, must push herself beyond her limits when she finds herself on the island where her father disappeared.",
+      "description": "As Scott Lang balances being both a Super Hero and a father, Hope van Dyne and Dr. Hank Pym present an urgent new mission that finds the Ant-Man fighting alongside The Wasp to uncover secrets from their past.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/tomb_raider/lara-kroft-kadr1.R1366x911.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/tomb_raider/lara-kroft-kadr2.R1366x909.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/tomb_raider/Tomb-Raider_kadr3.R1366x914.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/tomb_raider/lara-kroft-kadr4.R1366x909.jpg"
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ant_man_and_the_wasp/Ant-Man-and-the-Wasp-kadr-1.R1366x909.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ant_man_and_the_wasp/Ant-Man-and-the-Wasp-kadr-2.R1366x909.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ant_man_and_the_wasp/Ant-Man-and-the-Wasp-kadr-3.R1366x909.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ant_man_and_the_wasp/Ant-Man-and-the-Wasp-kadr-4.R1366x909.jpg"
       ],
-      "trailer": "http://www.imdb.com/title/tt1365519/videoplayer/vi3590174745",
-      "genre": "Action, Adventure",
-      "Schedule": [
-        "12-03-2018 10:00",
-        "12-03-2018 12:15",
-        "13-03-2018 14:30",
-        "13-03-2018 16:45",
-        "13-03-2018 19:00",
-        "12-03-2018 21:15"
-      ],
-      "format": [
-        "3D"
-      ],
-      "technology": [
-        "IMAX"
-      ],
+      "trailer": "http://www.imdb.com/title/tt5095030/videoplayer/vi972011545",
+      "genre": "Action, Adventure, Sci-Fi",
+      "Schedule": [],
+      "format": [],
+      "technology": [],
       "duration": {
         "hour": 1,
         "minute": 58
@@ -1111,8 +1091,8 @@
       "label": "soon",
       "startDate": {
         "year": 2018,
-        "month": 3,
-        "day": 15
+        "month": 7,
+        "day": 6
       },
       "id": 19
     },
