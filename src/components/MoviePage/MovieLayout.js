@@ -7,6 +7,7 @@ import {getSelectedMovie} from "../../reducers";
 import {fetchMovie} from '../../actions';
 import {connect} from "react-redux";
 
+
 const b = block("MovieLayout");
 
 
@@ -17,11 +18,13 @@ class MovieLayout extends Component {
         this.props.fetchMovieById(this.props.match.params.id);
     }
 
+
     render() {
         const {film} = this.props;
         if (film.id === undefined) {
           return null;
         }
+        console.log("HERE ML");
         return (
             <div>
                 <div className={b()}>
