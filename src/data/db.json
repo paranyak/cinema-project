@@ -176,7 +176,7 @@
         {
           "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
           "name": "Chadwick Boseman",
-          "role": "T'Challa / Black Panther "
+          "role": "T'Challa / Black Panther"
         },
         {
           "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjExOTY3NzExM15BMl5BanBnXkFtZTgwOTg1OTAzMTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
@@ -598,34 +598,36 @@
       }
     },
     {
-      "name": "Red Sparrow",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BMTA3MDkxOTc4NDdeQTJeQWpwZ15BbWU4MDAxNzgyNTQz._V1_SY1000_CR0,0,674,1000_AL_.jpg",
-      "rating": 6.7,
+      "name": "Peter Rabbit",
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://i1.wp.com/teaser-trailer.com/wp-content/uploads/Peter-Rabbit-new-poster.jpg?ssl=1",
+      "rating": 6.4,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BOTU3NDE5MDQ4MV5BMl5BanBnXkFtZTgwMzE5ODQ3MDI@._V1_SY1000_CR0,0,626,1000_AL_.jpg",
-          "name": "Jennifer Lawrence",
-          "role": "Dominika Egorova"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTcyMDA2MTgwMF5BMl5BanBnXkFtZTgwODgyNDM2NDE@._V1_.jpg",
+          "name": "James Corden",
+          "role": "Peter Rabbit (voice)"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTA0ODI1ODk4NzdeQTJeQWpwZ15BbWU3MDkwNjkzOTY@._V1._SX214_SY317_.jpg",
-          "name": "Joel Edgerton",
-          "role": "Nate Nash"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjMyMzk0MDQ1NF5BMl5BanBnXkFtZTgwNzAwNTcyNzE@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "name": "Fayssal Bazzi",
+          "role": "Mr. Tod (voice)"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjMyNTQ0MDgwOF5BMl5BanBnXkFtZTcwOTUxNzA3OA@@._V1_SY1000_CR0,0,753,1000_AL_.jpg",
-          "name": "Matthias Schoenaerts",
-          "role": "Vanya Egorov"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjA5MjI0MzY2MF5BMl5BanBnXkFtZTcwMzM3ODM3OA@@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "name": "Domhnall Gleeson",
+          "role": "Mr. Jeremy Fisher / Mr. Thomas McGregor"
         }
       ],
-      "description": "Ballerina Dominika Egorova is recruited to 'Sparrow School,' a Russian intelligence service where she is forced to use her body as a weapon. Her first mission, targeting a C.I.A. agent, threatens to unravel the security of both nations.",
+      "description": "Feature adaptation of Beatrix Potter's classic tale of a rebellious rabbit trying to sneak into a farmer's vegetable garden.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BOWU3OGJjZjEtN2JkYS00MTZmLTkyY2EtYzY4OTIwZTlkM2Q1XkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1497,1000_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjA0MDQ3ZWUtMTdhNS00ODFlLTgxZmEtZWM5ZmQxMTU3ZDdmXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1497,1000_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjIwZDgwYTctMTA3Zi00N2I0LTgxYTYtNTQ1MWRmZGU2NjcxXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1499,1000_AL_.jpg"
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/peter_rabbit/Peter-Rabbit-kadr-1.R1366x758.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/peter_rabbit/Peter-Rabbit-kadr-2.R1366x758.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/peter_rabbit/Peter-Rabbit-kadr-3.R1366x758.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/peter_rabbit/Peter-Rabbit-kadr-4.R1366x758.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/peter_rabbit/Peter-Rabbit-kadr-5.R1366x756.jpg"
       ],
-      "trailer": "http://www.imdb.com/videoplayer/vi4237277209",
-      "genre": " Mystery, Thriller",
+      "trailer": "http://www.imdb.com/title/tt5117670/videoplayer/vi2445195289",
+      "genre": "Adventure, Comedy",
       "Schedule": [
         "12-03-2018 10:15",
         "12-03-2018 11:00",
@@ -645,270 +647,55 @@
         "Cinetech+"
       ],
       "duration": {
-        "hour": 2,
-        "minute": 19
+        "hour": 1,
+        "minute": 35
       },
       "label": "popular",
       "startDate": {
         "year": 2018,
         "month": 3,
-        "day": 1
+        "day": 22
       },
       "id": 11
     },
     {
-      "name": "The Hurricane Heist",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BMzg3Y2MyNjgtMzk4ZS00OTU3LWEwZmMtN2Y0NTdlZjU0NGFiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,675,1000_AL_.jpg",
-      "rating": 4.8,
+      "name": "The Commuter",
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/http://bahraincinema.com/wp-content/uploads/2018/01/The-Commuter--500x760.jpg",
+      "rating": 6.5,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
-          "name": "Toby Kebbell",
-          "role": "Will"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjA1MTQ3NzU1MV5BMl5BanBnXkFtZTgwMDE3Mjg0MzE@._V1_.jpg",
+          "name": "Liam Neeson",
+          "role": "Michael MacCauley"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
-          "name": "Maggie Grace",
-          "role": "Casey"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTM3NzMwNTc1MV5BMl5BanBnXkFtZTcwNDE2ODU2OA@@._V1_.jpg",
+          "name": "Vera Farmiga",
+          "role": "Joanna"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
-          "name": "Ryan Kwanten",
-          "role": "Breeze"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTkzNzcxNzcxMF5BMl5BanBnXkFtZTgwOTM1ODUzMTE@._V1_SY1000_CR0,0,685,1000_AL_.jpg",
+          "name": "Patrick Wilson",
+          "role": "Alex Murphy"
         }
       ],
-      "description": "Thieves attempt a massive heist against the U.S. Treasury as a Category 5 hurricane approaches one of its Mint facilities.",
+      "description": "A businessman is caught up in a criminal conspiracy during his daily commute home.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjA1MjcwNTE2N15BMl5BanBnXkFtZTgwOTk5NTM2NDM@._V1_SY1000_SX1500_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BNmQ0NDdkZjctMDAxNS00ZGRkLWI4MGMtZDJmYjRhNjI0ZGFjXkEyXkFqcGdeQXVyNTc5OTMwOTQ@._V1_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BNzVlNzNhOWQtYWVlZS00MmFlLTlhOWMtNTY5MWJiMjk4NGQ0XkEyXkFqcGdeQXVyNTc5OTMwOTQ@._V1_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BZWEwMWI2NDUtZmM0YS00MWMzLTk3ZTAtZTA0YWIwOWM0YzQ3XkEyXkFqcGdeQXVyMTU2MDA4NQ@@._V1_.jpg"
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://ia.media-imdb.com/images/M/MV5BNWViN2E0Y2MtZTExYi00NTFkLTk2MGEtMWJjN2UxOWFmMmNhXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1553,1000_AL_.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://ia.media-imdb.com/images/M/MV5BNjcyM2ViZmUtMGRhZC00Zjk1LWFmOTItZTg3Y2JmY2EwM2ZkXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1502,1000_AL_.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://ia.media-imdb.com/images/M/MV5BYTE5NDI0MjMtZjVlMy00NDg0LThlYmUtMjAwMWJhZmU2YWE4XkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1502,1000_AL_.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://ia.media-imdb.com/images/M/MV5BMjExNzNkNTEtM2E3Yi00NDczLWEwOGEtZDMxMWEyZDI2MmQzXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1502,1000_AL_.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://ia.media-imdb.com/images/M/MV5BMGM0ZDM1ZmQtNDY3Ni00YzFkLWJlMjAtMWVmMTFhZTU3Nzc5XkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1503,1000_AL_.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://ia.media-imdb.com/images/M/MV5BNWVlMzZlYjAtMmE1NS00ZTg1LTlhZGUtNDZiNzYyYjA0YTlkXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1502,1000_AL_.jpg"
       ],
-      "trailer": "http://www.imdb.com/videoplayer/vi3874076697",
-      "genre": "Action, Thriller",
+      "trailer": "http://www.imdb.com/title/tt1590193/videoplayer/vi1300019481",
+      "genre": "Action, Crime, Drama",
       "Schedule": [
-        "13-03-2018 10:00",
-        "13-03-2018 18:35",
-        "13-03-2018 20:20",
-        "12-03-2018 22:35"
-      ],
-      "format": [
-        "2D"
-      ],
-      "technology": [
-        "Cinetech+"
-      ],
-      "duration": {
-        "hour": 1,
-        "minute": 40
-      },
-      "label": "",
-      "startDate": {
-        "year": 2018,
-        "month": 3,
-        "day": 1
-      },
-      "id": 12
-    },
-    {
-      "name": "The Hurricane Heist",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BMzg3Y2MyNjgtMzk4ZS00OTU3LWEwZmMtN2Y0NTdlZjU0NGFiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,675,1000_AL_.jpg",
-      "rating": 4.8,
-      "cast": [
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
-          "name": "Toby Kebbell",
-          "role": "Will"
-        },
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
-          "name": "Maggie Grace",
-          "role": "Casey"
-        },
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
-          "name": "Ryan Kwanten",
-          "role": "Breeze"
-        }
-      ],
-      "description": "Thieves attempt a massive heist against the U.S. Treasury as a Category 5 hurricane approaches one of its Mint facilities.",
-      "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjA1MjcwNTE2N15BMl5BanBnXkFtZTgwOTk5NTM2NDM@._V1_SY1000_SX1500_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BNmQ0NDdkZjctMDAxNS00ZGRkLWI4MGMtZDJmYjRhNjI0ZGFjXkEyXkFqcGdeQXVyNTc5OTMwOTQ@._V1_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BNzVlNzNhOWQtYWVlZS00MmFlLTlhOWMtNTY5MWJiMjk4NGQ0XkEyXkFqcGdeQXVyNTc5OTMwOTQ@._V1_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BZWEwMWI2NDUtZmM0YS00MWMzLTk3ZTAtZTA0YWIwOWM0YzQ3XkEyXkFqcGdeQXVyMTU2MDA4NQ@@._V1_.jpg"
-      ],
-      "trailer": "http://www.imdb.com/videoplayer/vi3874076697",
-      "genre": "Action, Thriller",
-      "Schedule": [
-        "13-03-2018 10:00",
-        "13-03-2018 18:35",
-        "13-03-2018 20:20",
-        "12-03-2018 22:35"
-      ],
-      "format": [
-        "2D"
-      ],
-      "technology": [
-        "Cinetech+"
-      ],
-      "duration": {
-        "hour": 1,
-        "minute": 40
-      },
-      "label": "",
-      "startDate": {
-        "year": 2018,
-        "month": 3,
-        "day": 1
-      },
-      "id": 13
-    },
-    {
-      "name": "Game Night",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQxMDE5NDg0NV5BMl5BanBnXkFtZTgwNTA5MDE2NDM@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
-      "rating": 7.5,
-      "cast": [
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwOTQ0MDUyNF5BMl5BanBnXkFtZTcwNTQ1MzY1Mw@@._V1_.jpg",
-          "name": "Jason Bateman",
-          "role": "Max"
-        },
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5ODcxMDU4NV5BMl5BanBnXkFtZTcwMjAzNjQyNQ@@._V1_SY1000_CR0,0,689,1000_AL_.jpg",
-          "name": "Rachel McAdams",
-          "role": "Annie"
-        },
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNTM5NDM4ODg3MV5BMl5BanBnXkFtZTcwNTA3MTk3Mw@@._V1_SY1000_CR0,0,679,1000_AL_.jpg",
-          "name": "Kyle Chandler",
-          "role": "Brooks"
-        }
-      ],
-      "description": "A group of friends who meet regularly for game nights find themselves trying to solve a murder mystery.",
-      "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BOTc3ODU0NTI5MV5BMl5BanBnXkFtZTgwNTQ4Nzc3NDM@._V1_SY1000_CR0,0,1498,1000_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY2MDYwMTIwN15BMl5BanBnXkFtZTgwMDM4Nzc3NDM@._V1_SX1777_CR0,0,1777,746_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk4MzMyMjIwNV5BMl5BanBnXkFtZTgwMjM4Nzc3NDM@._V1_SX1777_CR0,0,1777,746_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk4ODcyMTM1MV5BMl5BanBnXkFtZTgwNTM4Nzc3NDM@._V1_SX1777_CR0,0,1777,746_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMTAyMTYxNzg4NDZeQTJeQWpwZ15BbWU4MDkzODc3NzQz._V1_SY1000_CR0,0,1498,1000_AL_.jpg"
-      ],
-      "trailer": "http://www.imdb.com/videoplayer/vi2748495897",
-      "genre": "Comedy, Crime, Mystery",
-      "Schedule": [
-        "12-03-2018 16:40",
-        "13-03-2018 20:35",
-        "12-03-2018 22:15"
-      ],
-      "format": [
-        "2D"
-      ],
-      "technology": [
-        "Cinetech+"
-      ],
-      "duration": {
-        "hour": 1,
-        "minute": 40
-      },
-      "label": "popular",
-      "startDate": {
-        "year": 2018,
-        "month": 2,
-        "day": 22
-      },
-      "id": 14
-    },
-    {
-      "name": "Black Panther",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BMTg1MTY2MjYzNV5BMl5BanBnXkFtZTgwMTc4NTMwNDI@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
-      "rating": 7.8,
-      "cast": [
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
-          "name": "Chadwick Boseman",
-          "role": "T'Challa / Black Panther "
-        },
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjExOTY3NzExM15BMl5BanBnXkFtZTgwOTg1OTAzMTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
-          "name": "Michael B. Jordan",
-          "role": "Erik Killmonger"
-        },
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0NTQ4MDY2Nl5BMl5BanBnXkFtZTgwNDk1MTEyMDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
-          "name": "Lupita Nyong'o",
-          "role": "Nakia"
-        }
-      ],
-      "description": "T'Challa, the King of Wakanda, rises to the throne in the isolated, technologically advanced African nation, but his claim is challenged by a vengeful outsider who was a childhood victim of T'Challa's father's mistake.",
-      "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjIzNzYwNjkyOF5BMl5BanBnXkFtZTgwODM3MDM5NDM@._V1_SX1777_CR0,0,1777,937_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQyMDc0NTI0Ml5BMl5BanBnXkFtZTgwODE3MDM5NDM@._V1_SX1777_CR0,0,1777,937_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQzNTM2MzEwOF5BMl5BanBnXkFtZTgwOTE3MDM5NDM@._V1_SX1777_CR0,0,1777,937_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMTg3NTc5MzA0OV5BMl5BanBnXkFtZTgwMDI3MDM5NDM@._V1_SX1777_CR0,0,1777,937_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjMzNjc4MzM1NF5BMl5BanBnXkFtZTgwODI3MDM5NDM@._V1_SX1777_CR0,0,1777,937_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMTAyOTcyMTkzMjJeQTJeQWpwZ15BbWU4MDExNzAzOTQz._V1_SX1500_CR0,0,1500,999_AL_.jpg"
-      ],
-      "trailer": "http://www.imdb.com/title/tt1825683/videoplayer/vi2046343193",
-      "genre": "Action, Adventure, Sci-Fi",
-      "Schedule": [
-        "12-03-2018 11:00",
-        "13-03-2018 13:40",
-        "13-03-2018 16:20",
-        "12-03-2018 19:00",
-        "12-03-2018 21:40"
-      ],
-      "format": [
-        "3D"
-      ],
-      "technology": [
-        "Cinetech+",
-        "IMAX"
-      ],
-      "duration": {
-        "hour": 2,
-        "minute": 14
-      },
-      "label": "popular",
-      "startDate": {
-        "year": 2018,
-        "month": 2,
-        "day": 15
-      },
-      "id": 15
-    },
-    {
-      "name": "Fifty Shades Freed",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BODI2ZmM5MzMtOWZiMC00ZGE3LTk3MWEtY2U0ZjE3ZWJlNDEzXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,668,1000_AL_.jpg",
-      "rating": 4.4,
-      "cast": [
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjAxOTcxMjg0OV5BMl5BanBnXkFtZTgwMjg1Mjg1NDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
-          "name": "Dakota Johnson",
-          "role": "Anastasia Steele"
-        },
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwMDAzMjAyM15BMl5BanBnXkFtZTgwMjAxMzc0MjE@._V1_SY1000_SX786_AL_.jpg",
-          "name": "Jamie Dornan",
-          "role": "Christian Grey"
-        },
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3NTc2MDMxNV5BMl5BanBnXkFtZTgwNzIyNjIzMDI@._V1_.jpg",
-          "name": "Eric Johnson",
-          "role": "Jack Hyde"
-        }
-      ],
-      "description": "Anastasia and Christian get married, but Jack Hyde continues to threaten their relationship.",
-      "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BNjAwNDg5MzM2M15BMl5BanBnXkFtZTgwMjgwMzIxNDM@._V1_SY1000_CR0,0,1499,1000_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BZjQ2N2UzMmQtMWU1Zi00Y2U3LWJiZDYtMzBmYjlkMTliNDlhXkEyXkFqcGdeQXVyODM2NDI5MDI@._V1_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMzdiYzNjZDAtODY5Ny00YTg1LWIwMWItYTA2ZWIyYzUxNGMzXkEyXkFqcGdeQXVyNTY2OTA1Mg@@._V1_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BZTkwYWJiZWMtYmNmMi00NzNiLThhNzEtOTdkYWRhN2UzNTY0XkEyXkFqcGdeQXVyNTgxMzcxMjA@._V1_.jpg"
-      ],
-      "trailer": "http://www.imdb.com/title/tt4477536/videoplayer/vi2967320601",
-      "genre": "Drama, Romance, Thriller",
-      "Schedule": [
-        "12-03-2018 14:05",
-        "12-03-2018 18:15"
+        "28-03-2018 10:00",
+        "28-03-2018 12:00",
+        "28-03-2018 14:00",
+        "28-03-2018 18:35",
+        "29-03-2018 20:35"
       ],
       "format": [
         "2D"
@@ -923,153 +710,112 @@
       "label": "",
       "startDate": {
         "year": 2018,
-        "month": 2,
-        "day": 8
-      },
-      "id": 16
-    },
-    {
-      "name": "Submergence",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BMjEyNTQyNzY3NF5BMl5BanBnXkFtZTgwODcxMzY1NDM@._V1_SY1000_SX668_AL_.jpg",
-      "rating": 5.8,
-      "cast": [
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
-          "name": "Alicia Vikander",
-          "role": "Danielle Flinders"
-        },
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQzNzIxOTYzMl5BMl5BanBnXkFtZTcwNjYxNTk1Nw@@._V1_SY1000_CR0,0,766,1000_AL_.jpg",
-          "name": "James McAvoy",
-          "role": "James More"
-        },
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTIxMjYwMTA3MV5BMl5BanBnXkFtZTcwNDQxODYzMQ@@._V1_.jpg",
-          "name": "Alexander Siddig",
-          "role": "Dr. Shadid"
-        }
-      ],
-      "description": "In a room with no windows on the eastern coast of Africa, a Scotsman, James More, is held captive by jihadist fighters. Thousands of miles away in the Greenland Sea, Danielle Flinders prepares to dive in a submersible to the ocean floor. In their confines they are drawn back to the Christmas of the previous year, where a chance encounter on a beach in France led to an intense and enduring romance.",
-      "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BY2M0M2Q3YmQtYzIzZC00ZWZmLThjN2UtN2RiNTEyNTkyZmM1XkEyXkFqcGdeQXVyNjYyNDM3MTY@._V1_SY1000_CR0,0,1586,1000_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjUwMjRhMDEtZjI3Mi00N2IyLWE0YTktMWU1MDVjNWY5NjM0XkEyXkFqcGdeQXVyNjA0MzkwMjU@._V1_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/submergence/Submergence-kadr_3.R1366x909.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/submergence/Submergence-kadr_6.R1366x910.jpg"
-      ],
-      "trailer": "http://www.imdb.com/title/tt3563262/videoplayer/vi3678124057",
-      "genre": "Drama, Romance, Thriller",
-      "Schedule": [
-        "12-03-2018 10:00",
-        "12-03-2018 20:50"
-      ],
-      "format": [
-        "2D"
-      ],
-      "technology": [
-        "Cinetech+"
-      ],
-      "duration": {
-        "hour": 1,
-        "minute": 52
-      },
-      "label": "popular",
-      "startDate": {
-        "year": 2017,
-        "month": 12,
-        "day": 19
-      },
-      "id": 17
-    },
-    {
-      "name": "The Post",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://upload.wikimedia.org/wikipedia/en/0/0b/The_Post_%28film%29.png",
-      "rating": 7.3,
-      "cast": [
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg/1200px-Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg",
-          "name": "Meryl Streep",
-          "role": "Katharine Graham"
-        },
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/6/66/Tom_Hanks_2014.jpg",
-          "name": "Tom Hanks",
-          "role": "Ben Bradlee"
-        },
-        {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Bob_Odenkirk_by_Gage_Skidmore.jpg/800px-Bob_Odenkirk_by_Gage_Skidmore.jpg",
-          "name": "Bob Odenkirk",
-          "role": "Ben Bagdikian"
-        }
-      ],
-      "description": "A cover-up that spanned four U.S. Presidents pushed the country's first female newspaper publisher and a hard-driving editor to join an unprecedented battle between the press and the government.",
-      "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/the_post/Post-the_kadr-1.R1366x876.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/the_post/Post-the_kadr-2.R1366x842.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/the_post/Post-the_kadr_3.R1366x840.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/the_post/Post-the_kadr-5.R1366x839.jpg"
-      ],
-      "trailer": "http://www.imdb.com/title/tt6294822/videoplayer/vi11581465",
-      "genre": "Biography, Drama, History",
-      "Schedule": [
-        "12-03-2018 10:15",
-        "13-03-2018 13:35",
-        "13-03-2018 15:10"
-      ],
-      "format": [
-        "2D"
-      ],
-      "technology": [
-        "Cinetech+"
-      ],
-      "duration": {
-        "hour": 1,
-        "minute": 56
-      },
-      "label": "popular",
-      "startDate": {
-        "year": 2018,
-        "month": 2,
+        "month": 3,
         "day": 22
       },
-      "id": 18
+      "id": 12
     },
     {
-      "name": "Tomb Raider",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BOTY4NDcyZGQtYmVlNy00ODgwLTljYTMtYzQ2OTE3NDhjODMwXkEyXkFqcGdeQXVyNzYzODM3Mzg@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
-      "rating": 7.8,
+      "name": "Dear Dictator",
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BNDVlZWU2ZDMtMWYzOC00ODA1LTk2N2EtMGJmYjdjY2IwN2I5XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,675,1000_AL_.jpg",
+      "rating": 4.6,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
-          "name": "Alicia Vikander",
-          "role": "Lara Croft"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjAwNzIwNTQ4Ml5BMl5BanBnXkFtZTYwMzE1MTUz._V1_.jpg",
+          "name": "Michael Caine",
+          "role": "General Anton Vincent"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
-          "name": "Hannah John-Kamen",
-          "role": "Sophie"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjI1NDIzNDIyOF5BMl5BanBnXkFtZTgwNzg3ODQyNzE@._V1_.jpg",
+          "name": "Odeya Rush",
+          "role": "Tatiana Mills"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
-          "name": "Walton Goggins",
-          "role": "Mathias Vogel"
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BNTA2NjY5OTkzNl5BMl5BanBnXkFtZTcwMDE2NTkxNA@@._V1_.jpg",
+          "name": "Katie Holmes",
+          "role": "Darlene Mills"
         }
       ],
-      "description": "Lara Croft, the fiercely independent daughter of a missing adventurer, must push herself beyond her limits when she finds herself on the island where her father disappeared.",
+      "description": "When political turmoil forces a British-Caribbean dictator to flee his island nation, he seeks refuge and hides with a rebellious teenage girl in suburban America, and ends up teaching the young teen how to start a revolution and overthrow the 'mean girls' in her high school.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/tomb_raider/lara-kroft-kadr1.R1366x911.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/tomb_raider/lara-kroft-kadr2.R1366x909.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/tomb_raider/Tomb-Raider_kadr3.R1366x914.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/tomb_raider/lara-kroft-kadr4.R1366x909.jpg"
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/dear-dictator/dear-dictator-kadr-1.R1366x768.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/dear-dictator/dear-dictator-kadr-2.R1366x768.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/dear-dictator/dear-dictator-kadr-3.R1366x768.jpg"
       ],
-      "trailer": "http://www.imdb.com/title/tt1365519/videoplayer/vi3590174745",
-      "genre": "Action, Adventure",
+      "trailer": "http://www.imdb.com/title/tt5779540/videoplayer/vi4294686745",
+      "genre": "Comedy",
       "Schedule": [
-        "12-03-2018 10:00",
-        "12-03-2018 12:15",
-        "13-03-2018 14:30",
-        "13-03-2018 16:45",
-        "13-03-2018 19:00",
-        "12-03-2018 21:15"
+        "28-03-2018 21:10",
+        "29-03-2018 21:10",
+        "30-03-2018 21:10",
+        "31-03-2018 21:10",
+        "1-04-2018 21:10"
+      ],
+      "format": [
+        "2D"
+      ],
+      "technology": [
+        "Cinetech+"
+      ],
+      "duration": {
+        "hour": 1,
+        "minute": 30
+      },
+      "label": "",
+      "startDate": {
+        "year": 2018,
+        "month": 3,
+        "day": 16
+      },
+      "id": 13
+    },
+    {
+      "name": "Pacific Rim: Uprising",
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BMjI3Nzg0MTM5NF5BMl5BanBnXkFtZTgwOTE2MTgwNTM@._V1_.jpg",
+      "rating": 6.1,
+      "cast": [
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMDg4NWZjNmEtZWVmNC00MzdhLTlhOTEtZmViYjdmMzhjMTAyXkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_.jpg",
+          "name": "John Boyega",
+          "role": "Jake Pentecost"
+        },
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjk2NTIyNjU2NF5BMl5BanBnXkFtZTgwNjQ0NjMzMjE@._V1_.jpg",
+          "name": "Scott Eastwood",
+          "role": "Nate Lambert"
+        },
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BNzU1NTQzNjI2NF5BMl5BanBnXkFtZTgwNzQ3OTk1OTE@._V1_.jpg",
+          "name": "Cailee Spaeny",
+          "role": "Amara Namani"
+        }
+      ],
+      "description": "Jake Pentecost, son of Stacker Pentecost, reunites with Mako Mori to lead a new generation of Jaeger pilots, including rival Lambert and 15-year-old hacker Amara, against a new Kaiju threat.",
+      "screenshots": [
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/pacific_rim_uprising/tihookeanskiy-kadr-1.R1366x911.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/pacific_rim_uprising/tihookeanskiy-kadr-2.R1366x909.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/pacific_rim_uprising/tihookeanskiy-kadr-3.R1366x911.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/pacific_rim_uprising/tihookeanskiy-kadr-4.R1366x909.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/pacific_rim_uprising/tihookeanskiy-kadr5.R1366x911.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/pacific_rim_uprising/tihookeanskiy-kadr8.R1366x909.jpg"
+      ],
+      "trailer": "http://www.imdb.com/title/tt2557478/videoplayer/vi2501425177",
+      "genre": "Action, Adventure, Sci-Fi",
+      "Schedule": [
+        "29-03-2018 10:00",
+        "29-03-2018 12:15",
+        "29-03-2018 14:30",
+        "29-03-2018 16:45",
+        "29-03-2018 19:00",
+        "29-03-2018 21:15",
+        "29-03-2018 22:30",
+        "30-03-2018 10:00",
+        "30-03-2018 12:15",
+        "30-03-2018 14:30",
+        "30-03-2018 16:45",
+        "30-03-2018 19:00",
+        "30-03-2018 21:15",
+        "30-03-2018 22:30"
       ],
       "format": [
         "3D"
@@ -1079,13 +825,274 @@
       ],
       "duration": {
         "hour": 1,
-        "minute": 58
+        "minute": 51
+      },
+      "label": "popular",
+      "startDate": {
+        "year": 2018,
+        "month": 2,
+        "day": 22
+      },
+      "id": 14
+    },
+    {
+      "name": "Ready Player One",
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
+      "rating": 8.0,
+      "cast": [
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BOTJjODlmNjAtNjE3Ny00NzIwLTkwMjItOWY1MzM4ZDM1ZTM5XkEyXkFqcGdeQXVyNzczNzg0ODc@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "name": "Tye Sheridan",
+          "role": "Parzival / Wade"
+        },
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjIxNDUzMTQ4OF5BMl5BanBnXkFtZTgwNjU3MjI1MTE@._V1_.jpg",
+          "name": "Olivia Cooke",
+          "role": "Art3mis / Samantha"
+        },
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjA3NzcyMDcyMF5BMl5BanBnXkFtZTcwNjQwMTczMQ@@._V1_.jpg",
+          "name": "Ben Mendelsohn",
+          "role": "Sorrento"
+        }
+      ],
+      "description": "When the creator of a virtual reality world called the OASIS dies, he releases a video in which he challenges all OASIS users to find his Easter Egg, which will give the finder his fortune.",
+      "screenshots": [
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ready_player_one/Ready-Player-One-kadr-1.R1366x909.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ready_player_one/Ready-Player-One-kadr-2.R1366x909.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ready_player_one/Ready-Player-One-kadr-3.R1366x909.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ready_player_one/Ready-Player-One-kadr4.R1366x911.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ready_player_one/Ready-Player-One-kadr-5.R1366x911.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ready_player_one/Ready-Player-One-kadr9.R1366x911.jpg"
+      ],
+      "trailer": "http://www.imdb.com/title/tt1677720/videoplayer/vi2568140825",
+      "genre": "Action, Adventure, Sci-Fi",
+      "Schedule": [
+        "29-03-2018 10:30",
+        "29-03-2018 13:15",
+        "29-03-2018 16:00",
+        "29-03-2018 18:45",
+        "29-03-2018 21:30",
+        "30-03-2018 10:30",
+        "30-03-2018 13:15",
+        "30-03-2018 16:00",
+        "30-03-2018 18:45",
+        "30-03-2018 21:30",
+        "31-03-2018 10:30",
+        "31-03-2018 13:15",
+        "31-03-2018 16:00",
+        "31-03-2018 18:45",
+        "31-03-2018 21:30",
+        "01-03-2018 10:30",
+        "01-03-2018 13:15",
+        "01-03-2018 16:00",
+        "01-03-2018 18:45",
+        "01-03-2018 21:30"
+      ],
+      "format": [
+        "3D"
+      ],
+      "technology": [
+        "Cinetech+",
+        "IMAX"
+      ],
+      "duration": {
+        "hour": 2,
+        "minute": 20
       },
       "label": "soon",
       "startDate": {
         "year": 2018,
         "month": 3,
-        "day": 15
+        "day": 29
+      },
+      "id": 15
+    },
+    {
+      "name": "Taxi 5",
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BNTA5ZDlmZjctMjMzNi00YjFjLWI0YzctZTNiMzA2OTkxOTcyXkEyXkFqcGdeQXVyNjY4NTQwMQ@@._V1_.jpg",
+      "rating": "-.-",
+      "cast": [
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Franck_Gastambide_Cannes_2016_2.jpg/220px-Franck_Gastambide_Cannes_2016_2.jpg",
+          "name": "Franck Gastambide",
+          "role": "Sylvain Marot"
+        },
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BOTMyNDU5ODkzOV5BMl5BanBnXkFtZTcwNjk1MjM1OQ@@._V1_SY1000_CR0,0,636,1000_AL_.jpg",
+          "name": "Sabrina Ouazani",
+          "role": "Samia"
+        },
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMzg1NTQyNDAtZjJiZS00NmRjLTliOGQtY2RhZDJhNGI3MWFjXkEyXkFqcGdeQXVyNjc4MzI0MDA@._V1_SY1000_SX1500_AL_.jpg",
+          "name": "Sand Van Roy",
+          "role": "Sandy"
+        }
+      ],
+      "description": "A police officer who's transfered in the police of Marseille gets assigned to take down a group of Italian robbers who drive the powerfull Ferrari's with the older niece of Daniel, a terrible driver who gets the legendary white taxi.",
+      "screenshots": [
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/taxi_5/Taxi-5-kadr-1.R1366x911.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/taxi_5/Taxi-5-kadr-2.R1366x874.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/taxi_5/Taxi-5-kadr-3.R1366x911.jpg"
+      ],
+      "trailer": "http://www.imdb.com/title/tt4477536/videoplayer/vi2967320601",
+      "genre": "Action, Adventure, Comedy",
+      "Schedule": [],
+      "format": [],
+      "technology": [],
+      "duration": {
+        "hour": 1,
+        "minute": 40
+      },
+      "label": "soon",
+      "startDate": {
+        "year": 2018,
+        "month": 4,
+        "day": 19
+      },
+      "id": 16
+    },
+    {
+      "name": "Avengers: Infinity War",
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
+      "rating": "-.-",
+      "cast": [
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTQwMDQ0NDk1OV5BMl5BanBnXkFtZTcwNDcxOTExNg@@._V1_SY1000_CR0,0,688,1000_AL_.jpg",
+          "name": "Karen Gillan",
+          "role": "Nebula"
+        },
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjIyMzgxMzc5N15BMl5BanBnXkFtZTgwNDg3NzYzMDI@._V1_.jpg",
+          "name": "Letitia Wright",
+          "role": "Shuri"
+        },
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "name": "Chadwick Boseman",
+          "role": "T'Challa / Black Panther"
+        }
+      ],
+      "description": "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.",
+      "screenshots": [
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/avengers_infinity_war/Avengers-kadr1.R1366x911.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/avengers_infinity_war/Avengers-kadr2.R1366x911.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/avengers_infinity_war/Avengers-kadr3.R1366x911.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/avengers_infinity_war/Avengers1-kadr-4.R1366x911.jpg"
+      ],
+      "trailer": "http://www.imdb.com/title/tt4154756/videoplayer/vi974436377",
+      "genre": "Action, Adventure, Fantasy",
+      "Schedule": [
+        "26-04-2018 10:00",
+        "26-04-2018 13:00",
+        "26-04-2018 16:00",
+        "26-04-2018 19:00",
+        "26-04-2018 22:00"
+      ],
+      "format": [
+        "3D"
+      ],
+      "technology": [
+        "IMAX"
+      ],
+      "duration": {
+        "hour": 1,
+        "minute": 52
+      },
+      "label": "soon",
+      "startDate": {
+        "year": 2018,
+        "month": 4,
+        "day": 26
+      },
+      "id": 17
+    },
+    {
+      "name": "Jurassic World: Fallen Kingdom",
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BMTc3Nzc3OTgxMl5BMl5BanBnXkFtZTgwNzgzNzk2MjI@._V1_.jpg",
+      "rating": "-.-",
+      "cast": [
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BODEzNzBhODYtOWEzNi00Y2I3LWFjMGEtNzAxNzU5ZjZiMDRiXkEyXkFqcGdeQXVyMjQ0MTg4Nw@@._V1_.jpg",
+          "name": "Bryce Dallas Howard",
+          "role": "Claire Dearing"
+        },
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BNzg3MTgwOTgzMV5BMl5BanBnXkFtZTgwODIxMTUwMjE@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "name": "Chris Pratt",
+          "role": "Owen Grady"
+        },
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTE5NzkyODg1Nl5BMl5BanBnXkFtZTYwMTY2OTE0._V1_.jpg",
+          "name": "Jeff Goldblum",
+          "role": "Ian Malcolm"
+        }
+      ],
+      "description": "When the island's dormant volcano begins roaring to life, Owen and Claire mount a campaign to rescue the remaining dinosaurs from this extinction-level event.",
+      "screenshots": [
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/jurassic_world_2/Jurassic-World-2-kadr-1.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/jurassic_world_2/Jurassic-World-2-kadr-2.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/jurassic_world_2/Jurassic-World-2-kadr-3.jpg"
+      ],
+      "trailer": "http://www.imdb.com/title/tt4881806/videoplayer/vi3487021081",
+      "genre": "Action, Adventure, Sci-Fi",
+      "Schedule": [],
+      "format": [],
+      "technology": [],
+      "duration": {
+        "hour": 1,
+        "minute": 56
+      },
+      "label": "soon",
+      "startDate": {
+        "year": 2018,
+        "month": 6,
+        "day": 7
+      },
+      "id": 18
+    },
+    {
+      "name": "Ant-Man and the Wasp",
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BMjM1NDEzMzgxMl5BMl5BanBnXkFtZTgwNzg5NTk2NDM@._V1_SY1000_SX675_AL_.jpg",
+      "rating": "-.-",
+      "cast": [
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTY4NTEwNDg1MV5BMl5BanBnXkFtZTgwODMwMDA0ODE@._V1_SY1000_CR0,0,799,1000_AL_.jpg",
+          "name": "Paul Rudd",
+          "role": "Scott Lang / Ant-Man"
+        },
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
+          "name": "Hannah John-Kamen",
+          "role": "Ghost"
+        },
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTc2MDMzODU0OV5BMl5BanBnXkFtZTgwODIwOTAxMzI@._V1_SY1000_CR0,0,868,1000_AL_.jpgMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "name": "Evangeline Lilly",
+          "role": "Hope van Dyne / The Wasp"
+        }
+      ],
+      "description": "As Scott Lang balances being both a Super Hero and a father, Hope van Dyne and Dr. Hank Pym present an urgent new mission that finds the Ant-Man fighting alongside The Wasp to uncover secrets from their past.",
+      "screenshots": [
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ant_man_and_the_wasp/Ant-Man-and-the-Wasp-kadr-1.R1366x909.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ant_man_and_the_wasp/Ant-Man-and-the-Wasp-kadr-2.R1366x909.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ant_man_and_the_wasp/Ant-Man-and-the-Wasp-kadr-3.R1366x909.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ant_man_and_the_wasp/Ant-Man-and-the-Wasp-kadr-4.R1366x909.jpg"
+      ],
+      "trailer": "http://www.imdb.com/title/tt5095030/videoplayer/vi972011545",
+      "genre": "Action, Adventure, Sci-Fi",
+      "Schedule": [],
+      "format": [],
+      "technology": [],
+      "duration": {
+        "hour": 1,
+        "minute": 58
+      },
+      "label": "soon",
+      "startDate": {
+        "year": 2018,
+        "month": 7,
+        "day": 6
       },
       "id": 19
     },
@@ -4397,76 +4404,38 @@
         "day": 1
       },
       "id": 80
-    },
-    {
-      "name": "",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/",
-      "rating": null,
-      "cast": [],
-      "description": "",
-      "screenshots": [],
-      "trailer": "",
-      "genre": "",
-      "Schedule": [],
-      "format": [],
-      "technology": [],
-      "duration": {
-        "hour": null,
-        "minute": null
-      },
-      "label": "",
-      "startDate": {
-        "year": null,
-        "month": null,
-        "day": null
-      },
-      "id": 81
-    },
-    {
-      "name": "",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/",
-      "rating": null,
-      "cast": [],
-      "description": "",
-      "screenshots": [],
-      "trailer": "",
-      "genre": "Mystery",
-      "Schedule": [
-        "3-3-3",
-        ""
-      ],
-      "format": [],
-      "technology": [],
-      "duration": {
-        "hour": null,
-        "minute": null
-      },
-      "label": "",
-      "startDate": {
-        "year": null,
-        "month": null,
-        "day": null
-      },
-      "id": 82
     }
   ],
   "actors": [
     {
       "id": "Maggie Grace",
-      "movies": [
-        1,
-        2,
-        3
-      ],
-      "info": "Maggie Grace (born Margaret Grace Denig; September 21, 1983)[1] is an American actress and model, best known for her roles as Shannon Rutherford on the ABC television series Lost and Kim Mills in the Taken trilogy. She has also appeared on The Twilight Saga as Irina. Originally from Worthington, Ohio, she went on to earn a Young Artist Award nomination in 2002 with her portrayal of 15-year-old murder victim Martha Moxley in the television movie Murder in Greenwich. In 2004, Grace was cast as Shannon Rutherford in the television series Lost, on which she was a main cast member for the first two seasons, winning a Screen Actors Guild Award shared with the ensemble cast. Leaving the series, Grace was keen to work more prominently in film, she appeared in The Jane Austen Book Club (both 2007), and opposite Liam Neeson as Kim Mills in Taken in 2008. She reprised the role in Taken 2 (2012) and Taken 3 (2015).",
-      "born": {
-        "date": "September 21, 1983 (age 34)",
-        "city": "Worthington, Ohio, U.S."
+      "movies": {
+        "1": "name",
+        "2": "name"
       },
+      "info": "Maggie Grace (born Margaret Grace Denig; September 21, 1983)[1] is an American actress and model, best known for her roles as Shannon Rutherford on the ABC television series Lost and Kim Mills in the Taken trilogy. She has also appeared on The Twilight Saga as Irina. Originally from Worthington, Ohio, she went on to earn a Young Artist Award nomination in 2002 with her portrayal of 15-year-old murder victim Martha Moxley in the television movie Murder in Greenwich. In 2004, Grace was cast as Shannon Rutherford in the television series Lost, on which she was a main cast member for the first two seasons, winning a Screen Actors Guild Award shared with the ensemble cast. Leaving the series, Grace was keen to work more prominently in film, she appeared in The Jane Austen Book Club (both 2007), and opposite Liam Neeson as Kim Mills in Taken in 2008. She reprised the role in Taken 2 (2012) and Taken 3 (2015).",
+      "date": "September 21, 1983 (age 34)",
+      "city": "Worthington, Ohio, U.S.",
       "nominations": [
         "Teen Choice Award в номінації Найкращий прорив року: жіноча роль у серіалі",
         "Teen Choice Award в номінації Найкраща актриса екшну/пригодницького фільму"
-      ]
+      ],
+      "image" : "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg"
+    },
+    {
+      "id": "Maggie Grace",
+      "movies": {
+        "1": "name",
+        "2": "name"
+      },
+      "info": "Maggie Grace (born Margaret Grace Denig; September 21, 1983)[1] is an American actress and model, best known for her roles as Shannon Rutherford on the ABC television series Lost and Kim Mills in the Taken trilogy. She has also appeared on The Twilight Saga as Irina. Originally from Worthington, Ohio, she went on to earn a Young Artist Award nomination in 2002 with her portrayal of 15-year-old murder victim Martha Moxley in the television movie Murder in Greenwich. In 2004, Grace was cast as Shannon Rutherford in the television series Lost, on which she was a main cast member for the first two seasons, winning a Screen Actors Guild Award shared with the ensemble cast. Leaving the series, Grace was keen to work more prominently in film, she appeared in The Jane Austen Book Club (both 2007), and opposite Liam Neeson as Kim Mills in Taken in 2008. She reprised the role in Taken 2 (2012) and Taken 3 (2015).",
+      "date": "September 21, 1983 (age 34)",
+      "city": "Worthington, Ohio, U.S.",
+      "nominations": [
+        "Teen Choice Award в номінації Найкращий прорив року: жіноча роль у серіалі",
+        "Teen Choice Award в номінації Найкраща актриса екшну/пригодницького фільму"
+      ],
+      "image" : "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg"
     }
   ]
 }

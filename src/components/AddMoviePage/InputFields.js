@@ -99,25 +99,31 @@ class InputFields extends Component {
     createScheduleList() {
         return this.state.schedule.map((el, i) =>
             <form key={i}>
-                <input className={b('input', ['dynamic'])} onBlur={this.lostFocus.bind(this, i)} type='text' placeholder='DD-MM-YYYY hh:mm'
-                       pattern='^([1-9]|([012][0-9])|(3[01]))-([0]{0,1}[1-9]|1[012])-\d\d\d\d [012]{0,1}[0-9]:[0-6][0-9]$'
-                />
+                <p className="par"><span className="date-hour">00</span> : <span className="date-minute">00</span></p>
+                <input className={b("schedule-hour")} type="range" min="0" max="23" step="1" onChange={(e) => {console.log(e.target.value); document.querySelectorAll('.date-hour')[i].innerHTML = e.target.value}}/>
+
+                <input className={b("schedule-minute")} type="range"  min="0" max="59" step="1" onInput={(e) => {console.log(e.target.value); document.querySelectorAll('.date-minute')[i].innerHTML = e.target.value}}/>
+
                 <input type='button' value='-' className={b('button', ['remove'])} onClick={this.removeSchedule.bind(this, i)}/>
+                <input type='button' value='done' className={b('button', ['remove'])} onClick={(e) => this.lostFocus(e, i, document.querySelectorAll(".par")[i])}/>
             </form>
         )
     }
 
-    lostFocus(i, e) {
+    lostFocus( e, i,  val) {
+        console.log("LOST FOCUS:", e, i, val.querySelector(".date-hour").innerHTML,":",  val.querySelector(".date-minute").innerHTML);
         const {schedule} = this.state;
         this.setState({
             schedule:
                 [
                     ...schedule.slice(0, i),
-                    e.target.value,
+                    val.querySelector(".date-hour").innerHTML +":"+  val.querySelector(".date-minute").innerHTML,
                     ...schedule.slice(i + 1),
 
                 ]
         })
+
+        console.log(this.state.schedule);
     }
 
     addSchedule(e) {

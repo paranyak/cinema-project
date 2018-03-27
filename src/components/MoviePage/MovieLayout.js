@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
 import MovieImage from "./MovieImage";
 import MovieInfo from "./MovieInfo";
-import Feedback from "./Feedback";
 import "../../styles/MovieLayout.less"
 import block from "../../helpers/BEM";
 import {getMovieById} from "../../reducers";
 import {fetchMovie} from '../../actions';
 import {connect} from "react-redux";
+
 
 const b = block("MovieLayout");
 
@@ -17,18 +17,19 @@ class MovieLayout extends Component {
         super(props);
     }
 
+
     render() {
         const {film} = this.props;
-        if (!film || !film.id) {
+        if (!film || film.id === undefined) {
           this.props.fetchMovieById(this.props.match.params.id);
           return null;
         }
+        console.log("HERE ML");
         return (
             <div>
                 <div className={b()}>
                     <MovieInfo film={film}/>
                     <MovieImage film={film}/>
-                    <Feedback id={film.id}/>
                 </div>
             </div>
         )

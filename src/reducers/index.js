@@ -1,13 +1,15 @@
 import {combineReducers} from 'redux';
 import movies, * as fromMovies from './movies';
 import filters, * as fromFilters from './filters';
-import feedbacks, * as fromFeedbacks from './feedbacks';
+import actors, * as fromActors from './actors';
+
+
 import { routerReducer } from 'react-router-redux';
 
 const moviesApp = combineReducers({
     movies,
     filters,
-    feedbacks,
+    actors,
     router: routerReducer
 });
 
@@ -17,6 +19,8 @@ export default moviesApp;
 export const getAllMoviesIds = (state) => fromMovies.getAllMoviesIds(state.movies);
 
 export const getFeedbackById = (state, id) => fromFeedbacks.getFeedbackById(state.feedbacks, id);
+
+export const getSelectedActor = (state) => fromActors.getSelectedActor(state.actors);
 
 export const getAllFilters = (state) => fromFilters.getAllFilters(state.filters);
 

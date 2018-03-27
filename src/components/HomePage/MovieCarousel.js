@@ -1,12 +1,12 @@
 import React, {Component} from "react";
 import "../../styles/MovieCarousel.less";
 import block from "../../helpers/BEM";
+import scrollTo from '../../helpers/scrollTo';
 import {connect} from "react-redux";
 import {Link} from 'react-router-dom'
 import MoviePoster from "./MoviePoster";
 import {getPopularMoviesIds, getComingsoonrMoviesIds, getMovieById} from '../../reducers';
 import {fetchPopularMovies, fetchComingsoonMovies} from '../../actions';
-import scrollTo from './scrollTo';
 import throttle from 'lodash';
 
 const b = block("MovieCarousel");
@@ -25,13 +25,32 @@ class MovieCarousel extends Component {
         let newPos = carousel.scrollLeft + k * (widthOfItem * numOfItemsToScroll);
         const timeForItem = 200;
         const totalTime = numOfItemsToScroll * timeForItem;
+        const {rightBut, leftBut} = this.refs;
+        let width = carousel.offsetWidth;
+        let sw = carousel.scrollWidth;
+
+        // console.log("\nclient", width);
+        // console.log("scroll width", sw);
+        // console.log('prev pos', carousel.scrollLeft);
+        // console.log('new pos', newPos);
+
+
         scrollTo({
             el: carousel,
             to: newPos,
             duration: totalTime,
             scrollDir: 'scrollLeft'
         });
-    }
+
+        (carousel.scrollLeft === 0 || newPos < 0) ?
+            leftBut.setAttribute('style', 'display: none') :
+            leftBut.removeAttribute('style');
+
+        (sw - carousel.scrollLeft === width || sw - newPos < width) ?
+            rightBut.setAttribute('style', 'display: none') :
+            rightBut.removeAttribute('style');
+
+    };
 
     leftClick() {
         throttle(this.handleClick(-1), 500);
@@ -48,6 +67,8 @@ class MovieCarousel extends Component {
                 <button
                     className={b('button')}
                     onClick={this.leftClick.bind(this)}
+                    ref={'leftBut'}
+                    style={{'display': 'none'}}
                 >
                     <span className={b('icon', ['left'])}></span>
                 </button>
@@ -63,6 +84,7 @@ class MovieCarousel extends Component {
                 <button
                     className={b('button')}
                     onClick={this.rightClick.bind(this)}
+                    ref={'rightBut'}
                 >
                     <span className={b('icon', ['right'])}></span>
                 </button>
