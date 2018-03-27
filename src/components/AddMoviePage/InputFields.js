@@ -6,7 +6,7 @@ import CheckBoxList from "./CheckBoxList";
 const b = block("InputField");
 
 const cloudinaryImage = 'https://res.cloudinary.com/demo/image/fetch/w_275,h_408/';
-
+const cloudinaryScreenshot = 'https://res.cloudinary.com/demo/image/fetch/w_600/';
 const genres = [
     'Mystery',
     'Thriller',
@@ -49,27 +49,62 @@ class InputFields extends Component {
                 technology: []
             }
         };
+        this.screenshotID = 0;
     }
 
     // ----------- SCREENSHOTS ----------------
     createScShotsList() {
-        return this.state.screenshots.map((el, i) =>
-            <div key={i}>
-                <input className={b('input', ['dynamic'])} type='url' placeholder='image url'/>
-                <input type='button' value='-' className={b('button', ['remove'])} onClick={this.removeScShot.bind(this, i)}/>
-            </div>
+        return this.state.screenshots.map((el, i) => {
+                console.log('element', el);
+                return <div key={i}>
+                    <input className={b('input', ['dynamic'])}
+                           type='url'
+                           placeholder={'Image url' + el.removeID.toString()}
+                           onChange={this.scrOnChange.bind(this, el, i)}
+                           required
+                    />
+                    <input type='button'
+                           value='-'
+                           className={b('button', ['remove'])}
+                           onClick={this.removeScShot.bind(this, el)}/>
+                </div>
+            }
         )
+    }
+
+
+    scrOnChange(el, i, e) {
+        const copy = this.state.screenshots;
+        const obj = {
+            'screenshot': e.target.value,
+            'removeID': el.removeID
+        };
+
+        this.setState({
+            screenshots:
+                [
+                    ...copy.slice(0, i),
+                    obj,
+                    ...copy.slice(i + 1)
+                ]
+        })
     }
 
     addScShot(e) {
         e.preventDefault();
-        this.setState(prevState => ({screenshots: [...prevState.screenshots, '']}))
+        const obj = {
+            'screenshot': "",
+            'removeID': this.screenshotID++
+        };
+        this.setState(prevState => ({
+            screenshots:
+                [...prevState.screenshots, obj]
+        }))
     }
 
-    removeScShot(i) {
-        let screenshots = [...this.state.screenshots];
-        screenshots.splice(i, 1);
-        this.setState({screenshots});
+    removeScShot(el) {
+        const copy = this.state.screenshots.filter(elm => elm.removeID !== el.removeID);
+        this.setState({screenshots: copy});
     }
 
 
@@ -121,7 +156,7 @@ class InputFields extends Component {
                     ...schedule.slice(i + 1),
 
                 ]
-        })
+        });
 
         console.log(this.state.schedule);
     }
@@ -235,6 +270,8 @@ class InputFields extends Component {
     }
 
     render() {
+        const {screenshots} = this.state;
+        console.log('screenshots', screenshots);
         return <form className={b()} onSubmit={this.addMovieToDB.bind(this)}>
             <h4 className={b('title')}>Title</h4>
             <input ref='title' className={b('input')} placeholder={'Title'} type='text'/>
