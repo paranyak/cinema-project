@@ -14,9 +14,7 @@ const moviesApp = combineReducers({
 export default moviesApp;
 
 
-export const getAllMovies = (state) => fromMovies.getAllMovies(state.movies);
-
-export const getSelectedMovie = (state) => fromMovies.getSelectedMovie(state.movies);
+export const getAllMoviesIds = (state) => fromMovies.getAllMoviesIds(state.movies);
 
 export const getFeedbackById = (state, id) => fromFeedbacks.getFeedbackById(state.feedbacks, id);
 
@@ -24,6 +22,10 @@ export const getAllFilters = (state) => fromFilters.getAllFilters(state.filters)
 
 export const isMovieFetching = (id, state) => fromMovies.isMovieFetching(id, state.movies);
 
-export const getPopularMovies = (state) => fromMovies.getPopularMovies(state.movies);
+export const getPopularMoviesIds = (state) => fromMovies.getPopularMoviesIds(state.movies);
 
-export const getComingsoonrMovies = (state) => fromMovies.getComingsoonrMovies(state.movies);
+export const getComingsoonrMoviesIds = (state) => fromMovies.getComingsoonrMoviesIds(state.movies);
+
+export const getScheduleMoviesIds = (state) => fromMovies.getScheduleMoviesIds(state.movies);
+
+export const getMovieById = (state, id) => fromMovies.getMovieById(state.movies, id);

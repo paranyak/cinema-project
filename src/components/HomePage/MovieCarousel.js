@@ -4,7 +4,7 @@ import block from "../../helpers/BEM";
 import {connect} from "react-redux";
 import {Link} from 'react-router-dom'
 import MoviePoster from "./MoviePoster";
-import {getPopularMovies, getComingsoonrMovies} from '../../reducers';
+import {getPopularMoviesIds, getComingsoonrMoviesIds, getMovieById} from '../../reducers';
 import {fetchPopularMovies, fetchComingsoonMovies} from '../../actions';
 import scrollTo from './scrollTo';
 import throttle from 'lodash';
@@ -86,14 +86,16 @@ const mapDispatchToProps = (dispatch, props) => {
 export default connect((state, props) => {
     let movies = [];
     if (props.label === 'popular') {
-      movies = getPopularMovies(state);
+      movies = getPopularMoviesIds(state);
     } else {
-      movies = getComingsoonrMovies(state);
+      movies = getComingsoonrMoviesIds(state);
     }
 
     console.log(movies);
     return {
-        films: movies.map(movie => ({
+        films: movies
+        .map(id => getMovieById(state, id))
+        .map(movie => ({
             id: movie.id,
             name: movie.name,
             image: movie.image,

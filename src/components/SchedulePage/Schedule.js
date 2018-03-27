@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {getAllMovies, getAllFilters} from "../../reducers";
+import {getAllMoviesIds, getAllFilters, getMovieById} from "../../reducers";
 import {removeMovie, addMovie, changeDate} from "../../actions";
 import {Interval} from "luxon/src/interval.js";
 import {Link} from 'react-router-dom'
@@ -99,14 +99,15 @@ const mapDispatchToProps = (dispatch, props) => {
 };
 
 export default connect(state => {
-  const movies = getAllMovies(state);
+  const moviesIds = getAllMoviesIds(state);
   const filters = getAllFilters(state);
   const date = filters.date ?
     DateTime.fromFormat(filters.date, 'yyyy-MM-dd') :
     DateTime.local();
   return {
     date,
-    films: movies
+    films: moviesIds
+      .map((id) => getMovieById(state, id))
       .filter((movie) => {
         if (filters.genres.length === 0) {
           return true;

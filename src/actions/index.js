@@ -1,3 +1,7 @@
+import {moviesListSchema} from "../helpers/schema";
+import { normalize } from 'normalizr';
+
+
 export const changeDate = (date) => {
   return {
     type: 'CHANGE_DATE',
@@ -21,168 +25,88 @@ export const removeFilter = (key, value) => {
     }
 };
 
-
-export const addMovie = (movie) => {
-    return {
-        type: 'ADD_MOVIE',
-        name: movie.name,
-        schedule: movie.schedule
-    }
-};
-
-export const allMovies = (movies) => {
-    return {
-      type: 'ALL_MOVIES',
-      movies
-    }
-}
-
-const fetchMovieStart = (id) =>{
-    return {
-        type: "FETCH_MOVIE",
-        id
-    }
-}
-
-const fetchMovieSuccess = (id, data) =>{
-    return {
-        type: "FETCH_MOVIE_SUCCESS",
-        id,
-        data
-    }
-}
-
-const fetchMovieFail = (id, data) =>{
-    return {
-        type: "FETCH_MOVIE_FAIL",
-        id,
-        data
-    }
-}
-
-export const fetchMoviesStart = () => {
+export const fetchMoviesStart = (id) => {
     return {
       type: 'FETCH_MOVIES',
-      id: 'movies'
+      id
     }
 }
 
-export const fetchMoviesSuccess = (movies) => {
-    return {
-      type: 'FETCH_MOVIES_SUCCESS',
-      id: 'movies',
-      movies
-    }
-}
 
-export const fetchMoviesFail = (movies) => {
+export const fetchMoviesFail = (id) => {
     return {
       type: 'FETCH_MOVIES_FAIL',
-      id: 'movies',
-      movies
+      id
     }
 }
 
-export const fetchAdditionalMoviesStart = (limit, page) => {
-    return {
-      type: 'FETCH_ADDITIONAL_MOVIES',
-      id: 'addition_movies',
-      limit,
-      page
-    }
+export const fetchMoviesSuccess = (id, ids, movies) => {
+  return {
+    type: 'FETCH_MOVIES_SUCCESS',
+    id,
+    movies,
+    ids
+  }
 }
 
-export const fetchAdditionalMoviesSuccess = (movies) => {
-    return {
-      type: 'FETCH_ADDITIONAL_MOVIES_SUCCESS',
-      id: 'addition_movies',
-      movies
-    }
+export const fetchPopularMoviesSuccess = (ids, movies) => {
+  return {
+    type: 'FETCH_POPULAR_MOVIES_SUCCESS',
+    id: 'popular',
+    ids,
+    movies
+  }
 }
 
-export const fetchAdditionalMoviesFail = (movies) => {
-    return {
-      type: 'FETCH_ADDITIONAL_MOVIES_FAIL',
-      id: 'addition_movies',
-      movies
-    }
+export const fetchComingsoonMoviesSuccess = (ids, movies) => {
+  return {
+    type: 'FETCH_COMMINGSOON_MOVIES_SUCCESS',
+    id: 'comingSoon',
+    movies,
+    ids
+  }
 }
 
-export const fetchPopularMoviesStart = () => {
-    return {
-      type: 'FETCH_POPULAR_MOVIES',
-      id: 'popular_movies',
-    }
+export const fetchMoviesByScheduleSuccess = (ids, movies) => {
+  return {
+    type: 'FETCH_SCHEDULE_MOVIES_SUCCESS',
+    id: 'schedule',
+    movies,
+    ids
+  }
 }
-
-export const fetchPopularMoviesSuccess = (movies) => {
-    return {
-      type: 'FETCH_POPULAR_MOVIES_SUCCESS',
-      id: 'popular_movies',
-      movies
-    }
-}
-
-export const fetchPopularMoviesFail = (movies) => {
-    return {
-      type: 'FETCH_POPULAR_MOVIES_FAIL',
-      id: 'popular_movies',
-      movies
-    }
-}
-
-export const fetchComingsoonMoviesStart = () => {
-    return {
-      type: 'FETCH_COMMINGSOON_MOVIES',
-      id: 'popular_movies',
-    }
-}
-
-export const fetchComingsoonMoviesSuccess = (movies) => {
-    return {
-      type: 'FETCH_COMMINGSOON_MOVIES_SUCCESS',
-      id: 'popular_movies',
-      movies
-    }
-}
-
-export const fetchComingsoonMoviesFail = (movies) => {
-    return {
-      type: 'FETCH_COMMINGSOON_MOVIES_FAIL',
-      id: 'popular_movies',
-      movies
-    }
-}
-
-
 
 export const fetchMovie = (id) => async (dispatch) => {
-    dispatch(fetchMovieStart(id));
-    const movie = await ((await fetch(`http://localhost:3000/movies/${id}`)).json());
-    dispatch(fetchMovieSuccess(id, movie));
+    dispatch(fetchMoviesStart(id));
+    let movies = await ((await fetch(`http://localhost:3000/movies/${id}`)).json());
+    movies = normalize([movies], moviesListSchema);
+    dispatch(fetchMoviesSuccess(id, movies.result, movies.entities.movies));
 }
 
 export const fetchMoviesSchedule = (day) => async (dispatch) => {
-    dispatch(fetchMoviesStart());
-    const movies = await ((await fetch(`http://localhost:3000/movies?Schedule_like=${day}`)).json());
-    dispatch(fetchMoviesSuccess(movies));
+    dispatch(fetchMoviesStart('schedule'));
+    let movies = await ((await fetch(`http://localhost:3000/movies?Schedule_like=${day}`)).json());
+    movies = normalize(movies, moviesListSchema);
+    dispatch(fetchMoviesByScheduleSuccess(movies.result, movies.entities.movies));
 }
 
 export const fetchPopularMovies = () => async (dispatch) => {
-    dispatch(fetchPopularMoviesStart());
-    const movies = await ((await fetch(`http://localhost:3000/movies?label=popular`)).json());
-    dispatch(fetchPopularMoviesSuccess(movies));
+    dispatch(fetchMoviesStart('popular'));
+    let movies = await ((await fetch(`http://localhost:3000/movies?label=popular`)).json());
+    movies = normalize(movies, moviesListSchema);
+    dispatch(fetchPopularMoviesSuccess(movies.result, movies.entities.movies));
 }
 
 export const fetchComingsoonMovies = () => async (dispatch) => {
-    dispatch(fetchComingsoonMoviesStart());
-    const movies = await ((await fetch(`http://localhost:3000/movies?label=soon`)).json());
-    dispatch(fetchComingsoonMoviesSuccess(movies));
+    dispatch(fetchMoviesStart('comingSoon'));
+    let movies = await ((await fetch(`http://localhost:3000/movies?label=soon`)).json());
+    movies = normalize(movies, moviesListSchema);
+    dispatch(fetchComingsoonMoviesSuccess(movies.result, movies.entities.movies));
 }
 
 export const fetchAdditionalMovies = (limit, page) => async (dispatch) => {
-    console.log('new fetch movies');
-    dispatch(fetchAdditionalMoviesStart(limit, page));
-    const movies = await ((await fetch(`http://localhost:3000/movies/?_page=${page}&_limit=${limit}`)).json());
-    dispatch(fetchAdditionalMoviesSuccess(movies));
+    dispatch(fetchMoviesStart('additional'));
+    let movies = await ((await fetch(`http://localhost:3000/movies/?_page=${page}&_limit=${limit}`)).json());
+    movies = normalize(movies, moviesListSchema);
+    dispatch(fetchMoviesSuccess('additional', movies.result, movies.entities.movies));
 }

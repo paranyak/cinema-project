@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import MoviePoster from "./MoviePoster";
 import {Link} from 'react-router-dom';
 import InfiniteScroll from "react-infinite-scroller";
-import {getAllMovies, isMovieFetching} from "../../reducers";
+import {getAllMoviesIds, isMovieFetching, getMovieById} from "../../reducers";
 import {allMovies, fetchAdditionalMovies} from '../../actions'
 
 const b = block("AllMovies");
@@ -21,7 +21,6 @@ class AllMovies extends Component {
     }
 
     componentWillMount() {
-      this.props.resetMovies();
       this.props.fetchAllMovies(this.state.items, 1);
     }
 
@@ -76,16 +75,17 @@ class AllMovies extends Component {
 }
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    resetMovies: () => dispatch(allMovies([])),
     fetchAllMovies: (labels, pages) => fetchAdditionalMovies(labels, pages)(dispatch)
   }
 };
 
 export default connect(state => {
-    const movies = getAllMovies(state);
-    const isFetching = isMovieFetching('addition_movies', state);
+    const movies = getAllMoviesIds(state);
+    const isFetching = isMovieFetching('additional', state);
     return {
-        films: movies.map(movie => ({
+        films: movies
+            .map(id => getMovieById(state, id))
+            .map(movie => ({
             id: movie.id,
             name: movie.name,
             image: movie.image,
