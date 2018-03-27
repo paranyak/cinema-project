@@ -46428,146 +46428,160 @@ exports.push([module.i, ".Filter {\n  background-color: #FAE807;\n  width: 14%;\
 const b = Object(__WEBPACK_IMPORTED_MODULE_11__helpers_BEM__["a" /* default */])("Schedule");
 
 class Schedule extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
-  constructor(props) {
-    super(props);
-  }
+    constructor(props) {
+        super(props);
+    }
 
-  render() {
-    const { films, onDateChange, date } = this.props;
-    const sessionStart = date.set({
-      hour: 9,
-      minute: 0,
-      seconds: 0,
-      milliseconds: 0
-    });
-    const scheduleInterval = __WEBPACK_IMPORTED_MODULE_3_luxon_src_interval_js__["a" /* Interval */].after(sessionStart, { hours: 16 });
-    this.scale = t => 100 * t / scheduleInterval.toDuration().milliseconds;
-    this.globalScale = t => 85 * t / scheduleInterval.toDuration().milliseconds + 15;
-    const session = scheduleInterval.splitBy({ minutes: 60 });
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      "section",
-      { className: b() },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        "header",
-        { className: b("header") },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          "time",
-          { className: b("day-container") },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: b("day"), type: "date", value: date.toFormat('yyyy-MM-dd'),
-            onChange: onDateChange })
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          "nav",
-          { className: b("time-string") },
-          session.map((time, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "time",
-            { className: b("time-item"), key: i },
-            time.start.toFormat("HH:mm")
-          ))
-        )
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        "main",
-        { className: b("film-list") },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("time", { className: b("real-time-line"),
-          style: {
-            left: this.globalScale(__WEBPACK_IMPORTED_MODULE_3_luxon_src_interval_js__["a" /* Interval */].fromDateTimes(sessionStart, __WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].local()).toDuration().milliseconds) + "%",
-            display: sessionStart.hasSame(__WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].local(), 'day') ? 'block' : 'none'
-          } }),
-        films.map((film, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          "article",
-          { key: "div-1lev" + i.toString(), className: b("film") },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "span",
-            { key: i, className: b("film-name") },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_4_react_router_dom__["a" /* Link */],
-              { className: b("film-link"), key: film.id, to: `/movie/${film.id}` },
-              film.name
-            )
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    render() {
+        const { films, onDateChange, date } = this.props;
+        const sessionStart = date.set({
+            hour: 9,
+            minute: 0,
+            seconds: 0,
+            milliseconds: 0
+        });
+        const scheduleInterval = __WEBPACK_IMPORTED_MODULE_3_luxon_src_interval_js__["a" /* Interval */].after(sessionStart, { hours: 16 });
+        this.scale = t => 100 * t / scheduleInterval.toDuration().milliseconds;
+        this.globalScale = t => 85 * t / scheduleInterval.toDuration().milliseconds + 15;
+        const session = scheduleInterval.splitBy({ minutes: 60 });
+
+        //GET TODAY DATE
+        let today = new Date();
+        let dd = today.getDate();
+        let mm = today.getMonth() + 1;
+        let yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        today = yyyy + '-' + mm + '-' + dd;
+        //GET TODAY DATE ^
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "section",
-            { style: { 'minHeight': film.schedule.length * 10 }, key: "div-2lev" + i.toString(),
-              className: b("film-schedule") },
-            film.schedule.map((s, i, j) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              "div",
-              { key: i },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("time", {
-                className: b("film-schedule-item", s.isAfter(__WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].local()) ? ['after'] : ['before']),
-                "data-tip": s.toFormat('HH:mm'),
-                style: {
-                  top: i * 10,
-                  width: this.scale(s.toDuration().milliseconds) + "%",
-                  left: this.scale(__WEBPACK_IMPORTED_MODULE_3_luxon_src_interval_js__["a" /* Interval */].fromDateTimes(sessionStart, s.start).toDuration().milliseconds) + "%"
-                }
-              }),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_react_tooltip___default.a, null)
-            ))
-          )
-        ))
-      )
-    );
-  }
+            { className: b() },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "header",
+                { className: b("header") },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "time",
+                    { className: b("day-container") },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { className: b("day"), type: "date", value: date.toFormat('yyyy-MM-dd'),
+                        onChange: onDateChange, min: today })
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "nav",
+                    { className: b("time-string") },
+                    session.map((time, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "time",
+                        { className: b("time-item"), key: i },
+                        time.start.toFormat("HH:mm")
+                    ))
+                )
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "main",
+                { className: b("film-list") },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("time", { className: b("real-time-line"),
+                    style: {
+                        left: this.globalScale(__WEBPACK_IMPORTED_MODULE_3_luxon_src_interval_js__["a" /* Interval */].fromDateTimes(sessionStart, __WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].local()).toDuration().milliseconds) + "%",
+                        display: sessionStart.hasSame(__WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].local(), 'day') ? 'block' : 'none'
+                    } }),
+                films.map((film, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "article",
+                    { key: "div-1lev" + i.toString(), className: b("film") },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "span",
+                        { key: i, className: b("film-name") },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            __WEBPACK_IMPORTED_MODULE_4_react_router_dom__["a" /* Link */],
+                            { className: b("film-link"), key: film.id, to: `/movie/${film.id}` },
+                            film.name
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "section",
+                        { style: { 'minHeight': film.schedule.length * 10 }, key: "div-2lev" + i.toString(),
+                            className: b("film-schedule") },
+                        film.schedule.map((s, i, j) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "div",
+                            { key: i },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("time", {
+                                className: b("film-schedule-item", s.isAfter(__WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].local()) ? ['after'] : ['before']),
+                                "data-tip": s.toFormat('HH:mm'),
+                                style: {
+                                    top: i * 10,
+                                    width: this.scale(s.toDuration().milliseconds) + "%",
+                                    left: this.scale(__WEBPACK_IMPORTED_MODULE_3_luxon_src_interval_js__["a" /* Interval */].fromDateTimes(sessionStart, s.start).toDuration().milliseconds) + "%"
+                                }
+                            }),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6_react_tooltip___default.a, null)
+                        ))
+                    )
+                ))
+            )
+        );
+    }
 }
 
 const mapDispatchToProps = (dispatch, props) => {
-  return {
-    onDateChange: event => {
-      dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions__["c" /* changeDate */])(event.target.value));
-      dispatch(Object(__WEBPACK_IMPORTED_MODULE_8_react_router_redux__["b" /* push */])('/schedule/' + event.target.value));
-    }
-  };
+    return {
+        onDateChange: event => {
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_2__actions__["c" /* changeDate */])(event.target.value));
+            dispatch(Object(__WEBPACK_IMPORTED_MODULE_8_react_router_redux__["b" /* push */])('/schedule/' + event.target.value));
+        }
+    };
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_9_react_redux__["b" /* connect */])(state => {
-  const movies = Object(__WEBPACK_IMPORTED_MODULE_1__reducers__["c" /* getAllMovies */])(state);
-  const filters = Object(__WEBPACK_IMPORTED_MODULE_1__reducers__["b" /* getAllFilters */])(state);
-  const date = filters.date ? __WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].fromFormat(filters.date, 'yyyy-MM-dd') : __WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].local();
-  return {
-    date,
-    films: movies.filter(movie => {
-      if (filters.genres.length === 0) {
-        return true;
-      }
-      let movieGenres = movie.genre.split(', ');
-      for (let i = 0; i < movieGenres.length; i++) {
-        if (filters.genres.includes(movieGenres[i])) {
-          return true;
-        }
-      }
-      return false;
-    }).filter(movie => {
-      if (filters.technologies.length === 0) {
-        return true;
-      }
-      for (let i = 0; i < movie.technology.length; i++) {
-        if (filters.technologies.includes(movie.technology[i])) {
-          return true;
-        }
-      }
-      return false;
-    }).filter(movie => {
-      if (filters.formats.length === 0) {
-        return true;
-      }
-      for (let i = 0; i < movie.format.length; i++) {
-        if (filters.formats.includes(movie.format[i])) {
-          return true;
-        }
-      }
-      return false;
-    }).map(movie => ({
-      name: movie.name,
-      schedule: movie.Schedule.filter(start => {
-        return __WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].fromFormat(start, "dd-MM-yyyy HH:mm").hasSame(date, 'day');
-      }).map(start => __WEBPACK_IMPORTED_MODULE_3_luxon_src_interval_js__["a" /* Interval */].after(__WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].fromFormat(start, "dd-MM-yyyy HH:mm"), {
-        hour: movie.duration.hour,
-        minute: movie.duration.minute
-      })),
-      id: movie.id
-    })).filter(movie => movie.schedule.length !== 0)
-  };
+    const movies = Object(__WEBPACK_IMPORTED_MODULE_1__reducers__["c" /* getAllMovies */])(state);
+    const filters = Object(__WEBPACK_IMPORTED_MODULE_1__reducers__["b" /* getAllFilters */])(state);
+    const date = filters.date ? __WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].fromFormat(filters.date, 'yyyy-MM-dd') : __WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].local();
+    return {
+        date,
+        films: movies.filter(movie => {
+            if (filters.genres.length === 0) {
+                return true;
+            }
+            let movieGenres = movie.genre.split(', ');
+            for (let i = 0; i < movieGenres.length; i++) {
+                if (filters.genres.includes(movieGenres[i])) {
+                    return true;
+                }
+            }
+            return false;
+        }).filter(movie => {
+            if (filters.technologies.length === 0) {
+                return true;
+            }
+            for (let i = 0; i < movie.technology.length; i++) {
+                if (filters.technologies.includes(movie.technology[i])) {
+                    return true;
+                }
+            }
+            return false;
+        }).filter(movie => {
+            if (filters.formats.length === 0) {
+                return true;
+            }
+            for (let i = 0; i < movie.format.length; i++) {
+                if (filters.formats.includes(movie.format[i])) {
+                    return true;
+                }
+            }
+            return false;
+        }).map(movie => ({
+            name: movie.name,
+            schedule: movie.Schedule.filter(start => {
+                return __WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].fromFormat(start, "dd-MM-yyyy HH:mm").hasSame(date, 'day');
+            }).map(start => __WEBPACK_IMPORTED_MODULE_3_luxon_src_interval_js__["a" /* Interval */].after(__WEBPACK_IMPORTED_MODULE_5_luxon_src_datetime_js__["a" /* DateTime */].fromFormat(start, "dd-MM-yyyy HH:mm"), {
+                hour: movie.duration.hour,
+                minute: movie.duration.minute
+            })),
+            id: movie.id
+        })).filter(movie => movie.schedule.length !== 0)
+    };
 }, mapDispatchToProps)(Schedule));
 
 /***/ }),
@@ -49439,12 +49453,26 @@ class MovieCarousel extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         let newPos = carousel.scrollLeft + k * (widthOfItem * numOfItemsToScroll);
         const timeForItem = 200;
         const totalTime = numOfItemsToScroll * timeForItem;
+        const { rightBut, leftBut } = this.refs;
+        let width = carousel.offsetWidth;
+        let sw = carousel.scrollWidth;
+
+        // console.log("\nclient", width);
+        // console.log("scroll width", sw);
+        // console.log('prev pos', carousel.scrollLeft);
+        // console.log('new pos', newPos);
+
+
         Object(__WEBPACK_IMPORTED_MODULE_3__helpers_scrollTo__["a" /* default */])({
             el: carousel,
             to: newPos,
             duration: totalTime,
             scrollDir: 'scrollLeft'
         });
+
+        carousel.scrollLeft === 0 || newPos < 0 ? leftBut.setAttribute('style', 'display: none') : leftBut.removeAttribute('style');
+
+        sw - carousel.scrollLeft === width || sw - newPos < width ? rightBut.setAttribute('style', 'display: none') : rightBut.removeAttribute('style');
     }
 
     leftClick() {
@@ -49464,7 +49492,9 @@ class MovieCarousel extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 "button",
                 {
                     className: b('button'),
-                    onClick: this.leftClick.bind(this)
+                    onClick: this.leftClick.bind(this),
+                    ref: 'leftBut',
+                    style: { 'display': 'none' }
                 },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: b('icon', ['left']) })
             ),
@@ -49481,7 +49511,8 @@ class MovieCarousel extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 "button",
                 {
                     className: b('button'),
-                    onClick: this.rightClick.bind(this)
+                    onClick: this.rightClick.bind(this),
+                    ref: 'rightBut'
                 },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", { className: b('icon', ['right']) })
             )
