@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import {Link} from 'react-router-dom'
 import MoviePoster from "./MoviePoster";
 import {getPopularMoviesIds, getComingsoonrMoviesIds, getMovieById} from '../../reducers';
-import {fetchPopularMovies, fetchComingsoonMovies} from '../../actions';
+import {fetchPopularMovies, fetchComingsoonMovies} from '../../api/fetch';
 
 const b = block("MovieCarousel");
 

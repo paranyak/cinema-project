@@ -1,29 +1,3 @@
-import {moviesListSchema} from "../helpers/schema";
-import {normalize} from 'normalizr';
-
-
-export const changeDate = (date) => {
-    return {
-        type: 'CHANGE_DATE',
-        date
-    };
-};
-
-export const addFilter = (key, value) => {
-    return {
-        type: 'ADD_FILTER',
-        key,
-        value
-    }
-};
-
-export const removeFilter = (key, value) => {
-    return {
-        type: 'REMOVE_FILTER',
-        key,
-        value
-    }
-};
 
 export const fetchMoviesStart = (id) => {
     return {
@@ -32,7 +6,6 @@ export const fetchMoviesStart = (id) => {
     }
 }
 
-//HERE
 export const fetchActorsStart = () => {
     return {
         type: 'FETCH_ACTOR',
@@ -40,7 +13,6 @@ export const fetchActorsStart = () => {
     }
 }
 
-//HERE
 export const fetchActorsSucess = (id, actor) => {
     return {
         type: 'FETCH_ACTOR__SUCCESS',
@@ -92,56 +64,4 @@ export const fetchMoviesByScheduleSuccess = (ids, movies) => {
         movies,
         ids
     }
-}
-
-export const fetchMovie = (id) => async (dispatch) => {
-    dispatch(fetchMoviesStart(id));
-    let movies = await ((await fetch(`http://localhost:3000/movies/${id}`)).json());
-    movies = normalize([movies], moviesListSchema);
-    dispatch(fetchMoviesSuccess(id, movies.result, movies.entities.movies));
-}
-
-
-//HERE
-export const fetchActors = (id) => async (dispatch) => {
-    dispatch(fetchActorsStart(id));
-    const response = await fetch(`http://localhost:3000/actors/${id}`);// 'posts' to get work the url
-    if (!response.ok) {
-        console.log("ERROR IN ACTOR");
-        dispatch(fetchMoviesFail(id));
-    } else {
-        const actor = await ((response).json());
-        dispatch(fetchActorsSucess(id, actor));
-    }
-}
-
-//HERE ^
-
-export const fetchMoviesSchedule = (day) => async (dispatch) => {
-    dispatch(fetchMoviesStart('schedule'));
-    let movies = await ((await fetch(`http://localhost:3000/movies?Schedule_like=${day}`)).json());
-    movies = normalize(movies, moviesListSchema);
-    dispatch(fetchMoviesByScheduleSuccess(movies.result, movies.entities.movies));
-}
-
-
-export const fetchPopularMovies = () => async (dispatch) => {
-    dispatch(fetchMoviesStart('popular'));
-    let movies = await ((await fetch(`http://localhost:3000/movies?label=popular`)).json());
-    movies = normalize(movies, moviesListSchema);
-    dispatch(fetchPopularMoviesSuccess(movies.result, movies.entities.movies));
-}
-
-export const fetchComingsoonMovies = () => async (dispatch) => {
-    dispatch(fetchMoviesStart('comingSoon'));
-    let movies = await ((await fetch(`http://localhost:3000/movies?label=soon`)).json());
-    movies = normalize(movies, moviesListSchema);
-    dispatch(fetchComingsoonMoviesSuccess(movies.result, movies.entities.movies));
-}
-
-export const fetchAdditionalMovies = (limit, page) => async (dispatch) => {
-    dispatch(fetchMoviesStart('additional'));
-    let movies = await ((await fetch(`http://localhost:3000/movies/?_page=${page}&_limit=${limit}`)).json());
-    movies = normalize(movies, moviesListSchema);
-    dispatch(fetchMoviesSuccess('additional', movies.result, movies.entities.movies));
 }

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
 import {getSelectedActor} from "../../reducers";
-import {fetchActors} from '../../actions';
+import {fetchActors} from '../../api/fetch';
 
 import "../../styles/ActorLayout.less"
 import block from "../../helpers/BEM";

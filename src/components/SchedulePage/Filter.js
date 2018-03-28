@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import "../../styles/Filter.less";
 import block from "../../helpers/BEM";
 import {connect} from "react-redux";
-import {addFilter, removeFilter} from "../../actions";
+import {addFilter, removeFilter} from "../../actions/filter";
 
 
 const b = block("Filter");

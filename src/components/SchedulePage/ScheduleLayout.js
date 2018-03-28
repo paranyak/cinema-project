@@ -5,7 +5,8 @@ import "../../styles/ScheduleLayout.less";
 import {connect} from "react-redux";
 import { withRouter } from 'react-router-dom';
 import {getAllFilters, getAllMovies} from "../../reducers";
-import {changeDate, fetchMoviesSchedule} from "../../actions";
+import {changeDate} from "../../actions/filter";
+import {fetchMoviesSchedule} from "../../api/fetch";
 import {DateTime} from "luxon/src/datetime.js";
 
 
