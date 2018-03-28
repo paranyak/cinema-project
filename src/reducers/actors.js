@@ -17,7 +17,9 @@ const actors = (state = [], action) => {
 const selectedActor = (state = {}, action) => {
     switch (action.type) {
         case 'FETCH_ACTOR__SUCCESS':
-            return action.actor
+            return action.actor;
+        case 'FETCH_MOVIES_FAIL':
+            return action;
         default:
             return state
     }
@@ -30,6 +32,8 @@ const fetching = (state = {}, action) => {
             return assoc(action.id, true, state);
         case "FETCH_ACTOR__SUCCESS":
             return assoc(action.id, false, state);
+        case "FETCH_MOVIES_FAIL":
+            return assoc(action.id, false, state);
         default:
             return state;
     }
@@ -41,6 +45,6 @@ export const getSelectedActor = (state) => state.selectedActor;
 
 export default combineReducers({
     actors,
-    selectedActor,
-    fetching
+    fetching,
+    selectedActor
 });
