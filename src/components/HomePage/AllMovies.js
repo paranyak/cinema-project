@@ -5,8 +5,8 @@ import {connect} from "react-redux";
 import MoviePoster from "./MoviePoster";
 import {Link} from 'react-router-dom';
 import InfiniteScroll from "react-infinite-scroller";
-import {getAllMoviesIds, isMovieFetching, getMovieById} from "../../reducers";
-import {allMovies, fetchAdditionalMovies} from '../../actions'
+import {getAllMoviesIds, isMovieFetching , getComingsoonrMoviesIds} from "../../reducers";
+import {fetchAdditionalMovies} from "../../api/fetch"
 
 const b = block("AllMovies");
 
@@ -31,13 +31,18 @@ class AllMovies extends Component {
     }
 
     showItems() {
-        const {films} = this.props;
+        const {films, comingSoonIds} = this.props;
+        if (films.length === 0) {
+          return null;
+        }
         return (
             <div className={b()}>
                 {films
-                    .filter(film => film.label !== 'soon')
+                    .filter(film =>
+                      !comingSoonIds.includes(film)
+                    )
                     .map(film =>
-                        <Link key={film.id} to={`/movie/${film.id}`}>
+                        <Link key={film} to={`/movie/${film}`}>
                             <MoviePoster film={film}/>
                         </Link>
                     )}
@@ -81,18 +86,11 @@ const mapDispatchToProps = (dispatch, props) => {
 
 export default connect(state => {
     const movies = getAllMoviesIds(state);
+    const comingSoonIds = getComingsoonrMoviesIds(state);
     const isFetching = isMovieFetching('additional', state);
     return {
-        films: movies
-            .map(id => getMovieById(state, id))
-            .map(movie => ({
-            id: movie.id,
-            name: movie.name,
-            image: movie.image,
-            rating: movie.rating,
-            genre: movie.genre,
-            label: movie.label
-        })),
+        films: movies,
+        comingSoonIds,
         isFetching
     }
 }, mapDispatchToProps)(AllMovies);

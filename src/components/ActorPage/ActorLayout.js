@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
 import {getSelectedActor} from "../../reducers";
-import {fetchActors} from '../../actions';
+import {fetchActors} from '../../api/fetch';
 
 import "../../styles/ActorLayout.less"
 import block from "../../helpers/BEM";
@@ -21,8 +21,15 @@ class ActorLayout extends Component {
 
     render() {
         const {selectedActor} = this.props;
-        if (selectedActor.nominations === undefined) {
-            console.log("UNDEFINED");
+        if (selectedActor.error) {
+            return (
+                <section className={b("error")}>
+                    <img width="100%" src="http://www.topdesignmag.com/wp-content/uploads/2012/06/1.-404-not-found-design.jpg"/>
+                </section>
+            );
+        }
+        else if (selectedActor.nominations === undefined) {
+            console.log("UNDEFINED...");
             return null;
         }
         return (

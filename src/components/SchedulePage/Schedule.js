@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {getAllMoviesIds, getAllFilters, getMovieById} from "../../reducers";
-import {removeMovie, addMovie, changeDate} from "../../actions";
+import {changeDate} from "../../actions/filter";
 import {Interval} from "luxon/src/interval.js";
 import {Link} from 'react-router-dom'
 import {DateTime} from "luxon/src/datetime.js";

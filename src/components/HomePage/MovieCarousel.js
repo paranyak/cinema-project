@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import {Link} from 'react-router-dom'
 import MoviePoster from "./MoviePoster";
 import {getPopularMoviesIds, getComingsoonrMoviesIds, getMovieById} from '../../reducers';
-import {fetchPopularMovies, fetchComingsoonMovies} from '../../actions';
+import {fetchPopularMovies, fetchComingsoonMovies} from '../../api/fetch';
 
 const b = block("MovieCarousel");
 
@@ -65,9 +65,8 @@ class MovieCarousel extends Component {
                      onScroll={this.onScrollMove.bind(this)}
                 >
                     {films
-                        .filter(film => film.label === label)
                         .map(film =>
-                            <Link key={film.id} to={`/movie/${film.id}`}>
+                            <Link key={film} to={`/movie/${film}`}>
                                 <MoviePoster film={film}/>
                             </Link>
                         )}
@@ -103,18 +102,7 @@ export default connect((state, props) => {
     } else {
         movies = getComingsoonrMoviesIds(state);
     }
-
-    console.log(movies);
     return {
         films: movies
-            .map(id => getMovieById(state, id))
-            .map(movie => ({
-                id: movie.id,
-                name: movie.name,
-                image: movie.image,
-                rating: movie.rating,
-                genre: movie.genre,
-                label: movie.label
-            }))
     }
 }, mapDispatchToProps)(MovieCarousel);

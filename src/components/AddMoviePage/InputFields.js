@@ -132,12 +132,13 @@ class InputFields extends Component {
 
     // ----------- SCHEDULE ----------------
     createScheduleList() {
+        console.log("SCHEDULE IN CREATE:", this.state.schedule);
         return this.state.schedule.map((el, i) =>
             <form key={i}>
-                <p className="par"><span className="date-hour">00</span> : <span className="date-minute">00</span></p>
-                <input className={b("schedule-hour")} type="range" min="0" max="23" step="1" onChange={(e) => {console.log(e.target.value); document.querySelectorAll('.date-hour')[i].innerHTML = e.target.value}}/>
+                <p className="par"><span className="date-hour">{this.state.schedule[i].slice(0,2)}</span> : <span className="date-minute">{this.state.schedule[i].slice(3,5)}</span></p>
+                <input className={b("schedule-hour")} type="range" min="0" max="23" step="1" onChange={(e) => { document.querySelectorAll('.date-hour')[i].innerHTML = e.target.value}}/>
 
-                <input className={b("schedule-minute")} type="range"  min="0" max="59" step="1" onInput={(e) => {console.log(e.target.value); document.querySelectorAll('.date-minute')[i].innerHTML = e.target.value}}/>
+                <input className={b("schedule-minute")} type="range"  min="0" max="59" step="1" onInput={(e) => {document.querySelectorAll('.date-minute')[i].innerHTML = e.target.value}}/>
 
                 <input type='button' value='-' className={b('button', ['remove'])} onClick={this.removeSchedule.bind(this, i)}/>
                 <input type='button' value='done' className={b('button', ['remove'])} onClick={(e) => this.lostFocus(e, i, document.querySelectorAll(".par")[i])}/>
@@ -148,22 +149,25 @@ class InputFields extends Component {
     lostFocus( e, i,  val) {
         console.log("LOST FOCUS:", e, i, val.querySelector(".date-hour").innerHTML,":",  val.querySelector(".date-minute").innerHTML);
         const {schedule} = this.state;
+        let hour = (val.querySelector(".date-hour").innerHTML < 10 && val.querySelector(".date-hour").innerHTML != '00' )? '0'+val.querySelector(".date-hour").innerHTML : val.querySelector(".date-hour").innerHTML;
+        let minute = (val.querySelector(".date-minute").innerHTML < 10 && val.querySelector(".date-minute").innerHTML != '00')  ? '0'+val.querySelector(".date-minute").innerHTML : val.querySelector(".date-minute").innerHTML;
+
         this.setState({
             schedule:
                 [
                     ...schedule.slice(0, i),
-                    val.querySelector(".date-hour").innerHTML +":"+  val.querySelector(".date-minute").innerHTML,
+                    hour +":"+  minute,
                     ...schedule.slice(i + 1),
 
                 ]
         });
 
-        console.log(this.state.schedule);
+        console.log("SCHEDULE AFTER ADD:", this.state.schedule);
     }
 
     addSchedule(e) {
         e.preventDefault();
-        this.setState(prevState => ({schedule: [...prevState.schedule, '']}))
+        this.setState(prevState => ({schedule: [...prevState.schedule, '00:00']}))
     }
 
     removeSchedule(i) {
