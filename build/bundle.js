@@ -7569,6 +7569,78 @@ class FixedOffsetZone extends __WEBPACK_IMPORTED_MODULE_1__zone__["a" /* Zone */
 
 /***/ }),
 /* 75 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_schema__ = __webpack_require__(512);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_normalizr__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_normalizr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_normalizr__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions_index__ = __webpack_require__(115);
+
+
+
+
+const fetchMovie = id => async dispatch => {
+    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["g" /* fetchMoviesStart */](id));
+    let movies = await (await fetch(`http://localhost:3000/movies/${id}`)).json();
+    movies = Object(__WEBPACK_IMPORTED_MODULE_1_normalizr__["normalize"])([movies], __WEBPACK_IMPORTED_MODULE_0__helpers_schema__["a" /* moviesListSchema */]);
+    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["h" /* fetchMoviesSuccess */](id, movies.result, movies.entities.movies));
+};
+/* harmony export (immutable) */ __webpack_exports__["d"] = fetchMovie;
+
+
+const fetchMoviesSchedule = day => async dispatch => {
+    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["g" /* fetchMoviesStart */]('schedule'));
+    let movies = await (await fetch(`http://localhost:3000/movies?Schedule_like=${day}`)).json();
+    movies = Object(__WEBPACK_IMPORTED_MODULE_1_normalizr__["normalize"])(movies, __WEBPACK_IMPORTED_MODULE_0__helpers_schema__["a" /* moviesListSchema */]);
+    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["e" /* fetchMoviesByScheduleSuccess */](movies.result, movies.entities.movies));
+};
+/* harmony export (immutable) */ __webpack_exports__["e"] = fetchMoviesSchedule;
+
+
+const fetchPopularMovies = () => async dispatch => {
+    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["g" /* fetchMoviesStart */]('popular'));
+    let movies = await (await fetch(`http://localhost:3000/movies?label=popular`)).json();
+    movies = Object(__WEBPACK_IMPORTED_MODULE_1_normalizr__["normalize"])(movies, __WEBPACK_IMPORTED_MODULE_0__helpers_schema__["a" /* moviesListSchema */]);
+    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["i" /* fetchPopularMoviesSuccess */](movies.result, movies.entities.movies));
+};
+/* harmony export (immutable) */ __webpack_exports__["f"] = fetchPopularMovies;
+
+
+const fetchComingsoonMovies = () => async dispatch => {
+    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["g" /* fetchMoviesStart */]('comingSoon'));
+    let movies = await (await fetch(`http://localhost:3000/movies?label=soon`)).json();
+    movies = Object(__WEBPACK_IMPORTED_MODULE_1_normalizr__["normalize"])(movies, __WEBPACK_IMPORTED_MODULE_0__helpers_schema__["a" /* moviesListSchema */]);
+    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["c" /* fetchComingsoonMoviesSuccess */](movies.result, movies.entities.movies));
+};
+/* harmony export (immutable) */ __webpack_exports__["c"] = fetchComingsoonMovies;
+
+
+const fetchAdditionalMovies = (limit, page) => async dispatch => {
+    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["g" /* fetchMoviesStart */]('additional'));
+    let movies = await (await fetch(`http://localhost:3000/movies/?_page=${page}&_limit=${limit}`)).json();
+    movies = Object(__WEBPACK_IMPORTED_MODULE_1_normalizr__["normalize"])(movies, __WEBPACK_IMPORTED_MODULE_0__helpers_schema__["a" /* moviesListSchema */]);
+    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["h" /* fetchMoviesSuccess */]('additional', movies.result, movies.entities.movies));
+};
+/* harmony export (immutable) */ __webpack_exports__["b"] = fetchAdditionalMovies;
+
+
+const fetchActors = id => async dispatch => {
+    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["a" /* fetchActorsStart */](id));
+    const response = await fetch(`http://localhost:3000/actors/${id}`); // 'posts' to get work the url
+    if (!response.ok) {
+        console.log("ERROR IN ACTOR");
+        dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["f" /* fetchMoviesFail */](id));
+    } else {
+        const actor = await response.json();
+        dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["b" /* fetchActorsSucess */](id, actor));
+    }
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = fetchActors;
+
+
+/***/ }),
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7619,95 +7691,6 @@ function denormalizeImmutable(schema, input, unvisit) {
     }
   }, input);
 }
-
-/***/ }),
-/* 76 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-const fetchMoviesStart = id => {
-    return {
-        type: 'FETCH_MOVIES',
-        id
-    };
-};
-/* harmony export (immutable) */ __webpack_exports__["g"] = fetchMoviesStart;
-
-
-const fetchActorsStart = () => {
-    return {
-        type: 'FETCH_ACTOR',
-        id: 'actor'
-    };
-};
-/* harmony export (immutable) */ __webpack_exports__["a"] = fetchActorsStart;
-
-
-const fetchActorsSucess = (id, actor) => {
-    return {
-        type: 'FETCH_ACTOR__SUCCESS',
-        id: 'actor',
-        actor
-    };
-};
-/* harmony export (immutable) */ __webpack_exports__["b"] = fetchActorsSucess;
-
-
-const fetchMoviesFail = id => {
-    console.log("FETCH FAIL");
-    return {
-        type: 'FETCH_MOVIES_FAIL',
-        error: true,
-        id
-    };
-};
-/* harmony export (immutable) */ __webpack_exports__["f"] = fetchMoviesFail;
-
-
-const fetchMoviesSuccess = (id, ids, movies) => {
-    return {
-        type: 'FETCH_MOVIES_SUCCESS',
-        id,
-        movies,
-        ids
-    };
-};
-/* harmony export (immutable) */ __webpack_exports__["h"] = fetchMoviesSuccess;
-
-
-const fetchPopularMoviesSuccess = (ids, movies) => {
-    return {
-        type: 'FETCH_POPULAR_MOVIES_SUCCESS',
-        id: 'popular',
-        ids,
-        movies
-    };
-};
-/* harmony export (immutable) */ __webpack_exports__["i"] = fetchPopularMoviesSuccess;
-
-
-const fetchComingsoonMoviesSuccess = (ids, movies) => {
-    return {
-        type: 'FETCH_COMMINGSOON_MOVIES_SUCCESS',
-        id: 'comingSoon',
-        movies,
-        ids
-    };
-};
-/* harmony export (immutable) */ __webpack_exports__["c"] = fetchComingsoonMoviesSuccess;
-
-
-const fetchMoviesByScheduleSuccess = (ids, movies) => {
-    return {
-        type: 'FETCH_SCHEDULE_MOVIES_SUCCESS',
-        id: 'schedule',
-        movies,
-        ids
-    };
-};
-/* harmony export (immutable) */ __webpack_exports__["e"] = fetchMoviesByScheduleSuccess;
-
 
 /***/ }),
 /* 77 */
@@ -10373,78 +10356,6 @@ class LocalZone extends __WEBPACK_IMPORTED_MODULE_1__zone__["a" /* Zone */] {
 
 /***/ }),
 /* 114 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_schema__ = __webpack_require__(512);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_normalizr__ = __webpack_require__(206);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_normalizr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_normalizr__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions_index__ = __webpack_require__(76);
-
-
-
-
-const fetchMovie = id => async dispatch => {
-    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["g" /* fetchMoviesStart */](id));
-    let movies = await (await fetch(`http://localhost:3000/movies/${id}`)).json();
-    movies = Object(__WEBPACK_IMPORTED_MODULE_1_normalizr__["normalize"])([movies], __WEBPACK_IMPORTED_MODULE_0__helpers_schema__["a" /* moviesListSchema */]);
-    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["h" /* fetchMoviesSuccess */](id, movies.result, movies.entities.movies));
-};
-/* unused harmony export fetchMovie */
-
-
-const fetchMoviesSchedule = day => async dispatch => {
-    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["g" /* fetchMoviesStart */]('schedule'));
-    let movies = await (await fetch(`http://localhost:3000/movies?Schedule_like=${day}`)).json();
-    movies = Object(__WEBPACK_IMPORTED_MODULE_1_normalizr__["normalize"])(movies, __WEBPACK_IMPORTED_MODULE_0__helpers_schema__["a" /* moviesListSchema */]);
-    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["e" /* fetchMoviesByScheduleSuccess */](movies.result, movies.entities.movies));
-};
-/* harmony export (immutable) */ __webpack_exports__["d"] = fetchMoviesSchedule;
-
-
-const fetchPopularMovies = () => async dispatch => {
-    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["g" /* fetchMoviesStart */]('popular'));
-    let movies = await (await fetch(`http://localhost:3000/movies?label=popular`)).json();
-    movies = Object(__WEBPACK_IMPORTED_MODULE_1_normalizr__["normalize"])(movies, __WEBPACK_IMPORTED_MODULE_0__helpers_schema__["a" /* moviesListSchema */]);
-    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["i" /* fetchPopularMoviesSuccess */](movies.result, movies.entities.movies));
-};
-/* harmony export (immutable) */ __webpack_exports__["e"] = fetchPopularMovies;
-
-
-const fetchComingsoonMovies = () => async dispatch => {
-    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["g" /* fetchMoviesStart */]('comingSoon'));
-    let movies = await (await fetch(`http://localhost:3000/movies?label=soon`)).json();
-    movies = Object(__WEBPACK_IMPORTED_MODULE_1_normalizr__["normalize"])(movies, __WEBPACK_IMPORTED_MODULE_0__helpers_schema__["a" /* moviesListSchema */]);
-    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["c" /* fetchComingsoonMoviesSuccess */](movies.result, movies.entities.movies));
-};
-/* harmony export (immutable) */ __webpack_exports__["c"] = fetchComingsoonMovies;
-
-
-const fetchAdditionalMovies = (limit, page) => async dispatch => {
-    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["g" /* fetchMoviesStart */]('additional'));
-    let movies = await (await fetch(`http://localhost:3000/movies/?_page=${page}&_limit=${limit}`)).json();
-    movies = Object(__WEBPACK_IMPORTED_MODULE_1_normalizr__["normalize"])(movies, __WEBPACK_IMPORTED_MODULE_0__helpers_schema__["a" /* moviesListSchema */]);
-    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["h" /* fetchMoviesSuccess */]('additional', movies.result, movies.entities.movies));
-};
-/* harmony export (immutable) */ __webpack_exports__["b"] = fetchAdditionalMovies;
-
-
-const fetchActors = id => async dispatch => {
-    dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["a" /* fetchActorsStart */](id));
-    const response = await fetch(`http://localhost:3000/actors/${id}`); // 'posts' to get work the url
-    if (!response.ok) {
-        console.log("ERROR IN ACTOR");
-        dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["f" /* fetchMoviesFail */](id));
-    } else {
-        const actor = await response.json();
-        dispatch(__WEBPACK_IMPORTED_MODULE_2__actions_index__["b" /* fetchActorsSucess */](id, actor));
-    }
-};
-/* harmony export (immutable) */ __webpack_exports__["a"] = fetchActors;
-
-
-/***/ }),
-/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10456,7 +10367,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _ImmutableUtils = __webpack_require__(75);
+var _ImmutableUtils = __webpack_require__(76);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -10524,6 +10435,95 @@ var PolymorphicSchema = function () {
 }();
 
 exports.default = PolymorphicSchema;
+
+/***/ }),
+/* 115 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+const fetchMoviesStart = id => {
+    return {
+        type: 'FETCH_MOVIES',
+        id
+    };
+};
+/* harmony export (immutable) */ __webpack_exports__["g"] = fetchMoviesStart;
+
+
+const fetchActorsStart = () => {
+    return {
+        type: 'FETCH_ACTOR',
+        id: 'actor'
+    };
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = fetchActorsStart;
+
+
+const fetchActorsSucess = (id, actor) => {
+    return {
+        type: 'FETCH_ACTOR__SUCCESS',
+        id: 'actor',
+        actor
+    };
+};
+/* harmony export (immutable) */ __webpack_exports__["b"] = fetchActorsSucess;
+
+
+const fetchMoviesFail = id => {
+    console.log("FETCH FAIL");
+    return {
+        type: 'FETCH_MOVIES_FAIL',
+        error: true,
+        id
+    };
+};
+/* harmony export (immutable) */ __webpack_exports__["f"] = fetchMoviesFail;
+
+
+const fetchMoviesSuccess = (id, ids, movies) => {
+    return {
+        type: 'FETCH_MOVIES_SUCCESS',
+        id,
+        movies,
+        ids
+    };
+};
+/* harmony export (immutable) */ __webpack_exports__["h"] = fetchMoviesSuccess;
+
+
+const fetchPopularMoviesSuccess = (ids, movies) => {
+    return {
+        type: 'FETCH_POPULAR_MOVIES_SUCCESS',
+        id: 'popular',
+        ids,
+        movies
+    };
+};
+/* harmony export (immutable) */ __webpack_exports__["i"] = fetchPopularMoviesSuccess;
+
+
+const fetchComingsoonMoviesSuccess = (ids, movies) => {
+    return {
+        type: 'FETCH_COMMINGSOON_MOVIES_SUCCESS',
+        id: 'comingSoon',
+        movies,
+        ids
+    };
+};
+/* harmony export (immutable) */ __webpack_exports__["c"] = fetchComingsoonMoviesSuccess;
+
+
+const fetchMoviesByScheduleSuccess = (ids, movies) => {
+    return {
+        type: 'FETCH_SCHEDULE_MOVIES_SUCCESS',
+        id: 'schedule',
+        movies,
+        ids
+    };
+};
+/* harmony export (immutable) */ __webpack_exports__["e"] = fetchMoviesByScheduleSuccess;
+
 
 /***/ }),
 /* 116 */
@@ -16170,7 +16170,7 @@ var _Object = __webpack_require__(517);
 
 var ObjectUtils = _interopRequireWildcard(_Object);
 
-var _ImmutableUtils = __webpack_require__(75);
+var _ImmutableUtils = __webpack_require__(76);
 
 var ImmutableUtils = _interopRequireWildcard(_ImmutableUtils);
 
@@ -16303,6 +16303,13 @@ var denormalize = exports.denormalize = function denormalize(input, schema, enti
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles_MoviePoster_less__ = __webpack_require__(529);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles_MoviePoster_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__styles_MoviePoster_less__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__helpers_BEM__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__reducers__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__actions__ = __webpack_require__(115);
+
+
+
+
 
 
 
@@ -16311,6 +16318,10 @@ const b = Object(__WEBPACK_IMPORTED_MODULE_2__helpers_BEM__["a" /* default */])(
 class MoviePoster extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     render() {
         const { film } = this.props;
+        if (!film || film === undefined) {
+            // this.props.fetchMovieById(this.props.match.params.film);
+            return null;
+        }
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "article",
             { className: b() },
@@ -16338,7 +16349,14 @@ class MoviePoster extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     }
 }
 
-/* harmony default export */ __webpack_exports__["a"] = (MoviePoster);
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_3_react_redux__["b" /* connect */])((state, props) => {
+    const movie = Object(__WEBPACK_IMPORTED_MODULE_4__reducers__["e" /* getMovieById */])(state, props.film);
+    return {
+        film: movie
+    };
+}, dispatch => ({
+    fetchMovieById: id => Object(__WEBPACK_IMPORTED_MODULE_5__actions__["fetchMovie"])(id)(dispatch)
+}))(MoviePoster));
 
 /***/ }),
 /* 208 */
@@ -35397,7 +35415,7 @@ function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, dis
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__HomePage_HomeLayout__ = __webpack_require__(518);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__MoviePage_MovieLayout__ = __webpack_require__(536);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_router_dom__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__actions_index__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__actions_index__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_react_redux__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ActorPage_ActorLayout__ = __webpack_require__(548);
 
@@ -46415,7 +46433,7 @@ var createMemoryHistory = function createMemoryHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_router_dom__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__reducers__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__actions_filter__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__api_fetch__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__api_fetch__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_luxon_src_datetime_js__ = __webpack_require__(36);
 
 
@@ -46464,7 +46482,7 @@ class ScheduleLayout extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 const mapDispatchToProps = dispatch => {
   return {
     setDate: date => dispatch(Object(__WEBPACK_IMPORTED_MODULE_7__actions_filter__["b" /* changeDate */])(date)),
-    fetchMoviesBySchedule: day => Object(__WEBPACK_IMPORTED_MODULE_8__api_fetch__["d" /* fetchMoviesSchedule */])(day)(dispatch)
+    fetchMoviesBySchedule: day => Object(__WEBPACK_IMPORTED_MODULE_8__api_fetch__["e" /* fetchMoviesSchedule */])(day)(dispatch)
   };
 };
 
@@ -49601,7 +49619,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _ImmutableUtils = __webpack_require__(75);
+var _ImmutableUtils = __webpack_require__(76);
 
 var ImmutableUtils = _interopRequireWildcard(_ImmutableUtils);
 
@@ -49729,7 +49747,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Polymorphic = __webpack_require__(115);
+var _Polymorphic = __webpack_require__(114);
 
 var _Polymorphic2 = _interopRequireDefault(_Polymorphic);
 
@@ -49785,7 +49803,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Polymorphic = __webpack_require__(115);
+var _Polymorphic = __webpack_require__(114);
 
 var _Polymorphic2 = _interopRequireDefault(_Polymorphic);
 
@@ -49849,7 +49867,7 @@ exports.denormalize = exports.normalize = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Polymorphic = __webpack_require__(115);
+var _Polymorphic = __webpack_require__(114);
 
 var _Polymorphic2 = _interopRequireDefault(_Polymorphic);
 
@@ -49949,7 +49967,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _ImmutableUtils = __webpack_require__(75);
+var _ImmutableUtils = __webpack_require__(76);
 
 var ImmutableUtils = _interopRequireWildcard(_ImmutableUtils);
 
@@ -50155,7 +50173,7 @@ exports.push([module.i, ".HomeLayout {\n  width: 90%;\n  background-color: #3737
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_router_dom__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__MoviePoster__ = __webpack_require__(207);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__reducers__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__api_fetch__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__api_fetch__ = __webpack_require__(75);
 
 
 
@@ -50226,9 +50244,9 @@ class MovieCarousel extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                     className: b('movies'),
                     onScroll: this.onScrollMove.bind(this)
                 },
-                films.filter(film => film.label === label).map(film => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                films.map(film => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     __WEBPACK_IMPORTED_MODULE_6_react_router_dom__["a" /* Link */],
-                    { key: film.id, to: `/movie/${film.id}` },
+                    { key: film, to: `/movie/${film}` },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__MoviePoster__["a" /* default */], { film: film })
                 ))
             ),
@@ -50249,7 +50267,7 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         fetchMovies: () => {
             if (props.label === 'popular') {
-                return Object(__WEBPACK_IMPORTED_MODULE_9__api_fetch__["e" /* fetchPopularMovies */])()(dispatch);
+                return Object(__WEBPACK_IMPORTED_MODULE_9__api_fetch__["f" /* fetchPopularMovies */])()(dispatch);
             }
             return Object(__WEBPACK_IMPORTED_MODULE_9__api_fetch__["c" /* fetchComingsoonMovies */])()(dispatch);
         }
@@ -50263,17 +50281,8 @@ const mapDispatchToProps = (dispatch, props) => {
     } else {
         movies = Object(__WEBPACK_IMPORTED_MODULE_8__reducers__["d" /* getComingsoonrMoviesIds */])(state);
     }
-
-    console.log(movies);
     return {
-        films: movies.map(id => Object(__WEBPACK_IMPORTED_MODULE_8__reducers__["e" /* getMovieById */])(state, id)).map(movie => ({
-            id: movie.id,
-            name: movie.name,
-            image: movie.image,
-            rating: movie.rating,
-            genre: movie.genre,
-            label: movie.label
-        }))
+        films: movies
     };
 }, mapDispatchToProps)(MovieCarousel));
 
@@ -50511,7 +50520,7 @@ exports.push([module.i, ".MoviePoster {\n  margin: 5px;\n  display: inline-block
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_infinite_scroller__ = __webpack_require__(534);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_infinite_scroller___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_react_infinite_scroller__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__reducers__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__api_fetch__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__api_fetch__ = __webpack_require__(75);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -50547,13 +50556,16 @@ class AllMovies extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     }
 
     showItems() {
-        const { films } = this.props;
+        const { films, comingSoonIds } = this.props;
+        if (films.length === 0) {
+            return null;
+        }
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "div",
             { className: b() },
-            films.filter(film => film.label !== 'soon').map(film => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            films.filter(film => !comingSoonIds.includes(film)).map(film => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_5_react_router_dom__["a" /* Link */],
-                { key: film.id, to: `/movie/${film.id}` },
+                { key: film, to: `/movie/${film}` },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__MoviePoster__["a" /* default */], { film: film })
             ))
         );
@@ -50601,16 +50613,11 @@ const mapDispatchToProps = (dispatch, props) => {
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_3_react_redux__["b" /* connect */])(state => {
     const movies = Object(__WEBPACK_IMPORTED_MODULE_7__reducers__["c" /* getAllMoviesIds */])(state);
+    const comingSoonIds = Object(__WEBPACK_IMPORTED_MODULE_7__reducers__["d" /* getComingsoonrMoviesIds */])(state);
     const isFetching = Object(__WEBPACK_IMPORTED_MODULE_7__reducers__["h" /* isMovieFetching */])('additional', state);
     return {
-        films: movies.map(id => Object(__WEBPACK_IMPORTED_MODULE_7__reducers__["e" /* getMovieById */])(state, id)).map(movie => ({
-            id: movie.id,
-            name: movie.name,
-            image: movie.image,
-            rating: movie.rating,
-            genre: movie.genre,
-            label: movie.label
-        })),
+        films: movies,
+        comingSoonIds,
         isFetching
     };
 }, mapDispatchToProps)(AllMovies));
@@ -50926,7 +50933,7 @@ module.exports = exports['default'];
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__styles_MovieLayout_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__styles_MovieLayout_less__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__helpers_BEM__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__reducers__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__actions__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__api_fetch__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_redux__ = __webpack_require__(24);
 
 
@@ -50968,7 +50975,7 @@ class MovieLayout extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     const movie = Object(__WEBPACK_IMPORTED_MODULE_5__reducers__["e" /* getMovieById */])(state, props.match.params.id);
     return { film: movie };
 }, dispatch => ({
-    fetchMovieById: id => Object(__WEBPACK_IMPORTED_MODULE_6__actions__["fetchMovie"])(id)(dispatch)
+    fetchMovieById: id => Object(__WEBPACK_IMPORTED_MODULE_6__api_fetch__["d" /* fetchMovie */])(id)(dispatch)
 }))(MovieLayout));
 
 /***/ }),
@@ -51528,7 +51535,7 @@ exports.push([module.i, ".MovieLayout {\n  width: 90%;\n  min-height: 600px;\n  
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reducers__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__api_fetch__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__api_fetch__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__styles_ActorLayout_less__ = __webpack_require__(549);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__styles_ActorLayout_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__styles_ActorLayout_less__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__helpers_BEM__ = __webpack_require__(10);
