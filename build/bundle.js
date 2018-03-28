@@ -46503,6 +46503,8 @@ const mapDispatchToProps = dispatch => {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__helpers_BEM__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_filter__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__reducers__ = __webpack_require__(29);
+
 
 
 
@@ -46521,8 +46523,7 @@ class Filter extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
   }
 
   render() {
-    const { onSwitchFilter } = this.props;
-
+    const { onSwitchFilter, filters } = this.props;
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       "div",
       { className: b() },
@@ -46542,7 +46543,7 @@ class Filter extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
         this.availableGenres.map((el, i) => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "section",
           { key: i, className: b("filter") },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", id: el, value: "genres", onChange: onSwitchFilter }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "checkbox", id: el, value: "genres", checked: filters.genres.includes(el), onChange: onSwitchFilter }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "label",
             { htmlFor: el },
@@ -46605,7 +46606,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_3_react_redux__["b" /* connect */])(state => () => ({}), mapDispatchToProps)(Filter));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_3_react_redux__["b" /* connect */])(state => ({
+  filters: Object(__WEBPACK_IMPORTED_MODULE_5__reducers__["b" /* getAllFilters */])(state)
+}), mapDispatchToProps)(Filter));
 
 /***/ }),
 /* 481 */
@@ -46990,7 +46993,7 @@ const getMovieById = (state, id) => state.byId[id];
 "use strict";
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-const initialState = {
+const initialState = JSON.parse(localStorage.getItem("filters")) || {
   date: '',
   genres: [],
   technologies: [],
@@ -47009,11 +47012,13 @@ const filters = (state = initialState, action) => {
 
       let newState = _extends({}, state);
       newState[action.key] = array;
+      localStorage.setItem("filters", JSON.stringify(newState));
       return newState;
     case 'REMOVE_FILTER':
       let array1 = state[action.key].filter(el => el !== action.value);
       let newState1 = _extends({}, state);
       newState1[action.key] = array1;
+      localStorage.setItem("filters", JSON.stringify(newState1));
       return newState1;
 
     default:

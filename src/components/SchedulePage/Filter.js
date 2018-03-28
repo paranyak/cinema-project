@@ -3,6 +3,7 @@ import "../../styles/Filter.less";
 import block from "../../helpers/BEM";
 import {connect} from "react-redux";
 import {addFilter, removeFilter} from "../../actions/filter";
+import {getAllFilters} from "../../reducers"
 
 
 const b = block("Filter");
@@ -18,8 +19,7 @@ class Filter extends Component {
   }
 
   render() {
-    const {onSwitchFilter} = this.props;
-
+    const {onSwitchFilter, filters} = this.props;
     return (
       <div className={b()}>
         <header className={b("header")}>Filters</header>
@@ -27,7 +27,7 @@ class Filter extends Component {
           <span className={b("name")}>Genres</span>
           {this.availableGenres.map((el, i) => (
             <section key={i} className={b("filter")}>
-              <input type="checkbox" id={el} value="genres" onChange={onSwitchFilter}/>
+              <input type="checkbox" id={el} value="genres" checked={filters.genres.includes(el)} onChange={onSwitchFilter}/>
               <label htmlFor={el}>{el}</label>
             </section>
           ))}
@@ -68,7 +68,8 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(state =>
-    () => ({}),
+export default connect(state => ({
+    filters: getAllFilters(state)
+  }),
     mapDispatchToProps
 )(Filter);
