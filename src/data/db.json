@@ -1513,6 +1513,132 @@
         " Премія «Оскар» за найкращу жіночу роль другого плану"
       ],
       "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://media.wmagazine.com/photos/5a60ad7d6cb00a21367b4884/4:3/w_1536/lupita-nyong%25E2%2580%2599o-writing-childrens-book-self-love.jpg"
+    },
+
+    {
+      "id": "Dakota Johnson",
+      "movies": {
+        "4": "Fifty Shades Freed"
+      },
+      "info": "Dakota Mayi Johnson is an American actress and model. She is the daughter of actors Melanie Griffith and Don Johnson, and her maternal grandmother is actress Tippi Hedren. She had her screen debut alongside her mother in the comedy-drama Crazy in Alabama (1999) and was named Miss Golden Globe in 2006. Following high school graduation, she returned to acting with roles in the films The Social Network (2010), Beastly (2011), 21 Jump Street (2012), and Need for Speed (2014). She also starred in the short-lived Fox comedy series Ben and Kate (2012–2013).",
+      "date": "October 4, 1989",
+      "city": "Austin, Texas, U.S.",
+      "nominations": [
+        "MTV Movie & TV Award у номінації «Найкращий поцілунок»"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://media.glamour.com/photos/56957f9d5fff94d44eec31f3/master/w_1280,c_limit/beauty-2015-02-dakota-johnson-fifty-shades-lipstick-main.jpg"
+    }, {
+      "id": "Jamie Dornan",
+      "movies": {
+        "4": "Fifty Shades Freed"
+      },
+      "info": "James Dornan is an actor, model, and musician from Northern Ireland. He played Sheriff Graham Humbert in the ABC series Once Upon a Time (2011–2013), and serial killer Paul Spector in the BBC Two and RTÉ One crime drama series The Fall (2013–2016), the latter of which was nominated for British Academy Television Award for Best Actor.[4] In film, he portrayed Axel von Fersen in Sofia Coppola's Marie Antoinette (2006), Christian Grey in the Fifty Shades franchise (2015–2018), and Jan Kubiš in Anthropoid (2016).",
+      "date": "1 May 1982",
+      "city": "Holywood, County Down, Northern Ireland",
+      "nominations": [
+        "-"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://timedotcom.files.wordpress.com/2015/04/jamie-dornan.jpg"
+    }, {
+      "id": "Eric Johnson",
+      "movies": {
+        "4": "Fifty Shades Freed"
+      },
+      "info": "Eric Johann Johnson is a Canadian actor known for playing Flash Gordon on the eponymous 2007-2008 TV series, Whitney Fordman on the likewise science-fiction TV series Smallville, and for portraying Detective Luke Callaghan on the police drama Rookie Blue, and Jack Hyde in the Fifty Shades film series.",
+      "date": "August 7, 1979",
+      "city": "Edmonton, Alberta",
+      "nominations": [
+        "-"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://cdn1.thr.com/sites/default/files/imagecache/landscape_928x523/2016/02/knicktv_s2_03.jpg"
+    },  {
+      "id": "Alicia Vikander",
+      "movies": {
+        "5": "Submergence"
+      },
+      "info": "Alicia Amanda Vikander is a Swedish actress. She has received several nominations and awards for her acting, including an Academy Award, and was listed by Forbes in their 30 Under 30 list in 2016.[2]Born and raised in Gothenburg, Vikander began acting as a child in minor stage productions at the Gothenburg opera house and trained as a ballet dancer at the Royal Swedish Ballet School in Stockholm and the School of American Ballet in New York. She began her professional acting career by appearing in Swedish short films and television series and first gained recognition for her role as Josefin Björn-Tegebrandt in the drama series Andra Avenyn (2008–10). Vikander made her feature film debut in Pure (2010), for which she won the Guldbagge Award for Best Actress. She gained wider recognition in 2012 for portraying Kitty in Joe Wright's film adaptation of Anna Karenina and Queen Caroline Mathilde in the Danish film A Royal Affair.",
+      "date": "3 October 1988",
+      "city": "Gothenburg, Sweden",
+      "nominations": [
+        "Премія «Оскар» за найкращу жіночу роль другого плану"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/http://www.peoples.ru/art/cinema/actor/alicia_vikander/vikander_4.jpg"
+    },
+    {
+      "id": "James McAvoy",
+      "movies": {
+        "5": "Submergence"
+      },
+      "info": "James McAvoy is a Scottish actor. He made his acting debut as a teen in The Near Room (1995) and continued to make mostly television appearances until 2003, when his feature film career began. He continued to work in both areas from then on. His notable television work includes the drama show State of Play and the science fiction show Frank Herbert's Children of Dune.Besides screen acting, McAvoy has performed in several West End productions and received three nominations for the Laurence Olivier Award for Best Actor. He has also done voice work for animated films including Gnomeo & Juliet and Arthur Christmas (both 2011).",
+      "date": "21 April 1979",
+      "city": "Glasgow, Scotland, UK",
+      "nominations": [
+        "Премія БАФТА новій зірці"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/http://www.thinkhotels.com/blog/wp-content/uploads/2015/01/James-McAvoy.jpg"
+    }, {
+      "id": "Alexander Siddig",
+      "movies": {
+        "5": "Submergence"
+      },
+      "info": "Siddig El Tahir El Fadil El Siddig Abderrahman Mohammed Ahmed Abdel Karim El Mahdi is an English-Sudanese actor.He is known by the stage names Siddig El Fadil through the mid-1990s and Alexander Siddig since. He is known for playing Dr. Julian Bashir in the television series Star Trek: Deep Space Nine, Philip Burton in Primeval, Carthaginian general Hannibal in Hannibal – Rome's Worst Nightmare, King Minos in Atlantis, and Prince Doran Martell in Game of Thrones, and for his performances as Prince Nasir Al-Subaai in Syriana (2005), Imad ad-Din al-Isfahani in Kingdom of Heaven (2005), and Tareq Khalifa in Cairo Time, as well as the sixth season of 24. He is also appearing in Gotham as Ra's al Ghul.",
+      "date": "21 November 1965",
+      "city": "Wad Madani, Sudan",
+      "nominations": [
+        "-"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/http://www.mymbuzz.com/wp-content/uploads/sites/2/2017/03/Alexander-Siddig.jpg"
+    },
+    {
+      "id": "Meryl Streep",
+      "movies": {
+        "6": "The Post"
+      },
+      "info": "Mary Louise Meryl Streep is an American actress. Cited in the media as the best actress of her generation, Streep is particularly known for her versatility and accent adaptation. Nominated for a record 21 Academy Awards, she has won three. Streep has also received 31 Golden Globe nominations, winning eight—more nominations and competitive wins than any other actor.",
+      "date": "June 22, 1949",
+      "city": "Summit, New Jersey, U.S.",
+      "nominations": [
+        "Премія «Оскар» за найкращу жіночу роль"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTU4Mjk5MDExOF5BMl5BanBnXkFtZTcwOTU1MTMyMw@@._V1_UY1200_CR112,0,630,1200_AL_.jpg"
+    },
+    {
+      "id": "Tom Hanks",
+      "movies": {
+        "6": "The Post"
+      },
+      "info": "Thomas Jeffrey Hanks is an American actor and filmmaker. Hanks is known for his comedic and dramatic roles in such films as Splash (1984), Big (1988), Turner & Hooch (1989), A League of Their Own (1992), Sleepless in Seattle (1993), Apollo 13 (1995), Saving Private Ryan (1998), You've Got Mail (1998), The Green Mile (1999), Cast Away (2000), Road to Perdition (2002), Cloud Atlas (2012), Captain Phillips (2013), Saving Mr. Banks (2013), and Sully (2016). He has also starred in the Robert Langdon film series, and voices Sheriff Woody in the Toy Story film series.",
+      "date": "July 9, 1956",
+      "city": "Concord, California, U.S.",
+      "nominations": [
+        "-"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://pmcdeadline2.files.wordpress.com/2017/08/tom-hanks.jpg?w=605"
+    },
+    {
+      "id": "Bob Odenkirk",
+      "movies": {
+        "6": "The Post"
+      },
+      "info": "Robert John Odenkirk is an American actor, comedian, writer, director, and producer. He is best known for his role as smooth-talking lawyer Saul Goodman/Jimmy McGill on the AMC crime drama series Breaking Bad and its spin-off Better Call Saul, and for the HBO sketch comedy series Mr. Show with Bob and David, which he co-created and starred in with fellow comic and friend David Cross.",
+      "date": "October 22, 1962",
+      "city": "Berwyn, Illinois, U.S.",
+      "nominations": [
+        "Outstanding Writing for a Variety Series"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://vignette.wikia.nocookie.net/breakingbad/images/8/8d/BobOdenkirk.jpg/revision/latest?cb=20170515204037"
+    }, {
+      "id": "-",
+      "movies": {
+        "6": "The Post"
+      },
+      "info": "",
+      "date": "",
+      "city": "",
+      "nominations": [
+        "-"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/"
     }
   ]
 }
