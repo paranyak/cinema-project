@@ -3,7 +3,7 @@ const initialState = JSON.parse(localStorage.getItem("filters")) || {
   genres: [],
   technologies: [],
   formats: []
-}
+};
 
 const filters = (state = initialState, action) => {
   switch (action.type) {

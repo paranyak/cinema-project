@@ -5,7 +5,7 @@ const initialState = {
     selectedActor: {}
 };
 
-const actors = (state = [], action) => {
+export const actors = (state = [], action) => {
     switch (action.type) {
         case 'FETCH_ACTOR__SUCCESS':
             return action.actor;
@@ -14,7 +14,7 @@ const actors = (state = [], action) => {
     }
 };
 
-const selectedActor = (state = {}, action) => {
+export const selectedActor = (state = {}, action) => {
     switch (action.type) {
         case 'FETCH_ACTOR__SUCCESS':
             return action.actor;
@@ -23,10 +23,9 @@ const selectedActor = (state = {}, action) => {
         default:
             return state
     }
-}
+};
 
-
-const fetching = (state = {}, action) => {
+export const fetching = (state = {}, action) => {
     switch (action.type) {
         case "FETCH_ACTOR":
             return assoc(action.id, true, state);
