@@ -1369,22 +1369,150 @@
         "Teen Choice Award в номінації Найкращий прорив року: жіноча роль у серіалі",
         "Teen Choice Award в номінації Найкраща актриса екшну/пригодницького фільму"
       ],
-      "image" : "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg"
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg"
     },
     {
-      "id": "Maggie Grace",
+      "id": "Jennifer Lawrence",
       "movies": {
-        "1": "name",
-        "2": "name"
+        "0": "Red Sparrow"
       },
-      "info": "Maggie Grace (born Margaret Grace Denig; September 21, 1983)[1] is an American actress and model, best known for her roles as Shannon Rutherford on the ABC television series Lost and Kim Mills in the Taken trilogy. She has also appeared on The Twilight Saga as Irina. Originally from Worthington, Ohio, she went on to earn a Young Artist Award nomination in 2002 with her portrayal of 15-year-old murder victim Martha Moxley in the television movie Murder in Greenwich. In 2004, Grace was cast as Shannon Rutherford in the television series Lost, on which she was a main cast member for the first two seasons, winning a Screen Actors Guild Award shared with the ensemble cast. Leaving the series, Grace was keen to work more prominently in film, she appeared in The Jane Austen Book Club (both 2007), and opposite Liam Neeson as Kim Mills in Taken in 2008. She reprised the role in Taken 2 (2012) and Taken 3 (2015).",
-      "date": "September 21, 1983 (age 34)",
-      "city": "Worthington, Ohio, U.S.",
+      "info": "Jennifer Shrader Lawrence (born August 15, 1990) is an American actress. Her films have grossed over $5.5 billion worldwide, and she was the highest-paid actress in the world in 2015 and 2016. She appeared in Time's 100 most influential people in the world in 2013 and in the Forbes Celebrity 100 in 2014 and 2016.",
+      "date": "August 15, 1990",
+      "city": "Indian Hills, Kentucky, U.S",
       "nominations": [
-        "Teen Choice Award в номінації Найкращий прорив року: жіноча роль у серіалі",
-        "Teen Choice Award в номінації Найкраща актриса екшну/пригодницького фільму"
+        " Премія «Оскар» за найкращу жіночу роль"
       ],
-      "image" : "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg"
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Jennifer_Lawrence_in_2016.jpg/1200px-Jennifer_Lawrence_in_2016.jpg"
+    },
+    {
+      "id": "Joel Edgerton",
+      "movies": {
+        "0": "Red Sparrow"
+      },
+      "info": "Joel Edgerton (born 23 June 1974) is an Australian actor, director, writer, producer and filmmaker. He has appeared in films such as Star Wars: Episode III - Revenge of the Sith (2005), Warrior (2011), Zero Dark Thirty (2012), The Great Gatsby (2013), Exodus: Gods and Kings (2014), Black Mass (2015),[1] Loving (2016), and Bright (2017).In Australia, Edgerton portrayed Will McGill in The Secret Life of Us for which he won the AACTA Award for Best Lead Actor in a Television Drama in 2002 and appeared in the film Animal Kingdom (2010), for which he won the AACTA Award for Best Actor in a Supporting Role.",
+      "date": "23 June 1974",
+      "city": "Blacktown, New South Wales, Australia",
+      "nominations": [
+        "Премія «Золотий глобус» за найкращу чоловічу роль у фільмі — драма"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Joel_Edgerton_by_Gage_Skidmore.jpg/1200px-Joel_Edgerton_by_Gage_Skidmore.jpg"
+    },
+    {
+      "id": "Matthias Schoenaerts",
+      "movies": {
+        "0": "Red Sparrow"
+      },
+      "info": "Matthias Schoenaerts is a Belgian actor, film producer and graffiti artist of Flemish origin.He made his film debut at the age of 13 in Daens (1992), which was nominated for the Academy Award for Best Foreign Language Film. He is best known for his roles as Filip in Loft (2008), Jacky Vanmarsenille in the Oscar-nominated Bullhead (2011), Ali in the BAFTA and Golden Globe-nominee Rust and Bone (2012), for which he won the César Award for Most Promising Actor, Eric Deeds in The Drop (2014), Bruno von Falk in Suite Française (2015), Gabriel Oak in Far from the Madding Crowd (2015) and Hans Axgil in The Danish Girl (2015). Schoenaerts received critical acclaim for his portrayal of an ex-soldier suffering from PTSD in Disorder (2015).In 2015, he was named Knight of the Order of Arts and Letters in France",
+      "date": "8 December 1977",
+      "city": "Antwerp, Flanders, Belgium",
+      "nominations": [
+        "Премія Сезар найперспективнішому актору"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/http://cdn-img.instyle.com/sites/default/files/1448301782/112315-december-mos-embed.jpg"
+    },
+    {
+      "id": "Toby Kebbell",
+      "movies": {
+        "1": "The Hurricane Heist"
+      },
+      "info": "Tobias Alistair Patrick Kebbell is an English stage and film actor. He is known for his roles in films such as Dead Man's Shoes (2004), RocknRolla (2008), Prince of Persia: The Sands of Time (2010), War Horse (2011), Wrath of the Titans (2012), Dawn of the Planet of the Apes (2014), Fantastic Four (2015), Warcraft (2016), A Monster Calls (2016), and Gold (2016). He is also known for his work in the Black Mirror episode, The Entire History of You. He most recently starred in the second film of the MonsterVerse film series, Kong: Skull Island, which was released in March 2017.",
+      "date": "9 July 1982",
+      "city": "Pontefract, West Yorkshire, England",
+      "nominations": [
+        " Премія британського незалежного кіно в номінації Найкращий актор/актриса другого плану"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://media.gettyimages.com/photos/toby-kebbell-at-the-benhur-press-conference-at-the-four-seasons-hotel-picture-id589524542?s=612x612"
+    },
+    {
+      "id": "Ryan Kwanten",
+      "movies": {
+        "1": "The Hurricane Heist"
+      },
+      "info": "Ryan Christian Kwanten is an Australian actor and comedian. He played Vinnie Patterson from 1997 to 2002 in the Australian soap opera Home and Away. After his stint ended, he joined the American teen drama series Summerland, portraying Jay Robertson. In 2008, he was cast as Jason Stackhouse in True Blood.",
+      "date": "28 November 1976",
+      "city": "Sydney, Australia",
+      "nominations": [
+        "Премія найперспективнішому актору"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/http://cdn1.alloy.com/wp-content/uploads/2010/10/ryan-kwanten.jpg"
+    },
+    {
+      "id": "Jason Bateman",
+      "movies": {
+        "2": "Game Night"
+      },
+      "info": "Jason Kent Bateman is an American actor, director, and producer.[2] He began acting on television in the early 1980s on Little House on the Prairie,[3] Silver Spoons, and The Hogan Family. In the 2000s, he became known for his role of Michael Bluth using deadpan comedy in the sitcom Arrested Development, for which he won a Golden Globe and a Satellite Award.[4] He has also appeared in the films Teen Wolf Too (1987), The Break-Up (2006), Juno, Mr. Magorium's Wonder Emporium, The Kingdom (all 2007), Hancock (2008), Up in the Air, Couples Retreat, Extract (all 2009), The Switch (2010), Paul, The Change-Up (both 2011) Horrible Bosses (2011) and its sequel (2014), Identity Thief (2013), This Is Where I Leave You (2014), The Gift (2015), Office Christmas Party, Zootopia (both 2016) and Game Night (2018).",
+      "date": "January 14, 1969",
+      "city": "Rye, New York, U.S.",
+      "nominations": [
+        "Премія найперспективнішому актору"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/http://ksassets.timeincuk.net/wp/uploads/sites/55/2017/05/2017GettyImages-jason-bateman-arrested-development-season-five-920x584.jpg"
+    },
+    {
+      "id": "Rachel McAdams",
+      "movies": {
+        "2": "Game Night"
+      },
+      "info": "Rachel Anne McAdams is a Canadian actress. After graduating from a four-year theatre program at York University in 2001, she worked in Canadian television and film productions such as the drama film Perfect Pie (2002), for which she received a Genie Award nomination, the comedy film My Name Is Tanino (2002), and the comedy series Slings and Arrows, for which she won a Gemini Award.",
+      "date": "November 17, 1978",
+      "city": "London, Ontario, Canada",
+      "nominations": [
+        "Best Supporting Actress"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Rachel_McAdams_by_Gage_Skidmore.jpg/1200px-Rachel_McAdams_by_Gage_Skidmore.jpg"
+    },
+    {
+      "id": "Kyle Chandler",
+      "movies": {
+        "2": "Game Night"
+      },
+      "info": "Kyle Martin Chandler is an American actor, best known[citation needed] for his role as Gary Hobson on Early Edition and as Coach Eric Taylor in the drama series Friday Night Lights, for which he won a Primetime Emmy Award in 2011. He has starred in the films King Kong (2005), The Day the Earth Stood Still (2008), Super 8 (2011), Argo (2012), Zero Dark Thirty (2012), The Wolf of Wall Street (2013), Carol (2015), and Manchester by the Sea (2016).[1] In 2015, he began starring on Netflix's drama series Bloodline, for which he received his fourth and fifth Primetime Emmy Award nominations.",
+      "date": " September 17, 1965",
+      "city": "Buffalo, New York, United States",
+      "nominations": [
+        " Премія EMMI за найкращу чоловічу роль у драматичному серіалі"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://media1.popsugar-assets.com/files/thumbor/F1_i58Suz_7I_4NYF_jXAm1-uKU/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2017/09/01/853/n/1922398/d0e584fc59a9b4e3c0bc40.08303770_edit_img_image_43967311_1504288939/i/Sexy-Kyle-Chandler-GIFs.jpg"
+    },
+    {
+      "id": "Chadwick Boseman",
+      "movies": {
+        "3": "Black Panther"
+      },
+      "info": "Chadwick Aaron Boseman is an American actor. He is known for portraying Jackie Robinson in 42 (2013), James Brown in Get on Up (2014), Black Panther in the Marvel Cinematic Universe (since 2016), and Thurgood Marshall in Marshall (2017). He also had roles in the television series Lincoln Heights (2008) and Persons Unknown (2010), and the films The Express (2008), Draft Day (2014), and Message from the King (2016).",
+      "date": "November 29, 1977",
+      "city": "Anderson, South Carolina, U.S.",
+      "nominations": [
+        " Премія EMMI за найкращу чоловічу роль у драматичному серіалі"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://media.wmagazine.com/photos/57d2da47d5fdb93c251e7cc2/4:3/w_1536/DSC_8447_CHADWICKBOSEMAN_4.jpg"
+    },
+    {
+      "id": "Michael B. Jordan",
+      "movies": {
+        "3": "Black Panther"
+      },
+      "info": "Michael Bakari Jordan is an American actor. He is known for his film roles as shooting victim Oscar Grant in the drama Fruitvale Station (2013), amateur boxer Adonis Creed in the Rocky sequel film Creed (2015), and antagonist Erik Killmonger in the Marvel Cinematic Universe superhero film Black Panther (2018), all three of which were directed by frequent collaborator Ryan Coogler.",
+      "date": "February 9, 1987",
+      "city": "Santa Ana, California, U.S",
+      "nominations": [
+        " Премія EMMI за найкращу чоловічу роль у драматичному серіалі"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://pmcvariety.files.wordpress.com/2017/08/michael-b-jordan.jpg?w=1000&h=563&crop=1"
+    },
+    {
+      "id": "Lupita Nyong'o",
+      "movies": {
+        "3": "Black Panther"
+      },
+      "info": "Lupita Amondi Nyong'o  is a Kenyan-Mexican actress. The daughter of Kenyan politician Peter Anyang' Nyong'o, she was born in Mexico City where her father was teaching and was raised in Kenya from the age of one.[3] She attended college in the United States, earning a bachelor's degree in film and theater studies from Hampshire College.",
+      "date": " March 1, 1983",
+      "city": "Mexico City, Mexico",
+      "nominations": [
+        " Премія «Оскар» за найкращу жіночу роль другого плану"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://media.wmagazine.com/photos/5a60ad7d6cb00a21367b4884/4:3/w_1536/lupita-nyong%25E2%2580%2599o-writing-childrens-book-self-love.jpg"
     }
   ]
 }
