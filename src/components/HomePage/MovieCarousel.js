@@ -2,38 +2,28 @@ import React, {Component} from "react";
 import "../../styles/MovieCarousel.less";
 import block from "../../helpers/BEM";
 import scrollTo from '../../helpers/scrollTo';
+import checkScrollPosition from '../../helpers/checkScrollPosition';
 import {connect} from "react-redux";
 import {Link} from 'react-router-dom'
 import MoviePoster from "./MoviePoster";
 import {getPopularMoviesIds, getComingsoonrMoviesIds, getMovieById} from '../../reducers';
 import {fetchPopularMovies, fetchComingsoonMovies} from '../../actions';
-import throttle from 'lodash';
 
 const b = block("MovieCarousel");
-
 
 class MovieCarousel extends Component {
 
     componentWillMount() {
-      this.props.fetchMovies();
+        this.props.fetchMovies();
     }
 
     handleClick(k = 1) {
-        const {carousel} = this.refs;
+        const {carousel, rightBut, leftBut} = this.refs;
         let numOfItemsToScroll = 3.5;
         let widthOfItem = 275;
         let newPos = carousel.scrollLeft + k * (widthOfItem * numOfItemsToScroll);
         const timeForItem = 200;
         const totalTime = numOfItemsToScroll * timeForItem;
-        const {rightBut, leftBut} = this.refs;
-        let width = carousel.offsetWidth;
-        let sw = carousel.scrollWidth;
-
-        // console.log("\nclient", width);
-        // console.log("scroll width", sw);
-        // console.log('prev pos', carousel.scrollLeft);
-        // console.log('new pos', newPos);
-
 
         scrollTo({
             el: carousel,
@@ -41,24 +31,22 @@ class MovieCarousel extends Component {
             duration: totalTime,
             scrollDir: 'scrollLeft'
         });
-
-        (carousel.scrollLeft === 0 || newPos < 0) ?
-            leftBut.setAttribute('style', 'display: none') :
-            leftBut.removeAttribute('style');
-
-        (sw - carousel.scrollLeft === width || sw - newPos < width) ?
-            rightBut.setAttribute('style', 'display: none') :
-            rightBut.removeAttribute('style');
+        checkScrollPosition(carousel, rightBut, leftBut);
 
     };
 
     leftClick() {
-        throttle(this.handleClick(-1), 500);
+        this.handleClick(-1);
     };
 
     rightClick() {
-        throttle(this.handleClick(), 500);
+        this.handleClick();
     };
+
+    onScrollMove() {
+        const {carousel, rightBut, leftBut} = this.refs;
+        checkScrollPosition(carousel, rightBut, leftBut, carousel.scrollLeft);
+    }
 
     render() {
         const {label, films} = this.props;
@@ -72,7 +60,10 @@ class MovieCarousel extends Component {
                 >
                     <span className={b('icon', ['left'])}></span>
                 </button>
-                <div ref='carousel' className={b('movies')}>
+                <div ref='carousel'
+                     className={b('movies')}
+                     onScroll={this.onScrollMove.bind(this)}
+                >
                     {films
                         .filter(film => film.label === label)
                         .map(film =>
@@ -94,36 +85,36 @@ class MovieCarousel extends Component {
 }
 
 const mapDispatchToProps = (dispatch, props) => {
-  return {
-    fetchMovies: () => {
-      if (props.label === 'popular') {
-        return fetchPopularMovies()(dispatch);
-      }
-      return fetchComingsoonMovies()(dispatch);
-    },
-  }
+    return {
+        fetchMovies: () => {
+            if (props.label === 'popular') {
+                return fetchPopularMovies()(dispatch);
+            }
+            return fetchComingsoonMovies()(dispatch);
+        },
+    }
 };
 
 
 export default connect((state, props) => {
     let movies = [];
     if (props.label === 'popular') {
-      movies = getPopularMoviesIds(state);
+        movies = getPopularMoviesIds(state);
     } else {
-      movies = getComingsoonrMoviesIds(state);
+        movies = getComingsoonrMoviesIds(state);
     }
 
     console.log(movies);
     return {
         films: movies
-        .map(id => getMovieById(state, id))
-        .map(movie => ({
-            id: movie.id,
-            name: movie.name,
-            image: movie.image,
-            rating: movie.rating,
-            genre: movie.genre,
-            label: movie.label
-        }))
+            .map(id => getMovieById(state, id))
+            .map(movie => ({
+                id: movie.id,
+                name: movie.name,
+                image: movie.image,
+                rating: movie.rating,
+                genre: movie.genre,
+                label: movie.label
+            }))
     }
 }, mapDispatchToProps)(MovieCarousel);

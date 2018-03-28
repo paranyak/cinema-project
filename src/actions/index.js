@@ -1,12 +1,12 @@
 import {moviesListSchema} from "../helpers/schema";
-import { normalize } from 'normalizr';
+import {normalize} from 'normalizr';
 
 
 export const changeDate = (date) => {
-  return {
-    type: 'CHANGE_DATE',
-    date
-  };
+    return {
+        type: 'CHANGE_DATE',
+        date
+    };
 };
 
 export const addFilter = (key, value) => {
@@ -27,13 +27,13 @@ export const removeFilter = (key, value) => {
 
 export const fetchMoviesStart = (id) => {
     return {
-      type: 'FETCH_MOVIES',
-      id
+        type: 'FETCH_MOVIES',
+        id
     }
 }
 
 //HERE
-export const fetchActorsStart =() =>{
+export const fetchActorsStart = () => {
     return {
         type: 'FETCH_ACTOR',
         id: 'actor'
@@ -41,7 +41,7 @@ export const fetchActorsStart =() =>{
 }
 
 //HERE
-export const fetchActorsSucess = (id, actor) =>{
+export const fetchActorsSucess = (id, actor) => {
     return {
         type: 'FETCH_ACTOR__SUCCESS',
         id: 'actor',
@@ -50,46 +50,48 @@ export const fetchActorsSucess = (id, actor) =>{
 }
 
 export const fetchMoviesFail = (id) => {
+    console.log("FETCH FAIL");
     return {
-      type: 'FETCH_MOVIES_FAIL',
-      id
+        type: 'FETCH_MOVIES_FAIL',
+        error: true,
+        id
     }
 }
 
 export const fetchMoviesSuccess = (id, ids, movies) => {
-  return {
-    type: 'FETCH_MOVIES_SUCCESS',
-    id,
-    movies,
-    ids
-  }
+    return {
+        type: 'FETCH_MOVIES_SUCCESS',
+        id,
+        movies,
+        ids
+    }
 }
 
 export const fetchPopularMoviesSuccess = (ids, movies) => {
-  return {
-    type: 'FETCH_POPULAR_MOVIES_SUCCESS',
-    id: 'popular',
-    ids,
-    movies
-  }
+    return {
+        type: 'FETCH_POPULAR_MOVIES_SUCCESS',
+        id: 'popular',
+        ids,
+        movies
+    }
 }
 
 export const fetchComingsoonMoviesSuccess = (ids, movies) => {
-  return {
-    type: 'FETCH_COMMINGSOON_MOVIES_SUCCESS',
-    id: 'comingSoon',
-    movies,
-    ids
-  }
+    return {
+        type: 'FETCH_COMMINGSOON_MOVIES_SUCCESS',
+        id: 'comingSoon',
+        movies,
+        ids
+    }
 }
 
 export const fetchMoviesByScheduleSuccess = (ids, movies) => {
-  return {
-    type: 'FETCH_SCHEDULE_MOVIES_SUCCESS',
-    id: 'schedule',
-    movies,
-    ids
-  }
+    return {
+        type: 'FETCH_SCHEDULE_MOVIES_SUCCESS',
+        id: 'schedule',
+        movies,
+        ids
+    }
 }
 
 export const fetchMovie = (id) => async (dispatch) => {
@@ -103,8 +105,14 @@ export const fetchMovie = (id) => async (dispatch) => {
 //HERE
 export const fetchActors = (id) => async (dispatch) => {
     dispatch(fetchActorsStart(id));
-    const actor = await ((await fetch(`http://localhost:3000/actors/${id}`)).json());
-    dispatch(fetchActorsSucess(id, actor));
+    const response = await fetch(`http://localhost:3000/actors/${id}`);// 'posts' to get work the url
+    if (!response.ok) {
+        console.log("ERROR IN ACTOR");
+        dispatch(fetchMoviesFail(id));
+    } else {
+        const actor = await ((response).json());
+        dispatch(fetchActorsSucess(id, actor));
+    }
 }
 
 //HERE ^
