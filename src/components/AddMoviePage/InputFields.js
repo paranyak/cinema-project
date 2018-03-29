@@ -76,7 +76,7 @@ class InputFields extends Component {
     scrOnChange(el, i, e) {
         const copy = this.state.screenshots;
         const obj = {
-            'screenshot': e.target.value,
+            'screenshot': cloudinaryScreenshot + e.target.value,
             'removeID': el.removeID
         };
 
@@ -113,7 +113,8 @@ class InputFields extends Component {
         return this.state.actors.map((el, i) =>
             <div key={i}>
                 <input className={b('input', ['dynamic'])} type='url' placeholder='image url'/>
-                <input type='button' value='-' className={b('button', ['remove'])} onClick={this.removeActor.bind(this, i)}/>
+                <input type='button' value='-' className={b('button', ['remove'])}
+                       onClick={this.removeActor.bind(this, i)}/>
             </div>
         )
     }
@@ -135,28 +136,34 @@ class InputFields extends Component {
         console.log("SCHEDULE IN CREATE:", this.state.schedule);
         return this.state.schedule.map((el, i) =>
             <form key={i}>
-                <p className="par"><span className="date-hour">{this.state.schedule[i].slice(0,2)}</span> : <span className="date-minute">{this.state.schedule[i].slice(3,5)}</span></p>
-                <input className={b("schedule-hour")} type="range" min="0" max="23" step="1" onChange={(e) => { document.querySelectorAll('.date-hour')[i].innerHTML = e.target.value}}/>
+                <p className="par"><span className="date-hour">{this.state.schedule[i].slice(0, 2)}</span> : <span
+                    className="date-minute">{this.state.schedule[i].slice(3, 5)}</span></p>
+                <input className={b("schedule-hour")} type="range" min="0" max="23" step="1" onChange={(e) => {
+                    document.querySelectorAll('.date-hour')[i].innerHTML = e.target.value
+                }}/>
 
-                <input className={b("schedule-minute")} type="range"  min="0" max="59" step="1" onInput={(e) => {document.querySelectorAll('.date-minute')[i].innerHTML = e.target.value}}/>
+                <input className={b("schedule-minute")} type="range" min="0" max="59" step="1" onInput={(e) => {
+                    document.querySelectorAll('.date-minute')[i].innerHTML = e.target.value
+                }}/>
 
-                <input type='button' value='-' className={b('button', ['remove'])} onClick={this.removeSchedule.bind(this, i)}/>
-                <input type='button' value='done' className={b('button', ['remove'])} onClick={(e) => this.lostFocus(e, i, document.querySelectorAll(".par")[i])}/>
+                <input type='button' value='-' className={b('button', ['remove'])}
+                       onClick={this.removeSchedule.bind(this, i)}/>
+                <input type='button' value='done' className={b('button', ['remove'])}
+                       onClick={(e) => this.onDoneClick(e, i, document.querySelectorAll(".par")[i])}/>
             </form>
         )
     }
 
-    lostFocus( e, i,  val) {
-        console.log("LOST FOCUS:", e, i, val.querySelector(".date-hour").innerHTML,":",  val.querySelector(".date-minute").innerHTML);
+    onDoneClick(e, i, val) {
         const {schedule} = this.state;
-        let hour = (val.querySelector(".date-hour").innerHTML < 10 && val.querySelector(".date-hour").innerHTML != '00' )? '0'+val.querySelector(".date-hour").innerHTML : val.querySelector(".date-hour").innerHTML;
-        let minute = (val.querySelector(".date-minute").innerHTML < 10 && val.querySelector(".date-minute").innerHTML != '00')  ? '0'+val.querySelector(".date-minute").innerHTML : val.querySelector(".date-minute").innerHTML;
+        let hour = (val.querySelector(".date-hour").innerHTML < 10 && val.querySelector(".date-hour").innerHTML !== '00') ? '0' + val.querySelector(".date-hour").innerHTML : val.querySelector(".date-hour").innerHTML;
+        let minute = (val.querySelector(".date-minute").innerHTML < 10 && val.querySelector(".date-minute").innerHTML !== '00') ? '0' + val.querySelector(".date-minute").innerHTML : val.querySelector(".date-minute").innerHTML;
 
         this.setState({
             schedule:
                 [
                     ...schedule.slice(0, i),
-                    hour +":"+  minute,
+                    hour + ":" + minute,
                     ...schedule.slice(i + 1),
 
                 ]
@@ -237,6 +244,7 @@ class InputFields extends Component {
         const format = this.state.multiSelections['format'];
         const technology = this.state.multiSelections['technology'];
         const startDate = this.refs.startDate.value.split('-');
+        const screenshots = this.state.screenshots.map(el => el.screenshot)
 
         const movie = {
             name: this.refs.title.value,    // +
@@ -244,7 +252,7 @@ class InputFields extends Component {
             rating: parseFloat(this.refs.rating.value),     // +
             cast: [],
             description: this.refs.description.value,   // +
-            screenshots: [],
+            screenshots,
             trailer: this.refs.trailer.value,   // +++
             genre: genre.join(', '),    // +++
             Schedule: this.state.schedule,
@@ -278,26 +286,27 @@ class InputFields extends Component {
         console.log('screenshots', screenshots);
         return <form className={b()} onSubmit={this.addMovieToDB.bind(this)}>
             <h4 className={b('title')}>Title</h4>
-            <input ref='title' className={b('input')} placeholder={'Title'} type='text'/>
+            <input ref='title' className={b('input')} placeholder={'Title'} type='text' required/>
 
             <h4 className={b('title')}>Image</h4>
-            <input ref='image' className={b('input')} placeholder={'Enter image url'} type='url'/>
+            <input ref='image' className={b('input')} placeholder={'Enter image url'} type='url' required/>
 
             <h4 className={b('title')}>Description</h4>
-            <input ref='description' className={b('input')} placeholder={'Description'} type='text'/>
+            <input ref='description' className={b('input')} placeholder={'Description'} type='text' required/>
 
             <h4 className={b('title')}>Trailer</h4>
-            <input ref='trailer' className={b('input')} placeholder={'Enter video url'} type='url'/>
+            <input ref='trailer' className={b('input')} placeholder={'Enter video url'} type='url' required/>
 
             <h4 className={b('title')}>Rating</h4>
-            <input ref='rating' className={b('input')} placeholder={'Enter only number'} type='number' min='0' max='10' step='0.1'
-                   name='rating'/>
+            <input ref='rating' className={b('input')} placeholder={'Enter only number'} type='number' min='0' max='10'
+                   step='0.1'
+                   name='rating' required/>
 
             <h4 className={b('title')}>Duration</h4>
-            <input ref='duration' className={b('input')} type="time"/>
+            <input ref='duration' className={b('input')} type="time" required/>
 
             <h4 className={b('title')}>Start Date</h4>
-            <input ref='startDate' className={b('input')} type="date" name='startDate'/>
+            <input ref='startDate' className={b('input')} type="date" name='startDate' required/>
 
             <h4 className={b('title')}>Screenshots</h4>
             <button className={b('button', ['add'])} onClick={this.addScShot.bind(this)}>+</button>
