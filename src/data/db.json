@@ -1353,6 +1353,65 @@
         "month": 2,
         "day": 29
       }
+    },
+    {
+      "id": 24,
+      "name": "I Kill Giants",
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BMjM1MTc3ODcwMV5BMl5BanBnXkFtZTgwNTU2MjA4NDM@._V1_SY1000_SX675_AL_.jpg",
+      "rating": 6.6,
+      "cast": [
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BZmZjZjE2YWEtN2JlOC00Mzk4LTgxOGQtOTY5NTA4ZDE5Njk2XkEyXkFqcGdeQXVyMjQ2ODYzNzY@._V1_.jpg",
+          "name": "Madison Wolfe",
+          "role": "Barbara"
+        },
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjA4NDk1NTA1OV5BMl5BanBnXkFtZTcwMTIzMjQ4Ng@@._V1_SY1000_CR0,0,727,1000_AL_.jpg",
+          "name": "Zoe Saldana",
+          "role": "Mrs. Mollé"
+        },
+        {
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTU3OTA3MzM2NV5BMl5BanBnXkFtZTcwMDczNjY0Mw@@._V1_.jpg",
+          "name": "Imogen Poots",
+          "role": "Karen"
+        }
+      ],
+      "description": "Barbara Thorson struggles through life by escaping into a fantasy life of magic and monsters.",
+      "screenshots": [
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/i-kill-giants/i-kill-giants-kadr-1.R1366x910.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/i-kill-giants/i-kill-giants-kadr-2.R1366x910.jpg",
+        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/i-kill-giants/i-kill-giants-kadr-3.R1366x911.jpg"
+      ],
+      "trailer": "http://www.imdb.com/title/tt4547194/videoplayer/vi787003417",
+      "genre": "Drama, Fantasy, Thriller",
+      "Schedule": [
+        "29-03-2018 14:00",
+        "29-03-2018 19:40",
+        "30-03-2018 14:00",
+        "30-03-2018 19:40",
+        "31-03-2018 14:00",
+        "31-03-2018 19:40",
+        "01-04-2018 14:00",
+        "01-04-2018 19:40",
+        "02-04-2018 14:00",
+        "02-04-2018 19:40"
+      ],
+      "format": [
+        "2D"
+      ],
+      "technology": [
+        "Cinetech+"
+      ],
+      "duration": {
+        "hour": 1,
+        "minute": 46
+      },
+      "label": "popular",
+      "startDate": {
+        "year": 2018,
+        "month": 3,
+        "day": 23
+      }
     }
   ],
   "actors": [

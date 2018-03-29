@@ -13,7 +13,7 @@ export const fetchActorsStart = () => {
     }
 }
 
-export const fetchActorsSucess = (actor) => {
+export const fetchActorsSucess = (id, actor) => {
     return {
         type: 'FETCH_ACTOR__SUCCESS',
         id: 'actor',
