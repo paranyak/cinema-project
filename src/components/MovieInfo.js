@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import Actors from "./Actors";
 
-import "../../styles/MovieInfo.less";
-import block from "../../helpers/BEM";
+import "../styles/MovieInfo.less";
+import block from "../helpers/BEM";
 
 const b = block("MovieInfo");
 

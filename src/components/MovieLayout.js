@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import MovieImage from "./MovieImage";
 import MovieInfo from "./MovieInfo";
-import "../../styles/MovieLayout.less"
-import block from "../../helpers/BEM";
-import {getMovieById} from "../../reducers";
-import { fetchMovie } from '../../api/fetch';
+import "../styles/MovieLayout.less"
+import block from "../helpers/BEM";
+import {getMovieById} from "../reducers";
+import { fetchMovie } from '../api/fetch';
 import {connect} from "react-redux";
 
 

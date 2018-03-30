@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import Filter from "./Filter";
 import Schedule from "./Schedule";
-import "../../styles/ScheduleLayout.less";
+import "../styles/ScheduleLayout.less";
 import {connect} from "react-redux";
 import { withRouter } from 'react-router-dom';
-import {getAllFilters, getAllMovies} from "../../reducers";
-import {changeDate} from "../../actions/filter";
-import {fetchMoviesSchedule} from "../../api/fetch";
+import {getAllFilters, getAllMovies} from "../reducers";
+import {changeDate} from "../actions/filter";
+import {fetchMoviesSchedule} from "../api/fetch";
 import {DateTime} from "luxon/src/datetime.js";
 
 

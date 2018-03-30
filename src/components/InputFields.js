@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import "../../styles/InputFields.less";
-import block from '../../helpers/BEM'
+import "../styles/InputFields.less";
+import block from '../helpers/BEM'
 import CheckBoxList from "./CheckBoxList";
 
 const b = block("InputField");
@@ -279,12 +279,13 @@ class InputFields extends Component {
             body: JSON.stringify(movie)
         }).then((res) => res.json());
         console.log('posting has finished');
+        document.querySelector('.InputField').reset();
     }
 
     render() {
         const {screenshots} = this.state;
         console.log('screenshots', screenshots);
-        return <form className={b()} onSubmit={this.addMovieToDB.bind(this)}>
+        return <form className={b()}>
             <h4 className={b('title')}>Title</h4>
             <input ref='title' className={b('input')} placeholder={'Title'} type='text' required/>
 
@@ -324,7 +325,7 @@ class InputFields extends Component {
             <CheckBoxList action={this.handleSelect.bind(this)} name={'format'} array={formats}/>
             <CheckBoxList action={this.handleSelect.bind(this)} name={'technology'} array={technologies}/>
 
-            <button type='submit' className={b('button', ['submit'])}>Submit</button>
+            <button type='submit' className={b('button', ['submit'])} onClick={this.addMovieToDB.bind(this)}>Submit</button>
         </form>
     }
 

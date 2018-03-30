@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
-import {getSelectedActor} from "../../reducers";
-import {fetchActors} from '../../api/fetch';
+import {getSelectedActor} from "../reducers/index";
+import {fetchActors} from '../api/fetch';
 
-import "../../styles/ActorLayout.less"
-import block from "../../helpers/BEM";
+import "../styles/ActorLayout.less"
+import block from "../helpers/BEM";
 import {connect} from "react-redux";
 
 

@@ -1,9 +1,9 @@
 import React, {Component} from "react";
-import "../../styles/MoviePoster.less";
-import block from "../../helpers/BEM";
+import "../styles/MoviePoster.less";
+import block from "../helpers/BEM";
 import {connect} from "react-redux";
-import {getMovieById} from "../../reducers";
-import {fetchMovie} from '../../actions';
+import {getMovieById} from "../reducers";
+import {fetchMovie} from '../api/fetch';
 
 const b = block("MoviePoster");
 

@@ -1,12 +1,12 @@
 import React, {Component} from "react";
-import "../../styles/AllMovies.less";
-import block from "../../helpers/BEM";
+import "../styles/AllMovies.less";
+import block from "../helpers/BEM";
 import {connect} from "react-redux";
 import MoviePoster from "./MoviePoster";
 import {Link} from 'react-router-dom';
 import InfiniteScroll from "react-infinite-scroller";
-import {getAllMoviesIds, isMovieFetching , getComingsoonrMoviesIds} from "../../reducers";
-import {fetchAdditionalMovies} from "../../api/fetch"
+import {getAllMoviesIds, isMovieFetching , getComingsoonrMoviesIds} from "../reducers";
+import {fetchAdditionalMovies} from "../api/fetch"
 
 const b = block("AllMovies");
 

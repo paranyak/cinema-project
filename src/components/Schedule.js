@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import {getAllMoviesIds, getAllFilters, getMovieById} from "../../reducers";
-import {changeDate} from "../../actions/filter";
+import {getAllMoviesIds, getAllFilters, getMovieById} from "../reducers/index";
+import {changeDate} from "../actions/filter";
 import {Interval} from "luxon/src/interval.js";
 import {Link} from 'react-router-dom'
 import {DateTime} from "luxon/src/datetime.js";
@@ -8,8 +8,8 @@ import ReactTooltip from 'react-tooltip';
 import {findDOMNode} from 'react-dom';
 import {push} from 'react-router-redux';
 import {connect} from "react-redux";
-import "../../styles/Schedule.less";
-import block from "../../helpers/BEM";
+import "../styles/Schedule.less";
+import block from "../helpers/BEM";
 
 const b = block("Schedule");
 

@@ -1,8 +1,8 @@
 import React from "react";
-import "../../styles/HomeLayout.less";
+import "../styles/HomeLayout.less";
 import MovieCarousel from "./MovieCarousel";
 import AllMovies from "./AllMovies";
-import block from "../../helpers/BEM";
+import block from "../helpers/BEM";
 
 const b = block("HomeLayout");
 

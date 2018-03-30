@@ -1,13 +1,13 @@
 import React, {Component} from "react";
-import "../../styles/MovieCarousel.less";
-import block from "../../helpers/BEM";
-import scrollTo from '../../helpers/scrollTo';
-import checkScrollPosition from '../../helpers/checkScrollPosition';
+import "../styles/MovieCarousel.less";
+import block from "../helpers/BEM";
+import scrollTo from '../helpers/scrollTo';
+import checkScrollPosition from '../helpers/checkScrollPosition';
 import {connect} from "react-redux";
 import {Link} from 'react-router-dom'
 import MoviePoster from "./MoviePoster";
-import {getPopularMoviesIds, getComingsoonrMoviesIds, getMovieById} from '../../reducers';
-import {fetchPopularMovies, fetchComingsoonMovies} from '../../api/fetch';
+import {getPopularMoviesIds, getComingsoonrMoviesIds, getMovieById} from '../reducers';
+import {fetchPopularMovies, fetchComingsoonMovies} from '../api/fetch';
 
 const b = block("MovieCarousel");
 

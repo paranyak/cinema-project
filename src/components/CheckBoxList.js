@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import "../../styles/CheckBoxList.less";
-import block from '../../helpers/BEM'
+import "../styles/CheckBoxList.less";
+import block from '../helpers/BEM'
 
 const b = block("CheckBoxList");
 

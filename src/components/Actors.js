@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
 
-import "../../styles/Actors.less";
-import block from "../../helpers/BEM";
+import "../styles/Actors.less";
+import block from "../helpers/BEM";
 
 const b = block("Actors");
 

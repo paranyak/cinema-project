@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import "../../styles/Filter.less";
-import block from "../../helpers/BEM";
+import "../styles/Filter.less";
+import block from "../helpers/BEM";
 import {connect} from "react-redux";
-import {addFilter, removeFilter} from "../../actions/filter";
-import {getAllFilters} from "../../reducers"
+import {addFilter, removeFilter} from "../actions/filter";
+import {getAllFilters} from "../reducers"
 
 
 const b = block("Filter");

@@ -2,16 +2,16 @@ import React from "react";
 import "../styles/Layout.less";
 import "../styles/common.less";
 import block from "../helpers/BEM";
-import AddMovieLayout from './AddMoviePage/AddMovieLayout'
+import AddMovieLayout from './AddMovieLayout'
 import Header from "./Header";
-import ScheduleLayout from "./SchedulePage/ScheduleLayout";
-import HomeLayout from "./HomePage/HomeLayout";
-import MovieLayout from "./MoviePage/MovieLayout";
+import ScheduleLayout from "./ScheduleLayout";
+import HomeLayout from "./HomeLayout";
+import MovieLayout from "./MovieLayout";
 import {Switch, Route} from 'react-router-dom'
 import {allMovies} from '../actions/index'
 import {connect} from "react-redux";
 import {withRouter} from 'react-router-dom';
-import ActorLayout from "./ActorPage/ActorLayout";
+import ActorLayout from "./ActorLayout";
 
 const b = block("Layout");
 
