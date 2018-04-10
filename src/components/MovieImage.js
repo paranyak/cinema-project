@@ -10,8 +10,22 @@ class MovieImage extends Component {
     constructor(props) {
         super(props);
         this.state = {sources: [], currentId: 0};
+        this.closeHandler = this.closeHandler.bind(this);
+        this.handleKey = this.handleKey.bind(this);
     }
 
+    closeHandler() {
+        let modal = document.getElementById('myModal');
+        modal.style.display = 'none';
+        //REMOVE ALL EVENT LISTENERS
+        let clone = modal.cloneNode();
+        window.removeEventListener('keydown', this.handleKey);
+        while (modal.firstChild) {
+            clone.appendChild(modal.lastChild);
+        }
+        modal.parentNode.replaceChild(clone, modal);
+        //
+    }
 
     handleKeyPress(event) {
         let newId;
@@ -29,14 +43,24 @@ class MovieImage extends Component {
 
     }
 
+    handleKey(event){
+        console.log("HERE key!!!!");
+        console.log("KEY EVENT:", event.keyCode)
+        if(event.keyCode === 27){
+            this.closeHandler();
+        }
+    }
+
 
     mainImageHandler(e, id) {
+        console.log("MAIN IMAGE HANDLER");
         this.setState({currentId: id});
         let modal = document.getElementById('myModal');
         let modalImg = document.getElementById("img01");
         modal.style.display = "block";
         modalImg.src = this.state.sources[id];
         modal.addEventListener("click", (e) => this.handleKeyPress(e, id), false);
+        window.addEventListener('keydown', this.handleKey);
     }
 
     changeImage(e, id) {
@@ -44,18 +68,6 @@ class MovieImage extends Component {
         let modalImg = document.getElementById("img01");
         modalImg.src = this.state.sources[id];
 
-    }
-
-    closeHandler() {
-        let modal = document.getElementById('myModal');
-        modal.style.display = 'none';
-        //REMOVE ALL EVENT LISTENERS
-        let clone = modal.cloneNode();
-        while (modal.firstChild) {
-            clone.appendChild(modal.lastChild);
-        }
-        modal.parentNode.replaceChild(clone, modal);
-        //
     }
 
     componentWillMount(){
