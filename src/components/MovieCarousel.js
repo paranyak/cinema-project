@@ -8,6 +8,7 @@ import {Link} from 'react-router-dom'
 import MoviePoster from "./MoviePoster";
 import {getPopularMoviesIds, getComingsoonrMoviesIds, getMovieById} from '../reducers';
 import {fetchPopularMovies, fetchComingsoonMovies} from '../api/fetch';
+import LazyLoad from 'react-lazyload';
 
 const b = block("MovieCarousel");
 
@@ -66,9 +67,11 @@ class MovieCarousel extends Component {
                 >
                     {films
                         .map(film =>
-                            <Link key={film} to={`/movie/${film}`}>
-                                <MoviePoster film={film}/>
-                            </Link>
+                            <LazyLoad height='100%' offsetRight={100}>
+                                <Link key={film} to={`/movie/${film}`}>
+                                    <MoviePoster film={film}/>
+                                </Link>
+                            </LazyLoad>
                         )}
                 </div>
                 <button
