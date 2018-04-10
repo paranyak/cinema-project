@@ -53,7 +53,7 @@ class MovieCarousel extends Component {
         return (
             <section className={b()}>
                 <button
-                    className={b('button')}
+                    className={b('button', ['left'])}
                     onClick={this.leftClick.bind(this)}
                     ref={'leftBut'}
                     style={{'display': 'none'}}
@@ -72,7 +72,7 @@ class MovieCarousel extends Component {
                         )}
                 </div>
                 <button
-                    className={b('button')}
+                    className={b('button', ['right'])}
                     onClick={this.rightClick.bind(this)}
                     ref={'rightBut'}
                 >
@@ -87,7 +87,7 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         fetchMovies: () => {
             if (props.label === 'popular') {
-                return fetchPopularMovies()(dispatch);
+                return dispatch(fetchPopularMovies());
             }
             return fetchComingsoonMovies()(dispatch);
         },

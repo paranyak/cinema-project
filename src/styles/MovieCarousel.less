@@ -10,6 +10,9 @@
     white-space: nowrap;
     scroll-snap-points-x: repeat(285px);
     scroll-snap-type: mandatory;
+
+    width: calc(~'100% - 120px');
+    margin: auto;
   }
   &__button {
     background-color: @main-yellow;
@@ -17,8 +20,18 @@
     border: none;
     opacity: 0.8;
     transition: opacity 0.15s ease-in-out;
+
+    position: absolute;
+    height: 511px;
+
     &:hover {
       opacity: 1;
+    }
+    &_left {
+      left: 5%;
+    }
+    &_right {
+      right: 5%;
     }
   }
   &__icon {

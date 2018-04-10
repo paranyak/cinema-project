@@ -1300,7 +1300,7 @@
           "role": "Young Joe"
         },
         {
-          "image": "",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://3062vledx733g38ml1zlqbuq-wpengine.netdna-ssl.com/wp-content/uploads/2018/01/20180120_173516_005-Copy-Copy-184x260.jpg",
           "name": "Larry Canady",
           "role": "Cincinatti Cab Driver"
         }
@@ -1573,7 +1573,6 @@
       ],
       "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://media.wmagazine.com/photos/5a60ad7d6cb00a21367b4884/4:3/w_1536/lupita-nyong%25E2%2580%2599o-writing-childrens-book-self-love.jpg"
     },
-
     {
       "id": "Dakota Johnson",
       "movies": {
@@ -1586,7 +1585,8 @@
         "MTV Movie & TV Award у номінації «Найкращий поцілунок»"
       ],
       "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://media.glamour.com/photos/56957f9d5fff94d44eec31f3/master/w_1280,c_limit/beauty-2015-02-dakota-johnson-fifty-shades-lipstick-main.jpg"
-    }, {
+    },
+    {
       "id": "Jamie Dornan",
       "movies": {
         "4": "Fifty Shades Freed"
@@ -1598,7 +1598,8 @@
         "-"
       ],
       "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://timedotcom.files.wordpress.com/2015/04/jamie-dornan.jpg"
-    }, {
+    },
+    {
       "id": "Eric Johnson",
       "movies": {
         "4": "Fifty Shades Freed"
@@ -1610,7 +1611,8 @@
         "-"
       ],
       "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://cdn1.thr.com/sites/default/files/imagecache/landscape_928x523/2016/02/knicktv_s2_03.jpg"
-    },  {
+    },
+    {
       "id": "Alicia Vikander",
       "movies": {
         "5": "Submergence"
@@ -1635,7 +1637,8 @@
         "Премія БАФТА новій зірці"
       ],
       "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/http://www.thinkhotels.com/blog/wp-content/uploads/2015/01/James-McAvoy.jpg"
-    }, {
+    },
+    {
       "id": "Alexander Siddig",
       "movies": {
         "5": "Submergence"
@@ -1686,7 +1689,8 @@
         "Outstanding Writing for a Variety Series"
       ],
       "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://vignette.wikia.nocookie.net/breakingbad/images/8/8d/BobOdenkirk.jpg/revision/latest?cb=20170515204037"
-    }, {
+    },
+    {
       "id": "-",
       "movies": {
         "6": "The Post"
