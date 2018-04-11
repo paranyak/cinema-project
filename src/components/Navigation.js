@@ -1,11 +1,11 @@
 import React, {Component} from "react";
-import "../styles/Header.less";
+import "../styles/Navigation.less";
 import block from "../helpers/BEM";
 import {NavLink} from 'react-router-dom';
 
-const b = block("Header");
+const b = block("Navigation");
 
-class Header extends Component {
+class Navigation extends Component {
     constructor(props) {
         super(props);
         this.state = {}
@@ -22,4 +22,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default Navigation;

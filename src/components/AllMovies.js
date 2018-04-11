@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom';
 import InfiniteScroll from "react-infinite-scroller";
 import {getAllMoviesIds, isMovieFetching , getComingsoonrMoviesIds} from "../reducers";
 import {fetchAdditionalMovies} from "../api/fetch"
+import LazyLoad from 'react-lazyload';
 
 const b = block("AllMovies");
 
@@ -42,9 +43,11 @@ class AllMovies extends Component {
                       !comingSoonIds.includes(film)
                     )
                     .map(film =>
-                        <Link key={film} to={`/movie/${film}`}>
-                            <MoviePoster film={film}/>
-                        </Link>
+                        <LazyLoad height='100%' offsetBottom={100}>
+                            <Link key={film} to={`/movie/${film}`}>
+                                <MoviePoster film={film}/>
+                            </Link>
+                        </LazyLoad>
                     )}
             </div>
         );

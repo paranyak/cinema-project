@@ -1,4 +1,3 @@
-
 export const fetchMoviesStart = (id) => {
     return {
         type: 'FETCH_MOVIES',
@@ -13,13 +12,7 @@ export const fetchActorsStart = () => {
     }
 }
 
-export const fetchActorsSucess = (id, actor) => {
-    return {
-        type: 'FETCH_ACTOR__SUCCESS',
-        id: 'actor',
-        actor
-    }
-}
+export const fetchActorsSucess = (id, actor) => ({type: 'FETCH_ACTOR__SUCCESS', id: 'actor', actor})
 
 export const fetchMoviesFail = (id) => {
     console.log("FETCH FAIL");
