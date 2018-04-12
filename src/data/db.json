@@ -839,7 +839,7 @@
       "id": 15,
       "name": "Ready Player One",
       "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
-      "rating": 8.0,
+      "rating": 8,
       "cast": [
         {
           "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BOTJjODlmNjAtNjE3Ny00NzIwLTkwMjItOWY1MzM4ZDM1ZTM5XkEyXkFqcGdeQXVyNzczNzg0ODc@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
@@ -1100,7 +1100,7 @@
       "id": 20,
       "name": "All the Money in the World ",
       "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BNjY3Mjg0OTc1OF5BMl5BanBnXkFtZTgwNDU0MzAyNDM@._V1_.jpg",
-      "rating": 7.0,
+      "rating": 7,
       "cast": [
         {
           "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BOWNhYzU3N2YtY2Q0OS00ODM1LWE2MzUtM2MzNjk3NTgzNWE1XkEyXkFqcGdeQXVyNzkyNDc1OTM@._V1_.jpg",
@@ -1221,7 +1221,7 @@
       "id": 22,
       "name": "Stolen princess: Ruslan and Ludmila",
       "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BOTUyYmZhNzktNGJiOS00NDZlLWJmY2MtYTMzZjM5NGZmOGVhXkEyXkFqcGdeQXVyODQwNTU3MjU@._V1_SY999_CR0,0,702,999_AL_.jpg",
-      "rating": 8.0,
+      "rating": 8,
       "cast": [
         {
           "image": "",
@@ -1412,6 +1412,30 @@
         "month": 3,
         "day": 23
       }
+    },
+    {
+      "name": "",
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/",
+      "rating": null,
+      "cast": [],
+      "description": "",
+      "screenshots": [],
+      "trailer": "",
+      "genre": "",
+      "Schedule": [],
+      "format": [],
+      "technology": [],
+      "duration": {
+        "hour": null,
+        "minute": null
+      },
+      "label": "",
+      "startDate": {
+        "year": null,
+        "month": null,
+        "day": null
+      },
+      "id": 25
     }
   ],
   "actors": [
@@ -1691,7 +1715,7 @@
       "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://vignette.wikia.nocookie.net/breakingbad/images/8/8d/BobOdenkirk.jpg/revision/latest?cb=20170515204037"
     },
     {
-      "id": "-",
+      "id": "TEST ACTOR",
       "movies": {
         "6": "The Post"
       },
@@ -1699,7 +1723,7 @@
       "date": "",
       "city": "",
       "nominations": [
-        "-"
+        ""
       ],
       "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/"
     }

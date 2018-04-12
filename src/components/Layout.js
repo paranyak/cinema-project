@@ -12,6 +12,7 @@ import {allMovies} from '../actions/index'
 import {connect} from "react-redux";
 import {withRouter} from 'react-router-dom';
 import ActorLayout from "./ActorLayout";
+import AddActor from './AddActor';
 
 const b = block("Layout");
 
@@ -24,6 +25,8 @@ let Layout = () => (
             <Route path='/schedule/:day?' component={ScheduleLayout}/>
             <Route path='/actor/:id' component={ActorLayout}/>
             <Route path='/add-movie' component={AddMovieLayout}/>
+            <Route path='/add-actor' component={AddActor}/>
+
         </Switch>
     </div>
 );

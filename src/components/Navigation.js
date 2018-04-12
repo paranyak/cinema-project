@@ -18,6 +18,10 @@ class Navigation extends Component {
             <NavLink to='/add-movie' className={b('add')} activeClassName={b('add', ['active'])}>
                 +
             </NavLink>
+
+            <NavLink to='/add-actor' className={b('add', ['actor'])} activeClassName={b('add', ['active'])}>
+                +
+            </NavLink>
         </div>;
     }
 }
