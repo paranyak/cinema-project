@@ -2,11 +2,11 @@ import React, {Component} from "react";
 import "../styles/InputFields.less";
 import block from '../helpers/BEM'
 import CheckBoxList from "./CheckBoxList";
+import DragDropImage from './DragDropImage';
+import axios from 'axios'
 
 const b = block("InputField");
 
-const cloudinaryImage = 'https://res.cloudinary.com/demo/image/fetch/w_275,h_408/';
-const cloudinaryScreenshot = 'https://res.cloudinary.com/demo/image/fetch/w_600/';
 const genres = [
     'Mystery',
     'Thriller',
@@ -47,87 +47,18 @@ class InputFields extends Component {
                 genre: [],
                 format: [],
                 technology: []
-            }
+            },
+            title: '',
+            description: '',
+            trailer: '',
+            rating: '',
+            duration: '',
+            startDate: '',
+            label: '',
+            poster: ''
         };
-        this.screenshotID = 0;
-    }
-
-    // ----------- SCREENSHOTS ----------------
-    createScShotsList() {
-        return this.state.screenshots.map((el, i) => {
-                console.log('element', el);
-                return <div key={i}>
-                    <input className={b('input', ['dynamic'])}
-                           type='url'
-                           placeholder={'Image url' + el.removeID.toString()}
-                           onChange={this.scrOnChange.bind(this, el, i)}
-                           required
-                    />
-                    <input type='button'
-                           value='-'
-                           className={b('button', ['remove'])}
-                           onClick={this.removeScShot.bind(this, el)}/>
-                </div>
-            }
-        )
-    }
-
-
-    scrOnChange(el, i, e) {
-        const copy = this.state.screenshots;
-        const obj = {
-            'screenshot': cloudinaryScreenshot + e.target.value,
-            'removeID': el.removeID
-        };
-
-        this.setState({
-            screenshots:
-                [
-                    ...copy.slice(0, i),
-                    obj,
-                    ...copy.slice(i + 1)
-                ]
-        })
-    }
-
-    addScShot(e) {
-        e.preventDefault();
-        const obj = {
-            'screenshot': "",
-            'removeID': this.screenshotID++
-        };
-        this.setState(prevState => ({
-            screenshots:
-                [...prevState.screenshots, obj]
-        }))
-    }
-
-    removeScShot(el) {
-        const copy = this.state.screenshots.filter(elm => elm.removeID !== el.removeID);
-        this.setState({screenshots: copy});
-    }
-
-
-    // ----------- ACTORS ----------------
-    createActorsList() {
-        return this.state.actors.map((el, i) =>
-            <div key={i}>
-                <input className={b('input', ['dynamic'])} type='url' placeholder='image url'/>
-                <input type='button' value='-' className={b('button', ['remove'])}
-                       onClick={this.removeActor.bind(this, i)}/>
-            </div>
-        )
-    }
-
-    addActor(e) {
-        e.preventDefault();
-        this.setState(prevState => ({actors: [...prevState.actors, '']}))
-    }
-
-    removeActor(i) {
-        let actors = [...this.state.actors];
-        actors.splice(i, 1);
-        this.setState({actors});
+        this.baseState = this.state;
+        this.changeInput = this.changeInput.bind(this);
     }
 
 
@@ -187,6 +118,7 @@ class InputFields extends Component {
         });
     }
 
+    // ------------------------------------------------------
 
     handleSelect(e) {       // get data from check boxes
         const {multiSelections} = this.state;
@@ -238,94 +170,160 @@ class InputFields extends Component {
     }
 
     addMovieToDB(e) {
-        e.preventDefault();
-        const duration = this.refs.duration.value.split(':');
+        // e.preventDefault();
+        const {
+            screenshots,
+            actors,
+            schedule,
+            title,
+            description,
+            trailer,
+            rating,
+            duration,
+            startDate,
+            label,
+            poster
+        } = this.state;
         const genre = this.state.multiSelections['genre'];
         const format = this.state.multiSelections['format'];
         const technology = this.state.multiSelections['technology'];
-        const startDate = this.refs.startDate.value.split('-');
-        const screenshots = this.state.screenshots.map(el => el.screenshot)
 
         const movie = {
-            name: this.refs.title.value,    // +
-            image: cloudinaryImage + this.refs.image.value,   // ++++
-            rating: parseFloat(this.refs.rating.value),     // +
-            cast: [],
-            description: this.refs.description.value,   // +
+            name: title,    // +
+            image: poster,
+            rating: parseFloat(rating),     // +
+            cast: actors,
+            description,   // +
             screenshots,
-            trailer: this.refs.trailer.value,   // +++
+            trailer,   // +++
             genre: genre.join(', '),    // +++
-            Schedule: this.state.schedule,
+            Schedule: schedule,
             format,    // +++
             technology,    // +++
             duration: {     // +++
-                "hour": parseInt(duration[0]),
-                "minute": parseInt(duration[1])
+                "hour": parseInt(duration.split(':')[0]),
+                "minute": parseInt(duration.split(':')[1])
             },
-            label: '',
+            label,
             startDate: {    // +++
-                "year": parseInt(startDate[0]),
-                "month": parseInt(startDate[1]),
-                "day": parseInt(startDate[2])
+                "year": parseInt(startDate.split('-')[0]),
+                "month": parseInt(startDate.split('-')[1]),
+                "day": parseInt(startDate.split('-')[2])
             }
         };
 
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
+        console.log("MOVIE", movie);
 
-        fetch('http://localhost:3000/movies', {
-            method: 'POST',
-            headers: headers,
-            body: JSON.stringify(movie)
-        }).then((res) => res.json());
+        // const headers = new Headers();
+        // headers.append('Content-Type', 'application/json');
+
+        // fetch('http://localhost:3000/movies', {
+        //     method: 'POST',
+        //     headers: headers,
+        //     body: JSON.stringify(movie)
+        // }).then((res) => res.json());
         console.log('posting has finished');
+        alert('Form is successfully submitted!');
         document.querySelector('.InputField').reset();
+        this.setState(this.baseState);
     }
 
+    myCallback(type, item) {
+        if (type === 'screenshot') {
+            this.setState({screenshots: [...this.state.screenshots, item]})
+        }
+        else if (type === 'actor') {
+            this.setState({actors: [...this.state.actors, item]})
+        }
+        else if (type === 'poster') {
+            this.setState({poster: item});
+        }
+    };
+
+    changeInput(e) {
+        const {name, value} = e.target;
+        switch (name) {
+            case 'title': return this.setState({title: value});
+            case 'description': return this.setState({description: value});
+            case 'trailer': return this.setState({trailer: value});
+            case 'rating': return this.setState({rating: value});
+            case 'duration': return this.setState({duration: value});
+            case 'startDate': return this.setState({startDate: value});
+            case 'label': return this.setState({label: value});
+            default: return;
+        }
+    };
+
     render() {
-        const {screenshots} = this.state;
-        console.log('screenshots', screenshots);
+        const {
+            screenshots,
+            actors,
+            schedule,
+            title,
+            description,
+            trailer,
+            rating,
+            duration,
+            startDate,
+            label,
+            poster
+        } = this.state;
+        console.log('this state', this.state);
+        // console.log('poster', poster);
+        // console.log('screenshots', screenshots);
+        // const {title, description, trailer, rating, duration, startDate} = this.refs;
+        const isEnabled =
+            title.length *
+            description.length *
+            trailer.length *
+            rating.length *
+            duration.length *
+            startDate.length !== 0;
+
+
         return <form className={b()}>
             <h4 className={b('title')}>Title</h4>
-            <input ref='title' className={b('input')} placeholder={'Title'} type='text' required/>
+            <input onChange={this.changeInput} name='title' className={b('input')} placeholder={'Title'} type='text'/>
 
-            <h4 className={b('title')}>Image</h4>
-            <input ref='image' className={b('input')} placeholder={'Enter image url'} type='url' required/>
+            <h4 className={b('title')}>Poster</h4>
+            <DragDropImage type='poster' callbackFromParent={this.myCallback.bind(this)}/>
 
             <h4 className={b('title')}>Description</h4>
-            <input ref='description' className={b('input')} placeholder={'Description'} type='text' required/>
+            <input onChange={this.changeInput} name='description' className={b('input')} placeholder={'Description'} type='text'
+                   required/>
 
             <h4 className={b('title')}>Trailer</h4>
-            <input ref='trailer' className={b('input')} placeholder={'Enter video url'} type='url' required/>
+            <input onChange={this.changeInput} name='trailer' className={b('input')} placeholder={'Enter video url'} type='url'
+                   required/>
 
             <h4 className={b('title')}>Rating</h4>
-            <input ref='rating' className={b('input')} placeholder={'Enter only number'} type='number' min='0' max='10'
+            <input onChange={this.changeInput} name='rating' className={b('input')} placeholder={'Enter only number'} type='number'
+                   min='0' max='10'
                    step='0.1'
-                   name='rating' required/>
+                   required/>
 
             <h4 className={b('title')}>Duration</h4>
-            <input ref='duration' className={b('input')} type="time" required/>
+            <input onChange={this.changeInput} name='duration' className={b('input')} type="time" required/>
 
             <h4 className={b('title')}>Start Date</h4>
-            <input ref='startDate' className={b('input')} type="date" name='startDate' required/>
+            <input onChange={this.changeInput} name='startDate' className={b('input')} type="date" required/>
 
             <h4 className={b('title')}>Screenshots</h4>
-            <button className={b('button', ['add'])} onClick={this.addScShot.bind(this)}>+</button>
-            {this.createScShotsList()}
+            <DragDropImage type='screenshot' callbackFromParent={this.myCallback.bind(this)}/>
 
-            <h4 className={b('title')}>Actors</h4>
-            <button className={b('button', ['add'])} onClick={this.addActor.bind(this)}>+</button>
-            {this.createActorsList()}
+            {/*<h4 className={b('title')}>Actors</h4>*/}
+            {/*<DragDropImage type='actor' callbackFromParent={this.myCallback.bind(this)}/>*/}
 
-            <h4 className={b('title')}>Schedule</h4>
-            <button className={b('button', ['add'])} onClick={this.addSchedule.bind(this)}>+</button>
-            {this.createScheduleList()}
+            {/*<h4 className={b('title')}>Schedule</h4>*/}
+            {/*<button className={b('button', ['add'])} onClick={this.addSchedule.bind(this)}>+</button>*/}
+            {/*{this.createScheduleList()}*/}
 
             <CheckBoxList action={this.handleSelect.bind(this)} name={'genre'} array={genres}/>
             <CheckBoxList action={this.handleSelect.bind(this)} name={'format'} array={formats}/>
             <CheckBoxList action={this.handleSelect.bind(this)} name={'technology'} array={technologies}/>
 
-            <button type='submit' className={b('button', ['submit'])} onClick={this.addMovieToDB.bind(this)}>Submit</button>
+            <button type='submit' disabled={!isEnabled} className={b('button', ['submit'])} onClick={this.addMovieToDB.bind(this)}>Submit
+            </button>
         </form>
     }
 

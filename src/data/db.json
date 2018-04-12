@@ -839,7 +839,7 @@
       "id": 15,
       "name": "Ready Player One",
       "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
-      "rating": 8.0,
+      "rating": 8,
       "cast": [
         {
           "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BOTJjODlmNjAtNjE3Ny00NzIwLTkwMjItOWY1MzM4ZDM1ZTM5XkEyXkFqcGdeQXVyNzczNzg0ODc@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
@@ -1100,7 +1100,7 @@
       "id": 20,
       "name": "All the Money in the World ",
       "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BNjY3Mjg0OTc1OF5BMl5BanBnXkFtZTgwNDU0MzAyNDM@._V1_.jpg",
-      "rating": 7.0,
+      "rating": 7,
       "cast": [
         {
           "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BOWNhYzU3N2YtY2Q0OS00ODM1LWE2MzUtM2MzNjk3NTgzNWE1XkEyXkFqcGdeQXVyNzkyNDc1OTM@._V1_.jpg",
@@ -1221,20 +1221,20 @@
       "id": 22,
       "name": "Stolen princess: Ruslan and Ludmila",
       "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BOTUyYmZhNzktNGJiOS00NDZlLWJmY2MtYTMzZjM5NGZmOGVhXkEyXkFqcGdeQXVyODQwNTU3MjU@._V1_SY999_CR0,0,702,999_AL_.jpg",
-      "rating": 8.0,
+      "rating": 8,
       "cast": [
         {
-          "image": "",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/http://podrobnosti.ua/media/pictures/2017/12/29/thumbs/740x415/foto-instagram_rect_e90e11f8e7a781a7499237d8d8b72820.jpg",
           "name": "Nadiya Dorofeeva",
           "role": "Mila (voice)"
         },
         {
-          "image": "",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://bestfacts.com.ua/uploads/2ecdfc4f7f/d80a2ff8cb.jpg",
           "name": "Oleksiy Zavhorodniy",
           "role": "Ruslan"
         },
         {
-          "image": "",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://st.kp.yandex.net/images/actor_iphone/iphone360_1977102.jpg",
           "name": "Yevhen Malukha",
           "role": "Chornomor"
         }
