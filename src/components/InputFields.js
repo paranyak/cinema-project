@@ -3,7 +3,8 @@ import "../styles/InputFields.less";
 import block from '../helpers/BEM'
 import CheckBoxList from "./CheckBoxList";
 import DragDropImage from './DragDropImage';
-import axios from 'axios'
+import CalendarRangePicker from './CalendarRangePicker';
+import TimeRanges from "./TimeRanges";
 
 const b = block("InputField");
 
@@ -35,14 +36,14 @@ const technologies = [
     '4Dx'
 ];
 
-
 class InputFields extends Component {
     constructor(props) {
         super(props);
         this.state = {
             screenshots: [],
             actors: [],
-            schedule: [],
+            scheduleTime: [],
+            scheduleDate: [],
             multiSelections: {
                 genre: [],
                 format: [],
@@ -55,70 +56,15 @@ class InputFields extends Component {
             duration: '',
             startDate: '',
             label: '',
-            poster: ''
+            poster: []
         };
+
         this.baseState = this.state;
         this.changeInput = this.changeInput.bind(this);
+        this.myCallback = this.myCallback.bind(this);
+        this.myCallback2 = this.myCallback2.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
     }
-
-
-    // ----------- SCHEDULE ----------------
-    createScheduleList() {
-        console.log("SCHEDULE IN CREATE:", this.state.schedule);
-        return this.state.schedule.map((el, i) =>
-            <form key={i}>
-                <p className="par"><span className="date-hour">{this.state.schedule[i].slice(0, 2)}</span> : <span
-                    className="date-minute">{this.state.schedule[i].slice(3, 5)}</span></p>
-                <input className={b("schedule-hour")} type="range" min="0" max="23" step="1" onChange={(e) => {
-                    document.querySelectorAll('.date-hour')[i].innerHTML = e.target.value
-                }}/>
-
-                <input className={b("schedule-minute")} type="range" min="0" max="59" step="1" onInput={(e) => {
-                    document.querySelectorAll('.date-minute')[i].innerHTML = e.target.value
-                }}/>
-
-                <input type='button' value='-' className={b('button', ['remove'])}
-                       onClick={this.removeSchedule.bind(this, i)}/>
-                <input type='button' value='done' className={b('button', ['remove'])}
-                       onClick={(e) => this.onDoneClick(e, i, document.querySelectorAll(".par")[i])}/>
-            </form>
-        )
-    }
-
-    onDoneClick(e, i, val) {
-        const {schedule} = this.state;
-        let hour = (val.querySelector(".date-hour").innerHTML < 10 && val.querySelector(".date-hour").innerHTML !== '00') ? '0' + val.querySelector(".date-hour").innerHTML : val.querySelector(".date-hour").innerHTML;
-        let minute = (val.querySelector(".date-minute").innerHTML < 10 && val.querySelector(".date-minute").innerHTML !== '00') ? '0' + val.querySelector(".date-minute").innerHTML : val.querySelector(".date-minute").innerHTML;
-
-        this.setState({
-            schedule:
-                [
-                    ...schedule.slice(0, i),
-                    hour + ":" + minute,
-                    ...schedule.slice(i + 1),
-
-                ]
-        });
-
-        console.log("SCHEDULE AFTER ADD:", this.state.schedule);
-    }
-
-    addSchedule(e) {
-        e.preventDefault();
-        this.setState(prevState => ({schedule: [...prevState.schedule, '00:00']}))
-    }
-
-    removeSchedule(i) {
-        let schedule = [...this.state.schedule];
-        this.setState({
-            schedule: [
-                ...schedule.slice(0, i),
-                ...schedule.slice(i + 1)
-            ]
-        });
-    }
-
-    // ------------------------------------------------------
 
     handleSelect(e) {       // get data from check boxes
         const {multiSelections} = this.state;
@@ -169,12 +115,12 @@ class InputFields extends Component {
         }
     }
 
-    addMovieToDB(e) {
-        // e.preventDefault();
+    addMovieToDB() {
         const {
             screenshots,
             actors,
-            schedule,
+            scheduleTime,
+            scheduleDate,
             title,
             description,
             trailer,
@@ -187,6 +133,13 @@ class InputFields extends Component {
         const genre = this.state.multiSelections['genre'];
         const format = this.state.multiSelections['format'];
         const technology = this.state.multiSelections['technology'];
+        let Schedule = [];
+        for (let i = 0; i < scheduleDate.length; i++) {
+            for (let j = 0; j < scheduleTime.length; j++) {
+                const item = scheduleDate[i] + ' ' + scheduleTime[j];
+                Schedule.push(item)
+            }
+        }
 
         const movie = {
             name: title,    // +
@@ -197,7 +150,7 @@ class InputFields extends Component {
             screenshots,
             trailer,   // +++
             genre: genre.join(', '),    // +++
-            Schedule: schedule,
+            Schedule,
             format,    // +++
             technology,    // +++
             duration: {     // +++
@@ -214,45 +167,37 @@ class InputFields extends Component {
 
         console.log("MOVIE", movie);
 
-        // const headers = new Headers();
-        // headers.append('Content-Type', 'application/json');
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
 
-        // fetch('http://localhost:3000/movies', {
-        //     method: 'POST',
-        //     headers: headers,
-        //     body: JSON.stringify(movie)
-        // }).then((res) => res.json());
-        console.log('posting has finished');
+        fetch('http://localhost:3000/movies', {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(movie)
+        }).then((res) => res.json());
+
+        console.log('posting has finished', movie);
         alert('Form is successfully submitted!');
         document.querySelector('.InputField').reset();
         this.setState(this.baseState);
     }
 
-    myCallback(type, item) {
-        if (type === 'screenshot') {
-            this.setState({screenshots: [...this.state.screenshots, item]})
-        }
-        else if (type === 'actor') {
-            this.setState({actors: [...this.state.actors, item]})
-        }
-        else if (type === 'poster') {
-            this.setState({poster: item});
-        }
+    myCallback(name, item) {
+        this.setState({[name]: [...this.state[name], item]})
     };
+
+    myCallback2(name, item) {
+        this.setState({[name]: item})
+    }
 
     changeInput(e) {
         const {name, value} = e.target;
-        switch (name) {
-            case 'title': return this.setState({title: value});
-            case 'description': return this.setState({description: value});
-            case 'trailer': return this.setState({trailer: value});
-            case 'rating': return this.setState({rating: value});
-            case 'duration': return this.setState({duration: value});
-            case 'startDate': return this.setState({startDate: value});
-            case 'label': return this.setState({label: value});
-            default: return;
-        }
+        this.setState({[name]: value})
     };
+
+    handleRadioButton(e) {
+
+    }
 
     render() {
         const {
@@ -269,9 +214,7 @@ class InputFields extends Component {
             poster
         } = this.state;
         console.log('this state', this.state);
-        // console.log('poster', poster);
-        // console.log('screenshots', screenshots);
-        // const {title, description, trailer, rating, duration, startDate} = this.refs;
+
         const isEnabled =
             title.length *
             description.length *
@@ -282,47 +225,51 @@ class InputFields extends Component {
 
 
         return <form className={b()}>
-            <h4 className={b('title')}>Title</h4>
+            <h3 className={b('title')}>Title</h3>
             <input onChange={this.changeInput} name='title' className={b('input')} placeholder={'Title'} type='text'/>
 
-            <h4 className={b('title')}>Poster</h4>
-            <DragDropImage type='poster' callbackFromParent={this.myCallback.bind(this)}/>
+            <h3 className={b('title')}>Poster</h3>
+            <DragDropImage name='poster' callbackFromParent={this.myCallback2} callbackInRemove={this.myCallback2}/>
 
-            <h4 className={b('title')}>Description</h4>
-            <input onChange={this.changeInput} name='description' className={b('input')} placeholder={'Description'} type='text'
-                   required/>
+            <h3 className={b('title')}>Description</h3>
+            <input type='text' onChange={this.changeInput} name='description' className={b('input')} placeholder={'Description'} />
 
-            <h4 className={b('title')}>Trailer</h4>
-            <input onChange={this.changeInput} name='trailer' className={b('input')} placeholder={'Enter video url'} type='url'
-                   required/>
+            <h3 className={b('title')}>Trailer</h3>
+            <input type='url' onChange={this.changeInput} name='trailer' className={b('input')} placeholder={'Enter video url'} />
 
-            <h4 className={b('title')}>Rating</h4>
-            <input onChange={this.changeInput} name='rating' className={b('input')} placeholder={'Enter only number'} type='number'
+            <h3 className={b('title')}>Rating</h3>
+            <input type='number' onChange={this.changeInput} name='rating' className={b('input')} placeholder={'Enter number only'}
                    min='0' max='10'
-                   step='0.1'
-                   required/>
+                   step='0.1'/>
 
-            <h4 className={b('title')}>Duration</h4>
-            <input onChange={this.changeInput} name='duration' className={b('input')} type="time" required/>
+            <h3 className={b('title')}>Duration</h3>
+            <input type="time" onChange={this.changeInput} name='duration' className={b('input')} />
 
-            <h4 className={b('title')}>Start Date</h4>
-            <input onChange={this.changeInput} name='startDate' className={b('input')} type="date" required/>
+            <h3 className={b('title')}>Start Date</h3>
+            <input type="date" onChange={this.changeInput} name='startDate' className={b('input')} />
 
-            <h4 className={b('title')}>Screenshots</h4>
-            <DragDropImage type='screenshot' callbackFromParent={this.myCallback.bind(this)}/>
+            <h3 className={b('title')}>Screenshots</h3>
+            <DragDropImage name='screenshots' callbackFromParent={this.myCallback} callbackInRemove={this.myCallback2}/>
 
-            {/*<h4 className={b('title')}>Actors</h4>*/}
-            {/*<DragDropImage type='actor' callbackFromParent={this.myCallback.bind(this)}/>*/}
+            <h3 className={b('title')}>Schedule</h3>
+            <CalendarRangePicker name='scheduleDate' startDate={startDate} callbackFromParent={this.myCallback}/>
+            <TimeRanges name='scheduleTime' callbackFromParent={this.myCallback2}/>
 
-            {/*<h4 className={b('title')}>Schedule</h4>*/}
-            {/*<button className={b('button', ['add'])} onClick={this.addSchedule.bind(this)}>+</button>*/}
-            {/*{this.createScheduleList()}*/}
+            <CheckBoxList action={this.handleSelect} name={'genre'} array={genres}/>
+            <CheckBoxList action={this.handleSelect} name={'format'} array={formats}/>
+            <CheckBoxList action={this.handleSelect} name={'technology'} array={technologies}/>
 
-            <CheckBoxList action={this.handleSelect.bind(this)} name={'genre'} array={genres}/>
-            <CheckBoxList action={this.handleSelect.bind(this)} name={'format'} array={formats}/>
-            <CheckBoxList action={this.handleSelect.bind(this)} name={'technology'} array={technologies}/>
-
-            <button type='submit' disabled={!isEnabled} className={b('button', ['submit'])} onClick={this.addMovieToDB.bind(this)}>Submit
+            {/*<form onChange={this.handleRadioButton.bind(this)}>*/}
+                {/*<label><input type="radio" name="label" value="popular"/>Popular</label>*/}
+                {/*<label><input type="radio" name="label" value="soon"/>Soon</label>*/}
+                {/*<label><input type="radio" name="label" value="none"/>None of the above</label>*/}
+            {/*</form>*/}
+            <button type='submit'
+                    disabled={!isEnabled}
+                    className={b('button', ['submit'])}
+                    onClick={this.addMovieToDB.bind(this)}
+            >
+                Submit
             </button>
         </form>
     }

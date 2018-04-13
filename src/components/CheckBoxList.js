@@ -8,7 +8,7 @@ class CheckBoxList extends Component {
     render() {
         const {array, name, action} = this.props;
         return <div className={b()}>
-            <h4 className={b('title')}>{name.charAt(0).toUpperCase() + name.substr(1).toLowerCase()}</h4>
+            <h3 className={b('title')}>{name.charAt(0).toUpperCase() + name.substr(1).toLowerCase()}</h3>
 
             {array.map((f, i) => (
                 <label key={i} className={b('item')}>
