@@ -1713,19 +1713,6 @@
         "Outstanding Writing for a Variety Series"
       ],
       "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://vignette.wikia.nocookie.net/breakingbad/images/8/8d/BobOdenkirk.jpg/revision/latest?cb=20170515204037"
-    },
-    {
-      "id": "TEST ACTOR",
-      "movies": {
-        "6": "The Post"
-      },
-      "info": "",
-      "date": "",
-      "city": "",
-      "nominations": [
-        ""
-      ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/"
     }
   ]
 }
