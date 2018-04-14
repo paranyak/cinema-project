@@ -1224,17 +1224,17 @@
       "rating": 8,
       "cast": [
         {
-          "image": "",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/http://podrobnosti.ua/media/pictures/2017/12/29/thumbs/740x415/foto-instagram_rect_e90e11f8e7a781a7499237d8d8b72820.jpg",
           "name": "Nadiya Dorofeeva",
           "role": "Mila (voice)"
         },
         {
-          "image": "",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://bestfacts.com.ua/uploads/2ecdfc4f7f/d80a2ff8cb.jpg",
           "name": "Oleksiy Zavhorodniy",
           "role": "Ruslan"
         },
         {
-          "image": "",
+          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://st.kp.yandex.net/images/actor_iphone/iphone360_1977102.jpg",
           "name": "Yevhen Malukha",
           "role": "Chornomor"
         }
