@@ -10,6 +10,9 @@ let doneTypingInterval = 500;
 class AddActor extends Component {
     constructor(props) {
         super(props);
+        this.state={
+            suggestedMovies:[{"id": 1, name:""}]
+        };
         this.addActorToDB = this.addActorToDB.bind(this);
         this.checkform = this.checkform.bind(this);
         this.doneTyping = this.doneTyping.bind(this);
@@ -72,10 +75,22 @@ class AddActor extends Component {
         submitButton.style.display = (cansubmit) ? 'initial' : 'none';
 
     }
-    doneTyping () {
+    async doneTyping () {
         //do something
         console.log("DONE TIMER");
+        console.log(this.refs.movies.value);
+        console.log(this.state.suggestedMovies);
 
+        const response = await fetch(`http://localhost:3000/movies?name_like=${this.refs.movies.value}`);// 'posts' to get work the url
+        if (!response.ok) {
+            console.log("ERROR IN ACTOR");
+        } else {
+            let suggestedMovies = await ((response).json());
+            if (suggestedMovies != []) {
+                this.setState({suggestedMovies});
+                console.log(this.state.suggestedMovies);
+            }
+        }
     }
 
     startTimer(){
@@ -102,12 +117,7 @@ class AddActor extends Component {
                 <input ref='movies' placeholder={'Enter movie'} className={b("inputs")} type="text"
                        onKeyDown={this.checkform} onKeyUp={this.startTimer} list="movies"/>
                 <datalist id="movies">
-                    <option value="Chrome"/>
-                    <option value="Firefox"/>
-                    <option value="Internet Explorer"/>
-                    <option value="Opera"/>
-                    <option value="Safari"/>
-                    <option value="Microsoft Edge"/>
+                    {this.state.suggestedMovies.map(movie=> <option value={movie.name}/>)}
                 </datalist>
                 <button type='submit' className={b('button')} onClick={this.addActorToDB}>Submit
                 </button>

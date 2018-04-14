@@ -62250,6 +62250,8 @@ var _BEM2 = _interopRequireDefault(_BEM);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -62269,6 +62271,9 @@ var AddActor = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (AddActor.__proto__ || Object.getPrototypeOf(AddActor)).call(this, props));
 
+        _this.state = {
+            suggestedMovies: [{ "id": 1, name: "" }]
+        };
         _this.addActorToDB = _this.addActorToDB.bind(_this);
         _this.checkform = _this.checkform.bind(_this);
         _this.doneTyping = _this.doneTyping.bind(_this);
@@ -62336,10 +62341,59 @@ var AddActor = function (_Component) {
         }
     }, {
         key: "doneTyping",
-        value: function doneTyping() {
-            //do something
-            console.log("DONE TIMER");
-        }
+        value: function () {
+            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+                var response, suggestedMovies;
+                return regeneratorRuntime.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                //do something
+                                console.log("DONE TIMER");
+                                console.log(this.refs.movies.value);
+                                console.log(this.state.suggestedMovies);
+
+                                _context.next = 5;
+                                return fetch("http://localhost:3000/movies?name_like=" + this.refs.movies.value);
+
+                            case 5:
+                                response = _context.sent;
+
+                                if (response.ok) {
+                                    _context.next = 10;
+                                    break;
+                                }
+
+                                console.log("ERROR IN ACTOR");
+                                _context.next = 14;
+                                break;
+
+                            case 10:
+                                _context.next = 12;
+                                return response.json();
+
+                            case 12:
+                                suggestedMovies = _context.sent;
+
+                                if (suggestedMovies != []) {
+                                    this.setState({ suggestedMovies: suggestedMovies });
+                                    console.log(this.state.suggestedMovies);
+                                }
+
+                            case 14:
+                            case "end":
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, this);
+            }));
+
+            function doneTyping() {
+                return _ref.apply(this, arguments);
+            }
+
+            return doneTyping;
+        }()
     }, {
         key: "startTimer",
         value: function startTimer() {
@@ -62375,12 +62429,9 @@ var AddActor = function (_Component) {
                     _react2.default.createElement(
                         "datalist",
                         { id: "movies" },
-                        _react2.default.createElement("option", { value: "Chrome" }),
-                        _react2.default.createElement("option", { value: "Firefox" }),
-                        _react2.default.createElement("option", { value: "Internet Explorer" }),
-                        _react2.default.createElement("option", { value: "Opera" }),
-                        _react2.default.createElement("option", { value: "Safari" }),
-                        _react2.default.createElement("option", { value: "Microsoft Edge" })
+                        this.state.suggestedMovies.map(function (movie) {
+                            return _react2.default.createElement("option", { value: movie.name });
+                        })
                     ),
                     _react2.default.createElement(
                         "button",
