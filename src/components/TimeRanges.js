@@ -55,7 +55,7 @@ class TimeRanges extends Component {
 
     render() {
         return <div className={b()}>
-            <p className={b('add-time')}>Add time of movie sessions for each day</p>
+            <p className={b('add-time')}>Create a time list of movie sessions for each day</p>
             <button className={b('button', ['add'])} onClick={this.addSchedule.bind(this)}>+</button>
             {this.createScheduleList()}
         </div>;

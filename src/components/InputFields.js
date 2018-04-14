@@ -5,6 +5,7 @@ import CheckBoxList from "./CheckBoxList";
 import DragDropImage from './DragDropImage';
 import CalendarRangePicker from './CalendarRangePicker';
 import TimeRanges from "./TimeRanges";
+import {Redirect} from 'react-router'
 
 const b = block("InputField");
 
@@ -40,6 +41,7 @@ class InputFields extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            fireRedirect: false,
             screenshots: [],
             actors: [],
             scheduleTime: [],
@@ -56,7 +58,7 @@ class InputFields extends Component {
             duration: '',
             startDate: '',
             label: '',
-            poster: []
+            poster: ''
         };
 
         this.baseState = this.state;
@@ -143,21 +145,21 @@ class InputFields extends Component {
 
         const movie = {
             name: title,    // +
-            image: poster,
+            image: poster,      // +++
             rating: parseFloat(rating),     // +
             cast: actors,
             description,   // +
-            screenshots,
+            screenshots,    // +++
             trailer,   // +++
             genre: genre.join(', '),    // +++
-            Schedule,
+            Schedule,       // +++
             format,    // +++
             technology,    // +++
             duration: {     // +++
                 "hour": parseInt(duration.split(':')[0]),
                 "minute": parseInt(duration.split(':')[1])
             },
-            label,
+            label,      // ++
             startDate: {    // +++
                 "year": parseInt(startDate.split('-')[0]),
                 "month": parseInt(startDate.split('-')[1]),
@@ -178,8 +180,7 @@ class InputFields extends Component {
 
         console.log('posting has finished', movie);
         alert('Form is successfully submitted!');
-        document.querySelector('.InputField').reset();
-        this.setState(this.baseState);
+        this.setState({fireRedirect: true})
     }
 
     myCallback(name, item) {
@@ -195,23 +196,16 @@ class InputFields extends Component {
         this.setState({[name]: value})
     };
 
-    handleRadioButton(e) {
-
-    }
-
     render() {
         const {
-            screenshots,
-            actors,
-            schedule,
+            fireRedirect,
             title,
             description,
             trailer,
             rating,
             duration,
             startDate,
-            label,
-            poster
+            label
         } = this.state;
         console.log('this state', this.state);
 
@@ -224,54 +218,89 @@ class InputFields extends Component {
             startDate.length !== 0;
 
 
-        return <form className={b()}>
-            <h3 className={b('title')}>Title</h3>
-            <input onChange={this.changeInput} name='title' className={b('input')} placeholder={'Title'} type='text'/>
+        return <div>
+            <form className={b()}>
+                <h3 className={b('title')}>Title</h3>
+                <input onChange={this.changeInput} name='title' className={b('input')} placeholder={'Title'}
+                       type='text'/>
 
-            <h3 className={b('title')}>Poster</h3>
-            <DragDropImage name='poster' callbackFromParent={this.myCallback2} callbackInRemove={this.myCallback2}/>
+                <h3 className={b('title')}>Poster</h3>
+                <DragDropImage name='poster' callbackFromParent={this.myCallback2} callbackInRemove={this.myCallback2}/>
 
-            <h3 className={b('title')}>Description</h3>
-            <input type='text' onChange={this.changeInput} name='description' className={b('input')} placeholder={'Description'} />
+                <h3 className={b('title')}>Description</h3>
+                <input type='text' onChange={this.changeInput} name='description' className={b('input')}
+                       placeholder={'Description'}/>
 
-            <h3 className={b('title')}>Trailer</h3>
-            <input type='url' onChange={this.changeInput} name='trailer' className={b('input')} placeholder={'Enter video url'} />
+                <h3 className={b('title')}>Trailer</h3>
+                <input type='url' onChange={this.changeInput} name='trailer' className={b('input')}
+                       placeholder={'Enter video url'}/>
 
-            <h3 className={b('title')}>Rating</h3>
-            <input type='number' onChange={this.changeInput} name='rating' className={b('input')} placeholder={'Enter number only'}
-                   min='0' max='10'
-                   step='0.1'/>
+                <h3 className={b('title')}>Rating</h3>
+                <input type='number' onChange={this.changeInput} name='rating' className={b('input')}
+                       placeholder={'Enter number only'}
+                       min='0' max='10'
+                       step='0.1'/>
 
-            <h3 className={b('title')}>Duration</h3>
-            <input type="time" onChange={this.changeInput} name='duration' className={b('input')} />
+                <h3 className={b('title')}>Duration</h3>
+                <input type="time" onChange={this.changeInput} name='duration' className={b('input')}/>
 
-            <h3 className={b('title')}>Start Date</h3>
-            <input type="date" onChange={this.changeInput} name='startDate' className={b('input')} />
+                <h3 className={b('title')}>Start Date</h3>
+                <input type="date" onChange={this.changeInput} name='startDate' className={b('input')}/>
 
-            <h3 className={b('title')}>Screenshots</h3>
-            <DragDropImage name='screenshots' callbackFromParent={this.myCallback} callbackInRemove={this.myCallback2}/>
+                <h3 className={b('title')}>Screenshots</h3>
+                <DragDropImage name='screenshots' callbackFromParent={this.myCallback}
+                               callbackInRemove={this.myCallback2}/>
 
-            <h3 className={b('title')}>Schedule</h3>
-            <CalendarRangePicker name='scheduleDate' startDate={startDate} callbackFromParent={this.myCallback}/>
-            <TimeRanges name='scheduleTime' callbackFromParent={this.myCallback2}/>
+                <h3 className={b('title')}>Schedule</h3>
+                <CalendarRangePicker name='scheduleDate' startDate={startDate} callbackFromParent={this.myCallback2}/>
+                <TimeRanges name='scheduleTime' callbackFromParent={this.myCallback2}/>
 
-            <CheckBoxList action={this.handleSelect} name={'genre'} array={genres}/>
-            <CheckBoxList action={this.handleSelect} name={'format'} array={formats}/>
-            <CheckBoxList action={this.handleSelect} name={'technology'} array={technologies}/>
+                <CheckBoxList action={this.handleSelect} name={'genre'} array={genres}/>
+                <CheckBoxList action={this.handleSelect} name={'format'} array={formats}/>
+                <CheckBoxList action={this.handleSelect} name={'technology'} array={technologies}/>
 
-            {/*<form onChange={this.handleRadioButton.bind(this)}>*/}
-                {/*<label><input type="radio" name="label" value="popular"/>Popular</label>*/}
-                {/*<label><input type="radio" name="label" value="soon"/>Soon</label>*/}
-                {/*<label><input type="radio" name="label" value="none"/>None of the above</label>*/}
-            {/*</form>*/}
-            <button type='submit'
-                    disabled={!isEnabled}
-                    className={b('button', ['submit'])}
-                    onClick={this.addMovieToDB.bind(this)}
-            >
-                Submit
-            </button>
-        </form>
+                <h3 className={b('title')}>Label</h3>
+                <div>
+                    <label className={b('radio-btn')}>
+                        <input type="radio"
+                               onChange={this.changeInput}
+                               name="label"
+                               value="popular"
+                               checked={label === 'popular'}
+                        />
+                        Popular
+                    </label>
+                    <label className={b('radio-btn')}>
+                        <input type="radio"
+                               onChange={this.changeInput}
+                               name="label"
+                               value="soon"
+                               checked={label === 'soon'}
+                        />
+                        Soon on the screens
+                    </label>
+                    <label className={b('radio-btn')}>
+                        <input type="radio"
+                               onChange={this.changeInput}
+                               name="label"
+                               value=""
+                               checked={label === ''}
+                        />
+                        None of the above
+                    </label>
+                </div>
+                <button type='submit'
+                        disabled={!isEnabled}
+                        className={b('submit-button')}
+                        onClick={this.addMovieToDB.bind(this)}
+                >
+                    Submit
+                </button>
+            </form>
+            {fireRedirect && (
+                <Redirect to={'/'}/>
+            )}
+        </div>
     }
 
 }

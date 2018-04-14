@@ -19,7 +19,7 @@ class MovieCarousel extends Component {
     }
 
     handleClick(k = 1) {
-        const {carousel, rightBut, leftBut} = this.refs;
+        const {carousel, forwardBut, backwardBut} = this.refs;
         let numOfItemsToScroll = 3.5;
         let widthOfItem = 275;
         let newPos = carousel.scrollLeft + k * (widthOfItem * numOfItemsToScroll);
@@ -32,42 +32,42 @@ class MovieCarousel extends Component {
             duration: totalTime,
             scrollDir: 'scrollLeft'
         });
-        checkScrollPosition(carousel, rightBut, leftBut);
+        checkScrollPosition(carousel, forwardBut, backwardBut);
 
     };
 
-    leftClick() {
+    backwardClick() {
         this.handleClick(-1);
     };
 
-    rightClick() {
+    forwardClick() {
         this.handleClick();
     };
 
     onScrollMove() {
-        const {carousel, rightBut, leftBut} = this.refs;
-        checkScrollPosition(carousel, rightBut, leftBut, carousel.scrollLeft);
+        const {carousel, forwardBut, backwardBut} = this.refs;
+        checkScrollPosition(carousel, forwardBut, backwardBut, carousel.scrollLeft);
     }
 
     render() {
-        const {label, films} = this.props;
+        const {films} = this.props;
         return (
             <section className={b()}>
                 <button
-                    className={b('button', ['left'])}
-                    onClick={this.leftClick.bind(this)}
-                    ref={'leftBut'}
+                    className={b('button', ['backward'])}
+                    onClick={this.backwardClick.bind(this)}
+                    ref={'backwardBut'}
                     style={{'display': 'none'}}
                 >
-                    <span className={b('icon', ['left'])}></span>
+                    <span className={b('icon', ['backward'])}></span>
                 </button>
                 <div ref='carousel'
                      className={b('movies')}
                      onScroll={this.onScrollMove.bind(this)}
                 >
                     {films
-                        .map(film =>
-                            <LazyLoad height='100%' offsetRight={100}>
+                        .map((film, i) =>
+                            <LazyLoad key={i} height='100%' offsetRight={100}>
                                 <Link key={film} to={`/movie/${film}`}>
                                     <MoviePoster film={film}/>
                                 </Link>
@@ -75,11 +75,11 @@ class MovieCarousel extends Component {
                         )}
                 </div>
                 <button
-                    className={b('button', ['right'])}
-                    onClick={this.rightClick.bind(this)}
-                    ref={'rightBut'}
+                    className={b('button', ['forward'])}
+                    onClick={this.forwardClick.bind(this)}
+                    ref={'forwardBut'}
                 >
-                    <span className={b('icon', ['right'])}></span>
+                    <span className={b('icon', ['forward'])}></span>
                 </button>
             </section>
         )
@@ -89,23 +89,20 @@ class MovieCarousel extends Component {
 const mapDispatchToProps = (dispatch, props) => {
     return {
         fetchMovies: () => {
-            if (props.label === 'popular') {
-                return dispatch(fetchPopularMovies());
-            }
-            return fetchComingsoonMovies()(dispatch);
+            (props.label === 'popular') ?
+                dispatch(fetchPopularMovies()) :
+                fetchComingsoonMovies()(dispatch);
         },
     }
 };
 
-
-export default connect((state, props) => {
-    let movies = [];
-    if (props.label === 'popular') {
-        movies = getPopularMoviesIds(state);
-    } else {
-        movies = getComingsoonrMoviesIds(state);
-    }
+const mapStateToProps = (state, props) => {
+    const movies = (props.label === 'popular') ?
+        getPopularMoviesIds(state) :
+        getComingsoonrMoviesIds(state);
     return {
         films: movies
     }
-}, mapDispatchToProps)(MovieCarousel);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieCarousel);

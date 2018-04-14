@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import "../styles/CalendarRangePicker.less";
-import block from '../helpers/BEM';
 import DayPicker, {DateUtils} from 'react-day-picker';
 import {getDates} from "../helpers/getDatesFromRange";
 
@@ -9,17 +8,14 @@ const numberOfMonths = 2;
 class CalendarRangePicker extends Component {
     constructor(props) {
         super(props);
-        this.handleDayClick = this.handleDayClick.bind(this);
-        this.handleResetClick = this.handleResetClick.bind(this);
-        this.state = this.getInitialState();
-    }
-
-    getInitialState() {
-        return {
+        this.state = {
             from: undefined,
             to: undefined,
             dates: []
         };
+        this.baseState = this.state;
+        this.handleDayClick = this.handleDayClick.bind(this);
+        this.handleResetClick = this.handleResetClick.bind(this);
     }
 
     handleDayClick(day) {
@@ -40,7 +36,6 @@ class CalendarRangePicker extends Component {
                 )
             );
             this.setState(() => {
-                console.log("ARR IN BLUR");
                 this.props.callbackFromParent('scheduleDate', arr);
                 return { dates: arr };
             });
@@ -49,7 +44,7 @@ class CalendarRangePicker extends Component {
     }
 
     handleResetClick() {
-        this.setState(this.getInitialState());
+        this.setState(this.baseState);
     }
 
     onCalendarBlur() {
@@ -70,7 +65,6 @@ class CalendarRangePicker extends Component {
                 )
             );
             this.setState(() => {
-                console.log("ARR IN BLUR");
                 this.props.callbackFromParent('scheduleDate', arr);
                 return { dates: arr };
             });
