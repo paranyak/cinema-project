@@ -6,6 +6,7 @@ import DragDropImage from './DragDropImage';
 import CalendarRangePicker from './CalendarRangePicker';
 import TimeRanges from "./TimeRanges";
 import {Redirect} from 'react-router'
+import CastInputs from "./CastInputs";
 
 const b = block("InputField");
 
@@ -43,7 +44,7 @@ class InputFields extends Component {
         this.state = {
             fireRedirect: false,
             screenshots: [],
-            actors: [],
+            cast: [],
             scheduleTime: [],
             scheduleDate: [],
             multiSelections: {
@@ -87,40 +88,19 @@ class InputFields extends Component {
             arr = [...deselect];
         }
 
-
-        if (name === 'genre') {
-            this.setState({
-                multiSelections: {
-                    genre: arr,
-                    format: multiSelections['format'],
-                    technology: multiSelections['technology']
-                }
-            })
-        }
-        else if (name === 'format') {
-            this.setState({
-                multiSelections: {
-                    genre: multiSelections['genre'],
-                    format: arr,
-                    technology: multiSelections['technology']
-                }
-            })
-        }
-        else if (name === 'technology') {
-            this.setState({
-                multiSelections: {
-                    genre: multiSelections['genre'],
-                    format: multiSelections['format'],
-                    technology: arr
-                }
-            })
-        }
+        this.setState({
+            multiSelections: Object.assign(
+                {},
+                this.state.multiSelections,
+                {[name]: arr}
+            )
+        });
     }
 
     addMovieToDB() {
         const {
             screenshots,
-            actors,
+            cast,
             scheduleTime,
             scheduleDate,
             title,
@@ -144,23 +124,23 @@ class InputFields extends Component {
         }
 
         const movie = {
-            name: title,    // +
-            image: poster,      // +++
-            rating: parseFloat(rating),     // +
-            cast: actors,
-            description,   // +
-            screenshots,    // +++
-            trailer,   // +++
-            genre: genre.join(', '),    // +++
-            Schedule,       // +++
-            format,    // +++
-            technology,    // +++
-            duration: {     // +++
+            name: title,
+            image: poster,
+            rating: parseFloat(rating),
+            cast,
+            description,
+            screenshots,
+            trailer,
+            genre: genre.join(', '),
+            Schedule,
+            format,
+            technology,
+            duration: {
                 "hour": parseInt(duration.split(':')[0]),
                 "minute": parseInt(duration.split(':')[1])
             },
-            label,      // ++
-            startDate: {    // +++
+            label,
+            startDate: {
                 "year": parseInt(startDate.split('-')[0]),
                 "month": parseInt(startDate.split('-')[1]),
                 "day": parseInt(startDate.split('-')[2])
@@ -178,7 +158,6 @@ class InputFields extends Component {
             body: JSON.stringify(movie)
         }).then((res) => res.json());
 
-        console.log('posting has finished', movie);
         alert('Form is successfully submitted!');
         this.setState({fireRedirect: true})
     }
@@ -195,6 +174,7 @@ class InputFields extends Component {
         const {name, value} = e.target;
         this.setState({[name]: value})
     };
+
 
     render() {
         const {
@@ -216,7 +196,6 @@ class InputFields extends Component {
             rating.length *
             duration.length *
             startDate.length !== 0;
-
 
         return <div>
             <form className={b()}>
@@ -250,6 +229,9 @@ class InputFields extends Component {
                 <h3 className={b('title')}>Screenshots</h3>
                 <DragDropImage name='screenshots' callbackFromParent={this.myCallback}
                                callbackInRemove={this.myCallback2}/>
+
+                <h3 className={b('title')}>Cast</h3>
+                <CastInputs name='cast' callback={this.myCallback2}/>
 
                 <h3 className={b('title')}>Schedule</h3>
                 <CalendarRangePicker name='scheduleDate' startDate={startDate} callbackFromParent={this.myCallback2}/>
@@ -297,9 +279,7 @@ class InputFields extends Component {
                     Submit
                 </button>
             </form>
-            {fireRedirect && (
-                <Redirect to={'/'}/>
-            )}
+            {fireRedirect && (<Redirect to={'/'}/>)}
         </div>
     }
 
