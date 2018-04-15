@@ -16,7 +16,7 @@ class TimeRanges extends Component {
         return this.state.schedule.map((el, i) =>
             <form key={i}>
                 <input type='time' className={b('time-input')} value={el} onChange={this.onTimeChange.bind(this, i)}/>
-                <input type='button' value='-' className={b('button', ['remove'])}
+                <input type='button' value='-' className={b('button')}
                        onClick={this.removeSchedule.bind(this, i)}/>
             </form>
         )
@@ -56,7 +56,7 @@ class TimeRanges extends Component {
     render() {
         return <div className={b()}>
             <p className={b('add-time')}>Create a time list of movie sessions for each day</p>
-            <button className={b('button', ['add'])} onClick={this.addSchedule.bind(this)}>+</button>
+            <button className={b('button')} onClick={this.addSchedule.bind(this)}>+</button>
             {this.createScheduleList()}
         </div>;
     }

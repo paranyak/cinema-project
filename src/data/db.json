@@ -839,7 +839,7 @@
       "id": 15,
       "name": "Ready Player One",
       "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
-      "rating": 8,
+      "rating": 8.1,
       "cast": [
         {
           "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BOTJjODlmNjAtNjE3Ny00NzIwLTkwMjItOWY1MzM4ZDM1ZTM5XkEyXkFqcGdeQXVyNzczNzg0ODc@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
@@ -1414,28 +1414,116 @@
       }
     },
     {
-      "name": "",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/",
-      "rating": null,
+      "name": "Testing Movie",
+      "image": "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523732557/CinemaProject/Posters/cia8tbzoxfdee3oadilq.jpg",
+      "rating": 5.6,
       "cast": [],
-      "description": "",
-      "screenshots": [],
-      "trailer": "",
-      "genre": "",
-      "Schedule": [],
-      "format": [],
-      "technology": [],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "screenshots": [
+        "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523732631/CinemaProject/Screenshots/crdl0ypk2siial2bcgs7.jpg",
+        "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523732631/CinemaProject/Screenshots/mzylfsu1gossxggcpau7.jpg",
+        "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523732631/CinemaProject/Screenshots/ywgep2q8qky3cfz27lgb.jpg",
+        "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523732631/CinemaProject/Screenshots/pqw9kohtvllf5cwxm7t8.jpg",
+        "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523732631/CinemaProject/Screenshots/ak4yy6tzhbnt1mz3pztr.jpg"
+      ],
+      "trailer": "https://ru.lipsum.com/",
+      "genre": "Action, Crime, Sci-Fi",
+      "Schedule": [
+        "16-04-2018 10:00",
+        "16-04-2018 14:00",
+        "17-04-2018 10:00",
+        "17-04-2018 14:00",
+        "18-04-2018 10:00",
+        "18-04-2018 14:00"
+      ],
+      "format": [
+        "2D"
+      ],
+      "technology": [
+        "Cinematech+"
+      ],
       "duration": {
-        "hour": null,
-        "minute": null
+        "hour": 1,
+        "minute": 40
       },
-      "label": "",
+      "label": "popular",
       "startDate": {
-        "year": null,
-        "month": null,
-        "day": null
+        "year": 2018,
+        "month": 4,
+        "day": 16
       },
       "id": 25
+    },
+    {
+      "name": "Great Movie",
+      "image": "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523796606/CinemaProject/Posters/irmakyt6y9nu8dppxsap.jpg",
+      "rating": 8.9,
+      "cast": [
+        {
+          "image": "",
+          "name": "Alicia Vikander",
+          "role": "Lady In black"
+        },
+        {
+          "image": "",
+          "name": "Joel Edgerton",
+          "role": "Superhero"
+        },
+        {
+          "image": "",
+          "name": "Tom Hanks",
+          "role": "Tom Hanks"
+        }
+      ],
+      "description": "It's a great movie we add to our great page! Yeah, we can do it now!",
+      "screenshots": [
+        "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523796703/CinemaProject/Screenshots/p9rw1jrhramfxyfsljex.jpg",
+        "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523796703/CinemaProject/Screenshots/pwp0pt0awz2herfbuq7o.jpg",
+        "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523796703/CinemaProject/Screenshots/xv0bnab4dj7ruurxup7k.jpg",
+        "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523796703/CinemaProject/Screenshots/xqebkdrs0tflrtb8amdn.jpg",
+        "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523796703/CinemaProject/Screenshots/zbpgzxjdi65vyxmi0rca.jpg"
+      ],
+      "trailer": "some trailer",
+      "genre": "Mystery, Comedy",
+      "Schedule": [
+        "16-04-2018 10:00",
+        "16-04-2018 13:45",
+        "16-04-2018 17:00",
+        "16-04-2018 20:20",
+        "17-04-2018 10:00",
+        "17-04-2018 13:45",
+        "17-04-2018 17:00",
+        "17-04-2018 20:20",
+        "18-04-2018 10:00",
+        "18-04-2018 13:45",
+        "18-04-2018 17:00",
+        "18-04-2018 20:20",
+        "19-04-2018 10:00",
+        "19-04-2018 13:45",
+        "19-04-2018 17:00",
+        "19-04-2018 20:20",
+        "20-04-2018 10:00",
+        "20-04-2018 13:45",
+        "20-04-2018 17:00",
+        "20-04-2018 20:20"
+      ],
+      "format": [
+        "3D"
+      ],
+      "technology": [
+        "IMAX"
+      ],
+      "duration": {
+        "hour": 2,
+        "minute": 25
+      },
+      "label": "soon",
+      "startDate": {
+        "year": 2018,
+        "month": 4,
+        "day": 16
+      },
+      "id": 26
     }
   ],
   "actors": [
