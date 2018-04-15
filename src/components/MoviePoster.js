@@ -9,9 +9,10 @@ const b = block("MoviePoster");
 
 class MoviePoster extends Component {
     render() {
-        const {film} = this.props;
+        const {film, filmId} = this.props;
         if (!film || film === undefined) {
           // this.props.fetchMovieById(this.props.match.params.film);
+          this.props.fetchMovieById(filmId);
           return null;
         }
         return (
@@ -28,8 +29,9 @@ class MoviePoster extends Component {
 }
 
 export default connect((state, props) => {
-    const movie = getMovieById(state, props.film)
+    const movie = getMovieById(state, props.filmId)
     return {
+      ...props,
       film:movie
     }}, (dispatch) => ({
       fetchMovieById: (id) => fetchMovie(id)(dispatch)

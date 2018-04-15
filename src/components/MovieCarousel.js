@@ -69,7 +69,7 @@ class MovieCarousel extends Component {
                         .map((film, i) =>
                             <LazyLoad key={i} height='100%' offsetRight={100}>
                                 <Link key={film} to={`/movie/${film}`}>
-                                    <MoviePoster film={film}/>
+                                    <MoviePoster filmId={film}/>
                                 </Link>
                             </LazyLoad>
                         )}

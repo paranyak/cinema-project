@@ -23,7 +23,7 @@ export const fetchMoviesFail = (id) => {
     }
 }
 
-export const fetchMoviesSuccess = (id, ids, movies) => {
+export const fetchMoviesSuccess = (id, ids, movies = []) => {
     return {
         type: 'FETCH_MOVIES_SUCCESS',
         id,

@@ -18,21 +18,21 @@ export const fetchMoviesSchedule = (day) => async (dispatch) => {
 
 export const fetchPopularMovies = () => async (dispatch) => {
     dispatch(fromFetch.fetchMoviesStart('popular'));
-    let movies = await ((await fetch(`http://localhost:3000/movies?label=popular`)).json());
+    let movies = await ((await fetch(`http://localhost:3000/movies?label=popular&properties=id`)).json());
     movies = normalize(movies, moviesListSchema);
     dispatch(fromFetch.fetchPopularMoviesSuccess(movies.result, movies.entities.movies));
 }
 
 export const fetchComingsoonMovies = () => async (dispatch) => {
     dispatch(fromFetch.fetchMoviesStart('comingSoon'));
-    let movies = await ((await fetch(`http://localhost:3000/movies?label=soon`)).json());
+    let movies = await ((await fetch(`http://localhost:3000/movies?label=soon&properties=id`)).json());
     movies = normalize(movies, moviesListSchema);
     dispatch(fromFetch.fetchComingsoonMoviesSuccess(movies.result, movies.entities.movies));
 }
 
 export const fetchAdditionalMovies = (limit, page) => async (dispatch) => {
     dispatch(fromFetch.fetchMoviesStart('additional'));
-    let movies = await ((await fetch(`http://localhost:3000/movies/?_page=${page}&_limit=${limit}`)).json());
+    let movies = await ((await fetch(`http://localhost:3000/movies/?_page=${page}&_limit=${limit}&properties=id`)).json());
     movies = normalize(movies, moviesListSchema);
     dispatch(fromFetch.fetchMoviesSuccess('additional', movies.result, movies.entities.movies));
 }

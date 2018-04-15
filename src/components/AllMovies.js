@@ -42,7 +42,7 @@ class AllMovies extends Component {
                         .map((film, i) =>
                             <LazyLoad key={i} height='100%' offsetBottom={100}>
                                 <Link key={film} to={`/movie/${film}`}>
-                                    <MoviePoster film={film}/>
+                                    <MoviePoster filmId={film}/>
                                 </Link>
                             </LazyLoad>
                         )}
