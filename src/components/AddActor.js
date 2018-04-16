@@ -11,8 +11,10 @@ class AddActor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            suggestedMovies: [{"id": 1, name: ""}],
-            currentSearchPhrase: " "
+            suggestedMovies: [{id: 1, name: ""}],
+            currentSearchPhrase: " ",
+            sugestedMovie:{id: 1, name: ""},
+            movies:[{name:"", id :""}]
         };
         this.addActorToDB = this.addActorToDB.bind(this);
         this.checkform = this.checkform.bind(this);
@@ -66,7 +68,6 @@ class AddActor extends Component {
         let cansubmit = true;
 
         clearTimeout(typingTimer);
-        console.log("cleared", typingTimer);
         for (let i = 0; i < f.length; i++) {
             if (f[i].value.length == 0) cansubmit = false;
         }
@@ -76,31 +77,76 @@ class AddActor extends Component {
 
     }
 
-    async doneTyping() {
+    async doneTyping(e) {
         console.log("DONE TIMER");
-        console.log(this.refs.movies.value,"," , this.state.currentSearchPhrase, "," ,this.refs.movies.value.startsWith(this.state.currentSearchPhrase));
-
-        if (this.refs.movies.value !== "" &&!this.refs.movies.value.startsWith(this.state.currentSearchPhrase)){
-            let currentSearchPhrase = this.refs.movies.value;
-            this.setState({currentSearchPhrase});
-            const response = await fetch(`http://localhost:3000/movies?name_like=${this.refs.movies.value}`);// 'posts' to get work the url
+        // if (this.refs.movies.value !== "" &&!this.refs.movies.value.startsWith(this.state.currentSearchPhrase)){
+        if (this.state.currentSearchPhrase !== ""){
+            //
+            // let currentSearchPhrase = this.refs.movies.value;
+            // this.setState({currentSearchPhrase});
+            const response = await fetch(`http://localhost:3000/movies?name_like=${this.state.currentSearchPhrase}`);// 'posts' to get work the url
             if (!response.ok) {
                 console.log("ERROR IN MOVIE SEARCH AT ACTOR ADD");
             } else {
                 let suggestedMovies = await ((response).json());
                 if (suggestedMovies != []) {
                     this.setState({suggestedMovies});
-                    console.log(this.state.suggestedMovies);
+                    console.log("SUGESTED", this.state.suggestedMovies);
                 }
             }
         }
     }
 
-    startTimer() {
+    startTimer(e) {
         clearTimeout(typingTimer);
+        this.setState({currentSearchPhrase: e.target.value});
         typingTimer = setTimeout(this.doneTyping, doneTypingInterval);
     }
 
+    addMovie(e){
+        e.preventDefault();
+        this.setState(prevState => {
+            const arr = [...prevState.movies, {
+                name: '',
+                id: ''
+            }];
+            return {movies: arr};
+        });
+    }
+    createListOfMovies() {
+        console.log("MOVIES:", this.state.movies);
+        return this.state.movies.map((m, j) => {
+            return <div key={j}>
+                <input ref='movies' value={m.name} placeholder={'Enter movie'} className={b("inputs", ["movie"])} type="text"
+                        list="movies" onKeyDown={this.checkform}  onChange={this.doneMovie.bind(this, j)} onKeyUp={(e)=>this.startTimer(e,j)}/>
+                <datalist id="movies">
+                    {this.state.suggestedMovies.map(movie => <option value={movie.name}/>)}
+                </datalist>
+
+                <input type='button' value='-' className={b('remove-button')}
+                       onClick={this.removeMovie.bind(this, j)}/>
+            </div>
+        })
+    }
+
+    removeMovie(index){
+        let movies = [...this.state.movies];
+        const arr = [
+            ...movies.slice(0, index),
+            ...movies.slice(index + 1)
+        ];
+        this.setState({movies: arr});
+    }
+
+    doneMovie(index){
+        let curentInputToDone = document.querySelectorAll(".AddActor__inputs_movie")[index];
+        const arr = [
+            ...this.state.movies.slice(0, index),
+            Object.assign({}, {name: curentInputToDone.value}),
+            ...this.state.movies.slice(index + 1)
+        ];
+        this.setState({movies: arr});
+    }
 
     render() {
         return (<div>
@@ -123,11 +169,16 @@ class AddActor extends Component {
                 <input ref='info' placeholder={'Enter short information'} className={b("inputs")} type="text"
                        onKeyDown={this.checkform}/>
                 <h3 className={b('title')}>Movies</h3>
-                <input ref='movies' placeholder={'Enter movie'} className={b("inputs")} type="text"
-                       onKeyDown={this.checkform} onKeyUp={this.startTimer} list="movies"/>
-                <datalist id="movies">
-                    {this.state.suggestedMovies.map(movie => <option value={movie.name}/>)}
-                </datalist>
+
+                <div className={b('movies-block')}>
+                    <button className={b('add-button')} onClick={this.addMovie.bind(this)}>+</button>
+                    {this.createListOfMovies()}
+                </div>
+                {/*<input ref='movies' placeholder={'Enter movie'} className={b("inputs")} type="text"*/}
+                       {/*onKeyDown={this.checkform} onKeyUp={this.startTimer} list="movies"/>*/}
+                {/*<datalist id="movies">*/}
+                    {/*{this.state.suggestedMovies.map(movie => <option value={movie.name}/>)}*/}
+                {/*</datalist>*/}
                 <button type='submit' className={b('button')} onClick={this.addActorToDB}>Submit
                 </button>
             </form>

@@ -55139,6 +55139,7 @@ var InputFields = function (_Component) {
     }, {
         key: "myCallback2",
         value: function myCallback2(name, item) {
+            console.log("CALLBACK2:", name, item);
             this.setState(_defineProperty({}, name, item));
         }
     }, {
@@ -61357,6 +61358,7 @@ var CastInputs = function (_Component) {
             var _this2 = this;
 
             var suggestedActors = this.state.suggestedActors;
+
 
             return this.state.chosenActors.map(function (ac, j) {
                 return _react2.default.createElement(
@@ -68415,6 +68417,8 @@ var _BEM2 = _interopRequireDefault(_BEM);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -68437,7 +68441,10 @@ var AddActor = function (_Component) {
         var _this = _possibleConstructorReturn(this, (AddActor.__proto__ || Object.getPrototypeOf(AddActor)).call(this, props));
 
         _this.state = {
-            suggestedMovies: [{ "id": 1, name: "" }]
+            suggestedMovies: [{ id: 1, name: "" }],
+            currentSearchPhrase: " ",
+            sugestedMovie: { id: 1, name: "" },
+            movies: [{ name: "", id: "" }]
         };
         _this.addActorToDB = _this.addActorToDB.bind(_this);
         _this.checkform = _this.checkform.bind(_this);
@@ -68472,10 +68479,11 @@ var AddActor = function (_Component) {
                 info: this.refs.info.value,
                 date: this.refs.date.value,
                 city: this.refs.city.value,
-                nominations: [""],
+                nominations: this.refs.nominations.value.split(","),
                 image: "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/"
             };
 
+            console.log(actor);
             var headers = new Headers();
             headers.append('Content-Type', 'application/json');
 
@@ -68496,56 +68504,58 @@ var AddActor = function (_Component) {
             var cansubmit = true;
 
             clearTimeout(typingTimer);
-            console.log("cleared", typingTimer);
             for (var i = 0; i < f.length; i++) {
                 if (f[i].value.length == 0) cansubmit = false;
             }
 
             var submitButton = document.querySelector(".AddActor__button");
-            submitButton.style.display = cansubmit ? 'initial' : 'none';
+            submitButton.style.display = cansubmit ? 'block' : 'none';
         }
     }, {
         key: "doneTyping",
         value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(e) {
                 var response, suggestedMovies;
                 return regeneratorRuntime.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
                             case 0:
-                                //do something
                                 console.log("DONE TIMER");
-                                console.log(this.refs.movies.value);
-                                console.log(this.state.suggestedMovies);
+                                // if (this.refs.movies.value !== "" &&!this.refs.movies.value.startsWith(this.state.currentSearchPhrase)){
 
-                                _context.next = 5;
-                                return fetch("http://localhost:3000/movies?name_like=" + this.refs.movies.value);
-
-                            case 5:
-                                response = _context.sent;
-
-                                if (response.ok) {
-                                    _context.next = 10;
+                                if (!(this.state.currentSearchPhrase !== "")) {
+                                    _context.next = 13;
                                     break;
                                 }
 
-                                console.log("ERROR IN ACTOR");
-                                _context.next = 14;
+                                _context.next = 4;
+                                return fetch("http://localhost:3000/movies?name_like=" + this.state.currentSearchPhrase);
+
+                            case 4:
+                                response = _context.sent;
+
+                                if (response.ok) {
+                                    _context.next = 9;
+                                    break;
+                                }
+
+                                console.log("ERROR IN MOVIE SEARCH AT ACTOR ADD");
+                                _context.next = 13;
                                 break;
 
-                            case 10:
-                                _context.next = 12;
+                            case 9:
+                                _context.next = 11;
                                 return response.json();
 
-                            case 12:
+                            case 11:
                                 suggestedMovies = _context.sent;
 
                                 if (suggestedMovies != []) {
                                     this.setState({ suggestedMovies: suggestedMovies });
-                                    console.log(this.state.suggestedMovies);
+                                    console.log("SUGESTED", this.state.suggestedMovies);
                                 }
 
-                            case 14:
+                            case 13:
                             case "end":
                                 return _context.stop();
                         }
@@ -68553,7 +68563,7 @@ var AddActor = function (_Component) {
                 }, _callee, this);
             }));
 
-            function doneTyping() {
+            function doneTyping(_x) {
                 return _ref.apply(this, arguments);
             }
 
@@ -68561,9 +68571,62 @@ var AddActor = function (_Component) {
         }()
     }, {
         key: "startTimer",
-        value: function startTimer() {
+        value: function startTimer(e) {
             clearTimeout(typingTimer);
+            this.setState({ currentSearchPhrase: e.target.value });
             typingTimer = setTimeout(this.doneTyping, doneTypingInterval);
+        }
+    }, {
+        key: "addMovie",
+        value: function addMovie(e) {
+            e.preventDefault();
+            this.setState(function (prevState) {
+                var arr = [].concat(_toConsumableArray(prevState.movies), [{
+                    name: '',
+                    id: ''
+                }]);
+                return { movies: arr };
+            });
+        }
+    }, {
+        key: "createListOfMovies",
+        value: function createListOfMovies() {
+            var _this2 = this;
+
+            console.log("MOVIES:", this.state.movies);
+            return this.state.movies.map(function (m, j) {
+                return _react2.default.createElement(
+                    "div",
+                    { key: j },
+                    _react2.default.createElement("input", { ref: "movies", value: m.name, placeholder: 'Enter movie', className: b("inputs", ["movie"]), type: "text",
+                        list: "movies", onKeyDown: _this2.checkform, onChange: _this2.doneMovie.bind(_this2, j), onKeyUp: function onKeyUp(e) {
+                            return _this2.startTimer(e, j);
+                        } }),
+                    _react2.default.createElement(
+                        "datalist",
+                        { id: "movies" },
+                        _this2.state.suggestedMovies.map(function (movie) {
+                            return _react2.default.createElement("option", { value: movie.name });
+                        })
+                    ),
+                    _react2.default.createElement("input", { type: "button", value: "-", className: b('remove-button'),
+                        onClick: _this2.removeMovie.bind(_this2, j) })
+                );
+            });
+        }
+    }, {
+        key: "removeMovie",
+        value: function removeMovie(index) {
+            var movies = [].concat(_toConsumableArray(this.state.movies));
+            var arr = [].concat(_toConsumableArray(movies.slice(0, index)), _toConsumableArray(movies.slice(index + 1)));
+            this.setState({ movies: arr });
+        }
+    }, {
+        key: "doneMovie",
+        value: function doneMovie(index) {
+            var curentInputToDone = document.querySelectorAll(".AddActor__inputs_movie")[index];
+            var arr = [].concat(_toConsumableArray(this.state.movies.slice(0, index)), [Object.assign({}, { name: curentInputToDone.value })], _toConsumableArray(this.state.movies.slice(index + 1)));
+            this.setState({ movies: arr });
         }
     }, {
         key: "render",
@@ -68579,24 +68642,55 @@ var AddActor = function (_Component) {
                 _react2.default.createElement(
                     "form",
                     { className: b(), name: "actorform" },
+                    _react2.default.createElement(
+                        "h3",
+                        { className: b('title') },
+                        "Name"
+                    ),
                     _react2.default.createElement("input", { ref: "name", placeholder: 'Enter name', className: b("inputs"), type: "text",
                         onKeyDown: this.checkform }),
-                    _react2.default.createElement("input", { ref: "date", placeholder: 'Enter  date of birth', className: b("inputs"), type: "text",
+                    _react2.default.createElement(
+                        "h3",
+                        { className: b('title') },
+                        "Date of birth"
+                    ),
+                    _react2.default.createElement("input", { ref: "date", placeholder: 'Enter  date of birth', className: b("inputs"), type: "date",
                         onKeyDown: this.checkform }),
+                    _react2.default.createElement(
+                        "h3",
+                        { className: b('title') },
+                        "City of birth"
+                    ),
                     _react2.default.createElement("input", { ref: "city", placeholder: 'Enter city of birth', className: b("inputs"), type: "text",
                         onKeyDown: this.checkform }),
+                    _react2.default.createElement(
+                        "h3",
+                        { className: b('title') },
+                        "Nominations"
+                    ),
                     _react2.default.createElement("input", { ref: "nominations", placeholder: 'Enter nominations', className: b("inputs"), type: "text",
                         onKeyDown: this.checkform }),
+                    _react2.default.createElement(
+                        "h3",
+                        { className: b('title') },
+                        "Short information"
+                    ),
                     _react2.default.createElement("input", { ref: "info", placeholder: 'Enter short information', className: b("inputs"), type: "text",
                         onKeyDown: this.checkform }),
-                    _react2.default.createElement("input", { ref: "movies", placeholder: 'Enter movie', className: b("inputs"), type: "text",
-                        onKeyDown: this.checkform, onKeyUp: this.startTimer, list: "movies" }),
                     _react2.default.createElement(
-                        "datalist",
-                        { id: "movies" },
-                        this.state.suggestedMovies.map(function (movie) {
-                            return _react2.default.createElement("option", { value: movie.name });
-                        })
+                        "h3",
+                        { className: b('title') },
+                        "Movies"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: b('movies-block') },
+                        _react2.default.createElement(
+                            "button",
+                            { className: b('add-button'), onClick: this.addMovie.bind(this) },
+                            "+"
+                        ),
+                        this.createListOfMovies()
                     ),
                     _react2.default.createElement(
                         "button",
@@ -68672,7 +68766,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, ".AddActor__button {\n  display: none;\n}\n.AddActor__success {\n  display: none;\n}\n", ""]);
+exports.push([module.i, ".AddActor {\n  width: 90%;\n  background-color: #373737;\n  margin: 20px auto;\n  box-shadow: 10px 21px 94px 6px #000001;\n  padding-top: 40px;\n  padding-bottom: 20px;\n}\n.AddActor__button {\n  display: none;\n  background-color: #FAE807;\n  color: #373737;\n  font-weight: bold;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 14px;\n  opacity: 0.9;\n  width: 50%;\n  max-width: 200px;\n  padding: 14px 20px;\n  margin: 10px auto;\n}\n.AddActor__button:hover {\n  opacity: 1;\n}\n.AddActor__success {\n  display: none;\n}\n.AddActor__inputs {\n  width: 80%;\n  padding: 8px 20px;\n  display: block;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-sizing: border-box;\n  margin: 10px auto;\n}\n.AddActor__title {\n  width: 80%;\n  color: #FAE807;\n  margin: 25px auto 5px auto;\n}\n", ""]);
 
 // exports
 
