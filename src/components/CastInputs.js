@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import "../styles/CastInputs.less";
 import block from '../helpers/BEM'
+import DragDropImage from "./DragDropImage";
 
 const b = block("CastInputs");
 
@@ -15,6 +16,7 @@ class CastInputs extends Component {
 
     createCastList() {
         const {suggestedActors} = this.state;
+        const {callback} = this.props;
         return this.state.chosenActors.map((ac, j) => {
             return <div key={j}>
                 <input ref='actorInput' name='name' className={b('input')} placeholder={'Enter actor name'} type="text" value={ac.name}
@@ -24,10 +26,26 @@ class CastInputs extends Component {
                 </datalist>
 
                 <input type='text' value={ac.role} className={b('input')} onChange={this.onRoleChange.bind(this, j)} placeholder="Enter actor's role" name='role'/>
+                <DragDropImage value={ac.image} name='actor' callbackFromParent={this.addActorAvatar.bind(this, j)} callbackInRemove={this.addActorAvatar.bind(this, j)}/>
+
                 <input type='button' value='-' className={b('button')}
                        onClick={this.removeActorAndRole.bind(this, j)}/>
             </div>
         })
+    }
+
+    addActorAvatar(i, name, val) {
+        const {callback} = this.props;
+        console.log('coming val is', val);
+        const arr = [
+            ...this.state.chosenActors.slice(0, i),
+            Object.assign({}, this.state.chosenActors[i], {image: val}),
+            ...this.state.chosenActors.slice(i + 1)
+        ];
+        this.setState({
+            chosenActors: arr
+        });
+        callback('cast', arr);
     }
 
     async onListChange(i, e) {
@@ -84,7 +102,7 @@ class CastInputs extends Component {
 
     removeActorAndRole(i) {
         const {name, callback} = this.props;
-        let chosenActors = [...this.state.chosenActors];
+        const {chosenActors} = this.state;
         const arr = [
             ...chosenActors.slice(0, i),
             ...chosenActors.slice(i + 1)
@@ -96,6 +114,7 @@ class CastInputs extends Component {
     }
 
     render() {
+        console.log('STATE IN ACTOR ADD', this.state.chosenActors);
         return <div className={b()}>
             <button className={b('button')} onClick={this.addActorAndRole.bind(this)}>+</button>
             {this.createCastList()}
