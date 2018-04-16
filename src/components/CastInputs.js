@@ -16,7 +16,6 @@ class CastInputs extends Component {
 
     createCastList() {
         const {suggestedActors} = this.state;
-        const {callback} = this.props;
         return this.state.chosenActors.map((ac, j) => {
             return <div key={j}>
                 <input ref='actorInput' name='name' className={b('input')} placeholder={'Enter actor name'} type="text" value={ac.name}
@@ -26,10 +25,9 @@ class CastInputs extends Component {
                 </datalist>
 
                 <input type='text' value={ac.role} className={b('input')} onChange={this.onRoleChange.bind(this, j)} placeholder="Enter actor's role" name='role'/>
-                <DragDropImage value={ac.image} name='actor' callbackFromParent={this.addActorAvatar.bind(this, j)} callbackInRemove={this.addActorAvatar.bind(this, j)}/>
-
                 <input type='button' value='-' className={b('button')}
                        onClick={this.removeActorAndRole.bind(this, j)}/>
+                <DragDropImage value={ac.image} name='actor' callbackFromParent={this.addActorAvatar.bind(this, j)} callbackInRemove={this.addActorAvatar.bind(this, j)}/>
             </div>
         })
     }
@@ -114,7 +112,6 @@ class CastInputs extends Component {
     }
 
     render() {
-        console.log('STATE IN ACTOR ADD', this.state.chosenActors);
         return <div className={b()}>
             <button className={b('button')} onClick={this.addActorAndRole.bind(this)}>+</button>
             {this.createCastList()}
