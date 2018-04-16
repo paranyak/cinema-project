@@ -67,16 +67,19 @@ class Schedule extends Component {
                                       sessionStart, DateTime.local()
                                   ).toDuration().milliseconds
                               ) + "%",
-                              display: sessionStart.hasSame(DateTime.local(), 'day') ? 'block' : 'none'
+                              display: (sessionStart.hasSame(DateTime.local(), 'day')) && (films.length > 0) ? 'block' : 'none'
                           }}></time>
+                    <span className={b("films-placeholder")}
+                    style={{display: films.length === 0 ? 'block' : 'none'}}>
+                    Sorry, there are no movies for today</span>
                     {films.map((film, i) => (
                         <article key={"div-1lev" + i.toString()} className={b("film")}>
-              <span key={i} className={b("film-name")}>
-                <Link className={b("film-link")} key={film.id} to={`/movie/${film.id}`}>
-                  {film.name}</Link></span>
-                            <section style={{'minHeight': film.schedule.length * 10}} key={"div-2lev" + i.toString()}
+                          <span key={i} className={b("film-name")}>
+                              <Link className={b("film-link")} key={film.id} to={`/movie/${film.id}`}>
+                                {film.name}</Link></span>
+                                  <section style={{'minHeight': film.schedule.length * 10}} key={"div-2lev" + i.toString()}
                                      className={b("film-schedule")}>
-                                {film.schedule.map((s, i, j) => (
+                                     {film.schedule.map((s, i, j) => (
                                     <div key={i}>
                                         <time
                                             className={b("film-schedule-item", s.isAfter(DateTime.local()) ? ['after'] : ['before'])}
