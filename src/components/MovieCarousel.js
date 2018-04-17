@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import {Link} from 'react-router-dom'
 import MoviePoster from "./MoviePoster";
 import {getPopularMoviesIds, getComingsoonrMoviesIds, getMovieById} from '../reducers';
-import {fetchPopularMovies, fetchComingsoonMovies} from '../api/fetch';
+import {fetchPopularMovies, fetchComingsoonMovies} from '../actions/fetch';
 import LazyLoad from 'react-lazyload';
 
 const b = block("MovieCarousel");
@@ -91,7 +91,7 @@ const mapDispatchToProps = (dispatch, props) => {
         fetchMovies: () => {
             (props.label === 'popular') ?
                 dispatch(fetchPopularMovies()) :
-                fetchComingsoonMovies()(dispatch);
+                dispatch(fetchComingsoonMovies());
         },
     }
 };

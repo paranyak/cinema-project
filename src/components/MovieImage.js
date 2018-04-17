@@ -72,7 +72,6 @@ class MovieImage extends Component {
 
     componentWillMount(){
         const {film} = this.props;
-        console.log("FILM CWM: ", film);
         let sourcesArray = [film.image];
         film.screenshots.map(
             screen => sourcesArray.push(screen)

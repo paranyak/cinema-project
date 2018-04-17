@@ -3,7 +3,7 @@ import "../styles/MoviePoster.less";
 import block from "../helpers/BEM";
 import {connect} from "react-redux";
 import {getMovieById} from "../reducers";
-import {fetchMovie} from '../api/fetch';
+import {fetchMovie} from '../actions/fetch';
 
 const b = block("MoviePoster");
 
@@ -34,6 +34,6 @@ export default connect((state, props) => {
       ...props,
       film:movie
     }}, (dispatch) => ({
-      fetchMovieById: (id) => fetchMovie(id)(dispatch)
+      fetchMovieById: (id) => dispatch(fetchMovie(id))
     })
 )(MoviePoster);

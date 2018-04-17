@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import { withRouter } from 'react-router-dom';
 import {getAllFilters, getAllMovies} from "../reducers";
 import {changeDate} from "../actions/filter";
-import {fetchMoviesSchedule} from "../api/fetch";
+import {fetchMoviesSchedule} from "../actions/fetch";
 import {DateTime} from "luxon/src/datetime.js";
 
 
@@ -47,7 +47,7 @@ class ScheduleLayout extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     setDate: (date) => dispatch(changeDate(date)),
-    fetchMoviesBySchedule: (day) => fetchMoviesSchedule(day)(dispatch)
+    fetchMoviesBySchedule: (day) => dispatch(fetchMoviesSchedule(day))
   }
 };
 
