@@ -4,7 +4,7 @@ export async function movie(id) {
 }
 
 export async function moviesSchedule(day) {
-  let movies = await ((await fetch(`http://localhost:3000/movies?Schedule_like=${day}`)).json());
+  let movies = await ((await fetch(`http://localhost:3000/movies?Schedule_like=${day}&properties=id`)).json());
   return movies
 }
 
