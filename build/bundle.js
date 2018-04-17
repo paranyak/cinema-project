@@ -63219,8 +63219,14 @@ var Schedule = function (_Component) {
                     _react2.default.createElement("time", { className: b("real-time-line"),
                         style: {
                             left: this.globalScale(_interval.Interval.fromDateTimes(sessionStart, _datetime.DateTime.local()).toDuration().milliseconds) + "%",
-                            display: sessionStart.hasSame(_datetime.DateTime.local(), 'day') ? 'block' : 'none'
+                            display: sessionStart.hasSame(_datetime.DateTime.local(), 'day') && films.length > 0 ? 'block' : 'none'
                         } }),
+                    _react2.default.createElement(
+                        "span",
+                        { className: b("films-placeholder"),
+                            style: { display: films.length === 0 ? 'block' : 'none' } },
+                        "Sorry, there are no movies for today"
+                    ),
                     films.map(function (film, i) {
                         return _react2.default.createElement(
                             "article",
@@ -65622,7 +65628,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, ".Schedule {\n  padding: 20px;\n  width: 80%;\n}\n.Schedule__day-container {\n  width: 15%;\n  position: relative;\n}\n.Schedule__day {\n  padding: 15px 3px;\n  color: #343434;\n  background-color: #D0D0D0;\n  border: none;\n  position: absolute;\n  height: 50px;\n  bottom: 20px;\n  right: 20px;\n  width: 105%;\n  box-sizing: border-box;\n  box-shadow: 6px 6px 30px 5px #000001;\n  outline: none;\n}\n.Schedule__time-string {\n  display: flex;\n  width: 85%;\n  border: 1px solid #D0D0D0;\n  border-bottom: none;\n  background-color: #575757;\n}\n.Schedule__film-schedule-item {\n  position: absolute;\n  height: 5px;\n  margin-top: 12px;\n  border-radius: 5px;\n}\n.Schedule__film-schedule-item_after {\n  background: #FAE807;\n}\n.Schedule__film-schedule-item_before {\n  background: #575757;\n}\n.Schedule__film-schedule-item:hover {\n  background: #D0D0D0;\n}\n.Schedule__real-time-line {\n  width: 2px;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  background-color: #FAE807;\n  z-index: 1;\n}\n.Schedule__film-schedule {\n  display: block;\n  position: relative;\n  padding: 10px 0;\n  background-color: #373737;\n  border: 1px solid #D0D0D0;\n  width: 85%;\n}\n.Schedule__time-item {\n  width: calc(100% / 16);\n  font-size: 14px;\n  text-align: center;\n  border-left: 1px solid #ccc;\n  padding: 3px 0;\n  color: #D0D0D0;\n}\n.Schedule__time-item:first-child {\n  border-left: none;\n}\n@media screen and (max-width: 950px) {\n  .Schedule__time-item {\n    writing-mode: vertical-rl;\n    white-space: nowrap;\n    display: inline-block;\n    overflow: visible;\n    box-sizing: border-box;\n    padding: 7px 0;\n  }\n}\n.Schedule__film-list {\n  position: relative;\n}\n.Schedule__film {\n  background-color: #D0D0D0;\n  display: flex;\n  margin-bottom: 4px;\n}\n.Schedule__film-name {\n  width: 15%;\n  color: #343434;\n  padding: 5px;\n  box-sizing: border-box;\n}\n.Schedule__film-link {\n  text-decoration: none;\n  color: #343434;\n}\n.Schedule__header {\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n}\n", ""]);
+exports.push([module.i, ".Schedule {\n  padding: 20px;\n  width: 80%;\n  text-align: center;\n}\n.Schedule__day-container {\n  width: 15%;\n  position: relative;\n}\n.Schedule__day {\n  padding: 15px 3px;\n  color: #343434;\n  background-color: #D0D0D0;\n  border: none;\n  position: absolute;\n  height: 50px;\n  bottom: 20px;\n  right: 20px;\n  width: 105%;\n  box-sizing: border-box;\n  box-shadow: 6px 6px 30px 5px #000001;\n  outline: none;\n}\n.Schedule__time-string {\n  display: flex;\n  width: 85%;\n  border: 1px solid #D0D0D0;\n  border-bottom: none;\n  background-color: #575757;\n}\n.Schedule__film-schedule-item {\n  position: absolute;\n  height: 5px;\n  margin-top: 12px;\n  border-radius: 5px;\n}\n.Schedule__film-schedule-item_after {\n  background: #FAE807;\n}\n.Schedule__film-schedule-item_before {\n  background: #575757;\n}\n.Schedule__film-schedule-item:hover {\n  background: #D0D0D0;\n}\n.Schedule__real-time-line {\n  width: 2px;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  background-color: #FAE807;\n  z-index: 1;\n}\n.Schedule__film-schedule {\n  display: block;\n  position: relative;\n  padding: 10px 0;\n  background-color: #373737;\n  border: 1px solid #D0D0D0;\n  width: 85%;\n}\n.Schedule__time-item {\n  width: calc(100% / 16);\n  font-size: 14px;\n  text-align: center;\n  border-left: 1px solid #ccc;\n  padding: 3px 0;\n  color: #D0D0D0;\n}\n.Schedule__time-item:first-child {\n  border-left: none;\n}\n@media screen and (max-width: 950px) {\n  .Schedule__time-item {\n    writing-mode: vertical-rl;\n    white-space: nowrap;\n    display: inline-block;\n    overflow: visible;\n    box-sizing: border-box;\n    padding: 7px 0;\n  }\n}\n.Schedule__film-list {\n  position: relative;\n}\n.Schedule__film {\n  background-color: #D0D0D0;\n  display: flex;\n  margin-bottom: 4px;\n}\n.Schedule__film-name {\n  width: 15%;\n  color: #343434;\n  padding: 5px;\n  box-sizing: border-box;\n}\n.Schedule__film-link {\n  text-decoration: none;\n  color: #343434;\n}\n.Schedule__header {\n  display: flex;\n  justify-content: flex-end;\n  width: 100%;\n}\n.Schedule__films-placeholder {\n  font-size: 40px;\n  margin-top: 100px;\n  color: #575757;\n  border: 3px dotted #575757;\n  border-radius: 30px;\n  padding: 50px;\n  font-style: italic;\n}\n", ""]);
 
 // exports
 
@@ -68441,10 +68447,11 @@ var AddActor = function (_Component) {
         var _this = _possibleConstructorReturn(this, (AddActor.__proto__ || Object.getPrototypeOf(AddActor)).call(this, props));
 
         _this.state = {
-            suggestedMovies: [{ id: 1, name: "" }],
-            currentSearchPhrase: " ",
-            sugestedMovie: { id: 1, name: "" },
-            movies: [{ name: "", id: "" }]
+            suggestedMovies: [[{ id: 1, name: "" }]], //список всіх фільмів які відповідають кожному інпут полю
+            currentSearchPhrase: [" "], //конкретно кожен інпут
+            currentSugestedMovies: [{ id: 1, name: "" }], // поточний фільм, який шукаємо
+            movies: [{ name: "" }], //всі фільми , тобто це той вигляд який має бд
+            currentInputIndex: 0
         };
         _this.addActorToDB = _this.addActorToDB.bind(_this);
         _this.checkform = _this.checkform.bind(_this);
@@ -68480,7 +68487,7 @@ var AddActor = function (_Component) {
                 date: this.refs.date.value,
                 city: this.refs.city.value,
                 nominations: this.refs.nominations.value.split(","),
-                image: "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/"
+                image: "https://r...content-available-to-author-only...y.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/"
             };
 
             console.log(actor);
@@ -68514,48 +68521,59 @@ var AddActor = function (_Component) {
     }, {
         key: "doneTyping",
         value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(e) {
-                var response, suggestedMovies;
+            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+                var index, response, currentInput, suggestedMoviesOnIndex, changedMovies;
                 return regeneratorRuntime.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
                             case 0:
                                 console.log("DONE TIMER");
-                                // if (this.refs.movies.value !== "" &&!this.refs.movies.value.startsWith(this.state.currentSearchPhrase)){
+                                index = this.state.currentInputIndex;
 
-                                if (!(this.state.currentSearchPhrase !== "")) {
-                                    _context.next = 13;
+                                if (!(this.state.currentSearchPhrase[index] !== "")) {
+                                    _context.next = 17;
                                     break;
                                 }
 
-                                _context.next = 4;
-                                return fetch("http://localhost:3000/movies?name_like=" + this.state.currentSearchPhrase);
+                                _context.next = 5;
+                                return fetch("http://localhost:3000/movies?name_like=" + this.state.currentSearchPhrase[index]);
 
-                            case 4:
+                            case 5:
                                 response = _context.sent;
 
                                 if (response.ok) {
-                                    _context.next = 9;
+                                    _context.next = 10;
                                     break;
                                 }
 
                                 console.log("ERROR IN MOVIE SEARCH AT ACTOR ADD");
-                                _context.next = 13;
+                                _context.next = 17;
                                 break;
 
-                            case 9:
-                                _context.next = 11;
+                            case 10:
+                                currentInput = document.querySelectorAll(".AddActor__inputs_movie")[index];
+
+                                console.log(currentInput);
+                                _context.next = 14;
                                 return response.json();
 
-                            case 11:
-                                suggestedMovies = _context.sent;
+                            case 14:
+                                suggestedMoviesOnIndex = _context.sent;
 
-                                if (suggestedMovies != []) {
-                                    this.setState({ suggestedMovies: suggestedMovies });
-                                    console.log("SUGESTED", this.state.suggestedMovies);
+                                console.log("Sug:", suggestedMoviesOnIndex);
+                                if (suggestedMoviesOnIndex.length !== 0) {
+                                    console.log("here!!!");
+                                    currentInput.style.backgroundColor = 'white';
+                                    changedMovies = this.state.suggestedMovies;
+
+                                    changedMovies[index] = suggestedMoviesOnIndex;
+                                    this.setState({ suggestedMovies: changedMovies });
+                                    this.setState({ currentSugestedMovies: suggestedMoviesOnIndex });
+                                } else {
+                                    currentInput.style.backgroundColor = '#ea8685';
                                 }
 
-                            case 13:
+                            case 17:
                             case "end":
                                 return _context.stop();
                         }
@@ -68563,7 +68581,7 @@ var AddActor = function (_Component) {
                 }, _callee, this);
             }));
 
-            function doneTyping(_x) {
+            function doneTyping() {
                 return _ref.apply(this, arguments);
             }
 
@@ -68571,9 +68589,12 @@ var AddActor = function (_Component) {
         }()
     }, {
         key: "startTimer",
-        value: function startTimer(e) {
+        value: function startTimer(e, currentInputIndex) {
             clearTimeout(typingTimer);
-            this.setState({ currentSearchPhrase: e.target.value });
+            var changedSearch = this.state.currentSearchPhrase;
+            changedSearch[currentInputIndex] = e.target.value;
+            this.setState({ currentSearchPhrase: changedSearch });
+            this.setState({ currentInputIndex: currentInputIndex });
             typingTimer = setTimeout(this.doneTyping, doneTypingInterval);
         }
     }, {
@@ -68587,13 +68608,19 @@ var AddActor = function (_Component) {
                 }]);
                 return { movies: arr };
             });
+            this.setState(function (prevState) {
+                var arr = [].concat(_toConsumableArray(prevState.suggestedMovies), [[{
+                    name: '',
+                    id: ''
+                }]]);
+                return { suggestedMovies: arr };
+            });
         }
     }, {
         key: "createListOfMovies",
         value: function createListOfMovies() {
             var _this2 = this;
 
-            console.log("MOVIES:", this.state.movies);
             return this.state.movies.map(function (m, j) {
                 return _react2.default.createElement(
                     "div",
@@ -68605,7 +68632,7 @@ var AddActor = function (_Component) {
                     _react2.default.createElement(
                         "datalist",
                         { id: "movies" },
-                        _this2.state.suggestedMovies.map(function (movie) {
+                        _this2.state.currentSugestedMovies.map(function (movie) {
                             return _react2.default.createElement("option", { value: movie.name });
                         })
                     ),
@@ -68619,7 +68646,15 @@ var AddActor = function (_Component) {
         value: function removeMovie(index) {
             var movies = [].concat(_toConsumableArray(this.state.movies));
             var arr = [].concat(_toConsumableArray(movies.slice(0, index)), _toConsumableArray(movies.slice(index + 1)));
+
+            var sugestedMovies = this.state.suggestedMovies;
+            var suggestedArr = [].concat(_toConsumableArray(sugestedMovies.slice(0, index)), _toConsumableArray(sugestedMovies.slice(index + 1)));
+
+            var currentSearchPhrase = this.state.currentSearchPhrase;
+            var searchPhrasesArr = [].concat(_toConsumableArray(currentSearchPhrase.slice(0, index)), _toConsumableArray(currentSearchPhrase.slice(index + 1)));
             this.setState({ movies: arr });
+            this.setState({ suggestedMovies: suggestedArr });
+            this.setState({ currentSearchPhrase: searchPhrasesArr });
         }
     }, {
         key: "doneMovie",
