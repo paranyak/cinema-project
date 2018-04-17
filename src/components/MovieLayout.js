@@ -4,7 +4,7 @@ import MovieInfo from "./MovieInfo";
 import "../styles/MovieLayout.less"
 import block from "../helpers/BEM";
 import {getMovieById} from "../reducers";
-import { fetchMovie } from '../api/fetch';
+import { fetchMovie } from '../actions/fetch';
 import {connect} from "react-redux";
 
 
@@ -24,7 +24,6 @@ class MovieLayout extends Component {
           this.props.fetchMovieById(this.props.match.params.id);
           return null;
         }
-        console.log("HERE ML");
         return (
             <div>
                 <div className={b()}>
@@ -42,6 +41,6 @@ export default connect((state, props) => {
       const movie = getMovieById(state, props.match.params.id);
       return {film: movie};
     }, (dispatch) => ({
-      fetchMovieById: (id) => fetchMovie(id)(dispatch)
+      fetchMovieById: (id) => dispatch(fetchMovie(id))
     })
 )(MovieLayout);

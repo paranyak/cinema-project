@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
 import {getSelectedActor} from "../reducers/index";
-import {fetchActors} from '../api/fetch';
+import {fetchActors} from '../actions/fetch';
 
 import "../styles/ActorLayout.less"
 import block from "../helpers/BEM";
@@ -68,6 +68,6 @@ export default connect((state, props) => {
         const actor = getSelectedActor(state);
         return {selectedActor: actor};
     }, (dispatch) => ({
-        fetchActorById: (id) => fetchActors(id)(dispatch)
+        fetchActorById: (id) => dispatch(fetchActors(id))
     })
 )(ActorLayout);

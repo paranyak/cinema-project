@@ -6,7 +6,7 @@ import MoviePoster from "./MoviePoster";
 import {Link} from 'react-router-dom';
 import InfiniteScroll from "react-infinite-scroller";
 import {getAllMoviesIds, isMovieFetching, getComingsoonrMoviesIds} from "../reducers";
-import {fetchAdditionalMovies} from "../api/fetch"
+import {fetchAdditionalMovies} from "../actions/fetch"
 import LazyLoad from 'react-lazyload';
 
 const b = block("AllMovies");
@@ -82,7 +82,7 @@ class AllMovies extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchAllMovies: (labels, pages) => fetchAdditionalMovies(labels, pages)(dispatch)
+        fetchAllMovies: (labels, pages) => dispatch(fetchAdditionalMovies(labels, pages))
     }
 };
 

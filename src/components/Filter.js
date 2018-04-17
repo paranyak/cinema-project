@@ -26,28 +26,28 @@ class Filter extends Component {
         <section className={b("group")} >
           <span className={b("name")}>Genres</span>
           {this.availableGenres.map((el, i) => (
-            <section key={i} className={b("filter")}>
-              <input type="checkbox" id={el} value="genres" checked={filters.genres.includes(el)} onChange={onSwitchFilter}/>
-              <label htmlFor={el}>{el}</label>
-            </section>
+            <label htmlFor={el} key={i} className={b("filter")}> {el}
+              <input className={b("checkbox")} type="checkbox" id={el} value="genres" checked={filters.genres.includes(el)} onChange={onSwitchFilter}/>
+              <span className={b("checkmark")}></span>
+            </label>
           ))}
         </section>
         <section className={b("group")} >
           <span className={b("name")}>Technologies</span>
           {this.availableTechnologies.map((el, i) => (
-            <section key={i} className={b("filter")}>
-              <input type="checkbox" value="technologies" id={el} onChange={onSwitchFilter}/>
-              <label htmlFor={el}>{el}</label>
-            </section>
+            <label htmlFor={el} key={i} className={b("filter")}> {el}
+              <input className={b("checkbox")} type="checkbox" value="technologies" id={el} onChange={onSwitchFilter}/>
+              <span className={b("checkmark")}></span>
+            </label>
           ))}
         </section>
         <section className={b("group")} >
           <span className={b("name")}>Format</span>
           {this.availableFormats.map((el, i) => (
-            <section key={i} className={b("filter")}>
-              <input type="checkbox" value="formats" id={el} onChange={onSwitchFilter}/>
-              <label htmlFor={el}>{el}</label>
-            </section>
+            <label htmlFor={el} key={i} className={b("filter")}> {el}
+              <input className={b("checkbox")} type="checkbox" value="formats" id={el} onChange={onSwitchFilter}/>
+              <span className={b("checkmark")}></span>
+            </label>
           ))}
         </section>
       </div>
