@@ -187,6 +187,7 @@ class InputFields extends Component {
             startDate,
             label
         } = this.state;
+        console.log('-----------------------');
         console.log('this state', this.state);
 
         const isEnabled =
@@ -204,7 +205,7 @@ class InputFields extends Component {
                        type='text'/>
 
                 <h3 className={b('title')}>Poster</h3>
-                <DragDropImage name='poster' callbackFromParent={this.myCallback2} callbackInRemove={this.myCallback2}/>
+                <DragDropImage value={''} name='poster' callbackFromParent={this.myCallback2} callbackInRemove={this.myCallback2}/>
 
                 <h3 className={b('title')}>Description</h3>
                 <input type='text' onChange={this.changeInput} name='description' className={b('input')}
@@ -227,7 +228,7 @@ class InputFields extends Component {
                 <input type="date" onChange={this.changeInput} name='startDate' className={b('input')}/>
 
                 <h3 className={b('title')}>Screenshots</h3>
-                <DragDropImage name='screenshots' callbackFromParent={this.myCallback}
+                <DragDropImage value={''} name='screenshots' callbackFromParent={this.myCallback}
                                callbackInRemove={this.myCallback2}/>
 
                 <h3 className={b('title')}>Cast</h3>

@@ -1,8 +1,47 @@
+@import "SiteColors.less";
+
 .AddActor{
+  width:90%;
+  background-color: #373737;
+  margin: 20px auto;
+  box-shadow: 10px 21px 94px 6px #000001;
+  padding-top: 40px;
+  padding-bottom: 20px;
+
   &__button{
     display: none;
+    background-color: @main-yellow;
+    color: #373737;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0.9;
+    width: 50%;
+    max-width: 200px;
+    padding: 14px 20px;
+    margin: 10px auto;
+    &:hover {
+      opacity: 1;
+    }
   }
+
   &__success{
     display: none;
+  }
+  &__inputs{
+    width: 80%;
+    padding: 8px 20px;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: 10px auto;
+  }
+  &__title {
+    width:80%;
+    color: @main-yellow;
+    margin: 25px auto 5px auto;
   }
 }
