@@ -7,9 +7,11 @@ import axios from "axios/index";
 const b = block("DragDropImage");
 
 class DragDropImage extends Component {
-    constructor() {
-        super();
-        this.state = {images: []}
+    constructor(props) {
+        super(props);
+        this.state = {images: [
+            this.props.value
+            ]}
     }
 
     handleDrop(files) {
@@ -19,7 +21,7 @@ class DragDropImage extends Component {
         if (name === 'poster') {
             preset = "pt8mg4xb";
         }
-        else if (name === 'actors') {
+        else if (name === 'actor') {
             preset = "sfazgc2b";
         }
         else if (name === 'screenshots') {
@@ -38,7 +40,7 @@ class DragDropImage extends Component {
             }).then(response => {
                 const data = response.data;
                 const fileURL = data.secure_url;
-                const val = (name === 'poster') ? [fileURL] : [...this.state.images, fileURL];
+                const val = (name === 'poster' || name === 'actor') ? [fileURL] : [...this.state.images, fileURL];
                 this.setState({images: val});
                 this.props.callbackFromParent(name, fileURL);
             })
@@ -50,12 +52,15 @@ class DragDropImage extends Component {
         const {name} = this.props;
         const arr = [...images.slice(0, i), ...images.slice(i + 1)];
         this.setState({images: arr});
-        const val = (name === 'poster' ? '' : arr);
+        const val = ((name === 'poster' || name === 'actor') ? '' : arr);
         this.props.callbackInRemove(name, val);
     };
 
     showImagePreview() {
         const {images} = this.state;
+        if (images[0] === '') {
+            this.setState({images: [...images.slice(1)]})
+        }
         if (images.length !== 0) {
             return <div>
                 <p className={b('message')}>Click on the image you want to remove</p>
@@ -67,7 +72,7 @@ class DragDropImage extends Component {
 
     render() {
         const {name} = this.props;
-        const multiple = (name !== 'poster');
+        const multiple = (name !== 'poster' || name !== 'actor');
         return <div>
             <Dropzone
                 onDrop={this.handleDrop.bind(this)}
