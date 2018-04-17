@@ -63,7 +63,7 @@ class AddActor extends Component {
             date: this.refs.date.value,
             city: this.refs.city.value,
             nominations: this.refs.nominations.value.split(","),
-            image: "https://r...content-available-to-author-only...y.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/"
+            image: "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/"
         };
 
         console.log(actor);
@@ -171,11 +171,11 @@ class AddActor extends Component {
                 <input value={m.name} placeholder={'Enter movie'} className={b("inputs", ["movie"])} type="text"
                        list="movies" onKeyDown={this.checkform} onChange={this.doneMovie.bind(this, j)}
                        onKeyUp={(e) => this.startTimer(e, j)}/>
+                <input type='button' value='-' className={b('remove-button')}
+                       onClick={this.removeMovie.bind(this, j)}/>
                 <datalist id="movies">
                     {this.state.currentSugestedMovies.map(movie => <option value={movie.name}/>)}
                 </datalist>
-                <input type='button' value='-' className={b('remove-button')}
-                       onClick={this.removeMovie.bind(this, j)}/>
             </div>
         })
     }

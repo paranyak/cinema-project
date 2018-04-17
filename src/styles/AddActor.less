@@ -38,10 +38,32 @@
     border-radius: 4px;
     box-sizing: border-box;
     margin: 10px auto;
+    &_movie{
+      width: 90%;
+      display: inline-block;
+    }
   }
   &__title {
     width:80%;
     color: @main-yellow;
     margin: 25px auto 5px auto;
+  }
+  &__remove-button, &__add-button{
+    display: inline-block;
+    background-color: @main-yellow;
+    color: #373737;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    opacity: 0.9;
+    width: 5%;
+    padding: 8px 20px;
+    margin: 1%;
+  }
+  &__movies-block{
+    width: 80%;
+    margin: 0 auto;
   }
 }
