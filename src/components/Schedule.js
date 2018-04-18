@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {getAllMoviesIds, getAllFilters, getMovieById} from "../reducers/index";
+import {getAllMoviesIds, getAllFilters, getMovieById, isMovieFetching} from "../reducers/index";
 import {changeDate} from "../actions/filter";
 import {Interval} from "luxon/src/interval.js";
 import {Link} from 'react-router-dom'
@@ -10,6 +10,8 @@ import {push} from 'react-router-redux';
 import {connect} from "react-redux";
 import "../styles/Schedule.less";
 import block from "../helpers/BEM";
+import {fetchMovie} from '../actions/fetch';
+
 
 const b = block("Schedule");
 
@@ -19,13 +21,18 @@ class Schedule extends Component {
     }
 
     render() {
-        const {films, onDateChange, date} = this.props;
+        const {films, onDateChange, date, unfetchedMovies, fetchMovieById} = this.props;
+        let unfetched = this.props.unfetchedMovies;
+        unfetched
+          .filter(id => !this.props.isMovieFetching(id))
+          .forEach(id => this.props.fetchMovieById(id));
         const sessionStart = date.set({
             hour: 9,
             minute: 0,
             seconds: 0,
             milliseconds: 0
         });
+
         const scheduleInterval = Interval.after(sessionStart, {hours: 16});
         this.scale = (t) => 100 * t / scheduleInterval.toDuration().milliseconds;
         this.globalScale = (t) => 85 * t / scheduleInterval.toDuration().milliseconds + 15;
@@ -111,20 +118,30 @@ const mapDispatchToProps = (dispatch, props) => {
         onDateChange: (event) => {
             dispatch(changeDate(event.target.value));
             dispatch(push('/schedule/' + event.target.value));
-        }
+        },
+        fetchMovieById: (id) => dispatch(fetchMovie(id))
     }
 };
 
-export default connect(state => {
+export default connect((state, props) => {
   const moviesIds = getAllMoviesIds(state);
+  const unfetchedMovies = [];
+  const movies = moviesIds.map((id) => {
+    let movie = getMovieById(state, id)
+    if (!movie) {
+      unfetchedMovies.push(id);
+    }
+    return movie;
+  }).filter(movie => movie)
   const filters = getAllFilters(state);
   const date = filters.date ?
     DateTime.fromFormat(filters.date, 'yyyy-MM-dd') :
     DateTime.local();
   return {
     date,
-    films: moviesIds
-      .map((id) => getMovieById(state, id))
+    unfetchedMovies,
+    isMovieFetching: (id) => isMovieFetching(id, state),
+    films: movies
       .filter((movie) => {
         if (filters.genres.length === 0) {
           return true;
