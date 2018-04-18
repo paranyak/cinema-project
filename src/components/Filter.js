@@ -52,7 +52,7 @@ class Filter extends Component {
           <span className={b("name")}>Technologies</span>
           {this.availableTechnologies.map((el, i) => (
             <label htmlFor={el} key={i} className={b("filter")}> {el}
-              <input className={b("checkbox")} type="checkbox" value="technologies" id={el} onChange={onSwitchFilter}/>
+              <input className={b("checkbox")} type="checkbox" value="technologies" checked={filters.technologies.includes(el)} id={el} onChange={onSwitchFilter}/>
               <span className={b("checkmark")}></span>
             </label>
           ))}
@@ -61,7 +61,7 @@ class Filter extends Component {
           <span className={b("name")}>Format</span>
           {this.availableFormats.map((el, i) => (
             <label htmlFor={el} key={i} className={b("filter")}> {el}
-              <input className={b("checkbox")} type="checkbox" value="formats" id={el} onChange={onSwitchFilter}/>
+              <input className={b("checkbox")} type="checkbox" value="formats" checked={filters.formats.includes(el)} id={el} onChange={onSwitchFilter}/>
               <span className={b("checkmark")}></span>
             </label>
           ))}
