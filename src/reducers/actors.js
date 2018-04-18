@@ -2,28 +2,39 @@ import {combineReducers} from 'redux';
 import {assoc} from "ramda";
 
 const initialState = {
-    selectedActor: {}
+    byId: {},
+    allIds: []
 };
 
-export const actors = (state = [], action) => {
+const byId = (state={}, action) => {
     switch (action.type) {
         case 'FETCH_ACTOR__SUCCESS':
-            return action.actor;
-        default:
-            return state;
-    }
-};
-
-export const selectedActor = (state = {}, action) => {
-    switch (action.type) {
-        case 'FETCH_ACTOR__SUCCESS':
-            return action.actor;
+            return {
+                ...state,
+                ...action.actors
+            };
         case 'FETCH_MOVIES_FAIL':
             return action;
         default:
-            return state
+            return state;
     }
-};
+}
+
+const allIds = (state=[], action) => {
+    switch (action.type) {
+        case 'FETCH_ACTOR__SUCCESS':
+            return [
+                ...state,
+                ...action.ids
+            ].filter((el, i, arr) => arr.indexOf(el) === i)
+        case 'FETCH_MOVIES_FAIL':
+            return action;
+        default:
+            return state;
+    }
+}
+
+
 
 export const fetching = (state = {}, action) => {
     switch (action.type) {
@@ -39,11 +50,12 @@ export const fetching = (state = {}, action) => {
 };
 
 
-export const getSelectedActor = (state) => state.selectedActor;
+export const getAllActorsIds = (state) => state.allIds;
+export const getActorById = (state, id) => state.byId[id];
 
 
 export default combineReducers({
-    actors,
-    fetching,
-    selectedActor
+    byId,
+    allIds,
+    fetching
 });

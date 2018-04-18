@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
-import {getSelectedActor} from "../reducers/index";
+import {getSelectedActor, getActorById} from "../reducers/index";
 import {fetchActors} from '../actions/fetch';
 
 import "../styles/ActorLayout.less"
@@ -15,23 +15,22 @@ const b = block("ActorLayout");
 class ActorLayout extends Component {
     constructor(props) {
         super(props);
-        this.props.fetchActorById(this.props.match.params.id);
 
     }
 
     render() {
         const {selectedActor} = this.props;
-        if (selectedActor.error) {
-            return (
-                <section className={b("error")}>
-                    <img width="100%" src="http://www.topdesignmag.com/wp-content/uploads/2012/06/1.-404-not-found-design.jpg"/>
-                </section>
-            );
+        if (!selectedActor || selectedActor.id === undefined) {
+             this.props.fetchActorById(this.props.match.params.id);
+             return null;
         }
-        else if (selectedActor.nominations === undefined) {
-            console.log("UNDEFINED...");
-            return null;
-        }
+        else if (selectedActor.error) {
+             return (
+                 <section className={b("error")}>
+                     <img width="100%" src="http://www.topdesignmag.com/wp-content/uploads/2012/06/1.-404-not-found-design.jpg"/>
+                 </section>
+             );
+         }
         return (
             <section className={b()}>
                 <section className={b("general")}>
@@ -65,8 +64,9 @@ class ActorLayout extends Component {
 
 
 export default connect((state, props) => {
-        const actor = getSelectedActor(state);
-        return {selectedActor: actor};
+        // const actor = getSelectedActor(state);
+    const actor = getActorById(state, props.match.params.id);
+    return {selectedActor: actor};
     }, (dispatch) => ({
         fetchActorById: (id) => dispatch(fetchActors(id))
     })
