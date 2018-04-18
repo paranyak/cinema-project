@@ -40,12 +40,17 @@ export const fetchAdditionalMovies = (limit, page) => async (dispatch) => {
 
 export const fetchActors = (id) => async (dispatch) => {
     dispatch(fromFetch.fetchActorsStart(id));
-    let response = await fromApi.actors(id)
+    let response = await fromApi.actors(id);
     if (!response.ok) {
-        console.log("ERROR IN ACTOR");
-        dispatch(fromFetch.fetchMoviesFail(id));
+        console.log("ACTOR NOT FOUND");
+        let actor = {};
+        actor["id"] = id;
+        actor["error"] = true;
+        let actors = normalize([actor], actorsListSchema);
+        dispatch(fromFetch.fetchActorsSucess(id, actors.result, actors.entities.actors ));
     } else {
         let actors = await ((response).json());
+        console.log("SUCCESS:",actors);
         actors = normalize([actors], actorsListSchema);
         console.log("ACTOR NORM:",actors.result, actors.entities.actors );
         dispatch(fromFetch.fetchActorsSucess(id, actors.result, actors.entities.actors));

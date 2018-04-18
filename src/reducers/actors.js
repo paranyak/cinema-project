@@ -9,10 +9,6 @@ const initialState = {
 const byId = (state={}, action) => {
     switch (action.type) {
         case 'FETCH_ACTOR__SUCCESS':
-            console.log("BY ID:",{
-                ...state,
-                ...action.actors
-            });
             return {
                 ...state,
                 ...action.actors

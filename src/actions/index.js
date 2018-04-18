@@ -14,12 +14,14 @@ export const fetchActorsStart = (id) => {
 
 export const fetchActorsSucess = (id, ids, actors = []) => ({type: 'FETCH_ACTOR__SUCCESS', id, actors, ids})
 
-export const fetchMoviesFail = (id) => {
-    console.log("FETCH FAIL");
+export const fetchMoviesFail = (id, ids, actors = []) => {
+    console.log("FETCH FAIL", ids);
     return {
         type: 'FETCH_MOVIES_FAIL',
         error: true,
-        id
+        id,
+        ids,
+        actors
     }
 }
 
