@@ -17,18 +17,11 @@ export const fetchMoviesSchedule = (day) => async (dispatch) => {
     dispatch(fromFetch.fetchMoviesByScheduleSuccess(movies.result, movies.entities.movies));
 }
 
-export const fetchPopularMovies = () => async (dispatch) => {
-    dispatch(fromFetch.fetchMoviesStart('popular'));
-    let movies = await fromApi.popularMovies()
+export const fetchCarouselleMovies = (label) => async (dispatch) => {
+    dispatch(fromFetch.fetchMoviesStart('carouselle'));
+    let movies = await fromApi.carouselleMovies(label)
     movies = normalize(movies, moviesListSchema);
-    dispatch(fromFetch.fetchPopularMoviesSuccess(movies.result, movies.entities.movies));
-}
-
-export const fetchComingsoonMovies = () => async (dispatch) => {
-    dispatch(fromFetch.fetchMoviesStart('comingSoon'));
-    let movies = await fromApi.comingSoonMovies()
-    movies = normalize(movies, moviesListSchema);
-    dispatch(fromFetch.fetchComingsoonMoviesSuccess(movies.result, movies.entities.movies));
+    dispatch(fromFetch.fetchCarouselleMoviesSuccess(movies.result, movies.entities.movies, label));
 }
 
 export const fetchAdditionalMovies = (limit, page) => async (dispatch) => {

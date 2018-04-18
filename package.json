@@ -39,6 +39,7 @@
     "lodash": "^4.17.5",
     "luxon": "0.5.3",
     "normalizr": "^3.2.4",
+    "query-string": "^6.0.0",
     "ramda": "^0.25.0",
     "react": "^16.2.0",
     "react-day-picker": "^7.1.4",

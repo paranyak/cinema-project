@@ -1,4 +1,4 @@
-const initialState = JSON.parse(localStorage.getItem("filters")) || {
+const initialState = {
   date: '',
   genres: [],
   technologies: [],
@@ -20,15 +20,18 @@ const filters = (state = initialState, action) => {
         ...state
       };
       newState[action.key] = array;
-      localStorage.setItem("filters", JSON.stringify(newState));
       return newState;
+    case 'SET_FILTERS':
+      return {
+        ...state,
+        ...action.value
+      }
     case 'REMOVE_FILTER':
       let array1 = state[action.key].filter((el) => el !== action.value);
       let newState1 = {
         ...state
       };
       newState1[action.key] = array1;
-      localStorage.setItem("filters", JSON.stringify(newState1));
       return newState1;
 
     default:

@@ -4,17 +4,15 @@ import {assoc} from "ramda";
 const initialState = {
   byId: {},
   allIds: [],
-  popularMoviesIds: [],
-  comingSoonMoviesIds: [],
+  carouselleMovies: {},
   scheduleMoviesIds: [],
 };
 
 const byId = (state={}, action) => {
   switch (action.type) {
     case 'FETCH_MOVIES_SUCCESS':
-    case 'FETCH_POPULAR_MOVIES_SUCCESS':
     case 'FETCH_SCHEDULE_MOVIES_SUCCESS':
-    case 'FETCH_COMMINGSOON_MOVIES_SUCCESS':
+    case 'FETCH_CAROUSELLE_MOVIES_SUCCESS':
       return {
         ...state,
         ...action.movies
@@ -27,9 +25,8 @@ const byId = (state={}, action) => {
 const allIds = (state=[], action) => {
   switch (action.type) {
     case 'FETCH_MOVIES_SUCCESS':
-    case 'FETCH_POPULAR_MOVIES_SUCCESS':
     case 'FETCH_SCHEDULE_MOVIES_SUCCESS':
-    case 'FETCH_COMMINGSOON_MOVIES_SUCCESS':
+    case 'FETCH_CAROUSELLE_MOVIES_SUCCESS':
       return [
         ...state,
         ...action.ids
@@ -39,21 +36,15 @@ const allIds = (state=[], action) => {
   }
 }
 
-const popularMoviesIds = (state = [], action) => {
+const carouselleMovies = (state={ popular: [], soon: []}, action) => {
   switch (action.type) {
-    case 'FETCH_POPULAR_MOVIES_SUCCESS':
-        return [...action.ids]
+    case 'FETCH_CAROUSELLE_MOVIES_SUCCESS':
+      return {
+        ...state,
+        [action.label]: action.ids
+      }
     default:
-        return state;
-  }
-}
-
-const comingSoonMoviesIds = (state = [], action) => {
-  switch (action.type) {
-    case 'FETCH_COMMINGSOON_MOVIES_SUCCESS':
-        return [...action.ids]
-    default:
-        return state;
+      return state;
   }
 }
 
@@ -72,9 +63,8 @@ const fetching = (state = {}, action) => {
             return assoc(action.id, true, state);
         case "FETCH_MOVIES_FAIL":
         case "FETCH_MOVIES_SUCCESS":
-        case 'FETCH_POPULAR_MOVIES_SUCCESS':
         case 'FETCH_SCHEDULE_MOVIES_SUCCESS':
-        case 'FETCH_COMMINGSOON_MOVIES_SUCCESS':
+        case 'FETCH_CAROUSELLE_MOVIES_SUCCESS':
             return assoc(action.id, false, state);
         default:
             return state;
@@ -85,9 +75,7 @@ export const getAllMoviesIds = (state) => state.allIds;
 
 export const isMovieFetching = (id, state) => state.fetching[id];
 
-export const getPopularMoviesIds = (state) => state.popularMoviesIds;
-
-export const getComingsoonrMoviesIds = (state) => state.comingSoonMoviesIds;
+export const getCarouselleMovies = (state, label) => state.carouselleMovies[label];
 
 export const getScheduleMoviesIds = (state) => state.scheduleMoviesIds;
 
@@ -97,7 +85,6 @@ export default combineReducers({
     byId,
     allIds,
     fetching,
-    comingSoonMoviesIds,
-    popularMoviesIds,
+    carouselleMovies,
     scheduleMoviesIds
 });

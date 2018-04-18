@@ -14,6 +14,13 @@ export const addFilter = (key, value) => {
     }
 };
 
+export const setFilters = (value) => {
+    return {
+        type: 'SET_FILTERS',
+        value
+    }
+};
+
 export const removeFilter = (key, value) => {
     return {
         type: 'REMOVE_FILTER',

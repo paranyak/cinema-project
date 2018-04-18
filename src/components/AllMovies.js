@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import MoviePoster from "./MoviePoster";
 import {Link} from 'react-router-dom';
 import InfiniteScroll from "react-infinite-scroller";
-import {getAllMoviesIds, isMovieFetching, getComingsoonrMoviesIds} from "../reducers";
+import {getAllMoviesIds, isMovieFetching, getCarouselleMovies} from "../reducers";
 import {fetchAdditionalMovies} from "../actions/fetch"
 import LazyLoad from 'react-lazyload';
 
@@ -88,7 +88,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = state => {
     const movies = getAllMoviesIds(state);
-    const comingSoonIds = getComingsoonrMoviesIds(state);
+    const comingSoonIds = getCarouselleMovies(state, 'soon');
     const isFetching = isMovieFetching('additional', state);
     return {
         films: movies,

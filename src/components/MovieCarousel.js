@@ -6,8 +6,8 @@ import checkScrollPosition from '../helpers/checkScrollPosition';
 import {connect} from "react-redux";
 import {Link} from 'react-router-dom'
 import MoviePoster from "./MoviePoster";
-import {getPopularMoviesIds, getComingsoonrMoviesIds, getMovieById} from '../reducers';
-import {fetchPopularMovies, fetchComingsoonMovies} from '../actions/fetch';
+import {getMovieById, getCarouselleMovies} from '../reducers';
+import {fetchCarouselleMovies} from '../actions/fetch';
 import LazyLoad from 'react-lazyload';
 
 const b = block("MovieCarousel");
@@ -88,18 +88,12 @@ class MovieCarousel extends Component {
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        fetchMovies: () => {
-            (props.label === 'popular') ?
-                dispatch(fetchPopularMovies()) :
-                dispatch(fetchComingsoonMovies());
-        },
+        fetchMovies: () => dispatch(fetchCarouselleMovies(props.label))
     }
 };
 
 const mapStateToProps = (state, props) => {
-    const movies = (props.label === 'popular') ?
-        getPopularMoviesIds(state) :
-        getComingsoonrMoviesIds(state);
+    const movies = getCarouselleMovies(state, props.label) || []
     return {
         films: movies
     }

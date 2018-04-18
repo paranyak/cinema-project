@@ -26,9 +26,7 @@ export const getAllFilters = (state) => fromFilters.getAllFilters(state.filters)
 
 export const isMovieFetching = (id, state) => fromMovies.isMovieFetching(id, state.movies);
 
-export const getPopularMoviesIds = (state) => fromMovies.getPopularMoviesIds(state.movies);
-
-export const getComingsoonrMoviesIds = (state) => fromMovies.getComingsoonrMoviesIds(state.movies);
+export const getCarouselleMovies = (state, label) => fromMovies.getCarouselleMovies(state.movies, label);
 
 export const getScheduleMoviesIds = (state) => fromMovies.getScheduleMoviesIds(state.movies);
 

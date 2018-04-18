@@ -32,22 +32,14 @@ export const fetchMoviesSuccess = (id, ids, movies = []) => {
     }
 }
 
-export const fetchPopularMoviesSuccess = (ids, movies) => {
-    return {
-        type: 'FETCH_POPULAR_MOVIES_SUCCESS',
-        id: 'popular',
-        ids,
-        movies
-    }
-}
-
-export const fetchComingsoonMoviesSuccess = (ids, movies) => {
-    return {
-        type: 'FETCH_COMMINGSOON_MOVIES_SUCCESS',
-        id: 'comingSoon',
-        movies,
-        ids
-    }
+export const fetchCarouselleMoviesSuccess = (ids, movies, label) => {
+      return {
+          type: 'FETCH_CAROUSELLE_MOVIES_SUCCESS',
+          id: 'carouselle',
+          movies,
+          ids,
+          label
+      }
 }
 
 export const fetchMoviesByScheduleSuccess = (ids, movies) => {

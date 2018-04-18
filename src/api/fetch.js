@@ -1,3 +1,4 @@
+
 export async function movie(id) {
   let movies = await ((await fetch(`http://localhost:3000/movies/${id}`)).json());
   return movies
@@ -8,13 +9,8 @@ export async function moviesSchedule(day) {
   return movies
 }
 
-export async function popularMovies() {
-  let movies = await ((await fetch(`http://localhost:3000/movies?label=popular&properties=id`)).json());
-  return movies
-}
-
-export async function comingSoonMovies() {
-  let movies = await ((await fetch(`http://localhost:3000/movies?label=soon&properties=id`)).json());
+export async function carouselleMovies(label) {
+  let movies = await ((await fetch(`http://localhost:3000/movies?label=${label}&properties=id`)).json());
   return movies
 }
 

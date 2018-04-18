@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import "../styles/Filter.less";
 import block from "../helpers/BEM";
 import {connect} from "react-redux";
-import {addFilter, removeFilter} from "../actions/filter";
+import {addFilter, removeFilter, setFilters} from "../actions/filter";
 import {getAllFilters} from "../reducers"
+import {replace} from 'react-router-redux';
+import  * as queryString from 'query-string';
 
 
 const b = block("Filter");
@@ -18,8 +20,32 @@ class Filter extends Component {
     this.availableFormats = ['2D', '3D'];
   }
 
+  componentDidMount(props) {
+    // console.log(this.props.location);
+    // console.log(props.location)
+    // let filters = queryString.parse(this.props.location.search);
+    // console.log(filters);
+    // this.props.setFilters(filters)
+  }
+
+
+  moveFiltersToLocation() {
+    console.log('moveFiltersToLocation');
+    let filtersToAdd = {
+      formats: this.props.filters.formats.join(','),
+      genres: this.props.filters.genres.join(','),
+      technologies: this.props.filters.technologies.join(',')
+    };
+    let location = this.props.location
+    this.props.updateLocation({
+      ...location,
+      search: '?' + queryString.stringify(filtersToAdd)
+    })
+  }
+
   render() {
     const {onSwitchFilter, filters} = this.props;
+    this.moveFiltersToLocation();
     return (
       <div className={b()}>
         <header className={b("header")}>Filters</header>
@@ -64,7 +90,9 @@ const mapDispatchToProps = (dispatch) => {
           if (event.target.checked === false) {
             dispatch(removeFilter(event.target.value,event.target.id));
           }
-        }
+        },
+        updateLocation: (params) => dispatch(replace(params)),
+        setFilters: (params) => dispatch(setFilters(params))
     }
 };
 
