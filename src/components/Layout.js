@@ -31,14 +31,7 @@ let Layout = () => (
     </div>
 );
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-    }
-}
-
-Layout = withRouter(connect(null,
-    mapDispatchToProps
-)(Layout));
+Layout = withRouter(connect(null, null)(Layout));
 
 
 export default Layout;

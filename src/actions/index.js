@@ -15,10 +15,7 @@ export const fetchActorsStart = (id) => ({type: FETCH_ACTOR, id});
 
 export const fetchActorsSucess = (id, ids, actors = []) => ({type: FETCH_ACTOR__SUCCESS, id, actors, ids});
 
-export const fetchMoviesFail = (id, ids, actors = []) => {
-    console.log("FETCH FAIL", ids);
-    return {type: FETCH_FAIL, error: true, id, ids, actors}
-};
+export const fetchFail = (id, ids, actors = []) => ({type: FETCH_FAIL, error: true, id, ids, actors});
 
 export const fetchMoviesSuccess = (id, ids, movies = []) => ({type: FETCH_MOVIES_SUCCESS, id, movies, ids});
 

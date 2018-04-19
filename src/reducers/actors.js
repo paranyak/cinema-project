@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 import {assoc} from "ramda";
 import {FETCH_ACTOR, FETCH_ACTOR__SUCCESS, FETCH_FAIL} from '../helpers/actionTypes';
 
-const byId = (state = {}, action) => {
+export const byId = (state = {}, action) => {
     switch (action.type) {
         case FETCH_ACTOR__SUCCESS:
             return {
@@ -16,7 +16,7 @@ const byId = (state = {}, action) => {
     }
 };
 
-const allIds = (state = [], action) => {
+export const allIds = (state = [], action) => {
     switch (action.type) {
         case FETCH_ACTOR__SUCCESS:
             return [
