@@ -64,7 +64,6 @@ class ActorLayout extends Component {
 
 
 export default connect((state, props) => {
-        // const actor = getSelectedActor(state);
     const actor = getActorById(state, props.match.params.id);
     return {selectedActor: actor};
     }, (dispatch) => ({

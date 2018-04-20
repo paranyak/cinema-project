@@ -29,9 +29,8 @@ class MovieImage extends Component {
 
     handleKeyPress(event) {
         let newId;
-        console.log("EVENT:", event);
         let id = this.state.currentId;
-        if (event.clientX >= event.target.clientWidth / 2) {
+        if (event.key ==="ArrowRight" || event.clientX >= event.target.clientWidth / 2) {
             newId = id >= this.state.sources.length - 1 ? 0 : id + 1;
         }
         else {
@@ -44,16 +43,18 @@ class MovieImage extends Component {
     }
 
     handleKey(event){
-        console.log("HERE key!!!!");
-        console.log("KEY EVENT:", event.keyCode)
         if(event.keyCode === 27){
             this.closeHandler();
+        }
+        else if(event.keyCode === 39){               //right
+            this.handleKeyPress(event);
+        }else if(event.keyCode === 37){              //left
+            this.handleKeyPress(event);
         }
     }
 
 
     mainImageHandler(e, id) {
-        console.log("MAIN IMAGE HANDLER");
         this.setState({currentId: id});
         let modal = document.getElementById('myModal');
         let modalImg = document.getElementById("img01");
@@ -80,11 +81,8 @@ class MovieImage extends Component {
     }
 
     componentWillUpdate(nextProps) {
-        console.log("NEXT CWU: ", nextProps);
         if (nextProps != this.props) {
-            console.log("UPDATE in MI");
             const {film} = nextProps;
-            console.log("FILM: ", film);
             let sourcesArray = [film.image];
             film.screenshots.map(
                 screen => sourcesArray.push(screen)

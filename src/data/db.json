@@ -1800,6 +1800,30 @@
         "Outstanding Writing for a Variety Series"
       ],
       "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://vignette.wikia.nocookie.net/breakingbad/images/8/8d/BobOdenkirk.jpg/revision/latest?cb=20170515204037"
+    },
+    {
+      "id": "Ivan Ivanenko",
+      "movies": {},
+      "info": "Lorem Ipsum - это текст-\"рыба\", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.Lorem Ipsum - это текст-\"рыба\", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.",
+      "date": "2020-02-04",
+      "city": "Lviv",
+      "nominations": [
+        "--"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/"
+    },
+    {
+      "id": "Petro Petrenenko",
+      "movies": {
+        "9": "Deadpool 2"
+      },
+      "info": "--",
+      "date": "2009-09-09",
+      "city": "Lviv",
+      "nominations": [
+        "--"
+      ],
+      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/"
     }
   ]
 }
