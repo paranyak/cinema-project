@@ -4,7 +4,10 @@ import "../styles/MovieImage.less";
 import block from "../helpers/BEM";
 
 const b = block("MovieImage");
-
+const linkMain = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_275,h_408/';
+const linkScr = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_160,h_100,c_fill,g_center/';
+const linkScrCarousel = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_600/';
+const linkScrModal = 'https://res.cloudinary.com/dtnnkdylh/image/upload/h_80/';
 
 class MovieImage extends Component {
     constructor(props) {
@@ -38,7 +41,7 @@ class MovieImage extends Component {
         }
         this.setState({currentId: newId});
         let modalImg = document.getElementById("img01");
-        modalImg.src = this.state.sources[newId];
+        modalImg.src = linkScrCarousel + this.state.sources[newId];
 
     }
 
@@ -59,7 +62,7 @@ class MovieImage extends Component {
         let modal = document.getElementById('myModal');
         let modalImg = document.getElementById("img01");
         modal.style.display = "block";
-        modalImg.src = this.state.sources[id];
+        modalImg.src = linkScrCarousel + this.state.sources[id];
         modal.addEventListener("click", (e) => this.handleKeyPress(e, id), false);
         window.addEventListener('keydown', this.handleKey);
     }
@@ -67,7 +70,8 @@ class MovieImage extends Component {
     changeImage(e, id) {
         this.setState({currentId: id});
         let modalImg = document.getElementById("img01");
-        modalImg.src = this.state.sources[id];
+        console.log(this.state.sources[id]);
+        modalImg.src = linkScrCarousel + this.state.sources[id];
 
     }
 
@@ -98,9 +102,9 @@ class MovieImage extends Component {
         const {film} = this.props;
         return (
             <section className={b()}>
-                <img src={film.image} className={b("main")} onClick={(e, src) => this.mainImageHandler(e, 0)}/>
+                <img src={linkMain + film.image} className={b("main")} onClick={(e, src) => this.mainImageHandler(e, 0)}/>
                 <section className={b("screenshots")}>
-                    {film.screenshots.map((screen, ind) => <img src={screen} key={ind} className={b("screen")}
+                    {film.screenshots.map((screen, ind) => <img src={linkScr + screen} key={ind} className={b("screen")}
                                                                 onClick={(e, src) => this.mainImageHandler(e, ind + 1)}/>)}
                 </section>
 
@@ -110,7 +114,7 @@ class MovieImage extends Component {
                     <div className={b("arrow-left")}></div>
                     <div className={b("arrow-right")}></div>
                     <section className={b("screenshots-modal")}>
-                        {this.state.sources.map((screen, ind) => <img src={screen} key={ind}
+                        {this.state.sources.map((screen, ind) => <img src={linkScrModal + screen} key={ind}
                                                                       className={b("screen-modal")}
                                                                       onClick={(e) => this.changeImage(e, ind)}/>)}
                     </section>

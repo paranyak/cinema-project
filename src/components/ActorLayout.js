@@ -10,14 +10,9 @@ import {connect} from "react-redux";
 
 
 const b = block("ActorLayout");
-
+const link = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_275,h_408,c_thumb,g_face/';
 
 class ActorLayout extends Component {
-    constructor(props) {
-        super(props);
-
-    }
-
     render() {
         const {selectedActor} = this.props;
         if (!selectedActor || selectedActor.id === undefined) {
@@ -56,7 +51,7 @@ class ActorLayout extends Component {
 
                 </section>
                 <img className={b("image")}
-                     src={selectedActor.image}/>
+                     src={link + selectedActor.image}/>
             </section>
         );
     }

@@ -2,7 +2,7 @@ import filters from '../../src/reducers/filters'
 import * as filterActions from '../../src/actions/filter';
 
 describe('Filters Reducers', () => {
-    it('get default state', () => {
+    it('get default state with undefined state', () => {
         expect(filters(undefined, {})).toEqual({
             date: '',
             genres: [],
@@ -10,7 +10,7 @@ describe('Filters Reducers', () => {
             formats: []
         })
     });
-    it('handle CHANGE_DATE', () => {
+    it('handle CHANGE_DATE with undefined state', () => {
         expect(filters(undefined, filterActions.changeDate('29-06-2018'))).toEqual({
             date: '29-06-2018',
             genres: [],
@@ -19,7 +19,7 @@ describe('Filters Reducers', () => {
         })
     });
 
-    it('handle ADD_FILTER genres', () => {
+    it('handle ADD_FILTER genres with undefined state', () => {
         expect(filters(undefined, filterActions.addFilter('genres', 'Action'))).toEqual({
             date: '',
             genres: ['Action'],
@@ -27,7 +27,7 @@ describe('Filters Reducers', () => {
             formats: []
         })
     });
-    it('handle ADD_FILTER technologies', () => {
+    it('handle ADD_FILTER technologies with undefined state', () => {
         expect(filters(undefined, filterActions.addFilter('technologies', 'IMAX'))).toEqual({
             date: '',
             genres: [],
@@ -35,7 +35,7 @@ describe('Filters Reducers', () => {
             formats: []
         })
     });
-    it('handle ADD_FILTER formats', () => {
+    it('handle ADD_FILTER formats with undefined state', () => {
         expect(filters(undefined, filterActions.addFilter('formats', '3D'))).toEqual({
             date: '',
             genres: [],
@@ -44,7 +44,7 @@ describe('Filters Reducers', () => {
         })
     });
 
-    it('handle REMOVE_FILTER genres', () => {
+    it('handle REMOVE_FILTER genres with defined state', () => {
         expect(filters({
             date: '',
             genres: ['Action', 'Crime', 'Sci-Fi'],
@@ -57,7 +57,7 @@ describe('Filters Reducers', () => {
             formats: []
         })
     });
-    it('handle REMOVE_FILTER technologies', () => {
+    it('handle REMOVE_FILTER technologies with defined state', () => {
         expect(filters({
             date: '',
             genres: [],
@@ -70,7 +70,7 @@ describe('Filters Reducers', () => {
             formats: []
         })
     });
-    it('handle REMOVE_FILTER formats', () => {
+    it('handle REMOVE_FILTER formats with defined state', () => {
         expect(filters({
             date: '',
             genres: [],

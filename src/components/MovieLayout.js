@@ -17,7 +17,6 @@ class MovieLayout extends Component {
         super(props);
     }
 
-
     render() {
         const {film} = this.props;
         if (!film || film.id === undefined) {

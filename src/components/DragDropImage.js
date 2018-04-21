@@ -5,33 +5,21 @@ import Dropzone from 'react-dropzone'
 import axios from "axios/index";
 
 const b = block("DragDropImage");
+const link = 'https://res.cloudinary.com/dtnnkdylh/image/upload/';
 
 class DragDropImage extends Component {
     constructor(props) {
         super(props);
-        this.state = {images: [
-            this.props.value
-            ]}
+        this.state = {images: [this.props.value]}
     }
 
     handleDrop(files) {
-        let preset = '';
         const {name} = this.props;
-
-        if (name === 'poster') {
-            preset = "pt8mg4xb";
-        }
-        else if (name === 'actor') {
-            preset = "sfazgc2b";
-        }
-        else if (name === 'screenshots') {
-            preset = 'ntkbwv1n';
-        }
         files.map(file => {
             const formData = new FormData();
             formData.append("file", file);
             formData.append("tags", `codeinfuse, medium, gist`);
-            formData.append("upload_preset", preset);
+            formData.append("upload_preset", 'zfiucvj1');
             formData.append("api_key", "775112651137943");
             formData.append("timestamp", (Date.now() / 1000) | 0);
 
@@ -39,10 +27,12 @@ class DragDropImage extends Component {
                 headers: {"X-Requested-With": "XMLHttpRequest"},
             }).then(response => {
                 const data = response.data;
-                const fileURL = data.secure_url;
-                const val = (name === 'poster' || name === 'actor') ? [fileURL] : [...this.state.images, fileURL];
+                console.log('data', data);
+                const publicID = data.public_id;
+                console.log(publicID);
+                const val = (name === 'poster' || name === 'actor') ? [publicID] : [...this.state.images, publicID];
                 this.setState({images: val});
-                this.props.callbackFromParent(name, fileURL);
+                this.props.callbackFromParent(name, publicID);
             })
         });
     };
@@ -64,7 +54,7 @@ class DragDropImage extends Component {
         if (images.length !== 0) {
             return <div>
                 <p className={b('message')}>Click on the image you want to remove</p>
-                {images.map((el, i) => <img src={el} key={i} className={b('image')} onClick={this.removeImage.bind(this, i)}/>)}
+                {images.map((el, i) => <img src={link + el} key={i} className={b('image')} onClick={this.removeImage.bind(this, i)}/>)}
             </div>
         }
 

@@ -3,33 +3,33 @@
     {
       "id": 0,
       "name": "Red Sparrow",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BMTA3MDkxOTc4NDdeQTJeQWpwZ15BbWU4MDAxNzgyNTQz._V1_SY1000_CR0,0,674,1000_AL_.jpg",
+      "image": "Cinema Project/ymgt4tyhaqkhybywwkut",
       "rating": 6.7,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BOTU3NDE5MDQ4MV5BMl5BanBnXkFtZTgwMzE5ODQ3MDI@._V1_SY1000_CR0,0,626,1000_AL_.jpg",
+          "image": "Cinema Project/syuyyrbyfooaxhakjlu9",
           "name": "Jennifer Lawrence",
           "role": "Dominika Egorova"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTA0ODI1ODk4NzdeQTJeQWpwZ15BbWU3MDkwNjkzOTY@._V1._SX214_SY317_.jpg",
+          "image": "Cinema Project/jtj9hnsuk133b89fg2zp",
           "name": "Joel Edgerton",
           "role": "Nate Nash"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjMyNTQ0MDgwOF5BMl5BanBnXkFtZTcwOTUxNzA3OA@@._V1_SY1000_CR0,0,753,1000_AL_.jpg",
+          "image": "Cinema Project/vyq6xqjielobdmsue68k",
           "name": "Matthias Schoenaerts",
           "role": "Vanya Egorov"
         }
       ],
       "description": "Ballerina Dominika Egorova is recruited to 'Sparrow School,' a Russian intelligence service where she is forced to use her body as a weapon. Her first mission, targeting a C.I.A. agent, threatens to unravel the security of both nations.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BOWU3OGJjZjEtN2JkYS00MTZmLTkyY2EtYzY4OTIwZTlkM2Q1XkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1497,1000_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjA0MDQ3ZWUtMTdhNS00ODFlLTgxZmEtZWM5ZmQxMTU3ZDdmXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1497,1000_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjIwZDgwYTctMTA3Zi00N2I0LTgxYTYtNTQ1MWRmZGU2NjcxXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1499,1000_AL_.jpg"
+        "Cinema Project/jp4qjm88k0x5kwejkfas",
+        "Cinema Project/ccibyqtkshuevstojwbo",
+        "Cinema Project/ssiwpffjj6yrlqhpgmz5"
       ],
       "trailer": "http://www.imdb.com/videoplayer/vi4237277209",
-      "genre": " Mystery, Thriller",
+      "genre": "Mystery, Thriller",
       "Schedule": [
         "22-03-2018 10:15",
         "22-03-2018 11:00",
@@ -62,31 +62,31 @@
     {
       "id": 1,
       "name": "The Hurricane Heist",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BMzg3Y2MyNjgtMzk4ZS00OTU3LWEwZmMtN2Y0NTdlZjU0NGFiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,675,1000_AL_.jpg",
+      "image": "Cinema Project/a2xmwnhiqaaeu4eysnir",
       "rating": 4.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://i.pinimg.com/originals/8b/c5/b3/8bc5b3dff036781e36f33969d285421b.jpg",
+          "image": "Cinema Project/yvnxovudjddhrrh6jwkq",
           "name": "Toby Kebbell",
           "role": "Will"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg",
+          "image": "Cinema Project/wqdoibm3wmyvyo5fldsb",
           "name": "Maggie Grace",
           "role": "Casey"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNzk5NDE5OTQwNl5BMl5BanBnXkFtZTcwOTkyMjg3OA@@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "Cinema Project/ov03zjlhgonyayjhmclr",
           "name": "Ryan Kwanten",
           "role": "Breeze"
         }
       ],
       "description": "Thieves attempt a massive heist against the U.S. Treasury as a Category 5 hurricane approaches one of its Mint facilities.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjA1MjcwNTE2N15BMl5BanBnXkFtZTgwOTk5NTM2NDM@._V1_SY1000_SX1500_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BNmQ0NDdkZjctMDAxNS00ZGRkLWI4MGMtZDJmYjRhNjI0ZGFjXkEyXkFqcGdeQXVyNTc5OTMwOTQ@._V1_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BNzVlNzNhOWQtYWVlZS00MmFlLTlhOWMtNTY5MWJiMjk4NGQ0XkEyXkFqcGdeQXVyNTc5OTMwOTQ@._V1_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BZWEwMWI2NDUtZmM0YS00MWMzLTk3ZTAtZTA0YWIwOWM0YzQ3XkEyXkFqcGdeQXVyMTU2MDA4NQ@@._V1_.jpg"
+        "Cinema Project/fplxprob1xwzaou7c12u",
+        "Cinema Project/qwlddtw6ucbwawmvkjhu",
+        "Cinema Project/jhp2a7bwimom9gvgouoi",
+        "Cinema Project/ffbfdkffieff3vchrrra"
       ],
       "trailer": "http://www.imdb.com/videoplayer/vi3874076697",
       "genre": "Action, Thriller",
@@ -116,32 +116,32 @@
     {
       "id": 2,
       "name": "Game Night",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQxMDE5NDg0NV5BMl5BanBnXkFtZTgwNTA5MDE2NDM@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
+      "image": "Cinema Project/du7pyvc5hejwetjlhpkn",
       "rating": 7.5,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwOTQ0MDUyNF5BMl5BanBnXkFtZTcwNTQ1MzY1Mw@@._V1_.jpg",
+          "image": "Cinema Project/xlidj6yb15pyacwkyu2g",
           "name": "Jason Bateman",
           "role": "Max"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5ODcxMDU4NV5BMl5BanBnXkFtZTcwMjAzNjQyNQ@@._V1_SY1000_CR0,0,689,1000_AL_.jpg",
+          "image": "Cinema Project/prqk4mdmqiw1w5dgv9ij",
           "name": "Rachel McAdams",
           "role": "Annie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNTM5NDM4ODg3MV5BMl5BanBnXkFtZTcwNTA3MTk3Mw@@._V1_SY1000_CR0,0,679,1000_AL_.jpg",
+          "image": "Cinema Project/kau8mlqjziqnwhkgiqqq",
           "name": "Kyle Chandler",
           "role": "Brooks"
         }
       ],
       "description": "A group of friends who meet regularly for game nights find themselves trying to solve a murder mystery.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BOTc3ODU0NTI5MV5BMl5BanBnXkFtZTgwNTQ4Nzc3NDM@._V1_SY1000_CR0,0,1498,1000_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY2MDYwMTIwN15BMl5BanBnXkFtZTgwMDM4Nzc3NDM@._V1_SX1777_CR0,0,1777,746_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk4MzMyMjIwNV5BMl5BanBnXkFtZTgwMjM4Nzc3NDM@._V1_SX1777_CR0,0,1777,746_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk4ODcyMTM1MV5BMl5BanBnXkFtZTgwNTM4Nzc3NDM@._V1_SX1777_CR0,0,1777,746_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMTAyMTYxNzg4NDZeQTJeQWpwZ15BbWU4MDkzODc3NzQz._V1_SY1000_CR0,0,1498,1000_AL_.jpg"
+        "Cinema Project/tznfqhh5lumofyjme01v",
+        "Cinema Project/pkxptmjizpdqm9den5bl",
+        "Cinema Project/v3xejq2kqwduqc9bj4rj",
+        "Cinema Project/aixu1swugtfk6jvpqgpz",
+        "Cinema Project/fxs10tpz8hajvoauybmx"
       ],
       "trailer": "http://www.imdb.com/videoplayer/vi2748495897",
       "genre": "Comedy, Crime, Mystery",
@@ -170,33 +170,33 @@
     {
       "id": 3,
       "name": "Black Panther",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BMTg1MTY2MjYzNV5BMl5BanBnXkFtZTgwMTc4NTMwNDI@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
+      "image": "Cinema Project/z3n9cwlcvj22k2hhpuu4",
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "image": "Cinema Project/r8zsgpcjdgrlkpbgh7p5",
           "name": "Chadwick Boseman",
           "role": "T'Challa / Black Panther"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjExOTY3NzExM15BMl5BanBnXkFtZTgwOTg1OTAzMTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
-          "name": "Michael B. Jordan",
+          "image": "Cinema Project/eukvy7uhihryx9fjr3h5",
+          "name": "Michael B.Jordan",
           "role": "Erik Killmonger"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTY0NTQ4MDY2Nl5BMl5BanBnXkFtZTgwNDk1MTEyMDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "Cinema Project/bx96uxsjvxpbzkeeeygt",
           "name": "Lupita Nyong'o",
           "role": "Nakia"
         }
       ],
       "description": "T'Challa, the King of Wakanda, rises to the throne in the isolated, technologically advanced African nation, but his claim is challenged by a vengeful outsider who was a childhood victim of T'Challa's father's mistake.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjIzNzYwNjkyOF5BMl5BanBnXkFtZTgwODM3MDM5NDM@._V1_SX1777_CR0,0,1777,937_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQyMDc0NTI0Ml5BMl5BanBnXkFtZTgwODE3MDM5NDM@._V1_SX1777_CR0,0,1777,937_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQzNTM2MzEwOF5BMl5BanBnXkFtZTgwOTE3MDM5NDM@._V1_SX1777_CR0,0,1777,937_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMTg3NTc5MzA0OV5BMl5BanBnXkFtZTgwMDI3MDM5NDM@._V1_SX1777_CR0,0,1777,937_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjMzNjc4MzM1NF5BMl5BanBnXkFtZTgwODI3MDM5NDM@._V1_SX1777_CR0,0,1777,937_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMTAyOTcyMTkzMjJeQTJeQWpwZ15BbWU4MDExNzAzOTQz._V1_SX1500_CR0,0,1500,999_AL_.jpg"
+        "Cinema Project/dlsxjiwi3aefcgv3blb0",
+        "Cinema Project/yheeg5duddnda7zdkp1b",
+        "Cinema Project/cv5ll6br7kg1owtmyxj8",
+        "Cinema Project/ggssxjq1zvoxprzclvdu",
+        "Cinema Project/kuej5pr3loucym3fdmf5",
+        "Cinema Project/v3vet38kbxtpfgfcnfks"
       ],
       "trailer": "http://www.imdb.com/title/tt1825683/videoplayer/vi2046343193",
       "genre": "Action, Adventure, Sci-Fi",
@@ -228,31 +228,31 @@
     {
       "id": 4,
       "name": "Fifty Shades Freed",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BODI2ZmM5MzMtOWZiMC00ZGE3LTk3MWEtY2U0ZjE3ZWJlNDEzXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,668,1000_AL_.jpg",
+      "image": "Cinema Project/r8l4yvaldunr8vxsbbrk",
       "rating": 4.4,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjAxOTcxMjg0OV5BMl5BanBnXkFtZTgwMjg1Mjg1NDE@._V1_SY1000_CR0,0,664,1000_AL_.jpg",
+          "image": "Cinema Project/t97if01jnr1euz32szad",
           "name": "Dakota Johnson",
           "role": "Anastasia Steele"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwMDAzMjAyM15BMl5BanBnXkFtZTgwMjAxMzc0MjE@._V1_SY1000_SX786_AL_.jpg",
+          "image": "Cinema Project/uzhlwu3bsgo09inai0ti",
           "name": "Jamie Dornan",
           "role": "Christian Grey"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3NTc2MDMxNV5BMl5BanBnXkFtZTgwNzIyNjIzMDI@._V1_.jpg",
+          "image": "Cinema Project/d1bwpdba4pqrom6axqw2",
           "name": "Eric Johnson",
           "role": "Jack Hyde"
         }
       ],
       "description": "Anastasia and Christian get married, but Jack Hyde continues to threaten their relationship.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BNjAwNDg5MzM2M15BMl5BanBnXkFtZTgwMjgwMzIxNDM@._V1_SY1000_CR0,0,1499,1000_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BZjQ2N2UzMmQtMWU1Zi00Y2U3LWJiZDYtMzBmYjlkMTliNDlhXkEyXkFqcGdeQXVyODM2NDI5MDI@._V1_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMzdiYzNjZDAtODY5Ny00YTg1LWIwMWItYTA2ZWIyYzUxNGMzXkEyXkFqcGdeQXVyNTY2OTA1Mg@@._V1_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BZTkwYWJiZWMtYmNmMi00NzNiLThhNzEtOTdkYWRhN2UzNTY0XkEyXkFqcGdeQXVyNTgxMzcxMjA@._V1_.jpg"
+        "Cinema Project/c4mftnec8rmk1tnbh106",
+        "Cinema Project/pxfairndkoghogo9sz31",
+        "Cinema Project/ioyy7gdslelsv8aqtusj",
+        "Cinema Project/tcocxswihfspef0ymah6"
       ],
       "trailer": "http://www.imdb.com/title/tt4477536/videoplayer/vi2967320601",
       "genre": "Drama, Romance, Thriller",
@@ -280,31 +280,31 @@
     {
       "id": 5,
       "name": "Submergence",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BMjEyNTQyNzY3NF5BMl5BanBnXkFtZTgwODcxMzY1NDM@._V1_SY1000_SX668_AL_.jpg",
+      "image": "Cinema Project/e2dpwrnmr5puyn7as8ad",
       "rating": 5.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "Cinema Project/thdziwujo19m9os8tjuw",
           "name": "Alicia Vikander",
           "role": "Danielle Flinders"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQzNzIxOTYzMl5BMl5BanBnXkFtZTcwNjYxNTk1Nw@@._V1_SY1000_CR0,0,766,1000_AL_.jpg",
+          "image": "Cinema Project/uiqvcptgeb9a9s6tbprs",
           "name": "James McAvoy",
           "role": "James More"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTIxMjYwMTA3MV5BMl5BanBnXkFtZTcwNDQxODYzMQ@@._V1_.jpg",
+          "image": "Cinema Project/itz1hrp8khkiyssfusgr",
           "name": "Alexander Siddig",
           "role": "Dr. Shadid"
         }
       ],
       "description": "In a room with no windows on the eastern coast of Africa, a Scotsman, James More, is held captive by jihadist fighters. Thousands of miles away in the Greenland Sea, Danielle Flinders prepares to dive in a submersible to the ocean floor. In their confines they are drawn back to the Christmas of the previous year, where a chance encounter on a beach in France led to an intense and enduring romance.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BY2M0M2Q3YmQtYzIzZC00ZWZmLThjN2UtN2RiNTEyNTkyZmM1XkEyXkFqcGdeQXVyNjYyNDM3MTY@._V1_SY1000_CR0,0,1586,1000_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BMjUwMjRhMDEtZjI3Mi00N2IyLWE0YTktMWU1MDVjNWY5NjM0XkEyXkFqcGdeQXVyNjA0MzkwMjU@._V1_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/submergence/Submergence-kadr_3.R1366x909.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/submergence/Submergence-kadr_6.R1366x910.jpg"
+        "Cinema Project/crtvwjt5tfd2igxtatuf",
+        "Cinema Project/pigellhmzunmmrmmpcqg",
+        "Cinema Project/arydmoe65o7xxg8cr3gc",
+        "Cinema Project/yn9jmu2uxuiawfvhybug"
       ],
       "trailer": "http://www.imdb.com/title/tt3563262/videoplayer/vi3678124057",
       "genre": "Drama, Romance, Thriller",
@@ -332,31 +332,31 @@
     {
       "id": 6,
       "name": "The Post",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://upload.wikimedia.org/wikipedia/en/0/0b/The_Post_%28film%29.png",
+      "image": "Cinema Project/vbevt4czsn5izp6hwelp",
       "rating": 7.3,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg/1200px-Meryl_Streep_at_the_Tokyo_International_Film_Festival_2016_%2832801846044%29_%28cropped%29.jpg",
+          "image": "Cinema Project/lhdunme1mo2dxk9hdrsh",
           "name": "Meryl Streep",
           "role": "Katharine Graham"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/6/66/Tom_Hanks_2014.jpg",
+          "image": "Cinema Project/owivktmixeoedmejjdjf",
           "name": "Tom Hanks",
           "role": "Ben Bradlee"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Bob_Odenkirk_by_Gage_Skidmore.jpg/800px-Bob_Odenkirk_by_Gage_Skidmore.jpg",
+          "image": "Cinema Project/fhcgpqvcwm6pf7dpwfca",
           "name": "Bob Odenkirk",
           "role": "Ben Bagdikian"
         }
       ],
       "description": "A cover-up that spanned four U.S. Presidents pushed the country's first female newspaper publisher and a hard-driving editor to join an unprecedented battle between the press and the government.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/the_post/Post-the_kadr-1.R1366x876.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/the_post/Post-the_kadr-2.R1366x842.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/the_post/Post-the_kadr_3.R1366x840.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/the_post/Post-the_kadr-5.R1366x839.jpg"
+        "Cinema Project/rjjy1ou8ecxvpquwtlwy",
+        "Cinema Project/sd37qkqwugqokwjo5tzh",
+        "Cinema Project/jk99q8lfgwamj5vl6mmi",
+        "Cinema Project/t3mltkjufzlaxw5dtfph"
       ],
       "trailer": "http://www.imdb.com/title/tt6294822/videoplayer/vi11581465",
       "genre": "Biography, Drama, History",
@@ -385,31 +385,31 @@
     {
       "id": 7,
       "name": "Tomb Raider",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BOTY4NDcyZGQtYmVlNy00ODgwLTljYTMtYzQ2OTE3NDhjODMwXkEyXkFqcGdeQXVyNzYzODM3Mzg@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
+      "image": "Cinema Project/vd2s8lmjqkrahstb5snr",
       "rating": 7.8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BZmMxYzk1OWEtMjE0MC00NTRlLTgwNTEtMGQ1YjA1Yzg1Nzc3XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "Cinema Project/thdziwujo19m9os8tjuw",
           "name": "Alicia Vikander",
           "role": "Lara Croft"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
+          "image": "Cinema Project/sakp3isv3txjtnctiijy",
           "name": "Hannah John-Kamen",
           "role": "Sophie"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_SY1000_CR0,0,648,1000_AL_.jpg",
+          "image": "Cinema Project/l0xmhdty783hiwvmdett",
           "name": "Walton Goggins",
           "role": "Mathias Vogel"
         }
       ],
       "description": "Lara Croft, the fiercely independent daughter of a missing adventurer, must push herself beyond her limits when she finds herself on the island where her father disappeared.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/tomb_raider/lara-kroft-kadr1.R1366x911.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/tomb_raider/lara-kroft-kadr2.R1366x909.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/tomb_raider/Tomb-Raider_kadr3.R1366x914.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/tomb_raider/lara-kroft-kadr4.R1366x909.jpg"
+        "Cinema Project/wisyao6ghmtnjbpujhhm",
+        "Cinema Project/eumifocv6exxm9ptfihd",
+        "Cinema Project/jo4biidomy0hdqnymhbf",
+        "Cinema Project/wosyfywmnyqrgtmgn875"
       ],
       "trailer": "http://www.imdb.com/title/tt1365519/videoplayer/vi3590174745",
       "genre": "Action, Adventure",
@@ -441,31 +441,31 @@
     {
       "id": 8,
       "name": "A Wrinkle in Time",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BMjMxNjQ5MTI3MV5BMl5BanBnXkFtZTgwMjQ2MTAyNDM@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
+      "image": "Cinema Project/jpfpgrjsbr6jqvtqfa8g",
       "rating": 4.2,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://rollingout.com/wp-content/uploads/2016/06/Storm-Reid-2-640x960.jpg?x47911",
+          "image": "Cinema Project/p0luisplqtzak9l4ui2e",
           "name": "Storm Reid",
           "role": "Meg"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTgzODE3MzYxNF5BMl5BanBnXkFtZTYwMzEyNjc4._V1_.jpg",
+          "image": "Cinema Project/nfankyeewsli4vjnupwr",
           "name": "Oprah Winfrey",
           "role": "Mrs. Which"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://pbs.twimg.com/profile_images/839882618682290176/tja4NBb5_400x400.jpg",
+          "image": "Cinema Project/mos4x0kt6ossk53xbpp7",
           "name": "Reese Witherspoon",
           "role": "Mrs. Whatsit"
         }
       ],
       "description": "After the disappearance of her scientist father, three peculiar beings send Meg, her brother, and her friend to space in order to find him.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/a_wrinkle_in_time/AWIT-kadr1.R1366x910.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/a_wrinkle_in_time/AWIT-kadr6.R1366x910.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/a_wrinkle_in_time/AWIT-kadr8.R1366x911.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/a_wrinkle_in_time/AWIT-kadr4.R1366x911.jpg"
+        "Cinema Project/atyvlremviltf7cj96ii",
+        "Cinema Project/jkgbahqijmstdw7cv2nv",
+        "Cinema Project/wd9pte3jj3cdz9m5xhhf",
+        "Cinema Project/pnxzhms179wfzib1iplg"
       ],
       "trailer": "http://www.imdb.com/title/tt1620680/videoplayer/vi1357101081",
       "genre": "Adventure, Family, Fantasy",
@@ -496,31 +496,32 @@
     {
       "id": 9,
       "name": "Deadpool 2",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BNzczMjUwMzk0M15BMl5BanBnXkFtZTgwNjY4OTQ3NDM@._V1_SY1000_SX675_AL_.jpg",
+      "image": "Cinema Project/ve3mnplsdbvycp0gssx9",
       "rating": "-.-",
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BOTI3ODk1MTMyNV5BMl5BanBnXkFtZTcwNDEyNTE2Mg@@._V1_.jpg",
+          "image": "Cinema Project/fjclpdxolviijyh5vnbe",
           "name": "Ryan Reynolds",
           "role": "Vanessa"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyODY3MzM2OV5BMl5BanBnXkFtZTgwMDM1OTk5MDE@._V1_SY1000_CR0,0,667,1000_AL_.jpg",
+          "image": "Cinema Project/dihiyy0a4mzt42m4dkwj",
           "name": "Morena Baccarin",
           "role": "Wade / Deadpool"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ1MzYyMjQ0Nl5BMl5BanBnXkFtZTcwMTA0ODkyMg@@._V1_.jpg",
+          "image": "Cinema Project/avamsbw3ubqv1kwzlarm",
           "name": "Josh Brolin",
           "role": "Nathan Summers / Cable"
         }
       ],
       "description": "After surviving a near fatal bovine attack, a disfigured cafeteria chef (Wade Wilson) struggles to fulfill his dream of becoming Mayberry's hottest bartender while also learning to cope with his lost sense of taste. Searching to regain his spice for life, as well as a flux capacitor, Wade must battle ninjas, the yakuza, and a pack of sexually aggressive canines, as he journeys around the world to discover the importance of family, friendship, and flavor - finding a new taste for adventure and earning the coveted coffee mug title of World's Best Lover.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/http://images.indianexpress.com/2017/07/deadpool-2-759.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/http://images.indianexpress.com/2017/07/deadpool-2-759.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/http://images.indianexpress.com/2017/07/deadpool-2-759.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/http://images.indianexpress.com/2017/07/deadpool-2-759.jpg"
+        "Cinema Project/jhmgn2fk4vh3unu1ndqz",
+        "Cinema Project/jhmgn2fk4vh3unu1ndqz",
+        "Cinema Project/jhmgn2fk4vh3unu1ndqz",
+        "Cinema Project/jhmgn2fk4vh3unu1ndqz",
+        "Cinema Project/jhmgn2fk4vh3unu1ndqz"
       ],
       "trailer": "http://www.imdb.com/videoplayer/vi2782640153",
       "genre": "Action, Adventure, Comedy",
@@ -549,30 +550,30 @@
     {
       "id": 10,
       "name": "Rampage",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://images-na.ssl-images-amazon.com/images/M/MV5BOTkzNTg5NjI5MV5BMl5BanBnXkFtZTgwMzM4NjkxNDM@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
+      "image": "Cinema Project/isovqgw8hdvinn4txw5t",
       "rating": 4.4,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTkyNDQ3NzAxM15BMl5BanBnXkFtZTgwODIwMTQ0NTE@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
+          "image": "Cinema Project/yll2zlox3xobksjffw34",
           "name": "Dwayne Johnson",
           "role": "Davis Okoye"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BM2QwNjhkYzMtNjQ5Mi00OTk2LTg4N2ItZjUzYmU4MWViMDkxXkEyXkFqcGdeQXVyODY2NjYzNA@@._V1_.jpg",
+          "image": "Cinema Project/de8itoswbuntxk7qwghi",
           "name": "Jeffrey Dean Morgan",
           "role": "Agent Russell"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyMTU3MzY3Ml5BMl5BanBnXkFtZTgwMDc0MjQ2NjE@._V1_.jpg",
+          "image": "Cinema Project/ijaxexclgzmh8eg9vwga",
           "name": "Will Yun Lee",
           "role": "Agent Park"
         }
       ],
       "description": "Davis Okoye and his bestfriend white gorilla fight monsters in a big city.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BNWFhZjU1NGQtZjQ3Yy00Mjk5LWJhZWUtOGUzODYzMDIzMjUyXkEyXkFqcGdeQXVyNjAyNzI2OTY@._V1_SY1000_CR0,0,1003,1000_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/rampage/rampage-kadr-1.R1366x909.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://images-na.ssl-images-amazon.com/images/M/MV5BOGRmNDQyNjctOGY4NS00YmQzLWFjYzQtZDFiODA4YTY3NDNlXkEyXkFqcGdeQXVyNzMwMDg1OTE@._V1_.jpg"
+        "Cinema Project/jctf1qovikedmedcy5ro",
+        "Cinema Project/jtrnixabcnqivdtwto6i",
+        "Cinema Project/sresbh3lnmdfylflwpxr"
       ],
       "trailer": "http://www.imdb.com/title/tt2231461/videoplayer/vi4173641753",
       "genre": "Action, Adventure, Sci-Fi",
@@ -600,32 +601,32 @@
     {
       "id": 11,
       "name": "Peter Rabbit",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://i1.wp.com/teaser-trailer.com/wp-content/uploads/Peter-Rabbit-new-poster.jpg?ssl=1",
+      "image": "Cinema Project/rdglbhswqjui2essgo8s",
       "rating": 6.4,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTcyMDA2MTgwMF5BMl5BanBnXkFtZTgwODgyNDM2NDE@._V1_.jpg",
+          "image": "Cinema Project/ifgqhvqch8gayxrs9ljb",
           "name": "James Corden",
           "role": "Peter Rabbit (voice)"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjMyMzk0MDQ1NF5BMl5BanBnXkFtZTgwNzAwNTcyNzE@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
-          "name": "Fayssal Bazzi",
-          "role": "Mr. Tod (voice)"
+          "image": "Cinema Project/vjuymrycoldfk7qnhy44",
+          "name": "Rose Byrne",
+          "role": "Bea"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjA5MjI0MzY2MF5BMl5BanBnXkFtZTcwMzM3ODM3OA@@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "image": "Cinema Project/byyckw43lc7jlrvxek9b",
           "name": "Domhnall Gleeson",
-          "role": "Mr. Jeremy Fisher / Mr. Thomas McGregor"
+          "role": "Mr.Jeremy Fisher / Mr.Thomas McGregor"
         }
       ],
       "description": "Feature adaptation of Beatrix Potter's classic tale of a rebellious rabbit trying to sneak into a farmer's vegetable garden.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/peter_rabbit/Peter-Rabbit-kadr-1.R1366x758.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/peter_rabbit/Peter-Rabbit-kadr-2.R1366x758.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/peter_rabbit/Peter-Rabbit-kadr-3.R1366x758.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/peter_rabbit/Peter-Rabbit-kadr-4.R1366x758.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/peter_rabbit/Peter-Rabbit-kadr-5.R1366x756.jpg"
+        "Cinema Project/mbaarpe4zmmgemxq6yie",
+        "Cinema Project/ex1dcmlpnfmpd1twpeup",
+        "Cinema Project/zra4xe3kp2vuvel6w6ze",
+        "Cinema Project/lstqkie9rt8t3bfjtkdv",
+        "Cinema Project/bldjexr2xvwlmcnz2mua"
       ],
       "trailer": "http://www.imdb.com/title/tt5117670/videoplayer/vi2445195289",
       "genre": "Adventure, Comedy",
@@ -661,33 +662,33 @@
     {
       "id": 12,
       "name": "The Commuter",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/http://bahraincinema.com/wp-content/uploads/2018/01/The-Commuter--500x760.jpg",
+      "image": "Cinema Project/pyay8pc9zi2nz6lle5ez",
       "rating": 6.5,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjA1MTQ3NzU1MV5BMl5BanBnXkFtZTgwMDE3Mjg0MzE@._V1_.jpg",
+          "image": "Cinema Project/gomqsj4dqhpp87hcgfs9",
           "name": "Liam Neeson",
           "role": "Michael MacCauley"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTM3NzMwNTc1MV5BMl5BanBnXkFtZTcwNDE2ODU2OA@@._V1_.jpg",
+          "image": "Cinema Project/nqj6xabqcchjdexzahw5",
           "name": "Vera Farmiga",
           "role": "Joanna"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTkzNzcxNzcxMF5BMl5BanBnXkFtZTgwOTM1ODUzMTE@._V1_SY1000_CR0,0,685,1000_AL_.jpg",
+          "image": "Cinema Project/ia1uvuzmkxbpra1ad4kz",
           "name": "Patrick Wilson",
           "role": "Alex Murphy"
         }
       ],
       "description": "A businessman is caught up in a criminal conspiracy during his daily commute home.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://ia.media-imdb.com/images/M/MV5BNWViN2E0Y2MtZTExYi00NTFkLTk2MGEtMWJjN2UxOWFmMmNhXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1553,1000_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://ia.media-imdb.com/images/M/MV5BNjcyM2ViZmUtMGRhZC00Zjk1LWFmOTItZTg3Y2JmY2EwM2ZkXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1502,1000_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://ia.media-imdb.com/images/M/MV5BYTE5NDI0MjMtZjVlMy00NDg0LThlYmUtMjAwMWJhZmU2YWE4XkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1502,1000_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://ia.media-imdb.com/images/M/MV5BMjExNzNkNTEtM2E3Yi00NDczLWEwOGEtZDMxMWEyZDI2MmQzXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1502,1000_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://ia.media-imdb.com/images/M/MV5BMGM0ZDM1ZmQtNDY3Ni00YzFkLWJlMjAtMWVmMTFhZTU3Nzc5XkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1503,1000_AL_.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://ia.media-imdb.com/images/M/MV5BNWVlMzZlYjAtMmE1NS00ZTg1LTlhZGUtNDZiNzYyYjA0YTlkXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SY1000_CR0,0,1502,1000_AL_.jpg"
+        "Cinema Project/yt9k48sgjnjwhf7of509",
+        "Cinema Project/ovox6xvuu9qe7jrr5nnd",
+        "Cinema Project/vuauhncipnly6sgoz5es",
+        "Cinema Project/wtkscjaaikncpz93aok1",
+        "Cinema Project/fjmfba8cfvnz0hq6jn7i",
+        "Cinema Project/b42kvf77laf1dgeluxuu"
       ],
       "trailer": "http://www.imdb.com/title/tt1590193/videoplayer/vi1300019481",
       "genre": "Action, Crime, Drama",
@@ -718,30 +719,30 @@
     {
       "id": 13,
       "name": "Dear Dictator",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BNDVlZWU2ZDMtMWYzOC00ODA1LTk2N2EtMGJmYjdjY2IwN2I5XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SY1000_CR0,0,675,1000_AL_.jpg",
+      "image": "Cinema Project/xk1nqlwjgwggvz4hhedc",
       "rating": 4.6,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjAwNzIwNTQ4Ml5BMl5BanBnXkFtZTYwMzE1MTUz._V1_.jpg",
+          "image": "Cinema Project/dqemacwy0u9uhwpjqhih",
           "name": "Michael Caine",
           "role": "General Anton Vincent"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjI1NDIzNDIyOF5BMl5BanBnXkFtZTgwNzg3ODQyNzE@._V1_.jpg",
+          "image": "Cinema Project/mfspzusnmw6gg30utblz",
           "name": "Odeya Rush",
           "role": "Tatiana Mills"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BNTA2NjY5OTkzNl5BMl5BanBnXkFtZTcwMDE2NTkxNA@@._V1_.jpg",
+          "image": "Cinema Project/nudpb5krcrnoumuxuw8c",
           "name": "Katie Holmes",
           "role": "Darlene Mills"
         }
       ],
       "description": "When political turmoil forces a British-Caribbean dictator to flee his island nation, he seeks refuge and hides with a rebellious teenage girl in suburban America, and ends up teaching the young teen how to start a revolution and overthrow the 'mean girls' in her high school.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/dear-dictator/dear-dictator-kadr-1.R1366x768.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/dear-dictator/dear-dictator-kadr-2.R1366x768.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/dear-dictator/dear-dictator-kadr-3.R1366x768.jpg"
+        "Cinema Project/b2lej7k5702vo2kowvgj",
+        "Cinema Project/onyzsjpfygctkz4adjh7",
+        "Cinema Project/zo9eoulrxkbqelzlqfed"
       ],
       "trailer": "http://www.imdb.com/title/tt5779540/videoplayer/vi4294686745",
       "genre": "Comedy",
@@ -772,33 +773,33 @@
     {
       "id": 14,
       "name": "Pacific Rim: Uprising",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BMjI3Nzg0MTM5NF5BMl5BanBnXkFtZTgwOTE2MTgwNTM@._V1_.jpg",
+      "image": "Cinema Project/jqzjlhp9vjh9detfywrq",
       "rating": 6.1,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMDg4NWZjNmEtZWVmNC00MzdhLTlhOTEtZmViYjdmMzhjMTAyXkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_.jpg",
+          "image": "Cinema Project/lijgxxi9vsqsoenjm5dp",
           "name": "John Boyega",
           "role": "Jake Pentecost"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjk2NTIyNjU2NF5BMl5BanBnXkFtZTgwNjQ0NjMzMjE@._V1_.jpg",
+          "image": "Cinema Project/tc8vutydo1ihfxvodqwc",
           "name": "Scott Eastwood",
           "role": "Nate Lambert"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BNzU1NTQzNjI2NF5BMl5BanBnXkFtZTgwNzQ3OTk1OTE@._V1_.jpg",
+          "image": "Cinema Project/im0xcpy2uyy4trjsucyf",
           "name": "Cailee Spaeny",
           "role": "Amara Namani"
         }
       ],
       "description": "Jake Pentecost, son of Stacker Pentecost, reunites with Mako Mori to lead a new generation of Jaeger pilots, including rival Lambert and 15-year-old hacker Amara, against a new Kaiju threat.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/pacific_rim_uprising/tihookeanskiy-kadr-1.R1366x911.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/pacific_rim_uprising/tihookeanskiy-kadr-2.R1366x909.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/pacific_rim_uprising/tihookeanskiy-kadr-3.R1366x911.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/pacific_rim_uprising/tihookeanskiy-kadr-4.R1366x909.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/pacific_rim_uprising/tihookeanskiy-kadr5.R1366x911.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/pacific_rim_uprising/tihookeanskiy-kadr8.R1366x909.jpg"
+        "Cinema Project/xbo9nuf3wddb6hpkpkkj",
+        "Cinema Project/sfrw7jxas9wwxakawqam",
+        "Cinema Project/el2dw0cn3wejpkand3mj",
+        "Cinema Project/chgzj2umfjf9jkk2imex",
+        "Cinema Project/acxkalwhuqfljgibwjwl",
+        "Cinema Project/lc3arakikcfdeavcxccp"
       ],
       "trailer": "http://www.imdb.com/title/tt2557478/videoplayer/vi2501425177",
       "genre": "Action, Adventure, Sci-Fi",
@@ -838,33 +839,33 @@
     {
       "id": 15,
       "name": "Ready Player One",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BY2JiYTNmZTctYTQ1OC00YjU4LWEwMjYtZjkwY2Y5MDI0OTU3XkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
+      "image": "Cinema Project/lncttjfsuihusmdggzpr",
       "rating": 8.1,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BOTJjODlmNjAtNjE3Ny00NzIwLTkwMjItOWY1MzM4ZDM1ZTM5XkEyXkFqcGdeQXVyNzczNzg0ODc@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "image": "Cinema Project/bvgdmtgcot4wtlozchln",
           "name": "Tye Sheridan",
           "role": "Parzival / Wade"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjIxNDUzMTQ4OF5BMl5BanBnXkFtZTgwNjU3MjI1MTE@._V1_.jpg",
+          "image": "Cinema Project/rxc4fadqx5njb3zgyoz0",
           "name": "Olivia Cooke",
           "role": "Art3mis / Samantha"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjA3NzcyMDcyMF5BMl5BanBnXkFtZTcwNjQwMTczMQ@@._V1_.jpg",
+          "image": "Cinema Project/eikzopv9ozy5ucnbj4qj",
           "name": "Ben Mendelsohn",
           "role": "Sorrento"
         }
       ],
       "description": "When the creator of a virtual reality world called the OASIS dies, he releases a video in which he challenges all OASIS users to find his Easter Egg, which will give the finder his fortune.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ready_player_one/Ready-Player-One-kadr-1.R1366x909.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ready_player_one/Ready-Player-One-kadr-2.R1366x909.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ready_player_one/Ready-Player-One-kadr-3.R1366x909.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ready_player_one/Ready-Player-One-kadr4.R1366x911.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ready_player_one/Ready-Player-One-kadr-5.R1366x911.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ready_player_one/Ready-Player-One-kadr9.R1366x911.jpg"
+        "Cinema Project/alcfclmaezcjfrnd9kam",
+        "Cinema Project/piv5wdfxsn9qoyxgnkjo",
+        "Cinema Project/ee6vccgtirsxtkbsiqkx",
+        "Cinema Project/h0bbefra1fhospth8fau",
+        "Cinema Project/jotxagnxpgzb0nglosxz",
+        "Cinema Project/rywznrvunw4y0sy6yg5g"
       ],
       "trailer": "http://www.imdb.com/title/tt1677720/videoplayer/vi2568140825",
       "genre": "Action, Adventure, Sci-Fi",
@@ -911,30 +912,30 @@
     {
       "id": 16,
       "name": "Taxi 5",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BNTA5ZDlmZjctMjMzNi00YjFjLWI0YzctZTNiMzA2OTkxOTcyXkEyXkFqcGdeQXVyNjY4NTQwMQ@@._V1_.jpg",
+      "image": "Cinema Project/xu9pvugvftgqxa96zyqb",
       "rating": "-.-",
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Franck_Gastambide_Cannes_2016_2.jpg/220px-Franck_Gastambide_Cannes_2016_2.jpg",
+          "image": "Cinema Project/bgt6jqs4qkmvi6rh6nyg",
           "name": "Franck Gastambide",
           "role": "Sylvain Marot"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BOTMyNDU5ODkzOV5BMl5BanBnXkFtZTcwNjk1MjM1OQ@@._V1_SY1000_CR0,0,636,1000_AL_.jpg",
+          "image": "Cinema Project/euunfhsifidifwhqq11m",
           "name": "Sabrina Ouazani",
           "role": "Samia"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMzg1NTQyNDAtZjJiZS00NmRjLTliOGQtY2RhZDJhNGI3MWFjXkEyXkFqcGdeQXVyNjc4MzI0MDA@._V1_SY1000_SX1500_AL_.jpg",
+          "image": "Cinema Project/zv0mc2pya54en5g4nose",
           "name": "Sand Van Roy",
           "role": "Sandy"
         }
       ],
       "description": "A police officer who's transfered in the police of Marseille gets assigned to take down a group of Italian robbers who drive the powerfull Ferrari's with the older niece of Daniel, a terrible driver who gets the legendary white taxi.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/taxi_5/Taxi-5-kadr-1.R1366x911.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/taxi_5/Taxi-5-kadr-2.R1366x874.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/taxi_5/Taxi-5-kadr-3.R1366x911.jpg"
+        "Cinema Project/t6inftshdbs89tacj0gy",
+        "Cinema Project/cakhvrm9vfo6c9r0s7yc",
+        "Cinema Project/ys1dtahrgbsynk9rajfl"
       ],
       "trailer": "http://www.imdb.com/title/tt4477536/videoplayer/vi2967320601",
       "genre": "Action, Adventure, Comedy",
@@ -955,31 +956,31 @@
     {
       "id": 17,
       "name": "Avengers: Infinity War",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
+      "image": "Cinema Project/lgidafuih4bfbzc3yw5e",
       "rating": "-.-",
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTQwMDQ0NDk1OV5BMl5BanBnXkFtZTcwNDcxOTExNg@@._V1_SY1000_CR0,0,688,1000_AL_.jpg",
+          "image": "Cinema Project/r4qahd7qgbpdi4t3h11c",
           "name": "Karen Gillan",
           "role": "Nebula"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjIyMzgxMzc5N15BMl5BanBnXkFtZTgwNDg3NzYzMDI@._V1_.jpg",
+          "image": "Cinema Project/r1ptr1qqhetfirn5wrdq",
           "name": "Letitia Wright",
           "role": "Shuri"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2OTY5MzcwMV5BMl5BanBnXkFtZTgwODM4MDI5MjI@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "image": "Cinema Project/r8zsgpcjdgrlkpbgh7p5",
           "name": "Chadwick Boseman",
           "role": "T'Challa / Black Panther"
         }
       ],
       "description": "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/avengers_infinity_war/Avengers-kadr1.R1366x911.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/avengers_infinity_war/Avengers-kadr2.R1366x911.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/avengers_infinity_war/Avengers-kadr3.R1366x911.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/avengers_infinity_war/Avengers1-kadr-4.R1366x911.jpg"
+        "Cinema Project/djvunzd7wki43dusmh9o",
+        "Cinema Project/pdp87sngkgfx9tts7eqe",
+        "Cinema Project/m2mftuvj9kqvgsdp1kvb",
+        "Cinema Project/ofnbnnrwb71evhckcdd9"
       ],
       "trailer": "http://www.imdb.com/title/tt4154756/videoplayer/vi974436377",
       "genre": "Action, Adventure, Fantasy",
@@ -1010,30 +1011,30 @@
     {
       "id": 18,
       "name": "Jurassic World: Fallen Kingdom",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BMTc3Nzc3OTgxMl5BMl5BanBnXkFtZTgwNzgzNzk2MjI@._V1_.jpg",
+      "image": "Cinema Project/npdg8c0z4t4wqz4nccua",
       "rating": "-.-",
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BODEzNzBhODYtOWEzNi00Y2I3LWFjMGEtNzAxNzU5ZjZiMDRiXkEyXkFqcGdeQXVyMjQ0MTg4Nw@@._V1_.jpg",
+          "image": "Cinema Project/kesiwwxo41moc77bm2yg",
           "name": "Bryce Dallas Howard",
           "role": "Claire Dearing"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BNzg3MTgwOTgzMV5BMl5BanBnXkFtZTgwODIxMTUwMjE@._V1_SY1000_CR0,0,666,1000_AL_.jpg",
+          "image": "Cinema Project/ffkrwucqhhvqmopk82wc",
           "name": "Chris Pratt",
           "role": "Owen Grady"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTE5NzkyODg1Nl5BMl5BanBnXkFtZTYwMTY2OTE0._V1_.jpg",
+          "image": "Cinema Project/qhjcglhlqzgl0geedu3t",
           "name": "Jeff Goldblum",
           "role": "Ian Malcolm"
         }
       ],
       "description": "When the island's dormant volcano begins roaring to life, Owen and Claire mount a campaign to rescue the remaining dinosaurs from this extinction-level event.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/jurassic_world_2/Jurassic-World-2-kadr-1.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/jurassic_world_2/Jurassic-World-2-kadr-2.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/jurassic_world_2/Jurassic-World-2-kadr-3.jpg"
+        "Cinema Project/efld5dmgrnmc4oitnz8y",
+        "Cinema Project/c0ijsliwzt2u90y0cxrx",
+        "Cinema Project/zzbpuwrxpqov4meg3wnc"
       ],
       "trailer": "http://www.imdb.com/title/tt4881806/videoplayer/vi3487021081",
       "genre": "Action, Adventure, Sci-Fi",
@@ -1054,31 +1055,31 @@
     {
       "id": 19,
       "name": "Ant-Man and the Wasp",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BMjM1NDEzMzgxMl5BMl5BanBnXkFtZTgwNzg5NTk2NDM@._V1_SY1000_SX675_AL_.jpg",
+      "image": "Cinema Project/ker6hlsoszb3li5zlamq",
       "rating": "-.-",
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTY4NTEwNDg1MV5BMl5BanBnXkFtZTgwODMwMDA0ODE@._V1_SY1000_CR0,0,799,1000_AL_.jpg",
+          "image": "Cinema Project/emqk2eok8yvyhlyrbt9z",
           "name": "Paul Rudd",
           "role": "Scott Lang / Ant-Man"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BYzYyNmUwMmItYzE4YS00ZTQxLWJiNjUtNzA0OGIzZGYzNDk2XkEyXkFqcGdeQXVyNDg4OTQzNjg@._V1_UX32_CR0,0,32,44_AL_.jpg",
+          "image": "Cinema Project/sakp3isv3txjtnctiijy",
           "name": "Hannah John-Kamen",
           "role": "Ghost"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTc2MDMzODU0OV5BMl5BanBnXkFtZTgwODIwOTAxMzI@._V1_SY1000_CR0,0,868,1000_AL_.jpgMDg0Ng@@._V1_SY1000_CR0,0,694,1000_AL_.jpg",
+          "image": "Cinema Project/zd55jubc2ccx14bhdaym",
           "name": "Evangeline Lilly",
           "role": "Hope van Dyne / The Wasp"
         }
       ],
       "description": "As Scott Lang balances being both a Super Hero and a father, Hope van Dyne and Dr. Hank Pym present an urgent new mission that finds the Ant-Man fighting alongside The Wasp to uncover secrets from their past.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ant_man_and_the_wasp/Ant-Man-and-the-Wasp-kadr-1.R1366x909.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ant_man_and_the_wasp/Ant-Man-and-the-Wasp-kadr-2.R1366x909.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ant_man_and_the_wasp/Ant-Man-and-the-Wasp-kadr-3.R1366x909.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/ant_man_and_the_wasp/Ant-Man-and-the-Wasp-kadr-4.R1366x909.jpg"
+        "Cinema Project/zywlbiyzj2logooh7oeb",
+        "Cinema Project/viawd6mknhjhts5sbjvb",
+        "Cinema Project/ctsjzgqc1gtwgxhyijns",
+        "Cinema Project/wjw9a0tlegpqauctrphj"
       ],
       "trailer": "http://www.imdb.com/title/tt5095030/videoplayer/vi972011545",
       "genre": "Action, Adventure, Sci-Fi",
@@ -1098,32 +1099,32 @@
     },
     {
       "id": 20,
-      "name": "All the Money in the World ",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BNjY3Mjg0OTc1OF5BMl5BanBnXkFtZTgwNDU0MzAyNDM@._V1_.jpg",
+      "name": "All the Money in the World",
+      "image": "Cinema Project/md6lwxse1ylslihvogkx",
       "rating": 7,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BOWNhYzU3N2YtY2Q0OS00ODM1LWE2MzUtM2MzNjk3NTgzNWE1XkEyXkFqcGdeQXVyNzkyNDc1OTM@._V1_.jpg",
+          "image": "Cinema Project/hcqs1bwjpcjhn3m49qrr",
           "name": "Michelle Williams",
           "role": "Gail Harris"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTU5MzQ5MDY3NF5BMl5BanBnXkFtZTcwNzMxOTU5Ng@@._V1_SY1000_CR0,0,700,1000_AL_.jpg",
+          "image": "Cinema Project/dkriwebrkfgqxk9wwwnf",
           "name": "Christopher Plummer",
           "role": "J. Paul Getty"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjE1MjYwNTE2M15BMl5BanBnXkFtZTYwNTI0NjI1._V1_.jpg",
+          "image": "Cinema Project/rmy6khltd16qo30jchwy",
           "name": "Mark Wahlberg",
           "role": "Fletcher Chase"
         }
       ],
       "description": "The story of the kidnapping of 16-year-old John Paul Getty III and the desperate attempt by his devoted mother to convince his billionaire grandfather Jean Paul Getty to pay the ransom.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/all-the-money-in-the-world/all-the-money-kadr-1.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/all-the-money-in-the-world/all-the-money-kadr-9.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/all-the-money-in-the-world/all-the-money-kadr-5.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/all-the-money-in-the-world/all-the-money-kadr-3.jpg"
+        "Cinema Project/urptye8xifyql3mtvbjk",
+        "Cinema Project/dhhbnfngwqloioshjksn",
+        "Cinema Project/qxaekottkz8scdtqeqjq",
+        "Cinema Project/jws8iwlflmikd8uizu6b"
       ],
       "trailer": "http://www.imdb.com/title/tt5095030/videoplayer/vi972011545",
       "genre": "Biography, Crime, Drama, Mystery, Thriller",
@@ -1162,31 +1163,31 @@
     {
       "id": 21,
       "name": "Ghostland",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BYmRkYjhmNzUtZDc1YS00NzM3LWI3N2UtZDBlOTUyMzIzYjdiXkEyXkFqcGdeQXVyNjkxMzgzODU@._V1_SY1000_CR0,0,740,1000_AL_.jpg",
+      "image": "Cinema Project/mso6i6jkrjwt0e5z9bgm",
       "rating": 6.6,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BNTE2NGFhZWYtNDRkOS00ODdjLWFhMzYtZWVkNjM5MTMyZmYyXkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_.jpg",
+          "image": "Cinema Project/afwtxs4qmhszu8rfxuvn",
           "name": "Crystal Reed",
           "role": "Beth"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjMyOTI3MzI5OV5BMl5BanBnXkFtZTgwNjc0NTYxMjE@._V1_.jpg",
+          "image": "Cinema Project/zxplromsjcntcm3ehfbh",
           "name": "Anastasia Phillips",
           "role": "Vera"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BNjBiNjk1YjMtNDNlNS00NjcxLWI2OWQtMDYzMzc4YjE2MmRjXkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SY1000_CR0,0,799,1000_AL_.jpg",
+          "image": "Cinema Project/r0rsfotxjwyfzmbes2p9",
           "name": "Emilia Jones",
           "role": "Young Beth"
         }
       ],
       "description": "The story follows a mother of two who inherits a home from her Aunt. On the first night in the new home she is confronted with murderous intruders and fights for her daughters lives. Sixteen years later when the daughters reunite at the house, and that is when things get strange.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/incident_in_a_ghost_land/Ghostland-kadr-2.R1366x912.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/incident_in_a_ghost_land/Ghostland-kadr-1.R1366x912.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/incident_in_a_ghost_land/Ghostland-kadr-4.R1366x900.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/incident_in_a_ghost_land/Ghostland-kadr-3.R1366x900.jpg"
+        "Cinema Project/s7yuprx5ukg9vobcbivs",
+        "Cinema Project/n7xj4tnekeqdgvvxixqx",
+        "Cinema Project/d3xy2racptrc4jmrhoqh",
+        "Cinema Project/gxeej2v2phygcv3nlrs3"
       ],
       "trailer": "http://www.imdb.com/title/tt1620680/videoplayer/vi1357101081",
       "genre": "Horror",
@@ -1220,33 +1221,33 @@
     {
       "id": 22,
       "name": "Stolen princess: Ruslan and Ludmila",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BOTUyYmZhNzktNGJiOS00NDZlLWJmY2MtYTMzZjM5NGZmOGVhXkEyXkFqcGdeQXVyODQwNTU3MjU@._V1_SY999_CR0,0,702,999_AL_.jpg",
+      "image": "Cinema Project/tc2wpvwsdphop9ycfcu7",
       "rating": 8,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/http://podrobnosti.ua/media/pictures/2017/12/29/thumbs/740x415/foto-instagram_rect_e90e11f8e7a781a7499237d8d8b72820.jpg",
+          "image": "Cinema Project/cmdowsfrgffy73olfcfp",
           "name": "Nadiya Dorofeeva",
           "role": "Mila (voice)"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://bestfacts.com.ua/uploads/2ecdfc4f7f/d80a2ff8cb.jpg",
+          "image": "Cinema Project/sebqpmgcnqzg6uchujtt",
           "name": "Oleksiy Zavhorodniy",
           "role": "Ruslan"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://st.kp.yandex.net/images/actor_iphone/iphone360_1977102.jpg",
+          "image": "Cinema Project/myin55vybgewqeb92nax",
           "name": "Yevhen Malukha",
           "role": "Chornomor"
         }
       ],
       "description": "This wonderful story happened in the age of valiant knights, beautiful princesses, and battling sorcerers. Ruslan, a wandering artist dreaming to become a knight, met beautiful Mila and fell in love with her; he didn't even suspect that she is the King's daughter.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/the-stolen-princess/stolen-princess_kadr-7.R1366x796.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/the-stolen-princess/stolen-princess_kadr-5.R1366x761.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/the-stolen-princess/stolen-princess_kadr-4.R1366x801.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/the-stolen-princess/stolen-princess_kadr-6.R1366x796.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/the-stolen-princess/stolen-princess_kadr-3.R1366x802.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/the-stolen-princess/stolen-princess_kadr-8.R1366x796.jpg"
+        "Cinema Project/bd6yo3cy1k2ahtsosi0n",
+        "Cinema Project/ei6dqjmw3f7qtilaklha",
+        "Cinema Project/sjvmymnykswjvrojauzi",
+        "Cinema Project/bpjn6zs9enibaj7e4dpx",
+        "Cinema Project/wp2mvqxxs5z6de8xank9",
+        "Cinema Project/p9lbhwcfshy74ndiqpft"
       ],
       "trailer": "http://www.imdb.com/title/tt2557478/videoplayer/vi2501425177",
       "genre": "Fantasy, Comedy",
@@ -1286,31 +1287,31 @@
     {
       "id": 23,
       "name": "You Were Never Really Here",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BMDkwOTE0ZjMtZmRiYS00M2M3LWE3MzUtNzNmNmExNTNmNjg5XkEyXkFqcGdeQXVyODE1MjMyNzI@._V1_SY1000_SX675_AL_.jpg",
+      "image": "Cinema Project/rqlwvghufcdwwsjdgwlp",
       "rating": 7.5,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BNzAzNjg5MDE3N15BMl5BanBnXkFtZTcwMjIxNzU0OA@@._V1_SY1000_CR0,0,665,1000_AL_.jpg",
+          "image": "Cinema Project/bf9xdbwavjc8bozbbndb",
           "name": "Joaquin Phoenix",
           "role": "Joe"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BM2NmODExNGMtNGZiZS00MTAzLWE1MTQtN2ZkM2UxMjFlMTA3XkEyXkFqcGdeQXVyNTkzOTMwODY@._V1_SY1000_CR0,0,644,1000_AL_.jpg",
+          "image": "Cinema Project/ebrdk7z44zk1bg4urui8",
           "name": "Dante Pereira-Olson",
           "role": "Young Joe"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://3062vledx733g38ml1zlqbuq-wpengine.netdna-ssl.com/wp-content/uploads/2018/01/20180120_173516_005-Copy-Copy-184x260.jpg",
+          "image": "Cinema Project/g6idcfyrpovlcjlpmiyy",
           "name": "Larry Canady",
           "role": "Cincinatti Cab Driver"
         }
       ],
       "description": "A traumatized veteran, unafraid of violence, tracks down missing girls for a living. When a job spins out of control, Joe's nightmares overtake him as a conspiracy is uncovered leading to what may be his death trip or his awakening.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/you-were-never-really-here/ywnrh-kadr-4.R1366x910.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/you-were-never-really-here/ywnrh-kadr-5.R1366x910.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/you-were-never-really-here/ywnrh-kadr-3.R1366x910.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/you-were-never-really-here/ywnrh-kadr-1.R1366x910.jpg"
+        "Cinema Project/z4j1js30qqfvktwt9rvn",
+        "Cinema Project/tpybyhwwlelzyizvquql",
+        "Cinema Project/cpycrc9idyc9eu7pjdai",
+        "Cinema Project/ldzlrvqrm4evnet918oo"
       ],
       "trailer": "http://www.imdb.com/title/tt1677720/videoplayer/vi2568140825",
       "genre": "Drama, Mystery, Thriller",
@@ -1357,30 +1358,30 @@
     {
       "id": 24,
       "name": "I Kill Giants",
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408/https://ia.media-imdb.com/images/M/MV5BMjM1MTc3ODcwMV5BMl5BanBnXkFtZTgwNTU2MjA4NDM@._V1_SY1000_SX675_AL_.jpg",
+      "image": "Cinema Project/q0bysxa5lk2wvd2s6uwf",
       "rating": 6.6,
       "cast": [
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BZmZjZjE2YWEtN2JlOC00Mzk4LTgxOGQtOTY5NTA4ZDE5Njk2XkEyXkFqcGdeQXVyMjQ2ODYzNzY@._V1_.jpg",
+          "image": "Cinema Project/ctslej0qoamxpwgsl1fh",
           "name": "Madison Wolfe",
           "role": "Barbara"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMjA4NDk1NTA1OV5BMl5BanBnXkFtZTcwMTIzMjQ4Ng@@._V1_SY1000_CR0,0,727,1000_AL_.jpg",
+          "image": "Cinema Project/v8agagfkrfgmrl86lko9",
           "name": "Zoe Saldana",
           "role": "Mrs. Mollé"
         },
         {
-          "image": "https://res.cloudinary.com/demo/image/fetch/w_50,h_50,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTU3OTA3MzM2NV5BMl5BanBnXkFtZTcwMDczNjY0Mw@@._V1_.jpg",
+          "image": "Cinema Project/n4aqk60kdztdyirzumng",
           "name": "Imogen Poots",
           "role": "Karen"
         }
       ],
       "description": "Barbara Thorson struggles through life by escaping into a fantasy life of magic and monsters.",
       "screenshots": [
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/i-kill-giants/i-kill-giants-kadr-1.R1366x910.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/i-kill-giants/i-kill-giants-kadr-2.R1366x910.jpg",
-        "https://res.cloudinary.com/demo/image/fetch/w_600/https://planetakino.ua/f/1/movies/i-kill-giants/i-kill-giants-kadr-3.R1366x911.jpg"
+        "Cinema Project/zqrcsgyxbqpflq05sdvm",
+        "Cinema Project/spbvp7frcvetnvjkigoj",
+        "Cinema Project/qyteqlof4myrzgydpb36"
       ],
       "trailer": "http://www.imdb.com/title/tt4547194/videoplayer/vi787003417",
       "genre": "Drama, Fantasy, Thriller",
@@ -1412,117 +1413,6 @@
         "month": 3,
         "day": 23
       }
-    },
-    {
-      "name": "Our New Movie",
-      "image": "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523908754/CinemaProject/Posters/labtii1g76wazqg8cztg.jpg",
-      "rating": 8.6,
-      "cast": [
-        {
-          "image": "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523908883/CinemaProject/Actors/y40ecjzepv5l3iehasfy.jpg",
-          "name": "Alicia Vikander",
-          "role": "Cat"
-        },
-        {
-          "image": "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523908901/CinemaProject/Actors/zzjlxqmwwa3k5hnymrru.jpg",
-          "name": "Bob Odenkirk",
-          "role": "Lion"
-        },
-        {
-          "image": "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523908934/CinemaProject/Actors/vdppcdorertig39neo2w.jpg",
-          "name": "Chadwick Boseman",
-          "role": "Rabbit"
-        }
-      ],
-      "description": "It's our first new normal added movie! Don't judge, please :D",
-      "screenshots": [
-        "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523908856/CinemaProject/Screenshots/s7x8mwoswffbphu24uu9.jpg",
-        "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523908856/CinemaProject/Screenshots/dgqwxu8wphb86lmx9jak.jpg",
-        "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523908856/CinemaProject/Screenshots/rptrltey8jijgb6pshlv.jpg",
-        "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523908856/CinemaProject/Screenshots/gu6pubhnqrzjxsnol8pt.jpg",
-        "https://res.cloudinary.com/dtnnkdylh/image/upload/v1523908856/CinemaProject/Screenshots/qirv89qrj5y1v6sth0s2.jpg"
-      ],
-      "trailer": "trailer link",
-      "genre": "Comedy, Family",
-      "Schedule": [
-        "19-04-2018 10:10",
-        "19-04-2018 13:40",
-        "19-04-2018 16:25",
-        "19-04-2018 17:00",
-        "19-04-2018 22:00",
-        "20-04-2018 10:10",
-        "20-04-2018 13:40",
-        "20-04-2018 16:25",
-        "20-04-2018 17:00",
-        "20-04-2018 22:00",
-        "21-04-2018 10:10",
-        "21-04-2018 13:40",
-        "21-04-2018 16:25",
-        "21-04-2018 17:00",
-        "21-04-2018 22:00",
-        "22-04-2018 10:10",
-        "22-04-2018 13:40",
-        "22-04-2018 16:25",
-        "22-04-2018 17:00",
-        "22-04-2018 22:00",
-        "23-04-2018 10:10",
-        "23-04-2018 13:40",
-        "23-04-2018 16:25",
-        "23-04-2018 17:00",
-        "23-04-2018 22:00",
-        "24-04-2018 10:10",
-        "24-04-2018 13:40",
-        "24-04-2018 16:25",
-        "24-04-2018 17:00",
-        "24-04-2018 22:00",
-        "25-04-2018 10:10",
-        "25-04-2018 13:40",
-        "25-04-2018 16:25",
-        "25-04-2018 17:00",
-        "25-04-2018 22:00",
-        "26-04-2018 10:10",
-        "26-04-2018 13:40",
-        "26-04-2018 16:25",
-        "26-04-2018 17:00",
-        "26-04-2018 22:00",
-        "27-04-2018 10:10",
-        "27-04-2018 13:40",
-        "27-04-2018 16:25",
-        "27-04-2018 17:00",
-        "27-04-2018 22:00",
-        "28-04-2018 10:10",
-        "28-04-2018 13:40",
-        "28-04-2018 16:25",
-        "28-04-2018 17:00",
-        "28-04-2018 22:00",
-        "29-04-2018 10:10",
-        "29-04-2018 13:40",
-        "29-04-2018 16:25",
-        "29-04-2018 17:00",
-        "29-04-2018 22:00",
-        "30-04-2018 10:10",
-        "30-04-2018 13:40",
-        "30-04-2018 16:25",
-        "30-04-2018 17:00",
-        "30-04-2018 22:00"
-      ],
-      "format": [
-        "3D"
-      ],
-      "technology": [
-        "IMAX"
-      ],
-      "duration": {
-        "hour": 1,
-        "minute": 55
-      },
-      "label": "soon",
-      "startDate": {
-        "year": 2018,
-        "month": 4,
-        "day": 19
-      },
-      "id": 25
     }
   ],
   "actors": [
@@ -1539,7 +1429,7 @@
         "Teen Choice Award в номінації Найкращий прорив року: жіноча роль у серіалі",
         "Teen Choice Award в номінації Найкраща актриса екшну/пригодницького фільму"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://images-na.ssl-images-amazon.com/images/M/MV5BNjU1NjM2YjMtZTUxMi00NWE2LWE1Y2UtZjI1NTM1YTA1NmY1XkEyXkFqcGdeQXVyMjA0MzUxMQ@@._V1_.jpg"
+      "image": "Cinema Project/wqdoibm3wmyvyo5fldsb"
     },
     {
       "id": "Jennifer Lawrence",
@@ -1552,7 +1442,7 @@
       "nominations": [
         " Премія «Оскар» за найкращу жіночу роль"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Jennifer_Lawrence_in_2016.jpg/1200px-Jennifer_Lawrence_in_2016.jpg"
+      "image": "Cinema Project/syuyyrbyfooaxhakjlu9"
     },
     {
       "id": "Joel Edgerton",
@@ -1565,7 +1455,7 @@
       "nominations": [
         "Премія «Золотий глобус» за найкращу чоловічу роль у фільмі — драма"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Joel_Edgerton_by_Gage_Skidmore.jpg/1200px-Joel_Edgerton_by_Gage_Skidmore.jpg"
+      "image": "Cinema Project/jtj9hnsuk133b89fg2zp"
     },
     {
       "id": "Matthias Schoenaerts",
@@ -1578,7 +1468,7 @@
       "nominations": [
         "Премія Сезар найперспективнішому актору"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/http://cdn-img.instyle.com/sites/default/files/1448301782/112315-december-mos-embed.jpg"
+      "image": "Cinema Project/vyq6xqjielobdmsue68k"
     },
     {
       "id": "Toby Kebbell",
@@ -1591,7 +1481,7 @@
       "nominations": [
         " Премія британського незалежного кіно в номінації Найкращий актор/актриса другого плану"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://media.gettyimages.com/photos/toby-kebbell-at-the-benhur-press-conference-at-the-four-seasons-hotel-picture-id589524542?s=612x612"
+      "image": "Cinema Project/yvnxovudjddhrrh6jwkq"
     },
     {
       "id": "Ryan Kwanten",
@@ -1604,7 +1494,7 @@
       "nominations": [
         "Премія найперспективнішому актору"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/http://cdn1.alloy.com/wp-content/uploads/2010/10/ryan-kwanten.jpg"
+      "image": "Cinema Project/ov03zjlhgonyayjhmclr"
     },
     {
       "id": "Jason Bateman",
@@ -1617,7 +1507,7 @@
       "nominations": [
         "Премія найперспективнішому актору"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/http://ksassets.timeincuk.net/wp/uploads/sites/55/2017/05/2017GettyImages-jason-bateman-arrested-development-season-five-920x584.jpg"
+      "image": "Cinema Project/xlidj6yb15pyacwkyu2g"
     },
     {
       "id": "Rachel McAdams",
@@ -1630,7 +1520,7 @@
       "nominations": [
         "Best Supporting Actress"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Rachel_McAdams_by_Gage_Skidmore.jpg/1200px-Rachel_McAdams_by_Gage_Skidmore.jpg"
+      "image": "Cinema Project/prqk4mdmqiw1w5dgv9ij"
     },
     {
       "id": "Kyle Chandler",
@@ -1643,7 +1533,7 @@
       "nominations": [
         " Премія EMMI за найкращу чоловічу роль у драматичному серіалі"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://media1.popsugar-assets.com/files/thumbor/F1_i58Suz_7I_4NYF_jXAm1-uKU/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2017/09/01/853/n/1922398/d0e584fc59a9b4e3c0bc40.08303770_edit_img_image_43967311_1504288939/i/Sexy-Kyle-Chandler-GIFs.jpg"
+      "image": "Cinema Project/kau8mlqjziqnwhkgiqqq"
     },
     {
       "id": "Chadwick Boseman",
@@ -1654,12 +1544,12 @@
       "date": "November 29, 1977",
       "city": "Anderson, South Carolina, U.S.",
       "nominations": [
-        " Премія EMMI за найкращу чоловічу роль у драматичному серіалі"
+        "Премія EMMI за найкращу чоловічу роль у драматичному серіалі"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://media.wmagazine.com/photos/57d2da47d5fdb93c251e7cc2/4:3/w_1536/DSC_8447_CHADWICKBOSEMAN_4.jpg"
+      "image": "Cinema Project/r8zsgpcjdgrlkpbgh7p5"
     },
     {
-      "id": "Michael B. Jordan",
+      "id": "Michael B.Jordan",
       "movies": {
         "3": "Black Panther"
       },
@@ -1669,7 +1559,7 @@
       "nominations": [
         " Премія EMMI за найкращу чоловічу роль у драматичному серіалі"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://pmcvariety.files.wordpress.com/2017/08/michael-b-jordan.jpg?w=1000&h=563&crop=1"
+      "image": "Cinema Project/eukvy7uhihryx9fjr3h5"
     },
     {
       "id": "Lupita Nyong'o",
@@ -1682,7 +1572,7 @@
       "nominations": [
         " Премія «Оскар» за найкращу жіночу роль другого плану"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://media.wmagazine.com/photos/5a60ad7d6cb00a21367b4884/4:3/w_1536/lupita-nyong%25E2%2580%2599o-writing-childrens-book-self-love.jpg"
+      "image": "Cinema Project/bx96uxsjvxpbzkeeeygt"
     },
     {
       "id": "Dakota Johnson",
@@ -1695,7 +1585,7 @@
       "nominations": [
         "MTV Movie & TV Award у номінації «Найкращий поцілунок»"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://media.glamour.com/photos/56957f9d5fff94d44eec31f3/master/w_1280,c_limit/beauty-2015-02-dakota-johnson-fifty-shades-lipstick-main.jpg"
+      "image": "Cinema Project/t97if01jnr1euz32szad"
     },
     {
       "id": "Jamie Dornan",
@@ -1708,7 +1598,7 @@
       "nominations": [
         "-"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://timedotcom.files.wordpress.com/2015/04/jamie-dornan.jpg"
+      "image": "Cinema Project/uzhlwu3bsgo09inai0ti"
     },
     {
       "id": "Eric Johnson",
@@ -1721,7 +1611,7 @@
       "nominations": [
         "-"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://cdn1.thr.com/sites/default/files/imagecache/landscape_928x523/2016/02/knicktv_s2_03.jpg"
+      "image": "Cinema Project/d1bwpdba4pqrom6axqw2"
     },
     {
       "id": "Alicia Vikander",
@@ -1734,7 +1624,7 @@
       "nominations": [
         "Премія «Оскар» за найкращу жіночу роль другого плану"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/http://www.peoples.ru/art/cinema/actor/alicia_vikander/vikander_4.jpg"
+      "image": "Cinema Project/thdziwujo19m9os8tjuw"
     },
     {
       "id": "James McAvoy",
@@ -1747,7 +1637,7 @@
       "nominations": [
         "Премія БАФТА новій зірці"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/http://www.thinkhotels.com/blog/wp-content/uploads/2015/01/James-McAvoy.jpg"
+      "image": "Cinema Project/uiqvcptgeb9a9s6tbprs"
     },
     {
       "id": "Alexander Siddig",
@@ -1760,7 +1650,7 @@
       "nominations": [
         "-"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/http://www.mymbuzz.com/wp-content/uploads/sites/2/2017/03/Alexander-Siddig.jpg"
+      "image": "Cinema Project/itz1hrp8khkiyssfusgr"
     },
     {
       "id": "Meryl Streep",
@@ -1773,7 +1663,7 @@
       "nominations": [
         "Премія «Оскар» за найкращу жіночу роль"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://ia.media-imdb.com/images/M/MV5BMTU4Mjk5MDExOF5BMl5BanBnXkFtZTcwOTU1MTMyMw@@._V1_UY1200_CR112,0,630,1200_AL_.jpg"
+      "image": "Cinema Project/lhdunme1mo2dxk9hdrsh"
     },
     {
       "id": "Tom Hanks",
@@ -1786,7 +1676,7 @@
       "nominations": [
         "-"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://pmcdeadline2.files.wordpress.com/2017/08/tom-hanks.jpg?w=605"
+      "image": "Cinema Project/owivktmixeoedmejjdjf"
     },
     {
       "id": "Bob Odenkirk",
@@ -1799,31 +1689,7 @@
       "nominations": [
         "Outstanding Writing for a Variety Series"
       ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/https://vignette.wikia.nocookie.net/breakingbad/images/8/8d/BobOdenkirk.jpg/revision/latest?cb=20170515204037"
-    },
-    {
-      "id": "Ivan Ivanenko",
-      "movies": {},
-      "info": "Lorem Ipsum - это текст-\"рыба\", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.Lorem Ipsum - это текст-\"рыба\", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.",
-      "date": "2020-02-04",
-      "city": "Lviv",
-      "nominations": [
-        "--"
-      ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/"
-    },
-    {
-      "id": "Petro Petrenenko",
-      "movies": {
-        "9": "Deadpool 2"
-      },
-      "info": "--",
-      "date": "2009-09-09",
-      "city": "Lviv",
-      "nominations": [
-        "--"
-      ],
-      "image": "https://res.cloudinary.com/demo/image/fetch/w_275,h_408,c_thumb,g_face/"
+      "image": "Cinema Project/fhcgpqvcwm6pf7dpwfca"
     }
   ]
 }
