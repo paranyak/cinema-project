@@ -6,14 +6,20 @@ import checkScrollPosition from '../helpers/checkScrollPosition';
 import {connect} from "react-redux";
 import {Link} from 'react-router-dom'
 import MoviePoster from "./MoviePoster";
-import {getMovieById, getCarouselleMovies} from '../reducers';
+import {getCarouselleMovies} from '../reducers';
 import {fetchCarouselleMovies} from '../actions/fetch';
 import LazyLoad from 'react-lazyload';
+import _ from 'lodash';
+import throttle from 'lodash/throttle';
+import debounce from 'lodash/debounce';
 
 const b = block("MovieCarousel");
 
 class MovieCarousel extends Component {
-
+    constructor() {
+        super();
+        this.handleClick = debounce(this.handleClick, 500, {leading: true, trailing: false});
+    }
     componentWillMount() {
         this.props.fetchMovies();
     }
@@ -33,7 +39,6 @@ class MovieCarousel extends Component {
             scrollDir: 'scrollLeft'
         });
         checkScrollPosition(carousel, forwardBut, backwardBut);
-
     };
 
     backwardClick() {
@@ -67,7 +72,7 @@ class MovieCarousel extends Component {
                 >
                     {films
                         .map((film, i) =>
-                            <LazyLoad key={i} height='100%' offsetRight={100}>
+                            <LazyLoad key={i} height='100%' offsetRight={200}>
                                 <Link key={film} to={`/movie/${film}`}>
                                     <MoviePoster filmId={film}/>
                                 </Link>
@@ -86,17 +91,11 @@ class MovieCarousel extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch, props) => {
-    return {
-        fetchMovies: () => dispatch(fetchCarouselleMovies(props.label))
-    }
-};
+const mapDispatchToProps = (dispatch, props) => ( {fetchMovies: () => dispatch(fetchCarouselleMovies(props.label))} );
 
 const mapStateToProps = (state, props) => {
-    const movies = getCarouselleMovies(state, props.label) || []
-    return {
-        films: movies
-    }
+    const movies = getCarouselleMovies(state, props.label) || [];
+    return {films: movies};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCarousel);
