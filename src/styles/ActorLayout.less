@@ -18,6 +18,11 @@
     margin-top: -40px;
     box-shadow: 10px 21px 94px 6px rgba(0, 0, 1, 1);
     border-bottom: @main-yellow 10px solid;
+    @media (max-width: 1110px) {
+      box-shadow: none;
+      margin: 0 auto;
+      display: block;
+    }
   }
   &__general{
     color: @white-text;
@@ -26,6 +31,12 @@
     float: right;
     width: 60%;
     min-width: 600px;
+    @media (max-width: 1110px) {
+      width: 90%;
+      min-width: initial;
+      float: none;
+      margin: 0 auto;
+    }
   }
   &__name{
     font-weight: bold;
@@ -43,13 +54,23 @@
     color: @white-text;
     font-weight: bold;
     padding-top: 40px;
+    @media (max-width: 768px) {
+      display: block;
+      padding-top:0;
+    }
   }
   &__value {
     float: right;
     margin-right: 20px;
     opacity: 0.6;
     font-weight: normal;
-  }
+    max-width: 70%;
+    @media (max-width: 768px) {
+      float:none;
+      margin: 0 0 0 10px;
+    }
+    }
+
   &__nominations, &__movies{
     grid-column-start: 1;
     grid-column-end: 3;
@@ -61,5 +82,10 @@
     opacity: 0.6;
     font-weight: normal;
     text-decoration: none;
+    @media (max-width: 768px) {
+      float:none;
+      margin: 0 0 0 10px;
+      display: inline-block;
+    }
   }
 }

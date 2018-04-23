@@ -19169,6 +19169,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var b = (0, _BEM2.default)("DragDropImage");
+var link = 'https://res.cloudinary.com/dtnnkdylh/image/upload/';
 
 var DragDropImage = function (_Component) {
     _inherits(DragDropImage, _Component);
@@ -19187,22 +19188,13 @@ var DragDropImage = function (_Component) {
         value: function handleDrop(files) {
             var _this2 = this;
 
-            var preset = '';
             var name = this.props.name;
 
-
-            if (name === 'poster') {
-                preset = "pt8mg4xb";
-            } else if (name === 'actor') {
-                preset = "sfazgc2b";
-            } else if (name === 'screenshots') {
-                preset = 'ntkbwv1n';
-            }
             files.map(function (file) {
                 var formData = new FormData();
                 formData.append("file", file);
                 formData.append("tags", "codeinfuse, medium, gist");
-                formData.append("upload_preset", preset);
+                formData.append("upload_preset", 'zfiucvj1');
                 formData.append("api_key", "775112651137943");
                 formData.append("timestamp", Date.now() / 1000 | 0);
 
@@ -19210,10 +19202,12 @@ var DragDropImage = function (_Component) {
                     headers: { "X-Requested-With": "XMLHttpRequest" }
                 }).then(function (response) {
                     var data = response.data;
-                    var fileURL = data.secure_url;
-                    var val = name === 'poster' || name === 'actor' ? [fileURL] : [].concat(_toConsumableArray(_this2.state.images), [fileURL]);
+                    console.log('data', data);
+                    var publicID = data.public_id;
+                    console.log(publicID);
+                    var val = name === 'poster' || name === 'actor' ? [publicID] : [].concat(_toConsumableArray(_this2.state.images), [publicID]);
                     _this2.setState({ images: val });
-                    _this2.props.callbackFromParent(name, fileURL);
+                    _this2.props.callbackFromParent(name, publicID);
                 });
             });
         }
@@ -19248,7 +19242,7 @@ var DragDropImage = function (_Component) {
                         "Click on the image you want to remove"
                     ),
                     images.map(function (el, i) {
-                        return _react2.default.createElement("img", { src: el, key: i, className: b('image'), onClick: _this3.removeImage.bind(_this3, i) });
+                        return _react2.default.createElement("img", { src: link + el, key: i, className: b('image'), onClick: _this3.removeImage.bind(_this3, i) });
                     })
                 );
             }
@@ -22458,6 +22452,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var b = (0, _BEM2.default)("MoviePoster");
+var link = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_275,h_408/';
 
 var MoviePoster = function (_Component) {
     _inherits(MoviePoster, _Component);
@@ -22476,14 +22471,13 @@ var MoviePoster = function (_Component) {
                 filmId = _props.filmId;
 
             if (!film || film === undefined) {
-                // this.props.fetchMovieById(this.props.match.params.film);
                 this.props.fetchMovieById(filmId);
                 return null;
             }
             return _react2.default.createElement(
                 "article",
                 { className: b() },
-                _react2.default.createElement("img", { src: film.image, className: b("image") }),
+                _react2.default.createElement("img", { src: link + film.image, className: b("image") }),
                 _react2.default.createElement(
                     "footer",
                     { className: b("additional-info") },
@@ -67112,7 +67106,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, ".MoviePoster {\n  margin: 5px;\n  display: inline-block;\n  background-color: #484848;\n  font-size: 14px;\n  height: 491px;\n  width: 275px;\n}\n.MoviePoster__image {\n  height: 408px;\n  width: 275px;\n  background-color: white;\n}\n.MoviePoster__additional-info {\n  margin: 13px;\n}\n.MoviePoster__name {\n  font-size: 19px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  color: white;\n  width: 205px;\n  margin: 0;\n}\n.MoviePoster__genre {\n  color: #FAE807;\n  width: 205px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  margin: 10px 0;\n  font-size: 16px;\n}\n.MoviePoster__rating {\n  border: 1px solid;\n  padding: 5px 7px;\n  border-radius: 3px;\n  color: #FAE807;\n  float: right;\n  margin-top: -50px;\n}\n", ""]);
+exports.push([module.i, ".MoviePoster {\n  margin: 5px;\n  display: inline-block;\n  background-color: #484848;\n  font-size: 14px;\n  height: 491px;\n  width: 275px;\n}\n.MoviePoster__image {\n  height: 408px;\n  width: 275px;\n}\n.MoviePoster__additional-info {\n  margin: 13px;\n}\n.MoviePoster__name {\n  font-size: 19px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  color: white;\n  width: 205px;\n  margin: 0;\n}\n.MoviePoster__genre {\n  color: #FAE807;\n  width: 205px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  margin: 10px 0;\n  font-size: 16px;\n}\n.MoviePoster__rating {\n  border: 1px solid;\n  padding: 5px 7px;\n  border-radius: 3px;\n  color: #FAE807;\n  float: right;\n  margin-top: -50px;\n}\n", ""]);
 
 // exports
 
@@ -67945,6 +67939,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var b = (0, _BEM2.default)("MovieImage");
+var linkMain = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_275,h_408/';
+var linkScr = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_160,h_100,c_fill,g_center/';
+var linkScrCarousel = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_600/';
+var linkScrModal = 'https://res.cloudinary.com/dtnnkdylh/image/upload/h_80/';
 
 var MovieImage = function (_Component) {
     _inherits(MovieImage, _Component);
@@ -67986,7 +67984,7 @@ var MovieImage = function (_Component) {
             }
             this.setState({ currentId: newId });
             var modalImg = document.getElementById("img01");
-            modalImg.src = this.state.sources[newId];
+            modalImg.src = linkScrCarousel + this.state.sources[newId];
         }
     }, {
         key: "handleKey",
@@ -68010,7 +68008,7 @@ var MovieImage = function (_Component) {
             var modal = document.getElementById('myModal');
             var modalImg = document.getElementById("img01");
             modal.style.display = "block";
-            modalImg.src = this.state.sources[id];
+            modalImg.src = linkScrCarousel + this.state.sources[id];
             modal.addEventListener("click", function (e) {
                 return _this2.handleKeyPress(e, id);
             }, false);
@@ -68021,7 +68019,8 @@ var MovieImage = function (_Component) {
         value: function changeImage(e, id) {
             this.setState({ currentId: id });
             var modalImg = document.getElementById("img01");
-            modalImg.src = this.state.sources[id];
+            console.log(this.state.sources[id]);
+            modalImg.src = linkScrCarousel + this.state.sources[id];
         }
     }, {
         key: "componentWillMount",
@@ -68059,14 +68058,14 @@ var MovieImage = function (_Component) {
             return _react2.default.createElement(
                 "section",
                 { className: b() },
-                _react2.default.createElement("img", { src: film.image, className: b("main"), onClick: function onClick(e, src) {
+                _react2.default.createElement("img", { src: linkMain + film.image, className: b("main"), onClick: function onClick(e, src) {
                         return _this3.mainImageHandler(e, 0);
                     } }),
                 _react2.default.createElement(
                     "section",
                     { className: b("screenshots") },
                     film.screenshots.map(function (screen, ind) {
-                        return _react2.default.createElement("img", { src: screen, key: ind, className: b("screen"),
+                        return _react2.default.createElement("img", { src: linkScr + screen, key: ind, className: b("screen"),
                             onClick: function onClick(e, src) {
                                 return _this3.mainImageHandler(e, ind + 1);
                             } });
@@ -68089,7 +68088,7 @@ var MovieImage = function (_Component) {
                         "section",
                         { className: b("screenshots-modal") },
                         this.state.sources.map(function (screen, ind) {
-                            return _react2.default.createElement("img", { src: screen, key: ind,
+                            return _react2.default.createElement("img", { src: linkScrModal + screen, key: ind,
                                 className: b("screen-modal"),
                                 onClick: function onClick(e) {
                                     return _this3.changeImage(e, ind);
@@ -68165,7 +68164,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, ".MovieImage {\n  max-width: 450px;\n}\n@media (max-width: 1110px) {\n  .MovieImage {\n    width: 525px;\n    margin: 0 auto;\n    max-width: none;\n  }\n}\n@media (max-width: 768px) {\n  .MovieImage {\n    width: 525px;\n    margin: 0 auto;\n    max-width: none;\n  }\n}\n@media (max-width: 415px) {\n  .MovieImage {\n    width: 100%;\n    margin: 0 auto;\n  }\n}\n.MovieImage__main {\n  margin-left: 40px;\n  margin-top: -40px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  border-bottom: #FAE807 10px solid;\n  background-color: white;\n  height: 408px;\n  width: 275px;\n}\n@media (max-width: 768px) {\n  .MovieImage__main {\n    margin: 0;\n    box-shadow: none;\n  }\n}\n.MovieImage__main:hover {\n  opacity: 0.7;\n}\n.MovieImage__screenshots {\n  width: 350px;\n  margin: 40px 0 0 20px;\n}\n@media (max-width: 1110px) {\n  .MovieImage__screenshots {\n    margin: 40px 20px 0 20px;\n    width: 170px;\n    display: inline-block;\n  }\n}\n@media (max-width: 768px) {\n  .MovieImage__screenshots {\n    margin: 40px 20px 0 20px;\n    width: 170px;\n    display: inline-block;\n  }\n}\n@media (max-width: 415px) {\n  .MovieImage__screenshots {\n    margin: 0;\n    width: 100%;\n    display: inline-block;\n  }\n}\n.MovieImage__screenshots-modal {\n  position: fixed;\n  top: 82%;\n  left: 0;\n  right: 0;\n  display: flex;\n  justify-content: center;\n}\n@media (max-width: 415px) {\n  .MovieImage__screenshots-modal {\n    display: none;\n  }\n}\n.MovieImage__screen-modal {\n  height: 80px;\n  margin: 0 10px;\n}\n.MovieImage__screen {\n  object-fit: cover;\n  margin-right: 5px;\n  height: 100px;\n  width: 160px;\n  opacity: 0.6;\n}\n@media (max-width: 415px) {\n  .MovieImage__screen {\n    height: 50px;\n    width: 100px;\n  }\n}\n.MovieImage__screen:hover {\n  opacity: 1;\n}\n.MovieImage__modal {\n  display: none;\n  /* Hidden by default */\n  position: fixed;\n  /* Stay in place */\n  z-index: 1;\n  /* Sit on top */\n  padding-top: 100px;\n  /* Location of the box */\n  left: 0;\n  top: 0;\n  width: 100%;\n  /* Full width */\n  height: 100%;\n  /* Full height */\n  overflow: auto;\n  /* Enable scroll if needed */\n  background-color: #000000;\n  /* Fallback color */\n  background-color: rgba(0, 0, 0, 0.9);\n  /* Black w/ opacity */\n  /* Modal Content (image) */\n}\n.MovieImage__modal-content {\n  margin: auto;\n  display: block;\n  height: 60%;\n  margin-top: 30px;\n  /* Add Animation */\n  -webkit-animation-name: zoom;\n  -webkit-animation-duration: 0.6s;\n  animation-name: zoom;\n  animation-duration: 0.6s;\n}\n.MovieImage__close {\n  position: absolute;\n  top: 100px;\n  right: 35px;\n  color: #FAE807;\n  font-size: 60px;\n  font-weight: bold;\n  transition: 0.3s;\n}\n.MovieImage__close:hover,\n.MovieImage__close:focus {\n  opacity: 0.6;\n  text-decoration: none;\n  cursor: pointer;\n}\n.MovieImage__arrow-right {\n  position: absolute;\n  top: 300px;\n  right: 40px;\n  width: 0;\n  height: 0;\n  border-top: 40px solid transparent;\n  border-bottom: 40px solid transparent;\n  border-left: 40px solid #FAE807;\n}\n.MovieImage__arrow-left {\n  position: absolute;\n  top: 300px;\n  left: 40px;\n  width: 0;\n  height: 0;\n  border-top: 40px solid transparent;\n  border-bottom: 40px solid transparent;\n  border-right: 40px solid #FAE807;\n}\n@-webkit-keyframes zoom {\n  from {\n    -webkit-transform: scale(0);\n  }\n  to {\n    -webkit-transform: scale(1);\n  }\n}\n@keyframes zoom {\n  from {\n    transform: scale(0);\n  }\n  to {\n    transform: scale(1);\n  }\n}\n/* 100% Image Width on Smaller Screens */\n", ""]);
+exports.push([module.i, ".MovieImage {\n  max-width: 450px;\n}\n@media (max-width: 1110px) {\n  .MovieImage {\n    width: 525px;\n    margin: 0 auto;\n    max-width: none;\n  }\n}\n@media (max-width: 768px) {\n  .MovieImage {\n    width: 525px;\n    margin: 0 auto;\n    max-width: none;\n  }\n}\n@media (max-width: 415px) {\n  .MovieImage {\n    width: 100%;\n    margin: 0 auto;\n  }\n}\n.MovieImage__main {\n  margin-left: 40px;\n  margin-top: -40px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  border-bottom: #FAE807 10px solid;\n  background-color: white;\n  height: 408px;\n  width: 275px;\n}\n@media (max-width: 768px) {\n  .MovieImage__main {\n    margin: 0;\n    box-shadow: none;\n  }\n}\n.MovieImage__main:hover {\n  opacity: 0.7;\n}\n.MovieImage__screenshots {\n  width: 350px;\n  margin: 40px 0 0 20px;\n}\n@media (max-width: 1110px) {\n  .MovieImage__screenshots {\n    margin: 40px 20px 0 20px;\n    width: 170px;\n    display: inline-block;\n  }\n}\n@media (max-width: 768px) {\n  .MovieImage__screenshots {\n    margin: 40px 20px 0 20px;\n    width: 170px;\n    display: inline-block;\n  }\n}\n@media (max-width: 415px) {\n  .MovieImage__screenshots {\n    margin: 0;\n    width: 100%;\n    display: inline-block;\n  }\n}\n.MovieImage__screenshots-modal {\n  position: fixed;\n  top: 82%;\n  left: 0;\n  right: 0;\n  display: flex;\n  justify-content: center;\n}\n@media (max-width: 415px) {\n  .MovieImage__screenshots-modal {\n    display: none;\n  }\n}\n.MovieImage__screen-modal {\n  margin: 0 10px;\n}\n.MovieImage__screen {\n  object-fit: cover;\n  margin-right: 5px;\n  opacity: 0.6;\n}\n@media (max-width: 415px) {\n  .MovieImage__screen {\n    height: 50px;\n    width: 100px;\n  }\n}\n.MovieImage__screen:hover {\n  opacity: 1;\n}\n.MovieImage__modal {\n  display: none;\n  /* Hidden by default */\n  position: fixed;\n  /* Stay in place */\n  z-index: 1;\n  /* Sit on top */\n  padding-top: 100px;\n  /* Location of the box */\n  left: 0;\n  top: 0;\n  width: 100%;\n  /* Full width */\n  height: 100%;\n  /* Full height */\n  overflow: auto;\n  /* Enable scroll if needed */\n  background-color: #000000;\n  /* Fallback color */\n  background-color: rgba(0, 0, 0, 0.9);\n  /* Black w/ opacity */\n  /* Modal Content (image) */\n}\n.MovieImage__modal-content {\n  margin: auto;\n  display: block;\n  height: 60%;\n  margin-top: 30px;\n  /* Add Animation */\n  -webkit-animation-name: zoom;\n  -webkit-animation-duration: 0.6s;\n  animation-name: zoom;\n  animation-duration: 0.6s;\n}\n.MovieImage__close {\n  position: absolute;\n  top: 100px;\n  right: 35px;\n  color: #FAE807;\n  font-size: 60px;\n  font-weight: bold;\n  transition: 0.3s;\n}\n.MovieImage__close:hover,\n.MovieImage__close:focus {\n  opacity: 0.6;\n  text-decoration: none;\n  cursor: pointer;\n}\n.MovieImage__arrow-right {\n  position: absolute;\n  top: 300px;\n  right: 40px;\n  width: 0;\n  height: 0;\n  border-top: 40px solid transparent;\n  border-bottom: 40px solid transparent;\n  border-left: 40px solid #FAE807;\n}\n.MovieImage__arrow-left {\n  position: absolute;\n  top: 300px;\n  left: 40px;\n  width: 0;\n  height: 0;\n  border-top: 40px solid transparent;\n  border-bottom: 40px solid transparent;\n  border-right: 40px solid #FAE807;\n}\n@-webkit-keyframes zoom {\n  from {\n    -webkit-transform: scale(0);\n  }\n  to {\n    -webkit-transform: scale(1);\n  }\n}\n@keyframes zoom {\n  from {\n    transform: scale(0);\n  }\n  to {\n    transform: scale(1);\n  }\n}\n/* 100% Image Width on Smaller Screens */\n", ""]);
 
 // exports
 
@@ -68349,6 +68348,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var b = (0, _BEM2.default)("Actors");
+var link = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_50,h_50,c_thumb,g_face/';
 
 var Actors = function (_Component) {
     _inherits(Actors, _Component);
@@ -68374,7 +68374,7 @@ var Actors = function (_Component) {
                         _react2.default.createElement(
                             _reactRouterDom.Link,
                             { className: b("actor-link"), key: ind, to: '/actor/' + actor.name },
-                            _react2.default.createElement('img', { className: b("image"), src: actor.image })
+                            _react2.default.createElement('img', { className: b("image"), src: link + actor.image })
                         ),
                         _react2.default.createElement(
                             'p',
@@ -68384,7 +68384,7 @@ var Actors = function (_Component) {
                         _react2.default.createElement(
                             'p',
                             { className: b("separator") },
-                            'as...'
+                            'as'
                         ),
                         _react2.default.createElement(
                             'p',
@@ -68634,14 +68634,15 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var b = (0, _BEM2.default)("ActorLayout");
+var link = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_275,h_408,c_thumb,g_face/';
 
 var ActorLayout = function (_Component) {
     _inherits(ActorLayout, _Component);
 
-    function ActorLayout(props) {
+    function ActorLayout() {
         _classCallCheck(this, ActorLayout);
 
-        return _possibleConstructorReturn(this, (ActorLayout.__proto__ || Object.getPrototypeOf(ActorLayout)).call(this, props));
+        return _possibleConstructorReturn(this, (ActorLayout.__proto__ || Object.getPrototypeOf(ActorLayout)).apply(this, arguments));
     }
 
     _createClass(ActorLayout, [{
@@ -68730,7 +68731,7 @@ var ActorLayout = function (_Component) {
                     )
                 ),
                 _react2.default.createElement('img', { className: b("image"),
-                    src: selectedActor.image })
+                    src: link + selectedActor.image })
             );
         }
     }]);
@@ -68808,7 +68809,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, ".ActorLayout {\n  width: 90%;\n  min-height: 600px;\n  background-color: #373737;\n  margin: auto auto 90px;\n  box-shadow: 10px 21px 94px 6px #000001;\n}\n.ActorLayout__error {\n  margin: -85px auto 0;\n  max-width: 900px;\n  min-height: initial;\n  padding: 10px;\n}\n.ActorLayout__image {\n  max-width: 450px;\n  margin-left: 40px;\n  margin-top: -40px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  border-bottom: #FAE807 10px solid;\n}\n.ActorLayout__general {\n  color: white;\n  margin-right: 40px;\n  padding-top: 20px;\n  float: right;\n  width: 60%;\n  min-width: 600px;\n}\n.ActorLayout__name {\n  font-weight: bold;\n  font-size: 50px;\n  margin: 0;\n}\n.ActorLayout__info {\n  font-size: 16px;\n  color: white;\n  opacity: 0.6;\n}\n.ActorLayout__extra {\n  display: grid;\n  grid-template-columns: 50% 50%;\n  color: white;\n  font-weight: bold;\n  padding-top: 40px;\n}\n.ActorLayout__value {\n  float: right;\n  margin-right: 20px;\n  opacity: 0.6;\n  font-weight: normal;\n}\n.ActorLayout__nominations,\n.ActorLayout__movies {\n  grid-column-start: 1;\n  grid-column-end: 3;\n}\n.ActorLayout__movie-link {\n  color: white;\n  float: right;\n  margin-right: 20px;\n  opacity: 0.6;\n  font-weight: normal;\n  text-decoration: none;\n}\n", ""]);
+exports.push([module.i, ".ActorLayout {\n  width: 90%;\n  min-height: 600px;\n  background-color: #373737;\n  margin: auto auto 90px;\n  box-shadow: 10px 21px 94px 6px #000001;\n}\n.ActorLayout__error {\n  margin: -85px auto 0;\n  max-width: 900px;\n  min-height: initial;\n  padding: 10px;\n}\n.ActorLayout__image {\n  max-width: 450px;\n  margin-left: 40px;\n  margin-top: -40px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  border-bottom: #FAE807 10px solid;\n}\n@media (max-width: 1110px) {\n  .ActorLayout__image {\n    box-shadow: none;\n    margin: 0 auto;\n    display: block;\n  }\n}\n.ActorLayout__general {\n  color: white;\n  margin-right: 40px;\n  padding-top: 20px;\n  float: right;\n  width: 60%;\n  min-width: 600px;\n}\n@media (max-width: 1110px) {\n  .ActorLayout__general {\n    width: 90%;\n    min-width: initial;\n    float: none;\n    margin: 0 auto;\n  }\n}\n.ActorLayout__name {\n  font-weight: bold;\n  font-size: 50px;\n  margin: 0;\n}\n.ActorLayout__info {\n  font-size: 16px;\n  color: white;\n  opacity: 0.6;\n}\n.ActorLayout__extra {\n  display: grid;\n  grid-template-columns: 50% 50%;\n  color: white;\n  font-weight: bold;\n  padding-top: 40px;\n}\n@media (max-width: 768px) {\n  .ActorLayout__extra {\n    display: block;\n    padding-top: 0;\n  }\n}\n.ActorLayout__value {\n  float: right;\n  margin-right: 20px;\n  opacity: 0.6;\n  font-weight: normal;\n  max-width: 70%;\n}\n@media (max-width: 768px) {\n  .ActorLayout__value {\n    float: none;\n    margin: 0 0 0 10px;\n  }\n}\n.ActorLayout__nominations,\n.ActorLayout__movies {\n  grid-column-start: 1;\n  grid-column-end: 3;\n}\n.ActorLayout__movie-link {\n  color: white;\n  float: right;\n  margin-right: 20px;\n  opacity: 0.6;\n  font-weight: normal;\n  text-decoration: none;\n}\n@media (max-width: 768px) {\n  .ActorLayout__movie-link {\n    float: none;\n    margin: 0 0 0 10px;\n    display: inline-block;\n  }\n}\n", ""]);
 
 // exports
 
@@ -68969,7 +68970,7 @@ var AddActor = function (_Component) {
                                 }
 
                                 _context.next = 5;
-                                return fetch("http://localhost:3000/movies?name_like=" + this.state.currentSearchPhrase[index] + "&_limit=2");
+                                return fetch("http://localhost:3000/movies?name_like=\\b" + this.state.currentSearchPhrase[index]);
 
                             case 5:
                                 response = _context.sent;
@@ -69194,7 +69195,7 @@ var AddActor = function (_Component) {
                         { className: b('title') },
                         "Short information"
                     ),
-                    _react2.default.createElement("input", { ref: "info", placeholder: 'Enter short information', className: b("inputs"), type: "text",
+                    _react2.default.createElement("textarea", { ref: "info", placeholder: 'Enter short information', className: b("inputs"), type: "text",
                         onKeyDown: this.checkform }),
                     _react2.default.createElement(
                         "h3",
