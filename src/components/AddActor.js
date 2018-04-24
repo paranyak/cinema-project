@@ -12,10 +12,10 @@ class AddActor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            suggestedMovies: [[{id: 1, name: ""}]],      //список всіх фільмів які відповідають кожному інпут полю
+            suggestedMovies: [[{id: 1, name: "", role:""}]],      //список всіх фільмів які відповідають кожному інпут полю
             currentSearchPhrase: [" "],                  //конкретно кожен інпут
             currentSugestedMovies: [{id: 1, name: ""}],   // поточний фільм, який шукаємо
-            movies: [{name: ""}],                          //всі фільми , тобто це той вигляд який має бд
+            movies: [{name: "", role:""}],                          //всі фільми , тобто це той вигляд який має бд
             currentInputIndex: 0
         };
         this.addActorToDB = this.addActorToDB.bind(this);
@@ -27,9 +27,7 @@ class AddActor extends Component {
 
     addActorToDB(e) {
         let submitButton = document.querySelector(".AddActor__button");
-        console.log(submitButton.style.display);
         if (submitButton.style.display == 'none' ) {
-            console.log(submitButton.style.display);
             e.preventDefault();
             return;
         }
@@ -40,17 +38,27 @@ class AddActor extends Component {
 
         let actorPostSuccess = document.querySelector(".AddActor__success");
         actorPostSuccess.style.display = "initial";
-        console.log("name:", this.refs.name.value);
+
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
 
         let createdMovies = {};
         let movieInputs = document.querySelectorAll(".AddActor__inputs_movie");
         for (let i = 0; i < movieInputs.length; i++) {
-            console.log("value", movieInputs[i].value);
-            console.log("ALL MOVIES", this.state.suggestedMovies);
             for (let j = 0; j < this.state.suggestedMovies[i].length; j++) {
                 if (this.state.suggestedMovies[i][j].name != "" && this.state.suggestedMovies[i][j].name === movieInputs[i].value) {
                     let key = this.state.suggestedMovies[i][j].id;
-                    createdMovies[key] = this.state.suggestedMovies[i][j].name;
+                    let newArrayCast = this.state.suggestedMovies[i][j].cast;
+                    newArrayCast.push(this.refs.name.value);
+                    let newData = {};
+                    newData["cast"] = newArrayCast;
+                    fetch(`http://localhost:3000/movies/${key}`, {
+                        method: 'PATCH',
+                        headers: headers,
+                        body: JSON.stringify(newData)
+                    }).then((res) => res.json());
+
+                    createdMovies[key] = [this.state.suggestedMovies[i][j].name,this.state.movies[i].role] ;
                 }
             }
         }
@@ -67,24 +75,23 @@ class AddActor extends Component {
         };
 
         console.log(actor);
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
 
         fetch('http://localhost:3000/actors', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(actor)
         }).then((res) => res.json());
+
+
         console.log('posting has finished');
     }
 
     checkform() {
 
-        let f = document.querySelectorAll(".AddActor__inputs");
+        let f = document.querySelectorAll(".AddActor__inputs_required");
         let cansubmit = true;
 
         clearTimeout(typingTimer);
-        console.log("HERE:",document.querySelector(".AddActor__inputs_name").style.backgroundColor);
         if(document.querySelector(".AddActor__inputs_name").style.backgroundColor != "white"){
             cansubmit = false;
         }
@@ -98,7 +105,6 @@ class AddActor extends Component {
     }
 
     async doneTyping() {
-        console.log("DONE TIMER");
         let index = this.state.currentInputIndex;
         if (this.state.currentSearchPhrase[index] !== "") {
             const response = await fetch(`http://localhost:3000/movies?name_like=\\b${this.state.currentSearchPhrase[index]}`);// 'posts' to get work the url
@@ -106,11 +112,8 @@ class AddActor extends Component {
                 console.log("ERROR IN MOVIE SEARCH AT ACTOR ADD");
             } else {
                 let currentInput = document.querySelectorAll(".AddActor__inputs_movie")[index];
-                console.log(currentInput);
                 let suggestedMoviesOnIndex = await ((response).json());
-                console.log("Sug:", suggestedMoviesOnIndex);
                 if (suggestedMoviesOnIndex.length !== 0) {
-                    console.log("here!!!");
                     currentInput.style.backgroundColor = 'white';
                     let changedMovies = this.state.suggestedMovies;
                     changedMovies[index] = suggestedMoviesOnIndex;
@@ -152,14 +155,16 @@ class AddActor extends Component {
         this.setState(prevState => {
             const arr = [...prevState.movies, {
                 name: '',
-                id: ''
+                id: '',
+                role:''
             }];
             return {movies: arr};
         });
         this.setState(prevState => {
             const arr = [...prevState.suggestedMovies, [{
                 name: '',
-                id: ''
+                id: '',
+                role:''
             }]];
             return {suggestedMovies: arr};
         });
@@ -168,9 +173,11 @@ class AddActor extends Component {
     createListOfMovies() {
         return this.state.movies.map((m, j) => {
             return <div key={j}>
-                <input value={m.name} placeholder={'Enter movie'} className={b("inputs", ["movie"])} type="text"
-                       list="movies" onKeyDown={this.checkform} onChange={this.doneMovie.bind(this, j)}
+                <input value={m.name} placeholder={'Enter movie'} className={b("inputs", ["movie", "required"])} type="text"
+                       list="movies"  onChange={this.doneMovie.bind(this, j)}
                        onKeyUp={(e) => this.startTimer(e, j)}/>
+                <input value={m.role} placeholder={'Enter role'} className={b("inputs", ["role", "required"])} type="text"
+                        onChange={this.doneMovie.bind(this, j)}/>
                 <input type='button' value='-' className={b('remove-button')}
                        onClick={this.removeMovie.bind(this, j)}/>
                 <datalist id="movies">
@@ -206,12 +213,14 @@ class AddActor extends Component {
 
     doneMovie(index) {
         let curentInputToDone = document.querySelectorAll(".AddActor__inputs_movie")[index];
+        let curentRoleToDone = document.querySelectorAll(".AddActor__inputs_role")[index];
         const arr = [
             ...this.state.movies.slice(0, index),
-            Object.assign({}, {name: curentInputToDone.value}),
+            Object.assign({}, {name: curentInputToDone.value, role: curentRoleToDone.value}),
             ...this.state.movies.slice(index + 1)
         ];
         this.setState({movies: arr});
+        this.checkform();
     }
 
     render() {
@@ -220,20 +229,20 @@ class AddActor extends Component {
 
             <form className={b()} name="actorform">
                 <h3 className={b('title')}>Name</h3>
-                <input ref='name' placeholder={'Enter name'} className={b("inputs", ["name"])} type="text"
-                       onKeyDown={this.checkform} onKeyUp={(e) => this.startTimer(e, "naming")}/>
+                <input ref='name' placeholder={'Enter name'} className={b("inputs", ["name", "required"])} type="text"
+                       onChange={this.checkform} onKeyUp={(e) => this.startTimer(e, "naming")}/>
                 <h3 className={b('title')}>Date of birth</h3>
-                <input ref='date' placeholder={'Enter  date of birth'} className={b("inputs")} type="date"
-                       onKeyDown={this.checkform}/>
+                <input ref='date' placeholder={'Enter  date of birth'} className={b("inputs", ["required"])} type="date"
+                       onChange={this.checkform}/>
                 <h3 className={b('title')}>City of birth</h3>
-                <input ref='city' placeholder={'Enter city of birth'} className={b("inputs")} type="text"
-                       onKeyDown={this.checkform}/>
+                <input ref='city' placeholder={'Enter city of birth'} className={b("inputs", ["required"])} type="text"
+                       onChange={this.checkform}/>
                 <h3 className={b('title')}>Nominations</h3>
                 <input ref='nominations' placeholder={'Enter nominations'} className={b("inputs")} type="text"
-                       onKeyDown={this.checkform}/>
+                       onChange={this.checkform}/>
                 <h3 className={b('title')}>Short information</h3>
-                <textarea ref='info' placeholder={'Enter short information'} className={b("inputs")} type="text"
-                       onKeyDown={this.checkform}/>
+                <textarea ref='info' placeholder={'Enter short information'} className={b("inputs", ["required"])} type="text"
+                          onChange={this.checkform}/>
                 <h3 className={b('title')}>Movies</h3>
 
                 <div className={b('movies-block')}>
