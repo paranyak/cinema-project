@@ -31,7 +31,9 @@ class MovieInfo extends Component {
                     <p className={b("format")}>Format <span className={b("value")}>  {film.format}</span></p>
                     <p className={b("technology")}>Technology <span className={b("value")}>  {film.technology} </span></p>
                 </div>
-                <Actors film={film} />
+                <section className={"Actors"}>
+                    {film.cast.map(actor => <Actors id={actor} film={film.id}/>)}
+                </section>
 
             </section>
         )
