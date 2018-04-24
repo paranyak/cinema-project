@@ -1,0 +1,49 @@
+@import "SiteColors.less";
+
+
+.Login{
+  height: 280px;
+  width: 35%;
+  background-color: @layout-grey  ;
+  margin: auto;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 10px 21px 94px 6px rgba(0, 0, 1, 1);
+  text-align: center;
+  &__header {
+    color: @time;
+  }
+  &__input {
+    width: 55%;
+    padding: 10px;
+    display: block;
+    margin: auto;
+    font-size: 16px;
+    color: @layout-grey;
+    background-color: @time;
+    border: none;
+    &_below {
+      border-top: 2px solid @layout-grey;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    &_above {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+  }
+  &__submit {
+    width: 40%;
+    background-color: @main-yellow;
+    border: none;
+    border-radius: 7px;
+    margin: 10px 0;
+    padding: 8px 0;
+    color: @layout-grey;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  &__signup {
+    color: @time;
+  }
+}
