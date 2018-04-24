@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import "../styles/Layout.less";
 import "../styles/common.less";
 import block from "../helpers/BEM";
@@ -13,25 +13,52 @@ import {connect} from "react-redux";
 import {withRouter} from 'react-router-dom';
 import ActorLayout from "./ActorLayout";
 import AddActor from './AddActor';
+import Login from './Login';
+import SignUp from './SignUp';
+import {setUser} from '../actions/index';
+import {userAdditionalInfo} from '../actions/auth';
+
 
 const b = block("Layout");
 
-let Layout = () => (
-    <div className={b()}>
-        <Navigation/>
-        <Switch>
-            <Route exact path='/' component={HomeLayout}/>
-            <Route path='/movie/:id' component={MovieLayout}/>
-            <Route path='/schedule/:day?' component={ScheduleLayout}/>
-            <Route path='/actor/:id' component={ActorLayout}/>
-            <Route path='/add-movie' component={AddMovieLayout}/>
-            <Route path='/add-actor' component={AddActor}/>
+class Layout extends Component {
+    constructor(props) {
+      super(props);
+    }
 
-        </Switch>
-    </div>
-);
+    componentWillMount() {
+      firebase.auth().onAuthStateChanged((user) => {
+        this.props.setUser(user);
+        if(user) {
+          console.log(user);
+          this.props.userAdditionalInfo(user.uid)
+        }
+      });
+    }
 
-Layout = withRouter(connect(null, null)(Layout));
+    render() {
+      return (<div className={b()}>
+          <Navigation/>
+          <Switch>
+              <Route exact path='/' component={HomeLayout}/>
+              <Route path='/movie/:id' component={MovieLayout}/>
+              <Route path='/schedule/:day?' component={ScheduleLayout}/>
+              <Route path='/actor/:id' component={ActorLayout}/>
+              <Route path='/add-movie' component={AddMovieLayout}/>
+              <Route path='/add-actor' component={AddActor}/>
+              <Route path='/login' component={Login}/>
+              <Route path='/signup' component={SignUp}/>
+          </Switch>
+      </div>)
+    }
+}
+
+Layout = withRouter(connect(null,
+  (dispatch) => ({
+    setUser: (user) => dispatch(setUser(user)),
+    userAdditionalInfo: (id) => dispatch(userAdditionalInfo(id))
+  })
+)(Layout));
 
 
 export default Layout;
