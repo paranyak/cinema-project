@@ -40,7 +40,7 @@ class AllMovies extends Component {
                             !comingSoonIds.includes(film)
                         )
                         .map((film, i) =>
-                            <LazyLoad key={i} height='100%' offsetBottom={100}>
+                            <LazyLoad key={i} height='100%' offsetBottom={250}>
                                 <Link key={film} to={`/movie/${film}`}>
                                     <MoviePoster filmId={film}/>
                                 </Link>
@@ -80,11 +80,7 @@ class AllMovies extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchAllMovies: (labels, pages) => dispatch(fetchAdditionalMovies(labels, pages))
-    }
-};
+const mapDispatchToProps = (dispatch) => ( {fetchAllMovies: (labels, pages) => dispatch(fetchAdditionalMovies(labels, pages))} );
 
 const mapStateToProps = state => {
     const movies = getAllMoviesIds(state);
