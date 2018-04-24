@@ -101,7 +101,7 @@ class AddActor extends Component {
         console.log("DONE TIMER");
         let index = this.state.currentInputIndex;
         if (this.state.currentSearchPhrase[index] !== "") {
-            const response = await fetch(`http://localhost:3000/movies?name_like=${this.state.currentSearchPhrase[index]}&_limit=2`);// 'posts' to get work the url
+            const response = await fetch(`http://localhost:3000/movies?name_like=\\b${this.state.currentSearchPhrase[index]}`);// 'posts' to get work the url
             if (!response.ok) {
                 console.log("ERROR IN MOVIE SEARCH AT ACTOR ADD");
             } else {
@@ -232,7 +232,7 @@ class AddActor extends Component {
                 <input ref='nominations' placeholder={'Enter nominations'} className={b("inputs")} type="text"
                        onKeyDown={this.checkform}/>
                 <h3 className={b('title')}>Short information</h3>
-                <input ref='info' placeholder={'Enter short information'} className={b("inputs")} type="text"
+                <textarea ref='info' placeholder={'Enter short information'} className={b("inputs")} type="text"
                        onKeyDown={this.checkform}/>
                 <h3 className={b('title')}>Movies</h3>
 

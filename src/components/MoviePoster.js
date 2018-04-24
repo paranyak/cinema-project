@@ -17,7 +17,7 @@ class MoviePoster extends Component {
         }
         return (
             <article className={b()}>
-                <img src={link + film.image} className={b("image")}/>
+                <picture><img src={link + film.image} className={b("image")}/></picture>
                 <footer className={b("additional-info")}>
                     <h3 className={b('name')}>{film.name}</h3>
                     <p className={b('genre')}>{film.genre}</p>

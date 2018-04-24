@@ -44,7 +44,7 @@ class ActorLayout extends Component {
                             Films
                             {Object.keys(selectedActor.movies).map((key, index) =>
                                 <Link className={b("movie-link")} to={`/movie/${key}`} key={index}>
-                                    <p className={b("in-movie")}>{selectedActor.movies[key]}</p>
+                                    <p className={b("in-movie")}>{selectedActor.movies[key][0]}</p>
                                 </Link>)}
                         </section>
                     </section>
