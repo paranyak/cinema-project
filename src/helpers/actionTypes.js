@@ -20,3 +20,4 @@ export const AUTH_FAIL = 'AUTH_FAIL';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const SET_USER = 'SET_USER';
 export const ADDITTIONAL_INFO = 'ADDITTIONAL_INFO';
+export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';

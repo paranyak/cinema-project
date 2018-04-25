@@ -5,7 +5,8 @@ import {
   AUTH_FAIL,
   LOGOUT_SUCCESS,
   SET_USER,
-  ADDITTIONAL_INFO
+  ADDITTIONAL_INFO,
+  SIGN_UP_SUCCESS
 } from '../helpers/actionTypes';
 
 const auth = (state = {}, action) => {
@@ -16,6 +17,7 @@ const auth = (state = {}, action) => {
               isLoading: true
             };
         case LOGIN_SUCCESS:
+        case SIGN_UP_SUCCESS:
             return {
               ...state,
               isLoading: false,

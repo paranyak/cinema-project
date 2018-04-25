@@ -2,6 +2,10 @@ import React, {Component} from "react";
 import "../styles/SignUp.less";
 import block from "../helpers/BEM";
 import {NavLink} from 'react-router-dom';
+import {signUpUser} from '../actions/auth';
+import {connect} from "react-redux";
+import {getAuthError} from '../reducers/index';
+
 
 const b = block("SignUp");
 
@@ -22,7 +26,7 @@ class SignUp extends Component {
       event.preventDefault();
       const {email, password1, password2} = this.state;
       if (password1 === password2) {
-        firebase.auth().createUserWithEmailAndPassword(email, password1);
+        this.props.signUpUser(email, password1)
       }
     }
 
@@ -42,6 +46,7 @@ class SignUp extends Component {
             <input className={b('input', ['above'])} value={this.state.email} onChange={(event) => this.handleChange(event, 'email')} type="email" name="email" placeholder="E-mail"/>
             <input className={b('input')} value={this.state.password1} onChange={(event) => this.handleChange(event, 'password1')} type="password" name="password" placeholder="Password"/>
             <input className={b('input', ['below'])} value={this.state.password2} onChange={(event) => this.handleChange(event, 'password2')} type="password" name="confirm-password" placeholder="Confirm password"/>
+            <span style={{display: this.props.error ? 'block' : 'none'}} className={b('message')}>{this.props.error ? this.props.error.message : ''}</span>
             <input className={b('submit')} type="submit" value="Submit"/>
           </form>
           <NavLink to="/login" className={b('signup')}>Login</NavLink>
@@ -49,4 +54,11 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp;
+export default connect(
+    (state, props) => ({
+      error: getAuthError(state)
+    }),
+    (dispatch) => ({
+      signUpUser: (email, password) => dispatch(signUpUser(email, password))
+    })
+)(SignUp);

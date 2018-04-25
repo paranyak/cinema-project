@@ -30,7 +30,6 @@ class Layout extends Component {
       firebase.auth().onAuthStateChanged((user) => {
         this.props.setUser(user);
         if(user) {
-          console.log(user);
           this.props.userAdditionalInfo(user.uid)
         }
       });

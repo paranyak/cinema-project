@@ -10,3 +10,7 @@ export async function logout() {
 export async function userAdditionalInfo(userId) {
   return await (firebase.database().ref('/users/' + userId).once('value'));
 }
+
+export async function signUp(email, password) {
+  return await firebase.auth().createUserWithEmailAndPassword(email, password);
+}

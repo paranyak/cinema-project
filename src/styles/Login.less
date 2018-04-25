@@ -2,11 +2,11 @@
 
 
 .Login{
-  height: 280px;
   width: 35%;
   background-color: @layout-grey  ;
   margin: auto;
   padding: 30px;
+  padding-bottom: 40px;
   border-radius: 20px;
   box-shadow: 10px 21px 94px 6px rgba(0, 0, 1, 1);
   text-align: center;
@@ -22,6 +22,7 @@
     color: @layout-grey;
     background-color: @time;
     border: none;
+    outline: none;
     &_below {
       border-top: 2px solid @layout-grey;
       border-bottom-left-radius: 10px;
@@ -45,5 +46,15 @@
   }
   &__signup {
     color: @time;
+  }
+  &__message {
+    width: 55%;
+    margin: auto;
+    background-color: @poster-grey;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    color: @time;
+    border: 2px solid @time;
   }
 }

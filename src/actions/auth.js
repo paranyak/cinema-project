@@ -28,3 +28,14 @@ export const userAdditionalInfo = (userId) => async (dispatch) => {
   let additionalInfo = (await fromApi.userAdditionalInfo(userId));
   dispatch(fromActions.authAdditionalInfoSuccess(additionalInfo.val()));
 }
+
+export const signUpUser = (email, password) => async (dispatch) => {
+  dispatch(fromActions.authStart());
+  try {
+    let user = await fromApi.signUp(email, password)
+    dispatch(fromActions.signUpSuccess(user));
+    dispatch(push('/'));
+  } catch(error) {
+    dispatch(fromActions.authFail(error))
+  }
+}

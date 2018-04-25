@@ -37,9 +37,9 @@ class Login extends Component {
           <form className={b('form')} onSubmit={this.handleSubmit}>
             <input className={b('input', ['above'])} value={this.state.email} onChange={(event) => this.handleChange(event, 'email')} type="email" name="email" placeholder="E-mail"/>
             <input className={b('input', ['below'])} value={this.state.password} onChange={(event) => this.handleChange(event, 'password')} type="password" name="password" placeholder="Password"/>
+            <span style={{display: this.props.error ? 'block' : 'none'}} className={b('message')}>{this.props.error ? this.props.error.message : ''}</span>
             <input className={b('submit')} type="submit" value="Submit"/>
           </form>
-          <span>{this.props.error ? this.props.error.message : ''}</span>
           <NavLink to="/signup" className={b('signup')}>Sign up</NavLink>
         </div>;
     }

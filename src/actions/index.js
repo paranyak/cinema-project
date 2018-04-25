@@ -11,7 +11,8 @@ import {
     AUTH_FAIL,
     LOGOUT_SUCCESS,
     SET_USER,
-    ADDITTIONAL_INFO
+    ADDITTIONAL_INFO,
+    SIGN_UP_SUCCESS
 } from '../helpers/actionTypes';
 
 
@@ -40,3 +41,5 @@ export const logoutSuccess = (user) => ({type: LOGOUT_SUCCESS})
 export const setUser = (user) => ({type: SET_USER, user})
 
 export const authAdditionalInfoSuccess = (info) => ({type: ADDITTIONAL_INFO, info})
+
+export const signUpSuccess = (user) => ({type: SIGN_UP_SUCCESS, user})

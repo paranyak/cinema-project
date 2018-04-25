@@ -16,7 +16,6 @@ class Navigation extends Component {
     }
 
     signOut() {
-      console.log('click', this.state.user);
       this.props.logoutUser();
     }
 
