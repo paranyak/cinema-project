@@ -18,6 +18,7 @@ class MovieLayout extends Component {
     }
 
     render() {
+        window.scrollTo(0,0);
         const {film} = this.props;
         if (!film || film.id === undefined) {
           this.props.fetchMovieById(this.props.match.params.id);
