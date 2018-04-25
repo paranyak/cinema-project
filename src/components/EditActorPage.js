@@ -107,8 +107,10 @@ class EditActorPage extends Component {
                 <h1 className={b('title')}>EDIT ACTOR</h1>
                 <EditActorImage actorImg={selectedActor.image} callback={this.getStateFromChild}/>
                 <EditActorInfo actor={selectedActor} callback={this.getStateFromChild}/>
-                <button type='submit' className={b('btn', ['submit'])} onClick={this.editActorInDB.bind(this)}>Save</button>
-                <button type='button' className={b('btn', ['cancel'])} onClick={this.cancelEditing.bind(this)}>Cancel</button>
+                <div className={b('btns')}>
+                    <button type='submit' className={b('btn', ['submit'])} onClick={this.editActorInDB.bind(this)}>Save</button>
+                    <button type='button' className={b('btn', ['cancel'])} onClick={this.cancelEditing.bind(this)}>Cancel</button>
+                </div>
             </form>
         {fireRedirect && (<Redirect to={`/actor/${selectedActor.id}`}/>)}
         </div>

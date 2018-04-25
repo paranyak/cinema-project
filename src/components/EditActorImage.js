@@ -33,7 +33,7 @@ class EditActorImage extends Component {
     render() {
         const {actorImg} = this.props;
         return <div className={b()}>
-            <h1 className={b('title')}>Actor Image</h1>
+            <h3 className={b('title')}>Actor Image</h3>
             <DragDropImage value={actorImg} name='actor' callbackFromParent={this.myCallback2}
                            callbackInRemove={this.myCallback2}/>
         </div>;

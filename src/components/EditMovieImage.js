@@ -41,10 +41,10 @@ class EditMovieImage extends Component {
         const {film} = this.props;
         return (
             <section className={b()}>
-                <h1 className={b('title')}>Poster</h1>
+                <h3 className={b('title')}>Poster</h3>
                 <DragDropImage value={film.image} name='poster' callbackFromParent={this.myCallback2}
                                callbackInRemove={this.myCallback2}/>
-                <h1 className={b('title')}>Screenshots</h1>
+                <h3 className={b('title')}>Screenshots</h3>
                 <DragDropImage value={film.screenshots} name='screenshots' callbackFromParent={this.myCallback}
                                callbackInRemove={this.myCallback2}/>
             </section>

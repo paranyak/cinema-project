@@ -100,8 +100,10 @@ class EditMoviePage extends Component {
                     <h1 className={b('title')}>EDIT MOVIE</h1>
                     <EditMovieImage film={film} callback={this.getStateFromChild}/>
                     <EditMovieInfo film={film} callback={this.getStateFromChild}/>
-                    <button type='submit' className={b('btn', ['submit'])} onClick={this.editMovieInDB.bind(this)}>Save</button>
-                    <button type='button' className={b('btn', ['cancel'])} onClick={this.cancelEditing.bind(this)}>Cancel</button>
+                    <div className={b('btns')}>
+                        <button type='submit' className={b('btn', ['submit'])} onClick={this.editMovieInDB.bind(this)}>Save</button>
+                        <button type='button' className={b('btn', ['cancel'])} onClick={this.cancelEditing.bind(this)}>Cancel</button>
+                    </div>
                 </form>
                 {fireRedirect && (<Redirect to={`/movie/${film.id}`}/>)}
             </div>
