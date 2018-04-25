@@ -13,6 +13,7 @@ import {connect} from "react-redux";
 import {withRouter} from 'react-router-dom';
 import ActorLayout from "./ActorLayout";
 import AddActor from './AddActor';
+import EditMoviePage from './EditMoviePage';
 
 const b = block("Layout");
 
@@ -26,7 +27,7 @@ let Layout = () => (
             <Route path='/actor/:id' component={ActorLayout}/>
             <Route path='/add-movie' component={AddMovieLayout}/>
             <Route path='/add-actor' component={AddActor}/>
-
+            <Route path='/edit-movie/:id' component={EditMoviePage}/>
         </Switch>
     </div>
 );
