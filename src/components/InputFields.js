@@ -7,7 +7,7 @@ import CalendarRangePicker from './CalendarRangePicker';
 import TimeRanges from "./TimeRanges";
 import {Redirect} from 'react-router'
 import CastInputs from "./CastInputs";
-import {genres, formats, technologies} from "../helpers/filterConstants";
+import {genres, formats, technologies} from "../helpers/constants";
 
 const b = block("InputField");
 

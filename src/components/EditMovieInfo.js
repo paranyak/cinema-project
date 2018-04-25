@@ -1,11 +1,11 @@
 import React, {Component} from "react";
-import "../styles/EditMovieInfo.less";
+import "../styles/EditInfo.less";
 import block from '../helpers/BEM'
-import {genres, formats, technologies} from "../helpers/filterConstants";
+import {genres, formats, technologies} from "../helpers/constants";
 import EditActorsList from "./EditActorsList";
 import EditSelections from "./EditSelections";
 
-const b = block("EditMovieInfo");
+const b = block("EditInfo");
 
 class EditMovieInfo extends Component {
     constructor(props) {
@@ -26,9 +26,10 @@ class EditMovieInfo extends Component {
 
     componentDidMount() {
         const {id, rating, duration, name, description, genre, format, technology} = this.state;
+        const chosenGenres = (typeof genre === 'object') ? genre : genre.split(', ');
         this.props.callback(
             ['id', 'rating', 'duration', 'name', 'description', 'genre', 'format', 'technology'],
-            [id, rating, duration, name, description, genre.split(', '), format, technology]);
+            [id, rating, duration, name, description, chosenGenres, format, technology]);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -36,7 +37,7 @@ class EditMovieInfo extends Component {
         if (prevState !== this.state) {
             this.props.callback(
                 ['id', 'rating', 'duration', 'name', 'description', 'genre', 'format', 'technology'],
-                [id, rating, duration, name, description, genre.split(', '), format, technology]);
+                [id, rating, duration, name, description, genre, format, technology]);
         }
     }
 
@@ -54,7 +55,7 @@ class EditMovieInfo extends Component {
         const hour = (film.duration.hour > 9 ? '' : '0') + film.duration.hour.toString();
         const minute = (film.duration.minute > 9 ? '' : '0') + film.duration.minute.toString();
         const durationTime = hour + ':' + minute;
-        const chosenGenres = film.genre.split(', ');
+        const chosenGenres = (typeof film.genre === 'object') ? film.genre : film.genre.split(', ');
         return (
             <section className={b()}>
                 <h3 className={b('title')}>Movie Title</h3>

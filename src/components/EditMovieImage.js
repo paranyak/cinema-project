@@ -1,11 +1,9 @@
 import React, {Component} from "react";
-import "../styles/EditMovieImage.less";
+import "../styles/EditImage.less";
 import block from '../helpers/BEM'
 import DragDropImage from './DragDropImage';
 
-const b = block("EditMovieImage");
-// const linkMain = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_275,h_408/';
-// const linkScr = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_160,h_100,c_fill,g_center/';
+const b = block("EditImage");
 
 class EditMovieImage extends Component {
     constructor(props) {
@@ -26,17 +24,6 @@ class EditMovieImage extends Component {
         this.setState({[name]: item})
     }
 
-    // onPosterClick() {
-    //     // const upload = document.getElementById('my_file');
-    //     console.log('upload');
-    //     // upload.onclick = () => console.log('here');//this.upload.bind(this));
-    //     return document.getElementById('my_file').onclick = this.upload();//.bind(this);
-    // }
-    //
-    // upload() {
-    //     console.log('can upload a file');
-    // }
-
     componentDidMount() {
         const {poster, screenshots} = this.state;
         this.props.callback(['poster', 'screenshots'], [poster, screenshots]);
@@ -56,11 +43,7 @@ class EditMovieImage extends Component {
             <section className={b()}>
                 <h1 className={b('title')}>Poster</h1>
                 <DragDropImage value={film.image} name='poster' callbackFromParent={this.myCallback2}
-                               callbackInRemove={this.myCallback2}/>{/*<input type="image" src={linkMain + film.image} onClick={this.onPosterClick.bind(this)}/>*/}
-                {/*<input type="file" id="my_file" style={{display: "none"}} accept="image/*"/>*/}
-                {/*<picture>*/}
-                {/*<img src={linkMain + film.image} className={b("main")} />*/}
-                {/*</picture>*/}
+                               callbackInRemove={this.myCallback2}/>
                 <h1 className={b('title')}>Screenshots</h1>
                 <DragDropImage value={film.screenshots} name='screenshots' callbackFromParent={this.myCallback}
                                callbackInRemove={this.myCallback2}/>

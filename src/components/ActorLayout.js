@@ -29,6 +29,9 @@ class ActorLayout extends Component {
          }
         return (
             <section className={b()}>
+                <Link to={`/edit-actor/${selectedActor.id}`}>
+                    <span className={b('edit-icon')}></span>
+                </Link>
                 <section className={b("general")}>
                     <h1 className={b("name")}>{selectedActor.id}</h1>
                     <p className={b("info")}>{selectedActor.info}</p>

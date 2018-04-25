@@ -1,15 +1,14 @@
 import React, {Component} from "react";
 import EditMovieImage from "./EditMovieImage";
 import EditMovieInfo from "./EditMovieInfo";
-import "../styles/MovieLayout.less"
-import "../styles/EditMoviePage.less"
+import "../styles/Editor.less"
 import {getMovieById} from "../reducers";
 import {fetchMovie} from '../actions/fetch';
 import {connect} from "react-redux";
 import block from '../helpers/BEM'
 import {Redirect} from 'react-router'
 
-const b = block("EditMoviePage");
+const b = block("Editor");
 
 class EditMoviePage extends Component {
     constructor(props) {
@@ -50,7 +49,6 @@ class EditMoviePage extends Component {
             format,
             technology
         } = this.state;
-        console.log('new update');
         const durationIsObject = (typeof duration === 'object');
 
         const movie = {
