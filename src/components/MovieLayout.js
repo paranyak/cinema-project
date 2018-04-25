@@ -6,6 +6,7 @@ import block from "../helpers/BEM";
 import {getMovieById} from "../reducers";
 import { fetchMovie } from '../actions/fetch';
 import {connect} from "react-redux";
+import {Link} from 'react-router-dom';
 
 
 const b = block("MovieLayout");
@@ -13,11 +14,8 @@ const b = block("MovieLayout");
 
 
 class MovieLayout extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
+        window.scrollTo(0,0);
         const {film} = this.props;
         if (!film || film.id === undefined) {
           this.props.fetchMovieById(this.props.match.params.id);
@@ -26,6 +24,9 @@ class MovieLayout extends Component {
         return (
             <div>
                 <div className={b()}>
+                    <Link to={`/edit-movie/${film.id}`}>
+                        <span className={b('edit-icon')}></span>
+                    </Link>
                     <MovieInfo film={film}/>
                     <MovieImage film={film}/>
                 </div>
@@ -33,8 +34,6 @@ class MovieLayout extends Component {
         )
     }
 }
-
-
 
 export default connect((state, props) => {
       const movie = getMovieById(state, props.match.params.id);

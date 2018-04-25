@@ -14,6 +14,7 @@ const link = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_275,h_408,c_th
 
 class ActorLayout extends Component {
     render() {
+        window.scrollTo(0,0);
         const {selectedActor} = this.props;
         if (!selectedActor || selectedActor.id === undefined) {
              this.props.fetchActorById(this.props.match.params.id);

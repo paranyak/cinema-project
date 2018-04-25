@@ -19,6 +19,7 @@ import {setUser} from '../actions/index';
 import {userAdditionalInfo} from '../actions/auth';
 import AllActors from './AllActors';
 
+import EditMoviePage from './EditMoviePage';
 
 const b = block("Layout");
 
@@ -47,6 +48,7 @@ class Layout extends Component {
               <Route path='/actor/:id' component={ActorLayout}/>
               <Route path='/add-movie' component={AddMovieLayout}/>
               <Route path='/add-actor' component={AddActor}/>
+              <Route path='/edit-movie/:id' component={EditMoviePage}/>
               <Route path='/login' component={Login}/>
               <Route path='/signup' component={SignUp}/>
           </Switch>

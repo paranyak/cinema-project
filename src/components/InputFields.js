@@ -7,36 +7,9 @@ import CalendarRangePicker from './CalendarRangePicker';
 import TimeRanges from "./TimeRanges";
 import {Redirect} from 'react-router'
 import CastInputs from "./CastInputs";
+import {genres, formats, technologies} from "../helpers/filterConstants";
 
 const b = block("InputField");
-
-const genres = [
-    'Mystery',
-    'Thriller',
-    'Action',
-    'Comedy',
-    'Crime',
-    'Adventure',
-    'Sci-Fi',
-    'Drama',
-    'Romance',
-    'Biography',
-    'History',
-    'Family',
-    'Fantasy'
-];
-
-const formats = [
-    '2D',
-    '3D',
-    'DolbyDigital'
-];
-
-const technologies = [
-    'IMAX',
-    'Cinematech+',
-    '4Dx'
-];
 
 class InputFields extends Component {
     constructor(props) {
@@ -61,8 +34,6 @@ class InputFields extends Component {
             label: '',
             poster: ''
         };
-
-        this.baseState = this.state;
         this.changeInput = this.changeInput.bind(this);
         this.myCallback = this.myCallback.bind(this);
         this.myCallback2 = this.myCallback2.bind(this);
@@ -174,7 +145,6 @@ class InputFields extends Component {
         const {name, value} = e.target;
         this.setState({[name]: value})
     };
-
 
     render() {
         const {
