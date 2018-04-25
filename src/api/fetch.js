@@ -23,3 +23,8 @@ export async function actors(id) {
   const response = await fetch(`http://localhost:3000/actors/${id}`);
   return response
 }
+
+export async function additionalActors(limit, page) {
+  let actors = await ((await fetch(`http://localhost:3000/actors/?_page=${page}&_limit=${limit}&properties=id`)).json());
+  return actors
+}

@@ -17,6 +17,7 @@ import Login from './Login';
 import SignUp from './SignUp';
 import {setUser} from '../actions/index';
 import {userAdditionalInfo} from '../actions/auth';
+import AllActors from './AllActors';
 
 import EditMoviePage from './EditMoviePage';
 import EditActorPage from "./EditActorPage";
@@ -44,6 +45,7 @@ class Layout extends Component {
               <Route exact path='/' component={HomeLayout}/>
               <Route path='/movie/:id' component={MovieLayout}/>
               <Route path='/schedule/:day?' component={ScheduleLayout}/>
+              <Route path='/allactors' component={AllActors}/>
               <Route path='/actor/:id' component={ActorLayout}/>
               <Route path='/add-movie' component={AddMovieLayout}/>
               <Route path='/add-actor' component={AddActor}/>

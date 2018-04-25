@@ -31,6 +31,13 @@ export const fetchAdditionalMovies = (limit, page) => async (dispatch) => {
     dispatch(fromFetch.fetchMoviesSuccess('additional', movies.result, movies.entities.movies));
 }
 
+export const fetchAdditionalActors = (limit, page) => async (dispatch) => {
+    dispatch(fromFetch.fetchActorsStart('additional'));
+    let actors = await fromApi.additionalActors(limit, page)
+    actors = normalize(actors, actorsListSchema);
+    dispatch(fromFetch.fetchActorsSucess('additional', actors.result, actors.entities.actors));
+}
+
 export const fetchActors = (id) => async (dispatch) => {
     dispatch(fromFetch.fetchActorsStart(id));
     let response = await fromApi.actors(id);

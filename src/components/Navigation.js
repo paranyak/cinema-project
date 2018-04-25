@@ -38,6 +38,7 @@ class Navigation extends Component {
         return <div className={b()}>
             <NavLink to="/" exact className={b('tab')} activeClassName={b('tab', ['active'])}>Home</NavLink>
             <NavLink to="/schedule" className={b('tab')} activeClassName={b('tab', ['active'])}>Schedule</NavLink>
+            <NavLink to="/allactors" className={b('tab')} activeClassName={b('tab', ['active'])}>All actors</NavLink>
             <NavLink to="/login" style={{display: this.props.user ? 'none' : 'block'}} className={b('tab', ['login'])} activeClassName={b('tab', ['active'])}>Login</NavLink>
             <button className={b('tab', ['logout'])} onClick={() => this.signOut()} style={{display: this.props.user ? 'block' : 'none'}}>Log out</button>
             {additional}

@@ -30,6 +30,8 @@ export const getAllFilters = (state) => fromFilters.getAllFilters(state.filters)
 
 export const isMovieFetching = (id, state) => fromMovies.isMovieFetching(id, state.movies);
 
+export const isActorFetching = (id, state) => fromActors.isActorFetching(id, state.actors);
+
 export const getCarouselleMovies = (state, label) => fromMovies.getCarouselleMovies(state.movies, label);
 
 export const getScheduleMoviesIds = (state) => fromMovies.getScheduleMoviesIds(state.movies);
