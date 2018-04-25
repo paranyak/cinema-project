@@ -41,7 +41,7 @@ class EditActorPage extends Component {
             info,
             date,
             city,
-            // nominations,
+            nominations,
             image
         } = this.state;
 
@@ -61,24 +61,24 @@ class EditActorPage extends Component {
             info,
             date: birthDay,
             city,
-            // nominations,
+            nominations: nominations.filter(el => el !== ''),
             image
         };
 
         console.log("EDITED ACTOR", actor);
 
-        // const headers = new Headers();
-        // headers.append('Content-Type', 'application/json');
-        //
-        // fetch(`http://localhost:3000/actors/${id}`, {
-        //     method: 'PATCH',
-        //     headers: headers,
-        //     body: JSON.stringify(actor)
-        // }).then((res) => res.json());
-        //
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        fetch(`http://localhost:3000/actors/${id}`, {
+            method: 'PATCH',
+            headers: headers,
+            body: JSON.stringify(actor)
+        }).then((res) => res.json());
+
         alert('Form is successfully edited!');
-        //
-        // this.setState({fireRedirect: true});
+
+        this.setState({fireRedirect: true});
     }
 
     cancelEditing() {

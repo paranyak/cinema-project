@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import "../styles/EditInfo.less";
 import {monthNames} from '../helpers/constants'
 import block from '../helpers/BEM'
+import NominationsList from "./NominationsList";
 
 const b = block("EditInfo");
 
@@ -40,6 +41,10 @@ class EditActorInfo extends Component {
         this.setState({[name]: value})
     }
 
+    callback(name, value) {
+        this.setState({[name]: value})
+    }
+
     render() {
         const {actor} = this.props;
         const date = actor.date.split(' ');
@@ -58,16 +63,15 @@ class EditActorInfo extends Component {
                       placeholder='Please, enter the actor bio...' name='info' rows="5"
                       onChange={this.onValueChange}/>
 
-            <h3 className={b("title")}> Born on </h3>
+            <h3 className={b("title")}>Born on</h3>
             <input type='date' className={b('input')} name='date' onChange={this.onValueChange}
                    defaultValue={birthDate}/>
 
-            <h3 className={b("title")}>Born in </h3>
+            <h3 className={b("title")}>Born in</h3>
             <input className={b("input")} name='city' defaultValue={actor.city} onChange={this.onValueChange}/>
 
-            <h3 className={b("title")}> Nominations</h3>
-            {actor.nominations.map((n, ind) => <span className={b("value")}
-                                                     key={ind}>{n}</span>)}
+            <h3 className={b("title")}>Nominations</h3>
+            <NominationsList nominations={actor.nominations} callback={this.callback.bind(this)}/>
         </section>
     }
 }
