@@ -21,12 +21,19 @@ class Filter extends Component {
   }
 
   moveFiltersToLocation() {
-    let filtersToAdd = {
-      formats: this.props.filters.formats.join(','),
-      genres: this.props.filters.genres.join(','),
-      technologies: this.props.filters.technologies.join(',')
-    };
-    let location = this.props.location
+    let {formats, genres, technologies} = this.props.filters;
+    let filtersToAdd = {};
+    if(formats && formats.length) {
+      filtersToAdd.formats = formats.join(',');
+    }
+    if(genres && genres.length) {
+      filtersToAdd.genres = genres.join(',');
+    }
+    if(technologies && technologies.length) {
+      filtersToAdd.technologies = technologies.join(',');
+    }
+
+    let location = this.props.location;
     this.props.updateLocation({
       ...location,
       search: '?' + queryString.stringify(filtersToAdd)
