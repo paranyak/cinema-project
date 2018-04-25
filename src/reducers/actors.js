@@ -45,6 +45,9 @@ export const fetching = (state = {}, action) => {
 
 export const getAllActorsIds = (state) => state.allIds;
 export const getActorById = (state, id) => state.byId[id];
+export const isActorFetching = (id, state) => state.fetching[id];
+
+
 
 export default combineReducers({
     byId,
