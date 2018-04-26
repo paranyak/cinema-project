@@ -57,7 +57,6 @@ class ActorLayout extends Component {
                                 </Link>)}
                         </section>
                     </section>
-
                 </section>
                 <img className={b("image")}
                      src={link + selectedActor.image}/>
