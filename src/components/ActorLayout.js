@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
-import {getSelectedActor, getActorById} from "../reducers/index";
+import {getSelectedActor, getActorById, getCurrentUser} from "../reducers/index";
 import {fetchActors} from '../actions/fetch';
 
 import "../styles/ActorLayout.less"
@@ -27,11 +27,16 @@ class ActorLayout extends Component {
                  </section>
              );
          }
+         let additional = '';
+         let role = this.props.user && this.props.user.role;
+         if(role === 'admin') {
+           additional = (      <Link to={`/edit-actor/${selectedActor.id}`}>
+                                  <span className={b('edit-icon')}></span>
+                                </Link>)
+           }
         return (
             <section className={b()}>
-                <Link to={`/edit-actor/${selectedActor.id}`}>
-                    <span className={b('edit-icon')}></span>
-                </Link>
+                {additional}
                 <section className={b("general")}>
                     <h1 className={b("name")}>{selectedActor.id}</h1>
                     <p className={b("info")}>{selectedActor.info}</p>
@@ -64,7 +69,9 @@ class ActorLayout extends Component {
 
 export default connect((state, props) => {
     const actor = getActorById(state, props.match.params.id);
-    return {selectedActor: actor};
+    const user = getCurrentUser(state);
+    return {selectedActor: actor,
+            user};
     }, (dispatch) => ({
         fetchActorById: (id) => dispatch(fetchActors(id))
     })
