@@ -1,0 +1,5 @@
+EditActorsList example:
+
+```js
+<EditActorsList/>
+```
