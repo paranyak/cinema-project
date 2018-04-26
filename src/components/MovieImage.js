@@ -107,7 +107,8 @@ class MovieImage extends Component {
                              onClick={e => this.mainImageHandler(e, ind + 1)}/>
                     </picture>)}
                 </section>
-
+                <iframe style={{display: film.trailer !== "" ? 'inline-block' : 'none'}} className={b("trailer")} width="325" height="245" src={film.trailer}>
+                </iframe>
                 <div id="myModal" className={b("modal")}>
                     <span className={b("close")} onClick={(e) => this.closeHandler(e)}>&times;</span>
                     <picture>

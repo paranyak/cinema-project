@@ -15,6 +15,7 @@ class Navigation extends Component {
         this.state = {}
     }
 
+
     signOut() {
       this.props.logoutUser();
     }
@@ -33,8 +34,6 @@ class Navigation extends Component {
                         </NavLink>
                       </div>)
         }
-
-
         return <div className={b()}>
             <NavLink to="/" exact className={b('tab')} activeClassName={b('tab', ['active'])}>Home</NavLink>
             <NavLink to="/schedule" className={b('tab')} activeClassName={b('tab', ['active'])}>Schedule</NavLink>
