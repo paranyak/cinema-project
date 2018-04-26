@@ -71,14 +71,14 @@ class EditMoviePage extends Component {
 
         console.log("EDITED MOVIE", movie);
 
-        // const headers = new Headers();
-        // headers.append('Content-Type', 'application/json');
-        //
-        // fetch(`http://localhost:3000/movies/${id}`, {
-        //     method: 'PATCH',
-        //     headers: headers,
-        //     body: JSON.stringify(movie)
-        // }).then((res) => res.json());
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        fetch(`http://localhost:3000/movies/${id}`, {
+            method: 'PATCH',
+            headers: headers,
+            body: JSON.stringify(movie)
+        }).then((res) => res.json());
 
         alert('Form is successfully edited!');
 

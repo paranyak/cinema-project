@@ -54,7 +54,7 @@ class EditMovieImage extends Component {
                 <DragDropImage value={film.screenshots} name='screenshots' callbackFromParent={this.myCallback}
                                callbackInRemove={this.myCallback2}/>
                 <h3 className={b('title')}>Trailer</h3>
-                <input type="url" defaultValue={film.trailer} name='trailer' onChange={this.onInputChange.bind(this)}/>
+                <input className={b('input')} type="url" defaultValue={film.trailer} name='trailer' onChange={this.onInputChange.bind(this)}/>
             </section>
         )
     }
