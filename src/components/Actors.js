@@ -19,7 +19,7 @@ class Actors extends Component {
             this.props.fetchActorById(this.props.id);
             return null;
         }
-        else if(cast.error || cast.movies[`${film}`] == undefined ){
+        else if(cast.error || cast.movies[`${film}`] === undefined ){
             //в цього актора немає цього фільму :(
             //або цього актора нема :(
             return null;

@@ -23,7 +23,7 @@ class MovieLayout extends Component {
         let additional = '';
         let role = this.props.user && this.props.user.role;
         if(role === 'admin') {
-          additional = (    <Link to={`/edit-movie/${film.id}`}>
+          additional = (<Link to={`/edit-movie/${film.id}`}>
                               <span className={b('edit-icon')}></span>
                             </Link>)
           }
