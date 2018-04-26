@@ -25,6 +25,7 @@ class EditMoviePage extends Component {
             genre: '',
             format: [],
             technology: [],
+            trailer: ''
         };
         this.getStateFromChild = this.getStateFromChild.bind(this);
     }
@@ -47,7 +48,8 @@ class EditMoviePage extends Component {
             description,
             genre,
             format,
-            technology
+            technology,
+            trailer
         } = this.state;
         const durationIsObject = (typeof duration === 'object');
 
@@ -57,6 +59,7 @@ class EditMoviePage extends Component {
             rating: parseFloat(rating),
             description,
             screenshots,
+            trailer,
             genre: genre.join(', '),
             format,
             technology,
@@ -68,14 +71,14 @@ class EditMoviePage extends Component {
 
         console.log("EDITED MOVIE", movie);
 
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-
-        fetch(`http://localhost:3000/movies/${id}`, {
-            method: 'PATCH',
-            headers: headers,
-            body: JSON.stringify(movie)
-        }).then((res) => res.json());
+        // const headers = new Headers();
+        // headers.append('Content-Type', 'application/json');
+        //
+        // fetch(`http://localhost:3000/movies/${id}`, {
+        //     method: 'PATCH',
+        //     headers: headers,
+        //     body: JSON.stringify(movie)
+        // }).then((res) => res.json());
 
         alert('Form is successfully edited!');
 
