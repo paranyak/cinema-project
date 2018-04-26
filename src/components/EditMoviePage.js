@@ -1,15 +1,14 @@
 import React, {Component} from "react";
 import EditMovieImage from "./EditMovieImage";
 import EditMovieInfo from "./EditMovieInfo";
-import "../styles/MovieLayout.less"
-import "../styles/EditMoviePage.less"
+import "../styles/Editor.less"
 import {getMovieById} from "../reducers";
 import {fetchMovie} from '../actions/fetch';
 import {connect} from "react-redux";
 import block from '../helpers/BEM'
 import {Redirect} from 'react-router'
 
-const b = block("EditMoviePage");
+const b = block("Editor");
 
 class EditMoviePage extends Component {
     constructor(props) {
@@ -50,7 +49,6 @@ class EditMoviePage extends Component {
             format,
             technology
         } = this.state;
-        console.log('new update');
         const durationIsObject = (typeof duration === 'object');
 
         const movie = {
@@ -102,8 +100,10 @@ class EditMoviePage extends Component {
                     <h1 className={b('title')}>EDIT MOVIE</h1>
                     <EditMovieImage film={film} callback={this.getStateFromChild}/>
                     <EditMovieInfo film={film} callback={this.getStateFromChild}/>
-                    <button type='submit' className={b('btn', ['submit'])} onClick={this.editMovieInDB.bind(this)}>Save</button>
-                    <button type='button' className={b('btn', ['cancel'])} onClick={this.cancelEditing.bind(this)}>Cancel</button>
+                    <div className={b('btns')}>
+                        <button type='submit' className={b('btn', ['submit'])} onClick={this.editMovieInDB.bind(this)}>Save</button>
+                        <button type='button' className={b('btn', ['cancel'])} onClick={this.cancelEditing.bind(this)}>Cancel</button>
+                    </div>
                 </form>
                 {fireRedirect && (<Redirect to={`/movie/${film.id}`}/>)}
             </div>

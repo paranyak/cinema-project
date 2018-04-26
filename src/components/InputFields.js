@@ -7,7 +7,7 @@ import CalendarRangePicker from './CalendarRangePicker';
 import TimeRanges from "./TimeRanges";
 import {Redirect} from 'react-router'
 import CastInputs from "./CastInputs";
-import {genres, formats, technologies} from "../helpers/filterConstants";
+import {genres, formats, technologies} from "../helpers/constants";
 
 const b = block("InputField");
 
@@ -98,7 +98,7 @@ class InputFields extends Component {
             name: title,
             image: poster,
             rating: parseFloat(rating),
-            cast,
+            cast: cast.filter(el => el !== ''),
             description,
             screenshots,
             trailer,
@@ -178,8 +178,8 @@ class InputFields extends Component {
                 <DragDropImage value={''} name='poster' callbackFromParent={this.myCallback2} callbackInRemove={this.myCallback2}/>
 
                 <h3 className={b('title')}>Description</h3>
-                <input type='text' onChange={this.changeInput} name='description' className={b('input')}
-                       placeholder={'Description'}/>
+                <textarea onChange={this.changeInput} name='description' className={b('input', ['textarea'])}
+                       placeholder={'Please, enter the movie description'} rows="5"/>
 
                 <h3 className={b('title')}>Trailer</h3>
                 <input type='url' onChange={this.changeInput} name='trailer' className={b('input')}

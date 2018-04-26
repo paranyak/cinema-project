@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import "../styles/CastInputs.less";
 import block from '../helpers/BEM'
-import DragDropImage from "./DragDropImage";
 
 const b = block("CastInputs");
 
@@ -15,35 +14,19 @@ class CastInputs extends Component {
     }
 
     createCastList() {
-        const {suggestedActors} = this.state;
-        return this.state.chosenActors.map((ac, j) => {
+        const {suggestedActors, chosenActors} = this.state;
+        return chosenActors.map((ac, j) => {
             return <div key={j}>
-                <input ref='actorInput' name='name' className={b('input')} placeholder={'Enter actor name'} type="text" value={ac.name}
-                       onInput={this.onListChange.bind(this, j)} onChange={this.onOptionClick.bind(this, j)} list="actors"/>
+                <input name='name' className={b('input')} placeholder={'Enter actor name'} type="text" value={ac}
+                       onInput={this.onListChange.bind(this, j)} onChange={this.onOptionClick.bind(this, j)}
+                       list="actors"/>
                 <datalist id="actors">
                     {suggestedActors.map((actor, i) => <option key={i} value={actor.id}/>)}
                 </datalist>
-
-                <input type='text' value={ac.role} className={b('input')} onChange={this.onRoleChange.bind(this, j)} placeholder="Enter actor's role" name='role'/>
                 <input type='button' value='-' className={b('button')}
-                       onClick={this.removeActorAndRole.bind(this, j)}/>
-                <DragDropImage value={ac.image} name='actor' callbackFromParent={this.addActorAvatar.bind(this, j)} callbackInRemove={this.addActorAvatar.bind(this, j)}/>
+                       onClick={this.removeActor.bind(this, j)}/>
             </div>
         })
-    }
-
-    addActorAvatar(i, name, val) {
-        const {callback} = this.props;
-        console.log('coming val is', val);
-        const arr = [
-            ...this.state.chosenActors.slice(0, i),
-            Object.assign({}, this.state.chosenActors[i], {image: val}),
-            ...this.state.chosenActors.slice(i + 1)
-        ];
-        this.setState({
-            chosenActors: arr
-        });
-        callback('cast', arr);
     }
 
     async onListChange(i, e) {
@@ -57,8 +40,6 @@ class CastInputs extends Component {
                 this.setState({suggestedActors});
                 console.log('sug actors', this.state.suggestedActors);
             }
-            // TODO: add selected suggested actor name/image to chosenActors[i].name/image
-            // this.props.callback('cast', suggestedActors)
         }
     }
 
@@ -66,56 +47,36 @@ class CastInputs extends Component {
         const {name, callback} = this.props;
         const arr = [
             ...this.state.chosenActors.slice(0, i),
-            Object.assign({}, this.state.chosenActors[i], {name: e.target.value}),
+            e.target.value,
             ...this.state.chosenActors.slice(i + 1)
         ];
         this.setState({chosenActors: arr});
         callback(name, arr);
     }
 
-    onRoleChange(i, e) {
-        const {name, callback} = this.props;
-        const arr = [
-            ...this.state.chosenActors.slice(0, i),
-            Object.assign({}, this.state.chosenActors[i], {role: e.target.value}),
-            ...this.state.chosenActors.slice(i + 1)
-        ];
-        this.setState({chosenActors: arr});
-        callback(name, arr);
-    }
-
-    addActorAndRole(e) {
+    addActor(e) {
         e.preventDefault();
-        const {name, callback} = this.props;
-        this.setState(prevState => {
-            const arr = [...prevState.chosenActors, {
-                image: '',
-                name: '',
-                role: ''
-            }];
-            callback(name, arr);
-            return {chosenActors: arr};
-        });
+        const {chosenActors} = this.state;
+        this.setState({
+            chosenActors: [...chosenActors, '']
+        })
     }
 
-    removeActorAndRole(i) {
-        const {name, callback} = this.props;
+    removeActor(i) {
         const {chosenActors} = this.state;
         const arr = [
             ...chosenActors.slice(0, i),
             ...chosenActors.slice(i + 1)
         ];
-        this.setState({
-            chosenActors: arr
-        });
-        callback(name, arr);
+        this.setState({chosenActors: arr});
+        this.props.callback('cast', arr)
     }
 
     render() {
         return <div className={b()}>
-            <button className={b('button')} onClick={this.addActorAndRole.bind(this)}>+</button>
+            <button className={b('button')} onClick={this.addActor.bind(this)}>+</button>
             {this.createCastList()}
-            </div>
+        </div>
     }
 }
 

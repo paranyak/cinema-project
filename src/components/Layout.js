@@ -21,6 +21,7 @@ import AllActors from './AllActors';
 import {getCurrentUser} from '../reducers/index';
 
 import EditMoviePage from './EditMoviePage';
+import EditActorPage from "./EditActorPage";
 
 const b = block("Layout");
 
@@ -71,6 +72,7 @@ class Layout extends Component {
               <PrivateRoute path='/add-movie' component={AddMovieLayout}/>
               <PrivateRoute path='/add-actor' component={AddActor}/>
               <PrivateRoute path='/edit-movie/:id' component={EditMoviePage}/>
+              <PrivateRoute path='/edit-actor/:id' component={EditActorPage}/>
               <Route path='/login' component={Login}/>
               <Route path='/signup' component={SignUp}/>
           </Switch>
