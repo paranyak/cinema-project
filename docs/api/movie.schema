@@ -1,0 +1,66 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": true,
+  "properties": {
+    "movieTitle": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "string",
+      "required": true
+    },
+    "rating": {
+      "type": "float",
+      "required": false
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "cast": {
+      "type": "object",
+      "required": false
+    },
+    "screenshots": {
+      "type": "object",
+      "required": false
+    },
+    "trailer": {
+        "type": "string",
+        "required": true
+    },
+    "genre": {
+        "type": "string",
+        "required": false
+    },
+    "schedule": {
+        "type": "object",
+        "required": true
+    },
+    "format": {
+        "type": "object",
+        "required": false
+    },
+    "technology": {
+        "type": "object",
+        "required": false
+    },
+    "duration": {
+        "type": "object",
+        "required": true,
+        "keys": ["hour", "minute"]
+    },
+    "label": {
+        "type": "string",
+        "required": false,
+        "possible": ["", "popular", "soon"]
+    },
+    "startDate": {
+        "type": "object",
+        "required": true,
+        "keys": ["year", "month", "day"]
+    }
+  }
+}

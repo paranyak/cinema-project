@@ -1,0 +1,21 @@
+{
+  "actorID": 9,
+  "actorName": "chadwick_boseman",
+  "movies": {
+    "3": [
+      "Black Panther",
+      "Black Panther"
+    ],
+    "17": [
+      "Avengers: Infinity War",
+      "T'Challa"
+    ]
+  },
+  "info": "Chadwick Aaron Boseman is an American actor. He is known for portraying Jackie Robinson in 42 (2013), James Brown in Get on Up (2014), Black Panther in the Marvel Cinematic Universe (since 2016), and Thurgood Marshall in Marshall (2017). He also had roles in the television series Lincoln Heights (2008) and Persons Unknown (2010), and the films The Express (2008), Draft Day (2014), and Message from the King (2016).",
+  "date": "November 29, 1977",
+  "city": "Anderson, South Carolina, U.S.",
+  "nominations": [
+    "Премія EMMI за найкращу чоловічу роль у драматичному серіалі"
+  ],
+  "image": "Cinema Project/r8zsgpcjdgrlkpbgh7p5"
+}

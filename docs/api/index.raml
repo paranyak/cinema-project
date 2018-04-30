@@ -1,0 +1,220 @@
+#%RAML 1.0
+---
+title: Cinema Project
+version: v1
+baseUri: https://localhost:5000/
+
+types:
+ movie: !include movie.schema
+ actor: !include actor.schema
+
+resourceTypes:
+  readOnlyCollection:
+    description: Collection of available <<resourcePathName>> in Cinema Project.
+    get:
+      description: Get a list of <<resourcePathName>>.
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                <<exampleCollection>>
+  collection:
+    description: Collection of available <<resourcePathName>> in Cinema Project.
+    get:
+      description: Get a list of <<resourcePathName>>.
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                <<exampleCollection>>
+    post:
+      description: |
+        Add a new <<resourcePathName|!singularize>> to Cinema Project.
+      queryParameters:
+        access_token:
+          description: "The access token provided by the authentication application"
+          example: AABBCCDD
+          required: true
+          type: string
+      body:
+        application/json:
+          type: <<resourcePathName|!singularize>>
+            example: |
+              <<exampleItem>>
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                { "message": "The <<resourcePathName|!singularize>> has been properly entered" }
+  collection-item:
+    description: Entity representing a <<resourcePathName|!singularize>>
+    get:
+      description: |
+        Get the <<resourcePathName|!singularize>>
+        with <<resourcePathName|!singularize>>Id =
+        {<<resourcePathName|!singularize>>Id}
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                <<exampleItem>>
+        404:
+          body:
+            application/json:
+              example: |
+                {"message": "<<resourcePathName|!singularize>> not found" }
+traits:
+  searchable:
+    queryParameters:
+      query:
+        description: |
+          JSON array [{"field1","value1","operator1"},{"field2","value2","operator2"},...,{"fieldN","valueN","operatorN"}] <<description>>
+        example: |
+          <<example>>
+  orderable:
+    queryParameters:
+      orderBy:
+        description: |
+          Order by field: <<fieldsList>>
+        type: string
+        required: false
+      order:
+        description: Order
+        enum: [desc, asc]
+        default: desc
+        required: false
+
+/movies:
+  type:
+    collection:
+      exampleCollection: !include movies.sample
+      exampleItem: !include movie-new.sample
+  get:
+    description: All movies
+    is: [
+          searchable: {description: "with valid searchable fields: movieTitle", example: "[\"movieTitle\", \"Get L\", \"like\"]"},
+          orderable: {fieldsList: "movieTitle"}
+        ]
+  post:
+    description: Add a new movie
+    body:
+      application/json:
+      multipart/form-data:
+        properties:
+          file:
+            description: The file to be uploaded
+            required: true
+            type: file
+
+  /{movieID}:
+    type:
+      collection-item:
+        exampleItem: !include movie-retrieve.sample
+    get:
+      description: Get a specific movie
+    patch:
+      description: Update the movie
+
+    /cast:
+      type:
+        readOnlyCollection:
+          exampleCollection: !include movie-cast.sample
+      description: Collection of movie's cast
+      get:
+        description: Get a specific movie's cast list
+
+    /schedule:
+      type:
+        readOnlyCollection:
+          exampleCollection: !include movie-schedule.sample
+      description: Collection of movie's schedule
+      get:
+        description: Get a specific movie's schedule list
+
+    /screenshots:
+      type:
+        readOnlyCollection:
+          exampleCollection: !include movie-screenshots.sample
+      description: Collection of movie's screenshots
+      get:
+        description: Get a specific movie's screenshots list
+
+    /format:
+      type:
+        readOnlyCollection:
+          exampleCollection: !include movie-formats.sample
+      description: Collection of movie's formats
+      get:
+        description: Get a specific movie's formats list
+
+    /technology:
+      type:
+        readOnlyCollection:
+          exampleCollection: !include movie-technologies.sample
+      description: Collection of movie's technologies
+      get:
+        description: Get a specific movie's technologies list
+
+    /duration:
+      type:
+        readOnlyCollection:
+          exampleCollection: !include movie-duration.sample
+      description: Movie's duration
+      get:
+        description: Get a specific movie's duration
+
+    /startDate:
+      type:
+        readOnlyCollection:
+          exampleCollection: !include movie-startDate.sample
+      description: Movie's start date
+      get:
+        description: Get a specific movie's start date
+
+
+/actors:
+  type:
+    collection:
+      exampleCollection: !include actors.sample
+      exampleItem: !include actor-new.sample
+  get:
+    description: All actors
+  post:
+    description: Add a new actor
+    body:
+      application/json:
+      multipart/form-data:
+        properties:
+          file:
+            description: The file to be uploaded
+            required: true
+            type: file
+
+  /{actorName}:
+    type:
+      collection-item:
+        exampleItem: !include actor-retrieve.sample
+    get:
+      description: Get a specific actor
+    patch:
+      description: Update the actor
+
+    /movies:
+      type:
+        readOnlyCollection:
+          exampleCollection: !include actor-movies.sample
+      description: Collection of movies belonging to the actor
+      get:
+        description: Get a specific actor's movies list
+
+    /nominations:
+      type:
+        readOnlyCollection:
+          exampleCollection: !include actor-nominations.sample
+      description: Collection of nominations belonging to the actor
+      get:
+        description: Get a specific actor's nominations list

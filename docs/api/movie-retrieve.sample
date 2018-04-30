@@ -1,0 +1,42 @@
+{
+    "movieID": 3,
+    "movieName": "Black Panther",
+    "movieImage": "Cinema Project/z3n9cwlcvj22k2hhpuu4",
+    "movieRating": 7.8,
+    "movieCast": [9, 10, 11],
+    "movieDescription": "T'Challa, the King of Wakanda, rises to the throne in the isolated, technologically advanced African nation, but his claim is challenged by a vengeful outsmovieIDer who was a childhood victim of T'Challa's father's mistake.",
+    "movieScreenshots": [
+      "Cinema Project/dlsxjiwi3aefcgv3blb0",
+      "Cinema Project/yheeg5duddnda7zdkp1b",
+      "Cinema Project/cv5ll6br7kg1owtmyxj8",
+      "Cinema Project/ggssxjq1zvoxprzclvdu",
+      "Cinema Project/kuej5pr3loucym3fdmf5",
+      "Cinema Project/v3vet38kbxtpfgfcnfks"
+    ],
+    "movieTrailer": "https://www.youtube.com/embed/xjDjIWPwcPU?autoplay=0",
+    "movieGenre": "Action, Adventure, Sci-Fi",
+    "movieSchedule": [
+      "22-03-2018 11:00",
+      "22-03-2018 13:40",
+      "22-03-2018 16:20",
+      "22-03-2018 19:00",
+      "22-03-2018 21:40"
+    ],
+    "movieFormat": [
+      "3D"
+    ],
+    "movieTechnology": [
+      "Cinetech+",
+      "IMAX"
+    ],
+    "movieDuration": {
+      "hour": 2,
+      "minute": 14
+    },
+    "movieLabel": "popular",
+    "movieStartDate": {
+      "year": 2018,
+      "month": 2,
+      "day": 15
+    }
+}
