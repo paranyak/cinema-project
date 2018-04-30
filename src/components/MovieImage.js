@@ -97,8 +97,7 @@ class MovieImage extends Component {
 
     render() {
         const {film} = this.props;
-        return (
-            <section className={b()}>
+        return <section className={b()}>
                 <picture><img src={linkMain + film.image} className={b("main")}
                               onClick={e => this.mainImageHandler(e, 0)}/></picture>
                 <section className={b("screenshots")}>
@@ -126,7 +125,6 @@ class MovieImage extends Component {
                     </section>
                 </div>
             </section>
-        )
     }
 }
 
