@@ -52,31 +52,23 @@ class AddActor extends Component {
                 let key = this.state.suggestedMovies[i][j].id;
                 if (this.state.suggestedMovies[i][j].name !== "" && this.state.suggestedMovies[i][j].name === movieInputs[i].value) {
                     if (typeof(this.state.suggestedMovies[i][j].id) == "string" && this.state.suggestedMovies[i][j].id.startsWith("tmp_")) {
-                        let newData = this.state.suggestedMovies[i][j];
-                        delete newData['id'];
+                        let newData = this.state.suggestedMovies;
+                        delete newData[i][j]['id'];
                         await fetch('http://localhost:3000/movies', {
                             method: 'POST',
                             headers: headers,
-                            body: JSON.stringify(newData)
+                            body: JSON.stringify(newData[i][j])
                         })
                             .then((res) => res.json())
                             .then((data) => {
                                 key = data.id;
                                 createdMovies[key] = [this.state.suggestedMovies[i][j].name, this.state.movies[i].role];
+                                newData[i][j]["id"] = key;
+                                this.setState({suggestedMovies : newData});
                             });
 
-                    } else {
-                        let newArrayCast = this.state.suggestedMovies[i][j].cast;
-                        newArrayCast.push(this.refs.name.value);
-                        let newData = {};
-                        newData["cast"] = newArrayCast;
-                        await fetch(`http://localhost:3000/movies/${key}`, {
-                            method: 'PATCH',
-                            headers: headers,
-                            body: JSON.stringify(newData)
-                        }).then((res) => res.json());
+                    }else{
                         createdMovies[key] = [this.state.suggestedMovies[i][j].name, this.state.movies[i].role];
-
                     }
 
                 }
@@ -90,7 +82,7 @@ class AddActor extends Component {
         const day = dateArr[2];
         const birthDay = month + ' ' + day + ', ' + year;
 
-        let slugName = this.refs.name.value.toLowerCase().replace(/ /g , "_");
+        let slugName = this.refs.name.value.toLowerCase().replace(/ /g, "_");
 
         const actorToAdd = {
             name: slugName,
@@ -102,13 +94,32 @@ class AddActor extends Component {
             image: this.state.actor
         };
 
-
-        fetch('http://localhost:3000/actors', {
+        let actorId=-1;
+        await fetch('http://localhost:3000/actors', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(actorToAdd)
         }).then((res) => res.json())
-            .then((data)=> console.log("POSTED",data));
+            .then((data) => {actorId = data.id; console.log("POSTED", data)});
+
+        for (let i = 0; i < movieInputs.length; i++) {
+            for (let j = 0; j < this.state.suggestedMovies[i].length; j++) {
+                if (this.state.suggestedMovies[i][j].name !== "" && this.state.suggestedMovies[i][j].name === movieInputs[i].value) {
+                    let key = this.state.suggestedMovies[i][j].id;
+                    let newArrayCast = this.state.suggestedMovies[i][j].cast;
+                    newArrayCast.push(actorId);
+                    let newData = {};
+                    newData["cast"] = newArrayCast;
+                    await fetch(`http://localhost:3000/movies/${key}`, {
+                        method: 'PATCH',
+                        headers: headers,
+                        body: JSON.stringify(newData)
+                    }).then((res) => res.json());
+                    createdMovies[key] = [this.state.suggestedMovies[i][j].name, this.state.movies[i].role];
+
+                }
+            }
+        }
 
     }
 
@@ -257,7 +268,7 @@ class AddActor extends Component {
         let tmpActor = [{
             id: "tmp_" + this.state.currentSearchPhrase[index],
             name: this.state.currentSearchPhrase[index],
-            cast: [this.refs.name.value],
+            cast: [],
             "image": "Cinema Project/ymgt4tyhaqkhybywwkut",
             "rating": 9.9,
             "description": "This is tmp movie",
@@ -267,7 +278,7 @@ class AddActor extends Component {
             "trailer": "https://www.youtube.com/embed/PmUL6wMpMWw?autoplay=0",
             "genre": "TMP",
             "Schedule": [],
-            "format": ["TMP" ],
+            "format": ["TMP"],
             "technology": ["TMP"],
             "duration": {
                 "hour": 2,
