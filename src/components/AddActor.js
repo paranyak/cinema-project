@@ -29,14 +29,13 @@ class AddActor extends Component {
         this.myCallback2 = this.myCallback2.bind(this);
     }
 
-    addActorToDB(e) {
+    async addActorToDB(e) {
         let submitButton = document.querySelector(".AddActor__button");
         if (submitButton.style.display === 'none') {
             e.preventDefault();
             return;
         }
         e.preventDefault();
-        console.log("POSTING...");
         let actorForm = document.querySelector(".AddActor");
         actorForm.style.display = "none";
 
@@ -48,33 +47,38 @@ class AddActor extends Component {
 
         let createdMovies = {};
         let movieInputs = document.querySelectorAll(".AddActor__inputs_movie");
-        console.log("MOVIES:", this.state.suggestedMovies);
         for (let i = 0; i < movieInputs.length; i++) {
             for (let j = 0; j < this.state.suggestedMovies[i].length; j++) {
-                console.log(this.state.suggestedMovies[i][j].name, this.state.suggestedMovies[i][j]);
                 let key = this.state.suggestedMovies[i][j].id;
-
                 if (this.state.suggestedMovies[i][j].name !== "" && this.state.suggestedMovies[i][j].name === movieInputs[i].value) {
-                    console.log(this.state.suggestedMovies[i][j],typeof(this.state.suggestedMovies[i][j].id)  );
                     if (typeof(this.state.suggestedMovies[i][j].id) == "string" && this.state.suggestedMovies[i][j].id.startsWith("tmp_")) {
-                        fetch('http://localhost:3000/movies', {
+                        let newData = this.state.suggestedMovies[i][j];
+                        delete newData['id'];
+                        await fetch('http://localhost:3000/movies', {
                             method: 'POST',
                             headers: headers,
-                            body: JSON.stringify(this.state.suggestedMovies[i][j])
-                        }).then((res) => res.json());
+                            body: JSON.stringify(newData)
+                        })
+                            .then((res) => res.json())
+                            .then((data) => {
+                                key = data.id;
+                                createdMovies[key] = [this.state.suggestedMovies[i][j].name, this.state.movies[i].role];
+                            });
+
                     } else {
                         let newArrayCast = this.state.suggestedMovies[i][j].cast;
                         newArrayCast.push(this.refs.name.value);
                         let newData = {};
                         newData["cast"] = newArrayCast;
-                        fetch(`http://localhost:3000/movies/${key}`, {
+                        await fetch(`http://localhost:3000/movies/${key}`, {
                             method: 'PATCH',
                             headers: headers,
                             body: JSON.stringify(newData)
                         }).then((res) => res.json());
+                        createdMovies[key] = [this.state.suggestedMovies[i][j].name, this.state.movies[i].role];
+
                     }
 
-                    createdMovies[key] = [this.state.suggestedMovies[i][j].name, this.state.movies[i].role];
                 }
             }
         }
@@ -86,8 +90,10 @@ class AddActor extends Component {
         const day = dateArr[2];
         const birthDay = month + ' ' + day + ', ' + year;
 
+        let slugName = this.refs.name.value.toLowerCase().replace(/ /g , "_");
+
         const actorToAdd = {
-            name: this.refs.name.value,
+            name: slugName,
             movies: createdMovies,
             info: this.refs.info.value,
             date: birthDay,
@@ -96,15 +102,14 @@ class AddActor extends Component {
             image: this.state.actor
         };
 
-        console.log('added actor', actorToAdd);
 
         fetch('http://localhost:3000/actors', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(actorToAdd)
-        }).then((res) => res.json());
+        }).then((res) => res.json())
+            .then((data)=> console.log("POSTED",data));
 
-        console.log('Posting has finished');
     }
 
     checkform() {
@@ -252,17 +257,35 @@ class AddActor extends Component {
         let tmpActor = [{
             id: "tmp_" + this.state.currentSearchPhrase[index],
             name: this.state.currentSearchPhrase[index],
-            cast: []
+            cast: [this.refs.name.value],
+            "image": "Cinema Project/ymgt4tyhaqkhybywwkut",
+            "rating": 9.9,
+            "description": "This is tmp movie",
+            "screenshots": [
+                "Cinema Project/jp4qjm88k0x5kwejkfas",
+            ],
+            "trailer": "https://www.youtube.com/embed/PmUL6wMpMWw?autoplay=0",
+            "genre": "TMP",
+            "Schedule": [],
+            "format": ["TMP" ],
+            "technology": ["TMP"],
+            "duration": {
+                "hour": 2,
+                "minute": 19
+            },
+            "label": "TMP",
+            "startDate": {
+                "year": 2018,
+                "month": 3,
+                "day": 1
+            }
+
         }];
         const suggestedArr = [
             ...suggestedMovies.slice(0, index),
             tmpActor,
             ...suggestedMovies.slice(index + 1)
         ];
-
-        console.log("МАЄ ВИЙТИ", suggestedArr);
-        console.log("CURRENT SEARCH PHRASE", this.state.currentSearchPhrase);
-        console.log("MOVIES", this.state.movies);
 
         this.setState({suggestedMovies: suggestedArr});
 
