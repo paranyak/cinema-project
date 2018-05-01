@@ -26,9 +26,14 @@ class Actors extends Component {
         }
         return (
                  <div className={b("item")}>
-                    <Link className={b("actor-link")} to={`/actor/${cast.id}`}>
-                        <img className={b("image")} src={link + cast.image}/></Link>
-                    <p className={b("name")}>{cast.id}</p>
+                    <Link className={b("actor-link")} to={`/actor/${cast.id + "__" + cast.name}`}>
+                        <img className={b("image")} src={link + cast.image}/>
+                    </Link>
+                    <p className={b("name")}>
+                        {cast.name
+                            .split("_")
+                            .join(" ")}
+                    </p>
                     <p className={b("separator")}>as</p>
                     <p className={b("role")}>{cast.movies[`${film}`][1]}</p>
                 </div>

@@ -85,10 +85,7 @@ const mapDispatchToProps = (dispatch) => ( {fetchAllActors: (labels, pages) => d
 const mapStateToProps = state => {
     const actors = getAllActorsIds(state);
     const isFetching = isActorFetching('additional', state);
-    return {
-        actors,
-        isFetching
-    }
+    return {actors, isFetching}
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllActors);

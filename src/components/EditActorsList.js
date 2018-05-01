@@ -4,12 +4,11 @@ import block from '../helpers/BEM'
 import {getActorById} from "../reducers";
 import {connect} from "react-redux";
 import {fetchActors} from "../actions/fetch";
+import slugify from "slugify";
 
 const b = block("EditActorsList");
 
 class EditActorsList extends Component {
-
-
     constructor(props) {
         super(props);
         this.state = {
@@ -18,17 +17,19 @@ class EditActorsList extends Component {
         }
     }
 
-
     createList() {
         const {suggestedActors} = this.state;
         const {film} = this.props;
         return this.state.cast.map((ac, j) => {
             return <div key={j}>
-                <input name='name' className={b('input')} placeholder={'Enter actor name'} type="text" value={ac.id}
+                <input name='name' className={b('input')} placeholder={'Enter actor name'} type="text"
+                       defaultValue={ac.name
+                           .split("_")
+                           .join(" ")}
                        onInput={this.onListChange.bind(this, j)} onChange={this.onOptionClick.bind(this, j)}
                        list="actors"/>
                 <datalist id="actors">
-                    {suggestedActors.map((actor, i) => <option key={i} value={actor.id}/>)}
+                    {suggestedActors.map((actor, i) => <option key={i} value={actor.name.split("_").join(" ")}/>)}
                 </datalist>
                 <input type='text' value={ac.movies[film.id][1]} className={b('input')}
                        onChange={this.onRoleChange.bind(this, j)}
@@ -40,7 +41,8 @@ class EditActorsList extends Component {
     }
 
     async onListChange(i, e) {
-        const response = await fetch(`http://localhost:3000/actors?id_like=${e.target.value}`);// 'posts' to get work the url
+        const slug = slugify(e.target.value, "_");
+        const response = await fetch(`http://localhost:3000/actors?name_like=${slug}`);// 'posts' to get work the url
 
         if (!response.ok) {
             console.log("ERROR IN Choosing ACTOR");
@@ -71,8 +73,10 @@ class EditActorsList extends Component {
         const {cast} = this.state;
         const arr = [
             ...cast.slice(0, i),
-            Object.assign({}, cast[i], {movies:
-                Object.assign({}, cast.movies, {[key]: [film.name, e.target.value]})}
+            Object.assign({}, cast[i], {
+                    movies:
+                        Object.assign({}, cast.movies, {[key]: [film.name, e.target.value]})
+                }
             ),
             ...cast.slice(i + 1)
         ];

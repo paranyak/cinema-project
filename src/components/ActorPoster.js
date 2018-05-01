@@ -19,7 +19,11 @@ class ActorPoster extends Component {
             <article className={b()}>
                 <picture><img src={link + actor.image} className={b("image")}/></picture>
                 <footer className={b("additional-info")}>
-                    <h3 className={b('name')}>{actor.id}</h3>
+                    <h3 className={b('name')}>
+                        {actor.name
+                            .split("_")
+                            .join(" ")}
+                    </h3>
                 </footer>
             </article>
         )
@@ -28,10 +32,7 @@ class ActorPoster extends Component {
 
 export default connect((state, props) => {
         const actor = getActorById(state, props.actorId);
-        return {
-            ...props,
-            actor:actor
-        }}, (dispatch) => ({
-        fetchActorById: (id) => dispatch(fetchActors(id))
-    })
+        return {...props, actor: actor}
+    },
+    (dispatch) => ({fetchActorById: (id) => dispatch(fetchActors(id))})
 )(ActorPoster);

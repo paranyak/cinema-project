@@ -8,6 +8,7 @@ import {Redirect} from "react-router";
 import EditActorImage from "./EditActorImage";
 import EditActorInfo from "./EditActorInfo";
 import {monthNames} from '../helpers/constants'
+import slugify from "slugify";
 
 const b = block("Editor");
 
@@ -17,6 +18,7 @@ class EditActorPage extends Component {
         this.state = {
             fireRedirect: false,
             id: '',
+            name: '',
             movies: {},
             info: '',
             date: '',
@@ -38,6 +40,7 @@ class EditActorPage extends Component {
         const {
             id,
             // movies,
+            name,
             info,
             date,
             city,
@@ -58,6 +61,7 @@ class EditActorPage extends Component {
         const actor = {
             id,
             // movies,
+            name: slugify(name, "_"),
             info,
             date: birthDay,
             city,
@@ -91,7 +95,7 @@ class EditActorPage extends Component {
         const {fireRedirect} = this.state;
         console.log('I need', this.state);
         if (!selectedActor || selectedActor.id === undefined) {
-            this.props.fetchActorById(this.props.match.params.id);
+            this.props.fetchActorById(this.props.match.params.id.split("__")[0]);
             return null;
         }
         else if (selectedActor.error) {
@@ -103,26 +107,28 @@ class EditActorPage extends Component {
             );
         }
         return (<div>
-            <form className={b()}>
-                <h1 className={b('title')}>EDIT ACTOR</h1>
-                <EditActorImage actorImg={selectedActor.image} callback={this.getStateFromChild}/>
-                <EditActorInfo actor={selectedActor} callback={this.getStateFromChild}/>
-                <div className={b('btns')}>
-                    <button type='submit' className={b('btn', ['submit'])} onClick={this.editActorInDB.bind(this)}>Save</button>
-                    <button type='button' className={b('btn', ['cancel'])} onClick={this.cancelEditing.bind(this)}>Cancel</button>
-                </div>
-            </form>
-        {fireRedirect && (<Redirect to={`/actor/${selectedActor.id}`}/>)}
-        </div>
-    );
+                <form className={b()}>
+                    <h1 className={b('title')}>EDIT ACTOR</h1>
+                    <EditActorImage actorImg={selectedActor.image} callback={this.getStateFromChild}/>
+                    <EditActorInfo actor={selectedActor} callback={this.getStateFromChild}/>
+                    <div className={b('btns')}>
+                        <button type='submit' className={b('btn', ['submit'])}
+                                onClick={this.editActorInDB.bind(this)}>Save
+                        </button>
+                        <button type='button' className={b('btn', ['cancel'])}
+                                onClick={this.cancelEditing.bind(this)}>Cancel
+                        </button>
+                    </div>
+                </form>
+                {fireRedirect && (<Redirect to={`/actor/${selectedActor.id + "__" + selectedActor.name}`}/>)}
+            </div>
+        );
     }
 }
 
 
 export default connect((state, props) => {
-        const actor = getActorById(state, props.match.params.id);
+        const actor = getActorById(state, props.match.params.id.split("__")[0]);
         return {selectedActor: actor};
-    }, (dispatch) => ({
-        fetchActorById: (id) => dispatch(fetchActors(id))
-    })
+    }, (dispatch) => ({fetchActorById: (id) => dispatch(fetchActors(id))})
 )(EditActorPage);

@@ -14,40 +14,51 @@ const link = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_275,h_408,c_th
 
 class ActorLayout extends Component {
     render() {
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
         const {selectedActor} = this.props;
         if (!selectedActor || selectedActor.id === undefined) {
-             this.props.fetchActorById(this.props.match.params.id);
-             return null;
+            this.props.fetchActorById(this.props.match.params.id.split("__")[0]);
+            return null;
         }
         else if (selectedActor.error) {
-             return (
-                 <section className={b("error")}>
-                     <img width="100%" src="http://www.topdesignmag.com/wp-content/uploads/2012/06/1.-404-not-found-design.jpg"/>
-                 </section>
-             );
-         }
-         let additional = '';
-         let role = this.props.user && this.props.user.role;
-         if(role === 'admin') {
-           additional = (      <Link to={`/edit-actor/${selectedActor.id}`}>
-                                  <span className={b('edit-icon')}></span>
-                                </Link>)
-           }
+            return (
+                <section className={b("error")}>
+                    <img width="100%"
+                         src="http://www.topdesignmag.com/wp-content/uploads/2012/06/1.-404-not-found-design.jpg"/>
+                </section>
+            );
+        }
+        let additional = '';
+        let role = this.props.user && this.props.user.role;
+        if (role === 'admin') {
+            additional = (<Link to={`/edit-actor/${selectedActor.id + "__" + selectedActor.name}`}>
+                <span className={b('edit-icon')}></span>
+            </Link>)
+        }
         return (
             <section className={b()}>
                 {additional}
                 <section className={b("general")}>
-                    <h1 className={b("name")}>{selectedActor.id}</h1>
+                    <h1 className={b("name")}>
+                        {selectedActor.name
+                            .split("_")
+                            .join(" ")}
+                    </h1>
                     <p className={b("info")}>{selectedActor.info}</p>
                     <section className={b("extra")}>
-                        <p className={b("born-date")}> Born on <span className={b("value")}>{selectedActor.date}</span>
+                        <p className={b("born-date")}>
+                            Born on
+                            <span className={b("value")}>{selectedActor.date}</span>
                         </p>
-                        <p className={b("born-city")}>Born in <span className={b("value")}>{selectedActor.city}</span>
+                        <p className={b("born-city")}>
+                            Born in
+                            <span className={b("value")}>{selectedActor.city}</span>
                         </p>
-                        <p className={b("nominations")}> Nominations
-                            {selectedActor.nominations.map((n, ind) => <span className={b("value")}
-                                                                             key={ind}>{n}</span>)}
+                        <p className={b("nominations")}>
+                            Nominations
+                            {selectedActor.nominations.map((n, ind) =>
+                                <span className={b("value")} key={ind}>{n}</span>
+                            )}
                         </p>
                         <section className={b("movies")}>
                             Films
@@ -58,8 +69,7 @@ class ActorLayout extends Component {
                         </section>
                     </section>
                 </section>
-                <img className={b("image")}
-                     src={link + selectedActor.image}/>
+                <img className={b("image")} src={link + selectedActor.image}/>
             </section>
         );
     }
@@ -67,11 +77,9 @@ class ActorLayout extends Component {
 
 
 export default connect((state, props) => {
-    const actor = getActorById(state, props.match.params.id);
-    const user = getCurrentUser(state);
-    return {selectedActor: actor,
-            user};
-    }, (dispatch) => ({
-        fetchActorById: (id) => dispatch(fetchActors(id))
-    })
+        const actor = getActorById(state, props.match.params.id.split("__")[0]);
+        const user = getCurrentUser(state);
+        return {selectedActor: actor, user}
+    },
+    (dispatch) => ({fetchActorById: (id) => dispatch(fetchActors(id))})
 )(ActorLayout);
