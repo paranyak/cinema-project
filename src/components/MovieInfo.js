@@ -21,7 +21,7 @@ class MovieInfo extends Component {
                         <span className={b("rating-value")}>{film.rating}</span>
                         <svg width="100%" height="100%" viewBox="0 0 42 42" className={b("donut")}>
                             <circle className={b("donut-ring")} cx="21" cy="21" r="15.91549430918954" fill="transparent"
-                                    stroke="tranparent" strokeWidth="3"></circle>
+                                    stroke="transparent" strokeWidth="3"></circle>
                             <circle className={b("donut-segment")} cx="21" cy="21" r="15.91549430918954"
                                     fill="transparent" stroke="#FAE807" strokeWidth="3" strokeDasharray={strokeArray}
                                     strokeDashoffset="25"></circle>
@@ -43,4 +43,4 @@ class MovieInfo extends Component {
     }
 }
 
-export default MovieInfo
+export default MovieInfo;
