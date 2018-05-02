@@ -2500,10 +2500,12 @@ var fetchMovie = exports.fetchMovie = function fetchMovie(id) {
                         case 3:
                             movies = _context.sent;
 
+                            // console.log(movies);
+                            movies.id = movies['_id'];
                             movies = (0, _normalizr.normalize)([movies], _schema.moviesListSchema);
                             dispatch(fromFetch.fetchMoviesSuccess(id, movies.result, movies.entities.movies));
 
-                        case 6:
+                        case 7:
                         case 'end':
                             return _context.stop();
                     }
@@ -2597,9 +2599,11 @@ var fetchAdditionalMovies = exports.fetchAdditionalMovies = function fetchAdditi
                             movies = _context4.sent;
 
                             movies = (0, _normalizr.normalize)(movies, _schema.moviesListSchema);
+                            console.log(movies, "++++++++++++++++");
+
                             dispatch(fromFetch.fetchMoviesSuccess('additional', movies.result, movies.entities.movies));
 
-                        case 6:
+                        case 7:
                         case 'end':
                             return _context4.stop();
                     }
@@ -2662,11 +2666,11 @@ var fetchActors = exports.fetchActors = function fetchActors(id) {
                             response = _context6.sent;
 
                             if (response.ok) {
-                                _context6.next = 13;
+                                _context6.next = 12;
                                 break;
                             }
 
-                            console.log("ACTOR NOT FOUND");
+                            // console.log("ACTOR NOT FOUND");
                             actor = {};
 
                             actor["id"] = id;
@@ -2674,22 +2678,23 @@ var fetchActors = exports.fetchActors = function fetchActors(id) {
                             actors = (0, _normalizr.normalize)([actor], _schema.actorsListSchema);
 
                             dispatch(fromFetch.fetchActorsSucess(id, actors.result, actors.entities.actors));
-                            _context6.next = 20;
+                            _context6.next = 18;
                             break;
 
-                        case 13:
-                            _context6.next = 15;
+                        case 12:
+                            _context6.next = 14;
                             return response.json();
 
-                        case 15:
+                        case 14:
                             _actors = _context6.sent;
 
-                            console.log("SUCCESS:", _actors);
+                            // console.log("SUCCESS:",actors);
+                            _actors.id = _actors['_id'];
                             _actors = (0, _normalizr.normalize)([_actors], _schema.actorsListSchema);
-                            console.log("ACTOR NORM:", _actors.result, _actors.entities.actors);
+                            // console.log("ACTOR NORM:",actors.result, actors.entities.actors );
                             dispatch(fromFetch.fetchActorsSucess(id, _actors.result, _actors.entities.actors));
 
-                        case 20:
+                        case 18:
                         case 'end':
                             return _context6.stop();
                     }
@@ -47814,22 +47819,25 @@ var Layout = function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var role = '';
       if (this.props.user) {
         role = this.props.user.role;
       }
+      console.log(this.props.isLoadingUser);
       var PrivateRoute = function PrivateRoute(_ref) {
         var Component = _ref.component,
             rest = _objectWithoutProperties(_ref, ["component"]);
 
         return _react2.default.createElement(_reactRouterDom.Route, _extends({}, rest, {
           render: function render(props) {
-            return role == 'admin' ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouterDom.Redirect, {
+            return _this3.props.isLoadingUser === false && role !== 'admin' ? _react2.default.createElement(_reactRouterDom.Redirect, {
               to: {
                 pathname: "/login",
                 state: { from: props.location }
               }
-            });
+            }) : _react2.default.createElement(Component, props);
           }
         }));
       };
@@ -47861,7 +47869,8 @@ var Layout = function (_Component) {
 
 Layout = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(function (state, props) {
   return {
-    user: (0, _index2.getCurrentUser)(state)
+    user: (0, _index2.getCurrentUser)(state),
+    isLoadingUser: (0, _index2.getIsLoading)(state)
   };
 }, function (dispatch) {
   return {
@@ -67527,7 +67536,7 @@ var movie = exports.movie = function () {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return fetch("http://localhost:3000/movies/" + id);
+            return fetch("http://localhost:3000/movies/byId/" + id);
 
           case 2:
             _context.next = 4;
@@ -67558,7 +67567,7 @@ var moviesSchedule = exports.moviesSchedule = function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return fetch("http://localhost:3000/movies?Schedule_like=" + day + "&properties=id");
+            return fetch("http://localhost:3000/movies/ids?Schedule=" + day);
 
           case 2:
             _context2.next = 4;
@@ -67589,7 +67598,7 @@ var carouselleMovies = exports.carouselleMovies = function () {
         switch (_context3.prev = _context3.next) {
           case 0:
             _context3.next = 2;
-            return fetch("http://localhost:3000/movies?label=" + label + "&properties=id");
+            return fetch("http://localhost:3000/movies/ids?label=" + label);
 
           case 2:
             _context3.next = 4;
@@ -67620,7 +67629,7 @@ var additionalMovies = exports.additionalMovies = function () {
         switch (_context4.prev = _context4.next) {
           case 0:
             _context4.next = 2;
-            return fetch("http://localhost:3000/movies/?_page=" + page + "&_limit=" + limit + "&properties=id");
+            return fetch("http://localhost:3000/movies/ids?_page=" + page + "&_limit=" + limit);
 
           case 2:
             _context4.next = 4;
@@ -67651,7 +67660,7 @@ var actors = exports.actors = function () {
         switch (_context5.prev = _context5.next) {
           case 0:
             _context5.next = 2;
-            return fetch("http://localhost:3000/actors/" + id);
+            return fetch("http://localhost:3000/actors/byId/" + id);
 
           case 2:
             response = _context5.sent;
@@ -67678,7 +67687,7 @@ var additionalActors = exports.additionalActors = function () {
         switch (_context6.prev = _context6.next) {
           case 0:
             _context6.next = 2;
-            return fetch("http://localhost:3000/actors/?_page=" + page + "&_limit=" + limit + "&properties=id");
+            return fetch("http://localhost:3000/actors/ids?_page=" + page + "&_limit=" + limit);
 
           case 2:
             _context6.next = 4;
@@ -86928,6 +86937,7 @@ var MovieInfo = function (_Component) {
         value: function render() {
             var film = this.props.film;
 
+            console.log(film, 'movie info');
 
             var strokeFull = film.rating * 10;
             var strokeEmpty = 100 - strokeFull;
@@ -87016,7 +87026,7 @@ var MovieInfo = function (_Component) {
                     "section",
                     { className: "Actors" },
                     film.cast.map(function (actor) {
-                        return _react2.default.createElement(_Actors2.default, { id: actor, film: film.id });
+                        return _react2.default.createElement(_Actors2.default, { id: actor, key: actor, film: film.id });
                     })
                 )
             );
@@ -87082,13 +87092,14 @@ var Actors = function (_Component) {
     _createClass(Actors, [{
         key: 'render',
         value: function render() {
-            var cast = this.props.cast;
-            var film = this.props.film;
+            var _props = this.props,
+                cast = _props.cast,
+                film = _props.film;
 
             if (!cast || cast.id === undefined) {
                 this.props.fetchActorById(this.props.id);
                 return null;
-            } else if (cast.error || cast.movies['' + film] == undefined) {
+            } else if (cast.error || !cast.movies.includes(film)) {
                 //в цього актора немає цього фільму :(
                 //або цього актора нема :(
                 return null;
@@ -87104,17 +87115,7 @@ var Actors = function (_Component) {
                 _react2.default.createElement(
                     'p',
                     { className: b("name") },
-                    cast.id
-                ),
-                _react2.default.createElement(
-                    'p',
-                    { className: b("separator") },
-                    'as'
-                ),
-                _react2.default.createElement(
-                    'p',
-                    { className: b("role") },
-                    cast.movies['' + film][1]
+                    cast.name
                 )
             );
         }
@@ -87379,15 +87380,32 @@ var ActorLayout = function (_Component) {
     }
 
     _createClass(ActorLayout, [{
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+            var _props = this.props,
+                selectedActor = _props.selectedActor,
+                isActorLoading = _props.isActorLoading,
+                fetchMovieById = _props.fetchMovieById;
+
+            if ((!selectedActor || selectedActor.id === undefined) && !isActorLoading) {
+                this.props.fetchActorById(this.props.match.params.id);
+            }
+            nextProps.moviesToLoad.forEach(function (el) {
+                return fetchMovieById(el);
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             window.scrollTo(0, 0);
-            var selectedActor = this.props.selectedActor;
+            var _props2 = this.props,
+                selectedActor = _props2.selectedActor,
+                movies = _props2.movies;
 
-            if (!selectedActor || selectedActor.id === undefined) {
-                this.props.fetchActorById(this.props.match.params.id);
+            if (!selectedActor) {
                 return null;
-            } else if (selectedActor.error) {
+            }
+            if (selectedActor && selectedActor.error) {
                 return _react2.default.createElement(
                     'section',
                     { className: b("error") },
@@ -87413,7 +87431,7 @@ var ActorLayout = function (_Component) {
                     _react2.default.createElement(
                         'h1',
                         { className: b("name") },
-                        selectedActor.id
+                        selectedActor.name
                     ),
                     _react2.default.createElement(
                         'p',
@@ -87460,14 +87478,16 @@ var ActorLayout = function (_Component) {
                             'section',
                             { className: b("movies") },
                             'Films',
-                            Object.keys(selectedActor.movies).map(function (key, index) {
+                            movies.filter(function (movie) {
+                                return movie;
+                            }).map(function (movie) {
                                 return _react2.default.createElement(
                                     _reactRouterDom.Link,
-                                    { className: b("movie-link"), to: '/movie/' + key, key: index },
+                                    { className: b("movie-link"), to: '/movie/' + movie.id, key: movie.id },
                                     _react2.default.createElement(
                                         'p',
                                         { className: b("in-movie") },
-                                        selectedActor.movies[key][0]
+                                        movie.name
                                     )
                                 );
                             })
@@ -87484,14 +87504,37 @@ var ActorLayout = function (_Component) {
 }(_react.Component);
 
 exports.default = (0, _reactRedux.connect)(function (state, props) {
+    var moviesToLoad = [];
     var actor = (0, _index.getActorById)(state, props.match.params.id);
+    var isActorLoading = (0, _index.isActorFetching)(props.match.params.id, state);
     var user = (0, _index.getCurrentUser)(state);
-    return { selectedActor: actor,
-        user: user };
+    var movies = [];
+    if (actor) {
+        movies = actor.movies.map(function (id) {
+            var movie = (0, _index.getMovieById)(state, id);
+            if (!movie) {
+                moviesToLoad.push(id);
+            }
+            return movie;
+        });
+    }
+    moviesToLoad = moviesToLoad.filter(function (id) {
+        return (0, _index.isMovieFetching)(id, state) !== true;
+    });
+    return {
+        selectedActor: actor,
+        user: user,
+        movies: movies,
+        moviesToLoad: moviesToLoad,
+        isActorLoading: isActorLoading
+    };
 }, function (dispatch) {
     return {
         fetchActorById: function fetchActorById(id) {
             return dispatch((0, _fetch.fetchActors)(id));
+        },
+        fetchMovieById: function fetchMovieById(id) {
+            return dispatch((0, _fetch.fetchMovie)(id));
         }
     };
 })(ActorLayout);
@@ -88788,7 +88831,7 @@ var ActorPoster = function (_Component) {
                     _react2.default.createElement(
                         "h3",
                         { className: b('name') },
-                        actor.id
+                        actor.name
                     )
                 )
             );

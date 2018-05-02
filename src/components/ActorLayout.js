@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
-import {getSelectedActor, getActorById, getCurrentUser} from "../reducers/index";
-import {fetchActors} from '../actions/fetch';
+import {getSelectedActor, getActorById, getCurrentUser, getMovieById, isMovieFetching, isActorFetching} from "../reducers/index";
+import {fetchActors, fetchMovie} from '../actions/fetch';
 
 import "../styles/ActorLayout.less"
 import block from "../helpers/BEM";
@@ -13,14 +13,22 @@ const b = block("ActorLayout");
 const link = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_275,h_408,c_thumb,g_face/';
 
 class ActorLayout extends Component {
+
+    componentWillReceiveProps(nextProps) {
+      const {selectedActor, isActorLoading, fetchMovieById} = this.props;
+      if ((!selectedActor || selectedActor.id === undefined) && !isActorLoading) {
+           this.props.fetchActorById(this.props.match.params.id);
+      }
+      nextProps.moviesToLoad.forEach((el) => fetchMovieById(el))
+    }
+
     render() {
         window.scrollTo(0,0);
-        const {selectedActor} = this.props;
-        if (!selectedActor || selectedActor.id === undefined) {
-             this.props.fetchActorById(this.props.match.params.id);
-             return null;
+        const {selectedActor, movies} = this.props;
+        if (!selectedActor) {
+          return null;
         }
-        else if (selectedActor.error) {
+        if (selectedActor && selectedActor.error) {
              return (
                  <section className={b("error")}>
                      <img width="100%" src="http://www.topdesignmag.com/wp-content/uploads/2012/06/1.-404-not-found-design.jpg"/>
@@ -38,7 +46,7 @@ class ActorLayout extends Component {
             <section className={b()}>
                 {additional}
                 <section className={b("general")}>
-                    <h1 className={b("name")}>{selectedActor.id}</h1>
+                    <h1 className={b("name")}>{selectedActor.name}</h1>
                     <p className={b("info")}>{selectedActor.info}</p>
                     <section className={b("extra")}>
                         <p className={b("born-date")}> Born on <span className={b("value")}>{selectedActor.date}</span>
@@ -51,9 +59,10 @@ class ActorLayout extends Component {
                         </p>
                         <section className={b("movies")}>
                             Films
-                            {Object.keys(selectedActor.movies).map((key, index) =>
-                                <Link className={b("movie-link")} to={`/movie/${key}`} key={index}>
-                                    <p className={b("in-movie")}>{selectedActor.movies[key][0]}</p>
+                            {movies.filter((movie) => movie)
+                              .map((movie) =>
+                                <Link className={b("movie-link")} to={`/movie/${movie.id}`} key={movie.id}>
+                                    <p className={b("in-movie")}>{movie.name}</p>
                                 </Link>)}
                         </section>
                     </section>
@@ -67,11 +76,30 @@ class ActorLayout extends Component {
 
 
 export default connect((state, props) => {
+    let moviesToLoad = [];
     const actor = getActorById(state, props.match.params.id);
+    const isActorLoading = isActorFetching(props.match.params.id, state);
     const user = getCurrentUser(state);
-    return {selectedActor: actor,
-            user};
+    let movies = [];
+    if (actor) {
+      movies = actor.movies.map((id) => {
+        let movie = getMovieById(state, id);
+        if (!movie) {
+          moviesToLoad.push(id);
+        }
+        return movie;
+      })
+    }
+    moviesToLoad = moviesToLoad.filter((id) => isMovieFetching(id, state) !== true);
+    return {
+          selectedActor: actor,
+          user,
+          movies,
+          moviesToLoad,
+          isActorLoading
+        };
     }, (dispatch) => ({
-        fetchActorById: (id) => dispatch(fetchActors(id))
+        fetchActorById: (id) => dispatch(fetchActors(id)),
+        fetchMovieById: (id) => dispatch(fetchMovie(id))
     })
 )(ActorLayout);

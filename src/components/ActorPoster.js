@@ -19,7 +19,7 @@ class ActorPoster extends Component {
             <article className={b()}>
                 <picture><img src={link + actor.image} className={b("image")}/></picture>
                 <footer className={b("additional-info")}>
-                    <h3 className={b('name')}>{actor.id}</h3>
+                    <h3 className={b('name')}>{actor.name}</h3>
                 </footer>
             </article>
         )

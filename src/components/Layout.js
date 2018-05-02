@@ -18,7 +18,7 @@ import SignUp from './SignUp';
 import {setUser} from '../actions/index';
 import {userAdditionalInfo} from '../actions/auth';
 import AllActors from './AllActors';
-import {getCurrentUser} from '../reducers/index';
+import {getCurrentUser, getIsLoading} from '../reducers/index';
 
 import EditMoviePage from './EditMoviePage';
 import EditActorPage from "./EditActorPage";
@@ -44,19 +44,21 @@ class Layout extends Component {
       if (this.props.user) {
         role = this.props.user.role;
       }
+      console.log(this.props.isLoadingUser)
       const PrivateRoute = ({ component: Component, ...rest }) => (
         <Route
           {...rest}
           render={props =>
-            role == 'admin' ? (
-              <Component {...props} />
-            ) : (
+            (this.props.isLoadingUser === false && role !== 'admin') ?
+            (
               <Redirect
                 to={{
                   pathname: "/login",
                   state: { from: props.location }
                 }}
               />
+            ) : (
+              <Component {...props} />
             )
           }
         />
@@ -82,7 +84,8 @@ class Layout extends Component {
 
 Layout = withRouter(connect(
   (state, props) => ({
-    user: getCurrentUser(state)
+    user: getCurrentUser(state),
+    isLoadingUser: getIsLoading(state)
   }),
   (dispatch) => ({
     setUser: (user) => dispatch(setUser(user)),

@@ -9,6 +9,7 @@ const b = block("MovieInfo");
 class MovieInfo extends Component {
     render() {
         const {film} = this.props;
+        console.log(film, 'movie info');
 
         const strokeFull = film.rating*10;
         const strokeEmpty = 100 - strokeFull;
@@ -32,7 +33,7 @@ class MovieInfo extends Component {
                     <p className={b("technology")}>Technology <span className={b("value")}>  {film.technology} </span></p>
                 </div>
                 <section className={"Actors"}>
-                    {film.cast.map(actor => <Actors id={actor} film={film.id}/>)}
+                    {film.cast.map(actor => <Actors id={actor} key={actor} film={film.id}/>)}
                 </section>
 
             </section>
