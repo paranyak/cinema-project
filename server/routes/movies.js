@@ -38,4 +38,17 @@ router.get('/ids', function(req, res) {
   })
 });
 
+router.post('/', function(req, res) {
+  new Movie(req.body).save().then(function(movie) {
+    res.send(movie)
+  });
+})
+
+router.patch('/:id', function(req, res) {
+  Movie.findByIdAndUpdate({ _id: req.params.id }, { $set: req.body})
+    .then(function(movie) {
+      res.send(movie)
+    });
+})
+
 module.exports = router;

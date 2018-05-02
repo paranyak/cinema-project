@@ -87665,7 +87665,7 @@ var AddActor = function (_Component) {
             suggestedMovies: [[{ id: 1, name: "", role: "" }]], //список всіх фільмів які відповідають кожному інпут полю
             currentSearchPhrase: [" "], //конкретно кожен інпут
             currentSuggestedMovies: [{ id: 1, name: "" }], // поточний фільм, який шукаємо
-            movies: [{ name: "", role: "" }], //всі фільми , тобто це той вигляд який має бд
+            movies: [], //всі фільми , тобто це той вигляд який має бд
             currentInputIndex: 0,
             actor: ''
         };
@@ -87697,7 +87697,7 @@ var AddActor = function (_Component) {
             var headers = new Headers();
             headers.append('Content-Type', 'application/json');
 
-            var createdMovies = {};
+            var createdMovies = [];
             var movieInputs = document.querySelectorAll(".AddActor__inputs_movie");
             for (var i = 0; i < movieInputs.length; i++) {
                 for (var j = 0; j < this.state.suggestedMovies[i].length; j++) {
@@ -87715,7 +87715,7 @@ var AddActor = function (_Component) {
                             return res.json();
                         });
 
-                        createdMovies[key] = [this.state.suggestedMovies[i][j].name, this.state.movies[i].role];
+                        createdMovies.push(this.state.movies[i].id);
                     }
                 }
             }
@@ -87728,7 +87728,7 @@ var AddActor = function (_Component) {
             var birthDay = month + ' ' + day + ', ' + year;
 
             var actorToAdd = {
-                id: this.refs.name.value,
+                name: this.refs.name.value,
                 movies: createdMovies,
                 info: this.refs.info.value,
                 date: birthDay,
@@ -92793,12 +92793,13 @@ var EditActorPage = function (_Component) {
         _this.state = {
             fireRedirect: false,
             id: '',
-            movies: {},
+            movies: [],
             info: '',
             date: '',
             city: '',
             nominations: [],
-            image: ''
+            image: '',
+            name: ''
         };
         _this.getStateFromChild = _this.getStateFromChild.bind(_this);
         return _this;
@@ -92821,7 +92822,8 @@ var EditActorPage = function (_Component) {
                 date = _state.date,
                 city = _state.city,
                 nominations = _state.nominations,
-                image = _state.image;
+                image = _state.image,
+                name = _state.name;
 
 
             var birthDay = date;
@@ -92843,7 +92845,8 @@ var EditActorPage = function (_Component) {
                 nominations: nominations.filter(function (el) {
                     return el !== '';
                 }),
-                image: image
+                image: image,
+                name: name
             };
 
             console.log("EDITED ACTOR", actor);
@@ -93088,7 +93091,8 @@ var EditActorInfo = function (_Component) {
             info: props.actor.info,
             date: props.actor.date,
             city: props.actor.city,
-            nominations: props.actor.nominations
+            nominations: props.actor.nominations,
+            name: props.actor.name
         };
         _this.onValueChange = _this.onValueChange.bind(_this);
         return _this;
@@ -93103,9 +93107,10 @@ var EditActorInfo = function (_Component) {
                 info = _state.info,
                 date = _state.date,
                 city = _state.city,
-                nominations = _state.nominations;
+                nominations = _state.nominations,
+                name = _state.name;
 
-            this.props.callback(['id', 'movies', 'info', 'date', 'city', 'nominations'], [id, movies, info, date, city, nominations]);
+            this.props.callback(['id', 'movies', 'info', 'date', 'city', 'nominations', 'name'], [id, movies, info, date, city, nominations, name]);
         }
     }, {
         key: "componentDidUpdate",
@@ -93116,10 +93121,11 @@ var EditActorInfo = function (_Component) {
                 info = _state2.info,
                 date = _state2.date,
                 city = _state2.city,
-                nominations = _state2.nominations;
+                nominations = _state2.nominations,
+                name = _state2.name;
 
             if (prevState !== this.state) {
-                this.props.callback(['id', 'movies', 'info', 'date', 'city', 'nominations'], [id, movies, info, date, city, nominations]);
+                this.props.callback(['id', 'movies', 'info', 'date', 'city', 'nominations', 'name'], [id, movies, info, date, city, nominations, name]);
             }
         }
     }, {
@@ -93155,7 +93161,7 @@ var EditActorInfo = function (_Component) {
                     { className: b('title') },
                     "Actor Name"
                 ),
-                _react2.default.createElement("input", { className: b("input", ['name']), name: "id", defaultValue: actor.id,
+                _react2.default.createElement("input", { className: b("input", ['name']), name: "name", defaultValue: actor.name,
                     onChange: this.onValueChange, placeholder: "Please, enter the actor name" }),
                 _react2.default.createElement(
                     "h3",

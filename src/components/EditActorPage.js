@@ -17,12 +17,13 @@ class EditActorPage extends Component {
         this.state = {
             fireRedirect: false,
             id: '',
-            movies: {},
+            movies: [],
             info: '',
             date: '',
             city: '',
             nominations: [],
-            image: ''
+            image: '',
+            name: ''
         };
         this.getStateFromChild = this.getStateFromChild.bind(this);
     }
@@ -42,7 +43,8 @@ class EditActorPage extends Component {
             date,
             city,
             nominations,
-            image
+            image,
+            name
         } = this.state;
 
         let birthDay = date;
@@ -62,7 +64,8 @@ class EditActorPage extends Component {
             date: birthDay,
             city,
             nominations: nominations.filter(el => el !== ''),
-            image
+            image,
+            name
         };
 
         console.log("EDITED ACTOR", actor);

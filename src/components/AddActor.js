@@ -17,7 +17,7 @@ class AddActor extends Component {
             suggestedMovies: [[{id: 1, name: "", role: ""}]],      //список всіх фільмів які відповідають кожному інпут полю
             currentSearchPhrase: [" "],                  //конкретно кожен інпут
             currentSuggestedMovies: [{id: 1, name: ""}],   // поточний фільм, який шукаємо
-            movies: [{name: "", role: ""}],                          //всі фільми , тобто це той вигляд який має бд
+            movies: [],                          //всі фільми , тобто це той вигляд який має бд
             currentInputIndex: 0,
             actor: ''
         };
@@ -46,7 +46,7 @@ class AddActor extends Component {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        let createdMovies = {};
+        let createdMovies = [];
         let movieInputs = document.querySelectorAll(".AddActor__inputs_movie");
         for (let i = 0; i < movieInputs.length; i++) {
             for (let j = 0; j < this.state.suggestedMovies[i].length; j++) {
@@ -62,7 +62,7 @@ class AddActor extends Component {
                         body: JSON.stringify(newData)
                     }).then((res) => res.json());
 
-                    createdMovies[key] = [this.state.suggestedMovies[i][j].name, this.state.movies[i].role];
+                    createdMovies.push(this.state.movies[i].id);
                 }
             }
         }
@@ -75,7 +75,7 @@ class AddActor extends Component {
         const birthDay = month + ' ' + day + ', ' + year;
 
         const actorToAdd = {
-            id: this.refs.name.value,
+            name: this.refs.name.value,
             movies: createdMovies,
             info: this.refs.info.value,
             date: birthDay,
