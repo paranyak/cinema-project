@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import "../styles/CastInputs.less";
 import block from '../helpers/BEM'
+import slugify from 'slugify';
 
 const b = block("CastInputs");
 
@@ -21,7 +22,7 @@ class CastInputs extends Component {
                        onInput={this.onListChange.bind(this, j)} onChange={this.onOptionClick.bind(this, j)}
                        list="actors"/>
                 <datalist id="actors">
-                    {suggestedActors.map((actor, i) => <option key={i} value={actor.id}/>)}
+                    {suggestedActors.map((actor, i) => <option key={i} value={actor.name.split("_").join(" ")}/>)}
                 </datalist>
                 <input type='button' value='-' className={b('button')}
                        onClick={this.removeActor.bind(this, j)}/>
@@ -30,13 +31,13 @@ class CastInputs extends Component {
     }
 
     async onListChange(i, e) {
-        const response = await fetch(`http://localhost:3000/actors?id_like=${e.target.value}`);// 'posts' to get work the url
+        const response = await fetch(`http://localhost:3000/actors?name_like=${slugify(e.target.value, '_')}`);// 'posts' to get work the url
 
         if (!response.ok) {
             console.log("ERROR IN Choosing ACTOR");
         } else {
             let suggestedActors = await (response.json());
-            if (suggestedActors !== []) {
+            if (suggestedActors.length !== 0) {
                 this.setState({suggestedActors});
                 console.log('sug actors', this.state.suggestedActors);
             }
@@ -58,7 +59,7 @@ class CastInputs extends Component {
         e.preventDefault();
         const {chosenActors} = this.state;
         this.setState({
-            chosenActors: [...chosenActors, '']
+            chosenActors: [...chosenActors, ""]
         })
     }
 
