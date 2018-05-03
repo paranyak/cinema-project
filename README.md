@@ -1,8 +1,10 @@
 # cinema-project
 
-## Documentations
-Api - https://paranyak.github.io/cinema-project/api/index.html
-Style Guide - https://paranyak.github.io/cinema-project/styleguide/index.html
+
+### Api - https://paranyak.github.io/cinema-project/api/index.html
+### Style Guide - https://paranyak.github.io/cinema-project/styleguide/index.html
+
+
 
 - [x] - вантажити картинки з cloudinary
 - [x] - постери одного формату
