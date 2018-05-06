@@ -18,13 +18,13 @@ class EditActorPage extends Component {
         this.state = {
             fireRedirect: false,
             id: '',
-            name: '',
-            movies: {},
+            movies: [],
             info: '',
             date: '',
             city: '',
             nominations: [],
-            image: ''
+            image: '',
+            name: ''
         };
         this.getStateFromChild = this.getStateFromChild.bind(this);
     }
@@ -39,13 +39,12 @@ class EditActorPage extends Component {
         e.preventDefault();
         const {
             id,
-            // movies,
-            name,
             info,
             date,
             city,
             nominations,
-            image
+            image,
+            name
         } = this.state;
 
         let birthDay = date;
@@ -66,7 +65,8 @@ class EditActorPage extends Component {
             date: birthDay,
             city,
             nominations: nominations.filter(el => el !== ''),
-            image
+            image,
+            name
         };
 
         console.log("EDITED ACTOR", actor);
@@ -130,5 +130,7 @@ class EditActorPage extends Component {
 export default connect((state, props) => {
         const actor = getActorById(state, props.match.params.id.split("__")[0]);
         return {selectedActor: actor};
-    }, (dispatch) => ({fetchActorById: (id) => dispatch(fetchActors(id))})
+    }, (dispatch) => ({
+        fetchActorById: (id) => dispatch(fetchActors(id))
+    })
 )(EditActorPage);

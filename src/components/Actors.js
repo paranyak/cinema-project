@@ -13,13 +13,12 @@ const link = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_50,h_50,c_thum
 
 class Actors extends Component {
     render() {
-        const {cast} = this.props;
-        const {film} = this.props;
+        const {cast, film} = this.props;
         if (!cast || cast.id === undefined) {
             this.props.fetchActorById(this.props.id);
             return null;
         }
-        else if(cast.error || cast.movies[`${film}`] === undefined ){
+        else if(cast.error || !cast.movies.includes(film) ){
             //в цього актора немає цього фільму :(
             //або цього актора нема :(
             return null;
@@ -33,9 +32,7 @@ class Actors extends Component {
                         {cast.name
                             .split("_")
                             .join(" ")}
-                    </p>
-                    <p className={b("separator")}>as</p>
-                    <p className={b("role")}>{cast.movies[`${film}`][1]}</p>
+                    </p>    
                 </div>
         )
     }

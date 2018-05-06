@@ -35,7 +35,7 @@ class MovieInfo extends Component {
                     </p>
                 </div>
                 <section className={"Actors"}>
-                    {film.cast.map(actor => <Actors id={actor} film={film.id}/>)}
+                    {film.cast.map(actor => <Actors id={actor} key={actor} film={film.id}/>)}
                 </section>
 
             </section>

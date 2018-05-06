@@ -5,7 +5,8 @@ import * as fromApi from '../api/fetch';
 
 export const fetchMovie = (id) => async (dispatch) => {
     dispatch(fromFetch.fetchMoviesStart(id));
-    let movies = await fromApi.movie(id);
+    let movies = await fromApi.movie(id)
+    movies.id = movies['_id'];
     movies = normalize([movies], moviesListSchema);
     dispatch(fromFetch.fetchMoviesSuccess(id, movies.result, movies.entities.movies));
 };
@@ -28,6 +29,8 @@ export const fetchAdditionalMovies = (limit, page) => async (dispatch) => {
     dispatch(fromFetch.fetchMoviesStart('additional'));
     let movies = await fromApi.additionalMovies(limit, page);
     movies = normalize(movies, moviesListSchema);
+    console.log(movies, "++++++++++++++++")
+
     dispatch(fromFetch.fetchMoviesSuccess('additional', movies.result, movies.entities.movies));
 };
 
@@ -42,15 +45,13 @@ export const fetchActors = (id) => async (dispatch) => {
     dispatch(fromFetch.fetchActorsStart(id));
     let response = await fromApi.actors(id);
     if (!response.ok) {
-        console.log("ACTOR NOT FOUND");
         let actor = {id, error: true};
         let actors = normalize([actor], actorsListSchema);
         dispatch(fromFetch.fetchActorsSucess(id, actors.result, actors.entities.actors));
     } else {
         let actors = await ((response).json());
-        console.log("SUCCESS:", actors);
+        actors.id = actors['_id'];
         actors = normalize([actors], actorsListSchema);
-        console.log("ACTOR NORM:", actors.result, actors.entities.actors);
         dispatch(fromFetch.fetchActorsSucess(id, actors.result, actors.entities.actors));
     }
 };

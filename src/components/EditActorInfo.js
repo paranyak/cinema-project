@@ -16,24 +16,25 @@ class EditActorInfo extends Component {
             info: props.actor.info,
             date: props.actor.date,
             city: props.actor.city,
-            nominations: props.actor.nominations
+            nominations: props.actor.nominations,
+            name: props.actor.name
         };
         this.onValueChange = this.onValueChange.bind(this);
     }
 
     componentDidMount() {
-        const {id, name, movies, info, date, city, nominations} = this.state;
+        const {id, movies, info, date, city, nominations, name} = this.state;
         this.props.callback(
-            ['id', 'name', 'movies', 'info', 'date', 'city', 'nominations'],
-            [id, movies, info, date, city, nominations]);
+            ['id', 'movies', 'info', 'date', 'city', 'nominations', 'name'],
+            [id, movies, info, date, city, nominations, name]);
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const {id, name, movies, info, date, city, nominations} = this.state;
+        const {id, movies, info, date, city, nominations, name} = this.state;
         if (prevState !== this.state) {
             this.props.callback(
-                ['id', 'name', 'movies', 'info', 'date', 'city', 'nominations'],
-                [id, name, movies, info, date, city, nominations]);
+                ['id', 'movies', 'info', 'date', 'city', 'nominations', 'name'],
+                [id, movies, info, date, city, nominations, name]);
         }
     }
 
