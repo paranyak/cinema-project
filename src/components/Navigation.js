@@ -17,29 +17,32 @@ class Navigation extends Component {
 
 
     signOut() {
-      this.props.logoutUser();
+        this.props.logoutUser();
     }
 
     render() {
-      let additional = '';
-      let role = this.props.user && this.props.user.role;
-      if(role === 'admin') {
-        additional = (<div>
-                        <NavLink to='/add-movie' className={b('add')} activeClassName={b('add', ['active'])}>
-                            +
-                        </NavLink>
+        let additional = '';
+        let role = this.props.user && this.props.user.role;
+        if (role === 'admin') {
+            additional = (<div>
+                <NavLink to='/add-movie' className={b('add')} activeClassName={b('add', ['active'])}>
+                    Add Movie
+                </NavLink>
 
-                        <NavLink to='/add-actor' className={b('add', ['actor'])} activeClassName={b('add', ['active'])}>
-                            +
-                        </NavLink>
-                      </div>)
+                <NavLink to='/add-actor' className={b('add')} activeClassName={b('add', ['active'])}>
+                    Add Actor
+                </NavLink>
+            </div>)
         }
         return <div className={b()}>
             <NavLink to="/" exact className={b('tab')} activeClassName={b('tab', ['active'])}>Home</NavLink>
             <NavLink to="/schedule" className={b('tab')} activeClassName={b('tab', ['active'])}>Schedule</NavLink>
             <NavLink to="/allactors" className={b('tab')} activeClassName={b('tab', ['active'])}>All actors</NavLink>
-            <NavLink to="/login" style={{display: this.props.user ? 'none' : 'block'}} className={b('tab', ['login'])} activeClassName={b('tab', ['active'])}>Login</NavLink>
-            <button className={b('tab', ['logout'])} onClick={() => this.signOut()} style={{display: this.props.user ? 'block' : 'none'}}>Log out</button>
+            <NavLink to="/login" style={{display: this.props.user ? 'none' : 'block'}} className={b('tab', ['login'])}
+                     activeClassName={b('tab', ['active'])}>Login</NavLink>
+            <button className={b('tab', ['logout'])} onClick={() => this.signOut()}
+                    style={{display: this.props.user ? 'block' : 'none'}}>Log out
+            </button>
             {additional}
         </div>;
     }
@@ -47,9 +50,9 @@ class Navigation extends Component {
 
 export default withRouter(connect(
     (state, props) => ({
-      user: getCurrentUser(state)
+        user: getCurrentUser(state)
     }),
     (dispatch) => ({
-      logoutUser: () => dispatch(logoutUser())
+        logoutUser: () => dispatch(logoutUser())
     })
 )(Navigation));

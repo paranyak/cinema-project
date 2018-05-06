@@ -8,7 +8,6 @@ import {Redirect} from 'react-router'
 import CastInputs from "./CastInputs";
 import {genres, formats, technologies} from "../helpers/constants";
 import EditSelections from "./EditSelections";
-import slugify from 'slugify';
 
 const b = block("InputField");
 

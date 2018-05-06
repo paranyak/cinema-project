@@ -1,9 +1,9 @@
 # cinema-project
 
 
-### Api - https://paranyak.github.io/cinema-project/api/index.html
-### Style Guide - https://paranyak.github.io/cinema-project/styleguide/index.html
-
+### Documentations
+ - [API Docs](https://paranyak.github.io/cinema-project/api/index.html)
+ - [Style Guide](https://paranyak.github.io/cinema-project/styleguide/index.html)
 
 
 - [x] - вантажити картинки з cloudinary
