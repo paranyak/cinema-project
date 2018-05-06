@@ -44,11 +44,9 @@ router.post('/', function(req, res) {
   });
 })
 
-router.patch('/:id', function(req, res) {
-  Movie.findByIdAndUpdate({ _id: req.params.id }, { $set: req.body})
-    .then(function(movie) {
-      res.send(movie)
-    });
+router.patch('/:id', async (req, res) =>  {
+  const movie = await Movie.findByIdAndUpdate({ _id: req.params.id }, { $set: req.body})
+  res.send(movie)
 })
 
 module.exports = router;
