@@ -7,7 +7,8 @@ import {Link} from 'react-router-dom';
 import InfiniteScroll from "react-infinite-scroller";
 import {getAllMoviesIds, isMovieFetching, getCarouselleMovies} from "../reducers";
 import {fetchAdditionalMovies} from "../actions/fetch"
-import LazyLoad from 'react-lazyload';
+import {replace} from 'react-router-redux';
+import * as queryString from 'query-string';
 
 const b = block("AllMovies");
 
@@ -18,19 +19,72 @@ class AllMovies extends Component {
             items: 12,
             hasMoreItems: true
         };
+        this.moveScrollToLocation = this.moveScrollToLocation.bind(this);
+        this.scrollTo = this.scrollTo.bind(this);
     }
 
     componentWillMount() {
         this.props.fetchAllMovies(this.state.items, 1);
+        let previousScroll = window.location.search.slice(5, window.location.search.length);
+        if (window.location.search) {
+            let index = window.location.search.indexOf('=', 6);
+            if (index != -1) {
+                previousScroll = window.location.search.slice(5, index - 6);
+            }
+            this.props.updateLocation({
+                search: '?' + queryString.stringify({"off": previousScroll, "start": '-'})
+            });
+        }
+    }
+
+    componentDidMount() {
+        document.addEventListener('scroll', this.moveScrollToLocation);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('scroll', this.moveScrollToLocation);
     }
 
     componentWillReceiveProps(nextProps) {
+
         if (nextProps.films.length === this.props.films.length && this.props.isFetching && !nextProps.isFetching) {
             this.setState({...this.state, hasMoreItems: false});
+        }
+
+    }
+
+
+    moveScrollToLocation() {
+        let scrollPosition = window.location.search.slice(5, window.location.search.length);
+        if (window.scrollY - window.innerHeight >=scrollPosition || window.scrollY + window.innerHeight <= scrollPosition) {
+            this.props.updateLocation({
+                search: '?' + queryString.stringify({"off": window.scrollY})
+            });
+        }
+    }
+
+    scrollTo() {
+        let scrollY = 0;
+        if (window.location.search) {
+            let index = window.location.search.indexOf('=', 6);
+            if (index == -1) {
+                scrollY = window.location.search.slice(5, window.location.search.length);
+            }
+            else {
+                scrollY = window.location.search.slice(5, index - 6);
+            }
+            window.scrollTo(0, scrollY);
         }
     }
 
     showItems() {
+        if (window.location.search && window.location.search[window.location.search.length - 1] === '-') {
+            this.scrollTo();
+            this.props.updateLocation({
+                search: '?' + queryString.stringify({"off": window.scrollY})
+            });
+        }
+
         const {films, comingSoonIds} = this.props;
         if (films.length !== 0) {
             return (
@@ -40,11 +94,9 @@ class AllMovies extends Component {
                             !comingSoonIds.includes(film)
                         )
                         .map((film, i) =>
-                            <LazyLoad key={i} height='100%' offsetBottom={250}>
-                                <Link key={film} to={`/movie/${film}`}>
-                                    <MoviePoster filmId={film}/>
-                                </Link>
-                            </LazyLoad>
+                            <Link key={film} to={`/movie/${film}`}>
+                                <MoviePoster filmId={film} id={i}/>
+                            </Link>
                         )}
                 </div>
             );
@@ -80,7 +132,16 @@ class AllMovies extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => ( {fetchAllMovies: (labels, pages) => dispatch(fetchAdditionalMovies(labels, pages))} );
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchAllMovies: (labels, pages) => {
+            dispatch(fetchAdditionalMovies(labels, pages))
+        },
+        updateLocation: (params) => {
+            dispatch(replace(params))
+        }
+    }
+};
 
 const mapStateToProps = state => {
     const movies = getAllMoviesIds(state);

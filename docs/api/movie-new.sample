@@ -1,0 +1,36 @@
+{
+   "movieID": 10,
+   "movieTitle": "Rampage",
+   "movieImage": "Cinema Project/isovqgw8hdvinn4txw5t",
+   "movieRating": 4.4,
+   "movieDescription": "Davis Okoye and his best friend white gorilla fight monsters in a big city.",
+   "movieCast": [29, 30, 31],
+   "movieScreenshots": [
+       "Cinema Project/jctf1qovikedmedcy5ro",
+       "Cinema Project/jtrnixabcnqivdtwto6i",
+       "Cinema Project/sresbh3lnmdfylflwpxr"
+   ],
+   "movieTrailer": "https://www.youtube.com/watch?v=coOKvrsmQiI",
+   "movieGenre": "Action, Adventure, Sci-Fi",
+   "movieSchedule": [
+       "12-03-2018 13:15",
+       "12-03-2018 18:00"
+   ],
+   "movieFormat": [
+       "3D"
+   ],
+   "movieTechnology": [
+       "IMAX"
+   ],
+   "movieDuration": {
+       "hour": 2,
+       "minute": 10
+   },
+   "movieLabel": "soon",
+   "movieStartDate": {
+       "year": 2018,
+       "month": 4,
+       "day": 13
+   }
+
+}

@@ -1,0 +1,146 @@
+[
+  {
+    "movieID": 0,
+    "movieTitle": "Red Sparrow",
+    "image": "Cinema Project/ymgt4tyhaqkhybywwkut",
+    "rating": 6.7,
+    "description": "Ballerina Dominika Egorova is recruited to 'Sparrow School,' a Russian intelligence service where she is forced to use her body as a weapon. Her first mission, targeting a C.I.A. agent, threatens to unravel the security of both nations.",
+    "cast": [1, 2, 3],
+    "screenshots": [
+        "Cinema Project/jp4qjm88k0x5kwejkfas",
+        "Cinema Project/ccibyqtkshuevstojwbo",
+        "Cinema Project/ssiwpffjj6yrlqhpgmz5"
+    ],
+    "trailer": "https://www.youtube.com/embed/PmUL6wMpMWw?autoplay=0",
+    "genre": "Mystery, Thriller",
+    "schedule": [
+        "22-03-2018 10:15",
+        "22-03-2018 11:00",
+        "22-03-2018 12:50",
+        "22-03-2018 13:40",
+        "22-03-2018 15:25",
+        "22-03-2018 16:20",
+        "22-03-2018 18:00",
+        "22-03-2018 19:00",
+        "22-03-2018 21:40",
+        "22-03-2018 22:30"
+    ],
+    "format": ["2D"],
+    "technology": ["Cinetech+"],
+    "duration": {
+        "hour": 2,
+        "minute": 19
+    },
+    "label": "popular",
+    "startDate": {
+        "year": 2018,
+        "month": 3,
+        "day": 1
+    }
+  },
+  {
+    "movieID": 1,
+    "movieName": "The Hurricane Heist",
+    "image": "Cinema Project/a2xmwnhiqaaeu4eysnir",
+    "rating": 4.8,
+    "cast": [4, 0, 5],
+    "description": "Thieves attempt a massive heist against the U.S. Treasury as a Category 5 hurricane approaches one of its Mint facilities.",
+    "screenshots": [
+      "Cinema Project/fplxprob1xwzaou7c12u",
+      "Cinema Project/qwlddtw6ucbwawmvkjhu",
+      "Cinema Project/jhp2a7bwimom9gvgouoi",
+      "Cinema Project/ffbfdkffieff3vchrrra"
+    ],
+    "trailer": "https://www.youtube.com/embed/56whWF2NJrM?autoplay=0",
+    "genre": "Action, Thriller",
+    "Schedule": [
+      "22-03-2018 10:00",
+      "22-03-2018 18:35",
+      "22-03-2018 20:20",
+      "22-03-2018 22:35"
+    ],
+    "format": ["2D"],
+    "technology": ["Cinetech+"],
+    "duration": {
+      "hour": 1,
+      "minute": 40
+    },
+    "label": "",
+    "startDate": {
+      "year": 2018,
+      "month": 3,
+      "day": 1
+    }
+  },
+  {
+    "movieID": 2,
+    "movieName": "Game Night",
+    "image": "Cinema Project/du7pyvc5hejwetjlhpkn",
+    "rating": 7.5,
+    "cast": [6, 7, 8],
+    "description": "A group of friends who meet regularly for game nights find themselves trying to solve a murder mystery.",
+    "screenshots": [
+      "Cinema Project/tznfqhh5lumofyjme01v",
+      "Cinema Project/pkxptmjizpdqm9den5bl",
+      "Cinema Project/v3xejq2kqwduqc9bj4rj",
+      "Cinema Project/aixu1swugtfk6jvpqgpz",
+      "Cinema Project/fxs10tpz8hajvoauybmx"
+    ],
+    "trailer": "https://www.youtube.com/embed/qmxMAdV6s4U?autoplay=0",
+    "genre": "Comedy, Crime, Mystery",
+    "Schedule": [
+      "22-03-2018 16:40",
+      "22-03-2018 20:35",
+      "22-03-2018 22:15"
+    ],
+    "format": ["2D"],
+    "technology": ["Cinetech+"],
+    "duration": {
+      "hour": 1,
+      "minute": 40
+    },
+    "label": "popular",
+    "startDate": {
+      "year": 2018,
+      "month": 2,
+      "day": 22
+    }
+  },
+  {
+    "movieID": 3,
+    "movieName": "Black Panther",
+    "image": "Cinema Project/z3n9cwlcvj22k2hhpuu4",
+    "rating": 7.8,
+    "cast": [9, 10, 11],
+    "description": "T'Challa, the King of Wakanda, rises to the throne in the isolated, technologically advanced African nation, but his claim is challenged by a vengeful outsmovieIDer who was a childhood victim of T'Challa's father's mistake.",
+    "screenshots": [
+      "Cinema Project/dlsxjiwi3aefcgv3blb0",
+      "Cinema Project/yheeg5duddnda7zdkp1b",
+      "Cinema Project/cv5ll6br7kg1owtmyxj8",
+      "Cinema Project/ggssxjq1zvoxprzclvdu",
+      "Cinema Project/kuej5pr3loucym3fdmf5",
+      "Cinema Project/v3vet38kbxtpfgfcnfks"
+    ],
+    "trailer": "https://www.youtube.com/embed/xjDjIWPwcPU?autoplay=0",
+    "genre": "Action, Adventure, Sci-Fi",
+    "Schedule": [
+      "22-03-2018 11:00",
+      "22-03-2018 13:40",
+      "22-03-2018 16:20",
+      "22-03-2018 19:00",
+      "22-03-2018 21:40"
+    ],
+    "format": ["3D"],
+    "technology": ["Cinetech+", "IMAX"],
+    "duration": {
+      "hour": 2,
+      "minute": 14
+    },
+    "label": "popular",
+    "startDate": {
+      "year": 2018,
+      "month": 2,
+      "day": 15
+    }
+  }
+]

@@ -1,0 +1,126 @@
+[
+    {
+      "actorID": 0,
+      "actorName": "maggie_grace",
+      "movies": {
+        "1": [
+          "The Hurricane Heist",
+          "Casey"
+        ]
+      },
+      "info": "Maggie Grace (born Margaret Grace Denig; September 21, 1983)[1] is an American actress and model, best known for her roles as Shannon Rutherford on the ABC television series Lost and Kim Mills in the Taken trilogy. She has also appeared on The Twilight Saga as Irina. Originally from Worthington, Ohio, she went on to earn a Young Artist Award nomination in 2002 with her portrayal of 15_year_old murder victim Martha Moxley in the television movie Murder in Greenwich. In 2004, Grace was cast as Shannon Rutherford in the television series Lost, on which she was a main cast member for the first two seasons, winning a Screen Actors Guild Award shared with the ensemble cast. Leaving the series, Grace was keen to work more prominently in film, she appeared in The Jane Austen Book Club (both 2007), and opposite Liam Neeson as Kim Mills in Taken in 2008. She reprised the role in Taken 2 (2012) and Taken 3 (2015).",
+      "date": "September 21, 1983",
+      "city": "Worthington, Ohio, U.S.",
+      "nominations": [
+        "Teen Choice Award в номінації Найкращий прорив року: жіноча роль у серіалі",
+        "Teen Choice Award в номінації Найкраща актриса екшну/пригодницького фільму"
+      ],
+      "image": "Cinema Project/wqdoibm3wmyvyo5fldsb"
+    },
+    {
+      "actorID": 1,
+      "actorName": "jennifer_lawrence",
+      "movies": {
+        "0": [
+          "Red Sparrow",
+          "Dominika Egorova"
+        ]
+      },
+      "info": "Jennifer Shrader Lawrence (born August 15, 1990) is an American actress. Her films have grossed over $5.5 billion worldwactorIDe, and she was the highest_paactorID actress in the world in 2015 and 2016. She appeared in Time's 100 most influential people in the world in 2013 and in the Forbes Celebrity 100 in 2014 and 2016.",
+      "date": "August 15, 1990",
+      "city": "Indian Hills, Kentucky, U.S",
+      "nominations": [
+        "Премія «Оскар» за найкращу жіночу роль"
+      ],
+      "image": "Cinema Project/syuyyrbyfooaxhakjlu9"
+    },
+    {
+      "actorID": 2,
+      "actorName": "joel_edgerton",
+      "movies": {
+        "0": [
+          "Red Sparrow",
+          "Nate Nash"
+        ]
+      },
+      "info": "Joel Edgerton (born 23 June 1974) is an Australian actor, director, writer, producer and filmmaker. He has appeared in films such as Star Wars: Episode III _ Revenge of the Sith (2005), Warrior (2011), Zero Dark Thirty (2012), The Great Gatsby (2013), Exodus: Gods and Kings (2014), Black Mass (2015),[1] Loving (2016), and Bright (2017).In Australia, Edgerton portrayed Will McGill in The Secret Life of Us for which he won the AACTA Award for Best Lead Actor in a Television Drama in 2002 and appeared in the film Animal Kingdom (2010), for which he won the AACTA Award for Best Actor in a Supporting Role.",
+      "date": "June 23, 1974",
+      "city": "Blacktown, New South Wales, Australia",
+      "nominations": [
+        "Премія «Золотий глобус» за найкращу чоловічу роль у фільмі — драма"
+      ],
+      "image": "Cinema Project/jtj9hnsuk133b89fg2zp"
+    },
+    {
+      "actorID": 3,
+      "actorName": "matthias_schoenaerts",
+      "movies": {
+        "0": [
+          "Red Sparrow",
+          "Vanya Egorov"
+        ]
+      },
+      "info": "Matthias Schoenaerts is a Belgian actor, film producer and graffiti artist of Flemish origin.He made his film debut at the age of 13 in Daens (1992), which was nominated for the Academy Award for Best Foreign Language Film. He is best known for his roles as Filip in Loft (2008), Jacky Vanmarsenille in the Oscar_nominated Bullhead (2011), Ali in the BAFTA and Golden Globe_nominee Rust and Bone (2012), for which he won the César Award for Most Promising Actor, Eric Deeds in The Drop (2014), Bruno von Falk in Suite Française (2015), Gabriel Oak in Far from the Madding Crowd (2015) and Hans Axgil in The Danish Girl (2015). Schoenaerts received critical acclaim for his portrayal of an ex_soldier suffering from PTSD in Disorder (2015).In 2015, he was actorNamed Knight of the Order of Arts and Letters in France",
+      "date": "December 8, 1977",
+      "city": "Antwerp, Flanders, Belgium",
+      "nominations": [
+        "Премія Сезар найперспективнішому актору"
+      ],
+      "image": "Cinema Project/vyq6xqjielobdmsue68k"
+    },
+    {
+      "actorID": 4,
+      "actorName": "toby_kebbell",
+      "movies": {
+        "1": [
+          "The Hurricane Heist",
+          "Will"
+        ]
+      },
+      "info": "Tobias Alistair Patrick Kebbell is an English stage and film actor. He is known for his roles in films such as Dead Man's Shoes (2004), RocknRolla (2008), Prince of Persia: The Sands of Time (2010), War Horse (2011), Wrath of the Titans (2012), Dawn of the Planet of the Apes (2014), Fantastic Four (2015), Warcraft (2016), A Monster Calls (2016), and Gold (2016). He is also known for his work in the Black Mirror episode, The Entire History of You. He most recently starred in the second film of the MonsterVerse film series, Kong: Skull Island, which was released in March 2017.",
+      "date": "July 9, 1982",
+      "city": "Pontefract, West Yorkshire, England",
+      "nominations": [
+        "Премія британського незалежного кіно в номінації Найкращий актор/актриса другого плану"
+      ],
+      "image": "Cinema Project/yvnxovudjddhrrh6jwkq"
+    },
+    {
+      "actorID": 5,
+      "actorName": "ryan_kwanten",
+      "movies": {
+        "1": [
+          "The Hurricane Heist",
+          "Breeze"
+        ]
+      },
+      "info": "Ryan Christian Kwanten is an Australian actor and comedian. He played Vinnie Patterson from 1997 to 2002 in the Australian soap opera Home and Away. After his stint ended, he joined the American teen drama series Summerland, portraying Jay Robertson. In 2008, he was cast as Jason Stackhouse in True Blood.",
+      "date": "November 28, 1976",
+      "city": "Sydney, Australia",
+      "nominations": [
+        "Премія найперспективнішому актору"
+      ],
+      "image": "Cinema Project/ov03zjlhgonyayjhmclr"
+    },
+    {
+      "actorID": 9,
+      "actorName": "chadwick_boseman",
+      "movies": {
+        "3": [
+          "Black Panther",
+          "Black Panther"
+        ],
+        "17": [
+          "Avengers: Infinity War",
+          "T'Challa"
+        ]
+      },
+      "info": "Chadwick Aaron Boseman is an American actor. He is known for portraying Jackie Robinson in 42 (2013), James Brown in Get on Up (2014), Black Panther in the Marvel Cinematic Universe (since 2016), and Thurgood Marshall in Marshall (2017). He also had roles in the television series Lincoln Heights (2008) and Persons Unknown (2010), and the films The Express (2008), Draft Day (2014), and Message from the King (2016).",
+      "date": "November 29, 1977",
+      "city": "Anderson, South Carolina, U.S.",
+      "nominations": [
+        "Премія EMMI за найкращу чоловічу роль у драматичному серіалі"
+      ],
+      "image": "Cinema Project/r8zsgpcjdgrlkpbgh7p5"
+    }
+]

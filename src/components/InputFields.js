@@ -1,13 +1,14 @@
 import React, {Component} from "react";
 import "../styles/InputFields.less";
 import block from '../helpers/BEM'
-import CheckBoxList from "./CheckBoxList";
 import DragDropImage from './DragDropImage';
 import CalendarRangePicker from './CalendarRangePicker';
 import TimeRanges from "./TimeRanges";
 import {Redirect} from 'react-router'
 import CastInputs from "./CastInputs";
 import {genres, formats, technologies} from "../helpers/constants";
+import EditSelections from "./EditSelections";
+import slugify from 'slugify';
 
 const b = block("InputField");
 
@@ -20,11 +21,9 @@ class InputFields extends Component {
             cast: [],
             scheduleTime: [],
             scheduleDate: [],
-            multiSelections: {
-                genre: [],
-                format: [],
-                technology: []
-            },
+            genre: [],
+            format: [],
+            technology: [],
             title: '',
             description: '',
             trailer: '',
@@ -37,75 +36,30 @@ class InputFields extends Component {
         this.changeInput = this.changeInput.bind(this);
         this.myCallback = this.myCallback.bind(this);
         this.myCallback2 = this.myCallback2.bind(this);
-        this.handleSelect = this.handleSelect.bind(this);
     }
 
-    handleSelect(e) {       // get data from check boxes
-        const {multiSelections} = this.state;
-        const name = e.target.name;
-        const value = e.target.value;
-
-        let arr = [];
-
-        if (!multiSelections[name].includes(value)) {
-            console.log('Нема ще', value);
-            arr = [...multiSelections[name], value];
-        }
-        else {
-            console.log('Вже є', value);
-            const ind = multiSelections[name].indexOf(value);
-            const deselect = [...multiSelections[name]];
-            deselect.splice(ind, 1);
-            arr = [...deselect];
-        }
-
-        this.setState({
-            multiSelections: Object.assign(
-                {},
-                this.state.multiSelections,
-                {[name]: arr}
-            )
-        });
-    }
 
     addMovieToDB() {
         const {
-            screenshots,
-            cast,
-            scheduleTime,
-            scheduleDate,
-            title,
-            description,
-            trailer,
-            rating,
-            duration,
-            startDate,
-            label,
-            poster
+            screenshots, cast, scheduleTime, scheduleDate, title,
+            description, genre, format, technology, trailer, rating,
+            duration, startDate, label, poster
         } = this.state;
-        const genre = this.state.multiSelections['genre'];
-        const format = this.state.multiSelections['format'];
-        const technology = this.state.multiSelections['technology'];
         let Schedule = [];
-        for (let i = 0; i < scheduleDate.length; i++) {
-            for (let j = 0; j < scheduleTime.length; j++) {
-                const item = scheduleDate[i] + ' ' + scheduleTime[j];
-                Schedule.push(item)
-            }
-        }
+        scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
 
         const movie = {
             name: title,
             image: poster,
             rating: parseFloat(rating),
-            cast: cast.filter(el => el !== ''),
+            cast: [],       //cast.filter(el => el !== ''),
             description,
             screenshots,
             trailer,
             genre: genre.join(', '),
             Schedule,
-            format,
-            technology,
+            format: format.filter(f => f !== ''),
+            technology: technology.filter(t => t !== ''),
             duration: {
                 "hour": parseInt(duration.split(':')[0]),
                 "minute": parseInt(duration.split(':')[1])
@@ -148,14 +102,8 @@ class InputFields extends Component {
 
     render() {
         const {
-            fireRedirect,
-            title,
-            description,
-            trailer,
-            rating,
-            duration,
-            startDate,
-            label
+            fireRedirect, title, description, trailer,
+            rating, duration, startDate, label
         } = this.state;
         console.log('-----------------------');
         console.log('this state', this.state);
@@ -175,11 +123,12 @@ class InputFields extends Component {
                        type='text'/>
 
                 <h3 className={b('title')}>Poster</h3>
-                <DragDropImage value={''} name='poster' callbackFromParent={this.myCallback2} callbackInRemove={this.myCallback2}/>
+                <DragDropImage value={''} name='poster' callbackFromParent={this.myCallback2}
+                               callbackInRemove={this.myCallback2}/>
 
                 <h3 className={b('title')}>Description</h3>
                 <textarea onChange={this.changeInput} name='description' className={b('input', ['textarea'])}
-                       placeholder={'Please, enter the movie description'} rows="5"/>
+                          placeholder={'Please, enter the movie description'} rows="5"/>
 
                 <h3 className={b('title')}>Trailer</h3>
                 <input type='url' onChange={this.changeInput} name='trailer' className={b('input')}
@@ -208,9 +157,18 @@ class InputFields extends Component {
                 <CalendarRangePicker name='scheduleDate' startDate={startDate} callbackFromParent={this.myCallback2}/>
                 <TimeRanges name='scheduleTime' callbackFromParent={this.myCallback2}/>
 
-                <CheckBoxList action={this.handleSelect} name={'genre'} array={genres}/>
-                <CheckBoxList action={this.handleSelect} name={'format'} array={formats}/>
-                <CheckBoxList action={this.handleSelect} name={'technology'} array={technologies}/>
+
+                <h3 className={b('title')}>Genre</h3>
+                <EditSelections options={genres} defaultValue={''} name='genre'
+                                callback={this.myCallback2}/>
+
+                <h3 className={b('title')}>Format</h3>
+                <EditSelections options={formats} defaultValue={''} name='format'
+                                callback={this.myCallback2}/>
+
+                <h3 className={b('title')}>Technology</h3>
+                <EditSelections options={technologies} defaultValue={''} name='technology'
+                                callback={this.myCallback2}/>
 
                 <h3 className={b('title')}>Label</h3>
                 <div>

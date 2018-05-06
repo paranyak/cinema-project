@@ -53,7 +53,7 @@
     color: @main-yellow;
     margin: 25px auto 5px auto;
   }
-  &__remove-button, &__add-button{
+  &__remove-button, &__add-button, &__add-tmp-button{
     display: inline-block;
     background-color: @main-yellow;
     color: #373737;
@@ -64,8 +64,13 @@
     font-size: 16px;
     opacity: 0.9;
     width: 5%;
-    padding: 8px 20px;
     margin: 1%;
+  }
+  &__add-tmp-button{
+    display: none;
+    width: 50%;
+    margin: 0 auto;
+    max-width:300px;
   }
   &__movies-block{
     width: 80%;

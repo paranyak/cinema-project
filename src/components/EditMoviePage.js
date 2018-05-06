@@ -25,6 +25,8 @@ class EditMoviePage extends Component {
             genre: '',
             format: [],
             technology: [],
+            trailer: '',
+            cast: []
         };
         this.getStateFromChild = this.getStateFromChild.bind(this);
     }
@@ -47,17 +49,21 @@ class EditMoviePage extends Component {
             description,
             genre,
             format,
-            technology
+            technology,
+            trailer,
+            cast
         } = this.state;
         const durationIsObject = (typeof duration === 'object');
 
         const movie = {
             name,
+            cast: cast.map(el => el.id).filter(id => id !== ''),
             image: poster,
             rating: parseFloat(rating),
             description,
             screenshots,
-            genre: genre.join(', '),
+            trailer,
+            genre,
             format,
             technology,
             duration: (durationIsObject) ? duration : {
@@ -70,6 +76,22 @@ class EditMoviePage extends Component {
 
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
+
+        cast
+            .filter(el => el.id.trim() !== '')
+            .map(el => {
+                    const tmp = this.props.fetchMovieById(el.id);
+
+                    fetch(`http://localhost:3000/actors/${el.id}`, {
+                        method: 'PATCH',
+                        headers: headers,
+                        body: JSON.stringify({
+                            id: el.id,
+                            movies: el.movies
+                        })
+                    }).then((res) => res.json())
+                }
+            );
 
         fetch(`http://localhost:3000/movies/${id}`, {
             method: 'PATCH',
@@ -90,7 +112,6 @@ class EditMoviePage extends Component {
     render() {
         const {film} = this.props;
         const {fireRedirect} = this.state;
-        console.log('STATE', this.state);
         if (!film || film.id === undefined) {
             this.props.fetchMovieById(this.props.match.params.id);
             return null;
@@ -101,8 +122,12 @@ class EditMoviePage extends Component {
                     <EditMovieImage film={film} callback={this.getStateFromChild}/>
                     <EditMovieInfo film={film} callback={this.getStateFromChild}/>
                     <div className={b('btns')}>
-                        <button type='submit' className={b('btn', ['submit'])} onClick={this.editMovieInDB.bind(this)}>Save</button>
-                        <button type='button' className={b('btn', ['cancel'])} onClick={this.cancelEditing.bind(this)}>Cancel</button>
+                        <button type='submit' className={b('btn', ['submit'])}
+                                onClick={this.editMovieInDB.bind(this)}>Save
+                        </button>
+                        <button type='button' className={b('btn', ['cancel'])}
+                                onClick={this.cancelEditing.bind(this)}>Cancel
+                        </button>
                     </div>
                 </form>
                 {fireRedirect && (<Redirect to={`/movie/${film.id}`}/>)}

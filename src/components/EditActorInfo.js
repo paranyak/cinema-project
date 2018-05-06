@@ -11,6 +11,7 @@ class EditActorInfo extends Component {
         super(props);
         this.state = {
             id: props.actor.id,
+            name: props.actor.name,
             movies: props.actor.movies,
             info: props.actor.info,
             date: props.actor.date,
@@ -56,7 +57,10 @@ class EditActorInfo extends Component {
 
         return <section className={b()}>
             <h3 className={b('title')}>Actor Name</h3>
-            <input className={b("input", ['name'])} name='name' defaultValue={actor.name}
+            <input className={b("input", ['name'])} name='name'
+                   defaultValue={actor.name
+                       .split("_")
+                       .join(" ")}
                    onChange={this.onValueChange} placeholder='Please, enter the actor name'/>
 
             <h3 className={b('title')}>Actor Info</h3>

@@ -29,14 +29,13 @@ class AddActor extends Component {
         this.myCallback2 = this.myCallback2.bind(this);
     }
 
-    addActorToDB(e) {
+    async addActorToDB(e) {
         let submitButton = document.querySelector(".AddActor__button");
         if (submitButton.style.display === 'none') {
             e.preventDefault();
             return;
         }
         e.preventDefault();
-        console.log("POSTING...");
         let actorForm = document.querySelector(".AddActor");
         actorForm.style.display = "none";
 
@@ -50,19 +49,27 @@ class AddActor extends Component {
         let movieInputs = document.querySelectorAll(".AddActor__inputs_movie");
         for (let i = 0; i < movieInputs.length; i++) {
             for (let j = 0; j < this.state.suggestedMovies[i].length; j++) {
+                let key = this.state.suggestedMovies[i][j].id;
                 if (this.state.suggestedMovies[i][j].name !== "" && this.state.suggestedMovies[i][j].name === movieInputs[i].value) {
-                    let key = this.state.suggestedMovies[i][j].id;
-                    let newArrayCast = this.state.suggestedMovies[i][j].cast;
-                    newArrayCast.push(this.refs.name.value);
-                    let newData = {};
-                    newData["cast"] = newArrayCast;
-                    fetch(`http://localhost:3000/movies/${key}`, {
-                        method: 'PATCH',
-                        headers: headers,
-                        body: JSON.stringify(newData)
-                    }).then((res) => res.json());
+                    if (typeof(this.state.suggestedMovies[i][j].id) == "string" && this.state.suggestedMovies[i][j].id.startsWith("tmp_")) {
+                        let newData = this.state.suggestedMovies;
+                        delete newData[i][j]['id'];
+                        await fetch('http://localhost:3000/movies', {
+                            method: 'POST',
+                            headers: headers,
+                            body: JSON.stringify(newData[i][j])
+                        })
+                            .then((res) => res.json())
+                            .then((data) => {
+                                key = data.id;
+                                createdMovies[key] = [this.state.suggestedMovies[i][j].name, this.state.movies[i].role];
+                                newData[i][j]["id"] = key;
+                                this.setState({suggestedMovies : newData});
+                            });
 
-                    createdMovies.push(this.state.movies[i].id);
+                    }else{
+                        createdMovies[key] = [this.state.suggestedMovies[i][j].name, this.state.movies[i].role];
+                    }
                 }
             }
         }
@@ -74,8 +81,10 @@ class AddActor extends Component {
         const day = dateArr[2];
         const birthDay = month + ' ' + day + ', ' + year;
 
+        let slugName = this.refs.name.value.toLowerCase().replace(/ /g, "_");
+
         const actorToAdd = {
-            name: this.refs.name.value,
+            name: slugName,
             movies: createdMovies,
             info: this.refs.info.value,
             date: birthDay,
@@ -84,15 +93,33 @@ class AddActor extends Component {
             image: this.state.actor
         };
 
-        console.log('added actor', actorToAdd);
-
-        fetch('http://localhost:3000/actors', {
+        let actorId=-1;
+        await fetch('http://localhost:3000/actors', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(actorToAdd)
-        }).then((res) => res.json());
+        }).then((res) => res.json())
+            .then((data) => {actorId = data.id; console.log("POSTED", data)});
 
-        console.log('Posting has finished');
+        for (let i = 0; i < movieInputs.length; i++) {
+            for (let j = 0; j < this.state.suggestedMovies[i].length; j++) {
+                if (this.state.suggestedMovies[i][j].name !== "" && this.state.suggestedMovies[i][j].name === movieInputs[i].value) {
+                    let key = this.state.suggestedMovies[i][j].id;
+                    let newArrayCast = this.state.suggestedMovies[i][j].cast;
+                    newArrayCast.push(actorId);
+                    let newData = {};
+                    newData["cast"] = newArrayCast;
+                    await fetch(`http://localhost:3000/movies/${key}`, {
+                        method: 'PATCH',
+                        headers: headers,
+                        body: JSON.stringify(newData)
+                    }).then((res) => res.json());
+                    createdMovies[key] = [this.state.suggestedMovies[i][j].name, this.state.movies[i].role];
+
+                }
+            }
+        }
+
     }
 
     checkform() {
@@ -114,6 +141,7 @@ class AddActor extends Component {
     }
 
     async doneTyping() {
+        console.log("DONE TYPING");
         let index = this.state.currentInputIndex;
         if (this.state.currentSearchPhrase[index] !== "") {
             const response = await fetch(`http://localhost:3000/movies?name_like=\\b${this.state.currentSearchPhrase[index]}`);// 'posts' to get work the url
@@ -121,15 +149,20 @@ class AddActor extends Component {
                 console.log("ERROR IN MOVIE SEARCH AT ACTOR ADD");
             } else {
                 let currentInput = document.querySelectorAll(".AddActor__inputs_movie")[index];
+                let currentButtonAdd = document.querySelectorAll(".AddActor__add-tmp-button")[index];
+
                 let suggestedMoviesOnIndex = await ((response).json());
                 if (suggestedMoviesOnIndex.length !== 0) {
                     currentInput.style.backgroundColor = 'white';
+                    currentButtonAdd.style.display = 'none';
                     let changedMovies = this.state.suggestedMovies;
                     changedMovies[index] = suggestedMoviesOnIndex;
                     this.setState({suggestedMovies: changedMovies});
                     this.setState({currentSuggestedMovies: suggestedMoviesOnIndex});
                 } else {
                     currentInput.style.backgroundColor = '#ea8685';
+                    currentButtonAdd.style.display = (response.ok) ? 'block' : 'none';
+                    console.log("CURRENT BUTTON", currentButtonAdd);
                 }
             }
         }
@@ -191,6 +224,8 @@ class AddActor extends Component {
                        onChange={this.doneMovie.bind(this, j)}/>
                 <input type='button' value='-' className={b('remove-button')}
                        onClick={this.removeMovie.bind(this, j)}/>
+                <input type='button' value='ADD' className={b('add-tmp-button')}
+                       onClick={this.addTmpMovie.bind(this, j)}/>
                 <datalist id="movies">
                     {this.state.currentSuggestedMovies.map(movie => <option value={movie.name}/>)}
                 </datalist>
@@ -219,6 +254,50 @@ class AddActor extends Component {
         this.setState({movies: arr});
         this.setState({suggestedMovies: suggestedArr});
         this.setState({currentSearchPhrase: searchPhrasesArr});
+
+    }
+
+    addTmpMovie(index) {
+        let currentInput = document.querySelectorAll(".AddActor__inputs_movie")[index];
+        currentInput.style.backgroundColor = 'white';
+
+        let currentButtonAdd = document.querySelectorAll(".AddActor__add-tmp-button")[index];
+        currentButtonAdd.style.display = 'none';
+        let suggestedMovies = this.state.suggestedMovies;
+        let tmpActor = [{
+            id: "tmp_" + this.state.currentSearchPhrase[index],
+            name: this.state.currentSearchPhrase[index],
+            cast: [],
+            "image": "Cinema Project/ymgt4tyhaqkhybywwkut",
+            "rating": 9.9,
+            "description": "This is tmp movie",
+            "screenshots": [
+                "Cinema Project/jp4qjm88k0x5kwejkfas",
+            ],
+            "trailer": "https://www.youtube.com/embed/PmUL6wMpMWw?autoplay=0",
+            "genre": "TMP",
+            "Schedule": [],
+            "format": ["TMP"],
+            "technology": ["TMP"],
+            "duration": {
+                "hour": 2,
+                "minute": 19
+            },
+            "label": "TMP",
+            "startDate": {
+                "year": 2018,
+                "month": 3,
+                "day": 1
+            }
+
+        }];
+        const suggestedArr = [
+            ...suggestedMovies.slice(0, index),
+            tmpActor,
+            ...suggestedMovies.slice(index + 1)
+        ];
+
+        this.setState({suggestedMovies: suggestedArr});
 
     }
 

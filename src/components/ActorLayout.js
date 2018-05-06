@@ -37,25 +37,35 @@ class ActorLayout extends Component {
          }
          let additional = '';
          let role = this.props.user && this.props.user.role;
-         if(role === 'admin') {
-           additional = (      <Link to={`/edit-actor/${selectedActor.id}`}>
-                                  <span className={b('edit-icon')}></span>
-                                </Link>)
-           }
+         if (role === 'admin') {
+             additional = (<Link to={`/edit-actor/${selectedActor.id + "__" + selectedActor.name}`}>
+                 <span className={b('edit-icon')}></span>
+             </Link>)
+         }
         return (
             <section className={b()}>
                 {additional}
                 <section className={b("general")}>
-                    <h1 className={b("name")}>{selectedActor.name}</h1>
+                    <h1 className={b("name")}>
+                        {selectedActor.name
+                            .split("_")
+                            .join(" ")}
+                    </h1>
                     <p className={b("info")}>{selectedActor.info}</p>
                     <section className={b("extra")}>
-                        <p className={b("born-date")}> Born on <span className={b("value")}>{selectedActor.date}</span>
+                        <p className={b("born-date")}>
+                            Born on
+                            <span className={b("value")}>{selectedActor.date}</span>
                         </p>
-                        <p className={b("born-city")}>Born in <span className={b("value")}>{selectedActor.city}</span>
+                        <p className={b("born-city")}>
+                            Born in
+                            <span className={b("value")}>{selectedActor.city}</span>
                         </p>
-                        <p className={b("nominations")}> Nominations
-                            {selectedActor.nominations.map((n, ind) => <span className={b("value")}
-                                                                             key={ind}>{n}</span>)}
+                        <p className={b("nominations")}>
+                            Nominations
+                            {selectedActor.nominations.map((n, ind) =>
+                                <span className={b("value")} key={ind}>{n}</span>
+                            )}
                         </p>
                         <section className={b("movies")}>
                             Films
@@ -67,8 +77,7 @@ class ActorLayout extends Component {
                         </section>
                     </section>
                 </section>
-                <img className={b("image")}
-                     src={link + selectedActor.image}/>
+                <img className={b("image")} src={link + selectedActor.image}/>
             </section>
         );
     }
@@ -77,7 +86,7 @@ class ActorLayout extends Component {
 
 export default connect((state, props) => {
     let moviesToLoad = [];
-    const actor = getActorById(state, props.match.params.id);
+    const actor = getActorById(state, props.match.params.id.split("__")[0]);
     const isActorLoading = isActorFetching(props.match.params.id, state);
     const user = getCurrentUser(state);
     let movies = [];

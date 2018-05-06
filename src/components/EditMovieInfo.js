@@ -19,25 +19,26 @@ class EditMovieInfo extends Component {
             genre: props.film.genre,
             format: props.film.format,
             technology: props.film.technology,
+            cast: props.film.cast
         };
         this.onValueChange = this.onValueChange.bind(this);
-        this.onSelectionChange = this.onSelectionChange.bind(this);
+        this.callback = this.callback.bind(this);
     }
 
     componentDidMount() {
-        const {id, rating, duration, name, description, genre, format, technology} = this.state;
+        const {id, rating, duration, name, description, genre, format, technology, cast} = this.state;
         const chosenGenres = (typeof genre === 'object') ? genre : genre.split(', ');
         this.props.callback(
-            ['id', 'rating', 'duration', 'name', 'description', 'genre', 'format', 'technology'],
-            [id, rating, duration, name, description, chosenGenres, format, technology]);
+            ['id', 'rating', 'duration', 'name', 'description', 'genre', 'format', 'technology', 'cast'],
+            [id, rating, duration, name, description, chosenGenres, format, technology, cast]);
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const {id, rating, duration, name, description, genre, format, technology} = this.state;
+        const {id, rating, duration, name, description, genre, format, technology, cast} = this.state;
         if (prevState !== this.state) {
             this.props.callback(
-                ['id', 'rating', 'duration', 'name', 'description', 'genre', 'format', 'technology'],
-                [id, rating, duration, name, description, genre, format, technology]);
+                ['id', 'rating', 'duration', 'name', 'description', 'genre', 'format', 'technology', 'cast'],
+                [id, rating, duration, name, description, genre, format, technology, cast]);
         }
     }
 
@@ -46,7 +47,7 @@ class EditMovieInfo extends Component {
         this.setState({[name]: value})
     }
 
-    onSelectionChange(name, value) {
+    callback(name, value) {
         this.setState({[name]: value})
     }
 
@@ -77,18 +78,18 @@ class EditMovieInfo extends Component {
 
                 <h3 className={b('title')}>Genre</h3>
                 <EditSelections options={genres} defaultValue={chosenGenres} name='genre'
-                                callback={this.onSelectionChange}/>
+                                callback={this.callback}/>
 
                 <h3 className={b('title')}>Format</h3>
                 <EditSelections options={formats} defaultValue={film.format} name='format'
-                                callback={this.onSelectionChange}/>
+                                callback={this.callback}/>
 
                 <h3 className={b('title')}>Technology</h3>
                 <EditSelections options={technologies} defaultValue={film.technology} name='technology'
-                                callback={this.onSelectionChange}/>
+                                callback={this.callback}/>
 
                 <h3 className={b('title')}>Actors</h3>
-                <EditActorsList film={film}/>
+                <EditActorsList film={film} callback={this.callback} />
             </section>
         )
     }

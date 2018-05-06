@@ -25,7 +25,7 @@ class AllActors extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-      console.log(nextProps);
+        console.log(nextProps);
         if (nextProps.actors.length === this.props.actors.length && this.props.isFetching && !nextProps.isFetching) {
             this.setState({...this.state, hasMoreItems: false});
         }
@@ -33,17 +33,13 @@ class AllActors extends Component {
 
     showItems() {
         const {actors} = this.props;
-
-
         if (actors.length !== 0) {
             return (
                 <div className={b()}>
                     {actors
                         .map((actor, i) =>
                             <LazyLoad key={i} height='100%' offsetBottom={250}>
-                                <Link key={actor} to={`/actor/${actor}`}>
-                                    <ActorPoster actorId={actor}/>
-                                </Link>
+                                <ActorPoster actorId={actor}/>
                             </LazyLoad>
                         )}
                 </div>
@@ -80,15 +76,12 @@ class AllActors extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => ( {fetchAllActors: (labels, pages) => dispatch(fetchAdditionalActors(labels, pages))} );
+const mapDispatchToProps = (dispatch) => ({fetchAllActors: (labels, pages) => dispatch(fetchAdditionalActors(labels, pages))});
 
 const mapStateToProps = state => {
     const actors = getAllActorsIds(state);
     const isFetching = isActorFetching('additional', state);
-    return {
-        actors,
-        isFetching
-    }
+    return {actors, isFetching}
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllActors);

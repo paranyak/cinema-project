@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "required": true,
+  "properties": {
+    "actorName": {
+      "type": "string",
+      "required": false
+    },
+    "movies": {
+       "type": "object",
+        "required": false,
+        "keys": "filmIDs"
+    },
+    "info": {
+        "type": "string",
+        "required": true
+    },
+    "date": {
+        "type": "string",
+        "required": true
+    },
+    "city": {
+        "type": "string",
+        "required": true
+    },
+    "nominations": {
+        "type": "object",
+        "required": false
+    },
+    "image": {
+        "type": "string",
+        "required": true
+    }
+  }
+}
