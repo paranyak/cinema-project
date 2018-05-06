@@ -5,6 +5,7 @@ const movieSchema = new Schema({
     name: String,
     slugName: String,
     image: String,
+    rating: String,
     description: String,
     screenshots: [String],
     trailer: String,
