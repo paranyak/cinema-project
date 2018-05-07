@@ -72,7 +72,6 @@ export const fetchActorsSlug = (slugName) => async (dispatch) => {
         let actors = await ((response).json());
         actors.slugName = actors['slugName'];
         actors = normalize([actors], actorsListSchemaSlug);
-        console.log('actors in fetch', actors);
         dispatch(fromFetch.fetchActorsSlugSuccess(slugName, actors.result, actors.entities.actors));
     }
 };

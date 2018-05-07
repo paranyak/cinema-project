@@ -7,7 +7,6 @@ import {fetchActors, fetchMovieSlug} from '../actions/fetch';
 import {connect} from "react-redux";
 import block from '../helpers/BEM'
 import {Redirect} from 'react-router'
-import slugify from 'slugify';
 
 const b = block("Editor");
 
@@ -79,13 +78,13 @@ class EditMoviePage extends Component {
         cast
             .filter(el => el._id.trim() !== '')
             .map(el => {
-                    const movies = (el.movies.includes(film._id)) ? [...el.movies] : [...el.movies, film._id];
-                    fetch(`http://localhost:3000/actors/${el._id}`, {
-                        method: 'PATCH',
-                        headers: headers,
-                        body: JSON.stringify({movies})
-                    }).then((res) => res.json())
-                });
+                const movies = (el.movies.includes(film._id)) ? [...el.movies] : [...el.movies, film._id];
+                fetch(`http://localhost:3000/actors/${el._id}`, {
+                    method: 'PATCH',
+                    headers: headers,
+                    body: JSON.stringify({movies})
+                }).then((res) => res.json())
+            });
 
         const result = await fetch(`http://localhost:3000/movies/${film._id}`, {
             method: 'PATCH',
@@ -116,7 +115,6 @@ class EditMoviePage extends Component {
             this.props.fetchMovieBySlug(this.props.match.params.slug);
             return null;
         }
-        console.log('here state', this.state);
         return (<div>
                 <form className={b()}>
                     <h1 className={b('title')}>EDIT MOVIE</h1>
@@ -140,10 +138,7 @@ class EditMoviePage extends Component {
 
 export default connect((state, props) => {
         const film = getMovieBySlug(state, props.match.params.slug);
-        console.log('FILM', film);
         return {film};
-    }, (dispatch) => ({
-        fetchActorById: (id) => dispatch(fetchActors(id)),
-        fetchMovieBySlug: (slug) => dispatch(fetchMovieSlug(slug))
-})
+    },
+    (dispatch) => ({fetchMovieBySlug: (slug) => dispatch(fetchMovieSlug(slug))})
 )(EditMoviePage);

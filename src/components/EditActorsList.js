@@ -4,7 +4,6 @@ import block from '../helpers/BEM'
 import {getActorById} from "../reducers";
 import {connect} from "react-redux";
 import {fetchActors} from "../actions/fetch";
-import slugify from "slugify";
 
 const b = block("EditActorsList");
 
@@ -23,7 +22,7 @@ class EditActorsList extends Component {
             return <div key={j}>
                 <input name='name' className={b('input')} placeholder={'Enter actor name'} type="text"
                        value={ac.name} list="actors"
-                       onInput={this.onListChange.bind(this, j)} onChange={this.onOptionClick.bind(this, j)} />
+                       onInput={this.onListChange.bind(this, j)} onChange={this.onOptionClick.bind(this, j)}/>
                 <datalist id="actors">
                     {suggestedActors.map((actor, i) => <option key={i} value={actor.name}/>)}
                 </datalist>
@@ -59,7 +58,6 @@ class EditActorsList extends Component {
             Object.assign({}, this.state.cast[i], {name: value, _id, movies}),
             ...this.state.cast.slice(i + 1)
         ];
-        // const ids = arr.map(el => el._id);
         this.setState({cast: arr});
         callback('cast', arr);
     }
@@ -68,7 +66,6 @@ class EditActorsList extends Component {
         e.preventDefault();
         const {callback} = this.props;
         const arr = [...this.state.cast, {name: '', _id: '', movies: []}];
-        // const ids = arr.map(el => el._id);
         this.setState({cast: arr});
         callback('cast', arr);
     }
@@ -80,7 +77,6 @@ class EditActorsList extends Component {
             ...cast.slice(0, i),
             ...cast.slice(i + 1)
         ];
-        // const ids = arr.map(el => el._id);
         this.setState({cast: arr});
         callback('cast', arr);
     }
