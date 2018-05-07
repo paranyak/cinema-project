@@ -43,7 +43,6 @@ class EditMoviePage extends Component {
         const {
             screenshots,
             cast,
-            scheduleTime,
             scheduleDate,
             genre,
             format,
@@ -58,6 +57,7 @@ class EditMoviePage extends Component {
             poster
         } = this.state;
         let Schedule = [];
+        const scheduleTime = this.state.scheduleTime.sort();
         scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
 
         const movie = {

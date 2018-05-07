@@ -9,11 +9,15 @@ class CalendarRangePicker extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            from: props.from,
+            to: props.to,
+            dates: []
+        };
+        this.baseState = {
             from: undefined,
             to: undefined,
             dates: []
         };
-        this.baseState = this.state;
         this.handleDayClick = this.handleDayClick.bind(this);
         this.handleResetClick = this.handleResetClick.bind(this);
     }
@@ -37,13 +41,14 @@ class CalendarRangePicker extends Component {
             );
             this.setState(() => {
                 this.props.callbackFromParent('scheduleDate', arr);
-                return { dates: arr };
+                return {dates: arr};
             });
         }
 
     }
 
-    handleResetClick() {
+    handleResetClick(e) {
+        e.preventDefault();
         this.setState(this.baseState);
     }
 
@@ -66,7 +71,7 @@ class CalendarRangePicker extends Component {
             );
             this.setState(() => {
                 this.props.callbackFromParent('scheduleDate', arr);
-                return { dates: arr };
+                return {dates: arr};
             });
         }
     }
@@ -103,7 +108,7 @@ class CalendarRangePicker extends Component {
                     modifiers={modifiers}
                     onDayClick={this.handleDayClick}
                     firstDayOfWeek={1}
-                    disabledDays={ { before: disabledBefore } }
+                    disabledDays={{before: disabledBefore}}
                 />
             </div>
         )

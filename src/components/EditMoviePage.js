@@ -3,7 +3,7 @@ import EditMovieImage from "./EditMovieImage";
 import EditMovieInfo from "./EditMovieInfo";
 import "../styles/Editor.less"
 import {getMovieBySlug} from "../reducers";
-import {fetchActors, fetchMovieSlug} from '../actions/fetch';
+import {fetchMovieSlug} from '../actions/fetch';
 import {connect} from "react-redux";
 import block from '../helpers/BEM'
 import {Redirect} from 'react-router'
@@ -21,11 +21,15 @@ class EditMoviePage extends Component {
             duration: '',
             name: '',
             description: '',
+            scheduleTime: [],
+            scheduleDate: [],
             genre: '',
             format: [],
             technology: [],
             trailer: '',
-            cast: []
+            cast: [],
+            startDate: {},
+            label: ''
         };
         this.getStateFromChild = this.getStateFromChild.bind(this);
     }
@@ -44,7 +48,10 @@ class EditMoviePage extends Component {
             rating,
             duration,
             name,
+            label,
             description,
+            scheduleDate,
+            startDate,
             genre,
             format,
             technology,
@@ -54,6 +61,11 @@ class EditMoviePage extends Component {
         const {film} = this.props;
         const durationIsObject = (typeof duration === 'object');
 
+        let Schedule = [];
+        const scheduleTime = this.state.scheduleTime.sort();
+        scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
+
+
         const movie = {
             name,
             cast: cast.map(c => c._id).filter(id => id.trim() !== ''),
@@ -62,12 +74,19 @@ class EditMoviePage extends Component {
             description,
             screenshots,
             trailer,
+            Schedule,
             genre,
             format,
+            label,
             technology,
             duration: (durationIsObject) ? duration : {
                 "hour": parseInt(duration.split(':')[0]),
                 "minute": parseInt(duration.split(':')[1])
+            },
+            startDate: {
+                "year": parseInt(startDate.split('-')[0]),
+                "month": parseInt(startDate.split('-')[1]),
+                "day": parseInt(startDate.split('-')[2])
             }
         };
 

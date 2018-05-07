@@ -83,9 +83,9 @@ class AddMInfo extends Component {
                 <input type="date" onChange={this.onValueChange} name='startDate' className={b('input')}/>
 
                 <h3 className={b('title')}>Schedule</h3>
-                <CalendarRangePicker name='scheduleDate' startDate={startDate} callbackFromParent={this.callback}/>
-                <TimeRanges name='scheduleTime' callbackFromParent={this.callback}/>
-
+                <CalendarRangePicker name='scheduleDate' from={undefined} to={undefined} startDate={startDate}
+                                     callbackFromParent={this.callback}/>
+                <TimeRanges name='scheduleTime' schedule={[]} callbackFromParent={this.callback}/>
 
                 <h3 className={b('title')}>Genre</h3>
                 <EditSelections options={genres} defaultValue={''} name='genre'

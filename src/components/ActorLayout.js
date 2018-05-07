@@ -53,9 +53,7 @@ class ActorLayout extends Component {
                 {additional}
                 <section className={b("general")}>
                     <h1 className={b("name")}>
-                        {selectedActor.name
-                            .split("_")
-                            .join(" ")}
+                        {selectedActor.name}
                     </h1>
                     <p className={b("info")}>{selectedActor.info}</p>
                     <section className={b("extra")}>

@@ -8,7 +8,7 @@ class TimeRanges extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            schedule: []
+            schedule: props.schedule
         }
     }
 
@@ -24,7 +24,6 @@ class TimeRanges extends Component {
 
     onTimeChange(i, e) {
         const {name, callbackFromParent} = this.props;
-        console.log('name', name);
         const arr = [...this.state.schedule.slice(0, i), e.target.value, ...this.state.schedule.slice(i + 1)];
         this.setState({schedule: arr});
         callbackFromParent(name, arr);
@@ -47,9 +46,7 @@ class TimeRanges extends Component {
             ...schedule.slice(0, i),
             ...schedule.slice(i + 1)
         ];
-        this.setState({
-            schedule: arr
-        });
+        this.setState({schedule: arr});
         callbackFromParent(name, arr);
     }
 
