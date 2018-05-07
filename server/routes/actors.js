@@ -9,9 +9,9 @@ router.get('/byId/:id', function (req, res) {
         res.send(actor);
     });
 });
-router.get('/bySlugName/:slugName', function (req, res) {
+router.get('/bySlugName/:slugName', (req, res) => {
     const slugName = req.params.slugName;
-    Actor.find({slugName}, (err, actor) => res.send(actor));
+    Actor.findOne({slugName}, (err, actor) => res.send(actor));
 });
 
 
