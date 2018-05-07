@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import "../styles/Editor.less";
 import {getActorById} from "../reducers/index";
-import {fetchActors} from '../actions/fetch';
+import {fetchActors, fetchActorsSlug} from '../actions/fetch';
 import block from "../helpers/BEM";
 import {connect} from "react-redux";
 import {Redirect} from "react-router";
@@ -9,6 +9,7 @@ import EditActorImage from "./EditActorImage";
 import EditActorInfo from "./EditActorInfo";
 import {monthNames} from '../helpers/constants'
 import slugify from "slugify";
+import {getActorBySlug} from "../reducers";
 
 const b = block("Editor");
 
@@ -60,13 +61,13 @@ class EditActorPage extends Component {
         const actor = {
             id,
             // movies,
-            name: slugify(name, "_"),
+            name,
+            slugName: slugify(name, "_"),
             info,
             date: birthDay,
             city,
             nominations: nominations.filter(el => el !== ''),
             image,
-            name
         };
 
         console.log("EDITED ACTOR", actor);
@@ -94,8 +95,8 @@ class EditActorPage extends Component {
         const {selectedActor} = this.props;
         const {fireRedirect} = this.state;
         console.log('I need', this.state);
-        if (!selectedActor || selectedActor.id === undefined) {
-            this.props.fetchActorById(this.props.match.params.id.split("__")[0]);
+        if (!selectedActor || selectedActor.slugName === undefined) {
+            this.props.fetchActorBySlug(this.props.match.params.slug);
             return null;
         }
         else if (selectedActor.error) {
@@ -120,7 +121,7 @@ class EditActorPage extends Component {
                         </button>
                     </div>
                 </form>
-                {fireRedirect && (<Redirect to={`/actor/${selectedActor.id + "__" + selectedActor.name}`}/>)}
+                {fireRedirect && (<Redirect to={`/actor/${selectedActor.slugName}`}/>)}
             </div>
         );
     }
@@ -128,9 +129,9 @@ class EditActorPage extends Component {
 
 
 export default connect((state, props) => {
-        const actor = getActorById(state, props.match.params.id.split("__")[0]);
+        const actor = getActorBySlug(state, props.match.params.slug);
         return {selectedActor: actor};
     }, (dispatch) => ({
-        fetchActorById: (id) => dispatch(fetchActors(id))
+        fetchActorBySlug: (slug) => dispatch(fetchActorsSlug(slug))
     })
 )(EditActorPage);

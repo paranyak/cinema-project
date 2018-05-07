@@ -61,11 +61,11 @@ class Layout extends Component {
                 <Route path='/movie/:id' component={MovieLayout}/>
                 <Route path='/schedule/:day?' component={ScheduleLayout}/>
                 <Route path='/allactors' component={AllActors}/>
-                <Route path='/actor/:id' component={ActorLayout}/>
+                <Route path='/actor/:slug' component={ActorLayout}/>
                 <PrivateRoute path='/add-movie' component={AddMovieLayout}/>
                 <PrivateRoute path='/add-actor' component={AddActor}/>
                 <PrivateRoute path='/edit-movie/:id' component={EditMoviePage}/>
-                <PrivateRoute path='/edit-actor/:id' component={EditActorPage}/>
+                <PrivateRoute path='/edit-actor/:slug' component={EditActorPage}/>
                 <Route path='/login' component={Login}/>
                 <Route path='/signup' component={SignUp}/>
             </Switch>

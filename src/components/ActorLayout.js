@@ -2,11 +2,12 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
 import {getSelectedActor, getActorById, getCurrentUser, getMovieById, isMovieFetching, isActorFetching} from "../reducers/index";
-import {fetchActors, fetchMovie} from '../actions/fetch';
+import {fetchActors, fetchActorsSlug, fetchMovie} from '../actions/fetch';
 
 import "../styles/ActorLayout.less"
 import block from "../helpers/BEM";
 import {connect} from "react-redux";
+import {getActorBySlug, isActorFetchingSlug} from "../reducers";
 
 
 const b = block("ActorLayout");
@@ -16,8 +17,8 @@ class ActorLayout extends Component {
 
     componentWillReceiveProps(nextProps) {
       const {selectedActor, isActorLoading, fetchMovieById} = this.props;
-      if ((!selectedActor || selectedActor.id === undefined) && !isActorLoading) {
-           this.props.fetchActorById(this.props.match.params.id);
+      if ((!selectedActor || selectedActor.slugName === undefined) && !isActorLoading) {
+           this.props.fetchActorBySlug(this.props.match.params.slug);
       }
       nextProps.moviesToLoad.forEach((el) => fetchMovieById(el))
     }
@@ -38,7 +39,7 @@ class ActorLayout extends Component {
          let additional = '';
          let role = this.props.user && this.props.user.role;
          if (role === 'admin') {
-             additional = (<Link to={`/edit-actor/${selectedActor.id + "__" + selectedActor.name}`}>
+             additional = (<Link to={`/edit-actor/${selectedActor.slugName}`}>
                  <span className={b('edit-icon')}></span>
              </Link>)
          }
@@ -86,8 +87,9 @@ class ActorLayout extends Component {
 
 export default connect((state, props) => {
     let moviesToLoad = [];
-    const actor = getActorById(state, props.match.params.id.split("__")[0]);
-    const isActorLoading = isActorFetching(props.match.params.id, state);
+    console.log('params slug', props.match.params.slug);
+    const actor = getActorBySlug(state, props.match.params.slug);
+    const isActorLoading = isActorFetchingSlug(props.match.params.slug, state);
     const user = getCurrentUser(state);
     let movies = [];
     if (actor) {
@@ -108,7 +110,7 @@ export default connect((state, props) => {
           isActorLoading
         };
     }, (dispatch) => ({
-        fetchActorById: (id) => dispatch(fetchActors(id)),
+        fetchActorBySlug: (slug) => dispatch(fetchActorsSlug(slug)),
         fetchMovieById: (id) => dispatch(fetchMovie(id))
     })
 )(ActorLayout);

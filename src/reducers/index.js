@@ -23,6 +23,7 @@ export const getAllMoviesIds = (state) => fromMovies.getAllMoviesIds(state.movie
 export const getAllActorsIds = (state) => fromActors.getAllActorsIds(state.actors);
 
 export const getActorById = (state, id) => fromActors.getActorById(state.actors, id);
+export const getActorBySlug = (state, slugName) => fromActors.getActorBySlug(state.actors, slugName);
 
 export const getSelectedActor = (state) => fromActors.getSelectedActor(state.actors);
 
@@ -31,6 +32,7 @@ export const getAllFilters = (state) => fromFilters.getAllFilters(state.filters)
 export const isMovieFetching = (id, state) => fromMovies.isMovieFetching(id, state.movies);
 
 export const isActorFetching = (id, state) => fromActors.isActorFetching(id, state.actors);
+export const isActorFetchingSlug = (slugName, state) => fromActors.isActorFetchingSlug(slugName, state.actors);
 
 export const getCarouselleMovies = (state, label) => fromMovies.getCarouselleMovies(state.movies, label);
 

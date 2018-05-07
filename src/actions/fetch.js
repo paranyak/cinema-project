@@ -1,4 +1,4 @@
-import {moviesListSchema, actorsListSchema} from "../helpers/schema";
+import {moviesListSchema, actorsListSchema, actorsListSchemaSlug} from "../helpers/schema";
 import {normalize} from 'normalizr';
 import * as fromFetch from '../actions/index';
 import * as fromApi from '../api/fetch';
@@ -53,5 +53,20 @@ export const fetchActors = (id) => async (dispatch) => {
         actors.id = actors['_id'];
         actors = normalize([actors], actorsListSchema);
         dispatch(fromFetch.fetchActorsSucess(id, actors.result, actors.entities.actors));
+    }
+};
+export const fetchActorsSlug = (slugName) => async (dispatch) => {
+    dispatch(fromFetch.fetchActorsSlugStart(slugName));
+    let response = await fromApi.actorsBySlugName(slugName);
+    if (!response.ok) {
+        let actor = {slugName, error: true};
+        let actors = normalize([actor], actorsListSchemaSlug);
+        dispatch(fromFetch.fetchActorsSlugSuccess(slugName, actors.result, actors.entities.actors));
+    } else {
+        let actors = await ((response).json());
+        actors.slugName = actors['slugName'];
+        actors = normalize([actors], actorsListSchemaSlug);
+        console.log('actors in fetch', actors);
+        dispatch(fromFetch.fetchActorsSlugSuccess(slugName, actors.result, actors.entities.actors));
     }
 };

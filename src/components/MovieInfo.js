@@ -28,10 +28,9 @@ class MovieInfo extends Component {
                         </svg>
                     </div>
                     <p className={b("genre")}>Genre <span className={b("value")}>{film.genre}</span></p>
-                    <p className={b("duration")}>Duration <span className={b("value")}> {film.duration.hour}
-                        hour {film.duration.minute} minutes </span></p>
-                    <p className={b("format")}>Format <span className={b("value")}>  {film.format}</span></p>
-                    <p className={b("technology")}>Technology <span className={b("value")}>  {film.technology} </span>
+                    <p className={b("duration")}>Duration <span className={b("value")}>{film.duration.hour} hour {film.duration.minute} minutes </span></p>
+                    <p className={b("format")}>Format <span className={b("value")}>{film.format}</span></p>
+                    <p className={b("technology")}>Technology <span className={b("value")}>{film.technology}</span>
                     </p>
                 </div>
                 <section className={"Actors"}>

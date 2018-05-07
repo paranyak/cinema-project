@@ -19,10 +19,13 @@ import {
 export const fetchMoviesStart = (id) => ({type: FETCH_MOVIES, id});
 
 export const fetchActorsStart = (id) => ({type: FETCH_ACTOR, id});
+export const fetchActorsSlugStart = (slugName) => ({type: 'FETCH_ACTOR_SLUG', slugName});
 
 export const fetchActorsSucess = (id, ids, actors = []) => ({type: FETCH_ACTOR__SUCCESS, id, actors, ids});
+export const fetchActorsSlugSuccess = (slugName, slugs, actors = []) => ({type: 'FETCH_ACTOR_SLUG_SUCCESS', slugName, actors, slugs});
 
 export const fetchFail = (id, ids, actors = []) => ({type: FETCH_FAIL, error: true, id, ids, actors});
+export const fetchFailSlug = (slugName, slugs, actors = []) => ({type: 'FETCH_FAIL_SLUG', error: true, slugName, slugs, actors});
 
 export const fetchMoviesSuccess = (id, ids, movies = []) => ({type: FETCH_MOVIES_SUCCESS, id, movies, ids});
 
