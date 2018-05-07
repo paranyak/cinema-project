@@ -3,8 +3,8 @@ import MovieImage from "./MovieImage";
 import MovieInfo from "./MovieInfo";
 import "../styles/MovieLayout.less"
 import block from "../helpers/BEM";
-import {getMovieById, getCurrentUser} from "../reducers";
-import {fetchMovie} from '../actions/fetch';
+import {getCurrentUser, getMovieBySlug} from "../reducers";
+import {fetchMovieSlug} from '../actions/fetch';
 import {connect} from "react-redux";
 import {Link} from 'react-router-dom';
 
@@ -16,14 +16,14 @@ class MovieLayout extends Component {
     render() {
         window.scrollTo(0, 0);
         const {film} = this.props;
-        if (!film || film.id === undefined) {
-            this.props.fetchMovieById(this.props.match.params.id);
+        if (!film || film.slugName === undefined) {
+            this.props.fetchMovieBySlug(this.props.match.params.slug);
             return null;
         }
         let additional = '';
         let role = this.props.user && this.props.user.role;
         if (role === 'admin') {
-            additional = (<Link to={`/edit-movie/${film.id}`}>
+            additional = (<Link to={`/edit-movie/${film.slugName}`}>
                 <span className={b('edit-icon')}></span>
             </Link>)
         }
@@ -40,8 +40,8 @@ class MovieLayout extends Component {
 }
 
 export default connect((state, props) => {
-        const film = getMovieById(state, props.match.params.id);
+        const film = getMovieBySlug(state, props.match.params.slug);
         const user = getCurrentUser(state);
         return {film, user};
-    }, (dispatch) => ({fetchMovieById: (id) => dispatch(fetchMovie(id))})
+    }, (dispatch) => ({fetchMovieBySlug: (slug) => dispatch(fetchMovieSlug(slug))})
 )(MovieLayout);

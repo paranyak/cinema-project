@@ -11,7 +11,6 @@ class EditMovieInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: props.film.id,
             rating: props.film.rating,
             duration: props.film.duration,
             name: props.film.name,
@@ -26,19 +25,19 @@ class EditMovieInfo extends Component {
     }
 
     componentDidMount() {
-        const {id, rating, duration, name, description, genre, format, technology, cast} = this.state;
+        const {rating, duration, name, description, genre, format, technology, cast} = this.state;
         const chosenGenres = (typeof genre === 'object') ? genre : genre.split(', ');
         this.props.callback(
-            ['id', 'rating', 'duration', 'name', 'description', 'genre', 'format', 'technology', 'cast'],
-            [id, rating, duration, name, description, chosenGenres, format, technology, cast]);
+            ['rating', 'duration', 'name', 'description', 'genre', 'format', 'technology', 'cast'],
+            [rating, duration, name, description, chosenGenres, format, technology, cast]);
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const {id, rating, duration, name, description, genre, format, technology, cast} = this.state;
+        const {rating, duration, name, description, genre, format, technology, cast} = this.state;
         if (prevState !== this.state) {
             this.props.callback(
-                ['id', 'rating', 'duration', 'name', 'description', 'genre', 'format', 'technology', 'cast'],
-                [id, rating, duration, name, description, genre, format, technology, cast]);
+                ['rating', 'duration', 'name', 'description', 'genre', 'format', 'technology', 'cast'],
+                [rating, duration, name, description, genre, format, technology, cast]);
         }
     }
 

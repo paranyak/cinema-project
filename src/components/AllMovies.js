@@ -56,7 +56,7 @@ class AllMovies extends Component {
 
     moveScrollToLocation() {
         let scrollPosition = window.location.search.slice(5, window.location.search.length);
-        if (window.scrollY - window.innerHeight >=scrollPosition || window.scrollY + window.innerHeight <= scrollPosition) {
+        if (window.scrollY - window.innerHeight >= scrollPosition || window.scrollY + window.innerHeight <= scrollPosition) {
             this.props.updateLocation({
                 search: '?' + queryString.stringify({"off": window.scrollY})
             });
@@ -94,9 +94,7 @@ class AllMovies extends Component {
                             !comingSoonIds.includes(film)
                         )
                         .map((film, i) =>
-                            <Link key={film} to={`/movie/${film}`}>
-                                <MoviePoster filmId={film} id={i}/>
-                            </Link>
+                            <MoviePoster filmId={film} id={i}/>
                         )}
                 </div>
             );

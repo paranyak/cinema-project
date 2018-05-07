@@ -20,6 +20,7 @@ class MovieCarousel extends Component {
         super();
         this.handleClick = debounce(this.handleClick, 500, {leading: true, trailing: false});
     }
+
     componentWillMount() {
         this.props.fetchMovies();
     }
@@ -73,9 +74,7 @@ class MovieCarousel extends Component {
                     {films
                         .map((film, i) =>
                             <LazyLoad key={i} height='100%' offsetRight={200}>
-                                <Link key={film} to={`/movie/${film}`}>
-                                    <MoviePoster filmId={film}/>
-                                </Link>
+                                <MoviePoster filmId={film}/>
                             </LazyLoad>
                         )}
                 </div>
@@ -91,7 +90,7 @@ class MovieCarousel extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch, props) => ( {fetchMovies: () => dispatch(fetchCarouselleMovies(props.label))} );
+const mapDispatchToProps = (dispatch, props) => ({fetchMovies: () => dispatch(fetchCarouselleMovies(props.label))});
 
 const mapStateToProps = (state, props) => {
     const movies = getCarouselleMovies(state, props.label) || [];
