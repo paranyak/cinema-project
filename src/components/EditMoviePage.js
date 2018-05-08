@@ -3,7 +3,7 @@ import EditMovieImage from "./EditMovieImage";
 import EditMovieInfo from "./EditMovieInfo";
 import "../styles/Editor.less"
 import {getMovieBySlug} from "../reducers";
-import {fetchMovieSlug} from '../actions/fetch';
+import {editMovieById, fetchActors, fetchMovieSlug} from '../actions/fetch';
 import {connect} from "react-redux";
 import block from '../helpers/BEM'
 import {Redirect} from 'react-router'
@@ -64,7 +64,13 @@ class EditMoviePage extends Component {
         let Schedule = [];
         const scheduleTime = this.state.scheduleTime.sort();
         scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
+        // cast.map(c => {
+        //     if (!c._id) {
+        //         this.props.fetchActorById(c);
+        //     }
+        // });
 
+        console.log('CASTTT', cast);
 
         const movie = {
             name,
@@ -75,7 +81,7 @@ class EditMoviePage extends Component {
             screenshots,
             trailer,
             Schedule,
-            genre,
+            genre: genre.join(', '),
             format,
             label,
             technology,
@@ -92,33 +98,35 @@ class EditMoviePage extends Component {
 
         console.log("EDITED MOVIE", movie);
 
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        cast
-            .filter(el => el._id.trim() !== '')
-            .map(el => {
-                const movies = (el.movies.includes(film._id)) ? [...el.movies] : [...el.movies, film._id];
-                fetch(`http://localhost:3000/actors/${el._id}`, {
-                    method: 'PATCH',
-                    headers: headers,
-                    body: JSON.stringify({movies})
-                }).then((res) => res.json())
-            });
+        // const headers = new Headers();
+        // headers.append('Content-Type', 'application/json');
+        // cast
+        //     .filter(el => el._id.trim() !== '')
+        //     .map(el => {
+        //         const movies = (el.movies.includes(film._id)) ? [...el.movies] : [...el.movies, film._id];
+        //         fetch(`http://localhost:3000/actors/${el._id}`, {
+        //             method: 'PATCH',
+        //             headers: headers,
+        //             body: JSON.stringify({movies})
+        //         }).then((res) => res.json())
+        //     });
 
-        const result = await fetch(`http://localhost:3000/movies/${film._id}`, {
-            method: 'PATCH',
-            headers: headers,
-            body: JSON.stringify(movie)
-        });
-        console.log('res', result);
-        if (!result.ok) {
-            alert('Your form was not submitted!');
-        }
-        else {
-            const resToJson = await result.json();
-            console.log('result to json', resToJson);
+        // const result = await fetch(`http://localhost:3000/movies/${film._id}`, {
+        //     method: 'PATCH',
+        //     headers: headers,
+        //     body: JSON.stringify(movie)
+        // });
+        // console.log('res', result);
+        // if (!result.ok) {
+        //     alert('Your form was not submitted!');
+        // }
+        // else {
+        //     const resToJson = await result.json();
+        //     console.log('result to json', resToJson);
+            this.props.editMovie(movie, film._id);
             this.setState({fireRedirect: true})
-        }
+        // }
+
 
     }
 
@@ -129,11 +137,12 @@ class EditMoviePage extends Component {
 
     render() {
         const {film} = this.props;
-        const {fireRedirect} = this.state;
+        const {cast, fireRedirect} = this.state;
         if (!film || film.slugName === undefined) {
             this.props.fetchMovieBySlug(this.props.match.params.slug);
             return null;
         }
+        console.log('STATE', this.state);
         return (<div>
                 <form className={b()}>
                     <h1 className={b('title')}>EDIT MOVIE</h1>
@@ -159,5 +168,9 @@ export default connect((state, props) => {
         const film = getMovieBySlug(state, props.match.params.slug);
         return {film};
     },
-    (dispatch) => ({fetchMovieBySlug: (slug) => dispatch(fetchMovieSlug(slug))})
+    (dispatch) => ({
+        fetchMovieBySlug: slug => dispatch(fetchMovieSlug(slug)),
+        fetchActorById: id => dispatch(fetchActors(id)),
+        editMovie: (movie, id) => dispatch(editMovieById(id, movie))
+    })
 )(EditMoviePage);

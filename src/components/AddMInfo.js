@@ -75,7 +75,6 @@ class AddMInfo extends Component {
                        min='0' max='10'
                        step='0.1'/>
 
-
                 <h3 className={b('title')}>Duration</h3>
                 <input name='duration' type='time' className={b("input")} onChange={this.onValueChange}/>
 

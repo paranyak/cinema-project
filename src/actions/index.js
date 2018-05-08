@@ -44,6 +44,9 @@ export const fetchFailSlug = (slugName, slugs, actors = []) => ({
     actors
 });
 
+export const editingMovieSuccess = () => ({type: 'EDITING_MOVIE_SUCCESS'});
+export const editingMovieFail = () => ({type: 'EDITING_MOVIE_FAIL', error: true});
+
 export const fetchMoviesSuccess = (id, ids, movies = []) => ({type: FETCH_MOVIES_SUCCESS, id, movies, ids});
 export const fetchMoviesSlugSuccess = (slugName, slugs, movies = []) => ({
     type: FETCH_MOVIES_SLUG_SUCCESS,
