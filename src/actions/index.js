@@ -21,11 +21,17 @@ import {
     EDITING_MOVIE_SUCCESS,
     EDITING_FAIL,
     EDITING_ACTOR_SUCCESS
+    SIGN_UP_SUCCESS,
+    POST_MOVIE_SUCCESS,
+    FETCH_POST
 } from '../helpers/actionTypes';
 
 
 export const fetchMoviesStart = (id) => ({type: FETCH_MOVIES, id});
 export const fetchMoviesSlugStart = (slugName) => ({type: FETCH_MOVIES_SLUG, slugName});
+
+export const fetchPostStart = (movie) => ({type: FETCH_POST, movie});
+
 
 export const fetchActorsStart = (id) => ({type: FETCH_ACTOR, id});
 export const fetchActorsSlugStart = (slugName) => ({type: FETCH_ACTOR_SLUG, slugName});
@@ -37,6 +43,9 @@ export const fetchActorsSlugSuccess = (slugName, slugs, actors = []) => ({
     actors,
     slugs
 });
+
+export const postMovieSuccess = (movie, ids, movies=[]) => ({type: POST_MOVIE_SUCCESS,
+    movie, ids, movies});
 
 export const fetchFail = (id, ids, actors = []) => ({type: FETCH_FAIL, error: true, id, ids, actors});
 export const fetchFailSlug = (slugName, slugs, actors = []) => ({

@@ -32,6 +32,23 @@ export async function additionalActors(limit, page) {
     return await ((await fetch(`${LOCALHOST}/actors/ids?_page=${page}&_limit=${limit}`)).json())
 }
 
+export async function postMovie(movie) {
+    console.log("POST MOvIE");
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log("POST MOVIE", movie);
+
+    let result =  await fetch('http://localhost:3000/movies', {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(movie)
+    });
+
+    console.log("RESULT");
+
+    return result;
+}
+
 export const editMovie = async (id, movie) => {
     const response = await fetch(`${LOCALHOST}/movies/${id}`, {
         method: 'PATCH',

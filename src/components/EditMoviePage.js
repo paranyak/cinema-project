@@ -85,7 +85,7 @@ class EditMoviePage extends Component {
             screenshots,
             trailer,
             Schedule,
-            genre: genre.join(', '),
+            genre: Array.isArray(genre) ? genre.join(', ') : genre,
             format,
             label,
             technology,
@@ -144,7 +144,6 @@ export default connect((state, props) => {
     (dispatch) => ({
         fetchMovieBySlug: slug => dispatch(fetchMovieSlug(slug)),
         fetchActorById: id => dispatch(fetchActors(id)),
-        editMovie: (movie, id) => dispatch(editMovieById(id, movie)),
-        editActors: (actor, id) => dispatch(editActorById(id, actor))
+        editMovie: (movie, id) => dispatch(editMovieById(id, movie))
     })
 )(EditMoviePage);

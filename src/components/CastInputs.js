@@ -17,12 +17,13 @@ class CastInputs extends Component {
     createCastList() {
         const {suggestedActors, chosenActors} = this.state;
         return chosenActors.map((ac, j) => {
+            {console.log("IN MAP: ca", chosenActors[j])}
             return <div key={j}>
                 <input name='name' className={b('input')} placeholder={'Enter actor name'} type="text" value={ac}
                        onInput={this.onListChange.bind(this, j)} onChange={this.onOptionClick.bind(this, j)}
                        list="actors"/>
                 <datalist id="actors">
-                    {suggestedActors.map((actor, i) => <option key={i} value={actor.name.split("_").join(" ")}/>)}
+                    {suggestedActors[j].map((actor, i) => <option key={i} value={actor.name.split("_").join(" ")}/>)}
                 </datalist>
                 <input type='button' value='-' className={b('button')}
                        onClick={this.removeActor.bind(this, j)}/>
@@ -31,14 +32,21 @@ class CastInputs extends Component {
     }
 
     async onListChange(i, e) {
-        const response = await fetch(`http://localhost:3000/actors?name_like=${slugify(e.target.value, '_')}`);// 'posts' to get work the url
-
-        if (!response.ok) {
-            console.log("ERROR IN Choosing ACTOR");
-        } else {
-            let suggestedActors = await (response.json());
-            if (suggestedActors.length !== 0) {
-                this.setState({suggestedActors});
+        if (e.target.value) {
+            const response = await fetch(`http://localhost:3000/actors/autocomplete/${e.target.value}`);// 'posts' to get work the url
+            //об не працювало на пробіли
+            if (!response.ok) {
+                console.log("ERROR IN Choosing ACTOR");
+            } else {
+                let suggestedActors = await (response.json());
+                console.log("RESPONSE", suggestedActors, i);
+                let newSuggested = this.state.suggestedActors;
+                const suggestedArr = [
+                    ...newSuggested.slice(0, i),
+                    suggestedActors,
+                    ...newSuggested.slice(i+1)
+                ];
+                this.setState({suggestedActors: suggestedArr});
                 console.log('sug actors', this.state.suggestedActors);
             }
         }
@@ -52,6 +60,7 @@ class CastInputs extends Component {
             ...this.state.chosenActors.slice(i + 1)
         ];
         this.setState({chosenActors: arr});
+        console.log("Choosen:", this.state.chosenActors);
         callback(name, arr);
     }
 
@@ -60,7 +69,11 @@ class CastInputs extends Component {
         const {chosenActors} = this.state;
         this.setState({
             chosenActors: [...chosenActors, ""]
-        })
+        });
+        let {suggestedActors} = this.state;
+        this.setState({
+            suggestedActors: [...suggestedActors, []]
+        });
     }
 
     removeActor(i) {
@@ -70,6 +83,15 @@ class CastInputs extends Component {
             ...chosenActors.slice(i + 1)
         ];
         this.setState({chosenActors: arr});
+
+        let {suggestedActors} = this.state;
+        const suggestedArr = [
+            ...suggestedActors.slice(0, i),
+            ...suggestedActors.slice(i + 1)
+        ];
+
+        this.setState({suggestedActors: suggestedArr});
+
         this.props.callback('cast', arr)
     }
 

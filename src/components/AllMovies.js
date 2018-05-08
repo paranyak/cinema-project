@@ -9,6 +9,7 @@ import {getAllMoviesIds, isMovieFetching, getCarouselleMovies} from "../reducers
 import {fetchAdditionalMovies} from "../actions/fetch"
 import {replace} from 'react-router-redux';
 import * as queryString from 'query-string';
+import LazyLoad from 'react-lazyload'
 
 const b = block("AllMovies");
 
@@ -19,34 +20,18 @@ class AllMovies extends Component {
             items: 12,
             hasMoreItems: true
         };
-        this.moveScrollToLocation = this.moveScrollToLocation.bind(this);
-        this.scrollTo = this.scrollTo.bind(this);
     }
 
     componentWillMount() {
+        console.log("will mount");
+        let allM = document.querySelector("#root");
+        allM.style.height = '6000px';   //ТУТ МАЄ БУТИ КІЛЬКІСТЬ ВСІХ ЕЛЕМЕНТІВ * РЯДКИ + 1400
         this.props.fetchAllMovies(this.state.items, 1);
-        let previousScroll = window.location.search.slice(5, window.location.search.length);
-        if (window.location.search) {
-            let index = window.location.search.indexOf('=', 6);
-            if (index != -1) {
-                previousScroll = window.location.search.slice(5, index - 6);
-            }
-            this.props.updateLocation({
-                search: '?' + queryString.stringify({"off": previousScroll, "start": '-'})
-            });
-        }
     }
 
-    componentDidMount() {
-        document.addEventListener('scroll', this.moveScrollToLocation);
-    }
 
-    componentWillUnmount() {
-        document.removeEventListener('scroll', this.moveScrollToLocation);
-    }
 
     componentWillReceiveProps(nextProps) {
-
         if (nextProps.films.length === this.props.films.length && this.props.isFetching && !nextProps.isFetching) {
             this.setState({...this.state, hasMoreItems: false});
         }
@@ -54,37 +39,8 @@ class AllMovies extends Component {
     }
 
 
-    moveScrollToLocation() {
-        let scrollPosition = window.location.search.slice(5, window.location.search.length);
-        if (window.scrollY - window.innerHeight >= scrollPosition || window.scrollY + window.innerHeight <= scrollPosition) {
-            this.props.updateLocation({
-                search: '?' + queryString.stringify({"off": window.scrollY})
-            });
-        }
-    }
-
-    scrollTo() {
-        let scrollY = 0;
-        if (window.location.search) {
-            let index = window.location.search.indexOf('=', 6);
-            if (index == -1) {
-                scrollY = window.location.search.slice(5, window.location.search.length);
-            }
-            else {
-                scrollY = window.location.search.slice(5, index - 6);
-            }
-            window.scrollTo(0, scrollY);
-        }
-    }
 
     showItems() {
-        if (window.location.search && window.location.search[window.location.search.length - 1] === '-') {
-            this.scrollTo();
-            this.props.updateLocation({
-                search: '?' + queryString.stringify({"off": window.scrollY})
-            });
-        }
-
         const {films, comingSoonIds} = this.props;
         if (films.length !== 0) {
             return (
@@ -94,7 +50,9 @@ class AllMovies extends Component {
                             !comingSoonIds.includes(film)
                         )
                         .map((film, i) =>
-                            <MoviePoster filmId={film} id={i}/>
+                            <LazyLoad height='501px' offset={400} >
+                                <MoviePoster filmId={film} id={i}/>
+                            </LazyLoad>
                         )}
                 </div>
             );
