@@ -16,6 +16,7 @@ class EditSelections extends Component {
     handleSelectChange(value) {
         const val = value.split(',');
         this.setState({value: val});
+        console.log('val', val);
     }
 
     componentDidUpdate(prevProps, prevState) {

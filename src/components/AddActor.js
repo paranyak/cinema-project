@@ -84,7 +84,8 @@ class AddActor extends Component {
         let slugName = this.refs.name.value.toLowerCase().replace(/ /g, "_");
 
         const actorToAdd = {
-            name: slugName,
+            name: name,
+            slugName: slugName,
             movies: createdMovies,
             info: this.refs.info.value,
             date: birthDay,

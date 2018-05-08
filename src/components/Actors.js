@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from "react-redux";
 
-import { getActorById} from "../reducers/index";
+import {getActorById} from "../reducers/index";
 import {fetchActors} from '../actions/fetch';
 
 import "../styles/Actors.less";
@@ -13,34 +13,27 @@ const link = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_50,h_50,c_thum
 
 class Actors extends Component {
     render() {
-        const {cast, film} = this.props;
-        if (!cast || cast.id === undefined) {
+        const {actor} = this.props;
+        if (!actor || actor.slugName === undefined) {
             this.props.fetchActorById(this.props.id);
             return null;
         }
-        else if(cast.error || !cast.movies.includes(film) ){
-            //в цього актора немає цього фільму :(
-            //або цього актора нема :(
-            return null;
-        }
         return (
-                 <div className={b("item")}>
-                    <Link className={b("actor-link")} to={`/actor/${cast.id + "__" + cast.name}`}>
-                        <img className={b("image")} src={link + cast.image}/>
-                    </Link>
-                    <p className={b("name")}>
-                        {cast.name
-                            .split("_")
-                            .join(" ")}
-                    </p>    
-                </div>
+            <div className={b("item")}>
+                <Link className={b("actor-link")} to={`/actor/${actor.slugName}`}>
+                    <img className={b("image")} src={link + actor.image}/>
+                </Link>
+                <p className={b("name")}>
+                    {actor.name}
+                </p>
+            </div>
         )
     }
 }
 
 export default connect((state, props) => {
         const actor = getActorById(state, props.id);
-        return {cast: actor};
+        return {actor};
     }, (dispatch) => ({
         fetchActorById: (id) => dispatch(fetchActors(id))
     })

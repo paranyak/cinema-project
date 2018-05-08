@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import "../styles/Editor.less";
 import {getActorById} from "../reducers/index";
-import {fetchActors} from '../actions/fetch';
+import {fetchActors, fetchActorsSlug} from '../actions/fetch';
 import block from "../helpers/BEM";
 import {connect} from "react-redux";
 import {Redirect} from "react-router";
@@ -9,6 +9,7 @@ import EditActorImage from "./EditActorImage";
 import EditActorInfo from "./EditActorInfo";
 import {monthNames} from '../helpers/constants'
 import slugify from "slugify";
+import {getActorBySlug} from "../reducers";
 
 const b = block("Editor");
 
@@ -17,7 +18,6 @@ class EditActorPage extends Component {
         super(props);
         this.state = {
             fireRedirect: false,
-            id: '',
             movies: [],
             info: '',
             date: '',
@@ -35,10 +35,9 @@ class EditActorPage extends Component {
         }
     }
 
-    editActorInDB(e) {
+    async editActorInDB(e) {
         e.preventDefault();
         const {
-            id,
             info,
             date,
             city,
@@ -46,6 +45,7 @@ class EditActorPage extends Component {
             image,
             name
         } = this.state;
+        const {actor} = this.props;
 
         let birthDay = date;
 
@@ -57,32 +57,35 @@ class EditActorPage extends Component {
             birthDay = month + ' ' + day + ', ' + year;
         }
 
-        const actor = {
-            id,
+        const actorToAdd = {
             // movies,
-            name: slugify(name, "_"),
+            name,
             info,
             date: birthDay,
             city,
             nominations: nominations.filter(el => el !== ''),
-            image,
-            name
+            image
         };
 
-        console.log("EDITED ACTOR", actor);
+        console.log("EDITED ACTOR", actorToAdd);
 
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        fetch(`http://localhost:3000/actors/${id}`, {
+        const result = await fetch(`http://localhost:3000/actors/${actor._id}`, {
             method: 'PATCH',
             headers: headers,
-            body: JSON.stringify(actor)
-        }).then((res) => res.json());
-
-        alert('Form is successfully edited!');
-
-        this.setState({fireRedirect: true});
+            body: JSON.stringify(actorToAdd)
+        });
+        console.log('res', result);
+        if (!result.ok) {
+            alert('Your form was not submitted!');
+        }
+        else {
+            const resToJson = await result.json();
+            console.log('result to json', resToJson);
+            this.setState({fireRedirect: true})
+        }
     }
 
     cancelEditing() {
@@ -91,14 +94,14 @@ class EditActorPage extends Component {
     }
 
     render() {
-        const {selectedActor} = this.props;
+        const {actor} = this.props;
         const {fireRedirect} = this.state;
         console.log('I need', this.state);
-        if (!selectedActor || selectedActor.id === undefined) {
-            this.props.fetchActorById(this.props.match.params.id.split("__")[0]);
+        if (!actor || actor.slugName === undefined) {
+            this.props.fetchActorBySlug(this.props.match.params.slug);
             return null;
         }
-        else if (selectedActor.error) {
+        else if (actor.error) {
             return (
                 <section className={b("error")}>
                     <img width="100%"
@@ -109,8 +112,8 @@ class EditActorPage extends Component {
         return (<div>
                 <form className={b()}>
                     <h1 className={b('title')}>EDIT ACTOR</h1>
-                    <EditActorImage actorImg={selectedActor.image} callback={this.getStateFromChild}/>
-                    <EditActorInfo actor={selectedActor} callback={this.getStateFromChild}/>
+                    <EditActorImage actorImg={actor.image} callback={this.getStateFromChild}/>
+                    <EditActorInfo actor={actor} callback={this.getStateFromChild}/>
                     <div className={b('btns')}>
                         <button type='submit' className={b('btn', ['submit'])}
                                 onClick={this.editActorInDB.bind(this)}>Save
@@ -120,7 +123,7 @@ class EditActorPage extends Component {
                         </button>
                     </div>
                 </form>
-                {fireRedirect && (<Redirect to={`/actor/${selectedActor.id + "__" + selectedActor.name}`}/>)}
+                {fireRedirect && (<Redirect to={`/actor/${actor.slugName}`}/>)}
             </div>
         );
     }
@@ -128,9 +131,8 @@ class EditActorPage extends Component {
 
 
 export default connect((state, props) => {
-        const actor = getActorById(state, props.match.params.id.split("__")[0]);
-        return {selectedActor: actor};
-    }, (dispatch) => ({
-        fetchActorById: (id) => dispatch(fetchActors(id))
-    })
+        const actor = getActorBySlug(state, props.match.params.slug);
+        return {actor};
+    },
+    (dispatch) => ({fetchActorBySlug: (slug) => dispatch(fetchActorsSlug(slug))})
 )(EditActorPage);

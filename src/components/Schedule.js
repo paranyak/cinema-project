@@ -24,8 +24,8 @@ class Schedule extends Component {
         const {films, onDateChange, date, unfetchedMovies, fetchMovieById} = this.props;
         let unfetched = this.props.unfetchedMovies;
         unfetched
-          .filter(id => !this.props.isMovieFetching(id))
-          .forEach(id => this.props.fetchMovieById(id));
+            .filter(id => !this.props.isMovieFetching(id))
+            .forEach(id => this.props.fetchMovieById(id));
         const sessionStart = date.set({
             hour: 9,
             minute: 0,
@@ -56,7 +56,7 @@ class Schedule extends Component {
                 <header className={b("header")}>
                     <time className={b("day-container")}>
                         <input className={b("day")} type="date" value={date.toFormat('yyyy-MM-dd')}
-                               onChange={onDateChange} min={today}></input>
+                               onChange={onDateChange} min={today}/>
                     </time>
                     <nav className={b("time-string")}>
                         {session.map((time, i) => (
@@ -75,18 +75,20 @@ class Schedule extends Component {
                                   ).toDuration().milliseconds
                               ) + "%",
                               display: (sessionStart.hasSame(DateTime.local(), 'day')) && (films.length > 0) ? 'block' : 'none'
-                          }}></time>
+                          }}/>
                     <span className={b("films-placeholder")}
-                    style={{display: films.length === 0 ? 'block' : 'none'}}>
+                          style={{display: films.length === 0 ? 'block' : 'none'}}>
                     Sorry, there are no movies for today</span>
                     {films.map((film, i) => (
                         <article key={"div-1lev" + i.toString()} className={b("film")}>
                           <span key={i} className={b("film-name")}>
-                              <Link className={b("film-link")} key={film.id} to={`/movie/${film.id}`}>
-                                {film.name}</Link></span>
-                                  <section style={{'minHeight': film.schedule.length * 10}} key={"div-2lev" + i.toString()}
+                              <Link className={b("film-link")} key={film.id} to={`/movie/${film.slugName}`}>
+                                {film.name}
+                                </Link>
+                          </span>
+                            <section style={{'minHeight': film.schedule.length * 10}} key={"div-2lev" + i.toString()}
                                      className={b("film-schedule")}>
-                                     {film.schedule.map((s, i, j) => (
+                                {film.schedule.map((s, i, j) => (
                                     <div key={i}>
                                         <time
                                             className={b("film-schedule-item", s.isAfter(DateTime.local()) ? ['after'] : ['before'])}
@@ -124,74 +126,75 @@ const mapDispatchToProps = (dispatch, props) => {
 };
 
 export default connect((state, props) => {
-  const moviesIds = getAllMoviesIds(state);
-  const unfetchedMovies = [];
-  const movies = moviesIds.map((id) => {
-    let movie = getMovieById(state, id)
-    if (!movie) {
-      unfetchedMovies.push(id);
-    }
-    return movie;
-  }).filter(movie => movie)
-  const filters = getAllFilters(state);
-  const date = filters.date ?
-    DateTime.fromFormat(filters.date, 'yyyy-MM-dd') :
-    DateTime.local();
-  return {
-    date,
-    unfetchedMovies,
-    isMovieFetching: (id) => isMovieFetching(id, state),
-    films: movies
-      .filter((movie) => {
-        if (filters.genres.length === 0) {
-          return true;
-        }
-        let movieGenres = movie.genre.split(', ');
-        for (let i = 0; i < movieGenres.length; i++) {
-          if (filters.genres.includes(movieGenres[i])) {
-            return true;
-          }
-        }
-        return false;
-        })
-      .filter((movie) => {
-        if (filters.technologies.length === 0) {
-          return true;
-        }
-        for (let i = 0; i < movie.technology.length; i++) {
-          if (filters.technologies.includes(movie.technology[i])) {
-            return true;
-          }
-        }
-        return false;
-      })
-      .filter((movie) => {
-        if (filters.formats.length === 0) {
-          return true;
-        }
-        for (let i = 0; i < movie.format.length; i++) {
-          if (filters.formats.includes(movie.format[i])) {
-            return true;
-          }
-        }
-        return false;
-      })
-      .map(movie => ({
-        name: movie.name,
-        schedule: movie.Schedule
-          .filter(start => {
-            return DateTime.fromFormat(start, "dd-MM-yyyy HH:mm").hasSame(date, 'day')
-          })
-          .map(start =>
-            Interval.after(DateTime.fromFormat(start, "dd-MM-yyyy HH:mm"), {
-              hour: movie.duration.hour,
-              minute: movie.duration.minute
-            })
-          ),
-        id: movie.id
-      }))
-      .filter(movie => movie.schedule.length !== 0)
-    };
-  },
+        const moviesIds = getAllMoviesIds(state);
+        const unfetchedMovies = [];
+        const movies = moviesIds.map((id) => {
+            let movie = getMovieById(state, id);
+            if (!movie) {
+                unfetchedMovies.push(id);
+            }
+            return movie;
+        }).filter(movie => movie);
+        const filters = getAllFilters(state);
+        const date = filters.date ?
+            DateTime.fromFormat(filters.date, 'yyyy-MM-dd') :
+            DateTime.local();
+        return {
+            date,
+            unfetchedMovies,
+            isMovieFetching: (id) => isMovieFetching(id, state),
+            films: movies
+                .filter((movie) => {
+                    if (filters.genres.length === 0) {
+                        return true;
+                    }
+                    let movieGenres = movie.genre.split(', ');
+                    for (let i = 0; i < movieGenres.length; i++) {
+                        if (filters.genres.includes(movieGenres[i])) {
+                            return true;
+                        }
+                    }
+                    return false;
+                })
+                .filter((movie) => {
+                    if (filters.technologies.length === 0) {
+                        return true;
+                    }
+                    for (let i = 0; i < movie.technology.length; i++) {
+                        if (filters.technologies.includes(movie.technology[i])) {
+                            return true;
+                        }
+                    }
+                    return false;
+                })
+                .filter((movie) => {
+                    if (filters.formats.length === 0) {
+                        return true;
+                    }
+                    for (let i = 0; i < movie.format.length; i++) {
+                        if (filters.formats.includes(movie.format[i])) {
+                            return true;
+                        }
+                    }
+                    return false;
+                })
+                .map(movie => ({
+                    name: movie.name,
+                    schedule: movie.Schedule
+                        .filter(start => {
+                            return DateTime.fromFormat(start, "dd-MM-yyyy HH:mm").hasSame(date, 'day')
+                        })
+                        .map(start =>
+                            Interval.after(DateTime.fromFormat(start, "dd-MM-yyyy HH:mm"), {
+                                hour: movie.duration.hour,
+                                minute: movie.duration.minute
+                            })
+                        ),
+                    id: movie.id,
+                    slugName: movie.slugName
+                }))
+                .filter(movie => movie.schedule.length !== 0)
+        };
+    },
     mapDispatchToProps
 )(Schedule);

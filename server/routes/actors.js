@@ -49,6 +49,14 @@ router.post('/', async (req, res) => {
 router.patch('/:id', async (req, res) => {
   const actor = await db.get().collection('actors').findOneAndUpdate({ _id: ObjectID(req.params.id) }, { $set: req.body}, {returnOriginal: false})
   res.send(actor.value)
+
 })
+
+router.get('/bySlugName/:slugName', async (req, res) => {
+    const slugName = req.params.slugName;
+    const actor = await db.get().collection('actors').findOne({slugName})
+    res.send(actor);
+})
+
 
 module.exports = router;

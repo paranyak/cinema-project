@@ -2,9 +2,39 @@
 
 .AddMovieLayout {
   width: 90%;
+  padding: 15px;
   background-color: @layout-grey;
   margin: auto auto 90px;
   box-shadow: 10px 21px 94px 6px rgba(0, 0, 1, 1);
-  padding-top: 40px;
-  padding-bottom: 20px;
+  &__btns {
+    margin: auto;
+    clear: both;
+    width: 360px;
+  }
+  &__btn {
+    background-color: @main-yellow;
+    color: #373737;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0.8;
+    width: 100px;
+    padding: 10px;
+    margin: 10px;
+    &_submit:disabled {display: none;}
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &__radio-btn {
+    color: white;
+    display: block;
+  }
+  &__title {
+    color: @main-yellow;
+    margin: 25px 0 5px;
+    text-align: center;
+  }
 }

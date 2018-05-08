@@ -18,13 +18,13 @@ class ActorPoster extends Component {
         }
         return (
             <article className={b()}>
-                <Link key={actor} to={`/actor/${actor.id + "__" + actor.name}`}>
+                <Link key={actor} to={`/actor/${actor.slugName}`}>
                     <picture>
                         <img src={link + actor.image} className={b("image")}/>
                     </picture>
                     <footer className={b("additional-info")}>
                         <h3 className={b('name')}>
-                            {actor.name.split("_").join(" ")}
+                            {actor.name}
                         </h3>
                     </footer>
                 </Link>

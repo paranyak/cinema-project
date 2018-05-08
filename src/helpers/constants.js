@@ -22,8 +22,7 @@ export const formats = [
 
 export const technologies = [
     'IMAX',
-    'Cinetech+',
-    '4Dx'
+    'Cinetech+'
 ];
 
 export const monthNames = ["January", "February", "March", "April", "May", "June",

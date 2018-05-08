@@ -31,6 +31,13 @@ router.get('/ids', async function(req, res) {
   res.send(movies.map(el => el._id));
 });
 
+router.get('/bySlugName/:slug', async (req, res) => {
+    const slugName = req.params.slug;
+    const movie = await db.get().collection('movies').findOne({slugName})
+    res.send(movie);
+});
+
+
 router.get('/autocomplete/:query', async function(req, res) {
   let query = req.params.query;
   let params = {};
