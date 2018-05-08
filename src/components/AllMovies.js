@@ -9,6 +9,7 @@ import {getAllMoviesIds, isMovieFetching, getCarouselleMovies} from "../reducers
 import {fetchAdditionalMovies} from "../actions/fetch"
 import {replace} from 'react-router-redux';
 import * as queryString from 'query-string';
+import LazyLoad from 'react-lazyload'
 
 const b = block("AllMovies");
 

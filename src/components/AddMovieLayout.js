@@ -5,6 +5,8 @@ import AddMImages from "./AddMImages";
 import AddMInfo from "./AddMInfo";
 import {Redirect} from "react-router";
 import slugify from 'slugify';
+import {connect} from "react-redux";
+import {postMovieToDB} from "../actions/fetch";
 
 const b = block("AddMovieLayout");
 
@@ -86,23 +88,9 @@ class EditMoviePage extends Component {
         };
 
         console.log("MOVIE", movie);
-
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        const result = await fetch('http://localhost:3000/movies', {
-            method: 'POST',
-            headers: headers,
-            body: JSON.stringify(movie)
-        });
-        console.log('res', result);
-        if (!result.ok) {
-            alert('Your form was not submitted!');
-        }
-        else {
-            const resToJson = await result.json();
-            console.log('result to json', resToJson);
-            this.setState({fireRedirect: true})
-        }
+        await this.props.postData(movie);
+        console.log("THIS PROPS AFTER POST:", this.props);
+        this.setState({fireRedirect: true})
     }
 
     cancelAdding() {
@@ -122,9 +110,6 @@ class EditMoviePage extends Component {
             rating,
             duration,
         } = this.state;
-        console.log('-----------------------');
-        console.log('this state', this.state);
-
         const isEnabled =
             genre.filter(f => f !== '').length *
             format.filter(f => f !== '').length *
@@ -160,4 +145,5 @@ class EditMoviePage extends Component {
 }
 
 
-export default EditMoviePage;
+export default connect((state, props) => {console.log("here map to props:", state, props); return {props, state}}, (dispatch) => ({postData: (movie) => dispatch(postMovieToDB(movie))})
+)(EditMoviePage);

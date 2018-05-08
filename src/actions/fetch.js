@@ -75,3 +75,26 @@ export const fetchActorsSlug = (slugName) => async (dispatch) => {
         dispatch(fromFetch.fetchActorsSlugSuccess(slugName, actors.result, actors.entities.actors));
     }
 };
+
+export const postMovieToDB =  (movie) => async (dispatch) =>{
+
+    console.log("HERE, post start");
+    dispatch(fromFetch.fetchPostStart(movie));
+    console.log('one1');
+    let result = await fromApi.postMovie(movie);
+    console.log('two', result);
+
+    if (!result.ok) {
+        console.log("not ok");
+        // alert('Your form was not submitted!');
+        }
+        else {
+            let resToJson = await result.json();
+            console.log('result to json', resToJson);
+            resToJson.id = resToJson['_id'];
+            resToJson = normalize([resToJson], moviesListSchema);
+            dispatch(fromFetch.postMovieSuccess(resToJson, resToJson.result, resToJson.entities.movies));}
+
+    console.log("THERE");
+
+};

@@ -37,3 +37,20 @@ export async function additionalActors(limit, page) {
     let actors = await ((await fetch(`http://localhost:3000/actors/ids?_page=${page}&_limit=${limit}`)).json());
     return actors
 }
+
+export async function postMovie(movie) {
+    console.log("POST MOvIE");
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    console.log("POST MOVIE", movie);
+
+    let result =  await fetch('http://localhost:3000/movies', {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(movie)
+    });
+
+    console.log("RESULT");
+
+    return result;
+}
