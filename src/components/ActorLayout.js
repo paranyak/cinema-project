@@ -1,26 +1,39 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
-import {getSelectedActor, getActorById, getCurrentUser} from "../reducers/index";
-import {fetchActors} from '../actions/fetch';
+import {getCurrentUser, getMovieById, isMovieFetching} from "../reducers/index";
+import {fetchActorsSlug, fetchMovie} from '../actions/fetch';
 
 import "../styles/ActorLayout.less"
 import block from "../helpers/BEM";
 import {connect} from "react-redux";
+import {getActorBySlug, isActorFetchingSlug} from "../reducers";
 
 
 const b = block("ActorLayout");
 const link = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_275,h_408,c_thumb,g_face/';
 
 class ActorLayout extends Component {
+
+    componentWillReceiveProps(nextProps) {
+        const {fetchMovieById} = this.props;
+        nextProps.moviesToLoad.forEach((el) => fetchMovieById(el))
+    }
+
+    componentWillMount() {
+        const {selectedActor, isActorLoading} = this.props;
+        if ((!selectedActor || selectedActor.slugName === undefined) && !isActorLoading) {
+            this.props.fetchActorBySlug(this.props.match.params.slug);
+        }
+    }
+
     render() {
         window.scrollTo(0, 0);
-        const {selectedActor} = this.props;
-        if (!selectedActor || selectedActor.id === undefined) {
-            this.props.fetchActorById(this.props.match.params.id.split("__")[0]);
+        const {movies, selectedActor} = this.props;
+        if (!selectedActor) {
             return null;
         }
-        else if (selectedActor.error) {
+        if (selectedActor && selectedActor.error) {
             return (
                 <section className={b("error")}>
                     <img width="100%"
@@ -31,7 +44,7 @@ class ActorLayout extends Component {
         let additional = '';
         let role = this.props.user && this.props.user.role;
         if (role === 'admin') {
-            additional = (<Link to={`/edit-actor/${selectedActor.id + "__" + selectedActor.name}`}>
+            additional = (<Link to={`/edit-actor/${selectedActor.slugName}`}>
                 <span className={b('edit-icon')}></span>
             </Link>)
         }
@@ -40,9 +53,7 @@ class ActorLayout extends Component {
                 {additional}
                 <section className={b("general")}>
                     <h1 className={b("name")}>
-                        {selectedActor.name
-                            .split("_")
-                            .join(" ")}
+                        {selectedActor.name}
                     </h1>
                     <p className={b("info")}>{selectedActor.info}</p>
                     <section className={b("extra")}>
@@ -62,10 +73,11 @@ class ActorLayout extends Component {
                         </p>
                         <section className={b("movies")}>
                             Films
-                            {Object.keys(selectedActor.movies).map((key, index) =>
-                                <Link className={b("movie-link")} to={`/movie/${key}`} key={index}>
-                                    <p className={b("in-movie")}>{selectedActor.movies[key][0]}</p>
-                                </Link>)}
+                            {movies.filter((movie) => movie)
+                                .map((movie) =>
+                                    <Link className={b("movie-link")} to={`/movie/${movie.slugName}`} key={movie.id}>
+                                        <p className={b("in-movie")}>{movie.name}</p>
+                                    </Link>)}
                         </section>
                     </section>
                 </section>
@@ -77,9 +89,30 @@ class ActorLayout extends Component {
 
 
 export default connect((state, props) => {
-        const actor = getActorById(state, props.match.params.id.split("__")[0]);
+        let moviesToLoad = [];
+        const actor = getActorBySlug(state, props.match.params.slug);
+        const isActorLoading = isActorFetchingSlug(props.match.params.slug, state);
         const user = getCurrentUser(state);
-        return {selectedActor: actor, user}
-    },
-    (dispatch) => ({fetchActorById: (id) => dispatch(fetchActors(id))})
+        let movies = [];
+        if (actor) {
+            movies = actor.movies.map((id) => {
+                let movie = getMovieById(state, id);
+                if (!movie) {
+                    moviesToLoad.push(id);
+                }
+                return movie;
+            })
+        }
+        moviesToLoad = moviesToLoad.filter((id) => isMovieFetching(id, state) !== true);
+        return {
+            selectedActor: actor,
+            user,
+            movies,
+            moviesToLoad,
+            isActorLoading
+        };
+    }, (dispatch) => ({
+        fetchActorBySlug: (slug) => dispatch(fetchActorsSlug(slug)),
+        fetchMovieById: (id) => dispatch(fetchMovie(id))
+    })
 )(ActorLayout);

@@ -3,6 +3,7 @@
     {
       "id": 0,
       "name": "Red Sparrow",
+      "slugName": "Red_Sparrow",
       "image": "Cinema Project/ymgt4tyhaqkhybywwkut",
       "rating": 6.7,
       "cast": [
@@ -19,8 +20,8 @@
       "trailer": "https://www.youtube.com/embed/PmUL6wMpMWw?autoplay=0",
       "genre": "Mystery, Thriller",
       "Schedule": [
-        "22-03-2018 10:15",
-        "22-03-2018 11:00",
+        "22-05-2018 10:15",
+        "22-05-2018 11:00",
         "22-03-2018 12:50",
         "22-03-2018 13:40",
         "22-03-2018 15:25",
@@ -50,6 +51,7 @@
     {
       "id": 1,
       "name": "The Hurricane Heist",
+      "slugName": "The_Hurricane_Heist",
       "image": "Cinema Project/a2xmwnhiqaaeu4eysnir",
       "rating": 4.8,
       "cast": [
@@ -67,7 +69,7 @@
       "trailer": "https://www.youtube.com/embed/56whWF2NJrM?autoplay=0",
       "genre": "Action, Thriller",
       "Schedule": [
-        "22-03-2018 10:00",
+        "22-05-2018 10:00",
         "22-03-2018 18:35",
         "22-03-2018 20:20",
         "22-03-2018 22:35"
@@ -92,6 +94,7 @@
     {
       "id": 2,
       "name": "Game Night",
+      "slugName": "Game_Night",
       "image": "Cinema Project/du7pyvc5hejwetjlhpkn",
       "rating": 7.5,
       "cast": [
@@ -134,6 +137,7 @@
     {
       "id": 3,
       "name": "Black Panther",
+      "slugName": "Black_Panther",
       "image": "Cinema Project/z3n9cwlcvj22k2hhpuu4",
       "rating": 7.8,
       "cast": [
@@ -180,6 +184,7 @@
     {
       "id": 4,
       "name": "Fifty Shades Freed",
+      "slugName": "Fifty_Shades_Freed",
       "image": "Cinema Project/r8l4yvaldunr8vxsbbrk",
       "rating": 4.4,
       "cast": [
@@ -220,6 +225,7 @@
     {
       "id": 5,
       "name": "Submergence",
+      "slugName": "Submergence",
       "image": "Cinema Project/e2dpwrnmr5puyn7as8ad",
       "rating": 5.8,
       "cast": [
@@ -260,6 +266,7 @@
     {
       "id": 6,
       "name": "The Post",
+      "slugName": "The_Post",
       "image": "Cinema Project/vbevt4czsn5izp6hwelp",
       "rating": 7.3,
       "cast": [
@@ -301,6 +308,7 @@
     {
       "id": 7,
       "name": "Tomb Raider",
+      "slugName": "Tomb_Raider",
       "image": "Cinema Project/vd2s8lmjqkrahstb5snr",
       "rating": 7.8,
       "cast": [
@@ -345,6 +353,7 @@
     {
       "id": 8,
       "name": "A Wrinkle in Time",
+      "slugName": "A_Wrinkle_in_Time",
       "image": "Cinema Project/jpfpgrjsbr6jqvtqfa8g",
       "rating": 4.2,
       "cast": [
@@ -388,6 +397,7 @@
     {
       "id": 9,
       "name": "Deadpool 2",
+      "slugName": "Deadpool_2",
       "image": "Cinema Project/ve3mnplsdbvycp0gssx9",
       "rating": "-.-",
       "cast": [
@@ -430,6 +440,7 @@
     {
       "id": 10,
       "name": "Rampage",
+      "slugName": "Rampage",
       "image": "Cinema Project/isovqgw8hdvinn4txw5t",
       "rating": 4.4,
       "cast": [
@@ -469,6 +480,7 @@
     {
       "id": 11,
       "name": "Peter Rabbit",
+      "slugName": "Peter_Rabbit",
       "image": "Cinema Project/rdglbhswqjui2essgo8s",
       "rating": 6.4,
       "cast": [
@@ -518,6 +530,7 @@
     {
       "id": 12,
       "name": "The Commuter",
+      "slugName": "The_Commuter",
       "image": "Cinema Project/pyay8pc9zi2nz6lle5ez",
       "rating": 6.5,
       "cast": [
@@ -563,6 +576,7 @@
     {
       "id": 13,
       "name": "Dear Dictator",
+      "slugName": "Dear_Dictator",
       "image": "Cinema Project/xk1nqlwjgwggvz4hhedc",
       "rating": 4.6,
       "cast": [
@@ -605,6 +619,7 @@
     {
       "id": 14,
       "name": "Pacific Rim: Uprising",
+      "slugName": "Pacific_Rim_Uprising",
       "image": "Cinema Project/jqzjlhp9vjh9detfywrq",
       "rating": 6.1,
       "cast": [
@@ -659,6 +674,7 @@
     {
       "id": 15,
       "name": "Ready Player One",
+      "slugName": "Ready_Player_One",
       "image": "Cinema Project/lncttjfsuihusmdggzpr",
       "rating": 8.1,
       "cast": [
@@ -720,6 +736,7 @@
     {
       "id": 16,
       "name": "Taxi 5",
+      "slugName": "Taxi_5",
       "image": "Cinema Project/xu9pvugvftgqxa96zyqb",
       "rating": "-.-",
       "cast": [
@@ -752,6 +769,7 @@
     {
       "id": 17,
       "name": "Avengers: Infinity War",
+      "slugName": "Avengers_Infinity_War",
       "image": "Cinema Project/lgidafuih4bfbzc3yw5e",
       "rating": "-.-",
       "cast": [
@@ -795,6 +813,7 @@
     {
       "id": 18,
       "name": "Jurassic World: Fallen Kingdom",
+      "slugName": "Jurassic_World_Fallen_Kingdom",
       "image": "Cinema Project/npdg8c0z4t4wqz4nccua",
       "rating": "-.-",
       "cast": [
@@ -827,6 +846,7 @@
     {
       "id": 19,
       "name": "Ant-Man and the Wasp",
+      "slugName": "Ant-Man_and_the_Wasp",
       "image": "Cinema Project/ker6hlsoszb3li5zlamq",
       "rating": "-.-",
       "cast": [
@@ -860,6 +880,7 @@
     {
       "id": 20,
       "name": "All the Money in the World",
+      "slugName": "All_the_Money_in_the_World",
       "image": "Cinema Project/md6lwxse1ylslihvogkx",
       "rating": 7,
       "cast": [
@@ -911,6 +932,7 @@
     {
       "id": 21,
       "name": "Ghostland",
+      "slugName": "Ghostland",
       "image": "Cinema Project/mso6i6jkrjwt0e5z9bgm",
       "rating": 6.6,
       "cast": [
@@ -957,6 +979,7 @@
     {
       "id": 22,
       "name": "Stolen princess: Ruslan and Ludmila",
+      "slugName": "Stolen_princess_Ruslan_and_Ludmila",
       "image": "Cinema Project/tc2wpvwsdphop9ycfcu7",
       "rating": 8,
       "cast": [
@@ -1011,6 +1034,7 @@
     {
       "id": 23,
       "name": "You Were Never Really Here",
+      "slugName": "You_Were_Never_Really_Here",
       "image": "Cinema Project/rqlwvghufcdwwsjdgwlp",
       "rating": 7.5,
       "cast": [
@@ -1070,6 +1094,7 @@
     {
       "id": 24,
       "name": "I Kill Giants",
+      "slugName": "I_Kill_Giants",
       "image": "Cinema Project/q0bysxa5lk2wvd2s6uwf",
       "rating": 6.6,
       "cast": [
@@ -1118,7 +1143,8 @@
   "actors": [
     {
       "id": 0,
-      "name": "Maggie_Grace",
+      "name": "Maggie Grace",
+      "slugName": "Maggie_Grace",
       "movies": {
         "1": [
           "The Hurricane Heist",
@@ -1136,7 +1162,8 @@
     },
     {
       "id": 1,
-      "name": "Jennifer_Lawrence",
+      "name": "Jennifer Lawrence",
+      "slugName": "Jennifer_Lawrence",
       "movies": {
         "0": [
           "Red Sparrow",
@@ -1153,7 +1180,8 @@
     },
     {
       "id": 2,
-      "name": "Joel_Edgerton",
+      "name": "Joel Edgerton",
+      "slugName": "Joel_Edgerton",
       "movies": {
         "0": [
           "Red Sparrow",
@@ -1170,7 +1198,8 @@
     },
     {
       "id": 3,
-      "name": "Matthias_Schoenaerts",
+      "name": "Matthias Schoenaerts",
+      "slugName": "Matthias_Schoenaerts",
       "movies": {
         "0": [
           "Red Sparrow",
@@ -1187,7 +1216,8 @@
     },
     {
       "id": 4,
-      "name": "Toby_Kebbell",
+      "name": "Toby Kebbell",
+      "slugName": "Toby_Kebbell",
       "movies": {
         "1": [
           "The Hurricane Heist",
@@ -1204,7 +1234,8 @@
     },
     {
       "id": 5,
-      "name": "Ryan_Kwanten",
+      "name": "Ryan Kwanten",
+      "slugName": "Ryan_Kwanten",
       "movies": {
         "1": [
           "The Hurricane Heist",
@@ -1221,7 +1252,8 @@
     },
     {
       "id": 6,
-      "name": "Jason_Bateman",
+      "name": "Jason Bateman",
+      "slugName": "Jason_Bateman",
       "movies": {
         "2": [
           "Game Night",
@@ -1238,7 +1270,8 @@
     },
     {
       "id": 7,
-      "name": "Rachel_McAdams",
+      "name": "Rachel McAdams",
+      "slugName": "Rachel_McAdams",
       "movies": {
         "2": [
           "Game Night",
@@ -1255,7 +1288,8 @@
     },
     {
       "id": 8,
-      "name": "Kyle_Chandler",
+      "name": "Kyle Chandler",
+      "slugName": "Kyle_Chandler",
       "movies": {
         "2": [
           "Game Night",
@@ -1272,7 +1306,8 @@
     },
     {
       "id": 9,
-      "name": "Chadwick_Boseman",
+      "name": "Chadwick Boseman",
+      "slugName": "Chadwick_Boseman",
       "movies": {
         "3": [
           "Black Panther",
@@ -1293,7 +1328,8 @@
     },
     {
       "id": 10,
-      "name": "Michael_Jordan",
+      "name": "Michael Jordan",
+      "slugName": "Michael_Jordan",
       "movies": {
         "3": [
           "Black Panther",
@@ -1310,7 +1346,8 @@
     },
     {
       "id": 11,
-      "name": "Lupita_Nyong'o",
+      "name": "Lupita Nyong'o",
+      "slugName": "Lupita_Nyong'o",
       "movies": {
         "3": [
           "Black Panther",
@@ -1327,7 +1364,8 @@
     },
     {
       "id": 12,
-      "name": "Dakota_Johnson",
+      "name": "Dakota Johnson",
+      "slugName": "Dakota_Johnson",
       "movies": {
         "4": [
           "Fifty Shades Freed",
@@ -1344,7 +1382,8 @@
     },
     {
       "id": 13,
-      "name": "Jamie_Dornan",
+      "name": "Jamie Dornan",
+      "slugName": "Jamie_Dornan",
       "movies": {
         "4": [
           "Fifty Shades Freed",
@@ -1361,7 +1400,8 @@
     },
     {
       "id": 14,
-      "name": "Eric_Johnson",
+      "name": "Eric Johnson",
+      "slugName": "Eric_Johnson",
       "movies": {
         "4": [
           "Fifty Shades Freed",
@@ -1378,7 +1418,8 @@
     },
     {
       "id": 15,
-      "name": "Alicia_Vikander",
+      "name": "Alicia Vikander",
+      "slugName": "Alicia_Vikander",
       "movies": {
         "5": [
           "Submergence",
@@ -1399,7 +1440,8 @@
     },
     {
       "id": 16,
-      "name": "James_McAvoy",
+      "name": "James McAvoy",
+      "slugName": "James_McAvoy",
       "movies": {
         "5": [
           "Submergence",
@@ -1416,7 +1458,8 @@
     },
     {
       "id": 17,
-      "name": "Alexander_Siddig",
+      "name": "Alexander Siddig",
+      "slugName": "Alexander_Siddig",
       "movies": {
         "5": [
           "Submergence",
@@ -1433,7 +1476,8 @@
     },
     {
       "id": 18,
-      "name": "Meryl_Streep",
+      "name": "Meryl Streep",
+      "slugName": "Meryl_Streep",
       "movies": {
         "6": [
           "The Post",
@@ -1450,7 +1494,8 @@
     },
     {
       "id": 19,
-      "name": "Tom_Hanks",
+      "name": "Tom Hanks",
+      "slugName": "Tom_Hanks",
       "movies": {
         "6": [
           "The Post",
@@ -1467,7 +1512,8 @@
     },
     {
       "id": 20,
-      "name": "Bob_Odenkirk",
+      "name": "Bob Odenkirk",
+      "slugName": "Bob_Odenkirk",
       "movies": {
         "6": [
           "The Post",
@@ -1484,7 +1530,8 @@
     },
     {
       "id": 21,
-      "name": "Hannah_John-Kamen",
+      "name": "Hannah John-Kamen",
+      "slugName": "Hannah_John-Kamen",
       "movies": {
         "7": [
           "Tomb Raider",
@@ -1505,7 +1552,8 @@
     },
     {
       "id": 22,
-      "name": "Walton_Goggins",
+      "name": "Walton Goggins",
+      "slugName": "Walton_Goggins",
       "movies": {
         "7": [
           "Tomb Raider",
@@ -1526,7 +1574,8 @@
     },
     {
       "id": 23,
-      "name": "Storm_Reid",
+      "name": "Storm Reid",
+      "slugName": "Storm_Reid",
       "movies": {
         "8": [
           "A Wrinkle in Time",
@@ -1543,7 +1592,8 @@
     },
     {
       "id": 24,
-      "name": "Oprah_Winfrey",
+      "name": "Oprah Winfrey",
+      "slugName": "Oprah_Winfrey",
       "movies": {
         "8": [
           "A Wrinkle in Time",
@@ -1560,7 +1610,8 @@
     },
     {
       "id": 25,
-      "name": "Reese_Witherspoon",
+      "name": "Reese Witherspoon",
+      "slugName": "Reese_Witherspoon",
       "movies": {
         "8": [
           "A Wrinkle in Time",
@@ -1577,7 +1628,8 @@
     },
     {
       "id": 26,
-      "name": "Ryan_Reynolds",
+      "name": "Ryan Reynolds",
+      "slugName": "Ryan_Reynolds",
       "movies": {
         "9": [
           "Deadpool 2",
@@ -1594,7 +1646,8 @@
     },
     {
       "id": 27,
-      "name": "Morena_Baccarin",
+      "name": "Morena Baccarin",
+      "slugName": "Morena_Baccarin",
       "movies": {
         "9": [
           "Deadpool 2",
@@ -1611,7 +1664,8 @@
     },
     {
       "id": 28,
-      "name": "Josh_Brolin",
+      "name": "Josh Brolin",
+      "slugName": "Josh_Brolin",
       "movies": {
         "9": [
           "Deadpool 2",
@@ -1628,7 +1682,8 @@
     },
     {
       "id": 29,
-      "name": "Dwayne_Johnson",
+      "name": "Dwayne Johnson",
+      "slugName": "Dwayne_Johnson",
       "movies": {
         "10": [
           "Rampage",
@@ -1645,7 +1700,8 @@
     },
     {
       "id": 30,
-      "name": "Jeffrey_Dean_Morgan",
+      "name": "Jeffrey Dean Morgan",
+      "slugName": "Jeffrey_Dean_Morgan",
       "movies": {
         "10": [
           "Rampage",
@@ -1662,7 +1718,8 @@
     },
     {
       "id": 31,
-      "name": "Will_Yun_Lee",
+      "name": "Will Yun Lee",
+      "slugName": "Will_Yun_Lee",
       "movies": {
         "10": [
           "Rampage",
@@ -1679,7 +1736,8 @@
     },
     {
       "id": 32,
-      "name": "James_Corden",
+      "name": "James Corden",
+      "slugName": "James_Corden",
       "movies": {
         "11": [
           "Peter Rabbit",
@@ -1696,7 +1754,8 @@
     },
     {
       "id": 33,
-      "name": "Rose_Byrne",
+      "name": "Rose Byrne",
+      "slugName": "Rose_Byrne",
       "movies": {
         "11": [
           "Peter Rabbit",
@@ -1713,7 +1772,8 @@
     },
     {
       "id": 34,
-      "name": "Domhnall_Gleeson",
+      "name": "Domhnall Gleeson",
+      "slugName": "Domhnall_Gleeson",
       "movies": {
         "11": [
           "Peter Rabbit",
@@ -1730,7 +1790,8 @@
     },
     {
       "id": 35,
-      "name": "Liam_Neeson",
+      "name": "Liam Neeson",
+      "slugName": "Liam_Neeson",
       "movies": {
         "12": [
           "The Commuter",
@@ -1747,7 +1808,8 @@
     },
     {
       "id": 36,
-      "name": "Vera_Farmiga",
+      "name": "Vera Farmiga",
+      "slugName": "Vera_Farmiga",
       "movies": {
         "12": [
           "The Commuter",
@@ -1764,7 +1826,8 @@
     },
     {
       "id": 37,
-      "name": "Patrick_Wilson",
+      "name": "Patrick Wilson",
+      "slugName": "Patrick_Wilson",
       "movies": {
         "12": [
           "The Commuter",
@@ -1781,7 +1844,8 @@
     },
     {
       "id": 38,
-      "name": "Michael_Caine",
+      "name": "Michael Caine",
+      "slugName": "Michael_Caine",
       "movies": {
         "13": [
           "Dear Dictator",
@@ -1798,7 +1862,8 @@
     },
     {
       "id": 39,
-      "name": "Odeya_Rush",
+      "name": "Odeya Rush",
+      "slugName": "Odeya_Rush",
       "movies": {
         "13": [
           "Dear Dictator",
@@ -1815,7 +1880,8 @@
     },
     {
       "id": 40,
-      "name": "Katie_Holmes",
+      "name": "Katie Holmes",
+      "slugName": "Katie_Holmes",
       "movies": {
         "13": [
           "Dear Dictator",
@@ -1832,7 +1898,8 @@
     },
     {
       "id": 41,
-      "name": "John_Boyega",
+      "name": "John Boyega",
+      "slugName": "John_Boyega",
       "movies": {
         "14": [
           "Pacific Rim: Uprising",
@@ -1849,7 +1916,8 @@
     },
     {
       "id": 42,
-      "name": "Scott_Eastwood",
+      "name": "Scott Eastwood",
+      "slugName": "Scott_Eastwood",
       "movies": {
         "14": [
           "Pacific Rim: Uprising",
@@ -1866,7 +1934,8 @@
     },
     {
       "id": 43,
-      "name": "Cailee_Spaeny",
+      "name": "Cailee Spaeny",
+      "slugName": "Cailee_Spaeny",
       "movies": {
         "14": [
           "Pacific Rim: Uprising",
@@ -1883,7 +1952,8 @@
     },
     {
       "id": 44,
-      "name": "Tye_Sheridan",
+      "name": "Tye Sheridan",
+      "slugName": "Tye_Sheridan",
       "movies": {
         "15": [
           "Ready Player One",
@@ -1900,7 +1970,8 @@
     },
     {
       "id": 45,
-      "name": "Olivia_Cooke",
+      "name": "Olivia Cooke",
+      "slugName": "Olivia_Cooke",
       "movies": {
         "15": [
           "Ready Player One",
@@ -1917,7 +1988,8 @@
     },
     {
       "id": 46,
-      "name": "Ben_Mendelsohn",
+      "name": "Ben Mendelsohn",
+      "slugName": "Ben_Mendelsohn",
       "movies": {
         "15": [
           "Ready Player One",
@@ -1934,7 +2006,8 @@
     },
     {
       "id": 47,
-      "name": "Franck_Gastambide",
+      "name": "Franck Gastambide",
+      "slugName": "Franck_Gastambide",
       "movies": {
         "16": [
           "Taxi 5",
@@ -1951,7 +2024,8 @@
     },
     {
       "id": 48,
-      "name": "Sabrina_Ouazani",
+      "name": "Sabrina Ouazani",
+      "slugName": "Sabrina_Ouazani",
       "movies": {
         "16": [
           "Taxi 5",
@@ -1968,7 +2042,8 @@
     },
     {
       "id": 49,
-      "name": "Sand_Van_Roy",
+      "name": "Sand Van Roy",
+      "slugName": "Sand_Van_Roy",
       "movies": {
         "16": [
           "Taxi 5",
@@ -1985,7 +2060,8 @@
     },
     {
       "id": 50,
-      "name": "Karen_Gillan",
+      "name": "Karen Gillan",
+      "slugName": "Karen_Gillan",
       "movies": {
         "17": [
           "Avengers: Infinity War",
@@ -2002,7 +2078,8 @@
     },
     {
       "id": 51,
-      "name": "Letitia_Wright",
+      "name": "Letitia Wright",
+      "slugName": "Letitia_Wright",
       "movies": {
         "17": [
           "Avengers: Infinity War",
@@ -2019,7 +2096,8 @@
     },
     {
       "id": 52,
-      "name": "Bryce_Dallas_Howard",
+      "name": "Bryce Dallas Howard",
+      "slugName": "Bryce_Dallas_Howard",
       "movies": {
         "18": [
           "Jurassic World: Fallen Kingdom",
@@ -2036,7 +2114,8 @@
     },
     {
       "id": 53,
-      "name": "Chris_Pratt",
+      "name": "Chris Pratt",
+      "slugName": "Chris_Pratt",
       "movies": {
         "18": [
           "Jurassic World: Fallen Kingdom",
@@ -2053,7 +2132,8 @@
     },
     {
       "id": 54,
-      "name": "Jeff_Goldblum",
+      "name": "Jeff Goldblum",
+      "slugName": "Jeff_Goldblum",
       "movies": {
         "18": [
           "Jurassic World: Fallen Kingdom",
@@ -2070,7 +2150,8 @@
     },
     {
       "id": 55,
-      "name": "Paul_Rudd",
+      "name": "Paul Rudd",
+      "slugName": "Paul_Rudd",
       "movies": {
         "19": [
           "Ant_Man and the Wasp",
@@ -2087,7 +2168,8 @@
     },
     {
       "id": 56,
-      "name": "Michelle_Williams",
+      "name": "Michelle Williams",
+      "slugName": "Michelle_Williams",
       "movies": {
         "20": [
           "All the Money in the World",
@@ -2104,7 +2186,8 @@
     },
     {
       "id": 57,
-      "name": "Christopher_Plummer",
+      "name": "Christopher Plummer",
+      "slugName": "Christopher_Plummer",
       "movies": {
         "20": [
           "All the Money in the World",
@@ -2121,7 +2204,8 @@
     },
     {
       "id": 58,
-      "name": "Crystal_Reed",
+      "name": "Crystal Reed",
+      "slugName": "Crystal_Reed",
       "movies": {
         "21": [
           "Ghostland",
@@ -2138,7 +2222,8 @@
     },
     {
       "id": 59,
-      "name": "Anastasia_Phillips",
+      "name": "Anastasia Phillips",
+      "slugName": "Anastasia_Phillips",
       "movies": {
         "21": [
           "Ghostland",
@@ -2155,7 +2240,8 @@
     },
     {
       "id": 60,
-      "name": "Emilia_Jones",
+      "name": "Emilia Jones",
+      "slugName": "Emilia_Jones",
       "movies": {
         "21": [
           "Ghostland",
@@ -2172,7 +2258,8 @@
     },
     {
       "id": 61,
-      "name": "Nadiya_Dorofeeva",
+      "name": "Nadiya Dorofeeva",
+      "slugName": "Nadiya_Dorofeeva",
       "movies": {
         "22": [
           "Stolen princess: Ruslan and Ludmila",
@@ -2189,7 +2276,8 @@
     },
     {
       "id": 62,
-      "name": "Oleksiy_Zavhorodniy",
+      "name": "Oleksiy Zavhorodniy",
+      "slugName": "Oleksiy_Zavhorodniy",
       "movies": {
         "22": [
           "Stolen princess: Ruslan and Ludmila",
@@ -2206,7 +2294,8 @@
     },
     {
       "id": 63,
-      "name": "Yevhen_Malukha",
+      "name": "Yevhen Malukha",
+      "slugName": "Yevhen_Malukha",
       "movies": {
         "22": [
           "Stolen princess: Ruslan and Ludmila",
@@ -2223,7 +2312,8 @@
     },
     {
       "id": 64,
-      "name": "Joaquin_Phoenix",
+      "name": "Joaquin Phoenix",
+      "slugName": "Joaquin_Phoenix",
       "movies": {
         "23": [
           "You Were Never Really Here",
@@ -2240,7 +2330,8 @@
     },
     {
       "id": 65,
-      "name": "Dante_Pereira-Olson",
+      "name": "Dante Pereira-Olson",
+      "slugName": "Dante_Pereira-Olson",
       "movies": {
         "23": [
           "You Were Never Really Here",
@@ -2257,7 +2348,8 @@
     },
     {
       "id": 66,
-      "name": "Larry_Canady",
+      "name": "Larry Canady",
+      "slugName": "Larry_Canady",
       "movies": {
         "23": [
           "You Were Never Really Here",
@@ -2274,7 +2366,8 @@
     },
     {
       "id": 67,
-      "name": "Madison_Wolfe",
+      "name": "Madison Wolfe",
+      "slugName": "Madison_Wolfe",
       "movies": {
         "24": [
           "I Kill Giants",
@@ -2291,7 +2384,8 @@
     },
     {
       "id": 68,
-      "name": "Zoe_Saldana",
+      "name": "Zoe Saldana",
+      "slugName": "Zoe_Saldana",
       "movies": {
         "24": [
           "I Kill Giants",
@@ -2308,7 +2402,8 @@
     },
     {
       "id": 69,
-      "name": "Imogen_Poots",
+      "name": "Imogen Poots",
+      "slugName": "Imogen_Poots",
       "movies": {
         "24": [
           "I Kill Giants",

@@ -8,7 +8,7 @@ import InfiniteScroll from "react-infinite-scroller";
 import {getAllMoviesIds, isMovieFetching, getCarouselleMovies} from "../reducers";
 import {fetchAdditionalMovies} from "../actions/fetch"
 import {replace} from 'react-router-redux';
-import LazyLoad from 'react-lazyload';
+import * as queryString from 'query-string';
 
 const b = block("AllMovies");
 
@@ -50,9 +50,7 @@ class AllMovies extends Component {
                         )
                         .map((film, i) =>
                             <LazyLoad height='501px' offset={400} >
-                            <Link key={film} to={`/movie/${film}`}>
                                 <MoviePoster filmId={film} id={i}/>
-                            </Link>
                             </LazyLoad>
                         )}
                 </div>

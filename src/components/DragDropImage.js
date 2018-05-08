@@ -27,7 +27,6 @@ class DragDropImage extends Component {
                 headers: {"X-Requested-With": "XMLHttpRequest"},
             }).then(response => {
                 const data = response.data;
-                console.log('data', data);
                 const publicID = data.public_id;
                 console.log(publicID);
                 const val = (name === 'poster' || name === 'actor') ? [publicID] : [...this.state.images, publicID];

@@ -10,30 +10,29 @@ class EditActorInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: props.actor.id,
-            name: props.actor.name,
             movies: props.actor.movies,
             info: props.actor.info,
             date: props.actor.date,
             city: props.actor.city,
-            nominations: props.actor.nominations
+            nominations: props.actor.nominations,
+            name: props.actor.name
         };
         this.onValueChange = this.onValueChange.bind(this);
     }
 
     componentDidMount() {
-        const {id, name, movies, info, date, city, nominations} = this.state;
+        const {movies, info, date, city, nominations, name} = this.state;
         this.props.callback(
-            ['id', 'name', 'movies', 'info', 'date', 'city', 'nominations'],
-            [id, movies, info, date, city, nominations]);
+            ['movies', 'info', 'date', 'city', 'nominations', 'name'],
+            [movies, info, date, city, nominations, name]);
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const {id, name, movies, info, date, city, nominations} = this.state;
+        const {movies, info, date, city, nominations, name} = this.state;
         if (prevState !== this.state) {
             this.props.callback(
-                ['id', 'name', 'movies', 'info', 'date', 'city', 'nominations'],
-                [id, name, movies, info, date, city, nominations]);
+                ['movies', 'info', 'date', 'city', 'nominations', 'name'],
+                [movies, info, date, city, nominations, name]);
         }
     }
 
@@ -57,9 +56,7 @@ class EditActorInfo extends Component {
         return <section className={b()}>
             <h3 className={b('title')}>Actor Name</h3>
             <input className={b("input", ['name'])} name='name'
-                   defaultValue={actor.name
-                       .split("_")
-                       .join(" ")}
+                   defaultValue={actor.name}
                    onChange={this.onValueChange} placeholder='Please, enter the actor name'/>
 
             <h3 className={b('title')}>Actor Info</h3>

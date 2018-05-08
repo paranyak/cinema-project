@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import EditMovieImage from "./EditMovieImage";
 import EditMovieInfo from "./EditMovieInfo";
 import "../styles/Editor.less"
-import {getMovieById} from "../reducers";
-import {fetchMovie} from '../actions/fetch';
+import {getMovieBySlug} from "../reducers";
+import {fetchMovieSlug} from '../actions/fetch';
 import {connect} from "react-redux";
 import block from '../helpers/BEM'
 import {Redirect} from 'react-router'
@@ -15,18 +15,21 @@ class EditMoviePage extends Component {
         super(props);
         this.state = {
             fireRedirect: false,
-            id: '',
             poster: '',
             screenshots: [],
             rating: 0,
             duration: '',
             name: '',
             description: '',
+            scheduleTime: [],
+            scheduleDate: [],
             genre: '',
             format: [],
             technology: [],
             trailer: '',
-            cast: []
+            cast: [],
+            startDate: {},
+            label: ''
         };
         this.getStateFromChild = this.getStateFromChild.bind(this);
     }
@@ -37,38 +40,53 @@ class EditMoviePage extends Component {
         }
     }
 
-    editMovieInDB(e) {
+    async editMovieInDB(e) {
         e.preventDefault();
         const {
-            id,
             poster,
             screenshots,
             rating,
             duration,
             name,
+            label,
             description,
+            scheduleDate,
+            startDate,
             genre,
             format,
             technology,
             trailer,
             cast
         } = this.state;
+        const {film} = this.props;
         const durationIsObject = (typeof duration === 'object');
+
+        let Schedule = [];
+        const scheduleTime = this.state.scheduleTime.sort();
+        scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
+
 
         const movie = {
             name,
-            cast: cast.map(el => el.id).filter(id => id !== ''),
+            cast: cast.map(c => c._id).filter(id => id.trim() !== ''),
             image: poster,
             rating: parseFloat(rating),
             description,
             screenshots,
             trailer,
+            Schedule,
             genre,
             format,
+            label,
             technology,
             duration: (durationIsObject) ? duration : {
                 "hour": parseInt(duration.split(':')[0]),
                 "minute": parseInt(duration.split(':')[1])
+            },
+            startDate: {
+                "year": parseInt(startDate.split('-')[0]),
+                "month": parseInt(startDate.split('-')[1]),
+                "day": parseInt(startDate.split('-')[2])
             }
         };
 
@@ -76,32 +94,32 @@ class EditMoviePage extends Component {
 
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
-
         cast
-            .filter(el => el.id.trim() !== '')
+            .filter(el => el._id.trim() !== '')
             .map(el => {
-                    const tmp = this.props.fetchMovieById(el.id);
+                const movies = (el.movies.includes(film._id)) ? [...el.movies] : [...el.movies, film._id];
+                fetch(`http://localhost:3000/actors/${el._id}`, {
+                    method: 'PATCH',
+                    headers: headers,
+                    body: JSON.stringify({movies})
+                }).then((res) => res.json())
+            });
 
-                    fetch(`http://localhost:3000/actors/${el.id}`, {
-                        method: 'PATCH',
-                        headers: headers,
-                        body: JSON.stringify({
-                            id: el.id,
-                            movies: el.movies
-                        })
-                    }).then((res) => res.json())
-                }
-            );
-
-        fetch(`http://localhost:3000/movies/${id}`, {
+        const result = await fetch(`http://localhost:3000/movies/${film._id}`, {
             method: 'PATCH',
             headers: headers,
             body: JSON.stringify(movie)
-        }).then((res) => res.json());
+        });
+        console.log('res', result);
+        if (!result.ok) {
+            alert('Your form was not submitted!');
+        }
+        else {
+            const resToJson = await result.json();
+            console.log('result to json', resToJson);
+            this.setState({fireRedirect: true})
+        }
 
-        alert('Form is successfully edited!');
-
-        this.setState({fireRedirect: true});
     }
 
     cancelEditing() {
@@ -112,8 +130,8 @@ class EditMoviePage extends Component {
     render() {
         const {film} = this.props;
         const {fireRedirect} = this.state;
-        if (!film || film.id === undefined) {
-            this.props.fetchMovieById(this.props.match.params.id);
+        if (!film || film.slugName === undefined) {
+            this.props.fetchMovieBySlug(this.props.match.params.slug);
             return null;
         }
         return (<div>
@@ -130,7 +148,7 @@ class EditMoviePage extends Component {
                         </button>
                     </div>
                 </form>
-                {fireRedirect && (<Redirect to={`/movie/${film.id}`}/>)}
+                {fireRedirect && (<Redirect to={`/movie/${film.slugName}`}/>)}
             </div>
         )
     }
@@ -138,9 +156,8 @@ class EditMoviePage extends Component {
 
 
 export default connect((state, props) => {
-        const movie = getMovieById(state, props.match.params.id);
-        return {film: movie};
-    }, (dispatch) => ({
-        fetchMovieById: (id) => dispatch(fetchMovie(id))
-    })
+        const film = getMovieBySlug(state, props.match.params.slug);
+        return {film};
+    },
+    (dispatch) => ({fetchMovieBySlug: (slug) => dispatch(fetchMovieSlug(slug))})
 )(EditMoviePage);

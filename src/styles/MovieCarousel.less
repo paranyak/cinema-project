@@ -5,7 +5,7 @@
   justify-content: space-between;
   margin-bottom: 60px;
   height: 511px;
-
+  padding: 15px;
   &__movies {
     overflow-y: hidden;
     overflow-x: auto;
@@ -13,21 +13,21 @@
     scroll-snap-points-x: repeat(285px);
     scroll-snap-type: mandatory;
 
-    width: calc(~'100% - 120px');
+    width: 100%;
     margin: auto;
   }
   &__button {
-    background-color: @main-yellow;
+    background-color: transparent;
     width: 60px;
     border: none;
     opacity: 0.8;
     transition: opacity 0.15s ease-in-out;
-
     position: absolute;
-    height: 511px;
+    height: 500px;
 
     &:hover {
       opacity: 1;
+      background-color: #1e1d1d99;
     }
     &_backward {
       left: 5%;

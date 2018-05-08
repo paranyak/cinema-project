@@ -20,6 +20,7 @@
     color: @poster-grey;
     float: left;
     margin-right: 8px;
+    margin-left: 10px;
     &_login {
       float: right;
     }
@@ -38,23 +39,19 @@
     }
   }
   &__add {
-    font-size: 43px;
-    color: @poster-grey;
-    font-weight: bold;
+    padding: 10px;
+    border-radius: 3px;
     text-decoration: none;
+    background-color: @main-yellow;
+    color: @poster-grey;
     cursor: pointer;
-    margin: -5px 0;
     float: right;
-    padding: 0px 10px;
+    margin: 0 3px;
     &_active {
       background-color: @poster-grey;
       color: @main-yellow;
-      font-size: 44px;
-      border-radius: 3px;
+      font-weight: bold;
       box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.21);
-    }
-    &_actor{
-      color: @white-text;
     }
   }
 }
