@@ -18,21 +18,30 @@ class AllMovies extends Component {
         super(props);
         this.state = {
             items: 12,
-            hasMoreItems: true
+            hasMoreItems: true,
+            movies:46
         };
     }
 
     componentWillMount() {
         console.log("will mount");
         let allM = document.querySelector("#root");
-        allM.style.height = '6000px';   //ТУТ МАЄ БУТИ КІЛЬКІСТЬ ВСІХ ЕЛЕМЕНТІВ * РЯДКИ + 1400
+        allM.style.height = '11000px';   //ТУТ МАЄ БУТИ КІЛЬКІСТЬ ВСІХ ЕЛЕМЕНТІВ * РЯДКИ + 1400
         this.props.fetchAllMovies(this.state.items, 1);
     }
 
+    componentWillUnmount(){
+        console.log("unmount");
+        let allM = document.querySelector("#root");
+        allM.style.height = 'initial';
+    }
 
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.films.length === this.props.films.length && this.props.isFetching && !nextProps.isFetching) {
+        //погано, коли повертаємось на сторінку звідкись на натиск "назад" видає фолс
+        //треба this.props.films.length === кількість фільмів
+        //if (nextProps.films.length === this.props.films.length && this.props.isFetching && !nextProps.isFetching) {
+        if(this.props.films.length === this.state.movies){
             this.setState({...this.state, hasMoreItems: false});
         }
 
@@ -50,7 +59,7 @@ class AllMovies extends Component {
                             !comingSoonIds.includes(film)
                         )
                         .map((film, i) =>
-                            <LazyLoad height='501px' offset={400} >
+                            <LazyLoad height='501px'  offset={1000} key={i} >
                                 <MoviePoster filmId={film} id={i}/>
                             </LazyLoad>
                         )}
@@ -70,7 +79,6 @@ class AllMovies extends Component {
                     <InfiniteScroll
                         loadMore={this.loadMore.bind(this)}
                         hasMore={this.state.hasMoreItems}
-                        initialLoad={false}
                         pageStart={1}
                         loader={<div className={b("loader")}>
                             <span className={b("loader-dot")}></span>
