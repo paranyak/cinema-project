@@ -8,7 +8,9 @@ import {
     FETCH_MOVIES_SUCCESS,
     FETCH_MOVIES_SLUG_SUCCESS,
     FETCH_CAROUSEL_MOVIES_SUCCESS,
-    FETCH_SCHEDULE_MOVIES_SUCCESS
+    FETCH_SCHEDULE_MOVIES_SUCCESS,
+    POST_MOVIE_SUCCESS,
+    FETCH_POST
 } from '../helpers/actionTypes';
 
 const byId = (state = {}, action) => {
@@ -16,6 +18,9 @@ const byId = (state = {}, action) => {
         case FETCH_MOVIES_SUCCESS:
         case FETCH_SCHEDULE_MOVIES_SUCCESS:
         case FETCH_CAROUSEL_MOVIES_SUCCESS:
+            return {...state, ...action.movies};
+        case POST_MOVIE_SUCCESS:
+            console.log("post", state, action);
             return {...state, ...action.movies};
         default:
             return state;
@@ -70,6 +75,8 @@ const fetching = (state = {}, action) => {
             return assoc(action.id, true, state);
         case FETCH_MOVIES_SLUG:
             return assoc(action.slugName, true, state);
+        case FETCH_POST:
+            return assoc(action.movie, true, state);
         case FETCH_FAIL:
         case FETCH_MOVIES_SUCCESS:
         case FETCH_SCHEDULE_MOVIES_SUCCESS:
@@ -78,6 +85,9 @@ const fetching = (state = {}, action) => {
         case FETCH_FAIL_SLUG:
         case FETCH_MOVIES_SLUG_SUCCESS:
             return assoc(action.slugName, false, state);
+        case POST_MOVIE_SUCCESS:
+            console.log("after post:", action);
+            return assoc(action.movie, false, state);
         default:
             return state;
     }
