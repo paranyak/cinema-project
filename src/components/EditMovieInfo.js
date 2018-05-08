@@ -33,9 +33,11 @@ class EditMovieInfo extends Component {
     componentDidMount() {
         const {label, startDate, rating, duration, name, description, scheduleTime, scheduleDate, genre, format, technology, cast} = this.state;
         const chosenGenres = (typeof genre === 'object') ? genre : genre.split(', ');
+        const chosenTechnologies = (typeof technology === 'object') ? technology : technology.split(',');
+        const chosenFormats = (typeof format === 'object') ? format : format.split(',');
         this.props.callback(
             ['label', 'startDate', 'rating', 'duration', 'name', 'description', 'scheduleTime', 'scheduleDate', 'genre', 'format', 'technology', 'cast'],
-            [label, startDate, rating, duration, name, description, scheduleTime, scheduleDate, chosenGenres, format, technology, cast]);
+            [label, startDate, rating, duration, name, description, scheduleTime, scheduleDate, chosenGenres, chosenFormats, chosenTechnologies, cast]);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -55,12 +57,14 @@ class EditMovieInfo extends Component {
     callback(name, value) {
         this.setState({[name]: value})
     }
-    
+
     getDataFromFilm(film) {
         const hour = (film.duration.hour > 9 ? '' : '0') + film.duration.hour.toString();
         const minute = (film.duration.minute > 9 ? '' : '0') + film.duration.minute.toString();
         const durationTime = hour + ':' + minute;
         const chosenGenres = (typeof film.genre === 'object') ? film.genre : film.genre.split(', ');
+        const chosenTechnologies = (typeof film.technology === 'object') ? film.technology : film.technology.split(',');
+        const chosenFormats = (typeof film.format === 'object') ? film.format : film.format.split(',');
 
         const schedule = film.Schedule;
         const fromSch = schedule[0].split(' ')[0];
@@ -82,8 +86,8 @@ class EditMovieInfo extends Component {
         const month = (film.startDate.month > 9 ? '' : 0) + film.startDate.month.toString();
         const day = (film.startDate.day > 9 ? '' : 0) + film.startDate.day.toString();
         const startDate = year + '-' + month + '-' + day;
-        return [durationTime, chosenGenres, from, to, timeRanges, startDate];
-        
+        return [durationTime, chosenGenres, chosenTechnologies, chosenFormats, from, to, timeRanges, startDate];
+
     }
 
     render() {
@@ -92,10 +96,12 @@ class EditMovieInfo extends Component {
         const values = this.getDataFromFilm(film);
         const durationTime = values[0];
         const chosenGenres = values[1];
-        const from = values[2];
-        const to = values[3];
-        const timeRanges = values[4];
-        const startDate = values[5];
+        const chosenTechnologies = values[2];
+        const chosenFormats = values[3];
+        const from = values[4];
+        const to = values[5];
+        const timeRanges = values[6];
+        const startDate = values[7];
 
         return (
             <section className={b()}>
@@ -117,7 +123,8 @@ class EditMovieInfo extends Component {
                        onChange={this.onValueChange}/>
 
                 <h3 className={b('title')}>Start Date</h3>
-                <input type="date" onChange={this.onValueChange} defaultValue={startDate} name='startDate' className={b('input')}/>
+                <input type="date" onChange={this.onValueChange} defaultValue={startDate} name='startDate'
+                       className={b('input')}/>
 
                 <h3 className={b('title')}>Schedule</h3>
                 <CalendarRangePicker from={new Date(from)} to={new Date(to)} name='scheduleDate'
@@ -129,11 +136,11 @@ class EditMovieInfo extends Component {
                                 callback={this.callback}/>
 
                 <h3 className={b('title')}>Format</h3>
-                <EditSelections options={formats} defaultValue={film.format} name='format'
+                <EditSelections options={formats} defaultValue={chosenFormats} name='format'
                                 callback={this.callback}/>
 
                 <h3 className={b('title')}>Technology</h3>
-                <EditSelections options={technologies} defaultValue={film.technology} name='technology'
+                <EditSelections options={technologies} defaultValue={chosenTechnologies} name='technology'
                                 callback={this.callback}/>
 
                 <h3 className={b('title')}>Actors</h3>

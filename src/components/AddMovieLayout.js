@@ -64,7 +64,7 @@ class EditMoviePage extends Component {
 
         const movie = {
             name,
-            slugName: slugify(name, '_'),
+            slugName: slugify(name, {replacement: '_', remove: /[.:!,;*&@^]/g}),
             image: poster,
             rating: parseFloat(rating).toString(),
             cast: [],       //cast.filter(el => el !== ''),
@@ -131,7 +131,13 @@ class EditMoviePage extends Component {
                                 disabled={!isEnabled}
                                 className={b('btn', ['submit'])}
                                 onClick={this.addMovieToDB.bind(this)}
-                        >Submit
+                        >Save
+                        </button>
+                        <button type='submit'
+                                disabled={!isEnabled}
+                                className={b('btn', ['submit'])}
+                                onClick={this.addMovieToDB.bind(this)}
+                        >Publish
                         </button>
                         <button type='button' className={b('btn')} style={{width: lenCancelBtn}}
                                 onClick={this.cancelAdding.bind(this)}>Cancel

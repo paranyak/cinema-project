@@ -2,6 +2,7 @@ import {moviesListSchema, actorsListSchema, actorsListSchemaSlug, moviesListSche
 import {normalize} from 'normalizr';
 import * as fromFetch from '../actions/index';
 import * as fromApi from '../api/fetch';
+import {editingMovieFail, editingMovieSuccess} from "./index";
 
 export const fetchMovie = (id) => async (dispatch) => {
     dispatch(fromFetch.fetchMoviesStart(id));
@@ -97,4 +98,14 @@ export const postMovieToDB =  (movie) => async (dispatch) =>{
 
     console.log("THERE");
 
+};
+
+export const editMovieById = (id, movie) => async (dispatch) => {
+    try {
+        await fromApi.editMovie(id, movie);
+        dispatch(editingMovieSuccess());
+    }
+    catch (err) {
+        dispatch(editingMovieFail());
+    }
 };
