@@ -1,52 +1,55 @@
-var models = require('../models');
-var Movie = models.Movie;
 var express = require('express');
 var router = express.Router();
+var db = require('../db')
+var ObjectID = require('mongodb').ObjectID;
 
-router.get('/byId/:id', function(req, res) {
+router.get('/byId/:id', async function(req, res) {
   const id = req.params.id;
-
-  Movie.findById(id, function (err, movie) {
-      res.send(movie);
-  });
+  const movie = await db.get().collection('movies').findOne({_id: ObjectID(id)});
+  res.send(movie);
 });
 
-
-router.get('/ids', function(req, res) {
+router.get('/ids', async function(req, res) {
+  let dbQuery;
   let params = {};
   let query = req.query;
-  let dbQuery;
   if (query['label']) {
     params.label = query['label'];
   }
   if (query['Schedule']) {
     params.Schedule = { "$regex": query.Schedule, "$options": "i" }
   }
-  console.log(params)
-  dbQuery = Movie.find(params).select('id');
+
+  dbQuery = db.get().collection('movies').find(params, {fields: {id: true}});
 
   if (query['_limit']) {
     let page = +query['_page'] || 1;
     let limit = +query['_limit'];
     dbQuery = dbQuery.limit(limit).skip((page - 1) * limit);
   }
-
-  dbQuery.exec(function(err, movies){
-    console.log(err);
-    movies = movies || [];
-    res.send(movies.map(el => el['_id']));
-  })
+  const movies = await dbQuery.toArray();
+  res.send(movies.map(el => el._id));
 });
 
-router.post('/', function(req, res) {
-  new Movie(req.body).save().then(function(movie) {
-    res.send(movie)
-  });
+router.get('/autocomplete/:query', async function(req, res) {
+  let query = req.params.query;
+  let params = {};
+  if (query) {
+    params.name = {'$regex': '^' + query, '$options': 'i'};
+  }
+  const movies = await db.get().collection('movies')
+                         .find(params, {fields: {id: true, name: true}}).toArray();
+  res.send(movies);
+})
+
+router.post('/', async (req, res) => {
+  const movie = await db.get().collection('movies').save(req.body)
+  res.send(movie)
 })
 
 router.patch('/:id', async (req, res) =>  {
-  const movie = await Movie.findByIdAndUpdate({ _id: req.params.id }, { $set: req.body})
-  res.send(movie)
+  const movie = await db.get().collection('movies').findOneAndUpdate({ _id:  ObjectID(req.params.id) }, { $set: req.body}, {returnOriginal: false});
+  res.send(movie.value);
 })
 
 module.exports = router;

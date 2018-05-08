@@ -1,49 +1,54 @@
-var models = require('../models');
-var Actor = models.Actor;
 var express = require('express');
 var router = express.Router();
+var db = require('../db')
+var ObjectID = require('mongodb').ObjectID;
 
-router.get('/byId/:id', function(req, res) {
+router.get('/byId/:id', async (req, res) => {
   const id = req.params.id;
-  Actor.findById(id, function (err, actor) {
-      res.send(actor);
-  });
+  console.log('--------------------', id);
+  const actor = await db.get().collection('actors').findOne({_id: ObjectID(id)});
+  try {
+    res.send(actor);
+  } catch(error) {
+    console.log(error);
+  }
 });
 
-router.get('/ids', function(req, res) {
+router.get('/ids', async (req, res) => {
   let params = {};
   let query = req.query;
   let dbQuery;
-  // if (query['_label']) {
-  //   params.label = query['_label'];
-  // }
-  dbQuery = Actor.find(params).select('id');
+  dbQuery = db.get().collection('actors').find(params, {fields: {id: true}});
   if (query['_limit']) {
     let page = +query['_page'] || 1;
     let limit = +query['_limit'];
     dbQuery = dbQuery.limit(limit).skip((page - 1) * limit);
   }
-
-
-  dbQuery.exec(function(err, actor){
-    console.log(err);
-    actor = actor || [];
-    res.send(actor.map(el => el['_id']));
-  })
+  const actors = await dbQuery.toArray();
+  res.send(actors.map(el => el._id));
 });
 
-router.post('/', function(req, res) {
-  console.log("++++++++++++++++++++++++");
-  new Actor(req.body).save().then(function(actor) {
-    res.send(actor)
-  });
+
+router.get('/autocomplete/:query', async (req, res) => {
+  let query = req.params.query;
+  let params = {};
+  if (query) {
+    params.name = {'$regex': '^' + query, '$options': 'i'};
+  }
+  const actors = await db.get().collection('actors')
+                         .find(params, {fields: {id: true, name: true}}).toArray();
+  res.send(actors);
 })
 
-router.patch('/:id', function(req, res) {
-  Actor.findByIdAndUpdate({ _id: req.params.id }, { $set: req.body})
-    .then(function(actor) {
-      res.send(actor)
-    });
+
+router.post('/', async (req, res) => {
+  const actor = await db.get().collection('actors').save(req.body)
+  res.send(actor)
+})
+
+router.patch('/:id', async (req, res) => {
+  const actor = await db.get().collection('actors').findOneAndUpdate({ _id: ObjectID(req.params.id) }, { $set: req.body}, {returnOriginal: false})
+  res.send(actor.value)
 })
 
 module.exports = router;

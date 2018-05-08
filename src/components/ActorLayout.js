@@ -17,7 +17,9 @@ class ActorLayout extends Component {
     componentWillReceiveProps(nextProps) {
       const {selectedActor, isActorLoading, fetchMovieById} = this.props;
       if ((!selectedActor || selectedActor.id === undefined) && !isActorLoading) {
-           this.props.fetchActorById(this.props.match.params.id);
+            var actualId = this.props.match.params.id.split('__')[0];
+            console.log('actualId', actualId);
+           this.props.fetchActorById(actualId);
       }
       nextProps.moviesToLoad.forEach((el) => fetchMovieById(el))
     }
@@ -87,7 +89,7 @@ class ActorLayout extends Component {
 export default connect((state, props) => {
     let moviesToLoad = [];
     const actor = getActorById(state, props.match.params.id.split("__")[0]);
-    const isActorLoading = isActorFetching(props.match.params.id, state);
+    const isActorLoading = isActorFetching(props.match.params.id.split("__")[0], state);
     const user = getCurrentUser(state);
     let movies = [];
     if (actor) {
