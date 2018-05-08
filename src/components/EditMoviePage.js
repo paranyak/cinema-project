@@ -60,7 +60,7 @@ class EditMoviePage extends Component {
         } = this.state;
         const {film} = this.props;
         const durationIsObject = (typeof duration === 'object');
-
+        const startDateIsObject = typeof startDate === 'object';
         let Schedule = [];
         const scheduleTime = this.state.scheduleTime.sort();
         scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
@@ -69,8 +69,6 @@ class EditMoviePage extends Component {
         //         this.props.fetchActorById(c);
         //     }
         // });
-
-        console.log('CASTTT', cast);
 
         const movie = {
             name,
@@ -81,7 +79,7 @@ class EditMoviePage extends Component {
             screenshots,
             trailer,
             Schedule,
-            genre: genre.join(', '),
+            genre: Array.isArray(genre) ? genre.join(', ') : genre,
             format,
             label,
             technology,
@@ -89,7 +87,7 @@ class EditMoviePage extends Component {
                 "hour": parseInt(duration.split(':')[0]),
                 "minute": parseInt(duration.split(':')[1])
             },
-            startDate: {
+            startDate: startDateIsObject ? startDate : {
                 "year": parseInt(startDate.split('-')[0]),
                 "month": parseInt(startDate.split('-')[1]),
                 "day": parseInt(startDate.split('-')[2])

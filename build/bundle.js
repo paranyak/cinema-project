@@ -93004,7 +93004,7 @@ var EditMoviePage = function (_Component) {
         key: "editMovieInDB",
         value: function () {
             var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(e) {
-                var _state, poster, screenshots, rating, duration, name, label, description, scheduleDate, startDate, genre, format, technology, trailer, cast, film, durationIsObject, Schedule, scheduleTime, movie;
+                var _state, poster, screenshots, rating, duration, name, label, description, scheduleDate, startDate, genre, format, technology, trailer, cast, film, durationIsObject, startDateIsObject, Schedule, scheduleTime, movie;
 
                 return regeneratorRuntime.wrap(function _callee$(_context) {
                     while (1) {
@@ -93014,6 +93014,7 @@ var EditMoviePage = function (_Component) {
                                 _state = this.state, poster = _state.poster, screenshots = _state.screenshots, rating = _state.rating, duration = _state.duration, name = _state.name, label = _state.label, description = _state.description, scheduleDate = _state.scheduleDate, startDate = _state.startDate, genre = _state.genre, format = _state.format, technology = _state.technology, trailer = _state.trailer, cast = _state.cast;
                                 film = this.props.film;
                                 durationIsObject = (typeof duration === "undefined" ? "undefined" : _typeof(duration)) === 'object';
+                                startDateIsObject = (typeof startDate === "undefined" ? "undefined" : _typeof(startDate)) === 'object';
                                 Schedule = [];
                                 scheduleTime = this.state.scheduleTime.sort();
 
@@ -93028,8 +93029,6 @@ var EditMoviePage = function (_Component) {
                                 //     }
                                 // });
 
-                                console.log('CASTTT', cast);
-
                                 movie = {
                                     name: name,
                                     cast: cast.map(function (c) {
@@ -93043,7 +93042,7 @@ var EditMoviePage = function (_Component) {
                                     screenshots: screenshots,
                                     trailer: trailer,
                                     Schedule: Schedule,
-                                    genre: genre.join(', '),
+                                    genre: Array.isArray(genre) ? genre.join(', ') : genre,
                                     format: format,
                                     label: label,
                                     technology: technology,
@@ -93051,7 +93050,7 @@ var EditMoviePage = function (_Component) {
                                         "hour": parseInt(duration.split(':')[0]),
                                         "minute": parseInt(duration.split(':')[1])
                                     },
-                                    startDate: {
+                                    startDate: startDateIsObject ? startDate : {
                                         "year": parseInt(startDate.split('-')[0]),
                                         "month": parseInt(startDate.split('-')[1]),
                                         "day": parseInt(startDate.split('-')[2])
