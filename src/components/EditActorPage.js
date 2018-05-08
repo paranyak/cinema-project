@@ -1,14 +1,12 @@
 import React, {Component} from "react";
 import "../styles/Editor.less";
-import {getActorById} from "../reducers/index";
-import {fetchActors, fetchActorsSlug} from '../actions/fetch';
+import {editActorById, fetchActors, fetchActorsSlug} from '../actions/fetch';
 import block from "../helpers/BEM";
 import {connect} from "react-redux";
 import {Redirect} from "react-router";
 import EditActorImage from "./EditActorImage";
 import EditActorInfo from "./EditActorInfo";
 import {monthNames} from '../helpers/constants'
-import slugify from "slugify";
 import {getActorBySlug} from "../reducers";
 
 const b = block("Editor");
@@ -69,23 +67,8 @@ class EditActorPage extends Component {
 
         console.log("EDITED ACTOR", actorToAdd);
 
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-
-        const result = await fetch(`http://localhost:3000/actors/${actor._id}`, {
-            method: 'PATCH',
-            headers: headers,
-            body: JSON.stringify(actorToAdd)
-        });
-        console.log('res', result);
-        if (!result.ok) {
-            alert('Your form was not submitted!');
-        }
-        else {
-            const resToJson = await result.json();
-            console.log('result to json', resToJson);
-            this.setState({fireRedirect: true})
-        }
+        this.props.editActor(actorToAdd, actor._id);
+        this.setState({fireRedirect: true});
     }
 
     cancelEditing() {
@@ -134,5 +117,8 @@ export default connect((state, props) => {
         const actor = getActorBySlug(state, props.match.params.slug);
         return {actor};
     },
-    (dispatch) => ({fetchActorBySlug: (slug) => dispatch(fetchActorsSlug(slug))})
+    (dispatch) => ({
+        fetchActorBySlug: (slug) => dispatch(fetchActorsSlug(slug)),
+        editActor: (actor, id) => dispatch(editActorById(id, actor))
+    })
 )(EditActorPage);

@@ -42,10 +42,22 @@ class EditMovieInfo extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         const {label, rating, startDate, duration, name, description, scheduleTime, scheduleDate, genre, format, technology, cast} = this.state;
+        const chosenGenres = (typeof genre === 'object') ? genre : genre.split(', ');
+        const chosenTechnologies = (typeof technology === 'object') ? technology : technology.split(',');
+        const chosenFormats = (typeof format === 'object') ? format : format.split(',');
+        const stDate = (typeof startDate === 'object') ?
+            startDate :
+            {
+                year: parseInt(startDate.split('-')[0]),
+                month: parseInt(startDate.split('-')[1]),
+                day: parseInt(startDate.split('-')[2])
+            };
+
         if (prevState !== this.state) {
             this.props.callback(
                 ['label', 'startDate', 'rating', 'duration', 'name', 'description', 'scheduleTime', 'scheduleDate', 'genre', 'format', 'technology', 'cast'],
-                [label, startDate, rating, duration, name, description, scheduleTime, scheduleDate, genre, format, technology, cast]);
+                [label, stDate, rating, duration, name, description, scheduleTime, scheduleDate, chosenGenres, chosenFormats, chosenTechnologies, cast]);
+            // [label, startDate, rating, duration, name, description, scheduleTime, scheduleDate, genre, format, technology, cast]);
         }
     }
 

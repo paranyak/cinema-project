@@ -3,7 +3,7 @@ import EditMovieImage from "./EditMovieImage";
 import EditMovieInfo from "./EditMovieInfo";
 import "../styles/Editor.less"
 import {getMovieBySlug} from "../reducers";
-import {editMovieById, fetchActors, fetchMovieSlug} from '../actions/fetch';
+import {editActorById, editMovieById, fetchActors, fetchMovieSlug} from '../actions/fetch';
 import {connect} from "react-redux";
 import block from '../helpers/BEM'
 import {Redirect} from 'react-router'
@@ -64,17 +64,21 @@ class EditMoviePage extends Component {
         let Schedule = [];
         const scheduleTime = this.state.scheduleTime.sort();
         scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
-        // cast.map(c => {
-        //     if (!c._id) {
-        //         this.props.fetchActorById(c);
-        //     }
-        // });
 
-        console.log('CASTTT', cast);
+        let newCast = cast;
+
+        if (cast.length !== 0 && typeof cast[0] === 'object') {
+            newCast = cast.map(c => c._id).filter(id => id.trim() !== '');
+            cast.filter(el => el._id.trim() !== '')
+                .map(el => {
+                    const movies = (el.movies.includes(film._id)) ? [...el.movies] : [...el.movies, film._id];
+                    this.props.editActors({movies}, el._id);
+                });
+        }
 
         const movie = {
             name,
-            cast: cast.map(c => c._id).filter(id => id.trim() !== ''),
+            cast: newCast,
             image: poster,
             rating: parseFloat(rating),
             description,
@@ -89,44 +93,13 @@ class EditMoviePage extends Component {
                 "hour": parseInt(duration.split(':')[0]),
                 "minute": parseInt(duration.split(':')[1])
             },
-            startDate: {
-                "year": parseInt(startDate.split('-')[0]),
-                "month": parseInt(startDate.split('-')[1]),
-                "day": parseInt(startDate.split('-')[2])
-            }
+            startDate
         };
 
         console.log("EDITED MOVIE", movie);
 
-        // const headers = new Headers();
-        // headers.append('Content-Type', 'application/json');
-        // cast
-        //     .filter(el => el._id.trim() !== '')
-        //     .map(el => {
-        //         const movies = (el.movies.includes(film._id)) ? [...el.movies] : [...el.movies, film._id];
-        //         fetch(`http://localhost:3000/actors/${el._id}`, {
-        //             method: 'PATCH',
-        //             headers: headers,
-        //             body: JSON.stringify({movies})
-        //         }).then((res) => res.json())
-        //     });
-
-        // const result = await fetch(`http://localhost:3000/movies/${film._id}`, {
-        //     method: 'PATCH',
-        //     headers: headers,
-        //     body: JSON.stringify(movie)
-        // });
-        // console.log('res', result);
-        // if (!result.ok) {
-        //     alert('Your form was not submitted!');
-        // }
-        // else {
-        //     const resToJson = await result.json();
-        //     console.log('result to json', resToJson);
-            this.props.editMovie(movie, film._id);
-            this.setState({fireRedirect: true})
-        // }
-
+        this.props.editMovie(movie, film._id);
+        this.setState({fireRedirect: true})
 
     }
 
@@ -137,7 +110,7 @@ class EditMoviePage extends Component {
 
     render() {
         const {film} = this.props;
-        const {cast, fireRedirect} = this.state;
+        const {fireRedirect} = this.state;
         if (!film || film.slugName === undefined) {
             this.props.fetchMovieBySlug(this.props.match.params.slug);
             return null;
@@ -171,6 +144,7 @@ export default connect((state, props) => {
     (dispatch) => ({
         fetchMovieBySlug: slug => dispatch(fetchMovieSlug(slug)),
         fetchActorById: id => dispatch(fetchActors(id)),
-        editMovie: (movie, id) => dispatch(editMovieById(id, movie))
+        editMovie: (movie, id) => dispatch(editMovieById(id, movie)),
+        editActors: (actor, id) => dispatch(editActorById(id, actor))
     })
 )(EditMoviePage);

@@ -1,43 +1,35 @@
 const LOCALHOST = "http://localhost:3000";
 
 export async function movie(id) {
-    let movies = await ((await fetch(`${LOCALHOST}/movies/byId/${id}`)).json());
-    return movies;
+    return await ((await fetch(`${LOCALHOST}/movies/byId/${id}`)).json());
 }
 
 export async function movieBySlug(slugName) {
-    let movies = await ((await fetch(`${LOCALHOST}/movies/bySlugName/${slugName}`)).json());
-    return movies;
+    return await ((await fetch(`${LOCALHOST}/movies/bySlugName/${slugName}`)).json());
 }
 
 export async function moviesSchedule(day) {
-    let movies = await ((await fetch(`${LOCALHOST}/movies/ids?Schedule=${day}`)).json());
-    return movies
+    return await ((await fetch(`${LOCALHOST}/movies/ids?Schedule=${day}`)).json())
 }
 
 export async function carouselleMovies(label) {
-    let movies = await ((await fetch(`${LOCALHOST}/movies/ids?label=${label}`)).json());
-    return movies
+    return await ((await fetch(`${LOCALHOST}/movies/ids?label=${label}`)).json())
 }
 
 export async function additionalMovies(limit, page) {
-    let movies = await ((await fetch(`${LOCALHOST}/movies/ids?_page=${page}&_limit=${limit}`)).json());
-    return movies;
+    return await ((await fetch(`${LOCALHOST}/movies/ids?_page=${page}&_limit=${limit}`)).json());
 }
 
 export async function actors(id) {
-    const response = await fetch(`${LOCALHOST}/actors/byId/${id}`);
-    return response
+    return await fetch(`${LOCALHOST}/actors/byId/${id}`)
 }
 
 export async function actorsBySlugName(slugName) {
-    const response = await fetch(`${LOCALHOST}/actors/bySlugName/${slugName}`);
-    return response
+    return await fetch(`${LOCALHOST}/actors/bySlugName/${slugName}`)
 }
 
 export async function additionalActors(limit, page) {
-    let actors = await ((await fetch(`${LOCALHOST}/actors/ids?_page=${page}&_limit=${limit}`)).json());
-    return actors
+    return await ((await fetch(`${LOCALHOST}/actors/ids?_page=${page}&_limit=${limit}`)).json())
 }
 
 export const editMovie = async (id, movie) => {
@@ -46,5 +38,22 @@ export const editMovie = async (id, movie) => {
         headers: {"Content-type": "application/json"},
         body: JSON.stringify(movie)
     });
+    if (!response.ok) {
+        alert('Your form was not submitted!');
+        return null;
+    }
+    return response.json();
+};
+
+export const editActor = async (id, actor) => {
+    const response = await fetch(`${LOCALHOST}/actors/${id}`, {
+        method: 'PATCH',
+        headers: {"Content-type": "application/json"},
+        body: JSON.stringify(actor)
+    });
+    if (!response.ok) {
+        alert('Your form was not submitted!');
+        return null;
+    }
     return response.json();
 };
