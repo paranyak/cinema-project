@@ -33,7 +33,7 @@ class CastInputs extends Component {
 
     async onListChange(i, e) {
         if (e.target.value) {
-            const response = await fetch(`http://localhost:3000/actors?name_like=${slugify(e.target.value, '_')}`);// 'posts' to get work the url
+            const response = await fetch(`http://localhost:3000/actors/autocomplete/${e.target.value}`);// 'posts' to get work the url
             //об не працювало на пробіли
             if (!response.ok) {
                 console.log("ERROR IN Choosing ACTOR");
