@@ -30,14 +30,12 @@ class AllMovies extends Component {
     }
 
 
-
     componentWillReceiveProps(nextProps) {
         if (nextProps.films.length === this.props.films.length && this.props.isFetching && !nextProps.isFetching) {
             this.setState({...this.state, hasMoreItems: false});
         }
 
     }
-
 
 
     showItems() {
@@ -50,7 +48,7 @@ class AllMovies extends Component {
                             !comingSoonIds.includes(film)
                         )
                         .map((film, i) =>
-                            <LazyLoad height='501px' offset={400} >
+                            <LazyLoad key={i} height='501px' offset={400}>
                                 <MoviePoster filmId={film} id={i}/>
                             </LazyLoad>
                         )}
@@ -100,11 +98,11 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = state => {
-    const movies = getAllMoviesIds(state);
+    const films = getAllMoviesIds(state);
     const comingSoonIds = getCarouselleMovies(state, 'soon');
     const isFetching = isMovieFetching('additional', state);
     return {
-        films: movies,
+        films,
         comingSoonIds,
         isFetching
     }

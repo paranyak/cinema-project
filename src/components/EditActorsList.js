@@ -1,9 +1,6 @@
 import React, {Component} from "react";
 import "../styles/EditActorsList.less";
 import block from '../helpers/BEM'
-import {getActorById} from "../reducers";
-import {connect} from "react-redux";
-import {fetchActors} from "../actions/fetch";
 
 const b = block("EditActorsList");
 
@@ -12,7 +9,7 @@ class EditActorsList extends Component {
         super(props);
         this.state = {
             suggestedActors: [],
-            cast: props.cast
+            cast: props.actors
         }
     }
 
@@ -49,9 +46,13 @@ class EditActorsList extends Component {
     onOptionClick(i, e) {
         const {callback} = this.props;
         const {value} = e.target;
-        const filtered = this.state.suggestedActors.filter(f => f.name === value || f.name.includes(value));
-        const _id = filtered._id;
-        const movies = filtered.movies;
+        const filtered = this.state.suggestedActors.filter(f => f.name === value);// || f.name.includes(value));
+        let _id = '';
+        let movies = [];
+        if (filtered.length === 1) {
+            _id = filtered[0]._id;
+            movies = filtered[0].movies;
+        }
         const arr = [
             ...this.state.cast.slice(0, i),
             Object.assign({}, this.state.cast[i], {name: value, _id, movies}),
@@ -88,8 +89,4 @@ class EditActorsList extends Component {
     }
 }
 
-export default connect((state, props) => {
-        const cast = props.film.cast.map(actor => getActorById(state, actor));
-        return {cast};
-    }, (dispatch) => ({fetchActorById: (id) => dispatch(fetchActors(id))})
-)(EditActorsList);
+export default EditActorsList;

@@ -33,26 +33,21 @@ export async function additionalActors(limit, page) {
 }
 
 export async function postMovie(movie) {
-    console.log("POST MOvIE");
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    console.log("POST MOVIE", movie);
-
-    let result =  await fetch('http://localhost:3000/movies', {
+    return await fetch('http://localhost:3000/movies', {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(movie)
     });
-
-    console.log("RESULT");
-
-    return result;
 }
 
 export const editMovie = async (id, movie) => {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
     const response = await fetch(`${LOCALHOST}/movies/${id}`, {
         method: 'PATCH',
-        headers: {"Content-type": "application/json"},
+        headers: headers,
         body: JSON.stringify(movie)
     });
     if (!response.ok) {

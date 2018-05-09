@@ -62,12 +62,15 @@ class EditMoviePage extends Component {
         const scheduleTime = this.state.scheduleTime.sort();
         scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
 
+        const newCast = cast.map(el => el._id).filter(id => id !== '');
+        console.log('new cast', newCast);
+
         const movie = {
             name,
             slugName: slugify(name, {replacement: '_', remove: /[.:!,;*&@^]/g}),
             image: poster,
             rating: parseFloat(rating).toString(),
-            cast: [],       //cast.filter(el => el !== ''),
+            cast: newCast,
             description,
             screenshots,
             trailer,
@@ -89,8 +92,7 @@ class EditMoviePage extends Component {
 
         console.log("MOVIE", movie);
         await this.props.postData(movie);
-        console.log("THIS PROPS AFTER POST:", this.props);
-        this.setState({fireRedirect: true})
+        this.setState({fireRedirect: true});
     }
 
     cancelAdding() {
@@ -131,13 +133,7 @@ class EditMoviePage extends Component {
                                 disabled={!isEnabled}
                                 className={b('btn', ['submit'])}
                                 onClick={this.addMovieToDB.bind(this)}
-                        >Save
-                        </button>
-                        <button type='submit'
-                                disabled={!isEnabled}
-                                className={b('btn', ['submit'])}
-                                onClick={this.addMovieToDB.bind(this)}
-                        >Publish
+                        >Submit
                         </button>
                         <button type='button' className={b('btn')} style={{width: lenCancelBtn}}
                                 onClick={this.cancelAdding.bind(this)}>Cancel
@@ -151,5 +147,5 @@ class EditMoviePage extends Component {
 }
 
 
-export default connect((state, props) => {console.log("here map to props:", state, props); return {props, state}}, (dispatch) => ({postData: (movie) => dispatch(postMovieToDB(movie))})
+export default connect(null, (dispatch) => ({postData: (movie) => dispatch(postMovieToDB(movie))})
 )(EditMoviePage);
