@@ -14,11 +14,11 @@ class TimeRanges extends Component {
 
     createScheduleList() {
         return this.state.schedule.map((el, i) =>
-            <form key={i}>
+            <div key={i}>
                 <input type='time' className={b('time-input')} value={el} onChange={this.onTimeChange.bind(this, i)}/>
                 <input type='button' value='-' className={b('button')}
                        onClick={this.removeSchedule.bind(this, i)}/>
-            </form>
+            </div>
         )
     }
 

@@ -2,7 +2,6 @@ import {moviesListSchema, actorsListSchema, actorsListSchemaSlug, moviesListSche
 import {normalize} from 'normalizr';
 import * as fromFetch from '../actions/index';
 import * as fromApi from '../api/fetch';
-import {editingMovieFail, editingMovieSuccess} from "./index";
 
 export const fetchMovie = (id) => async (dispatch) => {
     dispatch(fromFetch.fetchMoviesStart(id));
@@ -83,35 +82,41 @@ export const fetchActorsSlug = (slugName) => async (dispatch) => {
     }
 };
 
-export const postMovieToDB =  (movie) => async (dispatch) =>{
-
-    console.log("HERE, post start");
+export const postMovieToDB = (movie) => async (dispatch) => {
     dispatch(fromFetch.fetchPostStart(movie));
-    console.log('one1');
     let result = await fromApi.postMovie(movie);
-    console.log('two', result);
 
     if (!result.ok) {
-        console.log("not ok");
-        // alert('Your form was not submitted!');
-        }
-        else {
-            let resToJson = await result.json();
-            console.log('result to json', resToJson);
-            resToJson.id = resToJson['_id'];
-            resToJson = normalize([resToJson], moviesListSchema);
-            dispatch(fromFetch.postMovieSuccess(resToJson, resToJson.result, resToJson.entities.movies));}
-
-    console.log("THERE");
-
+        alert('Your form was not submitted!');
+    }
+    else {
+        const res = await result.json();
+        let resToJson = res;
+        resToJson.id = resToJson['_id'];
+        resToJson = normalize([resToJson], moviesListSchema);
+        dispatch(fromFetch.postMovieSuccess(resToJson, resToJson.result, resToJson.entities.movies));
+    }
 };
 
 export const editMovieById = (id, movie) => async (dispatch) => {
+    dispatch(fromFetch.editingMovieStart(movie));
     try {
-        await fromApi.editMovie(id, movie);
-        dispatch(editingMovieSuccess());
+        const result = await fromApi.editMovie(id, movie);
+        dispatch(fromFetch.editingMovieSuccess(result, result['slugName'], id));
     }
     catch (err) {
-        dispatch(editingMovieFail());
+        dispatch(fromFetch.editingFail());
+    }
+
+};
+
+export const editActorById = (id, actor) => async (dispatch) => {
+    dispatch(fromFetch.editingActorStart(actor));
+    try {
+        const result = await fromApi.editActor(id, actor);
+        dispatch(fromFetch.editingActorSuccess(result, result['slugName'], id));
+    }
+    catch (err) {
+        dispatch(fromFetch.editingFail());
     }
 };

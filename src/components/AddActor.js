@@ -21,7 +21,7 @@ class AddActor extends Component {
             movies: [],                          //всі фільми , тобто це той вигляд який має бд
             currentInputIndex: 0,
             actor: '',
-            fireRedirect:false
+            fireRedirect: false
         };
         this.addActorToDB = this.addActorToDB.bind(this);
         this.checkform = this.checkform.bind(this);
@@ -66,10 +66,10 @@ class AddActor extends Component {
                                 key = data.id;
                                 createdMovies[key] = [this.state.suggestedMovies[i][j].name, this.state.movies[i].role];
                                 newData[i][j]["id"] = key;
-                                this.setState({suggestedMovies : newData});
+                                this.setState({suggestedMovies: newData});
                             });
 
-                    }else{
+                    } else {
                         createdMovies[key] = [this.state.suggestedMovies[i][j].name, this.state.movies[i].role];
                     }
                 }
@@ -96,14 +96,17 @@ class AddActor extends Component {
             image: this.state.actor
         };
 
-        let actorId=-1;
+        let actorId = -1;
         console.log("HeRE TO POST:", actorToAdd);
         await fetch('http://localhost:3000/actors', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(actorToAdd)
         }).then((res) => res.json())
-            .then((data) => {actorId = data.id; console.log("POSTED", data)});
+            .then((data) => {
+                actorId = data.id;
+                console.log("POSTED", data)
+            });
 
         for (let i = 0; i < movieInputs.length; i++) {
             for (let j = 0; j < this.state.suggestedMovies[i].length; j++) {
@@ -334,39 +337,49 @@ class AddActor extends Component {
                 <h1 className={b("main-title")}>ADD ACTOR</h1>
 
                 <div className={b('image')}>
-                    <h3 className={b('title')}>Image</h3>
-
+                    <h3 className={b('title')}>Actor Image</h3>
                     <DragDropImage value={''} name='actor' callbackFromParent={this.myCallback2}
-                                   callbackInRemove={this.myCallback2} />
+                                   callbackInRemove={this.myCallback2}/>
                 </div>
                 <section className={b("information")}>
-                <h3 className={b('title')}>Name</h3>
-                <input ref='name' placeholder={'Enter name'} className={b("inputs", ["name", "required"])} type="text"
-                       onChange={this.checkform} onKeyUp={(e) => this.startTimer(e, "naming")}/>
-                <h3 className={b('title')}>Date of birth</h3>
-                <input ref='date' placeholder={'Enter  date of birth'} className={b("inputs", ["required"])} type="date"
-                       onChange={this.checkform}/>
-                <h3 className={b('title')}>City of birth</h3>
-                <input ref='city' placeholder={'Enter city of birth'} className={b("inputs", ["required"])} type="text"
-                       onChange={this.checkform}/>
-                <h3 className={b('title')}>Nominations</h3>
-                <input ref='nominations' placeholder={'Enter nominations'} className={b("inputs")} type="text"
-                       onChange={this.checkform}/>
-                <h3 className={b('title')}>Short information</h3>
-                <textarea ref='info' placeholder={'Enter short information'} className={b("inputs", ["required"])}
-                          onChange={this.checkform}/>
-                <h3 className={b('title')}>Movies</h3>
+                    <h3 className={b('title')}>Actor Name</h3>
+                    <input ref='name' placeholder={'Enter name'} className={b("inputs", ["name", "required"])}
+                           type="text"
+                           onChange={this.checkform} onKeyUp={(e) => this.startTimer(e, "naming")}/>
 
-                <div className={b('movies-block')}>
-                    <button className={b('add-button')} onClick={this.addMovie.bind(this)}>+</button>
-                    {this.createListOfMovies()}
-                </div>
+                    <h3 className={b('title')}>Short Info</h3>
+                    <textarea ref='info' placeholder={'Enter short information'}
+                              className={b("inputs", ['textarea', "required"])}
+                              onChange={this.checkform}/>
+
+                    <h3 className={b('title')}>Date of birth</h3>
+                    <input ref='date' placeholder={'Enter date of birth'} className={b("inputs", ["required"])}
+                           type="date"
+                           onChange={this.checkform}/>
+
+                    <h3 className={b('title')}>City of birth</h3>
+                    <input ref='city' placeholder={'Enter city of birth'} className={b("inputs", ["required"])}
+                           type="text"
+                           onChange={this.checkform}/>
+
+                    <h3 className={b('title')}>Nominations</h3>
+                    <input ref='nominations' placeholder={'Enter nominations'} className={b("inputs")} type="text"
+                           onChange={this.checkform}/>
+
+                    <h3 className={b('title')}>Movies</h3>
+                    <div className={b('movies-block')}>
+                        <button className={b('add-button')} onClick={this.addMovie.bind(this)}>+</button>
+                        {this.createListOfMovies()}
+                    </div>
                 </section>
                 <div className={b('btns')}>
-                    <button type='submit' className={b('button')} onClick={this.addActorToDB}>Submit
+                    <button type='submit' className={b('button')} onClick={this.addActorToDB}>
+                        Submit
                     </button>
                     <button type='button' className={b('btn')}
-                            onClick={this.cancelAdding.bind(this)}>Cancel</button>
+                            onClick={this.cancelAdding.bind(this)}>
+                        Cancel
+                    </button>
                 </div>
 
             </form>

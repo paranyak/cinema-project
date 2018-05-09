@@ -22,7 +22,7 @@ class EditMovieInfo extends Component {
             genre: props.film.genre,
             format: props.film.format,
             technology: props.film.technology,
-            cast: props.film.cast,
+            cast: props.actors,
             label: props.film.label,
             startDate: props.film.startDate
         };
@@ -42,10 +42,21 @@ class EditMovieInfo extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         const {label, rating, startDate, duration, name, description, scheduleTime, scheduleDate, genre, format, technology, cast} = this.state;
+        const chosenGenres = (typeof genre === 'object') ? genre : genre.split(', ');
+        const chosenTechnologies = (typeof technology === 'object') ? technology : technology.split(',');
+        const chosenFormats = (typeof format === 'object') ? format : format.split(',');
+        const stDate = (typeof startDate === 'object') ?
+            startDate :
+            {
+                year: parseInt(startDate.split('-')[0]),
+                month: parseInt(startDate.split('-')[1]),
+                day: parseInt(startDate.split('-')[2])
+            };
+
         if (prevState !== this.state) {
             this.props.callback(
                 ['label', 'startDate', 'rating', 'duration', 'name', 'description', 'scheduleTime', 'scheduleDate', 'genre', 'format', 'technology', 'cast'],
-                [label, startDate, rating, duration, name, description, scheduleTime, scheduleDate, genre, format, technology, cast]);
+                [label, stDate, rating, duration, name, description, scheduleTime, scheduleDate, chosenGenres, chosenFormats, chosenTechnologies, cast]);
         }
     }
 
@@ -82,16 +93,12 @@ class EditMovieInfo extends Component {
         }
         const timeRanges = Array.from(new Set(schedule.map(el => el.split(' ')[1]))).sort();
 
-        const year = film.startDate.year;
-        const month = (film.startDate.month > 9 ? '' : 0) + film.startDate.month.toString();
-        const day = (film.startDate.day > 9 ? '' : 0) + film.startDate.day.toString();
-        const startDate = year + '-' + month + '-' + day;
-        return [durationTime, chosenGenres, chosenTechnologies, chosenFormats, from, to, timeRanges, startDate];
+        return [durationTime, chosenGenres, chosenTechnologies, chosenFormats, from, to, timeRanges];
     }
 
     render() {
-        const {film} = this.props;
-        const {label} = this.state;
+        const {film, actors} = this.props;
+        const {label, startDate} = this.state;
         const values = this.getDataFromFilm(film);
         const durationTime = values[0];
         const chosenGenres = values[1];
@@ -100,7 +107,13 @@ class EditMovieInfo extends Component {
         const from = values[4];
         const to = values[5];
         const timeRanges = values[6];
-        const startDate = values[7];
+        let stDate = startDate;
+        if (typeof startDate === 'object') {
+            const year = startDate.year;
+            const month = (startDate.month > 9 ? '' : 0) + startDate.month.toString();
+            const day = (startDate.day > 9 ? '' : 0) + startDate.day.toString();
+            stDate = year + '-' + month + '-' + day;
+        }
 
         return (
             <section className={b()}>
@@ -122,12 +135,12 @@ class EditMovieInfo extends Component {
                        onChange={this.onValueChange}/>
 
                 <h3 className={b('title')}>Start Date</h3>
-                <input type="date" onChange={this.onValueChange} defaultValue={startDate} name='startDate'
+                <input type="date" onChange={this.onValueChange} defaultValue={stDate} name='startDate'
                        className={b('input')}/>
 
                 <h3 className={b('title')}>Schedule</h3>
                 <CalendarRangePicker from={new Date(from)} to={new Date(to)} name='scheduleDate'
-                                     startDate={film.startDate} callbackFromParent={this.callback}/>
+                                     startDate={stDate} callbackFromParent={this.callback}/>
                 <TimeRanges name='scheduleTime' schedule={timeRanges} callbackFromParent={this.callback}/>
 
                 <h3 className={b('title')}>Genre</h3>
@@ -143,7 +156,7 @@ class EditMovieInfo extends Component {
                                 callback={this.callback}/>
 
                 <h3 className={b('title')}>Actors</h3>
-                <EditActorsList film={film} callback={this.callback}/>
+                <EditActorsList actors={actors} callback={this.callback}/>
 
                 <h3 className={b('title')}>Label</h3>
                 <div>

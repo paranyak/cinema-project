@@ -3,6 +3,7 @@ import "../styles/EditInfo.less";
 import {monthNames} from '../helpers/constants'
 import block from '../helpers/BEM'
 import NominationsList from "./NominationsList";
+import EditMoviesList from "./EditMoviesList";
 
 const b = block("EditInfo");
 
@@ -18,6 +19,7 @@ class EditActorInfo extends Component {
             name: props.actor.name
         };
         this.onValueChange = this.onValueChange.bind(this);
+        this.callback = this.callback.bind(this);
     }
 
     componentDidMount() {
@@ -46,7 +48,7 @@ class EditActorInfo extends Component {
     }
 
     render() {
-        const {actor} = this.props;
+        const {actor, films} = this.props;
         const date = actor.date.split(' ');
         const month = (monthNames.indexOf(date[0]) > 8 ? '' : '0') + (monthNames.indexOf(date[0]) + 1).toString();
         const day = (parseInt(date[1].slice(0, -1)) > 9 ? '' : '0') + date[1].slice(0, -1);
@@ -59,20 +61,23 @@ class EditActorInfo extends Component {
                    defaultValue={actor.name}
                    onChange={this.onValueChange} placeholder='Please, enter the actor name'/>
 
-            <h3 className={b('title')}>Actor Info</h3>
+            <h3 className={b('title')}>Short Info</h3>
             <textarea className={b('input', ['textarea'])} defaultValue={actor.info}
                       placeholder='Please, enter the actor bio...' name='info' rows="5"
                       onChange={this.onValueChange}/>
 
-            <h3 className={b("title")}>Born on</h3>
+            <h3 className={b("title")}>Date of birth</h3>
             <input type='date' className={b('input')} name='date' onChange={this.onValueChange}
                    defaultValue={birthDate}/>
 
-            <h3 className={b("title")}>Born in</h3>
+            <h3 className={b("title")}>City of birth</h3>
             <input className={b("input")} name='city' defaultValue={actor.city} onChange={this.onValueChange}/>
 
             <h3 className={b("title")}>Nominations</h3>
-            <NominationsList nominations={actor.nominations} callback={this.callback.bind(this)}/>
+            <NominationsList nominations={actor.nominations} callback={this.callback}/>
+
+            <h3 className={b("title")}>Movies</h3>
+            <EditMoviesList movies={films} callback={this.callback}/>
         </section>
     }
 }

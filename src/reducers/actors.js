@@ -6,7 +6,7 @@ import {
     FETCH_ACTOR__SUCCESS,
     FETCH_ACTOR_SLUG_SUCCESS,
     FETCH_FAIL,
-    FETCH_FAIL_SLUG
+    FETCH_FAIL_SLUG, EDITING_ACTOR_SUCCESS, EDITING_MOVIE_SUCCESS, EDITING_MOVIE_START, EDITING_ACTOR_START
 } from '../helpers/actionTypes';
 
 export const byId = (state = {}, action) => {
@@ -18,6 +18,10 @@ export const byId = (state = {}, action) => {
             };
         case FETCH_FAIL:
             return action;
+        case EDITING_ACTOR_SUCCESS:
+            let newState = state;
+            newState[action.id] = action.actor;
+            return newState;
         default:
             return state;
     }
@@ -32,6 +36,10 @@ export const bySlug = (state = {}, action) => {
             };
         case FETCH_FAIL_SLUG:
             return action;
+        case EDITING_ACTOR_SUCCESS:
+            let newState = state;
+            newState[action.slug] = action.actor;
+            return newState;
         default:
             return state;
     }
@@ -63,6 +71,10 @@ export const fetching = (state = {}, action) => {
         case FETCH_ACTOR_SLUG_SUCCESS:
         case FETCH_FAIL_SLUG:
             return assoc(action.slugName, false, state);
+        case EDITING_ACTOR_START:
+            return assoc(action.actor, true, state);
+        case EDITING_ACTOR_SUCCESS:
+            return assoc(action.actor, false, state);
         default:
             return state;
     }
