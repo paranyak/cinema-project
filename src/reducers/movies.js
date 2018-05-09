@@ -10,7 +10,11 @@ import {
     FETCH_CAROUSEL_MOVIES_SUCCESS,
     FETCH_SCHEDULE_MOVIES_SUCCESS,
     POST_MOVIE_SUCCESS,
-    FETCH_POST, EDITING_MOVIE_SUCCESS, EDITING_MOVIE_START
+    FETCH_POST,
+    EDITING_MOVIE_SUCCESS,
+    EDITING_MOVIE_START,
+    FETCH_MOVIES_COUNT,
+    FETCH_MOVIES_COUNT_SUCCESS
 } from '../helpers/actionTypes';
 
 const byId = (state = {}, action) => {
@@ -39,6 +43,15 @@ const bySlug = (state = {}, action) => {
             let newState = state;
             newState[action.slug] = action.movie;
             return newState;
+        default:
+            return state;
+    }
+};
+
+const movieCount = (state = {}, action) => {
+    switch (action.type) {
+        case FETCH_MOVIES_COUNT_SUCCESS:
+            return action.movies;
         default:
             return state;
     }
@@ -115,9 +128,11 @@ export const getScheduleMoviesIds = (state) => state.scheduleMoviesIds;
 export const getMovieById = (state, id) => state.byId[id];
 export const getMovieBySlug = (state, slugName) => state.bySlug[slugName];
 
+export const getMoviesCount = (state) => state.movies.movieCount;
 export default combineReducers({
     byId,
     bySlug,
+    movieCount,
     allIds,
     fetching,
     carouselleMovies,

@@ -22,6 +22,8 @@ import {
     EDITING_FAIL,
     EDITING_ACTOR_SUCCESS,
     POST_MOVIE_SUCCESS,
+    FETCH_MOVIES_COUNT,
+    FETCH_MOVIES_COUNT_SUCCESS,
     FETCH_POST, EDITING_MOVIE_START, EDITING_ACTOR_START
 } from '../helpers/actionTypes';
 
@@ -34,6 +36,8 @@ export const fetchPostStart = (movie) => ({type: FETCH_POST, movie});
 export const editingMovieStart = (movie) => ({type: EDITING_MOVIE_START, movie});
 export const editingActorStart = (actor) => ({type: EDITING_ACTOR_START, actor});
 
+export const fetchMoviesCountStart = () => ({type: FETCH_MOVIES_COUNT});
+export const fetchMoviesCountSuccess = (movies) => ({type: FETCH_MOVIES_COUNT_SUCCESS, movies});
 
 export const fetchActorsStart = (id) => ({type: FETCH_ACTOR, id});
 export const fetchActorsSlugStart = (slugName) => ({type: FETCH_ACTOR_SLUG, slugName});
