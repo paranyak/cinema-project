@@ -1,7 +1,14 @@
+
 var express = require('express');
 var router = express.Router();
 var db = require('../db')
 var ObjectID = require('mongodb').ObjectID;
+
+router.get('/moviesCount', async function(req, res) {
+    const movieCount = await db.get().collection('movies').count();
+    res.send(movieCount.toString());
+});
+
 
 router.get('/byId/:id', async function (req, res) {
     const id = req.params.id;
@@ -19,22 +26,6 @@ router.get('/ids', async function (req, res) {
     if (query['Schedule']) {
         params.Schedule = {"$regex": query.Schedule, "$options": "i"}
     }
-router.get('/moviesCount', async function(req, res) {
-    const movieCount = await db.get().collection('movies').count();
-    res.send(movieCount.toString());
-});
-
-
-router.get('/ids', async function(req, res) {
-  let dbQuery;
-  let params = {};
-  let query = req.query;
-  if (query['label']) {
-    params.label = query['label'];
-  }
-  if (query['Schedule']) {
-    params.Schedule = { "$regex": query.Schedule, "$options": "i" }
-  }
 
     dbQuery = db.get().collection('movies').find(params, {fields: {id: true}});
 

@@ -61,10 +61,9 @@ class AllMovies extends Component {
 
     }
 
-    calculateHeight(){
+    calculateHeight(count) {
         let columnType = this.getColumnType();
-        let height = ((this.state.movies)/columnType) * 501 + 1000;
-        console.log("HEIGHT:", height);
+        let height = ((count) / columnType) * 501 + 1000;
         return height + 'px';
     }
 
@@ -75,7 +74,7 @@ class AllMovies extends Component {
                 <div className={b()}>
                     {films
                         .map((film, i) =>
-                            <LazyLoad height='501px'  offset={1000} key={i} >
+                            <LazyLoad height='501px' offset={1000} key={i}>
                                 <MoviePoster filmId={film} id={i}/>
                             </LazyLoad>
                         )}
@@ -89,6 +88,7 @@ class AllMovies extends Component {
     }
 
     render() {
+
         if (this.props.films.length !== 0) {
             return (
                 <section>
@@ -114,6 +114,9 @@ class AllMovies extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        moviesCount: () => {
+            dispatch(fetchMoviesCount())
+        },
         fetchAllMovies: (labels, pages) => {
             dispatch(fetchAdditionalMovies(labels, pages))
         },
@@ -124,9 +127,11 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = state => {
+    const count = getMoviesCount(state);
     const movies = getAllMoviesIds(state);
     const isFetching = isMovieFetching('additional', state);
     return {
+        count,
         films: movies,
         isFetching
     }
