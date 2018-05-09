@@ -76,7 +76,7 @@ class AllMovies extends Component {
                     {films
                         .map((film, i) =>
                             <LazyLoad height='501px'  offset={1000} key={i} >
-                                <MoviePoster filmId={film} id={i}/>
+                                <MoviePoster filmId={film} key={i}/>
                             </LazyLoad>
                         )}
                 </div>
