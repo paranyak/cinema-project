@@ -3,7 +3,7 @@ import EditMovieImage from "./EditMovieImage";
 import EditMovieInfo from "./EditMovieInfo";
 import "../styles/Editor.less"
 import {getActorById, getMovieBySlug} from "../reducers";
-import {editActorById, editMovieById, fetchActors, fetchMovieSlug} from '../actions/fetch';
+import {editActorById, editMovieById, fetchMovieSlug} from '../actions/fetch';
 import {connect} from "react-redux";
 import block from '../helpers/BEM'
 import {Redirect} from 'react-router'

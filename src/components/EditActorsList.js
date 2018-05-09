@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import "../styles/EditActorsList.less";
+import "../styles/EditList.less";
 import block from '../helpers/BEM'
 
-const b = block("EditActorsList");
+const b = block("EditList");
 
 class EditActorsList extends Component {
     constructor(props) {

@@ -3,6 +3,7 @@ import "../styles/EditInfo.less";
 import {monthNames} from '../helpers/constants'
 import block from '../helpers/BEM'
 import NominationsList from "./NominationsList";
+import EditMoviesList from "./EditMoviesList";
 
 const b = block("EditInfo");
 
@@ -18,6 +19,7 @@ class EditActorInfo extends Component {
             name: props.actor.name
         };
         this.onValueChange = this.onValueChange.bind(this);
+        this.callback = this.callback.bind(this);
     }
 
     componentDidMount() {
@@ -46,7 +48,7 @@ class EditActorInfo extends Component {
     }
 
     render() {
-        const {actor} = this.props;
+        const {actor, films} = this.props;
         const date = actor.date.split(' ');
         const month = (monthNames.indexOf(date[0]) > 8 ? '' : '0') + (monthNames.indexOf(date[0]) + 1).toString();
         const day = (parseInt(date[1].slice(0, -1)) > 9 ? '' : '0') + date[1].slice(0, -1);
@@ -72,9 +74,10 @@ class EditActorInfo extends Component {
             <input className={b("input")} name='city' defaultValue={actor.city} onChange={this.onValueChange}/>
 
             <h3 className={b("title")}>Nominations</h3>
-            <NominationsList nominations={actor.nominations} callback={this.callback.bind(this)}/>
+            <NominationsList nominations={actor.nominations} callback={this.callback}/>
 
             <h3 className={b("title")}>Movies</h3>
+            <EditMoviesList movies={films} callback={this.callback}/>
         </section>
     }
 }

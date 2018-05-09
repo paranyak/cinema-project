@@ -156,7 +156,7 @@ class EditMovieInfo extends Component {
                                 callback={this.callback}/>
 
                 <h3 className={b('title')}>Actors</h3>
-                <EditActorsList film={film} actors={actors} callback={this.callback}/>
+                <EditActorsList actors={actors} callback={this.callback}/>
 
                 <h3 className={b('title')}>Label</h3>
                 <div>

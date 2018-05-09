@@ -1,13 +1,13 @@
 import React, {Component} from "react";
 import "../styles/Editor.less";
-import {editActorById, fetchActors, fetchActorsSlug} from '../actions/fetch';
+import {editActorById, editMovieById, fetchActors, fetchActorsSlug} from '../actions/fetch';
 import block from "../helpers/BEM";
 import {connect} from "react-redux";
 import {Redirect} from "react-router";
 import EditActorImage from "./EditActorImage";
 import EditActorInfo from "./EditActorInfo";
 import {monthNames} from '../helpers/constants'
-import {getActorBySlug} from "../reducers";
+import {getActorBySlug, getMovieById} from "../reducers";
 
 const b = block("Editor");
 
@@ -17,6 +17,7 @@ class EditActorPage extends Component {
         this.state = {
             fireRedirect: false,
             movies: [],
+            oldMovies: props.films,
             info: '',
             date: '',
             city: '',
@@ -41,7 +42,9 @@ class EditActorPage extends Component {
             city,
             nominations,
             image,
-            name
+            name,
+            movies,
+            oldMovies
         } = this.state;
         const {actor} = this.props;
 
@@ -55,8 +58,28 @@ class EditActorPage extends Component {
             birthDay = month + ' ' + day + ', ' + year;
         }
 
+        let newMovies = movies;
+
+        if (movies.length !== 0 && typeof movies[0] === 'object') {
+            newMovies = movies.map(m => m._id).filter(id => id.trim() !== '');
+            movies.filter(el => el._id.trim() !== '')
+                .map(el => {
+                    const cast = (el.cast.includes(actor._id)) ? [...el.cast] : [...el.cast, actor._id];
+                    this.props.editMovies({cast}, el._id);
+                });
+            oldMovies.map(o => {
+                const a = movies.filter(n => n._id === o._id);
+                console.log('a', a);
+                if (a.length === 0) {
+                    // delete current actor from Movie with ID we don't use any more
+                    const cast = o.cast.filter(el => el !== actor._id);
+                    this.props.editMovies({cast}, o._id);
+                }
+            });
+        }
+
         const actorToAdd = {
-            // movies,
+            movies: newMovies,
             name,
             info,
             date: birthDay,
@@ -67,7 +90,7 @@ class EditActorPage extends Component {
 
         console.log("EDITED ACTOR", actorToAdd);
 
-        this.props.editActor(actorToAdd, actor._id);
+        await this.props.editActor(actorToAdd, actor._id);
         this.setState({fireRedirect: true});
     }
 
@@ -77,7 +100,7 @@ class EditActorPage extends Component {
     }
 
     render() {
-        const {actor} = this.props;
+        const {actor, films} = this.props;
         const {fireRedirect} = this.state;
         console.log('I need', this.state);
         if (!actor || actor.slugName === undefined) {
@@ -96,7 +119,7 @@ class EditActorPage extends Component {
                 <form className={b()}>
                     <h1 className={b('title')}>EDIT ACTOR</h1>
                     <EditActorImage actorImg={actor.image} callback={this.getStateFromChild}/>
-                    <EditActorInfo actor={actor} callback={this.getStateFromChild}/>
+                    <EditActorInfo actor={actor} films={films} callback={this.getStateFromChild}/>
                     <div className={b('btns')}>
                         <button type='submit' className={b('btn', ['submit'])}
                                 onClick={this.editActorInDB.bind(this)}>Save
@@ -115,10 +138,12 @@ class EditActorPage extends Component {
 
 export default connect((state, props) => {
         const actor = getActorBySlug(state, props.match.params.slug);
-        return {actor};
+        const films = actor.movies.map(movieID => getMovieById(state, movieID));
+        return {actor, films};
     },
     (dispatch) => ({
         fetchActorBySlug: (slug) => dispatch(fetchActorsSlug(slug)),
+        editMovies: (movie, id) => dispatch(editMovieById(id, movie)),
         editActor: (actor, id) => dispatch(editActorById(id, actor))
     })
 )(EditActorPage);
