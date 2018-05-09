@@ -45,15 +45,15 @@ router.get('/bySlugName/:slug', async (req, res) => {
 });
 
 
-router.get('/autocomplete/:query', async function (req, res) {
-    let query = req.params.query;
-    let params = {};
-    if (query) {
-        params.name = {'$regex': '^' + query, '$options': 'i'};
-    }
-    const movies = await db.get().collection('movies')
-        .find(params, {fields: {id: true, name: true, cast: true}}).toArray();
-    res.send(movies);
+router.get('/autocomplete/:query', async function(req, res) {
+  let query = req.params.query;
+  let params = {};
+  if (query) {
+    params.name = {'$regex': '^' + query, '$options': 'i'};
+  }
+  const movies = await db.get().collection('movies')
+                         .find(params, {fields: {id: true, name: true, slugName: true}}).toArray();
+  res.send(movies);
 })
 
 router.post('/', async (req, res) => {

@@ -22,6 +22,8 @@ import {
     EDITING_FAIL,
     EDITING_ACTOR_SUCCESS,
     POST_MOVIE_SUCCESS,
+    FETCH_AUTOCOMPLETE_MOVIES_SUCCESS,
+    CLEAR_MOVIES_AUTOCOMPLETE,
     FETCH_MOVIES_COUNT,
     FETCH_MOVIES_COUNT_SUCCESS,
     FETCH_POST, EDITING_MOVIE_START, EDITING_ACTOR_START
@@ -69,6 +71,9 @@ export const editingMovieSuccess = (movie, slug, id) => ({
     movie, slug, id
 });
 
+export const fetchAutocompleteMoviesSuccess = (movies=[]) => ({type:FETCH_AUTOCOMPLETE_MOVIES_SUCCESS, movies})
+
+
 export const editingFail = () => ({type: EDITING_FAIL, error: true});
 
 export const editingActorSuccess = (actor, slug, id) => ({
@@ -80,6 +85,7 @@ export const fetchMoviesSuccess = (id, ids, movies = []) => ({
     type: FETCH_MOVIES_SUCCESS,
     id, movies, ids
 });
+
 
 export const fetchMoviesSlugSuccess = (slugName, slugs, movies = []) => ({
     type: FETCH_MOVIES_SLUG_SUCCESS,
@@ -111,3 +117,5 @@ export const setUser = (user) => ({type: SET_USER, user});
 export const authAdditionalInfoSuccess = (info) => ({type: ADDITTIONAL_INFO, info});
 
 export const signUpSuccess = (user) => ({type: SIGN_UP_SUCCESS, user});
+
+export const clearMoviesAutocomplete = () => ({type: CLEAR_MOVIES_AUTOCOMPLETE})

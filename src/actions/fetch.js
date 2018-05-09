@@ -38,6 +38,15 @@ export const fetchCarouselleMovies = (label) => async (dispatch) => {
     dispatch(fromFetch.fetchCarouselleMoviesSuccess(movies.result, movies.entities.movies, label));
 };
 
+export const fetchAutocompleteMovies = (name) => async (dispatch) => {
+    dispatch(fromFetch.fetchMoviesStart('autocomplete'));
+    let movies = await fromApi.autocompleteMovies(name);
+    movies.forEach(function(movie) {
+      movie.id = movie['_id'];
+    });
+    dispatch(fromFetch.fetchAutocompleteMoviesSuccess(movies));
+};
+
 export const fetchAdditionalMovies = (limit, page) => async (dispatch) => {
     dispatch(fromFetch.fetchMoviesStart('additional'));
     let movies = await fromApi.additionalMovies(limit, page);
