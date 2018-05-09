@@ -59,20 +59,22 @@ class EditActorInfo extends Component {
                    defaultValue={actor.name}
                    onChange={this.onValueChange} placeholder='Please, enter the actor name'/>
 
-            <h3 className={b('title')}>Actor Info</h3>
+            <h3 className={b('title')}>Short Info</h3>
             <textarea className={b('input', ['textarea'])} defaultValue={actor.info}
                       placeholder='Please, enter the actor bio...' name='info' rows="5"
                       onChange={this.onValueChange}/>
 
-            <h3 className={b("title")}>Born on</h3>
+            <h3 className={b("title")}>Date of birth</h3>
             <input type='date' className={b('input')} name='date' onChange={this.onValueChange}
                    defaultValue={birthDate}/>
 
-            <h3 className={b("title")}>Born in</h3>
+            <h3 className={b("title")}>City of birth</h3>
             <input className={b("input")} name='city' defaultValue={actor.city} onChange={this.onValueChange}/>
 
             <h3 className={b("title")}>Nominations</h3>
             <NominationsList nominations={actor.nominations} callback={this.callback.bind(this)}/>
+
+            <h3 className={b("title")}>Movies</h3>
         </section>
     }
 }
