@@ -65,17 +65,17 @@ class ActorLayout extends Component {
                             Born in
                             <span className={b("value")}>{selectedActor.city}</span>
                         </p>
-                        <p className={b("nominations")}>
+                        <ul className={b("nominations")}>
                             Nominations
                             {selectedActor.nominations.map((n, ind) =>
-                                <span className={b("value")} key={ind}>{n}</span>
+                                <li className={b("value")} key={ind} style={{marginRight: 0}}>{n}</li>
                             )}
-                        </p>
+                        </ul>
                         <section className={b("movies")}>
                             Films
                             {movies.filter((movie) => movie)
-                                .map((movie) =>
-                                    <Link className={b("movie-link")} to={`/movie/${movie.slugName}`} key={movie.id}>
+                                .map((movie, i) =>
+                                    <Link className={b("movie-link")} to={`/movie/${movie.slugName}`} key={i}>
                                         <p className={b("in-movie")}>{movie.name}</p>
                                     </Link>)}
                         </section>

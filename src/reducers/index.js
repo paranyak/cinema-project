@@ -20,6 +20,8 @@ export default moviesApp;
 
 export const getAllMoviesIds = (state) => fromMovies.getAllMoviesIds(state.movies);
 
+export const getMoviesCount = (state) => fromMovies.getMoviesCount(state);
+
 export const getAllActorsIds = (state) => fromActors.getAllActorsIds(state.actors);
 
 export const getActorById = (state, id) => fromActors.getActorById(state.actors, id);

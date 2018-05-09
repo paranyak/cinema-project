@@ -3,13 +3,12 @@ import "../styles/AllMovies.less";
 import block from "../helpers/BEM";
 import {connect} from "react-redux";
 import MoviePoster from "./MoviePoster";
-import {Link} from 'react-router-dom';
 import InfiniteScroll from "react-infinite-scroller";
-import {getAllMoviesIds, isMovieFetching, getCarouselleMovies} from "../reducers";
-import {fetchAdditionalMovies} from "../actions/fetch"
+import {getAllMoviesIds, isMovieFetching} from "../reducers";
+import {fetchAdditionalMovies, fetchMoviesCount} from "../actions/fetch"
 import {replace} from 'react-router-redux';
-import * as queryString from 'query-string';
 import LazyLoad from 'react-lazyload'
+import {getMoviesCount} from "../reducers/index";
 
 const b = block("AllMovies");
 
@@ -18,29 +17,27 @@ class AllMovies extends Component {
         super(props);
         this.state = {
             items: 12,
-            hasMoreItems: true,
-            movies:26   //всі фільми, треба для визначення чи є ще фільми для завантаження і розрахунку висоти
+            hasMoreItems: true
         };
     }
 
     componentWillMount() {
-        console.log("will mount");
-        let allM = document.querySelector("#root");
-        //тут викликати функцію, яка повертає кількість фільмів
-        allM.style.height = this.calculateHeight();
+        this.props.moviesCount();
         this.props.fetchAllMovies(this.state.items, 1);
     }
 
-    componentWillUnmount(){
-        console.log("unmount");
+    componentWillUnmount() {
         let allM = document.querySelector("#root");
         allM.style.height = 'initial';
     }
 
 
     componentWillReceiveProps(nextProps) {
-        //кількість фільмів, які прийшли в конект=== кількість фільмів, які є взагалі
-        if(this.props.films.length === this.state.movies){
+        if (nextProps.count != this.props.count) {
+            let allM = document.querySelector("#root");
+            allM.style.height = this.calculateHeight(nextProps.count);
+        }
+        if (this.props.count && this.props.films.length === this.props.count) {
             this.setState({...this.state, hasMoreItems: false});
         }
 
@@ -64,10 +61,9 @@ class AllMovies extends Component {
 
     }
 
-    calculateHeight(){
+    calculateHeight(count) {
         let columnType = this.getColumnType();
-        let height = ((this.state.movies)/columnType) * 501 + 1000;
-        console.log("HEIGHT:", height);
+        let height = ((count) / columnType) * 501 + 1000;
         return height + 'px';
     }
 
@@ -78,7 +74,7 @@ class AllMovies extends Component {
                 <div className={b()}>
                     {films
                         .map((film, i) =>
-                            <LazyLoad height='501px'  offset={1000} key={i} >
+                            <LazyLoad height='501px' offset={1000} key={i}>
                                 <MoviePoster filmId={film} id={i}/>
                             </LazyLoad>
                         )}
@@ -92,6 +88,7 @@ class AllMovies extends Component {
     }
 
     render() {
+
         if (this.props.films.length !== 0) {
             return (
                 <section>
@@ -117,6 +114,9 @@ class AllMovies extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        moviesCount: () => {
+            dispatch(fetchMoviesCount())
+        },
         fetchAllMovies: (labels, pages) => {
             dispatch(fetchAdditionalMovies(labels, pages))
         },
@@ -127,9 +127,11 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = state => {
+    const count = getMoviesCount(state);
     const movies = getAllMoviesIds(state);
     const isFetching = isMovieFetching('additional', state);
     return {
+        count,
         films: movies,
         isFetching
     }

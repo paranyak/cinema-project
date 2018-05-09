@@ -30,14 +30,6 @@ class AddMInfo extends Component {
         this.callback = this.callback.bind(this);
     }
 
-    componentDidMount() {
-        const {rating, duration, name, description, genre, format, technology, cast, label, scheduleTime, scheduleDate, startDate} = this.state;
-        const chosenGenres = (typeof genre === 'object') ? genre : genre.split(', ');
-        this.props.callback(
-            ['rating', 'duration', 'name', 'description', 'genre', 'format', 'technology', 'cast', 'label', 'scheduleTime', 'scheduleDate', 'startDate'],
-            [rating, duration, name, description, chosenGenres, format, technology, cast, label, scheduleTime, scheduleDate, startDate]);
-    }
-
     componentDidUpdate(prevProps, prevState) {
         const {rating, duration, name, description, genre, format, technology, cast, label, scheduleTime, scheduleDate, startDate} = this.state;
         if (prevState !== this.state) {
@@ -58,6 +50,7 @@ class AddMInfo extends Component {
 
     render() {
         const {label, startDate} = this.state;
+        console.log('state in info', this.state);
         return (
             <section className={b()}>
                 <h3 className={b('title')}>Movie Title</h3>
