@@ -19,7 +19,9 @@ import {
     ADDITTIONAL_INFO,
     SIGN_UP_SUCCESS,
     POST_MOVIE_SUCCESS,
-    FETCH_POST
+    FETCH_POST,
+    FETCH_MOVIES_COUNT,
+    FETCH_MOVIES_COUNT_SUCCESS
 } from '../helpers/actionTypes';
 
 
@@ -28,6 +30,8 @@ export const fetchMoviesSlugStart = (slugName) => ({type: FETCH_MOVIES_SLUG, slu
 
 export const fetchPostStart = (movie) => ({type: FETCH_POST, movie});
 
+export const fetchMoviesCountStart = () => ({type: FETCH_MOVIES_COUNT});
+export const fetchMoviesCountSuccess = (movies) => ({type: FETCH_MOVIES_COUNT_SUCCESS, movies});
 
 export const fetchActorsStart = (id) => ({type: FETCH_ACTOR, id});
 export const fetchActorsSlugStart = (slugName) => ({type: FETCH_ACTOR_SLUG, slugName});

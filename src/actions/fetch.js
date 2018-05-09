@@ -19,6 +19,12 @@ export const fetchMovieSlug = (slugName) => async (dispatch) => {
     dispatch(fromFetch.fetchMoviesSlugSuccess(slugName, movies.result, movies.entities.movies));
 };
 
+export const fetchMoviesCount = () => async (dispatch) => {
+    dispatch(fromFetch.fetchMoviesCountStart());
+    let movies = await fromApi.movieCount();
+    dispatch(fromFetch.fetchMoviesCountSuccess(movies));
+};
+
 export const fetchMoviesSchedule = (day) => async (dispatch) => {
     dispatch(fromFetch.fetchMoviesStart('schedule'));
     let movies = await fromApi.moviesSchedule(day);

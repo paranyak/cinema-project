@@ -9,6 +9,12 @@ router.get('/byId/:id', async function(req, res) {
   res.send(movie);
 });
 
+router.get('/moviesCount', async function(req, res) {
+    const movieCount = await db.get().collection('movies').count();
+    res.send(movieCount.toString());
+});
+
+
 router.get('/ids', async function(req, res) {
   let dbQuery;
   let params = {};

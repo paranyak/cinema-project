@@ -10,6 +10,11 @@ export async function movieBySlug(slugName) {
     return movies;
 }
 
+export async function movieCount() {
+    let movies =  await ((await fetch(`${LOCALHOST}/movies/moviesCount`)).json());
+    return movies;
+}
+
 export async function moviesSchedule(day) {
     let movies = await ((await fetch(`${LOCALHOST}/movies/ids?Schedule=${day}`)).json());
     return movies
