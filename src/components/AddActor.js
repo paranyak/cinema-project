@@ -3,6 +3,7 @@ import "../styles/AddActor.less";
 import block from '../helpers/BEM';
 import DragDropImage from "./DragDropImage";
 import {monthNames} from '../helpers/constants'
+import {Redirect} from "react-router";
 
 const b = block("AddActor");
 
@@ -19,7 +20,8 @@ class AddActor extends Component {
             currentSuggestedMovies: [{id: 1, name: ""}],   // поточний фільм, який шукаємо
             movies: [],                          //всі фільми , тобто це той вигляд який має бд
             currentInputIndex: 0,
-            actor: ''
+            actor: '',
+            fireRedirect:false
         };
         this.addActorToDB = this.addActorToDB.bind(this);
         this.checkform = this.checkform.bind(this);
@@ -84,7 +86,7 @@ class AddActor extends Component {
         let slugName = this.refs.name.value.toLowerCase().replace(/ /g, "_");
 
         const actorToAdd = {
-            name: name,
+            name: this.refs.name.value,
             slugName: slugName,
             movies: createdMovies,
             info: this.refs.info.value,
@@ -95,6 +97,7 @@ class AddActor extends Component {
         };
 
         let actorId=-1;
+        console.log("HeRE TO POST:", actorToAdd);
         await fetch('http://localhost:3000/actors', {
             method: 'POST',
             headers: headers,
@@ -137,7 +140,7 @@ class AddActor extends Component {
         }
 
         let submitButton = document.querySelector(".AddActor__button");
-        submitButton.style.display = (cansubmit) ? 'block' : 'none';
+        submitButton.style.display = (cansubmit) ? 'inline-block' : 'none';
 
     }
 
@@ -318,20 +321,28 @@ class AddActor extends Component {
         this.setState({[name]: item})
     }
 
+    cancelAdding() {
+        console.log('Adding is canceled!!!');
+        this.setState({fireRedirect: true});
+    }
+
     render() {
         return (<div>
             <h1 className={b("success")}>POSTING SUCCESSFUL</h1>
 
             <form className={b()} name="actorform">
+                <h1 className={b("main-title")}>ADD ACTOR</h1>
+
+                <div className={b('image')}>
+                    <h3 className={b('title')}>Image</h3>
+
+                    <DragDropImage value={''} name='actor' callbackFromParent={this.myCallback2}
+                                   callbackInRemove={this.myCallback2} />
+                </div>
+                <section className={b("information")}>
                 <h3 className={b('title')}>Name</h3>
                 <input ref='name' placeholder={'Enter name'} className={b("inputs", ["name", "required"])} type="text"
                        onChange={this.checkform} onKeyUp={(e) => this.startTimer(e, "naming")}/>
-                <h3 className={b('title')}>Image</h3>
-                <div className={b('image')}>
-                    <DragDropImage value={''} name='actor' callbackFromParent={this.myCallback2}
-                                   callbackInRemove={this.myCallback2}/>
-                </div>
-
                 <h3 className={b('title')}>Date of birth</h3>
                 <input ref='date' placeholder={'Enter  date of birth'} className={b("inputs", ["required"])} type="date"
                        onChange={this.checkform}/>
@@ -350,9 +361,17 @@ class AddActor extends Component {
                     <button className={b('add-button')} onClick={this.addMovie.bind(this)}>+</button>
                     {this.createListOfMovies()}
                 </div>
-                <button type='submit' className={b('button')} onClick={this.addActorToDB}>Submit
-                </button>
+                </section>
+                <div className={b('btns')}>
+                    <button type='submit' className={b('button')} onClick={this.addActorToDB}>Submit
+                    </button>
+                    <button type='button' className={b('btn')}
+                            onClick={this.cancelAdding.bind(this)}>Cancel</button>
+                </div>
+
             </form>
+            {this.state.fireRedirect && (<Redirect to={`/`}/>)}
+
         </div>)
     }
 }

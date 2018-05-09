@@ -7,10 +7,20 @@
   box-shadow: 10px 21px 94px 6px #000001;
   padding-top: 40px;
   padding-bottom: 20px;
+  &__main-title{
+    color: #FAE807;
+    margin: 25px 0 5px;
+    text-align: center;
+  }
+  &__information{
+    float: right;
+    width: 60%;
+    margin: 5%;
+  }
   &__image {
-    width: 80%;
-    margin: auto;
-
+    float: left;
+    width: 20%;
+    margin: 5%;
   }
   &__button{
     display: none;
@@ -22,9 +32,8 @@
     cursor: pointer;
     font-size: 14px;
     opacity: 0.9;
-    width: 50%;
     max-width: 200px;
-    padding: 14px 20px;
+    padding: 10px 20px;
     margin: 10px auto;
     &:hover {
       opacity: 1;
@@ -35,22 +44,17 @@
     display: none;
   }
   &__inputs{
-    width: 80%;
+    width: 100%;
     padding: 8px 20px;
     display: block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
     margin: 10px auto;
-    &_movie, &_role{
-      margin-right: 1%;
-      width: 44%;
-      display: inline-block;
-    }
   }
   &__title {
-    width:80%;
-    color: @main-yellow;
+    width:100%;
+    color: white;
     margin: 25px auto 5px auto;
   }
   &__remove-button, &__add-button, &__add-tmp-button{
@@ -73,7 +77,34 @@
     max-width:300px;
   }
   &__movies-block{
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
   }
+  &__btns {
+    margin: auto;
+    clear: both;
+    width: 360px;
+  }
+  &__btn {
+    background-color: @main-yellow;
+    color: #373737;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0.8;
+    width: 100px;
+    padding: 10px;
+    margin: 10px;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.DragDropImage{
+  height: 418px;
+  max-width: 285px;
+  border-bottom: @main-yellow 10px solid;
 }

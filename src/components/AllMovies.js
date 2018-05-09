@@ -19,14 +19,16 @@ class AllMovies extends Component {
         this.state = {
             items: 12,
             hasMoreItems: true,
-            movies:46
+            movies:47   //всі фільми, треба для визначення чи є ще фільми для завантаження і розрахунку висоти
+
         };
     }
 
     componentWillMount() {
         console.log("will mount");
         let allM = document.querySelector("#root");
-        allM.style.height = '11000px';   //ТУТ МАЄ БУТИ КІЛЬКІСТЬ ВСІХ ЕЛЕМЕНТІВ * РЯДКИ + 1400
+        //тут викликати функцію, яка повертає кількість фільмів
+        allM.style.height = this.calculateHeight();
         this.props.fetchAllMovies(this.state.items, 1);
     }
 
@@ -38,9 +40,7 @@ class AllMovies extends Component {
 
 
     componentWillReceiveProps(nextProps) {
-        //погано, коли повертаємось на сторінку звідкись на натиск "назад" видає фолс
-        //треба this.props.films.length === кількість фільмів
-        //if (nextProps.films.length === this.props.films.length && this.props.isFetching && !nextProps.isFetching) {
+        //кількість фільмів, які прийшли в конект=== кількість фільмів, які є взагалі
         if(this.props.films.length === this.state.movies){
             this.setState({...this.state, hasMoreItems: false});
         }
@@ -48,16 +48,36 @@ class AllMovies extends Component {
     }
 
 
+    isBetween(number, a, b, inclusive) {
+        let min = Math.min.apply(Math, [a, b]),
+            max = Math.max.apply(Math, [a, b]);
+        return inclusive ? number >= min && number <= max : number > min && number < max;
+    };
+
+    getColumnType() {
+        let width = window.innerWidth;
+        let colunmType;
+        if (width >= 1277) colunmType = 4;
+        else if (this.isBetween(width, 644, 960, true)) colunmType = 2;
+        else if (this.isBetween(width, 960, 1277, false)) colunmType = 3;
+        else colunmType = 1;
+        return colunmType;
+
+    }
+
+    calculateHeight(){
+        let columnType = this.getColumnType();
+        let height = ((this.state.movies)/columnType) * 501 + 1000;
+        console.log("HEIGHT:", height);
+        return height + 'px';
+    }
 
     showItems() {
-        const {films, comingSoonIds} = this.props;
+        const {films} = this.props;
         if (films.length !== 0) {
             return (
                 <div className={b()}>
                     {films
-                        .filter(film =>
-                            !comingSoonIds.includes(film)
-                        )
                         .map((film, i) =>
                             <LazyLoad height='501px'  offset={1000} key={i} >
                                 <MoviePoster filmId={film} id={i}/>
@@ -109,11 +129,9 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = state => {
     const movies = getAllMoviesIds(state);
-    const comingSoonIds = getCarouselleMovies(state, 'soon');
     const isFetching = isMovieFetching('additional', state);
     return {
         films: movies,
-        comingSoonIds,
         isFetching
     }
 };
