@@ -87,7 +87,6 @@ class EditMovieInfo extends Component {
         const day = (film.startDate.day > 9 ? '' : 0) + film.startDate.day.toString();
         const startDate = year + '-' + month + '-' + day;
         return [durationTime, chosenGenres, chosenTechnologies, chosenFormats, from, to, timeRanges, startDate];
-
     }
 
     render() {

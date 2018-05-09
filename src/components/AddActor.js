@@ -84,7 +84,8 @@ class AddActor extends Component {
         let slugName = this.refs.name.value.toLowerCase().replace(/ /g, "_");
 
         const actorToAdd = {
-            name: slugName,
+            name: name,
+            slugName: slugName,
             movies: createdMovies,
             info: this.refs.info.value,
             date: birthDay,
@@ -144,7 +145,7 @@ class AddActor extends Component {
         console.log("DONE TYPING");
         let index = this.state.currentInputIndex;
         if (this.state.currentSearchPhrase[index] !== "") {
-            const response = await fetch(`http://localhost:3000/movies?name_like=\\b${this.state.currentSearchPhrase[index]}`);// 'posts' to get work the url
+            const response = await fetch(`http://localhost:3000/movies/autocomplete/${this.state.currentSearchPhrase[index]}`);// 'posts' to get work the url
             if (!response.ok) {
                 console.log("ERROR IN MOVIE SEARCH AT ACTOR ADD");
             } else {
