@@ -25,6 +25,11 @@ export async function additionalMovies(limit, page) {
     return movies;
 }
 
+export async function autocompleteMovies(name) {
+    let movies = await ((await fetch(`${LOCALHOST}/movies/autocomplete/${name}`)).json());
+    return movies;
+}
+
 export async function actors(id) {
     const response = await fetch(`${LOCALHOST}/actors/byId/${id}`);
     return response

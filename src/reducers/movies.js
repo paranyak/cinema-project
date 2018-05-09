@@ -10,7 +10,9 @@ import {
     FETCH_CAROUSEL_MOVIES_SUCCESS,
     FETCH_SCHEDULE_MOVIES_SUCCESS,
     POST_MOVIE_SUCCESS,
-    FETCH_POST
+    FETCH_POST,
+    FETCH_AUTOCOMPLETE_MOVIES_SUCCESS,
+    CLEAR_MOVIES_AUTOCOMPLETE
 } from '../helpers/actionTypes';
 
 const byId = (state = {}, action) => {
@@ -69,6 +71,17 @@ const scheduleMoviesIds = (state = [], action) => {
     }
 };
 
+const moviesAutocomplete = (state = [], action) => {
+    switch (action.type) {
+        case FETCH_AUTOCOMPLETE_MOVIES_SUCCESS:
+            return [...action.movies]
+        case CLEAR_MOVIES_AUTOCOMPLETE:
+            return []
+        default:
+            return state;
+    }
+}
+
 const fetching = (state = {}, action) => {
     switch (action.type) {
         case FETCH_MOVIES:
@@ -104,6 +117,7 @@ export const getScheduleMoviesIds = (state) => state.scheduleMoviesIds;
 
 export const getMovieById = (state, id) => state.byId[id];
 export const getMovieBySlug = (state, slugName) => state.bySlug[slugName];
+export const getMoviesAutocomplete = (state) => state.moviesAutocomplete;
 
 export default combineReducers({
     byId,
@@ -111,5 +125,6 @@ export default combineReducers({
     allIds,
     fetching,
     carouselleMovies,
-    scheduleMoviesIds
+    scheduleMoviesIds,
+    moviesAutocomplete
 });

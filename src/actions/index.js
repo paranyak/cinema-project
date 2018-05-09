@@ -19,7 +19,9 @@ import {
     ADDITTIONAL_INFO,
     SIGN_UP_SUCCESS,
     POST_MOVIE_SUCCESS,
-    FETCH_POST
+    FETCH_POST,
+    FETCH_AUTOCOMPLETE_MOVIES_SUCCESS,
+    CLEAR_MOVIES_AUTOCOMPLETE
 } from '../helpers/actionTypes';
 
 
@@ -54,7 +56,7 @@ export const fetchFailSlug = (slugName, slugs, actors = []) => ({
 
 export const editingMovieSuccess = () => ({type: 'EDITING_MOVIE_SUCCESS'});
 export const editingMovieFail = () => ({type: 'EDITING_MOVIE_FAIL', error: true});
-
+export const fetchAutocompleteMoviesSuccess = (movies=[]) => ({type:FETCH_AUTOCOMPLETE_MOVIES_SUCCESS, movies})
 export const fetchMoviesSuccess = (id, ids, movies = []) => ({type: FETCH_MOVIES_SUCCESS, id, movies, ids});
 export const fetchMoviesSlugSuccess = (slugName, slugs, movies = []) => ({
     type: FETCH_MOVIES_SLUG_SUCCESS,
@@ -91,3 +93,5 @@ export const setUser = (user) => ({type: SET_USER, user});
 export const authAdditionalInfoSuccess = (info) => ({type: ADDITTIONAL_INFO, info});
 
 export const signUpSuccess = (user) => ({type: SIGN_UP_SUCCESS, user});
+
+export const clearMoviesAutocomplete = () => ({type: CLEAR_MOVIES_AUTOCOMPLETE})

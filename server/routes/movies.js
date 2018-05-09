@@ -45,7 +45,7 @@ router.get('/autocomplete/:query', async function(req, res) {
     params.name = {'$regex': '^' + query, '$options': 'i'};
   }
   const movies = await db.get().collection('movies')
-                         .find(params, {fields: {id: true, name: true}}).toArray();
+                         .find(params, {fields: {id: true, name: true, slugName: true}}).toArray();
   res.send(movies);
 })
 
