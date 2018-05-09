@@ -59289,7 +59289,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, ".AddMInfo {\n  float: right;\n  width: 45%;\n  margin: 5px;\n}\n.AddMInfo__title {\n  color: white;\n  margin: 25px 0 5px;\n}\n.AddMInfo__input {\n  width: 100%;\n  padding: 8px 20px;\n  margin: 8px 0;\n  display: inline-block;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-sizing: border-box;\n}\n.AddMInfo__input::placeholder {\n  font-size: 14px;\n  font-weight: normal;\n  font-family: 'OpenSans', sans-serif;\n}\n.AddMInfo__input_name {\n  font-size: 19px;\n  font-weight: bold;\n}\n.AddMInfo__input_textarea {\n  resize: none;\n  font-family: 'OpenSans', sans-serif;\n}\n.AddMInfo__radio-btn {\n  color: white;\n}\n.AddMInfo__radio-btn:checked {\n  color: yellow;\n  font-weight: bold;\n}\n", ""]);
+exports.push([module.i, ".AddMInfo {\n  float: right;\n  width: 45%;\n  margin: 5px;\n}\n.AddMInfo__title {\n  color: white;\n  margin: 25px 0 5px;\n}\n.AddMInfo__input {\n  width: 100%;\n  padding: 8px 20px;\n  margin: 8px 0;\n  display: inline-block;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-sizing: border-box;\n}\n.AddMInfo__input::placeholder {\n  font-size: 14px;\n  font-weight: normal;\n  font-family: 'OpenSans', sans-serif;\n}\n.AddMInfo__input::-webkit-datetime-edit-ampm-field {\n  display: none;\n}\n.AddMInfo__input_name {\n  font-size: 19px;\n  font-weight: bold;\n}\n.AddMInfo__input_textarea {\n  resize: none;\n  font-family: 'OpenSans', sans-serif;\n}\n.AddMInfo__radio-btn {\n  color: white;\n}\n.AddMInfo__radio-btn:checked {\n  color: yellow;\n  font-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -93782,7 +93782,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, ".EditInfo {\n  float: right;\n  width: 45%;\n  margin: 5px;\n}\n.EditInfo__title {\n  color: white;\n  margin: 25px 0 5px;\n}\n.EditInfo__input {\n  width: 100%;\n  padding: 8px 20px;\n  margin: 8px 0;\n  display: inline-block;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-sizing: border-box;\n}\n.EditInfo__input::placeholder {\n  font-size: 14px;\n  font-weight: normal;\n  font-family: 'OpenSans', sans-serif;\n}\n.EditInfo__input_name {\n  font-size: 19px;\n  font-weight: bold;\n}\n.EditInfo__input_textarea {\n  resize: none;\n  font-family: 'OpenSans', sans-serif;\n}\n", ""]);
+exports.push([module.i, ".EditInfo {\n  float: right;\n  width: 45%;\n  margin: 5px;\n}\n.EditInfo__title {\n  color: white;\n  margin: 25px 0 5px;\n}\n.EditInfo__input {\n  width: 100%;\n  padding: 8px 20px;\n  margin: 8px 0;\n  display: inline-block;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-sizing: border-box;\n}\n.EditInfo__input::placeholder {\n  font-size: 14px;\n  font-weight: normal;\n  font-family: 'OpenSans', sans-serif;\n}\n.EditInfo__input_name {\n  font-size: 19px;\n  font-weight: bold;\n}\n.EditInfo__input_textarea {\n  resize: none;\n  font-family: 'OpenSans', sans-serif;\n}\n.EditInfo__input_duration.EditInfo__input::-webkit-datetime-edit-ampm-field {\n  display: none;\n}\n", ""]);
 
 // exports
 
