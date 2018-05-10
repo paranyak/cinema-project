@@ -1,5 +1,6 @@
 TimeRanges example:
 
 ```js
-<TimeRanges name={''} callbackFromParent={()=> console.log("ACTION")}/>
+func = () => {};
+<TimeRanges name='scheduleTime' schedule={[]} callbackFromParent={func}/>
 ```

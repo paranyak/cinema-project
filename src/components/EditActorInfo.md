@@ -16,7 +16,7 @@ const actor = {
     "__v" : 1
 };
 
-const films = {
+const films = [{
   "_id" : "5af3477c0938e303289b7d9c",
   "duration" : {
       "hour" : 1,
@@ -49,7 +49,7 @@ const films = {
   "technology" : "",
   "label" : "soon",
   "__v" : 3
-};
+}];
 
 
 <EditActorInfo actor={actor} films={films} callback={func}/>
