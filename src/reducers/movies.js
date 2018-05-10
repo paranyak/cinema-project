@@ -24,6 +24,7 @@ const byId = (state = {}, action) => {
         case FETCH_CAROUSEL_MOVIES_SUCCESS:
             return {...state, ...action.movies};
         case POST_MOVIE_SUCCESS:
+            console.log("BY ID:", state, action.movies);
             return {...state, ...action.movies};
         case EDITING_MOVIE_SUCCESS:
             let newState = state;
@@ -40,9 +41,10 @@ const bySlug = (state = {}, action) => {
         case FETCH_FAIL_SLUG:
             return action;
         case EDITING_MOVIE_SUCCESS:
-            let newState = state;
-            newState[action.slug] = action.movie;
-            return newState;
+
+        case POST_MOVIE_SUCCESS:
+            console.log("BY SLUG", action);
+            return {...state, ...action.movies};
         default:
             return state;
     }
@@ -62,6 +64,12 @@ const allIds = (state = [], action) => {
         case FETCH_MOVIES_SUCCESS:
         case FETCH_SCHEDULE_MOVIES_SUCCESS:
         case FETCH_CAROUSEL_MOVIES_SUCCESS:
+            return [
+                ...state,
+                ...action.ids
+            ].filter((el, i, arr) => arr.indexOf(el) === i);
+        case POST_MOVIE_SUCCESS:
+            console.log("ALL ids", action, action.ids);
             return [
                 ...state,
                 ...action.ids

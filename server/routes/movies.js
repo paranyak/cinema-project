@@ -57,8 +57,9 @@ router.get('/autocomplete/:query', async function (req, res) {
 })
 
 router.post('/', async (req, res) => {
-    const movie = await db.get().collection('movies').save(req.body)
-    res.send(movie)
+    const movie = await db.get().collection('movies').save(req.body);
+    //console.log("ROUTER POST",movie.ops, req.body);
+    res.send({movie: movie.ops, response: movie.result});
 })
 
 router.patch('/:id', async (req, res) => {

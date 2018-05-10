@@ -40,11 +40,11 @@ export async function additionalActors(limit, page) {
 export async function postMovie(movie) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return await fetch('http://localhost:3000/movies', {
+    return await ((await fetch('http://localhost:3000/movies', {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(movie)
-    });
+    })).json());
 }
 
 export const editMovie = async (id, movie) => {
