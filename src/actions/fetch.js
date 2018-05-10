@@ -2,6 +2,8 @@ import {moviesListSchema, actorsListSchema, actorsListSchemaSlug, moviesListSche
 import {normalize} from 'normalizr';
 import * as fromFetch from '../actions/index';
 import * as fromApi from '../api/fetch';
+import {push} from 'react-router-redux';
+
 
 export const fetchMovie = (id) => async (dispatch) => {
     dispatch(fromFetch.fetchMoviesStart(id));
@@ -62,6 +64,22 @@ export const fetchAdditionalActors = (limit, page) => async (dispatch) => {
     dispatch(fromFetch.fetchActorsSucess('additional', actors.result, actors.entities.actors));
 };
 
+export const fetchDeleteActor = (id) => async (dispatch) => {
+  dispatch(fromFetch.fetchActorsStart('delete'));
+  let actors = await fromApi.deleteActor(id);
+  actors = normalize(actors, actorsListSchema);
+  dispatch(fromFetch.fetchActorsDeleteSuccess('delete', actors.result, actors.entities.actors));
+  dispatch(push('/allactors'));
+};
+
+export const fetchDeleteMovie = (id) => async (dispatch) => {
+  dispatch(fromFetch.fetchMoviesStart('delete'));
+  let movies = await fromApi.deleteMovie(id);
+  movies = normalize(movies, moviesListSchema);
+  dispatch(fromFetch.fetchMoviesDeleteSuccess('delete', movies.result, movies.entities.movies));
+  dispatch(push('/'));
+};
+
 export const fetchActors = (id) => async (dispatch) => {
     dispatch(fromFetch.fetchActorsStart(id));
     let response = await fromApi.actors(id);
@@ -90,6 +108,7 @@ export const fetchActorsSlug = (slugName) => async (dispatch) => {
         dispatch(fromFetch.fetchActorsSlugSuccess(slugName, actors.result, actors.entities.actors));
     }
 };
+
 
 export const postMovieToDB = (movie) => async (dispatch) => {
     dispatch(fromFetch.fetchPostStart(movie));

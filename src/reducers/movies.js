@@ -16,7 +16,8 @@ import {
     EDITING_MOVIE_SUCCESS,
     EDITING_MOVIE_START,
     FETCH_MOVIES_COUNT,
-    FETCH_MOVIES_COUNT_SUCCESS
+    FETCH_MOVIES_COUNT_SUCCESS,
+    FETCH_MOVIE_DELETE_SUCCESS
 } from '../helpers/actionTypes';
 
 const byId = (state = {}, action) => {
@@ -31,6 +32,10 @@ const byId = (state = {}, action) => {
             let newState = state;
             newState[action.id] = action.movie;
             return newState;
+        case FETCH_MOVIE_DELETE_SUCCESS:
+            let newStateDel = {...state};
+            delete newStateDel[action.ids[0]]
+            return newStateDel
         default:
             return state;
     }
@@ -68,6 +73,8 @@ const allIds = (state = [], action) => {
                 ...state,
                 ...action.ids
             ].filter((el, i, arr) => arr.indexOf(el) === i);
+        case FETCH_MOVIE_DELETE_SUCCESS:
+            return [...state].filter((el) => el.id !== action.ids)
         default:
             return state;
     }
@@ -77,6 +84,8 @@ const carouselleMovies = (state = {popular: [], soon: []}, action) => {
     switch (action.type) {
         case FETCH_CAROUSEL_MOVIES_SUCCESS:
             return {...state, [action.label]: action.ids};
+        case FETCH_MOVIE_DELETE_SUCCESS:
+            return [...state].filter((el) => el.id !== action.ids)
         default:
             return state;
     }
@@ -86,6 +95,8 @@ const scheduleMoviesIds = (state = [], action) => {
     switch (action.type) {
         case FETCH_SCHEDULE_MOVIES_SUCCESS:
             return [...action.ids];
+        case FETCH_MOVIE_DELETE_SUCCESS:
+            return [...state].filter((el) => el.id !== action.ids)
         default:
             return state;
     }

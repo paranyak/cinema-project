@@ -26,7 +26,9 @@ import {
     CLEAR_MOVIES_AUTOCOMPLETE,
     FETCH_MOVIES_COUNT,
     FETCH_MOVIES_COUNT_SUCCESS,
-    FETCH_POST, EDITING_MOVIE_START, EDITING_ACTOR_START
+    FETCH_POST, EDITING_MOVIE_START, EDITING_ACTOR_START,
+    FETCH_ACTOR_DELETE_SUCCESS,
+    FETCH_MOVIE_DELETE_SUCCESS
 } from '../helpers/actionTypes';
 
 
@@ -40,11 +42,15 @@ export const editingActorStart = (actor) => ({type: EDITING_ACTOR_START, actor})
 
 export const fetchMoviesCountStart = () => ({type: FETCH_MOVIES_COUNT});
 export const fetchMoviesCountSuccess = (movies) => ({type: FETCH_MOVIES_COUNT_SUCCESS, movies});
+export const fetchMoviesDeleteSuccess = (id, ids, movie = {}) => ({type: FETCH_MOVIE_DELETE_SUCCESS, id, ids, movie});
 
 export const fetchActorsStart = (id) => ({type: FETCH_ACTOR, id});
 export const fetchActorsSlugStart = (slugName) => ({type: FETCH_ACTOR_SLUG, slugName});
 
 export const fetchActorsSucess = (id, ids, actors = []) => ({type: FETCH_ACTOR__SUCCESS, id, actors, ids});
+
+export const fetchActorsDeleteSuccess = (id, ids, actor = {}) => ({type: FETCH_ACTOR_DELETE_SUCCESS, id, ids, actor});
+
 export const fetchActorsSlugSuccess = (slugName, slugs, actors = []) => ({
     type: FETCH_ACTOR_SLUG_SUCCESS,
     slugName, actors, slugs

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
 import {getCurrentUser, getMovieById, isMovieFetching} from "../reducers/index";
-import {fetchActorsSlug, fetchMovie} from '../actions/fetch';
+import {fetchActorsSlug, fetchMovie, fetchDeleteActor} from '../actions/fetch';
 
 import "../styles/ActorLayout.less"
 import block from "../helpers/BEM";
@@ -27,6 +27,10 @@ class ActorLayout extends Component {
         }
     }
 
+    deleteActor(id) {
+      this.props.deleteActor(id);
+    }
+
     render() {
         window.scrollTo(0, 0);
         const {movies, selectedActor} = this.props;
@@ -44,9 +48,12 @@ class ActorLayout extends Component {
         let additional = '';
         let role = this.props.user && this.props.user.role;
         if (role === 'admin') {
-            additional = (<Link to={`/edit-actor/${selectedActor.slugName}`}>
+            additional = ( <div>
+            <Link to={`/edit-actor/${selectedActor.slugName}`}>
                 <span className={b('edit-icon')}></span>
-            </Link>)
+            </Link>
+            <span className={b('delete-icon')} onClick={() => this.deleteActor(selectedActor._id)}></span>
+          </div>)
         }
         return (
             <section className={b()}>
@@ -113,6 +120,7 @@ export default connect((state, props) => {
         };
     }, (dispatch) => ({
         fetchActorBySlug: (slug) => dispatch(fetchActorsSlug(slug)),
-        fetchMovieById: (id) => dispatch(fetchMovie(id))
+        fetchMovieById: (id) => dispatch(fetchMovie(id)),
+        deleteActor: (id) => dispatch(fetchDeleteActor(id))
     })
 )(ActorLayout);
