@@ -4,7 +4,7 @@ import MovieInfo from "./MovieInfo";
 import "../styles/MovieLayout.less"
 import block from "../helpers/BEM";
 import {getCurrentUser, getMovieBySlug} from "../reducers";
-import {fetchMovieSlug} from '../actions/fetch';
+import {fetchMovieSlug, fetchDeleteMovie} from '../actions/fetch';
 import {connect} from "react-redux";
 import {Link} from 'react-router-dom';
 
@@ -13,6 +13,11 @@ const b = block("MovieLayout");
 
 
 class MovieLayout extends Component {
+
+    deleteMovie(id) {
+      this.props.deleteMovie(id);
+    }
+
     render() {
         window.scrollTo(0, 0);
         const {film} = this.props;
@@ -23,9 +28,13 @@ class MovieLayout extends Component {
         let additional = '';
         let role = this.props.user && this.props.user.role;
         if (role === 'admin') {
-            additional = (<Link to={`/edit-movie/${film.slugName}`}>
-                <span className={b('edit-icon')}></span>
-            </Link>)
+            additional = (<div>
+              <Link to={`/edit-movie/${film.slugName}`}>
+                  <span className={b('edit-icon')}></span>
+              </Link>
+              <span className={b('delete-icon')} onClick={() => this.deleteMovie(film._id)}></span>
+            </div>
+          )
         }
         return (
             <div>
@@ -43,5 +52,8 @@ export default connect((state, props) => {
         const film = getMovieBySlug(state, props.match.params.slug);
         const user = getCurrentUser(state);
         return {film, user};
-    }, (dispatch) => ({fetchMovieBySlug: (slug) => dispatch(fetchMovieSlug(slug))})
+    }, (dispatch) => ({
+      fetchMovieBySlug: (slug) => dispatch(fetchMovieSlug(slug)),
+      deleteMovie: (id) => dispatch(fetchDeleteMovie(id))
+    })
 )(MovieLayout);

@@ -66,4 +66,9 @@ router.patch('/:id', async (req, res) => {
     res.send(movie.value);
 })
 
+router.delete('/:id', async (req, res) => {
+    const movie = await db.get().collection('movies').findOneAndDelete({_id: ObjectID(req.params.id)});
+    res.send(movie.value)
+})
+
 module.exports = router;

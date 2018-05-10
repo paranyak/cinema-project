@@ -6,6 +6,7 @@ import {
     FETCH_ACTOR__SUCCESS,
     FETCH_ACTOR_SLUG_SUCCESS,
     FETCH_FAIL,
+    FETCH_ACTOR_DELETE_SUCCESS,
     FETCH_FAIL_SLUG, EDITING_ACTOR_SUCCESS, EDITING_MOVIE_SUCCESS, EDITING_MOVIE_START, EDITING_ACTOR_START
 } from '../helpers/actionTypes';
 
@@ -22,6 +23,10 @@ export const byId = (state = {}, action) => {
             let newState = state;
             newState[action.id] = action.actor;
             return newState;
+        case FETCH_ACTOR_DELETE_SUCCESS:
+            let newStateDel = {...state};
+            delete newStateDel[action.ids[0]]
+            return newStateDel
         default:
             return state;
     }
@@ -54,6 +59,8 @@ export const allIds = (state = [], action) => {
             ].filter((el, i, arr) => arr.indexOf(el) === i);
         case FETCH_FAIL:
             return action;
+        case FETCH_ACTOR_DELETE_SUCCESS:
+            return [...state].filter((el) => el.id !== action.ids)
         default:
             return state;
     }
