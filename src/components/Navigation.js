@@ -4,15 +4,24 @@ import block from "../helpers/BEM";
 import {NavLink} from 'react-router-dom';
 import {connect} from "react-redux";
 import {logoutUser} from '../actions/auth';
-import {getCurrentUser} from '../reducers/index';
+import {getCurrentUser, getMoviesAutocomplete} from '../reducers/index';
 import {withRouter} from 'react-router-dom';
+import {fetchAutocompleteMovies} from '../actions/fetch';
+import Autosuggest from 'react-autosuggest';
+import {clearMoviesAutocomplete} from '../actions/index';
 
 const b = block("Navigation");
+
+let typingTimer;
+let doneTypingInterval = 500;
+let nameTypingInterval = 1000;
 
 class Navigation extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+          search: ''
+        }
     }
 
 
@@ -20,9 +29,42 @@ class Navigation extends Component {
         this.props.logoutUser();
     }
 
+    onChange(event, { newValue }) {
+      this.setState({
+        ...this.state,
+        search: newValue
+      });
+    };
+
+    onSuggestionsFetchRequested({ value }) {
+      this.props.fetchMoviesAutocomlete(value);
+    };
+
+    onSuggestionsClearRequested() {
+      this.props.clearMoviesAutocomplete();
+    };
+
+
     render() {
         let additional = '';
         let role = this.props.user && this.props.user.role;
+
+        const inputProps = {
+          placeholder: 'Type a movie name',
+          value: this.state.search,
+          onChange: this.onChange.bind(this)
+        };
+
+        const getSuggestionValue = suggestion => suggestion.name;
+
+        // Use your imagination to render suggestions.
+        const renderSuggestion = suggestion => {
+          const link = '/movie/'+suggestion.slugName;
+          return <NavLink to={link} className={b('option')}>
+            {suggestion.name}
+          </NavLink>
+        };
+
         if (role === 'admin') {
             additional = (<div>
                 <NavLink to='/add-movie' className={b('add')} activeClassName={b('add', ['active'])}>
@@ -38,6 +80,16 @@ class Navigation extends Component {
             <NavLink to="/" exact className={b('tab')} activeClassName={b('tab', ['active'])}>Home</NavLink>
             <NavLink to="/schedule" className={b('tab')} activeClassName={b('tab', ['active'])}>Schedule</NavLink>
             <NavLink to="/allactors" className={b('tab')} activeClassName={b('tab', ['active'])}>All actors</NavLink>
+            <div className={b('search')}>
+              <Autosuggest
+                suggestions={this.props.moviesAutocomplete}
+                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
+                onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
+                getSuggestionValue={getSuggestionValue}
+                renderSuggestion={renderSuggestion}
+                inputProps={inputProps}
+              />
+            </div>
             <NavLink to="/login" style={{display: this.props.user ? 'none' : 'block'}} className={b('tab', ['login'])}
                      activeClassName={b('tab', ['active'])}>Login</NavLink>
             <button className={b('tab', ['logout'])} onClick={() => this.signOut()}
@@ -50,9 +102,12 @@ class Navigation extends Component {
 
 export default withRouter(connect(
     (state, props) => ({
-        user: getCurrentUser(state)
+        user: getCurrentUser(state),
+        moviesAutocomplete: getMoviesAutocomplete(state)
     }),
     (dispatch) => ({
-        logoutUser: () => dispatch(logoutUser())
+        logoutUser: () => dispatch(logoutUser()),
+        fetchMoviesAutocomlete: (name) => dispatch(fetchAutocompleteMovies(name)),
+        clearMoviesAutocomplete: () => dispatch(clearMoviesAutocomplete())
     })
 )(Navigation));

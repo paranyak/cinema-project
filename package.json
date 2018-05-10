@@ -48,6 +48,7 @@
     "query-string": "^6.0.0",
     "ramda": "^0.25.0",
     "react": "^16.2.0",
+    "react-autosuggest": "^9.3.4",
     "react-day-picker": "^7.1.4",
     "react-dom": "^16.2.0",
     "react-dropzone": "^4.2.9",
