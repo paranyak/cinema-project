@@ -63,11 +63,10 @@ class EditMoviePage extends Component {
         scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
 
         const newCast = cast.map(el => el._id).filter(id => id !== '');
-        console.log('new cast', newCast);
 
         const movie = {
             name,
-            slugName: slugify(name, {replacement: '_', remove: /[.:!,;*&@^]/g}),
+            slugName: slugify(name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true}),
             image: poster,
             rating: parseFloat(rating).toString(),
             cast: newCast,

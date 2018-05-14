@@ -9,8 +9,7 @@ export async function movieBySlug(slugName) {
 }
 
 export async function movieCount() {
-    let movies =  await ((await fetch(`${LOCALHOST}/movies/moviesCount`)).json());
-    return movies;
+    return await ((await fetch(`${LOCALHOST}/movies/moviesCount`)).json());
 }
 
 export async function moviesSchedule(day) {
@@ -26,8 +25,7 @@ export async function additionalMovies(limit, page) {
 }
 
 export async function autocompleteMovies(name) {
-    let movies = await ((await fetch(`${LOCALHOST}/movies/autocomplete/${name}`)).json());
-    return movies;
+    return await ((await fetch(`${LOCALHOST}/movies/autocomplete/${name}`)).json());
 }
 
 export async function actors(id) {

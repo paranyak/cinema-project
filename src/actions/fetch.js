@@ -118,8 +118,7 @@ export const postMovieToDB = (movie) => async (dispatch) => {
         alert('Your form was not submitted!');
     }
     else {
-        const res = await result.json();
-        let resToJson = res;
+        let resToJson = await result.json();
         resToJson.id = resToJson['_id'];
         resToJson = normalize([resToJson], moviesListSchema);
         dispatch(fromFetch.postMovieSuccess(resToJson, resToJson.result, resToJson.entities.movies));

@@ -1,13 +1,12 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-
 import {getCurrentUser, getMovieById, isMovieFetching} from "../reducers/index";
 import {fetchActorsSlug, fetchMovie, fetchDeleteActor} from '../actions/fetch';
-
 import "../styles/ActorLayout.less"
 import block from "../helpers/BEM";
 import {connect} from "react-redux";
 import {getActorBySlug, isActorFetchingSlug} from "../reducers";
+import {monthNames} from "../helpers/constants";
 
 
 const b = block("ActorLayout");
@@ -23,12 +22,12 @@ class ActorLayout extends Component {
     componentWillMount() {
         const {selectedActor, isActorLoading} = this.props;
         if ((!selectedActor || selectedActor.slugName === undefined) && !isActorLoading) {
-            this.props.fetchActorBySlug(this.props.match.params.slug);
+            this.props.fetchActorBySlug(this.props.match.params.slug.toLowerCase());
         }
     }
 
     deleteActor(id) {
-      this.props.deleteActor(id);
+        this.props.deleteActor(id);
     }
 
     render() {
@@ -47,13 +46,18 @@ class ActorLayout extends Component {
         }
         let additional = '';
         let role = this.props.user && this.props.user.role;
+
+        const month = monthNames[selectedActor.date.month - 1];
+        const {year, day} = selectedActor.date;
+        const birthDay = month + ' ' + day + ', ' + year;
+
         if (role === 'admin') {
-            additional = ( <div>
-            <Link to={`/edit-actor/${selectedActor.slugName}`}>
-                <span className={b('edit-icon')}></span>
-            </Link>
-            <span className={b('delete-icon')} onClick={() => this.deleteActor(selectedActor._id)}></span>
-          </div>)
+            additional = (<div>
+                <Link to={`/edit-actor/${selectedActor.slugName}`}>
+                    <span className={b('edit-icon')}></span>
+                </Link>
+                <span className={b('delete-icon')} onClick={() => this.deleteActor(selectedActor._id)}></span>
+            </div>)
         }
         return (
             <section className={b()}>
@@ -66,7 +70,7 @@ class ActorLayout extends Component {
                     <section className={b("extra")}>
                         <p className={b("born-date")}>
                             Born on
-                            <span className={b("value")}>{selectedActor.date}</span>
+                            <span className={b("value")}>{birthDay}</span>
                         </p>
                         <p className={b("born-city")}>
                             Born in
@@ -97,8 +101,9 @@ class ActorLayout extends Component {
 
 export default connect((state, props) => {
         let moviesToLoad = [];
-        const actor = getActorBySlug(state, props.match.params.slug);
-        const isActorLoading = isActorFetchingSlug(props.match.params.slug, state);
+        const slug = props.match.params.slug.toLowerCase();
+        const actor = getActorBySlug(state, slug);
+        const isActorLoading = isActorFetchingSlug(slug, state);
         const user = getCurrentUser(state);
         let movies = [];
         if (actor) {

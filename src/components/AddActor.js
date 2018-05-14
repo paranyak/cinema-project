@@ -2,8 +2,10 @@ import React, {Component} from "react";
 import "../styles/AddActor.less";
 import block from '../helpers/BEM';
 import DragDropImage from "./DragDropImage";
-import {monthNames} from '../helpers/constants'
 import {Redirect} from "react-router";
+import {editMovieById, postMovieToDB} from "../actions/fetch";
+import {connect} from "react-redux";
+import slugify from 'slugify';
 
 const b = block("AddActor");
 
@@ -53,7 +55,7 @@ class AddActor extends Component {
             for (let j = 0; j < this.state.suggestedMovies[i].length; j++) {
                 let key = this.state.suggestedMovies[i][j].id;
                 if (this.state.suggestedMovies[i][j].name !== "" && this.state.suggestedMovies[i][j].name === movieInputs[i].value) {
-                    if (typeof(this.state.suggestedMovies[i][j].id) == "string" && this.state.suggestedMovies[i][j].id.startsWith("tmp_")) {
+                    if (typeof(this.state.suggestedMovies[i][j].id) === "string" && this.state.suggestedMovies[i][j].id.startsWith("tmp_")) {
                         let newData = this.state.suggestedMovies;
                         delete newData[i][j]['id'];
                         await fetch('http://localhost:3000/movies', {
@@ -78,16 +80,20 @@ class AddActor extends Component {
 
         const date = this.refs.date.value;
         const dateArr = date.split('-');
-        const month = monthNames[parseInt(dateArr[1]) - 1];
-        const year = dateArr[0];
-        const day = dateArr[2];
-        const birthDay = month + ' ' + day + ', ' + year;
+        const month = parseInt(dateArr[1]);
+        const year = parseInt(dateArr[0]);
+        const day = parseInt(dateArr[2]);
+        const birthDay = {year, month, day};
 
-        let slugName = this.refs.name.value.toLowerCase().replace(/ /g, "_");
+        let slugName = slugify(this.refs.name.value, {
+            replacement: '_',
+            remove: /[.:!,;*&@^]/g,
+            lower: true
+        });
 
         const actorToAdd = {
             name: this.refs.name.value,
-            slugName: slugName,
+            slugName,
             movies: createdMovies,
             info: this.refs.info.value,
             date: birthDay,
@@ -116,11 +122,12 @@ class AddActor extends Component {
                     newArrayCast.push(actorId);
                     let newData = {};
                     newData["cast"] = newArrayCast;
-                    await fetch(`http://localhost:3000/movies/${key}`, {
-                        method: 'PATCH',
-                        headers: headers,
-                        body: JSON.stringify(newData)
-                    }).then((res) => res.json());
+                    // await fetch(`http://localhost:3000/movies/${key}`, {
+                    //     method: 'PATCH',
+                    //     headers: headers,
+                    //     body: JSON.stringify(newData)
+                    // }).then((res) => res.json());
+                    await this.props.editMovie(newData, key);
                     createdMovies[key] = [this.state.suggestedMovies[i][j].name, this.state.movies[i].role];
 
                 }
@@ -389,4 +396,7 @@ class AddActor extends Component {
     }
 }
 
-export default AddActor;
+export default connect(null, (dispatch) => ({
+    postMovie: (movie) => dispatch(postMovieToDB(movie)),
+    editMovie: (movie, id) => dispatch(editMovieById(id, movie))
+}))(AddActor);

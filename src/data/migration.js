@@ -36,7 +36,8 @@ db.once('open', function () {
                 month: Number,
                 day: Number
             },
-            cast: [{type: Schema.Types.ObjectId, ref: 'Actor'}]
+            cast: [{type: Schema.Types.ObjectId, ref: 'Actor'}],
+            published: Boolean
         });
 
         var actorSchema = new Schema({
@@ -44,14 +45,16 @@ db.once('open', function () {
             name: String,
             slugName: String,
             movies: [{type: Schema.Types.ObjectId, ref: 'Movie'}],
-            // movies: {
-            //   String: [String]
-            // },
             info: String,
-            date: String,
+            date: {
+                year: Number,
+                month: Number,
+                day: Number
+            },
             city: String,
             nominations: [String],
-            image: String
+            image: String,
+            published: Boolean
         });
 
 

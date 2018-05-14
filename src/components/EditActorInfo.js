@@ -49,10 +49,10 @@ class EditActorInfo extends Component {
 
     render() {
         const {actor, films} = this.props;
-        const date = actor.date.split(' ');
-        const month = (monthNames.indexOf(date[0]) > 8 ? '' : '0') + (monthNames.indexOf(date[0]) + 1).toString();
-        const day = (parseInt(date[1].slice(0, -1)) > 9 ? '' : '0') + date[1].slice(0, -1);
-        const year = date[2];
+        const {date} = actor;
+        const month = (date.month > 9 ? '' : '0') + date.month.toString();
+        const day = (date.day > 9 ? '' : '0') + date.day.toString();
+        const year = date.year.toString();
         const birthDate = year + '-' + month + '-' + day;
 
         return <section className={b()}>

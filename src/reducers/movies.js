@@ -34,8 +34,8 @@ const byId = (state = {}, action) => {
             return newState;
         case FETCH_MOVIE_DELETE_SUCCESS:
             let newStateDel = {...state};
-            delete newStateDel[action.ids[0]]
-            return newStateDel
+            delete newStateDel[action.ids[0]];
+            return newStateDel;
         default:
             return state;
     }
@@ -43,6 +43,8 @@ const byId = (state = {}, action) => {
 const bySlug = (state = {}, action) => {
     switch (action.type) {
         case FETCH_MOVIES_SLUG_SUCCESS:
+            return {...state, ...action.movies};
+        case POST_MOVIE_SUCCESS:
             return {...state, ...action.movies};
         case FETCH_FAIL_SLUG:
             return action;

@@ -12,6 +12,9 @@ class MovieInfo extends Component {
         const strokeFull = film.rating * 10;
         const strokeEmpty = 100 - strokeFull;
         const strokeArray = "" + strokeFull + " " + strokeEmpty + "";
+        const format = (typeof film.format === 'string') ? film.format : film.format.join(", ");
+        const technology = (typeof film.technology === 'string') ? film.technology : film.technology.join(", ");
+
         return (
             <section className={b()}>
                 <h1 className={b("name")}>{film.name}</h1>
@@ -27,11 +30,21 @@ class MovieInfo extends Component {
                                     strokeDashoffset="25"></circle>
                         </svg>
                     </div>
-                    <p className={b("genre")}>Genre <span className={b("value")}>{film.genre}</span></p>
-                    <p className={b("duration")}>Duration <span
-                        className={b("value")}>{film.duration.hour} hour {film.duration.minute} minutes </span></p>
-                    <p className={b("format")}>Format <span className={b("value")}>{film.format}</span></p>
-                    <p className={b("technology")}>Technology <span className={b("value")}>{film.technology}</span>
+                    <p className={b("genre")}>
+                        Genre
+                        <span className={b("value")}>{film.genre}</span>
+                    </p>
+                    <p className={b("duration")}>
+                        Duration
+                        <span className={b("value")}>{film.duration.hour}h {film.duration.minute}m </span>
+                    </p>
+                    <p className={b("format")}>
+                        Format
+                        <span className={b("value")}>{format}</span>
+                    </p>
+                    <p className={b("technology")}>
+                        Technology
+                        <span className={b("value")}>{technology}</span>
                     </p>
                 </div>
                 <section className={"Actors"}>
