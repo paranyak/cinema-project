@@ -13,6 +13,7 @@ router.get('/moviesCount', async function(req, res) {
 router.get('/byId/:id', async function (req, res) {
     const id = req.params.id;
     const movie = await db.get().collection('movies').findOne({_id: ObjectID(id)});
+    console.log("By id", movie);
     res.send(movie);
 });
 
@@ -57,8 +58,8 @@ router.get('/autocomplete/:query', async function(req, res) {
 })
 
 router.post('/', async (req, res) => {
-    const movie = await db.get().collection('movies').save(req.body)
-    res.send(movie)
+    const movie = await db.get().collection('movies').save(req.body);
+    res.send({movie: movie.ops, response: movie.result});
 })
 
 router.patch('/:id', async (req, res) => {
@@ -67,7 +68,9 @@ router.patch('/:id', async (req, res) => {
 })
 
 router.delete('/:id', async (req, res) => {
+    console.log("In delete");
     const movie = await db.get().collection('movies').findOneAndDelete({_id: ObjectID(req.params.id)});
+    console.log("Movie in del router", movie);
     res.send(movie.value)
 })
 

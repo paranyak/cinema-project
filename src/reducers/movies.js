@@ -25,7 +25,6 @@ const byId = (state = {}, action) => {
         case FETCH_MOVIES_SUCCESS:
         case FETCH_SCHEDULE_MOVIES_SUCCESS:
         case FETCH_CAROUSEL_MOVIES_SUCCESS:
-            return {...state, ...action.movies};
         case POST_MOVIE_SUCCESS:
             return {...state, ...action.movies};
         case EDITING_MOVIE_SUCCESS:
@@ -43,8 +42,8 @@ const byId = (state = {}, action) => {
 const bySlug = (state = {}, action) => {
     switch (action.type) {
         case FETCH_MOVIES_SLUG_SUCCESS:
-            return {...state, ...action.movies};
         case POST_MOVIE_SUCCESS:
+
             return {...state, ...action.movies};
         case FETCH_FAIL_SLUG:
             return action;
@@ -71,12 +70,15 @@ const allIds = (state = [], action) => {
         case FETCH_MOVIES_SUCCESS:
         case FETCH_SCHEDULE_MOVIES_SUCCESS:
         case FETCH_CAROUSEL_MOVIES_SUCCESS:
+        case POST_MOVIE_SUCCESS:
             return [
                 ...state,
                 ...action.ids
             ].filter((el, i, arr) => arr.indexOf(el) === i);
         case FETCH_MOVIE_DELETE_SUCCESS:
-            return [...state].filter((el) => el.id !== action.ids)
+            let a = [...state].filter((el) => el !== action.ids[0]);
+            console.log("Delete all ids", a, action.ids[0]);
+            return a;
         default:
             return state;
     }
@@ -87,7 +89,7 @@ const carouselleMovies = (state = {popular: [], soon: []}, action) => {
         case FETCH_CAROUSEL_MOVIES_SUCCESS:
             return {...state, [action.label]: action.ids};
         case FETCH_MOVIE_DELETE_SUCCESS:
-            return [...state].filter((el) => el.id !== action.ids)
+            return [...state].filter((el) => el.id !== action.ids);
         default:
             return state;
     }
@@ -98,7 +100,7 @@ const scheduleMoviesIds = (state = [], action) => {
         case FETCH_SCHEDULE_MOVIES_SUCCESS:
             return [...action.ids];
         case FETCH_MOVIE_DELETE_SUCCESS:
-            return [...state].filter((el) => el.id !== action.ids)
+            return [...state].filter((el) => el.id !== action.ids);
         default:
             return state;
     }
@@ -107,9 +109,9 @@ const scheduleMoviesIds = (state = [], action) => {
 const moviesAutocomplete = (state = [], action) => {
     switch (action.type) {
         case FETCH_AUTOCOMPLETE_MOVIES_SUCCESS:
-            return [...action.movies]
+            return [...action.movies];
         case CLEAR_MOVIES_AUTOCOMPLETE:
-            return []
+            return [];
         default:
             return state;
     }

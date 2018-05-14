@@ -46,26 +46,27 @@ export async function deleteActor(id) {
     return await ((await fetch(`${LOCALHOST}/actors/${id}`, {
         method: 'DELETE',
         headers: headers,
-    })).json())
+    })).json());
 }
 
 export async function deleteMovie(id) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return await ((await fetch(`${LOCALHOST}/movies/${id}`, {
+    return await  ((await fetch(`${LOCALHOST}/movies/${id}`, {
         method: 'DELETE',
         headers: headers,
-    })).json())
+    })).json());
+
 }
 
 export async function postMovie(movie) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return await fetch('http://localhost:3000/movies', {
+    return await ((await fetch('http://localhost:3000/movies', {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(movie)
-    });
+    })).json());
 }
 
 export const editMovie = async (id, movie) => {

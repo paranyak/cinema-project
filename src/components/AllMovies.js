@@ -33,6 +33,7 @@ class AllMovies extends Component {
 
 
     componentWillReceiveProps(nextProps) {
+        console.log("WRP:", nextProps.count, this.props.count, nextProps.films.length, this.props.films.length );
         if (nextProps.count != this.props.count) {
             let allM = document.querySelector("#root");
             allM.style.height = this.calculateHeight(nextProps.count);
@@ -82,6 +83,7 @@ class AllMovies extends Component {
     }
 
     loadMore(page) {
+        console.log("Load more", page);
         this.props.fetchAllMovies(this.state.items, page);
     }
 

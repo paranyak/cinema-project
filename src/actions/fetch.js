@@ -75,7 +75,8 @@ export const fetchDeleteActor = (id) => async (dispatch) => {
 export const fetchDeleteMovie = (id) => async (dispatch) => {
   dispatch(fromFetch.fetchMoviesStart('delete'));
   let movies = await fromApi.deleteMovie(id);
-  movies = normalize(movies, moviesListSchema);
+    movies.id = movies['_id'];
+    movies = normalize([movies], moviesListSchema);
   dispatch(fromFetch.fetchMoviesDeleteSuccess('delete', movies.result, movies.entities.movies));
   dispatch(push('/'));
 };
@@ -113,15 +114,14 @@ export const fetchActorsSlug = (slugName) => async (dispatch) => {
 export const postMovieToDB = (movie) => async (dispatch) => {
     dispatch(fromFetch.fetchPostStart(movie));
     let result = await fromApi.postMovie(movie);
-
-    if (!result.ok) {
+    if (!result.response.ok) {
         alert('Your form was not submitted!');
     }
     else {
-        let resToJson = await result.json();
-        resToJson.id = resToJson['_id'];
-        resToJson = normalize([resToJson], moviesListSchema);
-        dispatch(fromFetch.postMovieSuccess(resToJson, resToJson.result, resToJson.entities.movies));
+        let res = await result.movie[0];
+        res.id = res['_id'];
+        res = normalize([res], moviesListSchema);
+        dispatch(fromFetch.postMovieSuccess(res, res.result, res.entities.movies));
     }
 };
 
