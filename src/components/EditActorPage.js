@@ -48,16 +48,6 @@ class EditActorPage extends Component {
         } = this.state;
         const {actor} = this.props;
 
-        let birthDay = date;
-
-        if (date.includes('-')) {
-            const dateArr = date.split('-');
-            const month = monthNames[parseInt(dateArr[1]) - 1];
-            const year = dateArr[0];
-            const day = dateArr[2];
-            birthDay = month + ' ' + day + ', ' + year;
-        }
-
         let newMovies = movies;
 
         if (movies.length !== 0 && typeof movies[0] === 'object') {
@@ -82,7 +72,7 @@ class EditActorPage extends Component {
             movies: newMovies,
             name,
             info,
-            date: birthDay,
+            date,
             city,
             nominations: nominations.filter(el => el !== ''),
             image

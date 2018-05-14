@@ -78,18 +78,22 @@ class EditMovieInfo extends Component {
         const chosenFormats = (typeof film.format === 'object') ? film.format : film.format.split(',');
 
         const schedule = film.Schedule;
-        const fromSch = schedule[0].split(' ')[0];
-        const fromReverse = fromSch.split('-').reverse().join('-');
+        let from = undefined;
+        let to = undefined;
+        if (schedule.length !== 0) {
+            const fromSch = schedule[0].split(' ')[0];
+            const fromReverse = fromSch.split('-').reverse().join('-');
 
-        const toSch = schedule[schedule.length - 1].split(' ')[0];
-        const toReverse = toSch.split('-').reverse().join('-');
+            const toSch = schedule[schedule.length - 1].split(' ')[0];
+            const toReverse = toSch.split('-').reverse().join('-');
 
-        let from = fromReverse;
-        let to = toReverse;
+            from = fromReverse;
+            to = toReverse;
 
-        if (new Date(fromReverse).getTime() > new Date(toReverse).getTime()) {
-            from = toReverse;
-            to = fromReverse;
+            if (new Date(fromReverse).getTime() > new Date(toReverse).getTime()) {
+                from = toReverse;
+                to = fromReverse;
+            }
         }
         const timeRanges = Array.from(new Set(schedule.map(el => el.split(' ')[1]))).sort();
 

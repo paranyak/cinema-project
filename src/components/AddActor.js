@@ -316,11 +316,11 @@ class AddActor extends Component {
     }
 
     doneMovie(index) {
-        let curentInputToDone = document.querySelectorAll(".AddActor__inputs_movie")[index];
-        let curentRoleToDone = document.querySelectorAll(".AddActor__inputs_role")[index];
+        let currentInputToDone = document.querySelectorAll(".AddActor__inputs_movie")[index];
+        let currentRoleToDone = document.querySelectorAll(".AddActor__inputs_role")[index];
         const arr = [
             ...this.state.movies.slice(0, index),
-            Object.assign({}, {name: curentInputToDone.value, role: curentRoleToDone.value}),
+            Object.assign({}, {name: currentInputToDone.value, role: currentRoleToDone.value}),
             ...this.state.movies.slice(index + 1)
         ];
         this.setState({movies: arr});

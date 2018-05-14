@@ -8,7 +8,6 @@ import {connect} from "react-redux";
 import {getActorBySlug, isActorFetchingSlug} from "../reducers";
 import {monthNames} from "../helpers/constants";
 
-
 const b = block("ActorLayout");
 const link = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_275,h_408,c_thumb,g_face/';
 
@@ -20,8 +19,8 @@ class ActorLayout extends Component {
     }
 
     componentWillMount() {
-        const {selectedActor, isActorLoading} = this.props;
-        if ((!selectedActor || selectedActor.slugName === undefined) && !isActorLoading) {
+        const {actor, isActorLoading} = this.props;
+        if ((!actor || actor.slugName === undefined) && !isActorLoading) {
             this.props.fetchActorBySlug(this.props.match.params.slug.toLowerCase());
         }
     }
@@ -32,11 +31,11 @@ class ActorLayout extends Component {
 
     render() {
         window.scrollTo(0, 0);
-        const {movies, selectedActor} = this.props;
-        if (!selectedActor) {
+        const {movies, actor} = this.props;
+        if (!actor) {
             return null;
         }
-        if (selectedActor && selectedActor.error) {
+        if (actor && actor.error) {
             return (
                 <section className={b("error")}>
                     <img width="100%"
@@ -47,16 +46,16 @@ class ActorLayout extends Component {
         let additional = '';
         let role = this.props.user && this.props.user.role;
 
-        const month = monthNames[selectedActor.date.month - 1];
-        const {year, day} = selectedActor.date;
+        const month = monthNames[actor.date.month - 1];
+        const {year, day} = actor.date;
         const birthDay = month + ' ' + day + ', ' + year;
 
         if (role === 'admin') {
             additional = (<div>
-                <Link to={`/edit-actor/${selectedActor.slugName}`}>
+                <Link to={`/edit-actor/${actor.slugName}`}>
                     <span className={b('edit-icon')}></span>
                 </Link>
-                <span className={b('delete-icon')} onClick={() => this.deleteActor(selectedActor._id)}></span>
+                <span className={b('delete-icon')} onClick={() => this.deleteActor(actor._id)}></span>
             </div>)
         }
         return (
@@ -64,9 +63,9 @@ class ActorLayout extends Component {
                 {additional}
                 <section className={b("general")}>
                     <h1 className={b("name")}>
-                        {selectedActor.name}
+                        {actor.name}
                     </h1>
-                    <p className={b("info")}>{selectedActor.info}</p>
+                    <p className={b("info")}>{actor.info}</p>
                     <section className={b("extra")}>
                         <p className={b("born-date")}>
                             Born on
@@ -74,11 +73,11 @@ class ActorLayout extends Component {
                         </p>
                         <p className={b("born-city")}>
                             Born in
-                            <span className={b("value")}>{selectedActor.city}</span>
+                            <span className={b("value")}>{actor.city}</span>
                         </p>
                         <ul className={b("nominations")}>
                             Nominations
-                            {selectedActor.nominations.map((n, ind) =>
+                            {actor.nominations.map((n, ind) =>
                                 <li className={b("value")} key={ind} style={{marginRight: 0}}>{n}</li>
                             )}
                         </ul>
@@ -92,7 +91,7 @@ class ActorLayout extends Component {
                         </section>
                     </section>
                 </section>
-                <img className={b("image")} src={link + selectedActor.image}/>
+                <img className={b("image")} src={link + actor.image}/>
             </section>
         );
     }
@@ -117,7 +116,7 @@ export default connect((state, props) => {
         }
         moviesToLoad = moviesToLoad.filter((id) => isMovieFetching(id, state) !== true);
         return {
-            selectedActor: actor,
+            actor,
             user,
             movies,
             moviesToLoad,

@@ -119,62 +119,6 @@ traits:
     patch:
       description: Update the movie
 
-    /cast:
-      type:
-        readOnlyCollection:
-          exampleCollection: !include movie-cast.sample
-      description: Collection of movie's cast
-      get:
-        description: Get a specific movie's cast list
-
-    /schedule:
-      type:
-        readOnlyCollection:
-          exampleCollection: !include movie-schedule.sample
-      description: Collection of movie's schedule
-      get:
-        description: Get a specific movie's schedule list
-
-    /screenshots:
-      type:
-        readOnlyCollection:
-          exampleCollection: !include movie-screenshots.sample
-      description: Collection of movie's screenshots
-      get:
-        description: Get a specific movie's screenshots list
-
-    /format:
-      type:
-        readOnlyCollection:
-          exampleCollection: !include movie-formats.sample
-      description: Collection of movie's formats
-      get:
-        description: Get a specific movie's formats list
-
-    /technology:
-      type:
-        readOnlyCollection:
-          exampleCollection: !include movie-technologies.sample
-      description: Collection of movie's technologies
-      get:
-        description: Get a specific movie's technologies list
-
-    /duration:
-      type:
-        readOnlyCollection:
-          exampleCollection: !include movie-duration.sample
-      description: Movie's duration
-      get:
-        description: Get a specific movie's duration
-
-    /startDate:
-      type:
-        readOnlyCollection:
-          exampleCollection: !include movie-startDate.sample
-      description: Movie's start date
-      get:
-        description: Get a specific movie's start date
-
 
 /actors:
   type:
@@ -202,19 +146,3 @@ traits:
       description: Get a specific actor
     patch:
       description: Update the actor
-
-    /movies:
-      type:
-        readOnlyCollection:
-          exampleCollection: !include actor-movies.sample
-      description: Collection of movies belonging to the actor
-      get:
-        description: Get a specific actor's movies list
-
-    /nominations:
-      type:
-        readOnlyCollection:
-          exampleCollection: !include actor-nominations.sample
-      description: Collection of nominations belonging to the actor
-      get:
-        description: Get a specific actor's nominations list

@@ -67,6 +67,8 @@ class EditMoviePage extends Component {
         const scheduleTime = this.state.scheduleTime.sort();
         scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
 
+        const convRating = rating ? parseFloat(rating) : "-.-";
+
         let newCast = cast;
 
         if (cast.length !== 0 && typeof cast[0] === 'object') {
@@ -90,7 +92,7 @@ class EditMoviePage extends Component {
             name,
             cast: newCast,
             image: poster,
-            rating: parseFloat(rating),
+            rating: convRating,
             description,
             screenshots,
             trailer,

@@ -25,6 +25,7 @@ class CalendarRangePicker extends Component {
     handleDayClick(day) {
         const range = DateUtils.addDayToRange(day, this.state);
         const {from, to} = this.state;
+        console.log('form to', this.state);
         this.setState(range);
 
         if (from && to) {

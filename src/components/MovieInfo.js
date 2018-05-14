@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Actors from "./Actors";
-
 import "../styles/MovieInfo.less";
 import block from "../helpers/BEM";
 

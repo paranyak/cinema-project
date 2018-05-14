@@ -31,10 +31,19 @@ class EditActorInfo extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         const {movies, info, date, city, nominations, name} = this.state;
+        let convDate = date;
+        if (typeof date === 'string') {
+            const splitDate = date.split("-");
+            convDate = {
+                year: parseInt(splitDate[0]),
+                month: parseInt(splitDate[1]),
+                day: parseInt(splitDate[2])
+            };
+        }
         if (prevState !== this.state) {
             this.props.callback(
                 ['movies', 'info', 'date', 'city', 'nominations', 'name'],
-                [movies, info, date, city, nominations, name]);
+                [movies, info, convDate, city, nominations, name]);
         }
     }
 
