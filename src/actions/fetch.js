@@ -85,14 +85,12 @@ export const fetchActorsSlug = (slugName) => async (dispatch) => {
 export const postMovieToDB = (movie) => async (dispatch) => {
     dispatch(fromFetch.fetchPostStart(movie));
     let result = await fromApi.postMovie(movie);
-    //console.log("res:", result);
     if (!result.response.ok) {
         alert('Your form was not submitted!');
     }
     else {
         let res = await result.movie[0];
         res.id = res['_id'];
-        console.log("POST MOVIE", res);
         res = normalize([res], moviesListSchema);
         dispatch(fromFetch.postMovieSuccess(res, res.result, res.entities.movies));
     }

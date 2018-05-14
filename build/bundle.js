@@ -1984,7 +1984,7 @@ var postMovieToDB = exports.postMovieToDB = function postMovieToDB(movie) {
                             }
 
                             alert('Your form was not submitted!');
-                            _context10.next = 15;
+                            _context10.next = 14;
                             break;
 
                         case 8:
@@ -1995,11 +1995,10 @@ var postMovieToDB = exports.postMovieToDB = function postMovieToDB(movie) {
                             res = _context10.sent;
 
                             res.id = res['_id'];
-                            console.log("POST MOVIE", res);
                             res = (0, _normalizr.normalize)([res], _schema.moviesListSchema);
                             dispatch(fromFetch.postMovieSuccess(res, res.result, res.entities.movies));
 
-                        case 15:
+                        case 14:
                         case 'end':
                             return _context10.stop();
                     }
@@ -68326,9 +68325,7 @@ var byId = function byId() {
         case _actionTypes.FETCH_MOVIES_SUCCESS:
         case _actionTypes.FETCH_SCHEDULE_MOVIES_SUCCESS:
         case _actionTypes.FETCH_CAROUSEL_MOVIES_SUCCESS:
-            return _extends({}, state, action.movies);
         case _actionTypes.POST_MOVIE_SUCCESS:
-            console.log("BY ID:", state, action.movies);
             return _extends({}, state, action.movies);
         case _actionTypes.EDITING_MOVIE_SUCCESS:
             var newState = state;
@@ -68344,14 +68341,15 @@ var bySlug = function bySlug() {
 
     switch (action.type) {
         case _actionTypes.FETCH_MOVIES_SLUG_SUCCESS:
+        case _actionTypes.POST_MOVIE_SUCCESS:
+
             return _extends({}, state, action.movies);
         case _actionTypes.FETCH_FAIL_SLUG:
             return action;
         case _actionTypes.EDITING_MOVIE_SUCCESS:
-
-        case _actionTypes.POST_MOVIE_SUCCESS:
-            console.log("BY SLUG", action);
-            return _extends({}, state, action.movies);
+            var newState = state;
+            newState[action.slug] = action.movie;
+            return newState;
         default:
             return state;
     }
@@ -68377,11 +68375,7 @@ var allIds = function allIds() {
         case _actionTypes.FETCH_MOVIES_SUCCESS:
         case _actionTypes.FETCH_SCHEDULE_MOVIES_SUCCESS:
         case _actionTypes.FETCH_CAROUSEL_MOVIES_SUCCESS:
-            return [].concat(_toConsumableArray(state), _toConsumableArray(action.ids)).filter(function (el, i, arr) {
-                return arr.indexOf(el) === i;
-            });
         case _actionTypes.POST_MOVIE_SUCCESS:
-            console.log("ALL ids", action, action.ids);
             return [].concat(_toConsumableArray(state), _toConsumableArray(action.ids)).filter(function (el, i, arr) {
                 return arr.indexOf(el) === i;
             });
