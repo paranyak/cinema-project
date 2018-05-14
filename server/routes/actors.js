@@ -52,6 +52,11 @@ router.patch('/:id', async (req, res) => {
 
 })
 
+router.delete('/:id', async (req, res) => {
+    const actor = await db.get().collection('actors').findOneAndDelete({_id: ObjectID(req.params.id)});
+    res.send(actor.value)
+})
+
 router.get('/bySlugName/:slugName', async (req, res) => {
     const slugName = req.params.slugName;
     const actor = await db.get().collection('actors').findOne({slugName})

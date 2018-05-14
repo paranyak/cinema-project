@@ -2,6 +2,8 @@ import {moviesListSchema, actorsListSchema, actorsListSchemaSlug, moviesListSche
 import {normalize} from 'normalizr';
 import * as fromFetch from '../actions/index';
 import * as fromApi from '../api/fetch';
+import {push} from 'react-router-redux';
+
 
 export const fetchMovie = (id) => async (dispatch) => {
     dispatch(fromFetch.fetchMoviesStart(id));
@@ -38,6 +40,15 @@ export const fetchCarouselleMovies = (label) => async (dispatch) => {
     dispatch(fromFetch.fetchCarouselleMoviesSuccess(movies.result, movies.entities.movies, label));
 };
 
+export const fetchAutocompleteMovies = (name) => async (dispatch) => {
+    dispatch(fromFetch.fetchMoviesStart('autocomplete'));
+    let movies = await fromApi.autocompleteMovies(name);
+    movies.forEach(function(movie) {
+      movie.id = movie['_id'];
+    });
+    dispatch(fromFetch.fetchAutocompleteMoviesSuccess(movies));
+};
+
 export const fetchAdditionalMovies = (limit, page) => async (dispatch) => {
     dispatch(fromFetch.fetchMoviesStart('additional'));
     let movies = await fromApi.additionalMovies(limit, page);
@@ -51,6 +62,22 @@ export const fetchAdditionalActors = (limit, page) => async (dispatch) => {
     let actors = await fromApi.additionalActors(limit, page);
     actors = normalize(actors, actorsListSchema);
     dispatch(fromFetch.fetchActorsSucess('additional', actors.result, actors.entities.actors));
+};
+
+export const fetchDeleteActor = (id) => async (dispatch) => {
+  dispatch(fromFetch.fetchActorsStart('delete'));
+  let actors = await fromApi.deleteActor(id);
+  actors = normalize(actors, actorsListSchema);
+  dispatch(fromFetch.fetchActorsDeleteSuccess('delete', actors.result, actors.entities.actors));
+  dispatch(push('/allactors'));
+};
+
+export const fetchDeleteMovie = (id) => async (dispatch) => {
+  dispatch(fromFetch.fetchMoviesStart('delete'));
+  let movies = await fromApi.deleteMovie(id);
+  movies = normalize(movies, moviesListSchema);
+  dispatch(fromFetch.fetchMoviesDeleteSuccess('delete', movies.result, movies.entities.movies));
+  dispatch(push('/'));
 };
 
 export const fetchActors = (id) => async (dispatch) => {
@@ -81,6 +108,7 @@ export const fetchActorsSlug = (slugName) => async (dispatch) => {
         dispatch(fromFetch.fetchActorsSlugSuccess(slugName, actors.result, actors.entities.actors));
     }
 };
+
 
 export const postMovieToDB = (movie) => async (dispatch) => {
     dispatch(fromFetch.fetchPostStart(movie));

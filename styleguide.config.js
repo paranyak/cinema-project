@@ -1,4 +1,3 @@
 module.exports = {
-    require: [
-        'babel-polyfill']
-}
+    require: ['babel-polyfill'],
+};

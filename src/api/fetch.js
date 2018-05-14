@@ -25,6 +25,11 @@ export async function additionalMovies(limit, page) {
     return await ((await fetch(`${LOCALHOST}/movies/ids?_page=${page}&_limit=${limit}`)).json());
 }
 
+export async function autocompleteMovies(name) {
+    let movies = await ((await fetch(`${LOCALHOST}/movies/autocomplete/${name}`)).json());
+    return movies;
+}
+
 export async function actors(id) {
     return await fetch(`${LOCALHOST}/actors/byId/${id}`)
 }
@@ -35,6 +40,24 @@ export async function actorsBySlugName(slugName) {
 
 export async function additionalActors(limit, page) {
     return await ((await fetch(`${LOCALHOST}/actors/ids?_page=${page}&_limit=${limit}`)).json())
+}
+
+export async function deleteActor(id) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return await ((await fetch(`${LOCALHOST}/actors/${id}`, {
+        method: 'DELETE',
+        headers: headers,
+    })).json())
+}
+
+export async function deleteMovie(id) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return await ((await fetch(`${LOCALHOST}/movies/${id}`, {
+        method: 'DELETE',
+        headers: headers,
+    })).json())
 }
 
 export async function postMovie(movie) {

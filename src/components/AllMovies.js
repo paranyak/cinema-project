@@ -41,9 +41,7 @@ class AllMovies extends Component {
         if (this.props.count && this.props.films.length === this.props.count) {
             this.setState({...this.state, hasMoreItems: false});
         }
-
     }
-
 
     isBetween(number, a, b, inclusive) {
         let min = Math.min.apply(Math, [a, b]),
@@ -75,8 +73,8 @@ class AllMovies extends Component {
                 <div className={b()}>
                     {films
                         .map((film, i) =>
-                            <LazyLoad height='501px' offset={1000} key={i}>
-                                <MoviePoster filmId={film} id={i}/>
+                            <LazyLoad height='501px'  offset={1000} key={i} >
+                                <MoviePoster filmId={film} key={i}/>
                             </LazyLoad>
                         )}
                 </div>
@@ -90,7 +88,6 @@ class AllMovies extends Component {
     }
 
     render() {
-
         if (this.props.films.length !== 0) {
             return (
                 <section>
@@ -130,11 +127,11 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = state => {
     const count = getMoviesCount(state);
-    const movies = getAllMoviesIds(state);
+    const films = getAllMoviesIds(state);
     const isFetching = isMovieFetching('additional', state);
     return {
         count,
-        films: movies,
+        films,
         isFetching
     }
 };

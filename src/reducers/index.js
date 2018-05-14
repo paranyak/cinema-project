@@ -39,6 +39,8 @@ export const getCarouselleMovies = (state, label) => fromMovies.getCarouselleMov
 
 export const getScheduleMoviesIds = (state) => fromMovies.getScheduleMoviesIds(state.movies);
 
+export const getMoviesAutocomplete = (state) => fromMovies.getMoviesAutocomplete(state.movies);
+
 export const getMovieById = (state, id) => fromMovies.getMovieById(state.movies, id);
 export const getMovieBySlug = (state, slugName) => fromMovies.getMovieBySlug(state.movies, slugName);
 

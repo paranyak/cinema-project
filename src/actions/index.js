@@ -22,9 +22,13 @@ import {
     EDITING_FAIL,
     EDITING_ACTOR_SUCCESS,
     POST_MOVIE_SUCCESS,
+    FETCH_AUTOCOMPLETE_MOVIES_SUCCESS,
+    CLEAR_MOVIES_AUTOCOMPLETE,
     FETCH_MOVIES_COUNT,
     FETCH_MOVIES_COUNT_SUCCESS,
-    FETCH_POST, EDITING_MOVIE_START, EDITING_ACTOR_START
+    FETCH_POST, EDITING_MOVIE_START, EDITING_ACTOR_START,
+    FETCH_ACTOR_DELETE_SUCCESS,
+    FETCH_MOVIE_DELETE_SUCCESS
 } from '../helpers/actionTypes';
 
 
@@ -38,11 +42,15 @@ export const editingActorStart = (actor) => ({type: EDITING_ACTOR_START, actor})
 
 export const fetchMoviesCountStart = () => ({type: FETCH_MOVIES_COUNT});
 export const fetchMoviesCountSuccess = (movies) => ({type: FETCH_MOVIES_COUNT_SUCCESS, movies});
+export const fetchMoviesDeleteSuccess = (id, ids, movie = {}) => ({type: FETCH_MOVIE_DELETE_SUCCESS, id, ids, movie});
 
 export const fetchActorsStart = (id) => ({type: FETCH_ACTOR, id});
 export const fetchActorsSlugStart = (slugName) => ({type: FETCH_ACTOR_SLUG, slugName});
 
 export const fetchActorsSucess = (id, ids, actors = []) => ({type: FETCH_ACTOR__SUCCESS, id, actors, ids});
+
+export const fetchActorsDeleteSuccess = (id, ids, actor = {}) => ({type: FETCH_ACTOR_DELETE_SUCCESS, id, ids, actor});
+
 export const fetchActorsSlugSuccess = (slugName, slugs, actors = []) => ({
     type: FETCH_ACTOR_SLUG_SUCCESS,
     slugName, actors, slugs
@@ -69,6 +77,9 @@ export const editingMovieSuccess = (movie, slug, id) => ({
     movie, slug, id
 });
 
+export const fetchAutocompleteMoviesSuccess = (movies=[]) => ({type:FETCH_AUTOCOMPLETE_MOVIES_SUCCESS, movies})
+
+
 export const editingFail = () => ({type: EDITING_FAIL, error: true});
 
 export const editingActorSuccess = (actor, slug, id) => ({
@@ -80,6 +91,7 @@ export const fetchMoviesSuccess = (id, ids, movies = []) => ({
     type: FETCH_MOVIES_SUCCESS,
     id, movies, ids
 });
+
 
 export const fetchMoviesSlugSuccess = (slugName, slugs, movies = []) => ({
     type: FETCH_MOVIES_SLUG_SUCCESS,
@@ -111,3 +123,5 @@ export const setUser = (user) => ({type: SET_USER, user});
 export const authAdditionalInfoSuccess = (info) => ({type: ADDITTIONAL_INFO, info});
 
 export const signUpSuccess = (user) => ({type: SIGN_UP_SUCCESS, user});
+
+export const clearMoviesAutocomplete = () => ({type: CLEAR_MOVIES_AUTOCOMPLETE})

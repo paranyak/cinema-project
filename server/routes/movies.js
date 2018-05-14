@@ -45,15 +45,15 @@ router.get('/bySlugName/:slug', async (req, res) => {
 });
 
 
-router.get('/autocomplete/:query', async function (req, res) {
-    let query = req.params.query;
-    let params = {};
-    if (query) {
-        params.name = {'$regex': '^' + query, '$options': 'i'};
-    }
-    const movies = await db.get().collection('movies')
-        .find(params, {fields: {id: true, name: true, cast: true}}).toArray();
-    res.send(movies);
+router.get('/autocomplete/:query', async function(req, res) {
+  let query = req.params.query;
+  let params = {};
+  if (query) {
+    params.name = {'$regex': '^' + query, '$options': 'i'};
+  }
+  const movies = await db.get().collection('movies')
+                         .find(params, {fields: {id: true, name: true, slugName: true, cast: true}}).toArray();
+  res.send(movies);
 })
 
 router.post('/', async (req, res) => {
@@ -64,6 +64,11 @@ router.post('/', async (req, res) => {
 router.patch('/:id', async (req, res) => {
     const movie = await db.get().collection('movies').findOneAndUpdate({_id: ObjectID(req.params.id)}, {$set: req.body}, {returnOriginal: false});
     res.send(movie.value);
+})
+
+router.delete('/:id', async (req, res) => {
+    const movie = await db.get().collection('movies').findOneAndDelete({_id: ObjectID(req.params.id)});
+    res.send(movie.value)
 })
 
 module.exports = router;
