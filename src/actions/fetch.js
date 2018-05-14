@@ -75,7 +75,8 @@ export const fetchDeleteActor = (id) => async (dispatch) => {
 export const fetchDeleteMovie = (id) => async (dispatch) => {
   dispatch(fromFetch.fetchMoviesStart('delete'));
   let movies = await fromApi.deleteMovie(id);
-  movies = normalize(movies, moviesListSchema);
+    movies.id = movies['_id'];
+    movies = normalize([movies], moviesListSchema);
   dispatch(fromFetch.fetchMoviesDeleteSuccess('delete', movies.result, movies.entities.movies));
   dispatch(push('/'));
 };

@@ -1798,11 +1798,12 @@ var fetchDeleteMovie = exports.fetchDeleteMovie = function fetchDeleteMovie(id) 
                         case 3:
                             movies = _context10.sent;
 
-                            movies = (0, _normalizr.normalize)(movies, _schema.moviesListSchema);
+                            movies.id = movies['_id'];
+                            movies = (0, _normalizr.normalize)([movies], _schema.moviesListSchema);
                             dispatch(fromFetch.fetchMoviesDeleteSuccess('delete', movies.result, movies.entities.movies));
                             dispatch((0, _reactRouterRedux.push)('/'));
 
-                        case 7:
+                        case 8:
                         case 'end':
                             return _context10.stop();
                     }
@@ -1924,7 +1925,7 @@ var fetchActorsSlug = exports.fetchActorsSlug = function fetchActorsSlug(slugNam
 var postMovieToDB = exports.postMovieToDB = function postMovieToDB(movie) {
     return function () {
         var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(dispatch) {
-            var result, res, resToJson;
+            var result, res;
             return regeneratorRuntime.wrap(function _callee13$(_context13) {
                 while (1) {
                     switch (_context13.prev = _context13.next) {
@@ -1936,28 +1937,27 @@ var postMovieToDB = exports.postMovieToDB = function postMovieToDB(movie) {
                         case 3:
                             result = _context13.sent;
 
-                            if (result.ok) {
+                            if (result.response.ok) {
                                 _context13.next = 8;
                                 break;
                             }
 
                             alert('Your form was not submitted!');
-                            _context13.next = 15;
+                            _context13.next = 14;
                             break;
 
                         case 8:
                             _context13.next = 10;
-                            return result.json();
+                            return result.movie[0];
 
                         case 10:
                             res = _context13.sent;
-                            resToJson = res;
 
-                            resToJson.id = resToJson['_id'];
-                            resToJson = (0, _normalizr.normalize)([resToJson], _schema.moviesListSchema);
-                            dispatch(fromFetch.postMovieSuccess(resToJson, resToJson.result, resToJson.entities.movies));
+                            res.id = res['_id'];
+                            res = (0, _normalizr.normalize)([res], _schema.moviesListSchema);
+                            dispatch(fromFetch.postMovieSuccess(res, res.result, res.entities.movies));
 
-                        case 15:
+                        case 14:
                         case 'end':
                             return _context13.stop();
                     }
@@ -9687,7 +9687,7 @@ var fetchMoviesCountSuccess = exports.fetchMoviesCountSuccess = function fetchMo
 };
 var fetchMoviesDeleteSuccess = exports.fetchMoviesDeleteSuccess = function fetchMoviesDeleteSuccess(id, ids) {
     var movie = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    return { type: _actionTypes.FETCH_MOVIE_DELETE_SUCCESS, id: id, ids: ids, movie: movie };
+    console.log("Del success action/index:", id, ids, movie);return { type: _actionTypes.FETCH_MOVIE_DELETE_SUCCESS, id: id, ids: ids, movie: movie };
 };
 
 var fetchActorsStart = exports.fetchActorsStart = function fetchActorsStart(id) {
@@ -67417,9 +67417,13 @@ var postMovie = exports.postMovie = function () {
                         });
 
                     case 4:
+                        _context13.next = 6;
+                        return _context13.sent.json();
+
+                    case 6:
                         return _context13.abrupt('return', _context13.sent);
 
-                    case 5:
+                    case 7:
                     case 'end':
                         return _context13.stop();
                 }
@@ -68705,7 +68709,6 @@ var byId = function byId() {
         case _actionTypes.FETCH_MOVIES_SUCCESS:
         case _actionTypes.FETCH_SCHEDULE_MOVIES_SUCCESS:
         case _actionTypes.FETCH_CAROUSEL_MOVIES_SUCCESS:
-            return _extends({}, state, action.movies);
         case _actionTypes.POST_MOVIE_SUCCESS:
             return _extends({}, state, action.movies);
         case _actionTypes.EDITING_MOVIE_SUCCESS:
@@ -68715,6 +68718,7 @@ var byId = function byId() {
         case _actionTypes.FETCH_MOVIE_DELETE_SUCCESS:
             var newStateDel = _extends({}, state);
             delete newStateDel[action.ids[0]];
+            console.log("delete success", newStateDel);
             return newStateDel;
         default:
             return state;
@@ -68726,6 +68730,8 @@ var bySlug = function bySlug() {
 
     switch (action.type) {
         case _actionTypes.FETCH_MOVIES_SLUG_SUCCESS:
+        case _actionTypes.POST_MOVIE_SUCCESS:
+
             return _extends({}, state, action.movies);
         case _actionTypes.FETCH_FAIL_SLUG:
             return action;
@@ -68758,13 +68764,16 @@ var allIds = function allIds() {
         case _actionTypes.FETCH_MOVIES_SUCCESS:
         case _actionTypes.FETCH_SCHEDULE_MOVIES_SUCCESS:
         case _actionTypes.FETCH_CAROUSEL_MOVIES_SUCCESS:
+        case _actionTypes.POST_MOVIE_SUCCESS:
             return [].concat(_toConsumableArray(state), _toConsumableArray(action.ids)).filter(function (el, i, arr) {
                 return arr.indexOf(el) === i;
             });
         case _actionTypes.FETCH_MOVIE_DELETE_SUCCESS:
-            return [].concat(_toConsumableArray(state)).filter(function (el) {
-                return el.id !== action.ids;
+            var a = [].concat(_toConsumableArray(state)).filter(function (el) {
+                return el !== action.ids[0];
             });
+            console.log("Delete all ids", a, action.ids[0]);
+            return a;
         default:
             return state;
     }
@@ -92499,6 +92508,7 @@ var AllMovies = function (_Component) {
     }, {
         key: "componentWillReceiveProps",
         value: function componentWillReceiveProps(nextProps) {
+            console.log("WRP:", nextProps.count, this.props.count, nextProps.films.length, this.props.films.length);
             if (nextProps.count != this.props.count) {
                 var allM = document.querySelector("#root");
                 allM.style.height = this.calculateHeight(nextProps.count);
@@ -92551,6 +92561,7 @@ var AllMovies = function (_Component) {
     }, {
         key: "loadMore",
         value: function loadMore(page) {
+            console.log("Load more", page);
             this.props.fetchAllMovies(this.state.items, page);
         }
     }, {
