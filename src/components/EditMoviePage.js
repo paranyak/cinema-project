@@ -36,9 +36,17 @@ class EditMoviePage extends Component {
     }
 
     getStateFromChild(keys, values) {
+        let requiredFields = [ "startDate", "duration", "name", "description",  "scheduleDate", "genre", "format", "technology", "trailer", "rating"];
+        let canSubmit = true;
         for (let k = 0; k < keys.length; k++) {
-            this.setState({[keys[k]]: values[k]})
+            console.log(keys);
+            this.setState({[keys[k]]: values[k]});
+            if(requiredFields.includes(keys[k]) &&( values[k].length == 0 || Object.values(values[k]).includes(NaN) || values[k][0] === "")){
+                canSubmit = false;
+            }
         }
+        let submitButton = document.querySelector(".Editor__btn_submit");
+        submitButton.style.visibility = canSubmit ? 'initial' : 'hidden';
     }
 
     async editMovieInDB(e) {
