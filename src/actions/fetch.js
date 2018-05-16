@@ -137,6 +137,18 @@ export const editMovieById = (id, movie) => async (dispatch) => {
 
 };
 
+export const checkName = (name, type) => async (dispatch) => {
+    console.log("check name:", name, type);
+    if(type === 'movies') dispatch(fromFetch.checkingNameMovie(name));
+    else dispatch(fromFetch.checkingNameActor(name));
+    console.log("after dispatch)))");
+    const result = await fromApi.checkName(name, type);
+    console.log("Result:", result);
+    if(Object.keys(result).length === 1)    dispatch(fromFetch.checkingNameFail(result));
+    //треба нормалізувати
+    else dispatch(fromFetch.checkingNameSuccess(result));
+};
+
 export const editActorById = (id, actor) => async (dispatch) => {
     dispatch(fromFetch.editingActorStart(actor));
     try {

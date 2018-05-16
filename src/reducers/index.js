@@ -44,6 +44,8 @@ export const getMoviesAutocomplete = (state) => fromMovies.getMoviesAutocomplete
 export const getMovieById = (state, id) => fromMovies.getMovieById(state.movies, id);
 export const getMovieBySlug = (state, slugName) => fromMovies.getMovieBySlug(state.movies, slugName);
 
+export const getCheckedNameActor =(state) => fromActors.getCheckedNameActor(state.actors);
+
 export const getIsLoading = (state) => fromAuth.getIsLoading(state.auth);
 
 export const getCurrentUser = (state) => fromAuth.getCurrentUser(state.auth);

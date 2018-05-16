@@ -1183,7 +1183,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.getAuthError = exports.getCurrentUser = exports.getIsLoading = exports.getMovieBySlug = exports.getMovieById = exports.getMoviesAutocomplete = exports.getScheduleMoviesIds = exports.getCarouselleMovies = exports.isActorFetchingSlug = exports.isActorFetching = exports.isMovieFetchingSlug = exports.isMovieFetching = exports.getAllFilters = exports.getActorBySlug = exports.getActorById = exports.getAllActorsIds = exports.getMoviesCount = exports.getAllMoviesIds = undefined;
+exports.getAuthError = exports.getCurrentUser = exports.getIsLoading = exports.getCheckedNameActor = exports.getMovieBySlug = exports.getMovieById = exports.getMoviesAutocomplete = exports.getScheduleMoviesIds = exports.getCarouselleMovies = exports.isActorFetchingSlug = exports.isActorFetching = exports.isMovieFetchingSlug = exports.isMovieFetching = exports.getAllFilters = exports.getActorBySlug = exports.getActorById = exports.getAllActorsIds = exports.getMoviesCount = exports.getAllMoviesIds = undefined;
 
 var _redux = __webpack_require__(84);
 
@@ -1270,6 +1270,10 @@ var getMovieById = exports.getMovieById = function getMovieById(state, id) {
 };
 var getMovieBySlug = exports.getMovieBySlug = function getMovieBySlug(state, slugName) {
     return fromMovies.getMovieBySlug(state.movies, slugName);
+};
+
+var getCheckedNameActor = exports.getCheckedNameActor = function getCheckedNameActor(state) {
+    return fromActors.getCheckedNameActor(state.actors);
 };
 
 var getIsLoading = exports.getIsLoading = function getIsLoading(state) {
@@ -1461,7 +1465,7 @@ module.exports = function (it) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.editActorById = exports.editMovieById = exports.postMovieToDB = exports.fetchActorsSlug = exports.fetchActors = exports.fetchDeleteMovie = exports.fetchDeleteActor = exports.fetchAdditionalActors = exports.fetchAdditionalMovies = exports.fetchAutocompleteMovies = exports.fetchCarouselleMovies = exports.fetchMoviesSchedule = exports.fetchMoviesCount = exports.fetchMovieSlug = exports.fetchMovie = undefined;
+exports.editActorById = exports.checkName = exports.editMovieById = exports.postMovieToDB = exports.fetchActorsSlug = exports.fetchActors = exports.fetchDeleteMovie = exports.fetchDeleteActor = exports.fetchAdditionalActors = exports.fetchAdditionalMovies = exports.fetchAutocompleteMovies = exports.fetchCarouselleMovies = exports.fetchMoviesSchedule = exports.fetchMoviesCount = exports.fetchMovieSlug = exports.fetchMovie = undefined;
 
 var _schema = __webpack_require__(880);
 
@@ -2001,7 +2005,7 @@ var editMovieById = exports.editMovieById = function editMovieById(id, movie) {
     }();
 };
 
-var editActorById = exports.editActorById = function editActorById(id, actor) {
+var checkName = exports.checkName = function checkName(name, type) {
     return function () {
         var _ref15 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(dispatch) {
             var result;
@@ -2009,34 +2013,70 @@ var editActorById = exports.editActorById = function editActorById(id, actor) {
                 while (1) {
                     switch (_context15.prev = _context15.next) {
                         case 0:
+                            console.log("check name:", name, type);
+                            if (type === 'movies') dispatch(fromFetch.checkingNameMovie(name));else dispatch(fromFetch.checkingNameActor(name));
+                            console.log("after dispatch)))");
+                            _context15.next = 5;
+                            return fromApi.checkName(name, type);
+
+                        case 5:
+                            result = _context15.sent;
+
+                            console.log("Result:", result);
+                            if (Object.keys(result).length === 1) dispatch(fromFetch.checkingNameFail(result));
+                            //треба нормалізувати
+                            else dispatch(fromFetch.checkingNameSuccess(result));
+
+                        case 8:
+                        case 'end':
+                            return _context15.stop();
+                    }
+                }
+            }, _callee15, undefined);
+        }));
+
+        return function (_x15) {
+            return _ref15.apply(this, arguments);
+        };
+    }();
+};
+
+var editActorById = exports.editActorById = function editActorById(id, actor) {
+    return function () {
+        var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(dispatch) {
+            var result;
+            return regeneratorRuntime.wrap(function _callee16$(_context16) {
+                while (1) {
+                    switch (_context16.prev = _context16.next) {
+                        case 0:
                             dispatch(fromFetch.editingActorStart(actor));
-                            _context15.prev = 1;
-                            _context15.next = 4;
+                            _context16.prev = 1;
+                            _context16.next = 4;
                             return fromApi.editActor(id, actor);
 
                         case 4:
-                            result = _context15.sent;
+                            result = _context16.sent;
 
                             dispatch(fromFetch.editingActorSuccess(result, result['slugName'], id));
-                            _context15.next = 11;
+                            _context16.next = 11;
                             break;
 
                         case 8:
-                            _context15.prev = 8;
-                            _context15.t0 = _context15['catch'](1);
+                            _context16.prev = 8;
+                            _context16.t0 = _context16['catch'](1);
 
                             dispatch(fromFetch.editingFail());
 
                         case 11:
                         case 'end':
-                            return _context15.stop();
+                            return _context16.stop();
                     }
                 }
-            }, _callee15, undefined, [[1, 8]]);
+            }, _callee16, undefined, [[1, 8]]);
         }));
 
-        return function (_x15) {
-            return _ref15.apply(this, arguments);
+        return function (_x16) {
+            return _ref16.apply(this, arguments);
         };
     }();
 };
@@ -5227,7 +5267,10 @@ var EDITING_MOVIE_START = exports.EDITING_MOVIE_START = 'EDITING_MOVIE_START';
 var EDITING_ACTOR_START = exports.EDITING_ACTOR_START = 'EDITING_ACTOR_START';
 var FETCH_ACTOR_DELETE_SUCCESS = exports.FETCH_ACTOR_DELETE_SUCCESS = 'FETCH_ACTOR_DELETE_SUCCESS';
 var FETCH_MOVIE_DELETE_SUCCESS = exports.FETCH_MOVIE_DELETE_SUCCESS = 'FETCH_MOVIE_DELETE_SUCCESS';
-
+var CHECK_NAME_ACTOR = exports.CHECK_NAME_ACTOR = 'CHECK_NAME_ACTOR';
+var CHECK_NAME_MOVIE = exports.CHECK_NAME_MOVIE = 'CHECK_NAME_MOVIE';
+var CHECK_NAME_ACTOR_SUCCESS = exports.CHECK_NAME_ACTOR_SUCCESS = 'CHECK_NAME_ACTOR_SUCCESS';
+var CHECK_NAME_FAIL = exports.CHECK_NAME_FAIL = 'CHECK_NAME_FAIL';
 // action/login.js
 var AUTH_START = exports.AUTH_START = 'AUTH_START';
 var LOGIN_SUCCESS = exports.LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -9657,7 +9700,7 @@ function denormalizeImmutable(schema, input, unvisit) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.clearMoviesAutocomplete = exports.signUpSuccess = exports.authAdditionalInfoSuccess = exports.setUser = exports.logoutSuccess = exports.authFail = exports.loginSuccess = exports.authStart = exports.fetchMoviesByScheduleSuccess = exports.fetchCarouselleMoviesSuccess = exports.fetchMoviesSlugSuccess = exports.fetchMoviesSuccess = exports.editingActorSuccess = exports.editingFail = exports.fetchAutocompleteMoviesSuccess = exports.editingMovieSuccess = exports.fetchFailSlug = exports.fetchFail = exports.postMovieSuccess = exports.fetchActorsSlugSuccess = exports.fetchActorsDeleteSuccess = exports.fetchActorsSucess = exports.fetchActorsSlugStart = exports.fetchActorsStart = exports.fetchMoviesDeleteSuccess = exports.fetchMoviesCountSuccess = exports.fetchMoviesCountStart = exports.editingActorStart = exports.editingMovieStart = exports.fetchPostStart = exports.fetchMoviesSlugStart = exports.fetchMoviesStart = undefined;
+exports.clearMoviesAutocomplete = exports.signUpSuccess = exports.authAdditionalInfoSuccess = exports.setUser = exports.logoutSuccess = exports.authFail = exports.loginSuccess = exports.authStart = exports.fetchMoviesByScheduleSuccess = exports.fetchCarouselleMoviesSuccess = exports.fetchMoviesSlugSuccess = exports.fetchMoviesSuccess = exports.editingActorSuccess = exports.editingFail = exports.fetchAutocompleteMoviesSuccess = exports.checkingNameFail = exports.checkingNameSuccess = exports.editingMovieSuccess = exports.fetchFailSlug = exports.fetchFail = exports.postMovieSuccess = exports.fetchActorsSlugSuccess = exports.fetchActorsDeleteSuccess = exports.fetchActorsSucess = exports.fetchActorsSlugStart = exports.fetchActorsStart = exports.fetchMoviesDeleteSuccess = exports.fetchMoviesCountSuccess = exports.fetchMoviesCountStart = exports.checkingNameMovie = exports.checkingNameActor = exports.editingActorStart = exports.editingMovieStart = exports.fetchPostStart = exports.fetchMoviesSlugStart = exports.fetchMoviesStart = undefined;
 
 var _actionTypes = __webpack_require__(91);
 
@@ -9677,6 +9720,13 @@ var editingMovieStart = exports.editingMovieStart = function editingMovieStart(m
 };
 var editingActorStart = exports.editingActorStart = function editingActorStart(actor) {
     return { type: _actionTypes.EDITING_ACTOR_START, actor: actor };
+};
+
+var checkingNameActor = exports.checkingNameActor = function checkingNameActor(name) {
+    return { type: _actionTypes.CHECK_NAME_ACTOR, name: name };
+};
+var checkingNameMovie = exports.checkingNameMovie = function checkingNameMovie(name) {
+    return { type: _actionTypes.CHECK_NAME_MOVIE, name: name };
 };
 
 var fetchMoviesCountStart = exports.fetchMoviesCountStart = function fetchMoviesCountStart() {
@@ -9744,6 +9794,20 @@ var editingMovieSuccess = exports.editingMovieSuccess = function editingMovieSuc
     return {
         type: _actionTypes.EDITING_MOVIE_SUCCESS,
         movie: movie, slug: slug, id: id
+    };
+};
+
+var checkingNameSuccess = exports.checkingNameSuccess = function checkingNameSuccess(result) {
+    return {
+        type: _actionTypes.CHECK_NAME_ACTOR_SUCCESS,
+        result: result
+    };
+};
+
+var checkingNameFail = exports.checkingNameFail = function checkingNameFail(result) {
+    return {
+        type: _actionTypes.CHECK_NAME_FAIL,
+        result: result
     };
 };
 
@@ -67430,6 +67494,47 @@ var postMovie = exports.postMovie = function () {
     };
 }();
 
+var checkName = exports.checkName = function () {
+    var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(name, type) {
+        var res, result;
+        return regeneratorRuntime.wrap(function _callee16$(_context16) {
+            while (1) {
+                switch (_context16.prev = _context16.next) {
+                    case 0:
+                        _context16.next = 2;
+                        return fetch(LOCALHOST + '/' + type + '/name_like=' + name);
+
+                    case 2:
+                        res = _context16.sent;
+
+                        if (!res.ok) {
+                            _context16.next = 8;
+                            break;
+                        }
+
+                        _context16.next = 6;
+                        return res.json();
+
+                    case 6:
+                        result = _context16.sent;
+                        return _context16.abrupt('return', result);
+
+                    case 8:
+                        return _context16.abrupt('return', res.json());
+
+                    case 9:
+                    case 'end':
+                        return _context16.stop();
+                }
+            }
+        }, _callee16, this);
+    }));
+
+    return function checkName(_x19, _x20) {
+        return _ref16.apply(this, arguments);
+    };
+}();
+
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 var LOCALHOST = "http://localhost:3000";
@@ -68957,7 +69062,7 @@ exports.default = filters;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.isActorFetchingSlug = exports.isActorFetching = exports.getActorBySlug = exports.getActorById = exports.getAllActorsIds = exports.fetching = exports.allIds = exports.bySlug = exports.byId = undefined;
+exports.getCheckedNameActor = exports.isActorFetchingSlug = exports.isActorFetching = exports.getActorBySlug = exports.getActorById = exports.getAllActorsIds = exports.checking = exports.fetching = exports.allIds = exports.bySlug = exports.byId = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -69053,6 +69158,19 @@ var fetching = exports.fetching = function fetching() {
     }
 };
 
+var checking = exports.checking = function checking() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var action = arguments[1];
+
+    switch (action.type) {
+        case _actionTypes.CHECK_NAME_ACTOR_SUCCESS:
+            console.log("IN REDUCER: ", action.result);
+            return action.result;
+        default:
+            return state;
+    }
+};
+
 var getAllActorsIds = exports.getAllActorsIds = function getAllActorsIds(state) {
     return state.allIds;
 };
@@ -69068,12 +69186,19 @@ var isActorFetching = exports.isActorFetching = function isActorFetching(id, sta
 var isActorFetchingSlug = exports.isActorFetchingSlug = function isActorFetchingSlug(slugName, state) {
     return state.fetching[slugName];
 };
+var getCheckedNameActor = exports.getCheckedNameActor = function getCheckedNameActor(state) {
+    console.log("here", state);
+    var b = state.checking;
+    console.log(b, "after check");
+    return b;
+};
 
 exports.default = (0, _redux.combineReducers)({
     byId: byId,
     bySlug: bySlug,
     allIds: allIds,
-    fetching: fetching
+    fetching: fetching,
+    checking: checking
 });
 
 /***/ }),
@@ -94113,6 +94238,8 @@ var _slugify = __webpack_require__(350);
 
 var _slugify2 = _interopRequireDefault(_slugify);
 
+var _index = __webpack_require__(20);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -94153,7 +94280,6 @@ var AddActor = function (_Component) {
         _this.addActorToDB = _this.addActorToDB.bind(_this);
         _this.checkform = _this.checkform.bind(_this);
         _this.doneTyping = _this.doneTyping.bind(_this);
-        _this.doneTypingNaming = _this.doneTypingNaming.bind(_this);
         _this.startTimer = _this.startTimer.bind(_this);
         _this.myCallback2 = _this.myCallback2.bind(_this);
         return _this;
@@ -94298,6 +94424,11 @@ var AddActor = function (_Component) {
                                 year = parseInt(dateArr[0]);
                                 day = parseInt(dateArr[2]);
                                 birthDay = { year: year, month: month, day: day };
+
+                                //check if actor with the same is created before
+                                // let sameName = await this.props.checkName(this.refs.name.value);
+
+
                                 slugName = (0, _slugify2.default)(this.refs.name.value, {
                                     replacement: '_',
                                     remove: /[.:!,;*&@^]/g,
@@ -94357,11 +94488,6 @@ var AddActor = function (_Component) {
                                 newData = {};
 
                                 newData["cast"] = newArrayCast;
-                                // await fetch(`http://localhost:3000/movies/${key}`, {
-                                //     method: 'PATCH',
-                                //     headers: headers,
-                                //     body: JSON.stringify(newData)
-                                // }).then((res) => res.json());
                                 _context3.next = 44;
                                 return this.props.editMovie(newData, key);
 
@@ -94394,62 +94520,92 @@ var AddActor = function (_Component) {
         }()
     }, {
         key: "checkform",
-        value: function checkform() {
-
-            var f = document.querySelectorAll(".AddActor__inputs_required");
-            var cansubmit = true;
-
-            clearTimeout(typingTimer);
-            if (document.querySelector(".AddActor__inputs_name").style.backgroundColor !== "white") {
-                cansubmit = false;
-            }
-            for (var i = 0; i < f.length; i++) {
-                if (f[i].value.length === 0) cansubmit = false;
-            }
-
-            var submitButton = document.querySelector(".AddActor__button");
-            submitButton.style.display = cansubmit ? 'inline-block' : 'none';
-        }
-    }, {
-        key: "doneTyping",
         value: function () {
             var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-                var index, response, currentInput, currentButtonAdd, suggestedMoviesOnIndex, changedMovies;
+                var checked, f, cansubmit, i, submitButton;
                 return regeneratorRuntime.wrap(function _callee2$(_context4) {
                     while (1) {
                         switch (_context4.prev = _context4.next) {
+                            case 0:
+                                checked = this.props.checked;
+
+                                console.log("UNDEF:", checked, this.props);
+                                _context4.next = 4;
+                                return this.props.checkName(this.refs.name.value);
+
+                            case 4:
+                                console.log("AFTER ALL THIS SHIT:", this.props.checked);
+
+                                f = document.querySelectorAll(".AddActor__inputs_required");
+                                cansubmit = true;
+
+
+                                clearTimeout(typingTimer);
+                                if (document.querySelector(".AddActor__inputs_name").style.backgroundColor !== "white") {
+                                    cansubmit = false;
+                                }
+                                for (i = 0; i < f.length; i++) {
+                                    if (f[i].value.length === 0) cansubmit = false;
+                                }
+
+                                submitButton = document.querySelector(".AddActor__button");
+
+                                submitButton.style.display = cansubmit ? 'inline-block' : 'none';
+
+                            case 12:
+                            case "end":
+                                return _context4.stop();
+                        }
+                    }
+                }, _callee2, this);
+            }));
+
+            function checkform() {
+                return _ref2.apply(this, arguments);
+            }
+
+            return checkform;
+        }()
+    }, {
+        key: "doneTyping",
+        value: function () {
+            var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+                var index, response, currentInput, currentButtonAdd, suggestedMoviesOnIndex, changedMovies;
+                return regeneratorRuntime.wrap(function _callee3$(_context5) {
+                    while (1) {
+                        switch (_context5.prev = _context5.next) {
                             case 0:
                                 console.log("DONE TYPING");
                                 index = this.state.currentInputIndex;
 
                                 if (!(this.state.currentSearchPhrase[index] !== "")) {
-                                    _context4.next = 16;
+                                    _context5.next = 16;
                                     break;
                                 }
 
-                                _context4.next = 5;
+                                _context5.next = 5;
                                 return fetch("http://localhost:3000/movies/autocomplete/" + this.state.currentSearchPhrase[index]);
 
                             case 5:
-                                response = _context4.sent;
+                                response = _context5.sent;
 
                                 if (response.ok) {
-                                    _context4.next = 10;
+                                    _context5.next = 10;
                                     break;
                                 }
 
                                 console.log("ERROR IN MOVIE SEARCH AT ACTOR ADD");
-                                _context4.next = 16;
+                                _context5.next = 16;
                                 break;
 
                             case 10:
                                 currentInput = document.querySelectorAll(".AddActor__inputs_movie")[index];
                                 currentButtonAdd = document.querySelectorAll(".AddActor__add-tmp-button")[index];
-                                _context4.next = 14;
+                                _context5.next = 14;
                                 return response.json();
 
                             case 14:
-                                suggestedMoviesOnIndex = _context4.sent;
+                                suggestedMoviesOnIndex = _context5.sent;
 
                                 if (suggestedMoviesOnIndex.length !== 0) {
                                     currentInput.style.backgroundColor = 'white';
@@ -94467,59 +94623,17 @@ var AddActor = function (_Component) {
 
                             case 16:
                             case "end":
-                                return _context4.stop();
-                        }
-                    }
-                }, _callee2, this);
-            }));
-
-            function doneTyping() {
-                return _ref2.apply(this, arguments);
-            }
-
-            return doneTyping;
-        }()
-    }, {
-        key: "doneTypingNaming",
-        value: function () {
-            var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-                var response, currentInput;
-                return regeneratorRuntime.wrap(function _callee3$(_context5) {
-                    while (1) {
-                        switch (_context5.prev = _context5.next) {
-                            case 0:
-                                console.log("DONE TIMER NAMING");
-
-                                if (!(this.refs.name.value !== " " && this.refs.name.value !== "")) {
-                                    _context5.next = 7;
-                                    break;
-                                }
-
-                                _context5.next = 4;
-                                return fetch("http://localhost:3000/actors/" + this.refs.name.value);
-
-                            case 4:
-                                response = _context5.sent;
-                                currentInput = document.querySelector(".AddActor__inputs_name");
-
-                                currentInput.style.backgroundColor = response.ok ? '#ea8685' : 'white';
-
-                            case 7:
-                                this.checkform();
-
-                            case 8:
-                            case "end":
                                 return _context5.stop();
                         }
                     }
                 }, _callee3, this);
             }));
 
-            function doneTypingNaming() {
+            function doneTyping() {
                 return _ref3.apply(this, arguments);
             }
 
-            return doneTypingNaming;
+            return doneTyping;
         }()
     }, {
         key: "startTimer",
@@ -94531,8 +94645,6 @@ var AddActor = function (_Component) {
                 this.setState({ currentSearchPhrase: changedSearch });
                 this.setState({ currentInputIndex: currentInputIndex });
                 typingTimer = setTimeout(this.doneTyping, doneTypingInterval);
-            } else {
-                typingTimer = setTimeout(this.doneTypingNaming, nameTypingInterval);
             }
         }
     }, {
@@ -94664,8 +94776,6 @@ var AddActor = function (_Component) {
     }, {
         key: "render",
         value: function render() {
-            var _this4 = this;
-
             return _react2.default.createElement(
                 "div",
                 null,
@@ -94703,9 +94813,7 @@ var AddActor = function (_Component) {
                         ),
                         _react2.default.createElement("input", { ref: "name", placeholder: 'Enter name', className: b("inputs", ["name", "required"]),
                             type: "text",
-                            onChange: this.checkform, onKeyUp: function onKeyUp(e) {
-                                return _this4.startTimer(e, "naming");
-                            } }),
+                            onChange: this.checkform }),
                         _react2.default.createElement(
                             "h3",
                             { className: b('title') },
@@ -94777,13 +94885,21 @@ var AddActor = function (_Component) {
     return AddActor;
 }(_react.Component);
 
-exports.default = (0, _reactRedux.connect)(null, function (dispatch) {
+exports.default = (0, _reactRedux.connect)(function (state, props) {
+    console.log("MDTP");
+    var checked = (0, _index.getCheckedNameActor)(state);
+    console.log("AFTER MDTP", { checked: checked });
+    return { checked: checked };
+}, function (dispatch) {
     return {
         postMovie: function postMovie(movie) {
             return dispatch((0, _fetch.postMovieToDB)(movie));
         },
         editMovie: function editMovie(movie, id) {
             return dispatch((0, _fetch.editMovieById)(id, movie));
+        },
+        checkName: function checkName(name) {
+            return dispatch((0, _fetch.checkName)(name, 'actors'));
         }
     };
 })(AddActor);

@@ -28,7 +28,10 @@ import {
     FETCH_MOVIES_COUNT_SUCCESS,
     FETCH_POST, EDITING_MOVIE_START, EDITING_ACTOR_START,
     FETCH_ACTOR_DELETE_SUCCESS,
-    FETCH_MOVIE_DELETE_SUCCESS
+    FETCH_MOVIE_DELETE_SUCCESS,
+    CHECK_NAME_ACTOR,
+    CHECK_NAME_MOVIE,
+    CHECK_NAME_FAIL, CHECK_NAME_ACTOR_SUCCESS
 } from '../helpers/actionTypes';
 
 
@@ -39,6 +42,10 @@ export const fetchPostStart = (movie) => ({type: FETCH_POST, movie});
 
 export const editingMovieStart = (movie) => ({type: EDITING_MOVIE_START, movie});
 export const editingActorStart = (actor) => ({type: EDITING_ACTOR_START, actor});
+
+export const checkingNameActor = (name) => ({type: CHECK_NAME_ACTOR, name});
+export const checkingNameMovie = (name) => ({type: CHECK_NAME_MOVIE, name});
+
 
 export const fetchMoviesCountStart = () => ({type: FETCH_MOVIES_COUNT});
 export const fetchMoviesCountSuccess = (movies) => ({type: FETCH_MOVIES_COUNT_SUCCESS, movies});
@@ -75,6 +82,16 @@ export const fetchFailSlug = (slugName, slugs, actors = []) => ({
 export const editingMovieSuccess = (movie, slug, id) => ({
     type: EDITING_MOVIE_SUCCESS,
     movie, slug, id
+});
+
+export const checkingNameSuccess = (result) => ({
+    type: CHECK_NAME_ACTOR_SUCCESS,
+    result
+});
+
+export const checkingNameFail = (result) => ({
+    type: CHECK_NAME_FAIL,
+    result
 });
 
 export const fetchAutocompleteMoviesSuccess = (movies=[]) => ({type:FETCH_AUTOCOMPLETE_MOVIES_SUCCESS, movies})

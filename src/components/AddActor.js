@@ -3,9 +3,10 @@ import "../styles/AddActor.less";
 import block from '../helpers/BEM';
 import DragDropImage from "./DragDropImage";
 import {Redirect} from "react-router";
-import {editMovieById, postMovieToDB} from "../actions/fetch";
+import {editMovieById, postMovieToDB, checkName} from "../actions/fetch";
 import {connect} from "react-redux";
 import slugify from 'slugify';
+import {getCheckedNameActor} from "../reducers/index";
 
 const b = block("AddActor");
 
@@ -28,7 +29,6 @@ class AddActor extends Component {
         this.addActorToDB = this.addActorToDB.bind(this);
         this.checkform = this.checkform.bind(this);
         this.doneTyping = this.doneTyping.bind(this);
-        this.doneTypingNaming = this.doneTypingNaming.bind(this);
         this.startTimer = this.startTimer.bind(this);
         this.myCallback2 = this.myCallback2.bind(this);
     }
@@ -85,6 +85,10 @@ class AddActor extends Component {
         const day = parseInt(dateArr[2]);
         const birthDay = {year, month, day};
 
+        //check if actor with the same is created before
+        // let sameName = await this.props.checkName(this.refs.name.value);
+
+
         let slugName = slugify(this.refs.name.value, {
             replacement: '_',
             remove: /[.:!,;*&@^]/g,
@@ -122,11 +126,6 @@ class AddActor extends Component {
                     newArrayCast.push(actorId);
                     let newData = {};
                     newData["cast"] = newArrayCast;
-                    // await fetch(`http://localhost:3000/movies/${key}`, {
-                    //     method: 'PATCH',
-                    //     headers: headers,
-                    //     body: JSON.stringify(newData)
-                    // }).then((res) => res.json());
                     await this.props.editMovie(newData, key);
                     createdMovies[key] = [this.state.suggestedMovies[i][j].name, this.state.movies[i].role];
 
@@ -136,7 +135,11 @@ class AddActor extends Component {
 
     }
 
-    checkform() {
+     async checkform() {
+        let checked = this.props.checked;
+         console.log("UNDEF:", checked, this.props);
+         await this.props.checkName(this.refs.name.value);
+        console.log("AFTER ALL THIS SHIT:", this.props.checked);
 
         let f = document.querySelectorAll(".AddActor__inputs_required");
         let cansubmit = true;
@@ -182,15 +185,6 @@ class AddActor extends Component {
         }
     }
 
-    async doneTypingNaming() {
-        console.log("DONE TIMER NAMING");
-        if (this.refs.name.value !== " " && this.refs.name.value !== "") {
-            const response = await fetch(`http://localhost:3000/actors/${this.refs.name.value}`);
-            let currentInput = document.querySelector(".AddActor__inputs_name");
-            currentInput.style.backgroundColor = (response.ok) ? '#ea8685' : 'white';
-        }
-        this.checkform();
-    }
 
     startTimer(e, currentInputIndex) {
         clearTimeout(typingTimer);
@@ -200,10 +194,7 @@ class AddActor extends Component {
             this.setState({currentSearchPhrase: changedSearch});
             this.setState({currentInputIndex});
             typingTimer = setTimeout(this.doneTyping, doneTypingInterval);
-        } else {
-            typingTimer = setTimeout(this.doneTypingNaming, nameTypingInterval);
         }
-
     }
 
     addMovie(e) {
@@ -352,7 +343,7 @@ class AddActor extends Component {
                     <h3 className={b('title')}>Actor Name</h3>
                     <input ref='name' placeholder={'Enter name'} className={b("inputs", ["name", "required"])}
                            type="text"
-                           onChange={this.checkform} onKeyUp={(e) => this.startTimer(e, "naming")}/>
+                           onChange={this.checkform} />
 
                     <h3 className={b('title')}>Short Info</h3>
                     <textarea ref='info' placeholder={'Enter short information'}
@@ -396,7 +387,13 @@ class AddActor extends Component {
     }
 }
 
-export default connect(null, (dispatch) => ({
+export default connect((state, props) => {
+    console.log("MDTP");
+    let checked = getCheckedNameActor(state);
+    console.log("AFTER MDTP",  {checked});
+    return {checked};
+}, (dispatch) => ({
     postMovie: (movie) => dispatch(postMovieToDB(movie)),
-    editMovie: (movie, id) => dispatch(editMovieById(id, movie))
+    editMovie: (movie, id) => dispatch(editMovieById(id, movie)),
+    checkName: (name) => dispatch(checkName(name, 'actors'))
 }))(AddActor);
