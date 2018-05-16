@@ -61,8 +61,9 @@ class EditMoviePage extends Component {
         let Schedule = [];
         const scheduleTime = this.state.scheduleTime.sort();
         scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
-
-        const newCast = cast.map(el => el._id).filter(id => id !== '');
+        console.log('cast', cast);
+        const newCast = cast.map(el => el.slugName).filter(slug => slug !== '');
+        console.log('new cast', newCast);
 
         const movie = {
             name,

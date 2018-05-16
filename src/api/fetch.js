@@ -56,9 +56,12 @@ export async function deleteMovie(slugName) {
 }
 
 export async function postMovie(movie) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
     return await ((await fetch('http://localhost:3000/movies', {
         method: 'POST',
-        headers: {"Content-type": "application/json"},
+        headers,
         body: JSON.stringify(movie)
     })).json());
 }
