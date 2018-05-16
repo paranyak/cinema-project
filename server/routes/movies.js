@@ -37,10 +37,16 @@ router.get('/byId/:id', async function (req, res) {
 //     const movies = await dbQuery.toArray();
 //     res.send(movies.map(el => el._id));
 // });
+router.get('/unpublished-slugs', async function (req, res) {
+  const movies = await db.get().collection('movies')
+                              .find({published: false}, {fields: {slugName: true}})
+                              .toArray();
+  res.send(movies.map(el => el.slugName));
+}
 
 router.get('/slugs', async function (req, res) {
     let dbQuery;
-    let params = {};
+    let params = {published: true};
     let query = req.query;
     if (query['label']) {
         params.label = query['label'];

@@ -14,8 +14,16 @@ router.get('/byId/:id', async (req, res) => {
     }
 });
 
+router.get('/unpublished-slugs', async function (req, res) {
+  const actors = await db.get().collection('actors')
+                              .find({published: false}, {fields: {slugName: true}})
+                              .toArray();
+  res.send(actors.map(el => el.slugName));
+}
+
+
 router.get('/slugs', async (req, res) => {
-    let params = {};
+    let params = {published: true};
     let query = req.query;
     let dbQuery;
     dbQuery = db.get().collection('actors').find(params, {fields: {slugName: true}});
