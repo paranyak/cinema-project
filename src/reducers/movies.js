@@ -1,13 +1,10 @@
 import {combineReducers} from 'redux';
 import {assoc} from "ramda";
 import {
-    FETCH_MOVIES,
     FETCH_MOVIES_SLUG,
-    FETCH_FAIL,
     FETCH_FAIL_SLUG,
-    FETCH_MOVIES_SUCCESS,
     FETCH_MOVIES_SLUG_SUCCESS,
-    FETCH_CAROUSEL_MOVIES_SUCCESS,
+    FETCH_MOVIES_LABEL_SUCCESS,
     FETCH_SCHEDULE_MOVIES_SUCCESS,
     POST_MOVIE_SUCCESS,
     FETCH_POST,
@@ -15,42 +12,26 @@ import {
     CLEAR_MOVIES_AUTOCOMPLETE,
     EDITING_MOVIE_SUCCESS,
     EDITING_MOVIE_START,
-    FETCH_MOVIES_COUNT,
     FETCH_MOVIES_COUNT_SUCCESS,
     FETCH_MOVIE_DELETE_SUCCESS
 } from '../helpers/actionTypes';
 
-const byId = (state = {}, action) => {
-    switch (action.type) {
-        case FETCH_MOVIES_SUCCESS:
-        case FETCH_SCHEDULE_MOVIES_SUCCESS:
-        case FETCH_CAROUSEL_MOVIES_SUCCESS:
-        case POST_MOVIE_SUCCESS:
-            return {...state, ...action.movies};
-        case EDITING_MOVIE_SUCCESS:
-            let newState = state;
-            newState[action.id] = action.movie;
-            return newState;
-        case FETCH_MOVIE_DELETE_SUCCESS:
-            let newStateDel = {...state};
-            delete newStateDel[action.ids[0]];
-            return newStateDel;
-        default:
-            return state;
-    }
-};
 const bySlug = (state = {}, action) => {
     switch (action.type) {
+        case FETCH_MOVIES_SLUG:
         case FETCH_MOVIES_SLUG_SUCCESS:
         case POST_MOVIE_SUCCESS:
-
             return {...state, ...action.movies};
         case FETCH_FAIL_SLUG:
             return action;
         case EDITING_MOVIE_SUCCESS:
             let newState = state;
-            newState[action.slug] = action.movie;
+            newState[action.slugName] = action.movie;
             return newState;
+        case FETCH_MOVIE_DELETE_SUCCESS:
+            let newStateDel = {...state};
+            delete newStateDel[action.slugName];
+            return newStateDel;
         default:
             return state;
     }
@@ -65,42 +46,40 @@ const movieCount = (state = {}, action) => {
     }
 };
 
-const allIds = (state = [], action) => {
+const allSlugs = (state = [], action) => {
     switch (action.type) {
-        case FETCH_MOVIES_SUCCESS:
+        case FETCH_MOVIES_SLUG_SUCCESS:
         case FETCH_SCHEDULE_MOVIES_SUCCESS:
-        case FETCH_CAROUSEL_MOVIES_SUCCESS:
+        case FETCH_MOVIES_LABEL_SUCCESS:
         case POST_MOVIE_SUCCESS:
             return [
                 ...state,
-                ...action.ids
+                ...action.slugs
             ].filter((el, i, arr) => arr.indexOf(el) === i);
         case FETCH_MOVIE_DELETE_SUCCESS:
-            let a = [...state].filter((el) => el !== action.ids[0]);
-            console.log("Delete all ids", a, action.ids[0]);
-            return a;
+            return [...state].filter((el) => el !== action.slugName);
         default:
             return state;
     }
 };
 
-const carouselleMovies = (state = {popular: [], soon: []}, action) => {
+const labeledMovies = (state = {popular: [], soon: []}, action) => {
     switch (action.type) {
-        case FETCH_CAROUSEL_MOVIES_SUCCESS:
-            return {...state, [action.label]: action.ids};
+        case FETCH_MOVIES_LABEL_SUCCESS:
+            return {...state, [action.label]: action.slugs};
         case FETCH_MOVIE_DELETE_SUCCESS:
-            return [...state].filter((el) => el.id !== action.ids);
+            return [...state].filter((el) => el !== action.slugName);
         default:
             return state;
     }
 };
 
-const scheduleMoviesIds = (state = [], action) => {
+const scheduleMoviesSlugs = (state = [], action) => {
     switch (action.type) {
         case FETCH_SCHEDULE_MOVIES_SUCCESS:
-            return [...action.ids];
+            return [...action.slugs];
         case FETCH_MOVIE_DELETE_SUCCESS:
-            return [...state].filter((el) => el.id !== action.ids);
+            return [...state].filter((el) => el !== action.slugName);
         default:
             return state;
     }
@@ -115,28 +94,21 @@ const moviesAutocomplete = (state = [], action) => {
         default:
             return state;
     }
-}
+};
 
 const fetching = (state = {}, action) => {
     switch (action.type) {
-        case FETCH_MOVIES:
-            return assoc(action.id, true, state);
         case FETCH_MOVIES_SLUG:
             return assoc(action.slugName, true, state);
         case FETCH_POST:
-            return assoc(action.movie, true, state);
         case EDITING_MOVIE_START:
             return assoc(action.movie, true, state);
-        case FETCH_FAIL:
-        case FETCH_MOVIES_SUCCESS:
         case FETCH_SCHEDULE_MOVIES_SUCCESS:
-        case FETCH_CAROUSEL_MOVIES_SUCCESS:
-            return assoc(action.id, false, state);
+        case FETCH_MOVIES_LABEL_SUCCESS:
         case FETCH_FAIL_SLUG:
         case FETCH_MOVIES_SLUG_SUCCESS:
             return assoc(action.slugName, false, state);
         case POST_MOVIE_SUCCESS:
-            return assoc(action.movie, false, state);
         case EDITING_MOVIE_SUCCESS:
             return assoc(action.movie, false, state);
         default:
@@ -144,27 +116,23 @@ const fetching = (state = {}, action) => {
     }
 };
 
-export const getAllMoviesIds = (state) => state.allIds;
+export const getAllMoviesSlugs = (state) => state.allSlugs;
 
-export const isMovieFetching = (id, state) => state.fetching[id];
 export const isMovieFetchingSlug = (slugName, state) => state.fetching[slugName];
 
-export const getCarouselleMovies = (state, label) => state.carouselleMovies[label];
+export const getLabeledMovies = (label, state) => state.labeledMovies[label];
 
-export const getScheduleMoviesIds = (state) => state.scheduleMoviesIds;
+export const getMovieBySlug = (slugName, state) => state.bySlug[slugName];
 
-export const getMovieById = (state, id) => state.byId[id];
-export const getMovieBySlug = (state, slugName) => state.bySlug[slugName];
 export const getMoviesAutocomplete = (state) => state.moviesAutocomplete;
 
 export const getMoviesCount = (state) => state.movies.movieCount;
 export default combineReducers({
-    byId,
     bySlug,
     movieCount,
-    allIds,
+    allSlugs,
     fetching,
-    carouselleMovies,
-    scheduleMoviesIds,
+    labeledMovies,
+    scheduleMoviesSlugs,
     moviesAutocomplete
 });

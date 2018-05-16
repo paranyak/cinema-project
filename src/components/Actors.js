@@ -1,12 +1,10 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from "react-redux";
-
-import {getActorById} from "../reducers/index";
-import {fetchActors} from '../actions/fetch';
-
+import {fetchActorsSlug} from '../actions/actors';
 import "../styles/Actors.less";
 import block from "../helpers/BEM";
+import {getActorBySlug} from "../reducers";
 
 const b = block("Actors");
 const link = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_50,h_50,c_thumb,g_face/';
@@ -32,9 +30,9 @@ class Actors extends Component {
 }
 
 export default connect((state, props) => {
-        const actor = getActorById(state, props.id);
+        const actor = getActorBySlug(props.id, state);
         return {actor};
     }, (dispatch) => ({
-        fetchActorById: (id) => dispatch(fetchActors(id))
+        fetchActorById: (id) => dispatch(fetchActorsSlug(id))
     })
 )(Actors);

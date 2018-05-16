@@ -140,4 +140,4 @@ class MovieImage extends Component {
     }
 }
 
-export default MovieImage
+export default MovieImage;

@@ -13,15 +13,15 @@ export async function movieCount() {
 }
 
 export async function moviesSchedule(day) {
-    return await ((await fetch(`${LOCALHOST}/movies/ids?Schedule=${day}`)).json())
+    return await ((await fetch(`${LOCALHOST}/movies/slugs?Schedule=${day}`)).json())
 }
 
 export async function carouselleMovies(label) {
-    return await ((await fetch(`${LOCALHOST}/movies/ids?label=${label}`)).json())
+    return await ((await fetch(`${LOCALHOST}/movies/slugs?label=${label}`)).json())
 }
 
 export async function additionalMovies(limit, page) {
-    return await ((await fetch(`${LOCALHOST}/movies/ids?_page=${page}&_limit=${limit}`)).json());
+    return await ((await fetch(`${LOCALHOST}/movies/slugs?_page=${page}&_limit=${limit}`)).json());
 }
 
 export async function autocompleteMovies(name) {
@@ -37,44 +37,36 @@ export async function actorsBySlugName(slugName) {
 }
 
 export async function additionalActors(limit, page) {
-    return await ((await fetch(`${LOCALHOST}/actors/ids?_page=${page}&_limit=${limit}`)).json())
+    return await ((await fetch(`${LOCALHOST}/actors/slugs?_page=${page}&_limit=${limit}`)).json())
 }
 
-export async function deleteActor(id) {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return await ((await fetch(`${LOCALHOST}/actors/${id}`, {
+export async function deleteActor(slugName) {
+    return await ((await fetch(`${LOCALHOST}/actors/${slugName}`, {
         method: 'DELETE',
-        headers: headers,
+        headers: {"Content-type": "application/json"},
     })).json());
 }
 
-export async function deleteMovie(id) {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return await  ((await fetch(`${LOCALHOST}/movies/${id}`, {
+export async function deleteMovie(slugName) {
+    return await  ((await fetch(`${LOCALHOST}/movies/${slugName}`, {
         method: 'DELETE',
-        headers: headers,
+        headers: {"Content-type": "application/json"},
     })).json());
 
 }
 
 export async function postMovie(movie) {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
     return await ((await fetch('http://localhost:3000/movies', {
         method: 'POST',
-        headers: headers,
+        headers: {"Content-type": "application/json"},
         body: JSON.stringify(movie)
     })).json());
 }
 
-export const editMovie = async (id, movie) => {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    const response = await fetch(`${LOCALHOST}/movies/${id}`, {
+export const editMovie = async (slugName, movie) => {
+    const response = await fetch(`${LOCALHOST}/movies/${slugName}`, {
         method: 'PATCH',
-        headers: headers,
+        headers: {"Content-type": "application/json"},
         body: JSON.stringify(movie)
     });
     if (!response.ok) {
@@ -84,8 +76,8 @@ export const editMovie = async (id, movie) => {
     return response.json();
 };
 
-export const editActor = async (id, actor) => {
-    const response = await fetch(`${LOCALHOST}/actors/${id}`, {
+export const editActor = async (slugName, actor) => {
+    const response = await fetch(`${LOCALHOST}/actors/${slugName}`, {
         method: 'PATCH',
         headers: {"Content-type": "application/json"},
         body: JSON.stringify(actor)

@@ -4,13 +4,9 @@ import block from "../helpers/BEM";
 import scrollTo from '../helpers/scrollTo';
 import checkScrollPosition from '../helpers/checkScrollPosition';
 import {connect} from "react-redux";
-import {Link} from 'react-router-dom'
 import MoviePoster from "./MoviePoster";
-import {getCarouselleMovies} from '../reducers';
-import {fetchCarouselleMovies} from '../actions/fetch';
-import LazyLoad from 'react-lazyload';
-import _ from 'lodash';
-import throttle from 'lodash/throttle';
+import {getLabeledMovies} from '../reducers';
+import {fetchMoviesByLabel} from '../actions/movies';
 import debounce from 'lodash/debounce';
 
 const b = block("MovieCarousel");
@@ -73,9 +69,9 @@ class MovieCarousel extends Component {
                 >
                     {films
                         .map((film, i) =>
-                            <LazyLoad key={i} height='100%' offsetRight={200}>
-                                <MoviePoster filmId={film}/>
-                            </LazyLoad>
+                                // {/*<LazyLoad key={i} height='100%' offsetRight={200}>*/}
+                                <MoviePoster key={i} filmId={film}/>
+                            // </LazyLoad>
                         )}
                 </div>
                 <button
@@ -90,11 +86,11 @@ class MovieCarousel extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch, props) => ({fetchMovies: () => dispatch(fetchCarouselleMovies(props.label))});
+const mapDispatchToProps = (dispatch, props) => ({fetchMovies: () => dispatch(fetchMoviesByLabel(props.label))});
 
 const mapStateToProps = (state, props) => {
-    const movies = getCarouselleMovies(state, props.label) || [];
-    return {films: movies};
+    const films = getLabeledMovies(props.label, state) || [];
+    return {films};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCarousel);

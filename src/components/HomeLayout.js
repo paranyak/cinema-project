@@ -8,12 +8,12 @@ const b = block("HomeLayout");
 
 class HomeLayout extends Component {
 
-        constructor(props){
-            super(props);
-        }
+    constructor(props) {
+        super(props);
+    }
 
 
-        render() {
+    render() {
 
         return <div className={b()}>
             <h1 className={b('title')}>Popular</h1>

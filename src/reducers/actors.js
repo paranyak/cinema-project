@@ -1,36 +1,12 @@
 import {combineReducers} from 'redux';
 import {assoc} from "ramda";
 import {
-    FETCH_ACTOR,
     FETCH_ACTOR_SLUG,
-    FETCH_ACTOR__SUCCESS,
     FETCH_ACTOR_SLUG_SUCCESS,
     FETCH_FAIL,
     FETCH_ACTOR_DELETE_SUCCESS,
-    FETCH_FAIL_SLUG, EDITING_ACTOR_SUCCESS, EDITING_MOVIE_SUCCESS, EDITING_MOVIE_START, EDITING_ACTOR_START
+    FETCH_FAIL_SLUG, EDITING_ACTOR_SUCCESS, EDITING_ACTOR_START
 } from '../helpers/actionTypes';
-
-export const byId = (state = {}, action) => {
-    switch (action.type) {
-        case FETCH_ACTOR__SUCCESS:
-            return {
-                ...state,
-                ...action.actors
-            };
-        case FETCH_FAIL:
-            return action;
-        case EDITING_ACTOR_SUCCESS:
-            let newState = state;
-            newState[action.id] = action.actor;
-            return newState;
-        case FETCH_ACTOR_DELETE_SUCCESS:
-            let newStateDel = {...state};
-            delete newStateDel[action.ids[0]]
-            return newStateDel
-        default:
-            return state;
-    }
-};
 
 export const bySlug = (state = {}, action) => {
     switch (action.type) {
@@ -43,24 +19,28 @@ export const bySlug = (state = {}, action) => {
             return action;
         case EDITING_ACTOR_SUCCESS:
             let newState = state;
-            newState[action.slug] = action.actor;
+            newState[action.slugName] = action.actor;
             return newState;
+        case FETCH_ACTOR_DELETE_SUCCESS:
+            let newStateDel = {...state};
+            delete newStateDel[action.slugName];
+            return newStateDel;
         default:
             return state;
     }
 };
 
-export const allIds = (state = [], action) => {
+export const allSlugs = (state = [], action) => {
     switch (action.type) {
-        case FETCH_ACTOR__SUCCESS:
+        case FETCH_ACTOR_SLUG_SUCCESS:
             return [
                 ...state,
-                ...action.ids
+                ...action.slugs
             ].filter((el, i, arr) => arr.indexOf(el) === i);
         case FETCH_FAIL:
             return action;
         case FETCH_ACTOR_DELETE_SUCCESS:
-            return [...state].filter((el) => el.id !== action.ids)
+            return [...state].filter((el) => el !== action.slugName);
         default:
             return state;
     }
@@ -68,13 +48,8 @@ export const allIds = (state = [], action) => {
 
 export const fetching = (state = {}, action) => {
     switch (action.type) {
-        case FETCH_ACTOR:
-            return assoc(action.id, true, state);
         case FETCH_ACTOR_SLUG:
             return assoc(action.slugName, true, state);
-        case FETCH_ACTOR__SUCCESS:
-        case FETCH_FAIL:
-            return assoc(action.id, false, state);
         case FETCH_ACTOR_SLUG_SUCCESS:
         case FETCH_FAIL_SLUG:
             return assoc(action.slugName, false, state);
@@ -87,16 +62,13 @@ export const fetching = (state = {}, action) => {
     }
 };
 
-export const getAllActorsIds = (state) => state.allIds;
-export const getActorById = (state, id) => state.byId[id];
-export const getActorBySlug = (state, slugName) => state.bySlug[slugName];
-export const isActorFetching = (id, state) => state.fetching[id];
+export const getAllActorsSlugs = (state) => state.allSlugs;
+export const getActorBySlug = (slugName, state) => state.bySlug[slugName];
 export const isActorFetchingSlug = (slugName, state) => state.fetching[slugName];
 
 
 export default combineReducers({
-    byId,
     bySlug,
-    allIds,
+    allSlugs,
     fetching
 });

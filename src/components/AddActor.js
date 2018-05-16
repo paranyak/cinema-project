@@ -3,7 +3,7 @@ import "../styles/AddActor.less";
 import block from '../helpers/BEM';
 import DragDropImage from "./DragDropImage";
 import {Redirect} from "react-router";
-import {editMovieById, postMovieToDB} from "../actions/fetch";
+import {editMovieBySlug, postMovieToDB} from "../actions/movies";
 import {connect} from "react-redux";
 import slugify from 'slugify';
 
@@ -117,7 +117,7 @@ class AddActor extends Component {
         for (let i = 0; i < movieInputs.length; i++) {
             for (let j = 0; j < this.state.suggestedMovies[i].length; j++) {
                 if (this.state.suggestedMovies[i][j].name !== "" && this.state.suggestedMovies[i][j].name === movieInputs[i].value) {
-                    let key = this.state.suggestedMovies[i][j].id;
+                    let key = this.state.suggestedMovies[i][j].slugName;
                     let newArrayCast = this.state.suggestedMovies[i][j].cast;
                     newArrayCast.push(actorId);
                     let newData = {};
@@ -398,5 +398,5 @@ class AddActor extends Component {
 
 export default connect(null, (dispatch) => ({
     postMovie: (movie) => dispatch(postMovieToDB(movie)),
-    editMovie: (movie, id) => dispatch(editMovieById(id, movie))
+    editMovie: (movie, slug) => dispatch(editMovieBySlug(slug, movie))
 }))(AddActor);

@@ -2,8 +2,9 @@ import React, {Component} from "react";
 import EditMovieImage from "./EditMovieImage";
 import EditMovieInfo from "./EditMovieInfo";
 import "../styles/Editor.less"
-import {getActorById, getMovieBySlug} from "../reducers";
-import {editActorById, editMovieById, fetchMovieSlug} from '../actions/fetch';
+import {getActorBySlug, getMovieBySlug} from "../reducers";
+import {editActorBySlug} from '../actions/actors';
+import {editMovieBySlug, fetchMovieSlug} from '../actions/movies';
 import {connect} from "react-redux";
 import block from '../helpers/BEM'
 import {Redirect} from 'react-router'
@@ -72,18 +73,18 @@ class EditMoviePage extends Component {
         let newCast = cast;
 
         if (cast.length !== 0 && typeof cast[0] === 'object') {
-            newCast = cast.map(c => c._id).filter(id => id.trim() !== '');
-            cast.filter(el => el._id.trim() !== '')
+            newCast = cast.map(c => c.slugName).filter(slug => slug.trim() !== '');
+            cast.filter(el => el.slugName.trim() !== '')
                 .map(el => {
-                    const movies = (el.movies.includes(film._id)) ? [...el.movies] : [...el.movies, film._id];
-                    this.props.editActors({movies}, el._id);
+                    const movies = (el.movies.includes(film.slugName)) ? [...el.movies] : [...el.movies, film.slugName];
+                    this.props.editActors({movies}, el.slugName);
                 });
             oldCast.map(o => {
-                const a = cast.filter(n => n._id === o._id);
+                const a = cast.filter(n => n.slugName === o.slugName);
                 if (a.length === 0) {
                     // delete current movie from Actor with ID we don't use any more
-                    const movies = o.movies.filter(el => el !== film._id);
-                    this.props.editActors({movies}, o._id);
+                    const movies = o.movies.filter(el => el !== film.slugName);
+                    this.props.editActors({movies}, o.slugName);
                 }
             });
         }
@@ -110,7 +111,7 @@ class EditMoviePage extends Component {
 
         console.log("EDITED MOVIE", movie);
 
-        await this.props.editMovie(movie, film._id);
+        await this.props.editMovie(movie, film.slugName);
         this.setState({fireRedirect: true})
 
     }
@@ -124,10 +125,9 @@ class EditMoviePage extends Component {
         const {film, oldCast} = this.props;
         const {fireRedirect} = this.state;
         if (!film || film.slugName === undefined) {
-            this.props.fetchMovieBySlug(this.props.match.params.slug);
+            this.props.fetchMovieBySlug(this.props.match.params.slug.toLowerCase());
             return null;
         }
-        console.log('STATE', this.state);
         return (<div>
                 <form className={b()}>
                     <h1 className={b('title')}>EDIT MOVIE</h1>
@@ -150,13 +150,14 @@ class EditMoviePage extends Component {
 
 
 export default connect((state, props) => {
-        const film = getMovieBySlug(state, props.match.params.slug);
-        const actors = film.cast.map(actorID => getActorById(state, actorID));
+        const slug = props.match.params.slug.toLowerCase();
+        const film = getMovieBySlug(slug, state);
+        const actors = film.cast.map(actorSlug => getActorBySlug(actorSlug, state));
         return {film, oldCast: actors};
     },
     (dispatch) => ({
         fetchMovieBySlug: slug => dispatch(fetchMovieSlug(slug)),
-        editActors: (actor, id) => dispatch(editActorById(id, actor)),
-        editMovie: (movie, id) => dispatch(editMovieById(id, movie))
+        editActors: (actor, slug) => dispatch(editActorBySlug(slug, actor)),
+        editMovie: (movie, slug) => dispatch(editMovieBySlug(slug, movie))
     })
 )(EditMoviePage);

@@ -4,8 +4,8 @@ import block from "../helpers/BEM";
 import {connect} from "react-redux";
 import MoviePoster from "./MoviePoster";
 import InfiniteScroll from "react-infinite-scroller";
-import {getAllMoviesIds, isMovieFetching} from "../reducers";
-import {fetchAdditionalMovies, fetchMoviesCount} from "../actions/fetch"
+import {getAllMoviesSlugs, isMovieFetchingSlug} from "../reducers";
+import {fetchAdditionalMovies, fetchMoviesCount} from "../actions/movies"
 import {replace} from 'react-router-redux';
 import LazyLoad from 'react-lazyload'
 import {getMoviesCount} from "../reducers/index";
@@ -34,7 +34,7 @@ class AllMovies extends Component {
 
     componentWillReceiveProps(nextProps) {
         console.log("WRP:", nextProps.count, this.props.count, nextProps.films.length, this.props.films.length );
-        if (nextProps.count != this.props.count) {
+        if (nextProps.count !== this.props.count) {
             let allM = document.querySelector("#root");
             allM.style.height = this.calculateHeight(nextProps.count);
         }
@@ -127,8 +127,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = state => {
     const count = getMoviesCount(state);
-    const films = getAllMoviesIds(state);
-    const isFetching = isMovieFetching('additional', state);
+    const films = getAllMoviesSlugs(state);
+    const isFetching = isMovieFetchingSlug('additional', state);
     return {
         count,
         films,

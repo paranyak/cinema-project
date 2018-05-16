@@ -8,14 +8,13 @@ import ScheduleLayout from "./ScheduleLayout";
 import HomeLayout from "./HomeLayout";
 import MovieLayout from "./MovieLayout";
 import {Switch, Route, Redirect,} from 'react-router-dom'
-import {allMovies} from '../actions/index'
 import {connect} from "react-redux";
 import {withRouter} from 'react-router-dom';
 import ActorLayout from "./ActorLayout";
 import AddActor from './AddActor';
 import Login from './Login';
 import SignUp from './SignUp';
-import {setUser} from '../actions/index';
+import {setUser} from '../actions/auth';
 import {userAdditionalInfo} from '../actions/auth';
 import AllActors from './AllActors';
 import {getCurrentUser} from '../reducers/index';

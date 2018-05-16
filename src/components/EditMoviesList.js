@@ -47,16 +47,15 @@ class EditMoviesList extends Component {
         const {callback} = this.props;
         const {value} = e.target;
         const filtered = this.state.suggestedMovies.filter(f => f.name === value);// || f.name.includes(value));
-        let _id = '';
+        let slugName = '';
         let cast = [];
         if (filtered.length === 1) {
-            _id = filtered[0]._id;
+            slugName = filtered[0].slugName;
             cast = filtered[0].cast;
-            console.log('filtered', filtered);
         }
         const arr = [
             ...this.state.movieList.slice(0, i),
-            Object.assign({}, this.state.movieList[i], {name: value, _id, cast}),
+            Object.assign({}, this.state.movieList[i], {name: value, slugName, cast}),
             ...this.state.movieList.slice(i + 1)
         ];
         this.setState({movieList: arr});
@@ -66,7 +65,7 @@ class EditMoviesList extends Component {
     addMovie(e) {
         e.preventDefault();
         const {callback} = this.props;
-        const arr = [...this.state.movieList, {name: '', _id: '', cast: []}];
+        const arr = [...this.state.movieList, {name: '', slugName: '', cast: []}];
         this.setState({movieList: arr});
         callback('movies', arr);
     }

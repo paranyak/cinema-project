@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
-var data = require('./db.json');
+let mongoose = require('mongoose');
+let data = require('./db.json');
 
 mongoose.connect('mongodb://localhost/cinema-project');
-var db = mongoose.connection;
+let db = mongoose.connection;
 
 db.on('error', function (err) {
     console.error('connection error:', err.message);
@@ -11,10 +11,10 @@ db.on('error', function (err) {
 db.once('open', function () {
     console.log('Connected to DB!');
     mongoose.connection.db.dropDatabase().then(() => {
-        var Schema = mongoose.Schema;
-        var ObjectId = Schema.Types.ObjectId;
+        let Schema = mongoose.Schema;
+        let ObjectId = Schema.Types.ObjectId;
 
-        var movieSchema = new Schema({
+        let movieSchema = new Schema({
             name: String,
             slugName: String,
             image: String,
@@ -36,15 +36,15 @@ db.once('open', function () {
                 month: Number,
                 day: Number
             },
-            cast: [{type: Schema.Types.ObjectId, ref: 'Actor'}],
+            cast: [{type: String, ref: 'Actor'}],
             published: Boolean
         });
 
-        var actorSchema = new Schema({
+        let actorSchema = new Schema({
             oldId: String,
             name: String,
             slugName: String,
-            movies: [{type: Schema.Types.ObjectId, ref: 'Movie'}],
+            movies: [{type: String, ref: 'Movie'}],
             info: String,
             date: {
                 year: Number,
@@ -58,21 +58,21 @@ db.once('open', function () {
         });
 
 
-        var Movie = mongoose.model('Movie', movieSchema);
-        var Actor = mongoose.model('Actor', actorSchema);
+        let Movie = mongoose.model('Movie', movieSchema);
+        let Actor = mongoose.model('Actor', actorSchema);
 
-        var promises = [];
-        var movieCastMap = {};
-        var moviesData = data.movies;
+        let promises = [];
+        let movieCastMap = {};
+        let moviesData = data.movies;
 
-        for (var i = 0; i < moviesData.length; i++) {
+        for (let i = 0; i < moviesData.length; i++) {
             movieCastMap[moviesData[i].name] = moviesData[i].cast;
             let movie = Object.assign({}, moviesData[i], {cast: []});
             promises.push(new Movie(movie).save());
         }
 
-        var actorsData = data.actors;
-        for (var i = 0; i < actorsData.length; i++) {
+        let actorsData = data.actors;
+        for (let i = 0; i < actorsData.length; i++) {
             let actor = Object.assign({}, actorsData[i], {movies: [], oldId: actorsData[i].id});
             promises.push(new Actor(actor).save());
         }
@@ -88,9 +88,8 @@ db.once('open', function () {
                         findPromise.then((actor) => {
                             if (actor) {
                                 console.log('movie:' + movie.name + ' actor: ' + actor.name);
-                                movie.cast.addToSet(actor);
-                                actor.movies.addToSet(movie);
-
+                                movie.cast.addToSet(actor.slugName);
+                                actor.movies.addToSet(movie.slugName);
                                 updatePromises.push(movie.save());
                                 updatePromises.push(actor.save());
                                 // console.log(updatePromises.length);

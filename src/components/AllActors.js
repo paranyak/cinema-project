@@ -3,11 +3,11 @@ import "../styles/AllActors.less";
 import block from "../helpers/BEM";
 import {connect} from "react-redux";
 import ActorPoster from "./ActorPoster";
-import {Link} from 'react-router-dom';
 import InfiniteScroll from "react-infinite-scroller";
-import {getAllActorsIds, isActorFetching} from "../reducers";
-import {fetchAdditionalActors} from "../actions/fetch"
+import {getAllActorsSlugs, isActorFetchingSlug} from "../reducers";
+import {fetchAdditionalActors} from "../actions/actors"
 import LazyLoad from 'react-lazyload';
+import {Link} from "react-router-dom";
 
 const b = block("AllActors");
 
@@ -39,7 +39,9 @@ class AllActors extends Component {
                     {actors
                         .map((actor, i) =>
                             <LazyLoad key={i} height='100%' offsetBottom={250}>
-                                <ActorPoster actorId={actor}/>
+                                <Link to={`/actor/${actor}`}>
+                                    <ActorPoster actorSlug={actor}/>
+                                </Link>
                             </LazyLoad>
                         )}
                 </div>
@@ -79,8 +81,8 @@ class AllActors extends Component {
 const mapDispatchToProps = (dispatch) => ({fetchAllActors: (labels, pages) => dispatch(fetchAdditionalActors(labels, pages))});
 
 const mapStateToProps = state => {
-    const actors = getAllActorsIds(state);
-    const isFetching = isActorFetching('additional', state);
+    const actors = getAllActorsSlugs(state);
+    const isFetching = isActorFetchingSlug('additional', state);
     return {actors, isFetching}
 };
 

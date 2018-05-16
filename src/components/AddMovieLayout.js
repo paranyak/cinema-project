@@ -6,7 +6,7 @@ import AddMInfo from "./AddMInfo";
 import {Redirect} from "react-router";
 import slugify from 'slugify';
 import {connect} from "react-redux";
-import {postMovieToDB} from "../actions/fetch";
+import {postMovieToDB} from "../actions/movies";
 
 const b = block("AddMovieLayout");
 

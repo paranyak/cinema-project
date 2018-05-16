@@ -6,21 +6,16 @@ import {connect} from "react-redux";
 import {logoutUser} from '../actions/auth';
 import {getCurrentUser, getMoviesAutocomplete} from '../reducers/index';
 import {withRouter} from 'react-router-dom';
-import {fetchAutocompleteMovies} from '../actions/fetch';
+import {fetchAutocompleteMovies, clearMoviesAutocomplete} from '../actions/movies';
 import Autosuggest from 'react-autosuggest';
-import {clearMoviesAutocomplete} from '../actions/index';
 
 const b = block("Navigation");
-
-let typingTimer;
-let doneTypingInterval = 500;
-let nameTypingInterval = 1000;
 
 class Navigation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          search: ''
+            search: ''
         }
     }
 
@@ -29,19 +24,19 @@ class Navigation extends Component {
         this.props.logoutUser();
     }
 
-    onChange(event, { newValue }) {
-      this.setState({
-        ...this.state,
-        search: newValue
-      });
+    onChange(event, {newValue}) {
+        this.setState({
+            ...this.state,
+            search: newValue
+        });
     };
 
-    onSuggestionsFetchRequested({ value }) {
-      this.props.fetchMoviesAutocomlete(value);
+    onSuggestionsFetchRequested({value}) {
+        this.props.fetchMoviesAutocomlete(value);
     };
 
     onSuggestionsClearRequested() {
-      this.props.clearMoviesAutocomplete();
+        this.props.clearMoviesAutocomplete();
     };
 
 
@@ -50,19 +45,19 @@ class Navigation extends Component {
         let role = this.props.user && this.props.user.role;
 
         const inputProps = {
-          placeholder: 'Type a movie name',
-          value: this.state.search,
-          onChange: this.onChange.bind(this)
+            placeholder: 'Type a movie name',
+            value: this.state.search,
+            onChange: this.onChange.bind(this)
         };
 
         const getSuggestionValue = suggestion => suggestion.name;
 
         // Use your imagination to render suggestions.
         const renderSuggestion = suggestion => {
-          const link = '/movie/'+suggestion.slugName;
-          return <NavLink to={link} className={b('option')}>
-            {suggestion.name}
-          </NavLink>
+            const link = '/movie/' + suggestion.slugName;
+            return <NavLink to={link} className={b('option')}>
+                {suggestion.name}
+            </NavLink>
         };
 
         if (role === 'admin') {
@@ -81,14 +76,14 @@ class Navigation extends Component {
             <NavLink to="/schedule" className={b('tab')} activeClassName={b('tab', ['active'])}>Schedule</NavLink>
             <NavLink to="/allactors" className={b('tab')} activeClassName={b('tab', ['active'])}>All actors</NavLink>
             <div className={b('search')}>
-              <Autosuggest
-                suggestions={this.props.moviesAutocomplete}
-                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
-                onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
-                getSuggestionValue={getSuggestionValue}
-                renderSuggestion={renderSuggestion}
-                inputProps={inputProps}
-              />
+                <Autosuggest
+                    suggestions={this.props.moviesAutocomplete}
+                    onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
+                    onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
+                    getSuggestionValue={getSuggestionValue}
+                    renderSuggestion={renderSuggestion}
+                    inputProps={inputProps}
+                />
             </div>
             <NavLink to="/login" style={{display: this.props.user ? 'none' : 'block'}} className={b('tab', ['login'])}
                      activeClassName={b('tab', ['active'])}>Login</NavLink>
