@@ -22414,25 +22414,30 @@ var deleteMovie = exports.deleteMovie = function () {
 
 var postMovie = exports.postMovie = function () {
     var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(movie) {
+        var headers;
         return regeneratorRuntime.wrap(function _callee13$(_context13) {
             while (1) {
                 switch (_context13.prev = _context13.next) {
                     case 0:
-                        _context13.next = 2;
+                        headers = new Headers();
+
+                        headers.append('Content-Type', 'application/json');
+
+                        _context13.next = 4;
                         return fetch('http://localhost:3000/movies', {
                             method: 'POST',
-                            headers: { "Content-type": "application/json" },
+                            headers: headers,
                             body: JSON.stringify(movie)
                         });
 
-                    case 2:
-                        _context13.next = 4;
+                    case 4:
+                        _context13.next = 6;
                         return _context13.sent.json();
 
-                    case 4:
+                    case 6:
                         return _context13.abrupt("return", _context13.sent);
 
-                    case 5:
+                    case 7:
                     case "end":
                         return _context13.stop();
                 }
@@ -57422,12 +57427,15 @@ var EditMoviePage = function (_Component) {
                                         return Schedule.push(d + ' ' + t);
                                     });
                                 });
-
+                                console.log('cast', cast);
                                 newCast = cast.map(function (el) {
-                                    return el._id;
-                                }).filter(function (id) {
-                                    return id !== '';
+                                    return el.slugName;
+                                }).filter(function (slug) {
+                                    return slug !== '';
                                 });
+
+                                console.log('new cast', newCast);
+
                                 movie = {
                                     name: name,
                                     slugName: (0, _slugify2.default)(name, { replacement: '_', remove: /[.:!,;*&@^]/g, lower: true }),
@@ -57459,13 +57467,13 @@ var EditMoviePage = function (_Component) {
 
 
                                 console.log("MOVIE", movie);
-                                _context.next = 9;
+                                _context.next = 11;
                                 return this.props.postData(movie);
 
-                            case 9:
+                            case 11:
                                 this.setState({ fireRedirect: true });
 
-                            case 10:
+                            case 12:
                             case "end":
                                 return _context.stop();
                         }
@@ -62997,13 +63005,13 @@ var CastInputs = function (_Component) {
             var filtered = this.state.suggestedActors.filter(function (f) {
                 return f.name === value;
             }); // || f.name.includes(value));
-            var _id = '';
+            var slugName = '';
             var movies = [];
             if (filtered.length === 1) {
-                _id = filtered[0]._id;
+                slugName = filtered[0].slugName;
                 movies = filtered[0].movies;
             }
-            var arr = [].concat(_toConsumableArray(this.state.chosenActors.slice(0, i)), [Object.assign({}, this.state.chosenActors[i], { name: value, _id: _id, movies: movies })], _toConsumableArray(this.state.chosenActors.slice(i + 1)));
+            var arr = [].concat(_toConsumableArray(this.state.chosenActors.slice(0, i)), [Object.assign({}, this.state.chosenActors[i], { name: value, slugName: slugName, movies: movies })], _toConsumableArray(this.state.chosenActors.slice(i + 1)));
             this.setState({ chosenActors: arr });
             callback('cast', arr);
         }
@@ -63013,7 +63021,7 @@ var CastInputs = function (_Component) {
             e.preventDefault();
             var callback = this.props.callback;
 
-            var arr = [].concat(_toConsumableArray(this.state.chosenActors), [{ name: '', _id: '', movies: [] }]);
+            var arr = [].concat(_toConsumableArray(this.state.chosenActors), [{ name: '', slugName: '', movies: [] }]);
             this.setState({ chosenActors: arr });
             callback('cast', arr);
         }

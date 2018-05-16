@@ -47,15 +47,15 @@ class CastInputs extends Component {
         const {callback} = this.props;
         const {value} = e.target;
         const filtered = this.state.suggestedActors.filter(f => f.name === value);// || f.name.includes(value));
-        let _id = '';
+        let slugName = '';
         let movies = [];
         if (filtered.length === 1) {
-            _id = filtered[0]._id;
+            slugName = filtered[0].slugName;
             movies = filtered[0].movies;
         }
         const arr = [
             ...this.state.chosenActors.slice(0, i),
-            Object.assign({}, this.state.chosenActors[i], {name: value, _id, movies}),
+            Object.assign({}, this.state.chosenActors[i], {name: value, slugName, movies}),
             ...this.state.chosenActors.slice(i + 1)
         ];
         this.setState({chosenActors: arr});
@@ -65,7 +65,7 @@ class CastInputs extends Component {
     addActorAndRole(e) {
         e.preventDefault();
         const {callback} = this.props;
-        const arr = [...this.state.chosenActors, {name: '', _id: '', movies: []}];
+        const arr = [...this.state.chosenActors, {name: '', slugName: '', movies: []}];
         this.setState({chosenActors: arr});
         callback('cast', arr);
     }
