@@ -34,15 +34,16 @@ class AllMovies extends Component {
 
     componentWillReceiveProps(nextProps) {
         console.log("WRP:", nextProps.count, this.props.count, nextProps.films.length, this.props.films.length );
-        if (nextProps.count !== this.props.count) {
+        if (nextProps.count != this.props.count) {
             let allM = document.querySelector("#root");
             allM.style.height = this.calculateHeight(nextProps.count);
-            console.log(allM.style.height);
         }
         if (this.props.count && this.props.films.length === this.props.count) {
             this.setState({...this.state, hasMoreItems: false});
         }
+
     }
+
 
     isBetween(number, a, b, inclusive) {
         let min = Math.min.apply(Math, [a, b]),
@@ -74,8 +75,8 @@ class AllMovies extends Component {
                 <div className={b()}>
                     {films
                         .map((film, i) =>
-                            <LazyLoad height='501px'  offset={1000} key={i} >
-                                <MoviePoster filmId={film} key={i}/>
+                            <LazyLoad height='501px' offset={1000} key={i}>
+                                <MoviePoster filmId={film} id={i}/>
                             </LazyLoad>
                         )}
                 </div>
@@ -89,6 +90,7 @@ class AllMovies extends Component {
     }
 
     render() {
+
         if (this.props.films.length !== 0) {
             return (
                 <section>

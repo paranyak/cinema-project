@@ -88,11 +88,8 @@ export const fetchActorsSlug = (slugName) => async (dispatch) => {
 };
 
 export const postActorToDB = (actor) => async (dispatch) => {
-    console.log("post to db");
     dispatch(actorPostStart(actor));
-    console.log("after start");
     let result = await fromApi.postActor(actor);
-    console.log('result', result);
     // if (!result.ok) {
     //     alert('Your form was not submitted!');
     // }

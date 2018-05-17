@@ -19,10 +19,6 @@ const link = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_275,h_408,c_th
 
 class ActorLayout extends Component {
 
-    componentWillReceiveProps(nextProps) {
-        const {fetchMovieBySlug} = this.props;
-        nextProps.moviesToLoad.forEach((el) => fetchMovieBySlug(el))
-    }
 
     componentWillMount() {
         const {actor, isActorLoading} = this.props;
@@ -55,6 +51,10 @@ class ActorLayout extends Component {
         const month = monthNames[actor.date.month - 1];
         const {year, day} = actor.date;
         const birthDay = month + ' ' + day + ', ' + year;
+
+        // console.log("IN RENDER:", this.props.moviesToLoad);
+        this.props.moviesToLoad.forEach((el) => this.props.fetchMovieBySlug(el))
+
 
         if (role === 'admin') {
             additional = (<div>
@@ -107,10 +107,10 @@ class ActorLayout extends Component {
 export default connect((state, props) => {
         let moviesToLoad = [];
         const slug = props.match.params.slug.toLowerCase();
-        // console.log('i ve got ', slug);
+        // console.log('SLUG OF ACTOR ', slug);
 
         const actor = getActorBySlug(slug, state);
-        // console.log('return actor', actor);
+        // console.log('ACTOR RESULT:', actor);
         const isActorLoading = isActorFetchingSlug(slug, state);
         const user = getCurrentUser(state);
         let movies = [];
@@ -121,8 +121,10 @@ export default connect((state, props) => {
                 let movie = getMovieBySlug(s, state);
                 // console.log('movie to get', movie);
                 if (!movie) {
+                    // console.log("Movie to load:", s);
                     moviesToLoad.push(s);
                 }
+                // console.log("Movie to load2:",moviesToLoad);
                 return movie;
             })
         }

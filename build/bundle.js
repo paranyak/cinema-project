@@ -4179,46 +4179,38 @@ var postActorToDB = exports.postActorToDB = function postActorToDB(actor) {
                 while (1) {
                     switch (_context4.prev = _context4.next) {
                         case 0:
-                            console.log("post to db");
                             dispatch(actorPostStart(actor));
-                            console.log("after start");
-                            _context4.next = 5;
+                            _context4.next = 3;
                             return fromApi.postActor(actor);
 
-                        case 5:
+                        case 3:
                             result = _context4.sent;
-
-                            console.log('result', result);
-                            // if (!result.ok) {
-                            //     alert('Your form was not submitted!');
-                            // }
-                            // else {
-                            _context4.prev = 7;
-                            _context4.next = 10;
+                            _context4.prev = 4;
+                            _context4.next = 7;
                             return result;
 
-                        case 10:
+                        case 7:
                             res = _context4.sent;
 
                             res.slugName = res['slugName'];
                             res = (0, _normalizr.normalize)([res], _schema.actorsListSchemaSlug);
                             dispatch(postActorSuccess(res.result, res.entities.actors));
-                            _context4.next = 20;
+                            _context4.next = 17;
                             break;
 
-                        case 16:
-                            _context4.prev = 16;
-                            _context4.t0 = _context4["catch"](7);
+                        case 13:
+                            _context4.prev = 13;
+                            _context4.t0 = _context4["catch"](4);
 
                             console.error('you got an error!!!');
                             return _context4.abrupt("return", null);
 
-                        case 20:
+                        case 17:
                         case "end":
                             return _context4.stop();
                     }
                 }
-            }, _callee4, undefined, [[7, 16]]);
+            }, _callee4, undefined, [[4, 13]]);
         }));
 
         return function (_x6) {
@@ -75416,10 +75408,9 @@ var AllMovies = function (_Component) {
         key: "componentWillReceiveProps",
         value: function componentWillReceiveProps(nextProps) {
             console.log("WRP:", nextProps.count, this.props.count, nextProps.films.length, this.props.films.length);
-            if (nextProps.count !== this.props.count) {
+            if (nextProps.count != this.props.count) {
                 var allM = document.querySelector("#root");
                 allM.style.height = this.calculateHeight(nextProps.count);
-                console.log(allM.style.height);
             }
             if (this.props.count && this.props.films.length === this.props.count) {
                 this.setState(_extends({}, this.state, { hasMoreItems: false }));
@@ -75460,7 +75451,7 @@ var AllMovies = function (_Component) {
                         return _react2.default.createElement(
                             _reactLazyload2.default,
                             { height: "501px", offset: 1000, key: i },
-                            _react2.default.createElement(_MoviePoster2.default, { filmId: film, key: i })
+                            _react2.default.createElement(_MoviePoster2.default, { filmId: film, id: i })
                         );
                     })
                 );
@@ -75475,6 +75466,7 @@ var AllMovies = function (_Component) {
     }, {
         key: "render",
         value: function render() {
+
             if (this.props.films.length !== 0) {
                 return _react2.default.createElement(
                     "section",
@@ -76972,15 +76964,6 @@ var ActorLayout = function (_Component) {
     }
 
     _createClass(ActorLayout, [{
-        key: 'componentWillReceiveProps',
-        value: function componentWillReceiveProps(nextProps) {
-            var fetchMovieBySlug = this.props.fetchMovieBySlug;
-
-            nextProps.moviesToLoad.forEach(function (el) {
-                return fetchMovieBySlug(el);
-            });
-        }
-    }, {
         key: 'componentWillMount',
         value: function componentWillMount() {
             var _props = this.props,
@@ -77026,6 +77009,11 @@ var ActorLayout = function (_Component) {
                 day = _actor$date.day;
 
             var birthDay = month + ' ' + day + ', ' + year;
+
+            // console.log("IN RENDER:", this.props.moviesToLoad);
+            this.props.moviesToLoad.forEach(function (el) {
+                return _this2.props.fetchMovieBySlug(el);
+            });
 
             if (role === 'admin') {
                 additional = _react2.default.createElement(
@@ -77124,10 +77112,10 @@ var ActorLayout = function (_Component) {
 exports.default = (0, _reactRedux.connect)(function (state, props) {
     var moviesToLoad = [];
     var slug = props.match.params.slug.toLowerCase();
-    // console.log('i ve got ', slug);
+    // console.log('SLUG OF ACTOR ', slug);
 
     var actor = (0, _reducers.getActorBySlug)(slug, state);
-    // console.log('return actor', actor);
+    // console.log('ACTOR RESULT:', actor);
     var isActorLoading = (0, _reducers.isActorFetchingSlug)(slug, state);
     var user = (0, _reducers.getCurrentUser)(state);
     var movies = [];
@@ -77138,8 +77126,10 @@ exports.default = (0, _reactRedux.connect)(function (state, props) {
             var movie = (0, _reducers.getMovieBySlug)(s, state);
             // console.log('movie to get', movie);
             if (!movie) {
+                // console.log("Movie to load:", s);
                 moviesToLoad.push(s);
             }
+            // console.log("Movie to load2:",moviesToLoad);
             return movie;
         });
     }
@@ -77227,7 +77217,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".ActorLayout {\n  width: 90%;\n  min-height: 600px;\n  background-color: #373737;\n  margin: auto auto 90px;\n  box-shadow: 10px 21px 94px 6px #000001;\n}\n.ActorLayout__edit-icon {\n  width: 40px;\n  height: 40px;\n  display: inline-block;\n  background: url(" + escape(__webpack_require__(369)) + ") no-repeat center;\n  background-size: 32px 32px;\n  float: right;\n  margin-top: -17px;\n  opacity: 0.5;\n}\n.ActorLayout__edit-icon:hover {\n  opacity: 1;\n}\n.ActorLayout__delete-icon {\n  width: 40px;\n  height: 40px;\n  display: inline-block;\n  background: url(" + escape(__webpack_require__(370)) + ") no-repeat center;\n  background-size: 32px 32px;\n  float: right;\n  margin-top: -17px;\n  opacity: 0.5;\n}\n.ActorLayout__delete-icon:hover {\n  opacity: 1;\n}\n.ActorLayout__error {\n  margin: -85px auto 0;\n  max-width: 900px;\n  min-height: initial;\n  padding: 10px;\n}\n.ActorLayout__image {\n  max-width: 450px;\n  margin-left: 40px;\n  margin-top: -40px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  border-bottom: #FAE807 10px solid;\n}\n@media (max-width: 1110px) {\n  .ActorLayout__image {\n    box-shadow: none;\n    margin: 0 auto;\n    display: block;\n  }\n}\n.ActorLayout__general {\n  color: white;\n  margin-right: 40px;\n  padding-top: 20px;\n  float: right;\n  width: 60%;\n  min-width: 600px;\n}\n@media (max-width: 1110px) {\n  .ActorLayout__general {\n    width: 90%;\n    min-width: initial;\n    float: none;\n    margin: 0 auto;\n  }\n}\n.ActorLayout__name {\n  font-weight: bold;\n  font-size: 50px;\n  margin: 0;\n}\n.ActorLayout__info {\n  font-size: 16px;\n  color: white;\n  opacity: 0.6;\n}\n.ActorLayout__extra {\n  display: grid;\n  grid-template-columns: 50% 50%;\n  color: white;\n  font-weight: bold;\n  padding-top: 40px;\n}\n@media (max-width: 768px) {\n  .ActorLayout__extra {\n    display: block;\n    padding-top: 0;\n  }\n}\n.ActorLayout__value {\n  float: right;\n  clear: right;\n  margin-right: 20px;\n  opacity: 0.6;\n  font-weight: normal;\n  max-width: 70%;\n}\n@media (max-width: 768px) {\n  .ActorLayout__value {\n    float: none;\n    margin: 0 0 0 10px;\n  }\n}\n.ActorLayout__nominations,\n.ActorLayout__movies {\n  grid-column-start: 1;\n  grid-column-end: 3;\n}\n.ActorLayout__nominations {\n  padding: 0;\n}\n.ActorLayout__movie-link {\n  color: white;\n  float: right;\n  margin-right: 20px;\n  opacity: 0.6;\n  font-weight: normal;\n  text-decoration: none;\n}\n@media (max-width: 768px) {\n  .ActorLayout__movie-link {\n    float: none;\n    margin: 0 0 0 10px;\n    display: inline-block;\n  }\n}\n", ""]);
+exports.push([module.i, ".ActorLayout {\n  width: 90%;\n  min-height: 600px;\n  background-color: #373737;\n  margin: auto auto 90px;\n  box-shadow: 10px 21px 94px 6px #000001;\n}\n.ActorLayout__edit-icon {\n  width: 40px;\n  height: 40px;\n  display: inline-block;\n  background: url(" + escape(__webpack_require__(369)) + ") no-repeat center;\n  background-size: 32px 32px;\n  float: right;\n  margin-top: -17px;\n  opacity: 0.5;\n}\n.ActorLayout__edit-icon:hover {\n  opacity: 1;\n}\n.ActorLayout__delete-icon {\n  width: 40px;\n  height: 40px;\n  display: inline-block;\n  background: url(" + escape(__webpack_require__(370)) + ") no-repeat center;\n  background-size: 32px 32px;\n  float: right;\n  margin-top: -17px;\n  opacity: 0.5;\n}\n.ActorLayout__delete-icon:hover {\n  opacity: 1;\n}\n.ActorLayout__error {\n  margin: -85px auto 0;\n  max-width: 900px;\n  min-height: initial;\n  padding: 10px;\n}\n.ActorLayout__image {\n  max-width: 450px;\n  margin-left: 40px;\n  margin-top: -40px;\n  box-shadow: 10px 21px 94px 6px #000001;\n  border-bottom: #FAE807 10px solid;\n  height: 408px;\n  width: 275px;\n  background-color: white;\n}\n@media (max-width: 1110px) {\n  .ActorLayout__image {\n    box-shadow: none;\n    margin: 0 auto;\n    display: block;\n  }\n}\n.ActorLayout__general {\n  color: white;\n  margin-right: 40px;\n  padding-top: 20px;\n  float: right;\n  width: 60%;\n  min-width: 600px;\n}\n@media (max-width: 1110px) {\n  .ActorLayout__general {\n    width: 90%;\n    min-width: initial;\n    float: none;\n    margin: 0 auto;\n  }\n}\n.ActorLayout__name {\n  font-weight: bold;\n  font-size: 50px;\n  margin: 0;\n}\n.ActorLayout__info {\n  font-size: 16px;\n  color: white;\n  opacity: 0.6;\n}\n.ActorLayout__extra {\n  display: grid;\n  grid-template-columns: 50% 50%;\n  color: white;\n  font-weight: bold;\n  padding-top: 40px;\n}\n@media (max-width: 768px) {\n  .ActorLayout__extra {\n    display: block;\n    padding-top: 0;\n  }\n}\n.ActorLayout__value {\n  float: right;\n  clear: right;\n  margin-right: 20px;\n  opacity: 0.6;\n  font-weight: normal;\n  max-width: 70%;\n}\n@media (max-width: 768px) {\n  .ActorLayout__value {\n    float: none;\n    margin: 0 0 0 10px;\n  }\n}\n.ActorLayout__nominations,\n.ActorLayout__movies {\n  grid-column-start: 1;\n  grid-column-end: 3;\n}\n.ActorLayout__nominations {\n  padding: 0;\n}\n.ActorLayout__movie-link {\n  color: white;\n  float: right;\n  margin-right: 20px;\n  opacity: 0.6;\n  font-weight: normal;\n  text-decoration: none;\n}\n@media (max-width: 768px) {\n  .ActorLayout__movie-link {\n    float: none;\n    margin: 0 0 0 10px;\n    display: inline-block;\n  }\n}\n", ""]);
 
 // exports
 
