@@ -1,14 +1,17 @@
 import {
     FETCH_ACTOR_SLUG,
     FETCH_ACTOR_SLUG_SUCCESS,
-    FETCH_FAIL_SLUG,
     EDITING_ACTOR_SUCCESS,
     EDITING_ACTOR_START,
     FETCH_ACTOR_DELETE_SUCCESS,
-    FETCH_UNPUBLISHED_ACTORS_SUCCESS
+    FETCH_UNPUBLISHED_ACTORS_SUCCESS,
+    POST_ACTOR_SUCCESS,
+    POST_ACTOR_START,
+    FETCH_ACTOR_SLUG_FAIL
+
 } from '../helpers/actionTypes';
 import * as fromApi from "../api/fetch";
-import {actorsListSchema, actorsListSchemaSlug} from "../helpers/schema";
+import {actorsListSchemaSlug} from "../helpers/schema";
 import {push} from "react-router-redux";
 import {normalize} from 'normalizr';
 
@@ -18,9 +21,9 @@ import * as fromFetch from "./index";
 export const editingActorStart = (actor) => ({type: EDITING_ACTOR_START, actor});
 
 export const fetchActorsSlugStart = (slugName) => {
-    console.log('in dispatch ', slugName);
     return {type: FETCH_ACTOR_SLUG, slugName};
 };
+
 
 export const fetchUnpublishedActorsSuccess = (slugs, actors) => ({
     type: FETCH_UNPUBLISHED_ACTORS_SUCCESS,
@@ -28,15 +31,23 @@ export const fetchUnpublishedActorsSuccess = (slugs, actors) => ({
     actors
 });
 
+export const actorPostStart = (actor) => ({type: POST_ACTOR_START, actor});
+
+
 export const fetchActorsDeleteSuccess = (slugName) => ({type: FETCH_ACTOR_DELETE_SUCCESS, slugName});
+
+export const postActorSuccess = (slugName, actors) => ({
+    type: POST_ACTOR_SUCCESS,
+    actors, slugName
+});
 
 export const fetchActorsSlugSuccess = (slugName, slugs, actors = []) => ({
     type: FETCH_ACTOR_SLUG_SUCCESS,
     slugName, actors, slugs
 });
 
-export const fetchFailSlug = (slugName, slugs, actors = []) => ({
-    type: FETCH_FAIL_SLUG,
+export const fetchActorSlugFail = (slugName, slugs, actors = []) => ({
+    type: FETCH_ACTOR_SLUG_FAIL,
     error: true,
     slugName, slugs, actors
 });
@@ -72,7 +83,7 @@ export const fetchActorsSlug = (slugName) => async (dispatch) => {
     if (!response.ok) {
         let actor = {slugName, error: true};
         let actors = normalize([actor], actorsListSchemaSlug);
-        dispatch(fetchFailSlug(slugName, actors.result, actors.entities.actors));
+        dispatch(fetchActorSlugFail(slugName, actors.result, actors.entities.actors));
     } else {
         let actors = await ((response).json());
         actors.slugName = actors['slugName'];
@@ -84,6 +95,26 @@ export const fetchActorsSlug = (slugName) => async (dispatch) => {
         }
     }
 };
+
+export const postActorToDB = (actor) => async (dispatch) => {
+    dispatch(actorPostStart(actor));
+    let result = await fromApi.postActor(actor);
+    // if (!result.ok) {
+    //     alert('Your form was not submitted!');
+    // }
+    // else {
+    try {
+        let res = await result;
+        res.slugName = res['slugName'];
+        res = normalize([res], actorsListSchemaSlug);
+        dispatch(postActorSuccess(res.result, res.entities.actors));
+    }
+    catch (err) {
+        console.error('you got an error!!!');
+        return null;
+    }
+};
+
 
 export const editActorBySlug = (slugName, actor) => async (dispatch) => {
     dispatch(editingActorStart(actor));

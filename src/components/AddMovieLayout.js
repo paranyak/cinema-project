@@ -7,11 +7,14 @@ import {Redirect} from "react-router";
 import slugify from 'slugify';
 import {connect} from "react-redux";
 import {postMovieToDB} from "../actions/movies";
+import {postActorToDB} from "../actions/actors";
+import {editActorBySlug} from "../actions/actors";
+import {getAllActorsSlugs} from "../reducers";
 
 const b = block("AddMovieLayout");
 
 
-class EditMoviePage extends Component {
+class AddMovieLayout extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -41,7 +44,8 @@ class EditMoviePage extends Component {
         }
     }
 
-    async addMovieToDB() {
+    async addMovieToDB(e) {
+        e.preventDefault();
         const {
             screenshots,
             cast,
@@ -61,16 +65,21 @@ class EditMoviePage extends Component {
         let Schedule = [];
         const scheduleTime = this.state.scheduleTime.sort();
         scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
-        console.log('cast', cast);
-        const newCast = cast.map(el => el.slugName).filter(slug => slug !== '');
-        console.log('new cast', newCast);
+        cast.forEach((cast) => {
+          if(!cast.slugName) {
+            cast.slugName = slugify(cast.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
+          }
+        })
+
+        // const newCast = cast.map(el => el.slugName).filter(slug => slug !== '');
+        const slugName = slugify(name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
 
         const movie = {
             name,
-            slugName: slugify(name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true}),
+            slugName,
             image: poster,
             rating: parseFloat(rating).toString(),
-            cast: newCast,
+            cast: cast,
             description,
             screenshots,
             trailer,
@@ -90,13 +99,27 @@ class EditMoviePage extends Component {
             }
         };
 
-        console.log("MOVIE", movie);
+        console.log(movie.cast);
+
         await this.props.postData(movie);
+
+        // if (cast.length !== 0 && typeof cast[0] === 'object') {
+        //     cast.map(el => {
+        //       if (el.slugName.trim() !== "") {
+        //         const movies = (el.movies.includes(slugName)) ? [...el.movies] : [...el.movies, slugName];
+        //         this.props.editActors({movies}, el.slugName);
+        //       } else {
+        //         el.published = false;
+        //         el.slugName = slugify(el.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
+        //         el.movies = [slugName];
+        //       }
+        //   });
+        // }
+
         this.setState({fireRedirect: true});
     }
 
     cancelAdding() {
-        console.log('Adding is canceled!!!');
         this.setState({fireRedirect: true});
     }
 
@@ -130,7 +153,7 @@ class EditMoviePage extends Component {
                     <AddMInfo callback={this.getStateFromChild}/>
                     <div className={b('btns')}>
                         <button type='submit'
-                                disabled={!isEnabled}
+                                // disabled={!isEnabled}
                                 className={b('btn', ['submit'])}
                                 onClick={this.addMovieToDB.bind(this)}
                         >Submit
@@ -147,5 +170,14 @@ class EditMoviePage extends Component {
 }
 
 
-export default connect(null, (dispatch) => ({postData: (movie) => dispatch(postMovieToDB(movie))})
-)(EditMoviePage);
+export default connect((state, props) => {
+  const allActors = getAllActorsSlugs(state);
+  return {
+    allActors
+  }
+},
+ (dispatch) => ({
+    postData: (movie) => dispatch(postMovieToDB(movie)),
+    editActors: (actor, slug) => dispatch(editActorBySlug(slug, actor)),
+    postActor: (actor) => dispatch(postActorToDB(actor))
+}))(AddMovieLayout);

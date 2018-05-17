@@ -47,7 +47,7 @@
         "month": 3,
         "day": 1
       },
-      "published": false
+      "published": true
     },
     {
       "id": 1,
@@ -1188,7 +1188,7 @@
         "Teen Choice Award в номінації Найкраща актриса екшну/пригодницького фільму"
       ],
       "image": "Cinema Project/wqdoibm3wmyvyo5fldsb",
-      "published": false
+      "published": true
     },
     {
       "id": 1,
@@ -1207,7 +1207,7 @@
         "Премія «Оскар» за найкращу жіночу роль"
       ],
       "image": "Cinema Project/syuyyrbyfooaxhakjlu9",
-      "published": false
+      "published": true
     },
     {
       "id": 2,
@@ -1226,7 +1226,7 @@
         "Премія «Золотий глобус» за найкращу чоловічу роль у фільмі — драма"
       ],
       "image": "Cinema Project/jtj9hnsuk133b89fg2zp",
-      "published": false
+      "published": true
     },
     {
       "id": 3,
@@ -1245,7 +1245,7 @@
         "Премія Сезар найперспективнішому актору"
       ],
       "image": "Cinema Project/vyq6xqjielobdmsue68k",
-      "published": false
+      "published": true
     },
     {
       "id": 4,
@@ -1264,7 +1264,7 @@
         " Премія британського незалежного кіно в номінації Найкращий актор/актриса другого плану"
       ],
       "image": "Cinema Project/yvnxovudjddhrrh6jwkq",
-      "published": false
+      "published": true
     },
     {
       "id": 5,

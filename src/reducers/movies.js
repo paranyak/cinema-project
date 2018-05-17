@@ -19,13 +19,16 @@ import {
 
 const bySlug = (state = {}, action) => {
     switch (action.type) {
-        case FETCH_MOVIES_SLUG:
+        // case FETCH_MOVIES_SLUG:
         case FETCH_MOVIES_SLUG_SUCCESS:
         case POST_MOVIE_SUCCESS:
         case FETCH_UNPUBLISHED_MOVIESL_SUCCESS:
             return {...state, ...action.movies};
-        case FETCH_FAIL_SLUG:
-            return action;
+        case POST_MOVIE_SUCCESS:
+            let newSt = {...state, ...action.movies};
+            return newSt;
+        // case FETCH_FAIL_SLUG:
+        //     return action;
         case EDITING_MOVIE_SUCCESS:
             let newState = state;
             newState[action.slugName] = action.movie;
@@ -53,11 +56,13 @@ const allSlugs = (state = [], action) => {
         case FETCH_MOVIES_SLUG_SUCCESS:
         case FETCH_SCHEDULE_MOVIES_SUCCESS:
         case FETCH_MOVIES_LABEL_SUCCESS:
-        case POST_MOVIE_SUCCESS:
             return [
                 ...state,
                 ...action.slugs
             ].filter((el, i, arr) => arr.indexOf(el) === i);
+        case POST_MOVIE_SUCCESS:
+            let newSt = [...state, ...action.movies];
+            return newSt;
         case FETCH_MOVIE_DELETE_SUCCESS:
             return [...state].filter((el) => el !== action.slugName);
         default:

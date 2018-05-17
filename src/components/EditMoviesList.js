@@ -13,20 +13,35 @@ class EditMoviesList extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps) {
+      if(nextProps.movies !== this.state.movieList) {
+        this.setState({
+          ...this.state,
+          movieList: nextProps.movies
+        });
+      }
+    }
+
     createList() {
         const {suggestedMovies, movieList} = this.state;
-        return movieList.map((m, j) => {
-            return <div key={j}>
-                <input name='name' className={b('input')} placeholder={'Enter movie title'} type="text"
-                       value={m.name} list="movies"
-                       onInput={this.onListChange.bind(this, j)} onChange={this.onOptionClick.bind(this, j)}/>
-                <datalist id="movies">
-                    {suggestedMovies.map((movie, i) => <option key={i} value={movie.name}/>)}
-                </datalist>
-                <input type='button' value='-' className={b('button')}
-                       onClick={this.removeMovie.bind(this, j)}/>
-            </div>
-        })
+        console.log(movieList, suggestedMovies);
+        if (movieList && suggestedMovies) {
+          return movieList.map((m, j) => {
+              return <div key={j}>
+                  <input name='name' className={b('input')} placeholder={'Enter movie title'} type="text"
+                         value={m.name} list="movies"
+                         onInput={this.onListChange.bind(this, j)} onChange={this.onOptionClick.bind(this, j)}/>
+                  <datalist id="movies">
+                      {suggestedMovies.map((movie, i) => <option key={i} value={movie.name}/>)}
+                  </datalist>
+                  <input type='button' value='-' className={b('button')}
+                         onClick={this.removeMovie.bind(this, j)}/>
+              </div>
+          })
+        } else {
+          return null;
+        }
+
     }
 
     async onListChange(i, e) {
@@ -38,7 +53,6 @@ class EditMoviesList extends Component {
             let suggestedMovies = await (response.json());
             if (suggestedMovies.length !== 0) {
                 this.setState({suggestedMovies});
-                console.log('sug movies', this.state.suggestedMovies);
             }
         }
     }
@@ -46,7 +60,11 @@ class EditMoviesList extends Component {
     onOptionClick(i, e) {
         const {callback} = this.props;
         const {value} = e.target;
-        const filtered = this.state.suggestedMovies.filter(f => f.name === value);// || f.name.includes(value));
+        let filtered;
+        if (this.state.suggestedMovies) {
+          filtered = this.state.suggestedMovies.filter(f => f.name === value);// || f.name.includes(value));
+
+        }
         let slugName = '';
         let cast = [];
         if (filtered.length === 1) {

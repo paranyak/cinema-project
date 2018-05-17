@@ -85,8 +85,28 @@ router.get('/autocomplete/:query', async function (req, res) {
 });
 
 router.post('/', async (req, res) => {
-    const movie = await db.get().collection('movies').save(req.body);
-    res.send({movie: movie.ops, response: movie.result});
+    let movie = req.body;
+    movie.published = true;
+
+    movie.cast = await Promise.all(movie.cast.map(async (cast) => {
+      if(!cast._id) {
+        cast.published = false;
+        let member = await db.get().collection('actors').save(cast);
+        return member.ops[0].slugName;
+      }
+
+      return cast.slugName;
+    }));
+
+    const savedMovie = await db.get().collection('movies').save(movie);
+
+    movie.cast.forEach(async (cast) => {
+      await db.get().collection('actors').findOneAndUpdate({slugName: cast}, {$push: {movies: movie.slugName}})
+    });
+
+
+    res.send(savedMovie.ops[0]);
+    // res.send({movie: movie.ops, response: movie.result});
 });
 
 router.patch('/:slugName', async (req, res) => {

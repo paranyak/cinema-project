@@ -26,7 +26,6 @@ class AllActors extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps);
         if (nextProps.actors.length === this.props.actors.length && this.props.isFetching && !nextProps.isFetching) {
             this.setState({...this.state, hasMoreItems: false});
         }

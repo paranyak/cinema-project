@@ -15,7 +15,7 @@ class EditActorInfo extends Component {
             info: props.actor.info,
             date: props.actor.date,
             city: props.actor.city,
-            nominations: props.actor.nominations,
+            nominations: props.actor.nominations || [],
             name: props.actor.name
         };
         this.onValueChange = this.onValueChange.bind(this);
@@ -59,11 +59,17 @@ class EditActorInfo extends Component {
     render() {
         const {actor, films} = this.props;
         const {date} = actor;
-        const month = (date.month > 9 ? '' : '0') + date.month.toString();
-        const day = (date.day > 9 ? '' : '0') + date.day.toString();
-        const year = date.year.toString();
-        const birthDate = year + '-' + month + '-' + day;
-
+        let month;
+        let day;
+        let year;
+        let birthDate;
+        if (date) {
+          month = (date.month > 9 ? '' : '0') + date.month.toString();
+          day = (date.day > 9 ? '' : '0') + date.day.toString();
+          year = date.year.toString();
+          birthDate = year + '-' + month + '-' + day;
+        }
+        actor.nominations = actor.nominations || [];
         return <section className={b()}>
             <h3 className={b('title')}>Actor Name</h3>
             <input className={b("input", ['name'])} name='name'

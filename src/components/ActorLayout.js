@@ -107,19 +107,13 @@ class ActorLayout extends Component {
 export default connect((state, props) => {
         let moviesToLoad = [];
         const slug = props.match.params.slug.toLowerCase();
-        console.log('i ve got ', slug);
-
         const actor = getActorBySlug(slug, state);
-        console.log('return actor', actor);
         const isActorLoading = isActorFetchingSlug(slug, state);
         const user = getCurrentUser(state);
         let movies = [];
         if (actor) {
-            console.log('actors movies', actor.movies);
             movies = actor.movies.map((s) => {
-                console.log('slug in movies list', s);
                 let movie = getMovieBySlug(s, state);
-                console.log('movie to get', movie);
                 if (!movie) {
                     moviesToLoad.push(s);
                 }

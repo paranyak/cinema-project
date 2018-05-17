@@ -109,8 +109,6 @@ class EditMoviePage extends Component {
             startDate
         };
 
-        console.log("EDITED MOVIE", movie);
-
         await this.props.editMovie(movie, film.slugName);
         this.setState({fireRedirect: true})
 

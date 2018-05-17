@@ -10,6 +10,8 @@ import {getLabeledMovies, getUnpublishedMovies, getUnpublishedActors} from '../r
 import {fetchMoviesByLabel} from '../actions/movies';
 import {fetchUnpublishedActors} from '../actions/actors';
 import debounce from 'lodash/debounce';
+import {Link} from "react-router-dom";
+
 
 const b = block("MovieCarousel");
 
@@ -85,7 +87,10 @@ class MovieCarousel extends Component {
                      onScroll={this.onScrollMove.bind(this)}
                 >
                     {movies
-                        .map((film, i) => this.props.movie ? <MoviePoster key={i} filmId={film}/> : <ActorPoster key={i} actorSlug={film}/>
+                        .map((film, i) => this.props.movie ? <MoviePoster key={i} filmId={film}/> :
+                        <Link to={`/edit-actor/${film}`}>
+                            <ActorPoster key={i} actorSlug={film}/>
+                        </Link>
                         )}
                 </div>
                 <button
@@ -109,7 +114,6 @@ const mapStateToProps = (state, props) => {
     const films = getLabeledMovies(props.label, state) || [];
     const unpublishedFilms = getUnpublishedMovies(state) || [];
     const unpublishedActors = getUnpublishedActors(state) || [];
-    console.log("connect:", unpublishedActors);
     return {films, unpublishedFilms, unpublishedActors};
 };
 

@@ -21,9 +21,8 @@ router.get('/unpublished-slugs', async function (req, res) {
   res.send(actors.map(el => el.slugName));
 })
 
-
 router.get('/slugs', async (req, res) => {
-    let params = {published: true};
+    let params = {};
     let query = req.query;
     let dbQuery;
     dbQuery = db.get().collection('actors').find(params, {fields: {slugName: true}});
@@ -47,19 +46,16 @@ router.get('/autocomplete/:query', async (req, res) => {
     res.send(actors);
 });
 
-router.get('/unpublished-slugs', async function (req, res) {
-  const actors = await db.get().collection('actors')
-                              .find({published: false}, {fields: {slugName: true}})
-                              .toArray();
-  res.send(actors.map(el => el.slugName));
-})
 
 router.post('/', async (req, res) => {
+
     const actor = await db.get().collection('actors').save(req.body);
+
     res.send(actor.ops[0])
 });
 
 router.patch('/:slugName', async (req, res) => {
+    req.body.published = true;
     const actor = await db.get().collection('actors').findOneAndUpdate({slugName: req.params.slugName}, {$set: req.body}, {returnOriginal: false});
     res.send(actor.value)
 
