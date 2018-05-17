@@ -3,20 +3,21 @@ import {assoc} from "ramda";
 import {
     FETCH_ACTOR_SLUG,
     FETCH_ACTOR_SLUG_SUCCESS,
-    FETCH_FAIL,
+    FETCH_ACTOR_SLUG_FAIL,
     FETCH_ACTOR_DELETE_SUCCESS,
-    FETCH_FAIL_SLUG, EDITING_ACTOR_SUCCESS, EDITING_ACTOR_START
+    EDITING_ACTOR_SUCCESS, EDITING_ACTOR_START, POST_ACTOR_SUCCESS, POST_ACTOR_START
 } from '../helpers/actionTypes';
 
 export const bySlug = (state = {}, action) => {
     switch (action.type) {
         case FETCH_ACTOR_SLUG_SUCCESS:
-            return {
-                ...state,
-                ...action.actors
-            };
-        case FETCH_FAIL_SLUG:
-            return action;
+            return {...state, ...action.actors};
+        case POST_ACTOR_SUCCESS:
+            let newSt = {...state, ...action.actors};
+            console.log('newSt in byslug', newSt);
+            return newSt;
+        // case FETCH_ACTOR_SLUG_FAIL:
+        //     return action;
         case EDITING_ACTOR_SUCCESS:
             let newState = state;
             newState[action.slugName] = action.actor;
@@ -37,7 +38,11 @@ export const allSlugs = (state = [], action) => {
                 ...state,
                 ...action.slugs
             ].filter((el, i, arr) => arr.indexOf(el) === i);
-        case FETCH_FAIL:
+        case POST_ACTOR_SUCCESS:
+            let newSt = [...state, ...action.actors];
+            console.log('newSt in allSlugs', newSt);
+            return newSt;
+        case FETCH_ACTOR_SLUG_FAIL:
             return action;
         case FETCH_ACTOR_DELETE_SUCCESS:
             return [...state].filter((el) => el !== action.slugName);
@@ -51,10 +56,12 @@ export const fetching = (state = {}, action) => {
         case FETCH_ACTOR_SLUG:
             return assoc(action.slugName, true, state);
         case FETCH_ACTOR_SLUG_SUCCESS:
-        case FETCH_FAIL_SLUG:
+        case FETCH_ACTOR_SLUG_FAIL:
             return assoc(action.slugName, false, state);
         case EDITING_ACTOR_START:
+        case POST_ACTOR_START:
             return assoc(action.actor, true, state);
+        case POST_ACTOR_SUCCESS:
         case EDITING_ACTOR_SUCCESS:
             return assoc(action.actor, false, state);
         default:

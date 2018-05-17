@@ -66,6 +66,23 @@ export async function postMovie(movie) {
     })).json());
 }
 
+export async function postActor(actor) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    const response = await fetch('http://localhost:3000/actors', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(actor)
+    });
+    console.log('RESPONSE', response);
+    if (!response.ok) {
+        alert('Your form was not submitted!');
+        return null;
+    }
+    return response.json();
+}
+
 export const editMovie = async (slugName, movie) => {
     const response = await fetch(`${LOCALHOST}/movies/${slugName}`, {
         method: 'PATCH',

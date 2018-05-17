@@ -127,7 +127,7 @@ class EditActorPage extends Component {
 
 
 export default connect((state, props) => {
-    const slug = props.match.params.slug.toLowerCase();
+        const slug = props.match.params.slug.toLowerCase();
         const actor = getActorBySlug(slug, state);
         const films = actor.movies.map(movieID => getMovieBySlug(movieID, state));
         return {actor, films};

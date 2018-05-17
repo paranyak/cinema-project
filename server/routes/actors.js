@@ -42,7 +42,8 @@ router.get('/autocomplete/:query', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const actor = await db.get().collection('actors').save(req.body);
-    res.send(actor)
+    console.log('-->', actor.ops[0]);
+    res.send(actor.ops[0])
 });
 
 router.patch('/:slugName', async (req, res) => {

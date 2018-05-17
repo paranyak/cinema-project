@@ -12,18 +12,19 @@ import {
     FETCH_MOVIES_COUNT_SUCCESS,
     FETCH_POST,
     EDITING_MOVIE_START,
-    FETCH_MOVIE_DELETE_SUCCESS
+    FETCH_MOVIE_DELETE_SUCCESS, POST_MOVIE_START
 } from '../helpers/actionTypes';
 import * as fromApi from "../api/fetch";
-import {moviesListSchema, moviesListSchemaSlug} from "../helpers/schema";
+import {actorsListSchemaSlug, moviesListSchema, moviesListSchemaSlug} from "../helpers/schema";
 import {push} from "react-router-redux";
 import {normalize} from 'normalizr';
 import * as fromFetch from "./index";
+import {postActorSuccess} from "./actors";
 
 
 export const fetchMoviesSlugStart = (slugName) => ({type: FETCH_MOVIES_SLUG, slugName});
 
-export const fetchPostStart = (movie) => ({type: FETCH_POST, movie});
+export const moviePostStart = (movie) => ({type: POST_MOVIE_START, movie});
 
 export const editingMovieStart = (movie) => ({type: EDITING_MOVIE_START, movie});
 
@@ -33,9 +34,9 @@ export const fetchMoviesCountSuccess = (movies) => ({type: FETCH_MOVIES_COUNT_SU
 
 export const fetchMoviesDeleteSuccess = (slugName) => ({type: FETCH_MOVIE_DELETE_SUCCESS, slugName});
 
-export const postMovieSuccess = (movie, ids, movies = []) => ({
+export const postMovieSuccess = (slugName, movies) => ({
     type: POST_MOVIE_SUCCESS,
-    movie, ids, movies
+    movies, slugName
 });
 
 export const editingMovieSuccess = (movie, slugName) => ({
@@ -118,30 +119,21 @@ export const fetchDeleteMovie = (slugName) => async (dispatch) => {
 };
 
 export const postMovieToDB = (movie) => async (dispatch) => {
-    dispatch(fetchPostStart(movie));
+    dispatch(moviePostStart(movie));
     let result = await fromApi.postMovie(movie);
-    if (!result.response.ok) {
-        alert('Your form was not submitted!');
+    console.log('result', result);
+    try {
+        let res = await result;
+        res.slugName = res['slugName'];
+        res = normalize([res], moviesListSchemaSlug);
+        dispatch(postMovieSuccess(res.result, res.entities.movies));
+        // }
     }
-    else {
-        let res = await result.movie[0];
-        res.id = res['_id'];
-        res = normalize([res], moviesListSchema);
-        dispatch(postMovieSuccess(res, res.result, res.entities.movies));
+    catch (err) {
+        console.error('you got an error!!!');
+        return null;
     }
 };
-
-// export const editMovieById = (id, movie) => async (dispatch) => {
-//     dispatch(editingMovieStart(movie));
-//     try {
-//         const result = await fromApi.editMovie(id, movie);
-//         dispatch(editingMovieSuccess(result, result['slugName'], id));
-//     }
-//     catch (err) {
-//         dispatch(fromFetch.editingFail());
-//     }
-//
-// };
 
 export const editMovieBySlug = (slugName, movie) => async (dispatch) => {
     dispatch(editingMovieStart(movie));
