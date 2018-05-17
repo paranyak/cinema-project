@@ -47,15 +47,15 @@ class EditActorsList extends Component {
         const {callback} = this.props;
         const {value} = e.target;
         const filtered = this.state.suggestedActors.filter(f => f.name === value);// || f.name.includes(value));
-        let _id = '';
+        let slugName = '';
         let movies = [];
         if (filtered.length === 1) {
-            _id = filtered[0]._id;
+            slugName = filtered[0].slugName;
             movies = filtered[0].movies;
         }
         const arr = [
             ...this.state.cast.slice(0, i),
-            Object.assign({}, this.state.cast[i], {name: value, _id, movies}),
+            Object.assign({}, this.state.cast[i], {name: value, slugName, movies}),
             ...this.state.cast.slice(i + 1)
         ];
         this.setState({cast: arr});
@@ -65,7 +65,7 @@ class EditActorsList extends Component {
     addActorAndRole(e) {
         e.preventDefault();
         const {callback} = this.props;
-        const arr = [...this.state.cast, {name: '', _id: '', movies: []}];
+        const arr = [...this.state.cast, {name: '', slugName: '', movies: []}];
         this.setState({cast: arr});
         callback('cast', arr);
     }

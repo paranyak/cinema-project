@@ -1,11 +1,17 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import {getCurrentUser, getMovieById, isMovieFetching} from "../reducers/index";
-import {fetchActorsSlug, fetchMovie, fetchDeleteActor} from '../actions/fetch';
+import {
+    getCurrentUser,
+    getActorBySlug,
+    getMovieBySlug,
+    isActorFetchingSlug,
+    isMovieFetchingSlug
+} from "../reducers";
+import {fetchActorsSlug, fetchDeleteActor} from '../actions/actors';
+import {fetchMovieSlug} from '../actions/movies';
 import "../styles/ActorLayout.less"
 import block from "../helpers/BEM";
 import {connect} from "react-redux";
-import {getActorBySlug, isActorFetchingSlug} from "../reducers";
 import {monthNames} from "../helpers/constants";
 
 const b = block("ActorLayout");
@@ -14,8 +20,8 @@ const link = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_275,h_408,c_th
 class ActorLayout extends Component {
 
     componentWillReceiveProps(nextProps) {
-        const {fetchMovieById} = this.props;
-        nextProps.moviesToLoad.forEach((el) => fetchMovieById(el))
+        const {fetchMovieBySlug} = this.props;
+        nextProps.moviesToLoad.forEach((el) => fetchMovieBySlug(el))
     }
 
     componentWillMount() {
@@ -25,8 +31,8 @@ class ActorLayout extends Component {
         }
     }
 
-    deleteActor(id) {
-        this.props.deleteActor(id);
+    deleteActor(slug) {
+        this.props.deleteActor(slug);
     }
 
     render() {
@@ -55,7 +61,7 @@ class ActorLayout extends Component {
                 <Link to={`/edit-actor/${actor.slugName}`}>
                     <span className={b('edit-icon')}></span>
                 </Link>
-                <span className={b('delete-icon')} onClick={() => this.deleteActor(actor._id)}></span>
+                <span className={b('delete-icon')} onClick={() => this.deleteActor(actor.slugName)}></span>
             </div>)
         }
         return (
@@ -101,20 +107,26 @@ class ActorLayout extends Component {
 export default connect((state, props) => {
         let moviesToLoad = [];
         const slug = props.match.params.slug.toLowerCase();
-        const actor = getActorBySlug(state, slug);
+        // console.log('i ve got ', slug);
+
+        const actor = getActorBySlug(slug, state);
+        // console.log('return actor', actor);
         const isActorLoading = isActorFetchingSlug(slug, state);
         const user = getCurrentUser(state);
         let movies = [];
         if (actor) {
-            movies = actor.movies.map((id) => {
-                let movie = getMovieById(state, id);
+            // console.log('actors movies', actor.movies);
+            movies = actor.movies.map((s) => {
+                // console.log('slug in movies list', s);
+                let movie = getMovieBySlug(s, state);
+                // console.log('movie to get', movie);
                 if (!movie) {
-                    moviesToLoad.push(id);
+                    moviesToLoad.push(s);
                 }
                 return movie;
             })
         }
-        moviesToLoad = moviesToLoad.filter((id) => isMovieFetching(id, state) !== true);
+        moviesToLoad = moviesToLoad.filter((s) => isMovieFetchingSlug(s, state) !== true);
         return {
             actor,
             user,
@@ -124,7 +136,7 @@ export default connect((state, props) => {
         };
     }, (dispatch) => ({
         fetchActorBySlug: (slug) => dispatch(fetchActorsSlug(slug)),
-        fetchMovieById: (id) => dispatch(fetchMovie(id)),
-        deleteActor: (id) => dispatch(fetchDeleteActor(id))
+        fetchMovieBySlug: (slug) => dispatch(fetchMovieSlug(slug)),
+        deleteActor: (slug) => dispatch(fetchDeleteActor(slug))
     })
 )(ActorLayout);

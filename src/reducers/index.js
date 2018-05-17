@@ -18,31 +18,25 @@ const moviesApp = combineReducers({
 export default moviesApp;
 
 
-export const getAllMoviesIds = (state) => fromMovies.getAllMoviesIds(state.movies);
+export const getAllMoviesSlugs = (state) => fromMovies.getAllMoviesSlugs(state.movies);
 
 export const getMoviesCount = (state) => fromMovies.getMoviesCount(state);
 
-export const getAllActorsIds = (state) => fromActors.getAllActorsIds(state.actors);
+export const getAllActorsSlugs = (state) => fromActors.getAllActorsSlugs(state.actors);
 
-export const getActorById = (state, id) => fromActors.getActorById(state.actors, id);
-export const getActorBySlug = (state, slugName) => fromActors.getActorBySlug(state.actors, slugName);
+export const getActorBySlug = (slugName, state) => fromActors.getActorBySlug(slugName, state.actors);
 
 export const getAllFilters = (state) => fromFilters.getAllFilters(state.filters);
 
-export const isMovieFetching = (id, state) => fromMovies.isMovieFetching(id, state.movies);
 export const isMovieFetchingSlug = (slugName, state) => fromMovies.isMovieFetchingSlug(slugName, state.movies);
 
-export const isActorFetching = (id, state) => fromActors.isActorFetching(id, state.actors);
 export const isActorFetchingSlug = (slugName, state) => fromActors.isActorFetchingSlug(slugName, state.actors);
 
-export const getCarouselleMovies = (state, label) => fromMovies.getCarouselleMovies(state.movies, label);
-
-export const getScheduleMoviesIds = (state) => fromMovies.getScheduleMoviesIds(state.movies);
+export const getLabeledMovies = (label, state) => fromMovies.getLabeledMovies(label, state.movies);
 
 export const getMoviesAutocomplete = (state) => fromMovies.getMoviesAutocomplete(state.movies);
 
-export const getMovieById = (state, id) => fromMovies.getMovieById(state.movies, id);
-export const getMovieBySlug = (state, slugName) => fromMovies.getMovieBySlug(state.movies, slugName);
+export const getMovieBySlug = (slugName, state) => fromMovies.getMovieBySlug(slugName, state.movies);
 
 export const getCheckedNameActor =(state) => fromActors.getCheckedNameActor(state.actors);
 

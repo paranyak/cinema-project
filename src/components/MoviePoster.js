@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import "../styles/MoviePoster.less";
 import block from "../helpers/BEM";
 import {connect} from "react-redux";
-import {getMovieById} from "../reducers";
-import {fetchMovie} from '../actions/fetch';
+import {getMovieBySlug} from "../reducers";
+import {fetchMovieSlug} from '../actions/movies';
 import {Link} from "react-router-dom";
 
 const b = block("MoviePoster");
@@ -32,7 +32,7 @@ class MoviePoster extends Component {
 }
 
 export default connect((state, props) => {
-        const movie = getMovieById(state, props.filmId);
-        return {...props, film: movie}
-    }, (dispatch) => ({fetchMovieById: (id) => dispatch(fetchMovie(id))})
+        const film = getMovieBySlug(props.filmId, state);
+        return {...props, film}
+    }, (dispatch) => ({fetchMovieById: (id) => dispatch(fetchMovieSlug(id))})
 )(MoviePoster);

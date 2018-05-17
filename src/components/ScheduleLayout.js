@@ -3,10 +3,9 @@ import Filter from "./Filter";
 import Schedule from "./Schedule";
 import "../styles/ScheduleLayout.less";
 import {connect} from "react-redux";
-import { withRouter } from 'react-router-dom';
-import {getAllFilters, getAllMovies} from "../reducers";
+import {getAllFilters} from "../reducers";
 import {changeDate, setFilters} from "../actions/filter";
-import {fetchMoviesSchedule} from "../actions/fetch";
+import {fetchMoviesSchedule} from "../actions/movies";
 import {DateTime} from "luxon/src/datetime.js";
 import  * as queryString from 'query-string';
 

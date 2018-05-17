@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var db = require('../db')
+var db = require('../db');
 var ObjectID = require('mongodb').ObjectID;
 
 router.get('/byId/:id', async (req, res) => {
@@ -22,20 +22,19 @@ router.get('/name_like=:name', async function(req, res) {
     else res.send({actor});
 });
 
-router.get('/ids', async (req, res) => {
+router.get('/slugs', async (req, res) => {
     let params = {};
     let query = req.query;
     let dbQuery;
-    dbQuery = db.get().collection('actors').find(params, {fields: {id: true}});
+    dbQuery = db.get().collection('actors').find(params, {fields: {slugName: true}});
     if (query['_limit']) {
         let page = +query['_page'] || 1;
         let limit = +query['_limit'];
         dbQuery = dbQuery.limit(limit).skip((page - 1) * limit);
     }
     const actors = await dbQuery.toArray();
-    res.send(actors.map(el => el._id));
+    res.send(actors.map(el => el.slugName));
 });
-
 
 router.get('/autocomplete/:query', async (req, res) => {
     let query = req.params.query;
@@ -44,32 +43,33 @@ router.get('/autocomplete/:query', async (req, res) => {
         params.name = {'$regex': '^' + query, '$options': 'i'};
     }
     const actors = await db.get().collection('actors')
-        .find(params, {fields: {id: true, name: true, movies: true}}).toArray();
+        .find(params, {fields: {id: true, name: true, movies: true, slugName: true}}).toArray();
     res.send(actors);
-})
+});
 
 
 router.post('/', async (req, res) => {
-    const actor = await db.get().collection('actors').save(req.body)
-    res.send(actor)
-})
+    const actor = await db.get().collection('actors').save(req.body);
+    console.log('-->', actor.ops[0]);
+    res.send(actor.ops[0])
+});
 
-router.patch('/:id', async (req, res) => {
-    const actor = await db.get().collection('actors').findOneAndUpdate({_id: ObjectID(req.params.id)}, {$set: req.body}, {returnOriginal: false})
+router.patch('/:slugName', async (req, res) => {
+    const actor = await db.get().collection('actors').findOneAndUpdate({slugName: req.params.slugName}, {$set: req.body}, {returnOriginal: false});
     res.send(actor.value)
 
-})
+});
 
-router.delete('/:id', async (req, res) => {
-    const actor = await db.get().collection('actors').findOneAndDelete({_id: ObjectID(req.params.id)});
+router.delete('/:slugName', async (req, res) => {
+    const actor = await db.get().collection('actors').findOneAndDelete({slugName: req.params.slugName});
     res.send(actor.value)
-})
+});
 
 router.get('/bySlugName/:slugName', async (req, res) => {
     const slugName = req.params.slugName;
-    const actor = await db.get().collection('actors').findOne({slugName})
+    const actor = await db.get().collection('actors').findOne({slugName});
     res.send(actor);
-})
+});
 
 
 module.exports = router;

@@ -1,23 +1,23 @@
 import React, {Component} from "react";
 import block from "../helpers/BEM";
-import "../styles/EditList.less";
+import "../styles/AddMoviesList.less";
 
-const b = block("EditList");
+const b = block("AddMoviesList");
 
-class EditMoviesList extends Component {
+class AddMoviesList extends Component {
     constructor(props) {
         super(props);
         this.state = {
             suggestedMovies: [],
-            movieList: props.movies
+            chosenMovies: []
         }
     }
 
     createList() {
-        const {suggestedMovies, movieList} = this.state;
-        return movieList.map((m, j) => {
+        const {suggestedMovies, chosenMovies} = this.state;
+        return chosenMovies.map((m, j) => {
             return <div key={j}>
-                <input name='name' className={b('input')} placeholder={'Enter movie title'} type="text"
+                <input name='name' className={b('input')} placeholder={'Enter movie name'} type="text"
                        value={m.name} list="movies"
                        onInput={this.onListChange.bind(this, j)} onChange={this.onOptionClick.bind(this, j)}/>
                 <datalist id="movies">
@@ -32,7 +32,7 @@ class EditMoviesList extends Component {
     async onListChange(i, e) {
         const response = await fetch(`http://localhost:3000/movies/autocomplete/${e.target.value}`);// 'posts' to get work the url
         if (!response.ok) {
-            console.log("ERROR IN Choosing Movie");
+            console.log("ERROR IN Choosing MOVIE");
             return null;
         } else {
             let suggestedMovies = await (response.json());
@@ -54,30 +54,30 @@ class EditMoviesList extends Component {
             cast = filtered[0].cast;
         }
         const arr = [
-            ...this.state.movieList.slice(0, i),
-            Object.assign({}, this.state.movieList[i], {name: value, slugName, cast}),
-            ...this.state.movieList.slice(i + 1)
+            ...this.state.chosenMovies.slice(0, i),
+            Object.assign({}, this.state.chosenMovies[i], {name: value, slugName, cast}),
+            ...this.state.chosenMovies.slice(i + 1)
         ];
-        this.setState({movieList: arr});
+        this.setState({chosenMovies: arr});
         callback('movies', arr);
     }
 
     addMovie(e) {
         e.preventDefault();
         const {callback} = this.props;
-        const arr = [...this.state.movieList, {name: '', slugName: '', cast: []}];
-        this.setState({movieList: arr});
+        const arr = [...this.state.chosenMovies, {name: '', slugName: '', cast: []}];
+        this.setState({chosenMovies: arr});
         callback('movies', arr);
     }
 
     removeMovie(i) {
         const {callback} = this.props;
-        const {movieList} = this.state;
+        const {chosenMovies} = this.state;
         const arr = [
-            ...movieList.slice(0, i),
-            ...movieList.slice(i + 1)
+            ...chosenMovies.slice(0, i),
+            ...chosenMovies.slice(i + 1)
         ];
-        this.setState({movieList: arr});
+        this.setState({chosenMovies: arr});
         callback('movies', arr);
     }
 
@@ -89,4 +89,4 @@ class EditMoviesList extends Component {
     }
 }
 
-export default EditMoviesList;
+export default AddMoviesList;

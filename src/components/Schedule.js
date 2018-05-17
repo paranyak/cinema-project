@@ -1,16 +1,16 @@
 import React, {Component} from "react";
-import {getAllMoviesIds, getAllFilters, getMovieById, isMovieFetching} from "../reducers/index";
+import {getAllFilters} from "../reducers/index";
 import {changeDate} from "../actions/filter";
 import {Interval} from "luxon/src/interval.js";
 import {Link} from 'react-router-dom'
 import {DateTime} from "luxon/src/datetime.js";
 import ReactTooltip from 'react-tooltip';
-import {findDOMNode} from 'react-dom';
 import {push} from 'react-router-redux';
 import {connect} from "react-redux";
 import "../styles/Schedule.less";
 import block from "../helpers/BEM";
-import {fetchMovie} from '../actions/fetch';
+import {fetchMovieSlug} from '../actions/movies';
+import {getAllMoviesSlugs, getMovieBySlug, isMovieFetchingSlug} from "../reducers";
 
 
 const b = block("Schedule");
@@ -21,11 +21,11 @@ class Schedule extends Component {
     }
 
     render() {
-        const {films, onDateChange, date, unfetchedMovies, fetchMovieById} = this.props;
+        const {films, onDateChange, date} = this.props;
         let unfetched = this.props.unfetchedMovies;
         unfetched
-            .filter(id => !this.props.isMovieFetching(id))
-            .forEach(id => this.props.fetchMovieById(id));
+            .filter(slug => !this.props.isMovieFetching(slug))
+            .forEach(slug => this.props.fetchMovieBySlug(slug));
         const sessionStart = date.set({
             hour: 9,
             minute: 0,
@@ -121,17 +121,17 @@ const mapDispatchToProps = (dispatch, props) => {
             dispatch(changeDate(event.target.value));
             dispatch(push('/schedule/' + event.target.value));
         },
-        fetchMovieById: (id) => dispatch(fetchMovie(id))
+        fetchMovieBySlug: (slug) => dispatch(fetchMovieSlug(slug))
     }
 };
 
 export default connect((state, props) => {
-        const moviesIds = getAllMoviesIds(state);
+        const moviesSlugs = getAllMoviesSlugs(state);
         const unfetchedMovies = [];
-        const movies = moviesIds.map((id) => {
-            let movie = getMovieById(state, id);
+        const movies = moviesSlugs.map((slug) => {
+            let movie = getMovieBySlug(slug, state);
             if (!movie) {
-                unfetchedMovies.push(id);
+                unfetchedMovies.push(slug);
             }
             return movie;
         }).filter(movie => movie);
@@ -142,7 +142,7 @@ export default connect((state, props) => {
         return {
             date,
             unfetchedMovies,
-            isMovieFetching: (id) => isMovieFetching(id, state),
+            isMovieFetching: (slug) => isMovieFetchingSlug(slug, state),
             films: movies
                 .filter((movie) => {
                     if (filters.genres.length === 0) {
@@ -190,7 +190,6 @@ export default connect((state, props) => {
                                 minute: movie.duration.minute
                             })
                         ),
-                    id: movie.id,
                     slugName: movie.slugName
                 }))
                 .filter(movie => movie.schedule.length !== 0)

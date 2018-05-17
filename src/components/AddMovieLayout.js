@@ -6,12 +6,13 @@ import AddMInfo from "./AddMInfo";
 import {Redirect} from "react-router";
 import slugify from 'slugify';
 import {connect} from "react-redux";
-import {postMovieToDB} from "../actions/fetch";
+import {postMovieToDB} from "../actions/movies";
+import {editActorBySlug} from "../actions/actors";
 
 const b = block("AddMovieLayout");
 
 
-class EditMoviePage extends Component {
+class AddMovieLayout extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -62,11 +63,12 @@ class EditMoviePage extends Component {
         const scheduleTime = this.state.scheduleTime.sort();
         scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
 
-        const newCast = cast.map(el => el._id).filter(id => id !== '');
+        const newCast = cast.map(el => el.slugName).filter(slug => slug !== '');
+        const slugName = slugify(name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
 
         const movie = {
             name,
-            slugName: slugify(name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true}),
+            slugName,
             image: poster,
             rating: parseFloat(rating).toString(),
             cast: newCast,
@@ -91,6 +93,15 @@ class EditMoviePage extends Component {
 
         console.log("MOVIE", movie);
         await this.props.postData(movie);
+
+        if (cast.length !== 0 && typeof cast[0] === 'object') {
+            cast.filter(el => el.slugName.trim() !== '')
+                .map(el => {
+                    const movies = (el.movies.includes(slugName)) ? [...el.movies] : [...el.movies, slugName];
+                    this.props.editActors({movies}, el.slugName);
+                });
+        }
+
         this.setState({fireRedirect: true});
     }
 
@@ -146,5 +157,7 @@ class EditMoviePage extends Component {
 }
 
 
-export default connect(null, (dispatch) => ({postData: (movie) => dispatch(postMovieToDB(movie))})
-)(EditMoviePage);
+export default connect(null, (dispatch) => ({
+    postData: (movie) => dispatch(postMovieToDB(movie)),
+    editActors: (actor, slug) => dispatch(editActorBySlug(slug, actor))
+}))(AddMovieLayout);

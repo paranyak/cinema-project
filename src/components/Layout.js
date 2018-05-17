@@ -8,20 +8,19 @@ import ScheduleLayout from "./ScheduleLayout";
 import HomeLayout from "./HomeLayout";
 import MovieLayout from "./MovieLayout";
 import {Switch, Route, Redirect,} from 'react-router-dom'
-import {allMovies} from '../actions/index'
 import {connect} from "react-redux";
 import {withRouter} from 'react-router-dom';
 import ActorLayout from "./ActorLayout";
-import AddActor from './AddActor';
 import Login from './Login';
 import SignUp from './SignUp';
-import {setUser} from '../actions/index';
+import {setUser} from '../actions/auth';
 import {userAdditionalInfo} from '../actions/auth';
 import AllActors from './AllActors';
 import {getCurrentUser} from '../reducers/index';
 
 import EditMoviePage from './EditMoviePage';
 import EditActorPage from "./EditActorPage";
+import AddActorLayout from "./AddActorLayout";
 
 const b = block("Layout");
 
@@ -63,7 +62,7 @@ class Layout extends Component {
                 <Route path='/allactors' component={AllActors}/>
                 <Route path='/actor/:slug' component={ActorLayout}/>
                 <PrivateRoute path='/add-movie' component={AddMovieLayout}/>
-                <PrivateRoute path='/add-actor' component={AddActor}/>
+                <PrivateRoute path='/add-actor' component={AddActorLayout}/>
                 <PrivateRoute path='/edit-movie/:slug' component={EditMoviePage}/>
                 <PrivateRoute path='/edit-actor/:slug' component={EditActorPage}/>
                 <Route path='/login' component={Login}/>
