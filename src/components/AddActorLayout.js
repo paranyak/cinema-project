@@ -69,9 +69,9 @@ class AddActorLayout extends Component {
             if (this.props.checked.city === city) {
                 alert("This actor already exist");
                 return;
-            }else{
+            } else {
                 console.log("they are with tha same names");
-                slugName +="_" + city;
+                slugName += "_" + city;
             }
         }
 
@@ -147,4 +147,5 @@ export default connect((state, props) => {
 }, (dispatch) => ({
     checkName: (name) => dispatch(checkName(name, 'actors')),
     postData: (actor) => dispatch(postActorToDB(actor)),
-    editMovies: (movie, slug) => dispatch(editMovieBySlug(slug, movie))}))(AddActorLayout);
+    editMovies: (movie, slug) => dispatch(editMovieBySlug(slug, movie))
+}))(AddActorLayout);
