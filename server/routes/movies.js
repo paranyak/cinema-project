@@ -4,7 +4,7 @@ var db = require('../db')
 var ObjectID = require('mongodb').ObjectID;
 
 router.get('/moviesCount', async function (req, res) {
-    const movieCount = await db.get().collection('movies').count();
+    const movieCount = await db.get().collection('movies').find({published: true}, {fields: {slugName: true}}).count();
     res.send(movieCount.toString());
 });
 
@@ -42,7 +42,7 @@ router.get('/unpublished-slugs', async function (req, res) {
                               .find({published: false}, {fields: {slugName: true}})
                               .toArray();
   res.send(movies.map(el => el.slugName));
-}
+})
 
 router.get('/slugs', async function (req, res) {
     let dbQuery;

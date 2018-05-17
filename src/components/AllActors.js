@@ -3,6 +3,7 @@ import "../styles/AllActors.less";
 import block from "../helpers/BEM";
 import {connect} from "react-redux";
 import ActorPoster from "./ActorPoster";
+import MovieCarousel from "./MovieCarousel";
 import InfiniteScroll from "react-infinite-scroller";
 import {getAllActorsSlugs, isActorFetchingSlug} from "../reducers";
 import {fetchAdditionalActors} from "../actions/actors"
@@ -35,7 +36,7 @@ class AllActors extends Component {
         const {actors} = this.props;
         if (actors.length !== 0) {
             return (
-                <div className={b()}>
+                <div className={b('actors')}>
                     {actors
                         .map((actor, i) =>
                             <LazyLoad key={i} height='100%' offsetBottom={250}>
@@ -56,7 +57,9 @@ class AllActors extends Component {
     render() {
         if (this.props.actors.length !== 0) {
             return (
-                <section>
+                <section className={b()}>
+                    <h1 className={b('title')}>Unpublished</h1>
+                    <MovieCarousel label={"unpublished"} movie={false}/>
                     <InfiniteScroll
                         loadMore={this.loadMore.bind(this)}
                         hasMore={this.state.hasMoreItems}

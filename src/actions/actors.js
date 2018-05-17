@@ -5,6 +5,7 @@ import {
     EDITING_ACTOR_SUCCESS,
     EDITING_ACTOR_START,
     FETCH_ACTOR_DELETE_SUCCESS,
+    FETCH_UNPUBLISHED_ACTORS_SUCCESS
 } from '../helpers/actionTypes';
 import * as fromApi from "../api/fetch";
 import {actorsListSchema, actorsListSchemaSlug} from "../helpers/schema";
@@ -20,6 +21,12 @@ export const fetchActorsSlugStart = (slugName) => {
     console.log('in dispatch ', slugName);
     return {type: FETCH_ACTOR_SLUG, slugName};
 };
+
+export const fetchUnpublishedActorsSuccess = (slugs, actors) => ({
+    type: FETCH_UNPUBLISHED_ACTORS_SUCCESS,
+    slugs,
+    actors
+});
 
 export const fetchActorsDeleteSuccess = (slugName) => ({type: FETCH_ACTOR_DELETE_SUCCESS, slugName});
 
@@ -38,6 +45,12 @@ export const editingActorSuccess = (actor, slugName) => ({type: EDITING_ACTOR_SU
 
 // -------------------------------------------------------
 
+export const fetchUnpublishedActors = () => async (dispatch) => {
+    dispatch(fetchActorsSlugStart('unpublished'));
+    let actors = await fromApi.unpublishedActors();
+    actors = normalize(actors, actorsListSchemaSlug);
+    dispatch(fetchUnpublishedActorsSuccess(actors.result, actors.entities.actors));
+};
 
 export const fetchAdditionalActors = (limit, page) => async (dispatch) => {
     dispatch(fetchActorsSlugStart('additional'));
@@ -64,7 +77,11 @@ export const fetchActorsSlug = (slugName) => async (dispatch) => {
         let actors = await ((response).json());
         actors.slugName = actors['slugName'];
         actors = normalize([actors], actorsListSchemaSlug);
-        dispatch(fetchActorsSlugSuccess(slugName, actors.result, actors.entities.actors));
+        if (actors.entities.actors[slugName].published) {
+            dispatch(fetchActorsSlugSuccess(slugName, actors.result, actors.entities.actors));
+        } else {
+            dispatch(fetchUnpublishedActorsSuccess(actors.result, actors.entities.actors));
+        }
     }
 };
 

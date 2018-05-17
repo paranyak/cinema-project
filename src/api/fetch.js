@@ -20,6 +20,10 @@ export async function carouselleMovies(label) {
     return await ((await fetch(`${LOCALHOST}/movies/slugs?label=${label}`)).json())
 }
 
+export async function unpublishedMovies() {
+    return await ((await fetch(`${LOCALHOST}/movies/unpublished-slugs`)).json())
+}
+
 export async function additionalMovies(limit, page) {
     return await ((await fetch(`${LOCALHOST}/movies/slugs?_page=${page}&_limit=${limit}`)).json());
 }
@@ -30,6 +34,10 @@ export async function autocompleteMovies(name) {
 
 export async function actors(id) {
     return await fetch(`${LOCALHOST}/actors/byId/${id}`)
+}
+
+export async function unpublishedActors() {
+    return await ((await fetch(`${LOCALHOST}/actors/unpublished-slugs`)).json())
 }
 
 export async function actorsBySlugName(slugName) {

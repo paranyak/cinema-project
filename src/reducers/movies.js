@@ -13,7 +13,8 @@ import {
     EDITING_MOVIE_SUCCESS,
     EDITING_MOVIE_START,
     FETCH_MOVIES_COUNT_SUCCESS,
-    FETCH_MOVIE_DELETE_SUCCESS
+    FETCH_MOVIE_DELETE_SUCCESS,
+    FETCH_UNPUBLISHED_MOVIESL_SUCCESS
 } from '../helpers/actionTypes';
 
 const bySlug = (state = {}, action) => {
@@ -21,6 +22,7 @@ const bySlug = (state = {}, action) => {
         case FETCH_MOVIES_SLUG:
         case FETCH_MOVIES_SLUG_SUCCESS:
         case POST_MOVIE_SUCCESS:
+        case FETCH_UNPUBLISHED_MOVIESL_SUCCESS:
             return {...state, ...action.movies};
         case FETCH_FAIL_SLUG:
             return action;
@@ -85,6 +87,17 @@ const scheduleMoviesSlugs = (state = [], action) => {
     }
 };
 
+const unpublishedMoviesSlugs = (state = [], action) => {
+    switch (action.type) {
+        case FETCH_UNPUBLISHED_MOVIESL_SUCCESS:
+            return [...state, ...action.slugs].filter((el, i, arr) => arr.indexOf(el) === i);;
+        case FETCH_MOVIE_DELETE_SUCCESS:
+            return [...state].filter((el) => el !== action.slugName);
+        default:
+            return state;
+    }
+};
+
 const moviesAutocomplete = (state = [], action) => {
     switch (action.type) {
         case FETCH_AUTOCOMPLETE_MOVIES_SUCCESS:
@@ -118,6 +131,8 @@ const fetching = (state = {}, action) => {
 
 export const getAllMoviesSlugs = (state) => state.allSlugs;
 
+export const getUnpublishedMovies = (state) => state.unpublishedMoviesSlugs;
+
 export const isMovieFetchingSlug = (slugName, state) => state.fetching[slugName];
 
 export const getLabeledMovies = (label, state) => state.labeledMovies[label];
@@ -134,5 +149,6 @@ export default combineReducers({
     fetching,
     labeledMovies,
     scheduleMoviesSlugs,
-    moviesAutocomplete
+    moviesAutocomplete,
+    unpublishedMoviesSlugs
 });

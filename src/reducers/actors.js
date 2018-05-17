@@ -5,12 +5,16 @@ import {
     FETCH_ACTOR_SLUG_SUCCESS,
     FETCH_FAIL,
     FETCH_ACTOR_DELETE_SUCCESS,
-    FETCH_FAIL_SLUG, EDITING_ACTOR_SUCCESS, EDITING_ACTOR_START
+    FETCH_FAIL_SLUG,
+    EDITING_ACTOR_SUCCESS,
+    EDITING_ACTOR_START,
+    FETCH_UNPUBLISHED_ACTORS_SUCCESS
 } from '../helpers/actionTypes';
 
 export const bySlug = (state = {}, action) => {
     switch (action.type) {
         case FETCH_ACTOR_SLUG_SUCCESS:
+        case FETCH_UNPUBLISHED_ACTORS_SUCCESS:
             return {
                 ...state,
                 ...action.actors
@@ -62,13 +66,27 @@ export const fetching = (state = {}, action) => {
     }
 };
 
+const unpublishedActorsSlugs = (state = [], action) => {
+    switch (action.type) {
+        case FETCH_UNPUBLISHED_ACTORS_SUCCESS:
+            return [...state, ...action.slugs].filter((el, i, arr) => arr.indexOf(el) === i);;
+        case FETCH_ACTOR_DELETE_SUCCESS:
+            return [...state].filter((el) => el !== action.slugName);
+        default:
+            return state;
+    }
+};
+
 export const getAllActorsSlugs = (state) => state.allSlugs;
 export const getActorBySlug = (slugName, state) => state.bySlug[slugName];
 export const isActorFetchingSlug = (slugName, state) => state.fetching[slugName];
+export const getUnpublishedActors = (state) => state.unpublishedActorsSlugs;
+
 
 
 export default combineReducers({
     bySlug,
     allSlugs,
+    unpublishedActorsSlugs,
     fetching
 });

@@ -19,7 +19,7 @@ router.get('/unpublished-slugs', async function (req, res) {
                               .find({published: false}, {fields: {slugName: true}})
                               .toArray();
   res.send(actors.map(el => el.slugName));
-}
+})
 
 
 router.get('/slugs', async (req, res) => {
@@ -47,10 +47,16 @@ router.get('/autocomplete/:query', async (req, res) => {
     res.send(actors);
 });
 
+router.get('/unpublished-slugs', async function (req, res) {
+  const actors = await db.get().collection('actors')
+                              .find({published: false}, {fields: {slugName: true}})
+                              .toArray();
+  res.send(actors.map(el => el.slugName));
+})
 
 router.post('/', async (req, res) => {
     const actor = await db.get().collection('actors').save(req.body);
-    res.send(actor)
+    res.send(actor.ops[0])
 });
 
 router.patch('/:slugName', async (req, res) => {
