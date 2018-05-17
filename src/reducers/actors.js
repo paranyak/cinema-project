@@ -22,6 +22,19 @@ export const byId = (state = {}, action) => {
                 ...state,
                 ...action.actors
             };
+        //має бути нормалізація
+
+        // case CHECK_NAME_ACTOR_SUCCESS:
+        //     console.log("IN REDUCER by id: ", {
+        //         ...state,
+        //         ...[action.result]
+        //     });
+        //
+        //     if(Object.keys(action.result).length === 1) return state;
+        //     else return {
+        //         ...state,
+        //         ...[action.result]
+        //     };
         case FETCH_FAIL:
             return action;
         case EDITING_ACTOR_SUCCESS:
@@ -44,6 +57,18 @@ export const bySlug = (state = {}, action) => {
                 ...state,
                 ...action.actors
             };
+            //має бути нормалізація
+        // case CHECK_NAME_ACTOR_SUCCESS:
+        //     console.log("IN REDUCER by slug: ", {
+        //         ...state,
+        //         ...[action.result]
+        //     });
+        //
+        //     if(Object.keys(action.result).length === 1) return state;
+        //     else return {
+        //         ...state,
+        //         ...[action.result]
+        //     };
         case FETCH_FAIL_SLUG:
             return action;
         case EDITING_ACTOR_SUCCESS:
@@ -62,6 +87,15 @@ export const allIds = (state = [], action) => {
                 ...state,
                 ...action.ids
             ].filter((el, i, arr) => arr.indexOf(el) === i);
+        //має бути нормалізація
+
+        // case CHECK_NAME_ACTOR_SUCCESS:
+        //     console.log("ALL IDS", state, "!!!",action);
+        //     if(Object.keys(action.result).length === 1) return state;
+        //     else return [
+        //         ...state,
+        //         action.result._id
+        //     ];
         case FETCH_FAIL:
             return action;
         case FETCH_ACTOR_DELETE_SUCCESS:

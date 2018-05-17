@@ -1156,25 +1156,6 @@ function _dispatchable(methodNames, xf, fn) {
 
 /***/ }),
 /* 19 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Provider__ = __webpack_require__(587);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__ = __webpack_require__(266);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connect_connect__ = __webpack_require__(591);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Provider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["b"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createProvider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connectAdvanced", function() { return __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connect", function() { return __WEBPACK_IMPORTED_MODULE_2__connect_connect__["a"]; });
-
-
-
-
-
-
-/***/ }),
-/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1287,6 +1268,25 @@ var getCurrentUser = exports.getCurrentUser = function getCurrentUser(state) {
 var getAuthError = exports.getAuthError = function getAuthError(state) {
     return fromAuth.getAuthError(state.auth);
 };
+
+/***/ }),
+/* 20 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Provider__ = __webpack_require__(587);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__ = __webpack_require__(266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__connect_connect__ = __webpack_require__(591);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Provider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createProvider", function() { return __WEBPACK_IMPORTED_MODULE_0__components_Provider__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connectAdvanced", function() { return __WEBPACK_IMPORTED_MODULE_1__components_connectAdvanced__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "connect", function() { return __WEBPACK_IMPORTED_MODULE_2__connect_connect__["a"]; });
+
+
+
+
+
 
 /***/ }),
 /* 21 */
@@ -2023,9 +2023,10 @@ var checkName = exports.checkName = function checkName(name, type) {
                             result = _context15.sent;
 
                             console.log("Result:", result);
-                            if (Object.keys(result).length === 1) dispatch(fromFetch.checkingNameFail(result));
+                            //if(Object.keys(result).length === 1)    dispatch(fromFetch.checkingNameFail(result));
                             //треба нормалізувати
-                            else dispatch(fromFetch.checkingNameSuccess(result));
+                            //else
+                            dispatch(fromFetch.checkingNameSuccess(result));
 
                         case 8:
                         case 'end':
@@ -23908,9 +23909,9 @@ var _BEM = __webpack_require__(8);
 
 var _BEM2 = _interopRequireDefault(_BEM);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
-var _reducers = __webpack_require__(20);
+var _reducers = __webpack_require__(19);
 
 var _fetch = __webpack_require__(26);
 
@@ -29774,7 +29775,7 @@ var _reactDom = __webpack_require__(97);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
 var _Layout = __webpack_require__(612);
 
@@ -48856,7 +48857,7 @@ var _reactRouterDom = __webpack_require__(32);
 
 var _index = __webpack_require__(149);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
 var _ActorLayout = __webpack_require__(993);
 
@@ -48880,7 +48881,7 @@ var _AllActors = __webpack_require__(1005);
 
 var _AllActors2 = _interopRequireDefault(_AllActors);
 
-var _index2 = __webpack_require__(20);
+var _index2 = __webpack_require__(19);
 
 var _EditMoviePage = __webpack_require__(1011);
 
@@ -57200,7 +57201,7 @@ var _slugify = __webpack_require__(350);
 
 var _slugify2 = _interopRequireDefault(_slugify);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
 var _fetch = __webpack_require__(26);
 
@@ -67795,11 +67796,11 @@ var _BEM2 = _interopRequireDefault(_BEM);
 
 var _reactRouterDom = __webpack_require__(32);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
 var _auth = __webpack_require__(150);
 
-var _index = __webpack_require__(20);
+var _index = __webpack_require__(19);
 
 var _fetch = __webpack_require__(26);
 
@@ -69081,6 +69082,19 @@ var byId = exports.byId = function byId() {
     switch (action.type) {
         case _actionTypes.FETCH_ACTOR__SUCCESS:
             return _extends({}, state, action.actors);
+        //має бути нормалізація
+
+        // case CHECK_NAME_ACTOR_SUCCESS:
+        //     console.log("IN REDUCER by id: ", {
+        //         ...state,
+        //         ...[action.result]
+        //     });
+        //
+        //     if(Object.keys(action.result).length === 1) return state;
+        //     else return {
+        //         ...state,
+        //         ...[action.result]
+        //     };
         case _actionTypes.FETCH_FAIL:
             return action;
         case _actionTypes.EDITING_ACTOR_SUCCESS:
@@ -69103,6 +69117,18 @@ var bySlug = exports.bySlug = function bySlug() {
     switch (action.type) {
         case _actionTypes.FETCH_ACTOR_SLUG_SUCCESS:
             return _extends({}, state, action.actors);
+        //має бути нормалізація
+        // case CHECK_NAME_ACTOR_SUCCESS:
+        //     console.log("IN REDUCER by slug: ", {
+        //         ...state,
+        //         ...[action.result]
+        //     });
+        //
+        //     if(Object.keys(action.result).length === 1) return state;
+        //     else return {
+        //         ...state,
+        //         ...[action.result]
+        //     };
         case _actionTypes.FETCH_FAIL_SLUG:
             return action;
         case _actionTypes.EDITING_ACTOR_SUCCESS:
@@ -69123,6 +69149,15 @@ var allIds = exports.allIds = function allIds() {
             return [].concat(_toConsumableArray(state), _toConsumableArray(action.ids)).filter(function (el, i, arr) {
                 return arr.indexOf(el) === i;
             });
+        //має бути нормалізація
+
+        // case CHECK_NAME_ACTOR_SUCCESS:
+        //     console.log("ALL IDS", state, "!!!",action);
+        //     if(Object.keys(action.result).length === 1) return state;
+        //     else return [
+        //         ...state,
+        //         action.result._id
+        //     ];
         case _actionTypes.FETCH_FAIL:
             return action;
         case _actionTypes.FETCH_ACTOR_DELETE_SUCCESS:
@@ -71199,11 +71234,11 @@ var _Schedule2 = _interopRequireDefault(_Schedule);
 
 __webpack_require__(947);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
 var _reactRouterDom = __webpack_require__(32);
 
-var _reducers = __webpack_require__(20);
+var _reducers = __webpack_require__(19);
 
 var _filter = __webpack_require__(219);
 
@@ -71336,11 +71371,11 @@ var _BEM = __webpack_require__(8);
 
 var _BEM2 = _interopRequireDefault(_BEM);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
 var _filter = __webpack_require__(219);
 
-var _reducers = __webpack_require__(20);
+var _reducers = __webpack_require__(19);
 
 var _reactRouterRedux = __webpack_require__(76);
 
@@ -71692,7 +71727,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _index = __webpack_require__(20);
+var _index = __webpack_require__(19);
 
 var _filter = __webpack_require__(219);
 
@@ -71710,7 +71745,7 @@ var _reactDom = __webpack_require__(97);
 
 var _reactRouterRedux = __webpack_require__(76);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
 __webpack_require__(945);
 
@@ -74436,7 +74471,7 @@ var _checkScrollPosition = __webpack_require__(958);
 
 var _checkScrollPosition2 = _interopRequireDefault(_checkScrollPosition);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
 var _reactRouterDom = __webpack_require__(32);
 
@@ -74444,7 +74479,7 @@ var _MoviePoster = __webpack_require__(362);
 
 var _MoviePoster2 = _interopRequireDefault(_MoviePoster);
 
-var _reducers = __webpack_require__(20);
+var _reducers = __webpack_require__(19);
 
 var _fetch = __webpack_require__(26);
 
@@ -92564,7 +92599,7 @@ var _BEM = __webpack_require__(8);
 
 var _BEM2 = _interopRequireDefault(_BEM);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
 var _MoviePoster = __webpack_require__(362);
 
@@ -92574,7 +92609,7 @@ var _reactInfiniteScroller = __webpack_require__(366);
 
 var _reactInfiniteScroller2 = _interopRequireDefault(_reactInfiniteScroller);
 
-var _reducers = __webpack_require__(20);
+var _reducers = __webpack_require__(19);
 
 var _fetch = __webpack_require__(26);
 
@@ -92584,7 +92619,7 @@ var _reactLazyload = __webpack_require__(156);
 
 var _reactLazyload2 = _interopRequireDefault(_reactLazyload);
 
-var _index = __webpack_require__(20);
+var _index = __webpack_require__(19);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -93066,11 +93101,11 @@ var _BEM = __webpack_require__(8);
 
 var _BEM2 = _interopRequireDefault(_BEM);
 
-var _reducers = __webpack_require__(20);
+var _reducers = __webpack_require__(19);
 
 var _fetch = __webpack_require__(26);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
 var _reactRouterDom = __webpack_require__(32);
 
@@ -93626,9 +93661,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(32);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
-var _index = __webpack_require__(20);
+var _index = __webpack_require__(19);
 
 var _fetch = __webpack_require__(26);
 
@@ -93910,7 +93945,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(32);
 
-var _index = __webpack_require__(20);
+var _index = __webpack_require__(19);
 
 var _fetch = __webpack_require__(26);
 
@@ -93920,9 +93955,9 @@ var _BEM = __webpack_require__(8);
 
 var _BEM2 = _interopRequireDefault(_BEM);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
-var _reducers = __webpack_require__(20);
+var _reducers = __webpack_require__(19);
 
 var _constants = __webpack_require__(104);
 
@@ -94232,13 +94267,13 @@ var _reactRouter = __webpack_require__(90);
 
 var _fetch = __webpack_require__(26);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
 var _slugify = __webpack_require__(350);
 
 var _slugify2 = _interopRequireDefault(_slugify);
 
-var _index = __webpack_require__(20);
+var _index = __webpack_require__(19);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -94291,7 +94326,7 @@ var AddActor = function (_Component) {
             var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(e) {
                 var _this2 = this;
 
-                var submitButton, actorForm, actorPostSuccess, headers, createdMovies, movieInputs, _loop, i, date, dateArr, month, year, day, birthDay, slugName, actorToAdd, actorId, j, key, newArrayCast, newData;
+                var submitButton, headers, createdMovies, movieInputs, _loop, i, date, dateArr, month, year, day, birthDay, slugName, actorToAdd, actorId, j, key, newArrayCast, newData;
 
                 return regeneratorRuntime.wrap(function _callee$(_context3) {
                     while (1) {
@@ -94299,7 +94334,7 @@ var AddActor = function (_Component) {
                             case 0:
                                 submitButton = document.querySelector(".AddActor__button");
 
-                                if (!(submitButton.style.display === 'none')) {
+                                if (!(submitButton.style.visibility === 'hidden')) {
                                     _context3.next = 4;
                                     break;
                                 }
@@ -94309,13 +94344,6 @@ var AddActor = function (_Component) {
 
                             case 4:
                                 e.preventDefault();
-                                actorForm = document.querySelector(".AddActor");
-
-                                actorForm.style.display = "none";
-
-                                actorPostSuccess = document.querySelector(".AddActor__success");
-
-                                actorPostSuccess.style.display = "initial";
 
                                 headers = new Headers();
 
@@ -94404,20 +94432,20 @@ var AddActor = function (_Component) {
                                 });
                                 i = 0;
 
-                            case 15:
+                            case 11:
                                 if (!(i < movieInputs.length)) {
-                                    _context3.next = 20;
+                                    _context3.next = 16;
                                     break;
                                 }
 
-                                return _context3.delegateYield(_loop(i), "t0", 17);
+                                return _context3.delegateYield(_loop(i), "t0", 13);
 
-                            case 17:
+                            case 13:
                                 i++;
-                                _context3.next = 15;
+                                _context3.next = 11;
                                 break;
 
-                            case 20:
+                            case 16:
                                 date = this.refs.date.value;
                                 dateArr = date.split('-');
                                 month = parseInt(dateArr[1]);
@@ -94428,12 +94456,42 @@ var AddActor = function (_Component) {
                                 //check if actor with the same is created before
                                 // let sameName = await this.props.checkName(this.refs.name.value);
 
-
                                 slugName = (0, _slugify2.default)(this.refs.name.value, {
                                     replacement: '_',
                                     remove: /[.:!,;*&@^]/g,
                                     lower: true
                                 });
+
+
+                                console.log("checking in send");
+                                _context3.next = 26;
+                                return this.props.checkName(this.refs.name.value);
+
+                            case 26:
+                                console.log("AFTER ALL THIS SHIT:", this.props.checked);
+
+                                if (!this.props.checked.slugName) {
+                                    _context3.next = 38;
+                                    break;
+                                }
+
+                                console.log(this.props.checked.date, birthDay);
+
+                                if (!(this.props.checked.city === this.refs.city.value)) {
+                                    _context3.next = 36;
+                                    break;
+                                }
+
+                                console.log("the same");
+                                alert("This actor already exist");
+                                submitButton.style.visibility = 'hidden';
+                                return _context3.abrupt("return");
+
+                            case 36:
+                                console.log("TEZKY");
+                                slugName += "_" + this.refs.city.value;
+
+                            case 38:
                                 actorToAdd = {
                                     name: this.refs.name.value,
                                     slugName: slugName,
@@ -94447,7 +94505,7 @@ var AddActor = function (_Component) {
                                 actorId = -1;
 
                                 console.log("HeRE TO POST:", actorToAdd);
-                                _context3.next = 32;
+                                _context3.next = 43;
                                 return fetch('http://localhost:3000/actors', {
                                     method: 'POST',
                                     headers: headers,
@@ -94455,29 +94513,30 @@ var AddActor = function (_Component) {
                                 }).then(function (res) {
                                     return res.json();
                                 }).then(function (data) {
+                                    console.log("here", data);
                                     actorId = data.id;
                                     console.log("POSTED", data);
                                 });
 
-                            case 32:
+                            case 43:
                                 i = 0;
 
-                            case 33:
+                            case 44:
                                 if (!(i < movieInputs.length)) {
-                                    _context3.next = 51;
+                                    _context3.next = 62;
                                     break;
                                 }
 
                                 j = 0;
 
-                            case 35:
+                            case 46:
                                 if (!(j < this.state.suggestedMovies[i].length)) {
-                                    _context3.next = 48;
+                                    _context3.next = 59;
                                     break;
                                 }
 
                                 if (!(this.state.suggestedMovies[i][j].name !== "" && this.state.suggestedMovies[i][j].name === movieInputs[i].value)) {
-                                    _context3.next = 45;
+                                    _context3.next = 56;
                                     break;
                                 }
 
@@ -94488,23 +94547,23 @@ var AddActor = function (_Component) {
                                 newData = {};
 
                                 newData["cast"] = newArrayCast;
-                                _context3.next = 44;
+                                _context3.next = 55;
                                 return this.props.editMovie(newData, key);
 
-                            case 44:
+                            case 55:
                                 createdMovies[key] = [this.state.suggestedMovies[i][j].name, this.state.movies[i].role];
 
-                            case 45:
+                            case 56:
                                 j++;
-                                _context3.next = 35;
+                                _context3.next = 46;
                                 break;
 
-                            case 48:
+                            case 59:
                                 i++;
-                                _context3.next = 33;
+                                _context3.next = 44;
                                 break;
 
-                            case 51:
+                            case 62:
                             case "end":
                                 return _context3.stop();
                         }
@@ -94520,92 +94579,63 @@ var AddActor = function (_Component) {
         }()
     }, {
         key: "checkform",
-        value: function () {
-            var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-                var checked, f, cansubmit, i, submitButton;
-                return regeneratorRuntime.wrap(function _callee2$(_context4) {
-                    while (1) {
-                        switch (_context4.prev = _context4.next) {
-                            case 0:
-                                checked = this.props.checked;
+        value: function checkform() {
 
-                                console.log("UNDEF:", checked, this.props);
-                                _context4.next = 4;
-                                return this.props.checkName(this.refs.name.value);
+            var f = document.querySelectorAll(".AddActor__inputs_required");
+            var cansubmit = true;
 
-                            case 4:
-                                console.log("AFTER ALL THIS SHIT:", this.props.checked);
+            clearTimeout(typingTimer);
 
-                                f = document.querySelectorAll(".AddActor__inputs_required");
-                                cansubmit = true;
-
-
-                                clearTimeout(typingTimer);
-                                if (document.querySelector(".AddActor__inputs_name").style.backgroundColor !== "white") {
-                                    cansubmit = false;
-                                }
-                                for (i = 0; i < f.length; i++) {
-                                    if (f[i].value.length === 0) cansubmit = false;
-                                }
-
-                                submitButton = document.querySelector(".AddActor__button");
-
-                                submitButton.style.display = cansubmit ? 'inline-block' : 'none';
-
-                            case 12:
-                            case "end":
-                                return _context4.stop();
-                        }
-                    }
-                }, _callee2, this);
-            }));
-
-            function checkform() {
-                return _ref2.apply(this, arguments);
+            for (var i = 0; i < f.length; i++) {
+                if (f[i].value.length === 0) {
+                    console.log("-", f[i]);
+                    cansubmit = false;
+                }
             }
 
-            return checkform;
-        }()
+            var submitButton = document.querySelector(".AddActor__button");
+            submitButton.style.visibility = cansubmit ? 'initial' : 'hidden';
+        }
     }, {
         key: "doneTyping",
         value: function () {
-            var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
                 var index, response, currentInput, currentButtonAdd, suggestedMoviesOnIndex, changedMovies;
-                return regeneratorRuntime.wrap(function _callee3$(_context5) {
+                return regeneratorRuntime.wrap(function _callee2$(_context4) {
                     while (1) {
-                        switch (_context5.prev = _context5.next) {
+                        switch (_context4.prev = _context4.next) {
                             case 0:
                                 console.log("DONE TYPING");
                                 index = this.state.currentInputIndex;
 
                                 if (!(this.state.currentSearchPhrase[index] !== "")) {
-                                    _context5.next = 16;
+                                    _context4.next = 16;
                                     break;
                                 }
 
-                                _context5.next = 5;
+                                _context4.next = 5;
                                 return fetch("http://localhost:3000/movies/autocomplete/" + this.state.currentSearchPhrase[index]);
 
                             case 5:
-                                response = _context5.sent;
+                                response = _context4.sent;
 
                                 if (response.ok) {
-                                    _context5.next = 10;
+                                    _context4.next = 10;
                                     break;
                                 }
 
                                 console.log("ERROR IN MOVIE SEARCH AT ACTOR ADD");
-                                _context5.next = 16;
+                                _context4.next = 16;
                                 break;
 
                             case 10:
                                 currentInput = document.querySelectorAll(".AddActor__inputs_movie")[index];
                                 currentButtonAdd = document.querySelectorAll(".AddActor__add-tmp-button")[index];
-                                _context5.next = 14;
+                                _context4.next = 14;
                                 return response.json();
 
                             case 14:
-                                suggestedMoviesOnIndex = _context5.sent;
+                                suggestedMoviesOnIndex = _context4.sent;
 
                                 if (suggestedMoviesOnIndex.length !== 0) {
                                     currentInput.style.backgroundColor = 'white';
@@ -94623,14 +94653,14 @@ var AddActor = function (_Component) {
 
                             case 16:
                             case "end":
-                                return _context5.stop();
+                                return _context4.stop();
                         }
                     }
-                }, _callee3, this);
+                }, _callee2, this);
             }));
 
             function doneTyping() {
-                return _ref3.apply(this, arguments);
+                return _ref2.apply(this, arguments);
             }
 
             return doneTyping;
@@ -94963,7 +94993,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, ".AddActor {\n  width: 90%;\n  padding: 15px;\n  background-color: #373737;\n  margin: auto auto 90px;\n  box-shadow: 10px 21px 94px 6px #000001;\n}\n.AddActor__main-title {\n  color: #FAE807;\n  margin: 25px 0 5px;\n  text-align: center;\n}\n.AddActor__information {\n  float: right;\n  width: 45%;\n  margin: 5px;\n}\n.AddActor__image {\n  float: left;\n  width: 45%;\n  margin: 5px;\n}\n.AddActor__button {\n  display: none;\n  background-color: #FAE807;\n  color: #373737;\n  font-weight: bold;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 14px;\n  opacity: 0.9;\n  max-width: 200px;\n  padding: 10px 20px;\n  margin: 10px auto;\n}\n.AddActor__button:hover {\n  opacity: 1;\n}\n.AddActor__success {\n  display: none;\n}\n.AddActor__inputs {\n  width: 100%;\n  padding: 8px 20px;\n  margin: 8px 0;\n  display: inline-block;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-sizing: border-box;\n}\n.AddActor__inputs::placeholder {\n  font-size: 14px;\n  font-weight: normal;\n  font-family: 'OpenSans', sans-serif;\n}\n.AddActor__inputs_movie,\n.AddActor__inputs_role {\n  width: 40%;\n  margin: 8px 8px 8px 0;\n}\n.AddActor__inputs_textarea {\n  resize: none;\n}\n.AddActor__inputs_name {\n  font-size: 19px;\n  font-weight: bold;\n}\n.AddActor__title {\n  color: white;\n  margin: 25px 0 5px;\n}\n.AddActor__remove-button,\n.AddActor__add-button,\n.AddActor__add-tmp-button {\n  background-color: #FAE807;\n  color: #373737;\n  font-weight: bold;\n  padding: 5.5px 10px;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 14px;\n  opacity: 0.9;\n}\n.AddActor__add-tmp-button {\n  display: none;\n  width: 50%;\n  margin: 0 auto;\n  max-width: 300px;\n}\n.AddActor__movies-block {\n  width: 100%;\n  margin: 0 auto;\n}\n.AddActor__btns {\n  margin: auto;\n  clear: both;\n  width: 360px;\n}\n.AddActor__btn {\n  background-color: #FAE807;\n  color: #373737;\n  font-weight: bold;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 14px;\n  opacity: 0.8;\n  width: 100px;\n  padding: 10px;\n  margin: 10px;\n}\n.AddActor__btn:hover {\n  opacity: 1;\n}\n", ""]);
+exports.push([module.i, ".AddActor {\n  width: 90%;\n  padding: 15px;\n  background-color: #373737;\n  margin: auto auto 90px;\n  box-shadow: 10px 21px 94px 6px #000001;\n}\n.AddActor__main-title {\n  color: #FAE807;\n  margin: 25px 0 5px;\n  text-align: center;\n}\n.AddActor__information {\n  float: right;\n  width: 45%;\n  margin: 5px;\n}\n.AddActor__image {\n  float: left;\n  width: 45%;\n  margin: 5px;\n}\n.AddActor__button {\n  visibility: hidden;\n  background-color: #FAE807;\n  color: #373737;\n  font-weight: bold;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 14px;\n  opacity: 0.9;\n  max-width: 200px;\n  padding: 10px 20px;\n  margin: 10px auto;\n}\n.AddActor__button:hover {\n  opacity: 1;\n}\n.AddActor__success {\n  display: none;\n}\n.AddActor__inputs {\n  width: 100%;\n  padding: 8px 20px;\n  margin: 8px 0;\n  display: inline-block;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-sizing: border-box;\n}\n.AddActor__inputs::placeholder {\n  font-size: 14px;\n  font-weight: normal;\n  font-family: 'OpenSans', sans-serif;\n}\n.AddActor__inputs_movie,\n.AddActor__inputs_role {\n  width: 40%;\n  margin: 8px 8px 8px 0;\n}\n.AddActor__inputs_textarea {\n  resize: none;\n}\n.AddActor__inputs_name {\n  font-size: 19px;\n  font-weight: bold;\n}\n.AddActor__title {\n  color: white;\n  margin: 25px 0 5px;\n}\n.AddActor__remove-button,\n.AddActor__add-button,\n.AddActor__add-tmp-button {\n  background-color: #FAE807;\n  color: #373737;\n  font-weight: bold;\n  padding: 5.5px 10px;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 14px;\n  opacity: 0.9;\n}\n.AddActor__add-tmp-button {\n  display: none;\n  width: 50%;\n  margin: 0 auto;\n  max-width: 300px;\n}\n.AddActor__movies-block {\n  width: 100%;\n  margin: 0 auto;\n}\n.AddActor__btns {\n  margin: auto;\n  clear: both;\n  width: 360px;\n}\n.AddActor__btn {\n  background-color: #FAE807;\n  color: #373737;\n  font-weight: bold;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 14px;\n  opacity: 0.8;\n  width: 100px;\n  padding: 10px;\n  margin: 10px;\n}\n.AddActor__btn:hover {\n  opacity: 1;\n}\n", ""]);
 
 // exports
 
@@ -94995,11 +95025,11 @@ var _BEM2 = _interopRequireDefault(_BEM);
 
 var _reactRouterDom = __webpack_require__(32);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
 var _auth = __webpack_require__(150);
 
-var _index = __webpack_require__(20);
+var _index = __webpack_require__(19);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -95190,9 +95220,9 @@ var _reactRouterDom = __webpack_require__(32);
 
 var _auth = __webpack_require__(150);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
-var _index = __webpack_require__(20);
+var _index = __webpack_require__(19);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -95394,7 +95424,7 @@ var _BEM = __webpack_require__(8);
 
 var _BEM2 = _interopRequireDefault(_BEM);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
 var _ActorPoster = __webpack_require__(1008);
 
@@ -95406,7 +95436,7 @@ var _reactInfiniteScroller = __webpack_require__(366);
 
 var _reactInfiniteScroller2 = _interopRequireDefault(_reactInfiniteScroller);
 
-var _reducers = __webpack_require__(20);
+var _reducers = __webpack_require__(19);
 
 var _fetch = __webpack_require__(26);
 
@@ -95615,9 +95645,9 @@ var _BEM = __webpack_require__(8);
 
 var _BEM2 = _interopRequireDefault(_BEM);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
-var _reducers = __webpack_require__(20);
+var _reducers = __webpack_require__(19);
 
 var _fetch = __webpack_require__(26);
 
@@ -95784,11 +95814,11 @@ var _EditMovieInfo2 = _interopRequireDefault(_EditMovieInfo);
 
 __webpack_require__(372);
 
-var _reducers = __webpack_require__(20);
+var _reducers = __webpack_require__(19);
 
 var _fetch = __webpack_require__(26);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
 var _BEM = __webpack_require__(8);
 
@@ -96767,7 +96797,7 @@ var _BEM = __webpack_require__(8);
 
 var _BEM2 = _interopRequireDefault(_BEM);
 
-var _reactRedux = __webpack_require__(19);
+var _reactRedux = __webpack_require__(20);
 
 var _reactRouter = __webpack_require__(90);
 
@@ -96781,7 +96811,7 @@ var _EditActorInfo2 = _interopRequireDefault(_EditActorInfo);
 
 var _constants = __webpack_require__(104);
 
-var _reducers = __webpack_require__(20);
+var _reducers = __webpack_require__(19);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -97665,7 +97695,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(84);
 
-var _reducers = __webpack_require__(20);
+var _reducers = __webpack_require__(19);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 

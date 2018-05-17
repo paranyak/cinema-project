@@ -144,9 +144,10 @@ export const checkName = (name, type) => async (dispatch) => {
     console.log("after dispatch)))");
     const result = await fromApi.checkName(name, type);
     console.log("Result:", result);
-    if(Object.keys(result).length === 1)    dispatch(fromFetch.checkingNameFail(result));
+    //if(Object.keys(result).length === 1)    dispatch(fromFetch.checkingNameFail(result));
     //треба нормалізувати
-    else dispatch(fromFetch.checkingNameSuccess(result));
+    //else
+        dispatch(fromFetch.checkingNameSuccess(result));
 };
 
 export const editActorById = (id, actor) => async (dispatch) => {

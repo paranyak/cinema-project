@@ -35,16 +35,12 @@ class AddActor extends Component {
 
     async addActorToDB(e) {
         let submitButton = document.querySelector(".AddActor__button");
-        if (submitButton.style.display === 'none') {
+        if (submitButton.style.visibility === 'hidden') {
             e.preventDefault();
             return;
         }
         e.preventDefault();
-        let actorForm = document.querySelector(".AddActor");
-        actorForm.style.display = "none";
 
-        let actorPostSuccess = document.querySelector(".AddActor__success");
-        actorPostSuccess.style.display = "initial";
 
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
@@ -88,12 +84,28 @@ class AddActor extends Component {
         //check if actor with the same is created before
         // let sameName = await this.props.checkName(this.refs.name.value);
 
-
         let slugName = slugify(this.refs.name.value, {
             replacement: '_',
             remove: /[.:!,;*&@^]/g,
             lower: true
         });
+
+        console.log("checking in send");
+        await this.props.checkName(this.refs.name.value);
+        console.log("AFTER ALL THIS SHIT:", this.props.checked);
+        if (this.props.checked.slugName) {
+            console.log(this.props.checked.date, birthDay);
+            if (this.props.checked.city === this.refs.city.value) {
+                console.log("the same");
+                alert("This actor already exist");
+                submitButton.style.visibility = 'hidden';
+                return ;
+            }else{
+                console.log("TEZKY");
+                slugName +="_" + this.refs.city.value;
+            }
+        }
+
 
         const actorToAdd = {
             name: this.refs.name.value,
@@ -114,6 +126,7 @@ class AddActor extends Component {
             body: JSON.stringify(actorToAdd)
         }).then((res) => res.json())
             .then((data) => {
+                console.log("here", data);
                 actorId = data.id;
                 console.log("POSTED", data)
             });
@@ -132,28 +145,24 @@ class AddActor extends Component {
                 }
             }
         }
-
     }
 
-     async checkform() {
-        let checked = this.props.checked;
-         console.log("UNDEF:", checked, this.props);
-         await this.props.checkName(this.refs.name.value);
-        console.log("AFTER ALL THIS SHIT:", this.props.checked);
+    checkform() {
 
         let f = document.querySelectorAll(".AddActor__inputs_required");
         let cansubmit = true;
 
         clearTimeout(typingTimer);
-        if (document.querySelector(".AddActor__inputs_name").style.backgroundColor !== "white") {
-            cansubmit = false;
-        }
+
         for (let i = 0; i < f.length; i++) {
-            if (f[i].value.length === 0) cansubmit = false;
+            if (f[i].value.length === 0) {
+                console.log("-", f[i]);
+                cansubmit = false;
+            }
         }
 
         let submitButton = document.querySelector(".AddActor__button");
-        submitButton.style.display = (cansubmit) ? 'inline-block' : 'none';
+        submitButton.style.visibility = (cansubmit) ? 'initial' : 'hidden';
 
     }
 
@@ -343,7 +352,7 @@ class AddActor extends Component {
                     <h3 className={b('title')}>Actor Name</h3>
                     <input ref='name' placeholder={'Enter name'} className={b("inputs", ["name", "required"])}
                            type="text"
-                           onChange={this.checkform} />
+                           onChange={this.checkform}/>
 
                     <h3 className={b('title')}>Short Info</h3>
                     <textarea ref='info' placeholder={'Enter short information'}
@@ -390,7 +399,7 @@ class AddActor extends Component {
 export default connect((state, props) => {
     console.log("MDTP");
     let checked = getCheckedNameActor(state);
-    console.log("AFTER MDTP",  {checked});
+    console.log("AFTER MDTP", {checked});
     return {checked};
 }, (dispatch) => ({
     postMovie: (movie) => dispatch(postMovieToDB(movie)),
