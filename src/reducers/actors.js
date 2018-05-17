@@ -7,8 +7,6 @@ import {
     FETCH_ACTOR_DELETE_SUCCESS,
     EDITING_ACTOR_SUCCESS, EDITING_ACTOR_START, POST_ACTOR_SUCCESS, POST_ACTOR_START,
     FETCH_FAIL_SLUG,
-    EDITING_ACTOR_SUCCESS,
-    EDITING_ACTOR_START,
     CHECK_NAME_ACTOR_SUCCESS
 } from '../helpers/actionTypes';
 
@@ -84,12 +82,8 @@ export const checking = (state = {}, action) => {
 };
 
 
-export const getAllActorsIds = (state) => state.allIds;
-export const getActorById = (state, id) => state.byId[id];
-export const getActorBySlug = (state, slugName) => state.bySlug[slugName];
-export const isActorFetching = (id, state) => state.fetching[id];
+export const getActorBySlug = ( slugName, state) => state.bySlug[slugName];
 export const getAllActorsSlugs = (state) => state.allSlugs;
-export const getActorBySlug = (slugName, state) => state.bySlug[slugName];
 export const isActorFetchingSlug = (slugName, state) => state.fetching[slugName];
 export const getCheckedNameActor = (state) => {
     console.log("here", state);

@@ -37,6 +37,7 @@ class AllMovies extends Component {
         if (nextProps.count !== this.props.count) {
             let allM = document.querySelector("#root");
             allM.style.height = this.calculateHeight(nextProps.count);
+            console.log(allM.style.height);
         }
         if (this.props.count && this.props.films.length === this.props.count) {
             this.setState({...this.state, hasMoreItems: false});

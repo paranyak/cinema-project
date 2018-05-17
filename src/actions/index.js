@@ -43,9 +43,6 @@ export const fetchPostStart = (movie) => ({type: FETCH_POST, movie});
 export const editingMovieStart = (movie) => ({type: EDITING_MOVIE_START, movie});
 export const editingActorStart = (actor) => ({type: EDITING_ACTOR_START, actor});
 
-export const checkingNameActor = (name) => ({type: CHECK_NAME_ACTOR, name});
-export const checkingNameMovie = (name) => ({type: CHECK_NAME_MOVIE, name});
-
 
 export const fetchMoviesCountStart = () => ({type: FETCH_MOVIES_COUNT});
 export const fetchMoviesCountSuccess = (movies) => ({type: FETCH_MOVIES_COUNT_SUCCESS, movies});
