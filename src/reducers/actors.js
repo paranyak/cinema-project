@@ -5,7 +5,9 @@ import {
     FETCH_ACTOR_SLUG_SUCCESS,
     FETCH_ACTOR_SLUG_FAIL,
     FETCH_ACTOR_DELETE_SUCCESS,
-    EDITING_ACTOR_SUCCESS, EDITING_ACTOR_START, POST_ACTOR_SUCCESS, POST_ACTOR_START
+    EDITING_ACTOR_SUCCESS, EDITING_ACTOR_START, POST_ACTOR_SUCCESS, POST_ACTOR_START,
+    FETCH_FAIL_SLUG,
+    CHECK_NAME_ACTOR_SUCCESS
 } from '../helpers/actionTypes';
 
 export const bySlug = (state = {}, action) => {
@@ -65,13 +67,30 @@ export const fetching = (state = {}, action) => {
     }
 };
 
-export const getAllActorsSlugs = (state) => state.allSlugs;
-export const getActorBySlug = (slugName, state) => state.bySlug[slugName];
-export const isActorFetchingSlug = (slugName, state) => state.fetching[slugName];
+export const checking = (state = {}, action) => {
+    switch (action.type) {
+        case CHECK_NAME_ACTOR_SUCCESS:
+            console.log("IN REDUCER: ", action.result);
+            return action.result;
+        default:
+            return state;
+    }
+};
 
+
+export const getActorBySlug = ( slugName, state) => state.bySlug[slugName];
+export const getAllActorsSlugs = (state) => state.allSlugs;
+export const isActorFetchingSlug = (slugName, state) => state.fetching[slugName];
+export const getCheckedNameActor = (state) => {
+    console.log("here", state);
+    let b =  state.checking;
+    console.log(b , "after check");
+    return b;
+};
 
 export default combineReducers({
     bySlug,
     allSlugs,
-    fetching
+    fetching,
+    checking
 });

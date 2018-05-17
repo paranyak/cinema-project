@@ -14,6 +14,14 @@ router.get('/byId/:id', async (req, res) => {
     }
 });
 
+
+router.get('/name_like=:name', async function(req, res) {
+    let name =  req.params.name;
+    const actor = await db.get().collection('actors').findOne({"name": name});
+    if(actor)  res.send(actor);
+    else res.send({actor});
+});
+
 router.get('/slugs', async (req, res) => {
     let params = {};
     let query = req.query;
