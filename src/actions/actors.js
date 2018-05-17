@@ -15,13 +15,9 @@ import * as fromFetch from "./index";
 
 export const editingActorStart = (actor) => ({type: EDITING_ACTOR_START, actor});
 
-export const fetchActorsSlugStart = (slugName) => {
-    console.log('in dispatch ', slugName);
-    return {type: FETCH_ACTOR_SLUG, slugName};
-};
+export const fetchActorsSlugStart = (slugName) => ({type: FETCH_ACTOR_SLUG, slugName});
 
 export const actorPostStart = (actor) => ({type: POST_ACTOR_START, actor});
-
 
 export const fetchActorsDeleteSuccess = (slugName) => ({type: FETCH_ACTOR_DELETE_SUCCESS, slugName});
 
@@ -63,7 +59,6 @@ export const fetchDeleteActor = (slugName) => async (dispatch) => {
 export const fetchActorsSlug = (slugName) => async (dispatch) => {
     dispatch(fetchActorsSlugStart(slugName));
     let response = await fromApi.actorsBySlugName(slugName);
-    console.log('response in action', response);
     if (!response.ok) {
         let actor = {slugName, error: true};
         let actors = normalize([actor], actorsListSchemaSlug);
@@ -79,11 +74,6 @@ export const fetchActorsSlug = (slugName) => async (dispatch) => {
 export const postActorToDB = (actor) => async (dispatch) => {
     dispatch(actorPostStart(actor));
     let result = await fromApi.postActor(actor);
-    console.log('result', result);
-    // if (!result.ok) {
-    //     alert('Your form was not submitted!');
-    // }
-    // else {
     try {
         let res = await result;
         res.slugName = res['slugName'];
@@ -91,7 +81,7 @@ export const postActorToDB = (actor) => async (dispatch) => {
         dispatch(postActorSuccess(res.result, res.entities.actors));
     }
     catch (err) {
-        console.error('you got an error!!!');
+        console.error('you got an error!!!', err);
         return null;
     }
 };

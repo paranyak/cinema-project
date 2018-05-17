@@ -13,7 +13,7 @@ import {
     EDITING_MOVIE_SUCCESS,
     EDITING_MOVIE_START,
     FETCH_MOVIES_COUNT_SUCCESS,
-    FETCH_MOVIE_DELETE_SUCCESS
+    FETCH_MOVIE_DELETE_SUCCESS, FETCH_MOVIE_SLUG_FAIL
 } from '../helpers/actionTypes';
 
 const bySlug = (state = {}, action) => {
@@ -23,7 +23,7 @@ const bySlug = (state = {}, action) => {
             return {...state, ...action.movies};
         case POST_MOVIE_SUCCESS:
             let newSt = {...state, ...action.movies};
-            console.log('newSt in byslug', newSt);
+            // console.log('newSt in byslug', newSt);
             return newSt;
         // case FETCH_FAIL_SLUG:
         //     return action;
@@ -51,6 +51,7 @@ const movieCount = (state = {}, action) => {
 
 const allSlugs = (state = [], action) => {
     switch (action.type) {
+        // case FETCH_MOVIES_SLUG:
         case FETCH_MOVIES_SLUG_SUCCESS:
         case FETCH_SCHEDULE_MOVIES_SUCCESS:
         case FETCH_MOVIES_LABEL_SUCCESS:
@@ -60,8 +61,10 @@ const allSlugs = (state = [], action) => {
             ].filter((el, i, arr) => arr.indexOf(el) === i);
         case POST_MOVIE_SUCCESS:
             let newSt = [...state, ...action.movies];
-            console.log('newSt in allSlugs', newSt);
+            // console.log('newSt in allSlugs', newSt);
             return newSt;
+        case FETCH_MOVIE_SLUG_FAIL:
+            return action;
         case FETCH_MOVIE_DELETE_SUCCESS:
             return [...state].filter((el) => el !== action.slugName);
         default:
