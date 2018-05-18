@@ -2412,7 +2412,7 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.editMovieBySlug = exports.postMovieToDB = exports.fetchDeleteMovie = exports.fetchAdditionalMovies = exports.fetchAutocompleteMovies = exports.fetchMoviesByLabel = exports.fetchMoviesSchedule = exports.fetchMoviesCount = exports.fetchMovieSlug = exports.clearMoviesAutocomplete = exports.fetchMoviesByScheduleSuccess = exports.fetchMoviesByLabelSuccess = exports.fetchMoviesSlugSuccess = exports.fetchAutocompleteMoviesSuccess = exports.editingMovieSuccess = exports.postMovieSuccess = exports.fetchMoviesDeleteSuccess = exports.fetchMoviesCountSuccess = exports.fetchMoviesCountStart = exports.editingMovieStart = exports.moviePostStart = exports.fetchMoviesSlugStart = undefined;
+exports.editMovieBySlug = exports.postMovieToDB = exports.fetchDeleteMovie = exports.fetchAdditionalMovies = exports.fetchAutocompleteMovies = exports.fetchMoviesByLabel = exports.fetchMoviesSchedule = exports.fetchMoviesCount = exports.fetchMovieSlug = exports.clearMoviesAutocomplete = exports.fetchMoviesByScheduleSuccess = exports.fetchMoviesByLabelSuccess = exports.fetchMoviesSlugSuccess = exports.fetchAutocompleteMoviesSuccess = exports.editingMovieSuccess = exports.postMovieSuccess = exports.fetchMovieSlugFail = exports.fetchMoviesDeleteSuccess = exports.fetchMoviesCountSuccess = exports.fetchMoviesCountStart = exports.editingMovieStart = exports.moviePostStart = exports.fetchMoviesSlugStart = undefined;
 
 var _actionTypes = __webpack_require__(59);
 
@@ -2458,6 +2458,15 @@ var fetchMoviesDeleteSuccess = exports.fetchMoviesDeleteSuccess = function fetch
     return { type: _actionTypes.FETCH_MOVIE_DELETE_SUCCESS, slugName: slugName };
 };
 
+var fetchMovieSlugFail = exports.fetchMovieSlugFail = function fetchMovieSlugFail(slugName, slugs) {
+    var movies = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+    return {
+        type: _actionTypes.FETCH_MOVIE_SLUG_FAIL,
+        error: true,
+        slugName: slugName, slugs: slugs, movies: movies
+    };
+};
+
 var postMovieSuccess = exports.postMovieSuccess = function postMovieSuccess(slugName, movies) {
     return {
         type: _actionTypes.POST_MOVIE_SUCCESS,
@@ -2488,7 +2497,7 @@ var fetchMoviesSlugSuccess = exports.fetchMoviesSlugSuccess = function fetchMovi
 var fetchMoviesByLabelSuccess = exports.fetchMoviesByLabelSuccess = function fetchMoviesByLabelSuccess(slugs, movies, label) {
     return {
         type: _actionTypes.FETCH_MOVIES_LABEL_SUCCESS,
-        slugName: 'carouselle',
+        slugName: 'carousel',
         movies: movies, slugs: slugs, label: label
     };
 };
@@ -2532,7 +2541,7 @@ var fetchMovieSlug = exports.fetchMovieSlug = function fetchMovieSlug(slugName) 
             }, _callee, undefined);
         }));
 
-        return function (_x3) {
+        return function (_x4) {
             return _ref.apply(this, arguments);
         };
     }();
@@ -2563,7 +2572,7 @@ var fetchMoviesCount = exports.fetchMoviesCount = function fetchMoviesCount() {
             }, _callee2, undefined);
         }));
 
-        return function (_x4) {
+        return function (_x5) {
             return _ref2.apply(this, arguments);
         };
     }();
@@ -2595,7 +2604,7 @@ var fetchMoviesSchedule = exports.fetchMoviesSchedule = function fetchMoviesSche
             }, _callee3, undefined);
         }));
 
-        return function (_x5) {
+        return function (_x6) {
             return _ref3.apply(this, arguments);
         };
     }();
@@ -2627,7 +2636,7 @@ var fetchMoviesByLabel = exports.fetchMoviesByLabel = function fetchMoviesByLabe
             }, _callee4, undefined);
         }));
 
-        return function (_x6) {
+        return function (_x7) {
             return _ref4.apply(this, arguments);
         };
     }();
@@ -2661,7 +2670,7 @@ var fetchAutocompleteMovies = exports.fetchAutocompleteMovies = function fetchAu
             }, _callee5, undefined);
         }));
 
-        return function (_x7) {
+        return function (_x8) {
             return _ref5.apply(this, arguments);
         };
     }();
@@ -2694,7 +2703,7 @@ var fetchAdditionalMovies = exports.fetchAdditionalMovies = function fetchAdditi
             }, _callee6, undefined);
         }));
 
-        return function (_x8) {
+        return function (_x9) {
             return _ref6.apply(this, arguments);
         };
     }();
@@ -2723,7 +2732,7 @@ var fetchDeleteMovie = exports.fetchDeleteMovie = function fetchDeleteMovie(slug
             }, _callee7, undefined);
         }));
 
-        return function (_x9) {
+        return function (_x10) {
             return _ref7.apply(this, arguments);
         };
     }();
@@ -2774,7 +2783,7 @@ var postMovieToDB = exports.postMovieToDB = function postMovieToDB(movie) {
             }, _callee8, undefined, [[5, 14]]);
         }));
 
-        return function (_x10) {
+        return function (_x11) {
             return _ref8.apply(this, arguments);
         };
     }();
@@ -2814,7 +2823,7 @@ var editMovieBySlug = exports.editMovieBySlug = function editMovieBySlug(slugNam
             }, _callee9, undefined, [[1, 8]]);
         }));
 
-        return function (_x11) {
+        return function (_x12) {
             return _ref9.apply(this, arguments);
         };
     }();
@@ -68877,7 +68886,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.getMoviesCount = exports.getMoviesAutocomplete = exports.getMovieBySlug = exports.getLabeledMovies = exports.isMovieFetchingSlug = exports.getAllMoviesSlugs = undefined;
+exports.getMoviesCount = exports.getMoviesAutocomplete = exports.getMovieBySlug = exports.getLabeledMovies = exports.isMovieFetchingSlug = exports.getAllMoviesSlugs = exports.fetching = exports.moviesAutocomplete = exports.scheduleMoviesSlugs = exports.labeledMovies = exports.allSlugs = exports.movieCount = exports.bySlug = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -68891,34 +68900,37 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-var bySlug = function bySlug() {
+var bySlug = exports.bySlug = function bySlug() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var action = arguments[1];
 
     switch (action.type) {
-        // case FETCH_MOVIES_SLUG:
         case _actionTypes.FETCH_MOVIES_SLUG_SUCCESS:
+            // ++
             return _extends({}, state, action.movies);
         case _actionTypes.POST_MOVIE_SUCCESS:
-            var newSt = _extends({}, state, action.movies);
-            // console.log('newSt in byslug', newSt);
-            return newSt;
-        // case FETCH_FAIL_SLUG:
-        //     return action;
+            // ++
+            return _extends({}, state, action.movies);
+        case _actionTypes.FETCH_MOVIE_SLUG_FAIL:
+            // ++
+            return action;
         case _actionTypes.EDITING_MOVIE_SUCCESS:
+            // ++
             var newState = state;
             newState[action.slugName] = action.movie;
             return newState;
         case _actionTypes.FETCH_MOVIE_DELETE_SUCCESS:
+            // ++
             var newStateDel = _extends({}, state);
             delete newStateDel[action.slugName];
             return newStateDel;
         default:
+            // ++
             return state;
     }
 };
 
-var movieCount = function movieCount() {
+var movieCount = exports.movieCount = function movieCount() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var action = arguments[1];
 
@@ -68930,34 +68942,35 @@ var movieCount = function movieCount() {
     }
 };
 
-var allSlugs = function allSlugs() {
+var allSlugs = exports.allSlugs = function allSlugs() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
     var action = arguments[1];
 
     switch (action.type) {
-        // case FETCH_MOVIES_SLUG:
-        case _actionTypes.FETCH_MOVIES_SLUG_SUCCESS:
+        case _actionTypes.FETCH_MOVIES_SLUG_SUCCESS: // ++
         case _actionTypes.FETCH_SCHEDULE_MOVIES_SUCCESS:
         case _actionTypes.FETCH_MOVIES_LABEL_SUCCESS:
             return [].concat(_toConsumableArray(state), _toConsumableArray(action.slugs)).filter(function (el, i, arr) {
                 return arr.indexOf(el) === i;
             });
         case _actionTypes.POST_MOVIE_SUCCESS:
-            var newSt = [].concat(_toConsumableArray(state), _toConsumableArray(action.movies));
-            // console.log('newSt in allSlugs', newSt);
-            return newSt;
+            // ++
+            return [].concat(_toConsumableArray(state), _toConsumableArray(action.movies));
         case _actionTypes.FETCH_MOVIE_SLUG_FAIL:
+            // ++
             return action;
         case _actionTypes.FETCH_MOVIE_DELETE_SUCCESS:
+            // ++
             return [].concat(_toConsumableArray(state)).filter(function (el) {
                 return el !== action.slugName;
             });
         default:
+            // ++
             return state;
     }
 };
 
-var labeledMovies = function labeledMovies() {
+var labeledMovies = exports.labeledMovies = function labeledMovies() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { popular: [], soon: [] };
     var action = arguments[1];
 
@@ -68973,7 +68986,7 @@ var labeledMovies = function labeledMovies() {
     }
 };
 
-var scheduleMoviesSlugs = function scheduleMoviesSlugs() {
+var scheduleMoviesSlugs = exports.scheduleMoviesSlugs = function scheduleMoviesSlugs() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
     var action = arguments[1];
 
@@ -68989,7 +69002,7 @@ var scheduleMoviesSlugs = function scheduleMoviesSlugs() {
     }
 };
 
-var moviesAutocomplete = function moviesAutocomplete() {
+var moviesAutocomplete = exports.moviesAutocomplete = function moviesAutocomplete() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
     var action = arguments[1];
 
@@ -69003,25 +69016,28 @@ var moviesAutocomplete = function moviesAutocomplete() {
     }
 };
 
-var fetching = function fetching() {
+var fetching = exports.fetching = function fetching() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var action = arguments[1];
 
     switch (action.type) {
         case _actionTypes.FETCH_MOVIES_SLUG:
+            // ++
             return (0, _ramda.assoc)(action.slugName, true, state);
-        case _actionTypes.FETCH_POST:
         case _actionTypes.EDITING_MOVIE_START:
             return (0, _ramda.assoc)(action.movie, true, state);
-        case _actionTypes.FETCH_SCHEDULE_MOVIES_SUCCESS:
-        case _actionTypes.FETCH_MOVIES_LABEL_SUCCESS:
-        case _actionTypes.FETCH_FAIL_SLUG:
+        case _actionTypes.FETCH_SCHEDULE_MOVIES_SUCCESS: // ++
+        case _actionTypes.FETCH_MOVIES_LABEL_SUCCESS: // ++
+        case _actionTypes.FETCH_MOVIE_SLUG_FAIL: // ++
         case _actionTypes.FETCH_MOVIES_SLUG_SUCCESS:
+            // ++
             return (0, _ramda.assoc)(action.slugName, false, state);
-        case _actionTypes.POST_MOVIE_SUCCESS:
+        case _actionTypes.POST_MOVIE_SUCCESS: // ++
         case _actionTypes.EDITING_MOVIE_SUCCESS:
+            // ++
             return (0, _ramda.assoc)(action.movie, false, state);
         default:
+            // ++
             return state;
     }
 };

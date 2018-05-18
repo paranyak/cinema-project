@@ -1,5 +1,5 @@
-import filters from '../../src/reducers/filters'
-import * as filterActions from '../../src/actions/filter';
+import filters from '../src/reducers/filters'
+import * as filterActions from '../src/actions/filter';
 
 describe('Filters Reducers', () => {
     it('get default state with undefined state', () => {
