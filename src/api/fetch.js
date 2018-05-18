@@ -75,7 +75,6 @@ export async function postActor(actor) {
         headers,
         body: JSON.stringify(actor)
     });
-    console.log('RESPONSE', response);
     if (!response.ok) {
         alert('Your form was not submitted!');
         return null;
@@ -113,8 +112,7 @@ export const editActor = async (slugName, actor) => {
 export async function checkName(name, type) {
     let res = await fetch(`${LOCALHOST}/${type}/name_like=${name}`);
     if (res.ok) {
-        let result = await res.json();
-        return result;
+        return await res.json();
     }
     return res.json();
 }

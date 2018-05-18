@@ -19,8 +19,6 @@ import {actorsListSchemaSlug, moviesListSchema, moviesListSchemaSlug} from "../h
 import {push} from "react-router-redux";
 import {normalize} from 'normalizr';
 import * as fromFetch from "./index";
-import {postActorSuccess} from "./actors";
-
 
 export const fetchMoviesSlugStart = (slugName) => ({type: FETCH_MOVIES_SLUG, slugName});
 
