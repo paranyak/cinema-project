@@ -2,12 +2,10 @@ import {combineReducers} from 'redux';
 import {assoc} from "ramda";
 import {
     FETCH_MOVIES_SLUG,
-    FETCH_FAIL_SLUG,
     FETCH_MOVIES_SLUG_SUCCESS,
     FETCH_MOVIES_LABEL_SUCCESS,
     FETCH_SCHEDULE_MOVIES_SUCCESS,
     POST_MOVIE_SUCCESS,
-    FETCH_POST,
     FETCH_AUTOCOMPLETE_MOVIES_SUCCESS,
     CLEAR_MOVIES_AUTOCOMPLETE,
     EDITING_MOVIE_SUCCESS,
@@ -16,31 +14,28 @@ import {
     FETCH_MOVIE_DELETE_SUCCESS, FETCH_MOVIE_SLUG_FAIL
 } from '../helpers/actionTypes';
 
-const bySlug = (state = {}, action) => {
+export const bySlug = (state = {}, action) => {
     switch (action.type) {
-        // case FETCH_MOVIES_SLUG:
-        case FETCH_MOVIES_SLUG_SUCCESS:
+        case FETCH_MOVIES_SLUG_SUCCESS: // ++
             return {...state, ...action.movies};
-        case POST_MOVIE_SUCCESS:
-            let newSt = {...state, ...action.movies};
-            // console.log('newSt in byslug', newSt);
-            return newSt;
-        // case FETCH_FAIL_SLUG:
-        //     return action;
-        case EDITING_MOVIE_SUCCESS:
+        case POST_MOVIE_SUCCESS: // ++
+            return {...state, ...action.movie};
+        case FETCH_MOVIE_SLUG_FAIL: // ++
+            return action;
+        case EDITING_MOVIE_SUCCESS: // ++
             let newState = state;
             newState[action.slugName] = action.movie;
             return newState;
-        case FETCH_MOVIE_DELETE_SUCCESS:
+        case FETCH_MOVIE_DELETE_SUCCESS: // ++
             let newStateDel = {...state};
             delete newStateDel[action.slugName];
             return newStateDel;
-        default:
+        default: // ++
             return state;
     }
 };
 
-const movieCount = (state = {}, action) => {
+export const movieCount = (state = {}, action) => {
     switch (action.type) {
         case FETCH_MOVIES_COUNT_SUCCESS:
             return action.movies;
@@ -49,30 +44,27 @@ const movieCount = (state = {}, action) => {
     }
 };
 
-const allSlugs = (state = [], action) => {
+export const allSlugs = (state = [], action) => {
     switch (action.type) {
-        // case FETCH_MOVIES_SLUG:
-        case FETCH_MOVIES_SLUG_SUCCESS:
-        case FETCH_SCHEDULE_MOVIES_SUCCESS:
-        case FETCH_MOVIES_LABEL_SUCCESS:
+        case FETCH_MOVIES_SLUG_SUCCESS: // ++
+        case FETCH_SCHEDULE_MOVIES_SUCCESS: // ++
+        case FETCH_MOVIES_LABEL_SUCCESS: // ++
             return [
                 ...state,
                 ...action.slugs
             ].filter((el, i, arr) => arr.indexOf(el) === i);
-        case POST_MOVIE_SUCCESS:
-            let newSt = [...state, ...action.movies];
-            // console.log('newSt in allSlugs', newSt);
-            return newSt;
-        case FETCH_MOVIE_SLUG_FAIL:
+        case POST_MOVIE_SUCCESS: // ++
+            return [...state, ...action.movies];
+        case FETCH_MOVIE_SLUG_FAIL: // ++
             return action;
-        case FETCH_MOVIE_DELETE_SUCCESS:
+        case FETCH_MOVIE_DELETE_SUCCESS: // ++
             return [...state].filter((el) => el !== action.slugName);
-        default:
+        default: // ++
             return state;
     }
 };
 
-const labeledMovies = (state = {popular: [], soon: []}, action) => {
+export const labeledMovies = (state = {popular: [], soon: []}, action) => {
     switch (action.type) {
         case FETCH_MOVIES_LABEL_SUCCESS:
             return {...state, [action.label]: action.slugs};
@@ -83,7 +75,7 @@ const labeledMovies = (state = {popular: [], soon: []}, action) => {
     }
 };
 
-const scheduleMoviesSlugs = (state = [], action) => {
+export const scheduleMoviesSlugs = (state = [], action) => {
     switch (action.type) {
         case FETCH_SCHEDULE_MOVIES_SUCCESS:
             return [...action.slugs];
@@ -94,7 +86,7 @@ const scheduleMoviesSlugs = (state = [], action) => {
     }
 };
 
-const moviesAutocomplete = (state = [], action) => {
+export const moviesAutocomplete = (state = [], action) => {
     switch (action.type) {
         case FETCH_AUTOCOMPLETE_MOVIES_SUCCESS:
             return [...action.movies];
@@ -105,22 +97,21 @@ const moviesAutocomplete = (state = [], action) => {
     }
 };
 
-const fetching = (state = {}, action) => {
+export const fetching = (state = {}, action) => {
     switch (action.type) {
-        case FETCH_MOVIES_SLUG:
+        case FETCH_MOVIES_SLUG: // ++
             return assoc(action.slugName, true, state);
-        case FETCH_POST:
         case EDITING_MOVIE_START:
             return assoc(action.movie, true, state);
-        case FETCH_SCHEDULE_MOVIES_SUCCESS:
-        case FETCH_MOVIES_LABEL_SUCCESS:
-        case FETCH_FAIL_SLUG:
-        case FETCH_MOVIES_SLUG_SUCCESS:
+        case FETCH_SCHEDULE_MOVIES_SUCCESS: // ++
+        case FETCH_MOVIES_LABEL_SUCCESS: // ++
+        case FETCH_MOVIE_SLUG_FAIL: // ++
+        case FETCH_MOVIES_SLUG_SUCCESS: // ++
             return assoc(action.slugName, false, state);
-        case POST_MOVIE_SUCCESS:
-        case EDITING_MOVIE_SUCCESS:
+        case POST_MOVIE_SUCCESS: // ++
+        case EDITING_MOVIE_SUCCESS: // ++
             return assoc(action.movie, false, state);
-        default:
+        default: // ++
             return state;
     }
 };

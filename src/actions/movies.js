@@ -4,18 +4,16 @@ import {
     FETCH_MOVIES_LABEL_SUCCESS,
     FETCH_SCHEDULE_MOVIES_SUCCESS,
     EDITING_MOVIE_SUCCESS,
-    EDITING_FAIL,
     POST_MOVIE_SUCCESS,
     FETCH_AUTOCOMPLETE_MOVIES_SUCCESS,
     CLEAR_MOVIES_AUTOCOMPLETE,
     FETCH_MOVIES_COUNT,
     FETCH_MOVIES_COUNT_SUCCESS,
-    FETCH_POST,
     EDITING_MOVIE_START,
-    FETCH_MOVIE_DELETE_SUCCESS, POST_MOVIE_START
+    FETCH_MOVIE_DELETE_SUCCESS, POST_MOVIE_START, FETCH_MOVIE_SLUG_FAIL
 } from '../helpers/actionTypes';
 import * as fromApi from "../api/fetch";
-import {actorsListSchemaSlug, moviesListSchema, moviesListSchemaSlug} from "../helpers/schema";
+import {moviesListSchemaSlug} from "../helpers/schema";
 import {push} from "react-router-redux";
 import {normalize} from 'normalizr';
 import * as fromFetch from "./index";
@@ -32,9 +30,15 @@ export const fetchMoviesCountSuccess = (movies) => ({type: FETCH_MOVIES_COUNT_SU
 
 export const fetchMoviesDeleteSuccess = (slugName) => ({type: FETCH_MOVIE_DELETE_SUCCESS, slugName});
 
-export const postMovieSuccess = (slugName, movies) => ({
+export const fetchMovieSlugFail = (slugName, slugs, movies = []) => ({
+    type: FETCH_MOVIE_SLUG_FAIL,
+    error: true,
+    slugName, slugs, movies
+});
+
+export const postMovieSuccess = (slugName, movie) => ({
     type: POST_MOVIE_SUCCESS,
-    movies, slugName
+    movie, slugName
 });
 
 export const editingMovieSuccess = (movie, slugName) => ({
@@ -51,7 +55,7 @@ export const fetchMoviesSlugSuccess = (slugName, slugs, movies = []) => ({
 
 export const fetchMoviesByLabelSuccess = (slugs, movies, label) => ({
     type: FETCH_MOVIES_LABEL_SUCCESS,
-    slugName: 'carouselle',
+    slugName: 'carousel',
     movies, slugs, label
 });
 
