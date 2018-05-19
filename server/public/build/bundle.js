@@ -22255,6 +22255,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+//`http://localhost:${PORT}`;
+
 var movie = exports.movie = function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(id) {
         return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -22262,17 +22264,17 @@ var movie = exports.movie = function () {
                 switch (_context.prev = _context.next) {
                     case 0:
                         _context.next = 2;
-                        return fetch(LOCALHOST + "/movies/byId/" + id);
+                        return fetch(LOCALHOST + '/movies/byId/' + id);
 
                     case 2:
                         _context.next = 4;
                         return _context.sent.json();
 
                     case 4:
-                        return _context.abrupt("return", _context.sent);
+                        return _context.abrupt('return', _context.sent);
 
                     case 5:
-                    case "end":
+                    case 'end':
                         return _context.stop();
                 }
             }
@@ -22291,17 +22293,17 @@ var movieBySlug = exports.movieBySlug = function () {
                 switch (_context2.prev = _context2.next) {
                     case 0:
                         _context2.next = 2;
-                        return fetch(LOCALHOST + "/movies/bySlugName/" + slugName);
+                        return fetch(LOCALHOST + '/movies/bySlugName/' + slugName);
 
                     case 2:
                         _context2.next = 4;
                         return _context2.sent.json();
 
                     case 4:
-                        return _context2.abrupt("return", _context2.sent);
+                        return _context2.abrupt('return', _context2.sent);
 
                     case 5:
-                    case "end":
+                    case 'end':
                         return _context2.stop();
                 }
             }
@@ -22320,17 +22322,17 @@ var movieCount = exports.movieCount = function () {
                 switch (_context3.prev = _context3.next) {
                     case 0:
                         _context3.next = 2;
-                        return fetch(LOCALHOST + "/movies/moviesCount");
+                        return fetch(LOCALHOST + '/movies/moviesCount');
 
                     case 2:
                         _context3.next = 4;
                         return _context3.sent.json();
 
                     case 4:
-                        return _context3.abrupt("return", _context3.sent);
+                        return _context3.abrupt('return', _context3.sent);
 
                     case 5:
-                    case "end":
+                    case 'end':
                         return _context3.stop();
                 }
             }
@@ -22349,17 +22351,17 @@ var moviesSchedule = exports.moviesSchedule = function () {
                 switch (_context4.prev = _context4.next) {
                     case 0:
                         _context4.next = 2;
-                        return fetch(LOCALHOST + "/movies/slugs?Schedule=" + day);
+                        return fetch(LOCALHOST + '/movies/slugs?Schedule=' + day);
 
                     case 2:
                         _context4.next = 4;
                         return _context4.sent.json();
 
                     case 4:
-                        return _context4.abrupt("return", _context4.sent);
+                        return _context4.abrupt('return', _context4.sent);
 
                     case 5:
-                    case "end":
+                    case 'end':
                         return _context4.stop();
                 }
             }
@@ -22378,17 +22380,17 @@ var carouselleMovies = exports.carouselleMovies = function () {
                 switch (_context5.prev = _context5.next) {
                     case 0:
                         _context5.next = 2;
-                        return fetch(LOCALHOST + "/movies/slugs?label=" + label);
+                        return fetch(LOCALHOST + '/movies/slugs?label=' + label);
 
                     case 2:
                         _context5.next = 4;
                         return _context5.sent.json();
 
                     case 4:
-                        return _context5.abrupt("return", _context5.sent);
+                        return _context5.abrupt('return', _context5.sent);
 
                     case 5:
-                    case "end":
+                    case 'end':
                         return _context5.stop();
                 }
             }
@@ -22407,17 +22409,17 @@ var unpublishedMovies = exports.unpublishedMovies = function () {
                 switch (_context6.prev = _context6.next) {
                     case 0:
                         _context6.next = 2;
-                        return fetch(LOCALHOST + "/movies/unpublished-slugs");
+                        return fetch(LOCALHOST + '/movies/unpublished-slugs');
 
                     case 2:
                         _context6.next = 4;
                         return _context6.sent.json();
 
                     case 4:
-                        return _context6.abrupt("return", _context6.sent);
+                        return _context6.abrupt('return', _context6.sent);
 
                     case 5:
-                    case "end":
+                    case 'end':
                         return _context6.stop();
                 }
             }
@@ -22436,17 +22438,17 @@ var additionalMovies = exports.additionalMovies = function () {
                 switch (_context7.prev = _context7.next) {
                     case 0:
                         _context7.next = 2;
-                        return fetch(LOCALHOST + "/movies/slugs?_page=" + page + "&_limit=" + limit);
+                        return fetch(LOCALHOST + '/movies/slugs?_page=' + page + '&_limit=' + limit);
 
                     case 2:
                         _context7.next = 4;
                         return _context7.sent.json();
 
                     case 4:
-                        return _context7.abrupt("return", _context7.sent);
+                        return _context7.abrupt('return', _context7.sent);
 
                     case 5:
-                    case "end":
+                    case 'end':
                         return _context7.stop();
                 }
             }
@@ -22465,17 +22467,17 @@ var autocompleteMovies = exports.autocompleteMovies = function () {
                 switch (_context8.prev = _context8.next) {
                     case 0:
                         _context8.next = 2;
-                        return fetch(LOCALHOST + "/movies/autocomplete/" + name);
+                        return fetch(LOCALHOST + '/movies/autocomplete/' + name);
 
                     case 2:
                         _context8.next = 4;
                         return _context8.sent.json();
 
                     case 4:
-                        return _context8.abrupt("return", _context8.sent);
+                        return _context8.abrupt('return', _context8.sent);
 
                     case 5:
-                    case "end":
+                    case 'end':
                         return _context8.stop();
                 }
             }
@@ -22494,13 +22496,13 @@ var actors = exports.actors = function () {
                 switch (_context9.prev = _context9.next) {
                     case 0:
                         _context9.next = 2;
-                        return fetch(LOCALHOST + "/actors/byId/" + id);
+                        return fetch(LOCALHOST + '/actors/byId/' + id);
 
                     case 2:
-                        return _context9.abrupt("return", _context9.sent);
+                        return _context9.abrupt('return', _context9.sent);
 
                     case 3:
-                    case "end":
+                    case 'end':
                         return _context9.stop();
                 }
             }
@@ -22519,17 +22521,17 @@ var unpublishedActors = exports.unpublishedActors = function () {
                 switch (_context10.prev = _context10.next) {
                     case 0:
                         _context10.next = 2;
-                        return fetch(LOCALHOST + "/actors/unpublished-slugs");
+                        return fetch(LOCALHOST + '/actors/unpublished-slugs');
 
                     case 2:
                         _context10.next = 4;
                         return _context10.sent.json();
 
                     case 4:
-                        return _context10.abrupt("return", _context10.sent);
+                        return _context10.abrupt('return', _context10.sent);
 
                     case 5:
-                    case "end":
+                    case 'end':
                         return _context10.stop();
                 }
             }
@@ -22548,13 +22550,13 @@ var actorsBySlugName = exports.actorsBySlugName = function () {
                 switch (_context11.prev = _context11.next) {
                     case 0:
                         _context11.next = 2;
-                        return fetch(LOCALHOST + "/actors/bySlugName/" + slugName);
+                        return fetch(LOCALHOST + '/actors/bySlugName/' + slugName);
 
                     case 2:
-                        return _context11.abrupt("return", _context11.sent);
+                        return _context11.abrupt('return', _context11.sent);
 
                     case 3:
-                    case "end":
+                    case 'end':
                         return _context11.stop();
                 }
             }
@@ -22573,17 +22575,17 @@ var additionalActors = exports.additionalActors = function () {
                 switch (_context12.prev = _context12.next) {
                     case 0:
                         _context12.next = 2;
-                        return fetch(LOCALHOST + "/actors/slugs?_page=" + page + "&_limit=" + limit);
+                        return fetch(LOCALHOST + '/actors/slugs?_page=' + page + '&_limit=' + limit);
 
                     case 2:
                         _context12.next = 4;
                         return _context12.sent.json();
 
                     case 4:
-                        return _context12.abrupt("return", _context12.sent);
+                        return _context12.abrupt('return', _context12.sent);
 
                     case 5:
-                    case "end":
+                    case 'end':
                         return _context12.stop();
                 }
             }
@@ -22602,7 +22604,7 @@ var deleteActor = exports.deleteActor = function () {
                 switch (_context13.prev = _context13.next) {
                     case 0:
                         _context13.next = 2;
-                        return fetch(LOCALHOST + "/actors/" + slugName, {
+                        return fetch(LOCALHOST + '/actors/' + slugName, {
                             method: 'DELETE',
                             headers: { "Content-type": "application/json" }
                         });
@@ -22612,10 +22614,10 @@ var deleteActor = exports.deleteActor = function () {
                         return _context13.sent.json();
 
                     case 4:
-                        return _context13.abrupt("return", _context13.sent);
+                        return _context13.abrupt('return', _context13.sent);
 
                     case 5:
-                    case "end":
+                    case 'end':
                         return _context13.stop();
                 }
             }
@@ -22634,7 +22636,7 @@ var deleteMovie = exports.deleteMovie = function () {
                 switch (_context14.prev = _context14.next) {
                     case 0:
                         _context14.next = 2;
-                        return fetch(LOCALHOST + "/movies/" + slugName, {
+                        return fetch(LOCALHOST + '/movies/' + slugName, {
                             method: 'DELETE',
                             headers: { "Content-type": "application/json" }
                         });
@@ -22644,10 +22646,10 @@ var deleteMovie = exports.deleteMovie = function () {
                         return _context14.sent.json();
 
                     case 4:
-                        return _context14.abrupt("return", _context14.sent);
+                        return _context14.abrupt('return', _context14.sent);
 
                     case 5:
-                    case "end":
+                    case 'end':
                         return _context14.stop();
                 }
             }
@@ -22682,10 +22684,10 @@ var postMovie = exports.postMovie = function () {
                         return _context15.sent.json();
 
                     case 6:
-                        return _context15.abrupt("return", _context15.sent);
+                        return _context15.abrupt('return', _context15.sent);
 
                     case 7:
-                    case "end":
+                    case 'end':
                         return _context15.stop();
                 }
             }
@@ -22724,13 +22726,13 @@ var postActor = exports.postActor = function () {
                         }
 
                         alert('Your form was not submitted!');
-                        return _context16.abrupt("return", null);
+                        return _context16.abrupt('return', null);
 
                     case 8:
-                        return _context16.abrupt("return", response.json());
+                        return _context16.abrupt('return', response.json());
 
                     case 9:
-                    case "end":
+                    case 'end':
                         return _context16.stop();
                 }
             }
@@ -22750,7 +22752,7 @@ var checkName = exports.checkName = function () {
                 switch (_context19.prev = _context19.next) {
                     case 0:
                         _context19.next = 2;
-                        return fetch(LOCALHOST + "/" + type + "/name_like=" + name);
+                        return fetch(LOCALHOST + '/' + type + '/name_like=' + name);
 
                     case 2:
                         res = _context19.sent;
@@ -22764,13 +22766,13 @@ var checkName = exports.checkName = function () {
                         return res.json();
 
                     case 6:
-                        return _context19.abrupt("return", _context19.sent);
+                        return _context19.abrupt('return', _context19.sent);
 
                     case 7:
-                        return _context19.abrupt("return", res.json());
+                        return _context19.abrupt('return', res.json());
 
                     case 8:
-                    case "end":
+                    case 'end':
                         return _context19.stop();
                 }
             }
@@ -22786,9 +22788,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 var PORT = process.env.PORT || 3000;
 
-var LOCALHOST = "http://localhost:" + PORT;
-
-var editMovie = exports.editMovie = function () {
+var LOCALHOST = '';var editMovie = exports.editMovie = function () {
     var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(slugName, movie) {
         var response;
         return regeneratorRuntime.wrap(function _callee17$(_context17) {
@@ -22796,7 +22796,7 @@ var editMovie = exports.editMovie = function () {
                 switch (_context17.prev = _context17.next) {
                     case 0:
                         _context17.next = 2;
-                        return fetch(LOCALHOST + "/movies/" + slugName, {
+                        return fetch(LOCALHOST + '/movies/' + slugName, {
                             method: 'PATCH',
                             headers: { "Content-type": "application/json" },
                             body: JSON.stringify(movie)
@@ -22811,13 +22811,13 @@ var editMovie = exports.editMovie = function () {
                         }
 
                         alert('Your form was not submitted!');
-                        return _context17.abrupt("return", null);
+                        return _context17.abrupt('return', null);
 
                     case 6:
-                        return _context17.abrupt("return", response.json());
+                        return _context17.abrupt('return', response.json());
 
                     case 7:
-                    case "end":
+                    case 'end':
                         return _context17.stop();
                 }
             }
@@ -22837,7 +22837,7 @@ var editActor = exports.editActor = function () {
                 switch (_context18.prev = _context18.next) {
                     case 0:
                         _context18.next = 2;
-                        return fetch(LOCALHOST + "/actors/" + slugName, {
+                        return fetch(LOCALHOST + '/actors/' + slugName, {
                             method: 'PATCH',
                             headers: { "Content-type": "application/json" },
                             body: JSON.stringify(actor)
@@ -22852,13 +22852,13 @@ var editActor = exports.editActor = function () {
                         }
 
                         alert('Your form was not submitted!');
-                        return _context18.abrupt("return", null);
+                        return _context18.abrupt('return', null);
 
                     case 6:
-                        return _context18.abrupt("return", response.json());
+                        return _context18.abrupt('return', response.json());
 
                     case 7:
-                    case "end":
+                    case 'end':
                         return _context18.stop();
                 }
             }
