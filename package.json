@@ -9,7 +9,8 @@
     "start": "npm run webpack | npm run serve",
     "test": "jest",
     "test:watch": "npm test -- --watch",
-    "server": "node server/server.js"
+    "server": "node server/server.js",
+    "export:db":"mongoexport -d cinema-project -c actors -o ./exports/Actors.json && mongoexport -d cinema-project -c movies -o ./exports/Movies.json"
   },
   "keywords": [],
   "author": "",

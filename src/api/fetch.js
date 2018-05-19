@@ -120,8 +120,7 @@ export const editActor = async (slugName, actor) => {
 export async function checkName(name, type) {
     let res = await fetch(`${LOCALHOST}/${type}/name_like=${name}`);
     if (res.ok) {
-        let result = await res.json();
-        return result;
+        return await res.json();
     }
     return res.json();
 }

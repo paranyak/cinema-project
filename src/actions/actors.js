@@ -19,9 +19,8 @@ import * as fromFetch from "./index";
 
 export const editingActorStart = (actor) => ({type: EDITING_ACTOR_START, actor});
 
-export const fetchActorsSlugStart = (slugName) => {
-    return {type: FETCH_ACTOR_SLUG, slugName};
-};
+
+export const fetchActorsSlugStart = (slugName) => ({type: FETCH_ACTOR_SLUG, slugName});
 
 
 export const fetchUnpublishedActorsSuccess = (slugs, actors) => ({
@@ -31,7 +30,6 @@ export const fetchUnpublishedActorsSuccess = (slugs, actors) => ({
 });
 
 export const actorPostStart = (actor) => ({type: POST_ACTOR_START, actor});
-
 
 export const fetchActorsDeleteSuccess = (slugName) => ({type: FETCH_ACTOR_DELETE_SUCCESS, slugName});
 
@@ -107,10 +105,6 @@ export const fetchActorsSlug = (slugName) => async (dispatch) => {
 export const postActorToDB = (actor) => async (dispatch) => {
     dispatch(actorPostStart(actor));
     let result = await fromApi.postActor(actor);
-    // if (!result.ok) {
-    //     alert('Your form was not submitted!');
-    // }
-    // else {
     try {
         let res = await result;
         res.slugName = res['slugName'];
@@ -118,7 +112,7 @@ export const postActorToDB = (actor) => async (dispatch) => {
         dispatch(postActorSuccess(res.result, res.entities.actors));
     }
     catch (err) {
-        console.error('you got an error!!!');
+        console.error('you got an error!!!', err);
         return null;
     }
 };

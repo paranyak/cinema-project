@@ -20,10 +20,9 @@ export const bySlug = (state = {}, action) => {
                 ...action.actors
             };
         case POST_ACTOR_SUCCESS:
-            let newSt = {...state, ...action.actors};
-            return newSt;
-        // case FETCH_ACTOR_SLUG_FAIL:
-        //     return action;
+            return {...state, ...action.actors};
+        case FETCH_ACTOR_SLUG_FAIL:
+            return action;
         case EDITING_ACTOR_SUCCESS:
             let newState = state;
             newState[action.slugName] = action.actor;
@@ -45,8 +44,7 @@ export const allSlugs = (state = [], action) => {
                 ...action.slugs
             ].filter((el, i, arr) => arr.indexOf(el) === i);
         case POST_ACTOR_SUCCESS:
-            let newSt = [...state, ...action.actors];
-            return newSt;
+            return [...state, ...action.actors];
         case FETCH_ACTOR_SLUG_FAIL:
             return action;
         case FETCH_ACTOR_DELETE_SUCCESS:

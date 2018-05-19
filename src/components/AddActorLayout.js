@@ -73,9 +73,9 @@ class AddActorLayout extends Component {
             if (this.props.checked.city === city) {
                 alert("This actor already exist");
                 return;
-            }else{
+            } else {
                 console.log("they are with tha same names");
-                slugName +="_" + city;
+                slugName += "_" + city;
             }
         }
 
