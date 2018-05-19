@@ -5,6 +5,7 @@ import {
     FETCH_ACTOR_SLUG_SUCCESS,
     FETCH_ACTOR_SLUG_FAIL,
     FETCH_ACTOR_DELETE_SUCCESS,
+    FETCH_UNPUBLISHED_ACTORS_SUCCESS,
     EDITING_ACTOR_SUCCESS, EDITING_ACTOR_START, POST_ACTOR_SUCCESS, POST_ACTOR_START,
     FETCH_FAIL_SLUG,
     CHECK_NAME_ACTOR_SUCCESS
@@ -13,7 +14,11 @@ import {
 export const bySlug = (state = {}, action) => {
     switch (action.type) {
         case FETCH_ACTOR_SLUG_SUCCESS:
-            return {...state, ...action.actors};
+        case FETCH_UNPUBLISHED_ACTORS_SUCCESS:
+            return {
+                ...state,
+                ...action.actors
+            };
         case POST_ACTOR_SUCCESS:
             return {...state, ...action.actors};
         case FETCH_ACTOR_SLUG_FAIL:
@@ -67,6 +72,17 @@ export const fetching = (state = {}, action) => {
     }
 };
 
+export const unpublishedActorsSlugs = (state = [], action) => {
+    switch (action.type) {
+        case FETCH_UNPUBLISHED_ACTORS_SUCCESS:
+            return [...state, ...action.slugs].filter((el, i, arr) => arr.indexOf(el) === i);;
+        case FETCH_ACTOR_DELETE_SUCCESS:
+            return [...state].filter((el) => el !== action.slugName);
+        default:
+            return state;
+    }
+};
+
 export const checking = (state = {}, action) => {
     switch (action.type) {
         case CHECK_NAME_ACTOR_SUCCESS:
@@ -78,9 +94,13 @@ export const checking = (state = {}, action) => {
 };
 
 
+
 export const getActorBySlug = ( slugName, state) => state.bySlug[slugName];
 export const getAllActorsSlugs = (state) => state.allSlugs;
 export const isActorFetchingSlug = (slugName, state) => state.fetching[slugName];
+export const getUnpublishedActors = (state) => state.unpublishedActorsSlugs;
+
+
 export const getCheckedNameActor = (state) => {
     console.log("here", state);
     let b =  state.checking;
@@ -91,6 +111,7 @@ export const getCheckedNameActor = (state) => {
 export default combineReducers({
     bySlug,
     allSlugs,
+    unpublishedActorsSlugs,
     fetching,
     checking
 });

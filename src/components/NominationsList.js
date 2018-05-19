@@ -13,14 +13,15 @@ class NominationsList extends Component {
     }
 
     createNomiList() {
-        const {nominations} = this.state;
-        return nominations.map((n, j) => {
-            return <div key={j}>
-                <input type='text' value={n} className={b('input')} onChange={this.onInputChange.bind(this, j)} placeholder="Enter actor's nomination"/>
-                <input type='button' value='-' className={b('button')}
-                       onClick={this.removeInput.bind(this, j)}/>
-            </div>
-        })
+      let {nominations} = this.state;
+      nominations = nominations || [];
+      return nominations.map((n, j) => {
+          return <div key={j}>
+              <input type='text' value={n} className={b('input')} onChange={this.onInputChange.bind(this, j)} placeholder="Enter actor's nomination"/>
+              <input type='button' value='-' className={b('button')}
+                     onClick={this.removeInput.bind(this, j)}/>
+          </div>
+      })
     }
 
     onInputChange(i, e) {

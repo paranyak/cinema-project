@@ -15,11 +15,17 @@ class ActorPoster extends Component {
             this.props.fetchActorBySlug(actorSlug);
             return null;
         }
+        let image;
+        if (actor.image) {
+          image = (<picture>
+              <img src={link + actor.image} className={b("image")}/>
+          </picture>)
+        } else {
+          image = (<span className={b("image", ["undefined"])}></span>)
+        }
         return (
             <article className={b()}>
-                <picture>
-                    <img src={link + actor.image} className={b("image")}/>
-                </picture>
+                {image}
                 <footer className={b("additional-info")}>
                     <h3 className={b('name')}>
                         {actor.name}

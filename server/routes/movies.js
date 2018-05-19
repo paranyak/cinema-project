@@ -4,7 +4,7 @@ var db = require('../db');
 
 router.get('/moviesCount', async function (req, res) {
     try {
-        const movieCount = await db.get().collection('movies').count();
+        const movieCount = await db.get().collection('movies').find({published: true}, {fields: {slugName: true}}).count();
         res.send(movieCount.toString());
     }
     catch (e) {
@@ -13,11 +13,17 @@ router.get('/moviesCount', async function (req, res) {
     }
 });
 
+router.get('/unpublished-slugs', async function (req, res) {
+    const movies = await db.get().collection('movies')
+        .find({published: false}, {fields: {slugName: true}})
+        .toArray();
+    res.send(movies.map(el => el.slugName));
+})
+
 router.get('/slugs', async function (req, res) {
     try {
         let dbQuery;
-
-        let params = {};
+        let params = {published: true};
         let query = req.query;
         if (query['label']) {
             params.label = query['label'];
@@ -74,9 +80,25 @@ router.get('/autocomplete/:query', async function (req, res) {
 
 router.post('/', async (req, res) => {
     try {
-        const movie = await db.get().collection('movies').save(req.body);
-        console.log('-->', movie.ops[0]);
-        res.send(movie.ops[0]);
+        let movie = req.body;
+        movie.published = true;
+
+        movie.cast = await Promise.all(movie.cast.map(async (cast) => {
+            if (!cast._id) {
+                cast.published = false;
+                let member = await db.get().collection('actors').save(cast);
+                return member.ops[0].slugName;
+            }
+
+            return cast.slugName;
+        }));
+
+        const savedMovie = await db.get().collection('movies').save(movie);
+
+        movie.cast.forEach(async (cast) => {
+            await db.get().collection('actors').findOneAndUpdate({slugName: cast}, {$push: {movies: movie.slugName}})
+        });
+        res.send(savedMovie.ops[0]);
     }
     catch (e) {
         console.error(e);
@@ -86,6 +108,7 @@ router.post('/', async (req, res) => {
 
 router.patch('/:slugName', async (req, res) => {
     try {
+        req.body.published = true;
         const movie = await db.get().collection('movies').findOneAndUpdate({slugName: req.params.slugName}, {$set: req.body}, {returnOriginal: false});
         res.send(movie.value);
     }

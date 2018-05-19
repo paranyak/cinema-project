@@ -38,7 +38,6 @@ class AddMoviesList extends Component {
             let suggestedMovies = await (response.json());
             if (suggestedMovies.length !== 0) {
                 this.setState({suggestedMovies});
-                console.log('sug movies', this.state.suggestedMovies);
             }
         }
     }
@@ -49,13 +48,15 @@ class AddMoviesList extends Component {
         const filtered = this.state.suggestedMovies.filter(f => f.name === value);// || f.name.includes(value));
         let slugName = '';
         let cast = [];
+        let _id;
         if (filtered.length === 1) {
             slugName = filtered[0].slugName;
             cast = filtered[0].cast;
+            _id = filtered[0]._id;
         }
         const arr = [
             ...this.state.chosenMovies.slice(0, i),
-            Object.assign({}, this.state.chosenMovies[i], {name: value, slugName, cast}),
+            Object.assign({}, this.state.chosenMovies[i], {name: value, slugName, cast, _id}),
             ...this.state.chosenMovies.slice(i + 1)
         ];
         this.setState({chosenMovies: arr});

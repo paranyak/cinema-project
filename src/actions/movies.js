@@ -10,7 +10,11 @@ import {
     FETCH_MOVIES_COUNT,
     FETCH_MOVIES_COUNT_SUCCESS,
     EDITING_MOVIE_START,
-    FETCH_MOVIE_DELETE_SUCCESS, POST_MOVIE_START, FETCH_MOVIE_SLUG_FAIL
+    FETCH_MOVIE_DELETE_SUCCESS,
+    FETCH_UNPUBLISHED_MOVIESL_SUCCESS,
+    POST_MOVIE_START,
+    FETCH_MOVIE_SLUG_FAIL
+
 } from '../helpers/actionTypes';
 import * as fromApi from "../api/fetch";
 import {moviesListSchemaSlug} from "../helpers/schema";
@@ -59,6 +63,12 @@ export const fetchMoviesByLabelSuccess = (slugs, movies, label) => ({
     movies, slugs, label
 });
 
+export const fetchUnpublishedMoviesSuccess = (slugs, movies) => ({
+    type: FETCH_UNPUBLISHED_MOVIESL_SUCCESS,
+    slugs,
+    movies
+});
+
 export const fetchMoviesByScheduleSuccess = (slugs, movies) => ({
     type: FETCH_SCHEDULE_MOVIES_SUCCESS,
     slugName: 'schedule',
@@ -73,7 +83,11 @@ export const fetchMovieSlug = (slugName) => async (dispatch) => {
     let movies = await fromApi.movieBySlug(slugName);
     movies.slugName = movies['slugName'];
     movies = normalize([movies], moviesListSchemaSlug);
-    dispatch(fetchMoviesSlugSuccess(slugName, movies.result, movies.entities.movies));
+    if (movies.entities.movies[slugName].published) {
+      dispatch(fetchMoviesSlugSuccess(slugName, movies.result, movies.entities.movies));
+    } else {
+      dispatch(fetchUnpublishedMoviesSuccess(movies.result, movies.entities.movies));
+    }
 };
 
 export const fetchMoviesCount = () => async (dispatch) => {
@@ -91,9 +105,15 @@ export const fetchMoviesSchedule = (day) => async (dispatch) => {
 
 export const fetchMoviesByLabel = (label) => async (dispatch) => {
     dispatch(fetchMoviesSlugStart('carouselle'));
-    let movies = await fromApi.carouselleMovies(label);
-    movies = normalize(movies, moviesListSchemaSlug);
-    dispatch(fetchMoviesByLabelSuccess(movies.result, movies.entities.movies, label));
+    if (label === 'unpublished') {
+      let movies = await fromApi.unpublishedMovies();
+      movies = normalize(movies, moviesListSchemaSlug);
+      dispatch(fetchUnpublishedMoviesSuccess(movies.result, movies.entities.movies));
+    } else {
+      let movies = await fromApi.carouselleMovies(label);
+      movies = normalize(movies, moviesListSchemaSlug);
+      dispatch(fetchMoviesByLabelSuccess(movies.result, movies.entities.movies, label));
+    }
 };
 
 export const fetchAutocompleteMovies = (name) => async (dispatch) => {
@@ -109,7 +129,6 @@ export const fetchAdditionalMovies = (limit, page) => async (dispatch) => {
     dispatch(fetchMoviesSlugStart('additional'));
     let movies = await fromApi.additionalMovies(limit, page);
     movies = normalize(movies, moviesListSchemaSlug);
-    console.log('movie additional', movies);
     dispatch(fetchMoviesSlugSuccess('additional', movies.result, movies.entities.movies));
 };
 
@@ -123,7 +142,6 @@ export const fetchDeleteMovie = (slugName) => async (dispatch) => {
 export const postMovieToDB = (movie) => async (dispatch) => {
     dispatch(moviePostStart(movie));
     let result = await fromApi.postMovie(movie);
-    console.log('result', result);
     try {
         let res = await result;
         res.slugName = res['slugName'];

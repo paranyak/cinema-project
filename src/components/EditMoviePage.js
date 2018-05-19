@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import EditMovieImage from "./EditMovieImage";
 import EditMovieInfo from "./EditMovieInfo";
 import "../styles/Editor.less"
-import {getActorBySlug, getMovieBySlug} from "../reducers";
-import {editActorBySlug} from '../actions/actors';
+import {getActorBySlug, getMovieBySlug, isActorFetchingSlug} from "../reducers";
+import {editActorBySlug, fetchActorsSlug} from '../actions/actors';
 import {editMovieBySlug, fetchMovieSlug} from '../actions/movies';
 import {connect} from "react-redux";
 import block from '../helpers/BEM'
@@ -36,13 +36,23 @@ class EditMoviePage extends Component {
         this.getStateFromChild = this.getStateFromChild.bind(this);
     }
 
+    componentWillMount(props) {
+      if (this.props.actorsToFetch && this.props.isActorFetching) {
+        this.props.actorsToFetch.forEach((actor) => {
+          if(!this.props.isActorFetching(actor)) {
+            this.props.fetchActorBySlug(actor);
+          }
+        })
+      }
+    }
+
     getStateFromChild(keys, values) {
         let requiredFields = [ "startDate", "duration", "name", "description",  "scheduleDate", "genre", "format", "technology", "trailer", "rating"];
         let canSubmit = true;
         for (let k = 0; k < keys.length; k++) {
             console.log(keys);
             this.setState({[keys[k]]: values[k]});
-            if(requiredFields.includes(keys[k]) &&( values[k].length == 0 || Object.values(values[k]).includes(NaN) || values[k][0] === "")){
+            if(requiredFields.includes(keys[k]) && (values[k] && (values[k].length == 0 || Object.values(values[k]).includes(NaN) || values[k][0] === ""))){
                 canSubmit = false;
             }
         }
@@ -74,19 +84,22 @@ class EditMoviePage extends Component {
 
         let Schedule = [];
         const scheduleTime = this.state.scheduleTime.sort();
-        scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
+        if (scheduleDate && scheduleTime) {
+          scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
+        }
 
         const convRating = rating ? parseFloat(rating) : "-.-";
 
         let newCast = cast;
 
-        if (cast.length !== 0 && typeof cast[0] === 'object') {
+        if (cast && cast.length !== 0 && typeof cast[0] === 'object') {
             newCast = cast.map(c => c.slugName).filter(slug => slug.trim() !== '');
             cast.filter(el => el.slugName.trim() !== '')
                 .map(el => {
                     const movies = (el.movies.includes(film.slugName)) ? [...el.movies] : [...el.movies, film.slugName];
                     this.props.editActors({movies}, el.slugName);
                 });
+            console.log(oldCast, "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
             oldCast.map(o => {
                 const a = cast.filter(n => n.slugName === o.slugName);
                 if (a.length === 0) {
@@ -117,8 +130,6 @@ class EditMoviePage extends Component {
             startDate
         };
 
-        console.log("EDITED MOVIE", movie);
-
         await this.props.editMovie(movie, film.slugName);
         this.setState({fireRedirect: true})
 
@@ -136,6 +147,12 @@ class EditMoviePage extends Component {
             this.props.fetchMovieBySlug(this.props.match.params.slug.toLowerCase());
             return null;
         }
+        let redirect;
+        if (film.published) {
+          redirect = (<Redirect to={`/movie/${film.slugName}`}/>)
+        } else {
+          redirect = (<Redirect to={`/`}/>)
+        }
         return (<div>
                 <form className={b()}>
                     <h1 className={b('title')}>EDIT MOVIE</h1>
@@ -150,7 +167,7 @@ class EditMoviePage extends Component {
                         </button>
                     </div>
                 </form>
-                {fireRedirect && (<Redirect to={`/movie/${film.slugName}`}/>)}
+                {fireRedirect && redirect}
             </div>
         )
     }
@@ -159,13 +176,23 @@ class EditMoviePage extends Component {
 
 export default connect((state, props) => {
         const slug = props.match.params.slug.toLowerCase();
-        const film = getMovieBySlug(slug, state);
-        const actors = film.cast.map(actorSlug => getActorBySlug(actorSlug, state));
-        return {film, oldCast: actors};
+        const film = getMovieBySlug(slug, state) || [];
+        let actorsToFetch = [];
+        const isActorFetching = (slug) => isActorFetchingSlug(slug, state);
+        const actors = film.cast && film.cast.map(actorSlug => {
+          let actor = getActorBySlug(actorSlug, state);
+          if(!actor) {
+            actorsToFetch.push(actorSlug);
+          }
+          return actor;
+        }).filter(actor => actor);
+        return {film, oldCast: actors, isActorFetching, actorsToFetch};
     },
     (dispatch) => ({
         fetchMovieBySlug: slug => dispatch(fetchMovieSlug(slug)),
         editActors: (actor, slug) => dispatch(editActorBySlug(slug, actor)),
-        editMovie: (movie, slug) => dispatch(editMovieBySlug(slug, movie))
+        editMovie: (movie, slug) => dispatch(editMovieBySlug(slug, movie)),
+        fetchActorBySlug: (slug) => dispatch(fetchActorsSlug(slug))
+
     })
 )(EditMoviePage);

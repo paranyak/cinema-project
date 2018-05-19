@@ -64,6 +64,12 @@ class ActorLayout extends Component {
                 <span className={b('delete-icon')} onClick={() => this.deleteActor(actor.slugName)}></span>
             </div>)
         }
+        let image;
+        if (actor.image) {
+          image = (<img className={b("image")} src={link + actor.image}/>)
+        } else {
+          image = (<span className={b("image", ["undefined"])}></span>)
+        }
         return (
             <section className={b()}>
                 {additional}
@@ -91,13 +97,14 @@ class ActorLayout extends Component {
                             Films
                             {movies.filter((movie) => movie)
                                 .map((movie, i) =>
-                                    <Link className={b("movie-link")} to={`/movie/${movie.slugName}`} key={i}>
+                                    <Link className={b("movie-link")} to={`/movie/${movie.slugName}`} key={i}
+                                    style={{display: movie.published ? 'inline-block' : 'none'}}>
                                         <p className={b("in-movie")}>{movie.name}</p>
                                     </Link>)}
                         </section>
                     </section>
                 </section>
-                <img className={b("image")} src={link + actor.image}/>
+                {image}
             </section>
         );
     }
@@ -107,19 +114,13 @@ class ActorLayout extends Component {
 export default connect((state, props) => {
         let moviesToLoad = [];
         const slug = props.match.params.slug.toLowerCase();
-        // console.log('SLUG OF ACTOR ', slug);
-
         const actor = getActorBySlug(slug, state);
-        // console.log('ACTOR RESULT:', actor);
         const isActorLoading = isActorFetchingSlug(slug, state);
         const user = getCurrentUser(state);
         let movies = [];
         if (actor) {
-            // console.log('actors movies', actor.movies);
             movies = actor.movies.map((s) => {
-                // console.log('slug in movies list', s);
                 let movie = getMovieBySlug(s, state);
-                // console.log('movie to get', movie);
                 if (!movie) {
                     // console.log("Movie to load:", s);
                     moviesToLoad.push(s);
