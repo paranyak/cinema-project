@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 const url = 'mongodb://olya:1@ds227740.mlab.com:27740/cinema-project';
 
+const port = process.env.PORT || 3000;
+
 app.use(cors({origin: 'http://localhost:5000'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -19,7 +21,7 @@ db.connect(url, (err) => {
         process.exit(1)
     } else {
         console.log("Connected successfully to server");
-        app.listen(3000, () => {
+        app.listen(port, () => {
             console.log('Our Server is running')
         })
     }
