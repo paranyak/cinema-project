@@ -58506,9 +58506,9 @@ var AddMovieLayout = function (_Component) {
                         { className: b('btns') },
                         _react2.default.createElement(
                             "button",
-                            { type: "submit"
-                                // disabled={!isEnabled}
-                                , className: b('btn', ['submit']),
+                            { type: "submit",
+                                disabled: !isEnabled,
+                                className: b('btn', ['submit']),
                                 onClick: this.addMovieToDB.bind(this)
                             },
                             "Submit"
@@ -78556,6 +78556,12 @@ var EditMoviePage = function (_Component) {
                 this.props.fetchMovieBySlug(this.props.match.params.slug.toLowerCase());
                 return null;
             }
+            var redirect = void 0;
+            if (film.published) {
+                redirect = _react2.default.createElement(_reactRouter.Redirect, { to: "/movie/" + film.slugName });
+            } else {
+                redirect = _react2.default.createElement(_reactRouter.Redirect, { to: "/" });
+            }
             return _react2.default.createElement(
                 "div",
                 null,
@@ -78586,7 +78592,7 @@ var EditMoviePage = function (_Component) {
                         )
                     )
                 ),
-                fireRedirect && _react2.default.createElement(_reactRouter.Redirect, { to: "/movie/" + film.slugName })
+                fireRedirect && redirect
             );
         }
     }]);
@@ -79351,7 +79357,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, ".Editor {\n  width: 90%;\n  padding: 15px;\n  background-color: #373737;\n  margin: auto auto 90px;\n  box-shadow: 10px 21px 94px 6px #000001;\n}\n.Editor__btns {\n  margin: auto;\n  clear: both;\n  width: 240px;\n}\n.Editor__btn {\n  background-color: #FAE807;\n  color: #373737;\n  font-weight: bold;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 14px;\n  opacity: 0.8;\n  width: 100px;\n  padding: 10px;\n  margin: 10px;\n}\n.Editor__btn:hover {\n  opacity: 1;\n}\n.Editor__btn_submit {\n  visibility: hidden;\n}\n.Editor__title {\n  color: #FAE807;\n  margin: 25px 0 5px;\n  text-align: center;\n}\n", ""]);
+exports.push([module.i, ".Editor {\n  width: 90%;\n  padding: 15px;\n  background-color: #373737;\n  margin: auto auto 90px;\n  box-shadow: 10px 21px 94px 6px #000001;\n}\n.Editor__btns {\n  margin: auto;\n  clear: both;\n  width: 240px;\n}\n.Editor__btn {\n  background-color: #FAE807;\n  color: #373737;\n  font-weight: bold;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 14px;\n  opacity: 0.8;\n  width: 100px;\n  padding: 10px;\n  margin: 10px;\n}\n.Editor__btn_submit:disabled {\n  display: none;\n}\n.Editor__btn:hover {\n  opacity: 1;\n}\n.Editor__title {\n  color: #FAE807;\n  margin: 25px 0 5px;\n  text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -79552,7 +79558,11 @@ var EditActorPage = function (_Component) {
             var _props = this.props,
                 actor = _props.actor,
                 films = _props.films;
-            var fireRedirect = this.state.fireRedirect;
+            var _state2 = this.state,
+                fireRedirect = _state2.fireRedirect,
+                info = _state2.info,
+                city = _state2.city,
+                name = _state2.name;
 
             if (!actor || actor.slugName === undefined) {
                 this.props.fetchActorBySlug(this.props.match.params.slug);
@@ -79565,6 +79575,26 @@ var EditActorPage = function (_Component) {
                         src: "http://www.topdesignmag.com/wp-content/uploads/2012/06/1.-404-not-found-design.jpg" })
                 );
             }
+            console.log(name, info, city);
+            var cInfo = info;
+            var cCity = city;
+            if (info === undefined) {
+                cInfo = '';
+            }
+            if (city === undefined) {
+                cCity = '';
+            }
+            console.log('--', name, cInfo, cCity);
+
+            var isEnabled = name.length * cInfo.length * cCity.length !== 0;
+            var lenCancelBtn = isEnabled ? '100px' : '250px';
+            var redirect = void 0;
+            if (actor.published) {
+                redirect = _react2.default.createElement(_reactRouter.Redirect, { to: "/actor/" + actor.slugName });
+            } else {
+                redirect = _react2.default.createElement(_reactRouter.Redirect, { to: "/allactors" });
+            }
+
             return _react2.default.createElement(
                 "div",
                 null,
@@ -79584,18 +79614,19 @@ var EditActorPage = function (_Component) {
                         _react2.default.createElement(
                             "button",
                             { type: "submit", className: b('btn', ['submit']),
+                                disabled: !isEnabled,
                                 onClick: this.editActorInDB.bind(this) },
                             "Save"
                         ),
                         _react2.default.createElement(
                             "button",
                             { type: "button", className: b('btn', ['cancel']),
-                                onClick: this.cancelEditing.bind(this) },
+                                style: { width: lenCancelBtn }, onClick: this.cancelEditing.bind(this) },
                             "Cancel"
                         )
                     )
                 ),
-                fireRedirect && _react2.default.createElement(_reactRouter.Redirect, { to: "/actor/" + actor.slugName })
+                fireRedirect && redirect
             );
         }
     }]);
@@ -80417,9 +80448,9 @@ var AddActorLayout = function (_Component) {
                         { className: b('btns') },
                         _react2.default.createElement(
                             "button",
-                            { type: "submit", className: b('btn', ['submit'])
-                                // disabled={!isEnabled}
-                                , onClick: this.addActorToDB.bind(this) },
+                            { type: "submit", className: b('btn', ['submit']),
+                                disabled: !isEnabled,
+                                onClick: this.addActorToDB.bind(this) },
                             "Submit"
                         ),
                         _react2.default.createElement(

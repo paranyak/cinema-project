@@ -128,7 +128,7 @@ class AddActorLayout extends Component {
                 <AddAInfo callback={this.getStateFromChild}/>
                 <div className={b('btns')}>
                     <button type='submit' className={b('btn', ['submit'])}
-                            // disabled={!isEnabled}
+                            disabled={!isEnabled}
                             onClick={this.addActorToDB.bind(this)}>
                         Submit
                     </button>

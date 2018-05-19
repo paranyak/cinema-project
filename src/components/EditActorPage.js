@@ -106,7 +106,12 @@ class EditActorPage extends Component {
 
     render() {
         const {actor, films} = this.props;
-        const {fireRedirect} = this.state;
+        const {
+            fireRedirect,
+            info,
+            city,
+            name
+        } = this.state;
         if (!actor || actor.slugName === undefined) {
             this.props.fetchActorBySlug(this.props.match.params.slug);
             return null;
@@ -119,6 +124,29 @@ class EditActorPage extends Component {
                 </section>
             );
         }
+        console.log(name, info, city);
+        let cInfo = info;
+        let cCity = city;
+        if (info === undefined) {
+          cInfo = '';
+        }
+        if (city === undefined) {
+          cCity = '';
+        }
+        console.log('--', name, cInfo, cCity);
+
+        const isEnabled =
+            name.length *
+            cInfo.length *
+            cCity.length !== 0;
+        const lenCancelBtn = (isEnabled) ? '100px' : '250px';
+        let redirect;
+        if (actor.published) {
+          redirect = (<Redirect to={`/actor/${actor.slugName}`}/>)
+        } else {
+          redirect = (<Redirect to={`/allactors`}/>)
+        }
+
         return (<div>
                 <form className={b()}>
                     <h1 className={b('title')}>EDIT ACTOR</h1>
@@ -126,14 +154,15 @@ class EditActorPage extends Component {
                     <EditActorInfo actor={actor} films={films} callback={this.getStateFromChild}/>
                     <div className={b('btns')}>
                         <button type='submit' className={b('btn', ['submit'])}
+                                disabled={!isEnabled}
                                 onClick={this.editActorInDB.bind(this)}>Save
                         </button>
                         <button type='button' className={b('btn', ['cancel'])}
-                                onClick={this.cancelEditing.bind(this)}>Cancel
+                                style={{width: lenCancelBtn}} onClick={this.cancelEditing.bind(this)}>Cancel
                         </button>
                     </div>
                 </form>
-                {fireRedirect && (<Redirect to={`/actor/${actor.slugName}`}/>)}
+                {fireRedirect && redirect}
             </div>
         );
     }

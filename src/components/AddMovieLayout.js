@@ -151,7 +151,7 @@ class AddMovieLayout extends Component {
                     <AddMInfo callback={this.getStateFromChild}/>
                     <div className={b('btns')}>
                         <button type='submit'
-                                // disabled={!isEnabled}
+                                disabled={!isEnabled}
                                 className={b('btn', ['submit'])}
                                 onClick={this.addMovieToDB.bind(this)}
                         >Submit

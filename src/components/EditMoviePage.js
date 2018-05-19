@@ -147,6 +147,12 @@ class EditMoviePage extends Component {
             this.props.fetchMovieBySlug(this.props.match.params.slug.toLowerCase());
             return null;
         }
+        let redirect;
+        if (film.published) {
+          redirect = (<Redirect to={`/movie/${film.slugName}`}/>)
+        } else {
+          redirect = (<Redirect to={`/`}/>)
+        }
         return (<div>
                 <form className={b()}>
                     <h1 className={b('title')}>EDIT MOVIE</h1>
@@ -161,7 +167,7 @@ class EditMoviePage extends Component {
                         </button>
                     </div>
                 </form>
-                {fireRedirect && (<Redirect to={`/movie/${film.slugName}`}/>)}
+                {fireRedirect && redirect}
             </div>
         )
     }
