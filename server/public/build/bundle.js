@@ -22673,7 +22673,7 @@ var postMovie = exports.postMovie = function () {
                         headers.append('Content-Type', 'application/json');
 
                         _context15.next = 4;
-                        return fetch('http://localhost:3000/movies', {
+                        return fetch('https://csucu-cinema-project.herokuapp.com/movies', {
                             method: 'POST',
                             headers: headers,
                             body: JSON.stringify(movie)
@@ -22711,7 +22711,7 @@ var postActor = exports.postActor = function () {
                         headers.append('Content-Type', 'application/json');
 
                         _context16.next = 4;
-                        return fetch('http://localhost:3000/actors', {
+                        return fetch('https://csucu-cinema-project.herokuapp.com/actors', {
                             method: 'POST',
                             headers: headers,
                             body: JSON.stringify(actor)
@@ -63766,7 +63766,7 @@ var CastInputs = function (_Component) {
                         switch (_context.prev = _context.next) {
                             case 0:
                                 _context.next = 2;
-                                return fetch("http://localhost:3000/actors/autocomplete/" + e.target.value);
+                                return fetch("https://csucu-cinema-project.herokuapp.com/actors/autocomplete/" + e.target.value);
 
                             case 2:
                                 response = _context.sent;
@@ -79060,7 +79060,7 @@ var EditActorsList = function (_Component) {
                         switch (_context.prev = _context.next) {
                             case 0:
                                 _context.next = 2;
-                                return fetch("http://localhost:3000/actors/autocomplete/" + e.target.value);
+                                return fetch("https://csucu-cinema-project.herokuapp.com/actors/autocomplete/" + e.target.value);
 
                             case 2:
                                 response = _context.sent;
@@ -79951,7 +79951,7 @@ var EditMoviesList = function (_Component) {
                         switch (_context.prev = _context.next) {
                             case 0:
                                 _context.next = 2;
-                                return fetch("http://localhost:3000/movies/autocomplete/" + e.target.value);
+                                return fetch("https://csucu-cinema-project.herokuapp.com/movies/autocomplete/" + e.target.value);
 
                             case 2:
                                 response = _context.sent;
@@ -80837,7 +80837,7 @@ var AddMoviesList = function (_Component) {
                         switch (_context.prev = _context.next) {
                             case 0:
                                 _context.next = 2;
-                                return fetch("http://localhost:3000/movies/autocomplete/" + e.target.value);
+                                return fetch("https://csucu-cinema-project.herokuapp.com/movies/autocomplete/" + e.target.value);
 
                             case 2:
                                 response = _context.sent;

@@ -30,7 +30,7 @@ class AddMoviesList extends Component {
     }
 
     async onListChange(i, e) {
-        const response = await fetch(`http://localhost:3000/movies/autocomplete/${e.target.value}`);// 'posts' to get work the url
+        const response = await fetch(`https://csucu-cinema-project.herokuapp.com/movies/autocomplete/${e.target.value}`);// 'posts' to get work the url
         if (!response.ok) {
             console.log("ERROR IN Choosing MOVIE");
             return null;

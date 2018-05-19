@@ -30,7 +30,7 @@ class EditActorsList extends Component {
     }
 
     async onListChange(i, e) {
-        const response = await fetch(`http://localhost:3000/actors/autocomplete/${e.target.value}`);// 'posts' to get work the url
+        const response = await fetch(`https://csucu-cinema-project.herokuapp.com/actors/autocomplete/${e.target.value}`);// 'posts' to get work the url
         if (!response.ok) {
             console.log("ERROR IN Choosing ACTOR");
             return null;
