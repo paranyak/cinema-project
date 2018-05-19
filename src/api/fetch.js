@@ -1,4 +1,6 @@
-const LOCALHOST = "http://localhost:3000";
+const PORT = process.env.PORT || 3000;
+
+const LOCALHOST = `http://localhost:${PORT}`;
 
 export async function movie(id) {
     return await ((await fetch(`${LOCALHOST}/movies/byId/${id}`)).json());
