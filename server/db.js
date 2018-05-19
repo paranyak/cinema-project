@@ -1,28 +1,16 @@
 var MongoClient = require('mongodb').MongoClient;
-var state = {
-    db: null,
-};
+const DB_NAME = 'cinema-project';
 
+let db = null;
 exports.connect = (url, done) => {
-    if (state.db) return done();
-
-    MongoClient.connect(url, (err, db) => {
-        if (err) return done(err);
-        state.db = db.db('cinema-project');
+    if (db) return done();
+    MongoClient.connect(url, (err, client) => {
+        if (err) return console.error(err);
+        db = client.db(DB_NAME);
         done()
     })
 };
 
 exports.get = () => {
-    return state.db
+    return db;
 };
-
-exports.close = (done) => {
-    if (state.db) {
-        state.db.close((err, result) => {
-            state.db = null;
-            state.mode = null;
-            done(err)
-        })
-    }
-}

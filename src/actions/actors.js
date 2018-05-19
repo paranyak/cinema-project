@@ -47,7 +47,10 @@ export const checkingNameSuccess = (result) => ({
     result
 });
 
-export const checkingNameActor = (name) => {console.log("here bleat"); return {type: CHECK_NAME_ACTOR, name}};
+export const checkingNameActor = (name) => {
+    console.log("here bleat");
+    return {type: CHECK_NAME_ACTOR, name}
+};
 
 
 // -------------------------------------------------------
@@ -110,10 +113,7 @@ export const editActorBySlug = (slugName, actor) => async (dispatch) => {
 };
 
 export const checkName = (name, type) => async (dispatch) => {
-    //не знаю чи актуально для фільмів
-    //if(type === 'movies') dispatch(fromFetch.checkingNameMovie(name));
-     dispatch(checkingNameActor(name));
+    dispatch(checkingNameActor(name));
     const result = await fromApi.checkName(name, type);
-    //треба нормалізувати
     dispatch(checkingNameSuccess(result));
 };

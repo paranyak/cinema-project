@@ -10,7 +10,7 @@
     "test": "jest",
     "test:watch": "npm test -- --watch",
     "server": "node server/server.js",
-    "export:db":"mongoexport -d cinema-project -c actors -o ./exports/Actors.json && mongoexport -d cinema-project -c movies -o ./exports/Movies.json"
+    "export:db": "mongoexport -d cinema-project -c actors -o ./exports/Actors.json && mongoexport -d cinema-project -c movies -o ./exports/Movies.json"
   },
   "keywords": [],
   "author": "",

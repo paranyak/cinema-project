@@ -2467,10 +2467,10 @@ var fetchMovieSlugFail = exports.fetchMovieSlugFail = function fetchMovieSlugFai
     };
 };
 
-var postMovieSuccess = exports.postMovieSuccess = function postMovieSuccess(slugName, movies) {
+var postMovieSuccess = exports.postMovieSuccess = function postMovieSuccess(slugName, movie) {
     return {
         type: _actionTypes.POST_MOVIE_SUCCESS,
-        movies: movies, slugName: slugName
+        movie: movie, slugName: slugName
     };
 };
 
@@ -4289,7 +4289,8 @@ var checkingNameSuccess = exports.checkingNameSuccess = function checkingNameSuc
 };
 
 var checkingNameActor = exports.checkingNameActor = function checkingNameActor(name) {
-    console.log("here bleat");return { type: _actionTypes.CHECK_NAME_ACTOR, name: name };
+    console.log("here bleat");
+    return { type: _actionTypes.CHECK_NAME_ACTOR, name: name };
 };
 
 // -------------------------------------------------------
@@ -4505,8 +4506,6 @@ var checkName = exports.checkName = function checkName(name, type) {
                 while (1) {
                     switch (_context6.prev = _context6.next) {
                         case 0:
-                            //не знаю чи актуально для фільмів
-                            //if(type === 'movies') dispatch(fromFetch.checkingNameMovie(name));
                             dispatch(checkingNameActor(name));
                             _context6.next = 3;
                             return fromApi.checkName(name, type);
@@ -4514,7 +4513,6 @@ var checkName = exports.checkName = function checkName(name, type) {
                         case 3:
                             result = _context6.sent;
 
-                            //треба нормалізувати
                             dispatch(checkingNameSuccess(result));
 
                         case 5:
@@ -22849,190 +22847,14 @@ var routerActions = { push: push, replace: replace, go: go, goBack: goBack, goFo
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-exports.clearMoviesAutocomplete = exports.signUpSuccess = exports.authAdditionalInfoSuccess = exports.setUser = exports.logoutSuccess = exports.authFail = exports.loginSuccess = exports.authStart = exports.fetchMoviesByScheduleSuccess = exports.fetchCarouselleMoviesSuccess = exports.fetchMoviesSlugSuccess = exports.fetchMoviesSuccess = exports.editingActorSuccess = exports.editingFail = exports.fetchAutocompleteMoviesSuccess = exports.checkingNameFail = exports.checkingNameSuccess = exports.editingMovieSuccess = exports.fetchFailSlug = exports.fetchFail = exports.postMovieSuccess = exports.fetchActorsSlugSuccess = exports.fetchActorsDeleteSuccess = exports.fetchActorsSucess = exports.fetchActorsSlugStart = exports.fetchActorsStart = exports.fetchMoviesDeleteSuccess = exports.fetchMoviesCountSuccess = exports.fetchMoviesCountStart = exports.editingActorStart = exports.editingMovieStart = exports.fetchPostStart = exports.fetchMoviesSlugStart = exports.fetchMoviesStart = undefined;
+exports.editingFail = undefined;
 
 var _actionTypes = __webpack_require__(59);
 
-var fetchMoviesStart = exports.fetchMoviesStart = function fetchMoviesStart(id) {
-    return { type: _actionTypes.FETCH_MOVIES, id: id };
-};
-var fetchMoviesSlugStart = exports.fetchMoviesSlugStart = function fetchMoviesSlugStart(slugName) {
-    return { type: _actionTypes.FETCH_MOVIES_SLUG, slugName: slugName };
-};
-
-var fetchPostStart = exports.fetchPostStart = function fetchPostStart(movie) {
-    return { type: _actionTypes.FETCH_POST, movie: movie };
-};
-
-var editingMovieStart = exports.editingMovieStart = function editingMovieStart(movie) {
-    return { type: _actionTypes.EDITING_MOVIE_START, movie: movie };
-};
-var editingActorStart = exports.editingActorStart = function editingActorStart(actor) {
-    return { type: _actionTypes.EDITING_ACTOR_START, actor: actor };
-};
-
-var fetchMoviesCountStart = exports.fetchMoviesCountStart = function fetchMoviesCountStart() {
-    return { type: _actionTypes.FETCH_MOVIES_COUNT };
-};
-var fetchMoviesCountSuccess = exports.fetchMoviesCountSuccess = function fetchMoviesCountSuccess(movies) {
-    return { type: _actionTypes.FETCH_MOVIES_COUNT_SUCCESS, movies: movies };
-};
-var fetchMoviesDeleteSuccess = exports.fetchMoviesDeleteSuccess = function fetchMoviesDeleteSuccess(id, ids) {
-    var movie = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    console.log("Del success action/index:", id, ids, movie);return { type: _actionTypes.FETCH_MOVIE_DELETE_SUCCESS, id: id, ids: ids, movie: movie };
-};
-
-var fetchActorsStart = exports.fetchActorsStart = function fetchActorsStart(id) {
-    return { type: _actionTypes.FETCH_ACTOR, id: id };
-};
-var fetchActorsSlugStart = exports.fetchActorsSlugStart = function fetchActorsSlugStart(slugName) {
-    return { type: _actionTypes.FETCH_ACTOR_SLUG, slugName: slugName };
-};
-
-var fetchActorsSucess = exports.fetchActorsSucess = function fetchActorsSucess(id, ids) {
-    var actors = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
-    return { type: _actionTypes.FETCH_ACTOR__SUCCESS, id: id, actors: actors, ids: ids };
-};
-
-var fetchActorsDeleteSuccess = exports.fetchActorsDeleteSuccess = function fetchActorsDeleteSuccess(id, ids) {
-    var actor = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    return { type: _actionTypes.FETCH_ACTOR_DELETE_SUCCESS, id: id, ids: ids, actor: actor };
-};
-
-var fetchActorsSlugSuccess = exports.fetchActorsSlugSuccess = function fetchActorsSlugSuccess(slugName, slugs) {
-    var actors = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
-    return {
-        type: _actionTypes.FETCH_ACTOR_SLUG_SUCCESS,
-        slugName: slugName, actors: actors, slugs: slugs
-    };
-};
-
-var postMovieSuccess = exports.postMovieSuccess = function postMovieSuccess(movie, ids) {
-    var movies = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
-    return {
-        type: _actionTypes.POST_MOVIE_SUCCESS,
-        movie: movie, ids: ids, movies: movies
-    };
-};
-
-var fetchFail = exports.fetchFail = function fetchFail(id, ids) {
-    var actors = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
-    return {
-        type: _actionTypes.FETCH_FAIL,
-        error: true,
-        id: id, ids: ids, actors: actors
-    };
-};
-var fetchFailSlug = exports.fetchFailSlug = function fetchFailSlug(slugName, slugs) {
-    var actors = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
-    return {
-        type: _actionTypes.FETCH_FAIL_SLUG,
-        error: true,
-        slugName: slugName, slugs: slugs, actors: actors
-    };
-};
-
-var editingMovieSuccess = exports.editingMovieSuccess = function editingMovieSuccess(movie, slug, id) {
-    return {
-        type: _actionTypes.EDITING_MOVIE_SUCCESS,
-        movie: movie, slug: slug, id: id
-    };
-};
-
-var checkingNameSuccess = exports.checkingNameSuccess = function checkingNameSuccess(result) {
-    return {
-        type: _actionTypes.CHECK_NAME_ACTOR_SUCCESS,
-        result: result
-    };
-};
-
-var checkingNameFail = exports.checkingNameFail = function checkingNameFail(result) {
-    return {
-        type: _actionTypes.CHECK_NAME_FAIL,
-        result: result
-    };
-};
-
-var fetchAutocompleteMoviesSuccess = exports.fetchAutocompleteMoviesSuccess = function fetchAutocompleteMoviesSuccess() {
-    var movies = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    return { type: _actionTypes.FETCH_AUTOCOMPLETE_MOVIES_SUCCESS, movies: movies };
-};
-
 var editingFail = exports.editingFail = function editingFail() {
-    return { type: _actionTypes.EDITING_FAIL, error: true };
-};
-
-var editingActorSuccess = exports.editingActorSuccess = function editingActorSuccess(actor, slug, id) {
-    return {
-        type: _actionTypes.EDITING_ACTOR_SUCCESS,
-        actor: actor, slug: slug, id: id
-    };
-};
-
-var fetchMoviesSuccess = exports.fetchMoviesSuccess = function fetchMoviesSuccess(id, ids) {
-    var movies = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
-    return {
-        type: _actionTypes.FETCH_MOVIES_SUCCESS,
-        id: id, movies: movies, ids: ids
-    };
-};
-
-var fetchMoviesSlugSuccess = exports.fetchMoviesSlugSuccess = function fetchMoviesSlugSuccess(slugName, slugs) {
-    var movies = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
-    return {
-        type: _actionTypes.FETCH_MOVIES_SLUG_SUCCESS,
-        slugName: slugName, movies: movies, slugs: slugs
-    };
-};
-
-var fetchCarouselleMoviesSuccess = exports.fetchCarouselleMoviesSuccess = function fetchCarouselleMoviesSuccess(ids, movies, label) {
-    return {
-        type: _actionTypes.FETCH_CAROUSEL_MOVIES_SUCCESS,
-        id: 'carouselle',
-        movies: movies, ids: ids, label: label
-    };
-};
-
-var fetchMoviesByScheduleSuccess = exports.fetchMoviesByScheduleSuccess = function fetchMoviesByScheduleSuccess(ids, movies) {
-    return {
-        type: _actionTypes.FETCH_SCHEDULE_MOVIES_SUCCESS,
-        id: 'schedule',
-        movies: movies, ids: ids
-    };
-};
-
-var authStart = exports.authStart = function authStart() {
-    return { type: _actionTypes.AUTH_START };
-};
-
-var loginSuccess = exports.loginSuccess = function loginSuccess(user) {
-    return { type: _actionTypes.LOGIN_SUCCESS, user: user };
-};
-
-var authFail = exports.authFail = function authFail(error) {
-    return { type: _actionTypes.AUTH_FAIL, error: error };
-};
-
-var logoutSuccess = exports.logoutSuccess = function logoutSuccess(user) {
-    return { type: _actionTypes.LOGOUT_SUCCESS };
-};
-
-var setUser = exports.setUser = function setUser(user) {
-    return { type: _actionTypes.SET_USER, user: user };
-};
-
-var authAdditionalInfoSuccess = exports.authAdditionalInfoSuccess = function authAdditionalInfoSuccess(info) {
-    return { type: _actionTypes.ADDITTIONAL_INFO, info: info };
-};
-
-var signUpSuccess = exports.signUpSuccess = function signUpSuccess(user) {
-    return { type: _actionTypes.SIGN_UP_SUCCESS, user: user };
-};
-
-var clearMoviesAutocomplete = exports.clearMoviesAutocomplete = function clearMoviesAutocomplete() {
-    return { type: _actionTypes.CLEAR_MOVIES_AUTOCOMPLETE };
+  return { type: _actionTypes.EDITING_FAIL, error: true };
 };
 
 /***/ }),
@@ -68910,7 +68732,7 @@ var bySlug = exports.bySlug = function bySlug() {
             return _extends({}, state, action.movies);
         case _actionTypes.POST_MOVIE_SUCCESS:
             // ++
-            return _extends({}, state, action.movies);
+            return _extends({}, state, action.movie);
         case _actionTypes.FETCH_MOVIE_SLUG_FAIL:
             // ++
             return action;
@@ -68948,8 +68770,9 @@ var allSlugs = exports.allSlugs = function allSlugs() {
 
     switch (action.type) {
         case _actionTypes.FETCH_MOVIES_SLUG_SUCCESS: // ++
-        case _actionTypes.FETCH_SCHEDULE_MOVIES_SUCCESS:
+        case _actionTypes.FETCH_SCHEDULE_MOVIES_SUCCESS: // ++
         case _actionTypes.FETCH_MOVIES_LABEL_SUCCESS:
+            // ++
             return [].concat(_toConsumableArray(state), _toConsumableArray(action.slugs)).filter(function (el, i, arr) {
                 return arr.indexOf(el) === i;
             });
