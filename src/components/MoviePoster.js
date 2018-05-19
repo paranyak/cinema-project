@@ -16,15 +16,23 @@ class MoviePoster extends Component {
             this.props.fetchMovieById(filmId);
             return null;
         }
+        let moviePoster = '';
+        if (film.published) {
+          moviePoster = (<Link to={`/movie/${film.slugName}`}>
+                            <picture><img src={link + film.image} className={b("image")}/></picture>
+                        </Link>)
+        } else {
+          moviePoster = (<Link to={`/edit-movie/${film.slugName}`}>
+                            <span className={b("image", ["undefined"])}></span>
+                        </Link>)
+        }
         return (
             <article className={b()}>
-                <Link to={`/movie/${film.slugName}`}>
-                    <picture><img src={link + film.image} className={b("image")}/></picture>
-                </Link>
+                {moviePoster}
                 <footer className={b("additional-info")}>
                     <h3 className={b('name')}>{film.name}</h3>
                     <p className={b('genre')}>{film.genre}</p>
-                    <span className={b('rating')}>{film.rating}</span>
+                    <span className={b('rating')} style={{display: film.rating ? 'block' : 'none'}}>{film.rating}</span>
                 </footer>
             </article>
         )

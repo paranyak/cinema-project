@@ -5,11 +5,16 @@ import scrollTo from '../helpers/scrollTo';
 import checkScrollPosition from '../helpers/checkScrollPosition';
 import {connect} from "react-redux";
 import MoviePoster from "./MoviePoster";
-import {getLabeledMovies} from '../reducers';
+import ActorPoster from "./ActorPoster";
+import {getLabeledMovies, getUnpublishedMovies, getUnpublishedActors} from '../reducers';
 import {fetchMoviesByLabel} from '../actions/movies';
+import {fetchUnpublishedActors} from '../actions/actors';
 import debounce from 'lodash/debounce';
+import {Link} from "react-router-dom";
+
 
 const b = block("MovieCarousel");
+
 
 class MovieCarousel extends Component {
     constructor() {
@@ -18,7 +23,11 @@ class MovieCarousel extends Component {
     }
 
     componentWillMount() {
-        this.props.fetchMovies();
+        if (this.props.movie) {
+          this.props.fetchMovies();
+        } else {
+          this.props.fetchActors();
+        }
     }
 
     handleClick(k = 1) {
@@ -52,7 +61,17 @@ class MovieCarousel extends Component {
     }
 
     render() {
-        const {films} = this.props;
+        const {films, unpublishedFilms, unpublishedActors} = this.props;
+        let movies;
+        if (this.props.movie) {
+          if (this.props.label === 'unpublished') {
+            movies = unpublishedFilms;
+          } else {
+            movies = films
+          }
+        } else {
+            movies = unpublishedActors;
+        }
         return (
             <section className={b()}>
                 <button
@@ -67,11 +86,11 @@ class MovieCarousel extends Component {
                      className={b('movies')}
                      onScroll={this.onScrollMove.bind(this)}
                 >
-                    {films
-                        .map((film, i) =>
-                                // {/*<LazyLoad key={i} height='100%' offsetRight={200}>*/}
-                                <MoviePoster key={i} filmId={film}/>
-                            // </LazyLoad>
+                    {movies
+                        .map((film, i) => this.props.movie ? <MoviePoster key={i} filmId={film}/> :
+                        <Link to={`/edit-actor/${film}`}>
+                            <ActorPoster key={i} actorSlug={film}/>
+                        </Link>
                         )}
                 </div>
                 <button
@@ -86,11 +105,16 @@ class MovieCarousel extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch, props) => ({fetchMovies: () => dispatch(fetchMoviesByLabel(props.label))});
+const mapDispatchToProps = (dispatch, props) => ({
+  fetchMovies: () => dispatch(fetchMoviesByLabel(props.label)),
+  fetchActors: () => dispatch(fetchUnpublishedActors())
+});
 
 const mapStateToProps = (state, props) => {
     const films = getLabeledMovies(props.label, state) || [];
-    return {films};
+    const unpublishedFilms = getUnpublishedMovies(state) || [];
+    const unpublishedActors = getUnpublishedActors(state) || [];
+    return {films, unpublishedFilms, unpublishedActors};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCarousel);

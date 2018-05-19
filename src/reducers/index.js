@@ -34,6 +34,10 @@ export const isActorFetchingSlug = (slugName, state) => fromActors.isActorFetchi
 
 export const getLabeledMovies = (label, state) => fromMovies.getLabeledMovies(label, state.movies);
 
+export const getUnpublishedMovies = (state) => fromMovies.getUnpublishedMovies(state.movies);
+
+export const getUnpublishedActors = (state) => fromActors.getUnpublishedActors(state.actors);
+
 export const getMoviesAutocomplete = (state) => fromMovies.getMoviesAutocomplete(state.movies);
 
 export const getMovieBySlug = (slugName, state) => fromMovies.getMovieBySlug(slugName, state.movies);

@@ -50,7 +50,6 @@ class AddMInfo extends Component {
 
     render() {
         const {label, startDate} = this.state;
-        console.log('state in info', this.state);
         return (
             <section className={b()}>
                 <h3 className={b('title')}>Movie Title</h3>

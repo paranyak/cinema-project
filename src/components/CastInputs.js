@@ -38,7 +38,6 @@ class CastInputs extends Component {
             let suggestedActors = await (response.json());
             if (suggestedActors.length !== 0) {
                 this.setState({suggestedActors});
-                console.log('sug actors', this.state.suggestedActors);
             }
         }
     }
@@ -49,13 +48,15 @@ class CastInputs extends Component {
         const filtered = this.state.suggestedActors.filter(f => f.name === value);// || f.name.includes(value));
         let slugName = '';
         let movies = [];
+        let _id;
         if (filtered.length === 1) {
             slugName = filtered[0].slugName;
             movies = filtered[0].movies;
+            _id = filtered[0]._id;
         }
         const arr = [
             ...this.state.chosenActors.slice(0, i),
-            Object.assign({}, this.state.chosenActors[i], {name: value, slugName, movies}),
+            Object.assign({}, this.state.chosenActors[i], {name: value, slugName, movies, _id}),
             ...this.state.chosenActors.slice(i + 1)
         ];
         this.setState({chosenActors: arr});

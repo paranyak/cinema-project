@@ -3,9 +3,11 @@ import {
     FETCH_ACTOR_SLUG_SUCCESS,
     EDITING_ACTOR_SUCCESS,
     EDITING_ACTOR_START,
+    FETCH_UNPUBLISHED_ACTORS_SUCCESS,
     FETCH_ACTOR_DELETE_SUCCESS, POST_ACTOR_SUCCESS, POST_ACTOR_START, FETCH_ACTOR_SLUG_FAIL,
     CHECK_NAME_ACTOR,
     CHECK_NAME_ACTOR_SUCCESS
+
 } from '../helpers/actionTypes';
 import * as fromApi from "../api/fetch";
 import {actorsListSchemaSlug} from "../helpers/schema";
@@ -17,7 +19,15 @@ import * as fromFetch from "./index";
 
 export const editingActorStart = (actor) => ({type: EDITING_ACTOR_START, actor});
 
+
 export const fetchActorsSlugStart = (slugName) => ({type: FETCH_ACTOR_SLUG, slugName});
+
+
+export const fetchUnpublishedActorsSuccess = (slugs, actors) => ({
+    type: FETCH_UNPUBLISHED_ACTORS_SUCCESS,
+    slugs,
+    actors
+});
 
 export const actorPostStart = (actor) => ({type: POST_ACTOR_START, actor});
 
@@ -52,6 +62,12 @@ export const checkingNameActor = (name) => {console.log("here bleat"); return {t
 
 // -------------------------------------------------------
 
+export const fetchUnpublishedActors = () => async (dispatch) => {
+    dispatch(fetchActorsSlugStart('unpublished'));
+    let actors = await fromApi.unpublishedActors();
+    actors = normalize(actors, actorsListSchemaSlug);
+    dispatch(fetchUnpublishedActorsSuccess(actors.result, actors.entities.actors));
+};
 
 export const fetchAdditionalActors = (limit, page) => async (dispatch) => {
     dispatch(fetchActorsSlugStart('additional'));
@@ -78,7 +94,11 @@ export const fetchActorsSlug = (slugName) => async (dispatch) => {
         let actors = await ((response).json());
         actors.slugName = actors['slugName'];
         actors = normalize([actors], actorsListSchemaSlug);
-        dispatch(fetchActorsSlugSuccess(slugName, actors.result, actors.entities.actors));
+        if (actors.entities.actors[slugName].published) {
+            dispatch(fetchActorsSlugSuccess(slugName, actors.result, actors.entities.actors));
+        } else {
+            dispatch(fetchUnpublishedActorsSuccess(actors.result, actors.entities.actors));
+        }
     }
 };
 
@@ -108,6 +128,7 @@ export const editActorBySlug = (slugName, actor) => async (dispatch) => {
         dispatch(fromFetch.editingFail());
     }
 };
+
 
 export const checkName = (name, type) => async (dispatch) => {
     //не знаю чи актуально для фільмів

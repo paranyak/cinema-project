@@ -14,6 +14,12 @@ router.get('/byId/:id', async (req, res) => {
     }
 });
 
+router.get('/unpublished-slugs', async function (req, res) {
+  const actors = await db.get().collection('actors')
+                              .find({published: false}, {fields: {slugName: true}})
+                              .toArray();
+  res.send(actors.map(el => el.slugName));
+})
 
 router.get('/name_like=:name', async function(req, res) {
     let name =  req.params.name;
@@ -22,8 +28,9 @@ router.get('/name_like=:name', async function(req, res) {
     else res.send({actor});
 });
 
+
 router.get('/slugs', async (req, res) => {
-    let params = {};
+    let params = {published: true};
     let query = req.query;
     let dbQuery;
     dbQuery = db.get().collection('actors').find(params, {fields: {slugName: true}});
@@ -49,12 +56,29 @@ router.get('/autocomplete/:query', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-    const actor = await db.get().collection('actors').save(req.body);
-    console.log('-->', actor.ops[0]);
-    res.send(actor.ops[0])
+    let actor = req.body;
+    actor.published = true;
+
+    actor.movies = await Promise.all(actor.movies.map(async (movie) => {
+      if(!movie._id) {
+        movie.published = false;
+        let member = await db.get().collection('movies').save(movie);
+        return member.ops[0].slugName;
+      }
+      return movie.slugName;
+    }));
+
+    const savedActor = await db.get().collection('actors').save(actor);
+
+    actor.movies.forEach(async (movie) => {
+      await db.get().collection('movies').findOneAndUpdate({slugName: movie}, {$push: {cast: actor.slugName}})
+    });
+    console.log(savedActor.ops[0]);
+    res.send(savedActor.ops[0])
 });
 
 router.patch('/:slugName', async (req, res) => {
+    req.body.published = true;
     const actor = await db.get().collection('actors').findOneAndUpdate({slugName: req.params.slugName}, {$set: req.body}, {returnOriginal: false});
     res.send(actor.value)
 
