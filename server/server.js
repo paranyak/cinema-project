@@ -4,14 +4,11 @@ const movies = require('./routes/movies');
 const actors = require('./routes/actors');
 const app = express();
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const path = require('path');
 const url = 'mongodb://olya:1@ds227740.mlab.com:27740/cinema-project';
 
 const port = process.env.PORT || 3000;
 
-// app.use(cors({origin: 'https://csucu-cinema-project.herokuapp.com'}));
-// app.use(cors({origin: 'http://localhost:5000'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/movies', movies);

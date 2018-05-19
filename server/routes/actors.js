@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var db = require('../db');
+const express = require('express');
+const router = express.Router();
+const db = require('../db');
 
 router.get('/bySlugName/:slugName', async (req, res) => {
     try {
@@ -15,11 +15,17 @@ router.get('/bySlugName/:slugName', async (req, res) => {
 });
 
 router.get('/unpublished-slugs', async function (req, res) {
-  const actors = await db.get().collection('actors')
-                              .find({published: false}, {fields: {slugName: true}})
-                              .toArray();
-  res.send(actors.map(el => el.slugName));
-})
+    try {
+        const actors = await db.get().collection('actors')
+            .find({published: false}, {fields: {slugName: true}})
+            .toArray();
+        res.send(actors.map(el => el.slugName));
+    }
+    catch (e) {
+        console.error(e);
+        res.error(e);
+    }
+});
 
 router.get('/name_like=:name', async function (req, res) {
     try {

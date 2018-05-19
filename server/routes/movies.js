@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var db = require('../db');
+const express = require('express');
+const router = express.Router();
+const db = require('../db');
 
 router.get('/moviesCount', async function (req, res) {
     try {
@@ -14,11 +14,17 @@ router.get('/moviesCount', async function (req, res) {
 });
 
 router.get('/unpublished-slugs', async function (req, res) {
-    const movies = await db.get().collection('movies')
-        .find({published: false}, {fields: {slugName: true}})
-        .toArray();
-    res.send(movies.map(el => el.slugName));
-})
+    try {
+        const movies = await db.get().collection('movies')
+            .find({published: false}, {fields: {slugName: true}})
+            .toArray();
+        res.send(movies.map(el => el.slugName));
+    }
+    catch (e) {
+        console.error(e);
+        res.error(e);
+    }
+});
 
 router.get('/slugs', async function (req, res) {
     try {
