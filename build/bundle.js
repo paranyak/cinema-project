@@ -22788,7 +22788,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 var PORT = process.env.PORT || 3000;
 
-var LOCALHOST = '';var editMovie = exports.editMovie = function () {
+var LOCALHOST = 'https://csucu-cinema-project.herokuapp.com';var editMovie = exports.editMovie = function () {
     var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(slugName, movie) {
         var response;
         return regeneratorRuntime.wrap(function _callee17$(_context17) {
