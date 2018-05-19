@@ -76,7 +76,7 @@ class MovieImage extends Component {
     componentWillMount() {
         const {film} = this.props;
         let sourcesArray = [film.image];
-        film.screenshots.map(
+        (film.screenshots || []).map(
             screen => sourcesArray.push(screen)
         );
         this.setState({sources: sourcesArray});
@@ -86,7 +86,7 @@ class MovieImage extends Component {
         if (nextProps !== this.props) {
             const {film} = nextProps;
             let sourcesArray = [film.image];
-            film.screenshots.map(
+            (film.screenshots || []).map(
                 screen => sourcesArray.push(screen)
             );
             this.setState({sources: sourcesArray});
@@ -108,13 +108,20 @@ class MovieImage extends Component {
       return null;
     }
 
+
     render() {
         const {film} = this.props;
+        let image;
+        if (film.image) {
+          image = (<picture><img src={linkMain + film.image} className={b("main")}
+                          onClick={e => this.mainImageHandler(e, 0)}/></picture>)
+        } else {
+          image = (<span className={b("main", ["undefined"])} onClick={e => this.mainImageHandler(e, 0)}></span>)
+        }
         return <section className={b()}>
-                <picture><img src={linkMain + film.image} className={b("main")}
-                              onClick={e => this.mainImageHandler(e, 0)}/></picture>
+                {image}
                 <section className={b("screenshots")}>
-                    {film.screenshots.map((screen, ind) => <picture key={'screenshot' + ind.toString()}>
+                    {(film.screenshots || []).map((screen, ind) => <picture key={'screenshot' + ind.toString()}>
                         <img src={linkScr + screen} className={b("screen")}
                              onClick={e => this.mainImageHandler(e, ind + 1)}/>
                     </picture>)}

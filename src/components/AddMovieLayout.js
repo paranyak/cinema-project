@@ -99,8 +99,6 @@ class AddMovieLayout extends Component {
             }
         };
 
-        console.log(movie.cast);
-
         await this.props.postData(movie);
 
         // if (cast.length !== 0 && typeof cast[0] === 'object') {

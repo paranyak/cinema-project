@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import ActorPoster from "./ActorPoster";
 import MovieCarousel from "./MovieCarousel";
 import InfiniteScroll from "react-infinite-scroller";
-import {getAllActorsSlugs, isActorFetchingSlug} from "../reducers";
+import {getAllActorsSlugs, isActorFetchingSlug, getCurrentUser, getUnpublishedActors} from "../reducers";
 import {fetchAdditionalActors} from "../actions/actors"
 import LazyLoad from 'react-lazyload';
 import {Link} from "react-router-dom";
@@ -54,11 +54,18 @@ class AllActors extends Component {
     }
 
     render() {
+        let role = this.props.user && this.props.user.role;
+        let additional = '';
+        if (role === 'admin') {
+            additional = (<div>
+              <h1 className={b('title')}>Unpublished</h1>
+              <MovieCarousel label={"unpublished"} movie={false}/>
+            </div>)
+        }
         if (this.props.actors.length !== 0) {
             return (
                 <section className={b()}>
-                    <h1 className={b('title')}>Unpublished</h1>
-                    <MovieCarousel label={"unpublished"} movie={false}/>
+                    {additional}
                     <InfiniteScroll
                         loadMore={this.loadMore.bind(this)}
                         hasMore={this.state.hasMoreItems}
@@ -85,7 +92,9 @@ const mapDispatchToProps = (dispatch) => ({fetchAllActors: (labels, pages) => di
 const mapStateToProps = state => {
     const actors = getAllActorsSlugs(state);
     const isFetching = isActorFetchingSlug('additional', state);
-    return {actors, isFetching}
+    const user = getCurrentUser(state);
+    const unpublishedActors = getUnpublishedActors(state) || [];
+    return {actors, isFetching, user, unpublishedActors}
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllActors);

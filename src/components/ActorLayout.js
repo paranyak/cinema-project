@@ -19,10 +19,6 @@ const link = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_275,h_408,c_th
 
 class ActorLayout extends Component {
 
-    componentWillReceiveProps(nextProps) {
-        const {fetchMovieBySlug} = this.props;
-        nextProps.moviesToLoad.forEach((el) => fetchMovieBySlug(el))
-    }
 
     componentWillMount() {
         const {actor, isActorLoading} = this.props;
@@ -56,6 +52,10 @@ class ActorLayout extends Component {
         const {year, day} = actor.date;
         const birthDay = month + ' ' + day + ', ' + year;
 
+        // console.log("IN RENDER:", this.props.moviesToLoad);
+        this.props.moviesToLoad.forEach((el) => this.props.fetchMovieBySlug(el))
+
+
         if (role === 'admin') {
             additional = (<div>
                 <Link to={`/edit-actor/${actor.slugName}`}>
@@ -63,6 +63,12 @@ class ActorLayout extends Component {
                 </Link>
                 <span className={b('delete-icon')} onClick={() => this.deleteActor(actor.slugName)}></span>
             </div>)
+        }
+        let image;
+        if (actor.image) {
+          image = (<img className={b("image")} src={link + actor.image}/>)
+        } else {
+          image = (<span className={b("image", ["undefined"])}></span>)
         }
         return (
             <section className={b()}>
@@ -91,13 +97,14 @@ class ActorLayout extends Component {
                             Films
                             {movies.filter((movie) => movie)
                                 .map((movie, i) =>
-                                    <Link className={b("movie-link")} to={`/movie/${movie.slugName}`} key={i}>
+                                    <Link className={b("movie-link")} to={`/movie/${movie.slugName}`} key={i}
+                                    style={{display: movie.published ? 'inline-block' : 'none'}}>
                                         <p className={b("in-movie")}>{movie.name}</p>
                                     </Link>)}
                         </section>
                     </section>
                 </section>
-                <img className={b("image")} src={link + actor.image}/>
+                {image}
             </section>
         );
     }
@@ -115,8 +122,10 @@ export default connect((state, props) => {
             movies = actor.movies.map((s) => {
                 let movie = getMovieBySlug(s, state);
                 if (!movie) {
+                    // console.log("Movie to load:", s);
                     moviesToLoad.push(s);
                 }
+                // console.log("Movie to load2:",moviesToLoad);
                 return movie;
             })
         }

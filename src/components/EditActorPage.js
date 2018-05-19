@@ -40,9 +40,17 @@ class EditActorPage extends Component {
     }
 
     getStateFromChild(keys, values) {
+        keys = keys || []
+        let requiredFields = [ "info", "date", "city",  "name"];
+        let canSubmit = true;
         for (let k = 0; k < keys.length; k++) {
-            this.setState({[keys[k]]: values[k]})
+            this.setState({[keys[k]]: values[k]});
+            if(values[k] && requiredFields.includes(keys[k]) &&( values[k].length == 0 || Object.values(values[k]).includes(NaN))){
+                canSubmit = false;
+            }
         }
+        let submitButton = document.querySelector(".Editor__btn_submit");
+        submitButton.style.visibility = canSubmit ? 'initial' : 'hidden';
     }
 
     async editActorInDB(e) {
@@ -60,7 +68,7 @@ class EditActorPage extends Component {
         const {actor} = this.props;
 
         let newMovies = movies;
-
+        console.log(movies, "ppppppppppppp");
         if (movies.length !== 0 && typeof movies[0] === 'object') {
             newMovies = movies.map(m => m.slugName).filter(slugName => slugName.trim() !== '');
             movies.filter(el => el.slugName.trim() !== '')

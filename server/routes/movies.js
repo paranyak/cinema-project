@@ -110,6 +110,7 @@ router.post('/', async (req, res) => {
 });
 
 router.patch('/:slugName', async (req, res) => {
+    req.body.published = true;
     const movie = await db.get().collection('movies').findOneAndUpdate({slugName: req.params.slugName}, {$set: req.body}, {returnOriginal: false});
     res.send(movie.value);
 });

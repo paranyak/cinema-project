@@ -3,11 +3,10 @@ import {
     FETCH_ACTOR_SLUG_SUCCESS,
     EDITING_ACTOR_SUCCESS,
     EDITING_ACTOR_START,
-    FETCH_ACTOR_DELETE_SUCCESS,
     FETCH_UNPUBLISHED_ACTORS_SUCCESS,
-    POST_ACTOR_SUCCESS,
-    POST_ACTOR_START,
-    FETCH_ACTOR_SLUG_FAIL
+    FETCH_ACTOR_DELETE_SUCCESS, POST_ACTOR_SUCCESS, POST_ACTOR_START, FETCH_ACTOR_SLUG_FAIL,
+    CHECK_NAME_ACTOR,
+    CHECK_NAME_ACTOR_SUCCESS
 
 } from '../helpers/actionTypes';
 import * as fromApi from "../api/fetch";
@@ -53,6 +52,15 @@ export const fetchActorSlugFail = (slugName, slugs, actors = []) => ({
 });
 
 export const editingActorSuccess = (actor, slugName) => ({type: EDITING_ACTOR_SUCCESS, actor, slugName});
+
+
+export const checkingNameSuccess = (result) => ({
+    type: CHECK_NAME_ACTOR_SUCCESS,
+    result
+});
+
+export const checkingNameActor = (name) => {console.log("here bleat"); return {type: CHECK_NAME_ACTOR, name}};
+
 
 // -------------------------------------------------------
 
@@ -125,4 +133,14 @@ export const editActorBySlug = (slugName, actor) => async (dispatch) => {
     catch (err) {
         dispatch(fromFetch.editingFail());
     }
+};
+
+
+export const checkName = (name, type) => async (dispatch) => {
+    //не знаю чи актуально для фільмів
+    //if(type === 'movies') dispatch(fromFetch.checkingNameMovie(name));
+     dispatch(checkingNameActor(name));
+    const result = await fromApi.checkName(name, type);
+    //треба нормалізувати
+    dispatch(checkingNameSuccess(result));
 };

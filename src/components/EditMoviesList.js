@@ -61,12 +61,13 @@ class EditMoviesList extends Component {
         const {callback} = this.props;
         const {value} = e.target;
         let filtered;
+        let slugName = '';
+        let cast = [];
         if (this.state.suggestedMovies) {
           filtered = this.state.suggestedMovies.filter(f => f.name === value);// || f.name.includes(value));
 
         }
-        let slugName = '';
-        let cast = [];
+
         if (filtered.length === 1) {
             slugName = filtered[0].slugName;
             cast = filtered[0].cast;

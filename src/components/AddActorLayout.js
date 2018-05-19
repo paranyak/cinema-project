@@ -6,8 +6,9 @@ import {Redirect} from "react-router";
 import AddAImage from "./AddAImage";
 import AddAInfo from "./AddAInfo";
 import slugify from "slugify/index";
-import {postActorToDB} from "../actions/actors";
+import {postActorToDB, checkName} from "../actions/actors";
 import {editMovieBySlug} from "../actions/movies";
+import {getCheckedNameActor} from "../reducers/index";
 
 const b = block("AddActorLayout");
 
@@ -55,13 +56,31 @@ class AddActorLayout extends Component {
                 day: parseInt(splitDate[2])
             };
         }
+        movies.forEach((movie) => {
+          if(!movie.slugName) {
+            movie.slugName = slugify(movie.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
+          }
+        })
+        // const newMovies = movies.map(m => m.slugName).filter(slug => slug !== '');
+        let slugName = slugify(name, {
+            replacement: '_',
+            remove: /[.:!,;*&@^]/g,
+            lower: true
+        });
 
-        const newMovies = movies.map(m => m.slugName).filter(slug => slug !== '');
-        const slugName = slugify(name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
-
+        await this.props.checkName(name);
+        if (this.props.checked.slugName) {
+            if (this.props.checked.city === city) {
+                alert("This actor already exist");
+                return;
+            }else{
+                console.log("they are with tha same names");
+                slugName +="_" + city;
+            }
+        }
 
         const actorToAdd = {
-            movies: newMovies,
+            movies: movies,
             slugName,
             name,
             info,
@@ -70,16 +89,15 @@ class AddActorLayout extends Component {
             nominations: nominations.filter(el => el !== ''),
             image
         };
-
+        console.log(actorToAdd, "00000000000000000000000000000000000000000");
         this.props.postData(actorToAdd);
-
-        if (movies.length !== 0 && typeof movies[0] === 'object') {
-            movies.filter(el => el.slugName.trim() !== '')
-                .map(el => {
-                    const cast = (el.cast.includes(slugName)) ? [...el.cast] : [...el.cast, slugName];
-                    this.props.editMovies({cast}, el.slugName);
-                });
-        }
+        // if (movies.length !== 0 && typeof movies[0] === 'object') {
+        //     movies.filter(el => el.slugName.trim() !== '')
+        //         .map(el => {
+        //             const cast = (el.cast.includes(slugName)) ? [...el.cast] : [...el.cast, slugName];
+        //             this.props.editMovies({cast}, el.slugName);
+        //         });
+        // }
 
         this.setState({fireRedirect: true, link: slugName});
     }
@@ -110,7 +128,7 @@ class AddActorLayout extends Component {
                 <AddAInfo callback={this.getStateFromChild}/>
                 <div className={b('btns')}>
                     <button type='submit' className={b('btn', ['submit'])}
-                            disabled={!isEnabled}
+                            // disabled={!isEnabled}
                             onClick={this.addActorToDB.bind(this)}>
                         Submit
                     </button>
@@ -120,12 +138,17 @@ class AddActorLayout extends Component {
                     </button>
                 </div>
             </form>
-            {fireRedirect && (<Redirect to={`/allactors`}/>)}
+            {fireRedirect && (<Redirect to={`/`}/>)}
         </div>)
     }
 }
 
-export default connect(null, (dispatch) => ({
+
+export default connect((state, props) => {
+    let checked = getCheckedNameActor(state);
+    return {checked};
+}, (dispatch) => ({
+    checkName: (name) => dispatch(checkName(name, 'actors')),
     postData: (actor) => dispatch(postActorToDB(actor)),
     editMovies: (movie, slug) => dispatch(editMovieBySlug(slug, movie))
 })
