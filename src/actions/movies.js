@@ -104,13 +104,13 @@ export const fetchMoviesSchedule = (day) => async (dispatch) => {
 };
 
 export const fetchMoviesByLabel = (label) => async (dispatch) => {
-    dispatch(fetchMoviesSlugStart('carouselle'));
+    dispatch(fetchMoviesSlugStart('carousel'));
     if (label === 'unpublished') {
       let movies = await fromApi.unpublishedMovies();
       movies = normalize(movies, moviesListSchemaSlug);
       dispatch(fetchUnpublishedMoviesSuccess(movies.result, movies.entities.movies));
     } else {
-      let movies = await fromApi.carouselleMovies(label);
+      let movies = await fromApi.labeledMovies(label);
       movies = normalize(movies, moviesListSchemaSlug);
       dispatch(fetchMoviesByLabelSuccess(movies.result, movies.entities.movies, label));
     }

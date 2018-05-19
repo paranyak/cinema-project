@@ -18,7 +18,7 @@ export async function moviesSchedule(day) {
     return await ((await fetch(`${LOCALHOST}/movies/slugs?Schedule=${day}`)).json())
 }
 
-export async function carouselleMovies(label) {
+export async function labeledMovies(label) {
     return await ((await fetch(`${LOCALHOST}/movies/slugs?label=${label}`)).json())
 }
 

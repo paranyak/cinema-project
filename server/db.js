@@ -1,4 +1,4 @@
-var MongoClient = require('mongodb').MongoClient;
+const MongoClient = require('mongodb').MongoClient;
 const DB_NAME = 'cinema-project';
 
 let db = null;

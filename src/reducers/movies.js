@@ -19,22 +19,22 @@ import {
 
 export const bySlug = (state = {}, action) => {
     switch (action.type) {
-        case FETCH_MOVIES_SLUG_SUCCESS: // ++
+        case FETCH_MOVIES_SLUG_SUCCESS: 
         case FETCH_UNPUBLISHED_MOVIESL_SUCCESS:
             return {...state, ...action.movies};
-        case POST_MOVIE_SUCCESS: // ++
+        case POST_MOVIE_SUCCESS: 
             return {...state, ...action.movie};
-        case FETCH_MOVIE_SLUG_FAIL: // ++
+        case FETCH_MOVIE_SLUG_FAIL: 
             return action;
-        case EDITING_MOVIE_SUCCESS: // ++
+        case EDITING_MOVIE_SUCCESS: 
             let newState = state;
             newState[action.slugName] = action.movie;
             return newState;
-        case FETCH_MOVIE_DELETE_SUCCESS: // ++
+        case FETCH_MOVIE_DELETE_SUCCESS: 
             let newStateDel = {...state};
             delete newStateDel[action.slugName];
             return newStateDel;
-        default: // ++
+        default: 
             return state;
     }
 };
@@ -50,20 +50,20 @@ export const movieCount = (state = {}, action) => {
 
 export const allSlugs = (state = [], action) => {
     switch (action.type) {
-        case FETCH_MOVIES_SLUG_SUCCESS: // ++
-        case FETCH_SCHEDULE_MOVIES_SUCCESS: // ++
-        case FETCH_MOVIES_LABEL_SUCCESS: // ++
+        case FETCH_MOVIES_SLUG_SUCCESS: 
+        case FETCH_SCHEDULE_MOVIES_SUCCESS: 
+        case FETCH_MOVIES_LABEL_SUCCESS: 
             return [
                 ...state,
                 ...action.slugs
             ].filter((el, i, arr) => arr.indexOf(el) === i);
-        case POST_MOVIE_SUCCESS: // ++
+        case POST_MOVIE_SUCCESS: 
             return [...state, ...action.movies];
-        case FETCH_MOVIE_SLUG_FAIL: // ++
+        case FETCH_MOVIE_SLUG_FAIL: 
             return action;
-        case FETCH_MOVIE_DELETE_SUCCESS: // ++
+        case FETCH_MOVIE_DELETE_SUCCESS: 
             return [...state].filter((el) => el !== action.slugName);
-        default: // ++
+        default: 
             return state;
     }
 };
@@ -93,7 +93,7 @@ export const scheduleMoviesSlugs = (state = [], action) => {
 const unpublishedMoviesSlugs = (state = [], action) => {
     switch (action.type) {
         case FETCH_UNPUBLISHED_MOVIESL_SUCCESS:
-            return [...state, ...action.slugs].filter((el, i, arr) => arr.indexOf(el) === i);;
+            return [...state, ...action.slugs].filter((el, i, arr) => arr.indexOf(el) === i);
         case FETCH_MOVIE_DELETE_SUCCESS:
             return [...state].filter((el) => el !== action.slugName);
         default:
@@ -114,19 +114,19 @@ export const moviesAutocomplete = (state = [], action) => {
 
 export const fetching = (state = {}, action) => {
     switch (action.type) {
-        case FETCH_MOVIES_SLUG: // ++
+        case FETCH_MOVIES_SLUG: 
             return assoc(action.slugName, true, state);
         case EDITING_MOVIE_START:
             return assoc(action.movie, true, state);
-        case FETCH_SCHEDULE_MOVIES_SUCCESS: // ++
-        case FETCH_MOVIES_LABEL_SUCCESS: // ++
-        case FETCH_MOVIE_SLUG_FAIL: // ++
-        case FETCH_MOVIES_SLUG_SUCCESS: // ++
+        case FETCH_SCHEDULE_MOVIES_SUCCESS: 
+        case FETCH_MOVIES_LABEL_SUCCESS: 
+        case FETCH_MOVIE_SLUG_FAIL: 
+        case FETCH_MOVIES_SLUG_SUCCESS: 
             return assoc(action.slugName, false, state);
-        case POST_MOVIE_SUCCESS: // ++
-        case EDITING_MOVIE_SUCCESS: // ++
+        case POST_MOVIE_SUCCESS: 
+        case EDITING_MOVIE_SUCCESS: 
             return assoc(action.movie, false, state);
-        default: // ++
+        default: 
             return state;
     }
 };

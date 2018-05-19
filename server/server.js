@@ -5,7 +5,7 @@ const actors = require('./routes/actors');
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
-const url = 'mongodb://olya:1@ds227740.mlab.com:27740/cinema-project';
+const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/cinema-project';
 
 const port = process.env.PORT || 3000;
 
