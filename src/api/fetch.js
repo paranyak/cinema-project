@@ -1,5 +1,3 @@
-const PORT = process.env.PORT || 3000;
-
 const LOCALHOST = 'https://csucu-cinema-project.herokuapp.com';//`http://localhost:${PORT}`;
 
 export async function movie(id) {

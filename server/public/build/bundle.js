@@ -2639,7 +2639,7 @@ var fetchMoviesByLabel = exports.fetchMoviesByLabel = function fetchMoviesByLabe
                 while (1) {
                     switch (_context4.prev = _context4.next) {
                         case 0:
-                            dispatch(fetchMoviesSlugStart('carouselle'));
+                            dispatch(fetchMoviesSlugStart('carousel'));
 
                             if (!(label === 'unpublished')) {
                                 _context4.next = 9;
@@ -2659,7 +2659,7 @@ var fetchMoviesByLabel = exports.fetchMoviesByLabel = function fetchMoviesByLabe
 
                         case 9:
                             _context4.next = 11;
-                            return fromApi.carouselleMovies(label);
+                            return fromApi.labeledMovies(label);
 
                         case 11:
                             _movies = _context4.sent;
@@ -22249,7 +22249,7 @@ var withRouter = function withRouter(Component) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -22373,7 +22373,7 @@ var moviesSchedule = exports.moviesSchedule = function () {
     };
 }();
 
-var carouselleMovies = exports.carouselleMovies = function () {
+var labeledMovies = exports.labeledMovies = function () {
     var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(label) {
         return regeneratorRuntime.wrap(function _callee5$(_context5) {
             while (1) {
@@ -22397,7 +22397,7 @@ var carouselleMovies = exports.carouselleMovies = function () {
         }, _callee5, this);
     }));
 
-    return function carouselleMovies(_x4) {
+    return function labeledMovies(_x4) {
         return _ref5.apply(this, arguments);
     };
 }();
@@ -22786,8 +22786,6 @@ var checkName = exports.checkName = function () {
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-var PORT = process.env.PORT || 3000;
-
 var LOCALHOST = 'https://csucu-cinema-project.herokuapp.com';var editMovie = exports.editMovie = function () {
     var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(slugName, movie) {
         var response;
@@ -22869,7 +22867,6 @@ var editActor = exports.editActor = function () {
         return _ref18.apply(this, arguments);
     };
 }();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
 
 /***/ }),
 /* 352 */
@@ -68205,27 +68202,22 @@ var bySlug = exports.bySlug = function bySlug() {
     var action = arguments[1];
 
     switch (action.type) {
-        case _actionTypes.FETCH_MOVIES_SLUG_SUCCESS: // ++
+        case _actionTypes.FETCH_MOVIES_SLUG_SUCCESS:
         case _actionTypes.FETCH_UNPUBLISHED_MOVIESL_SUCCESS:
             return _extends({}, state, action.movies);
         case _actionTypes.POST_MOVIE_SUCCESS:
-            // ++
             return _extends({}, state, action.movie);
         case _actionTypes.FETCH_MOVIE_SLUG_FAIL:
-            // ++
             return action;
         case _actionTypes.EDITING_MOVIE_SUCCESS:
-            // ++
             var newState = state;
             newState[action.slugName] = action.movie;
             return newState;
         case _actionTypes.FETCH_MOVIE_DELETE_SUCCESS:
-            // ++
             var newStateDel = _extends({}, state);
             delete newStateDel[action.slugName];
             return newStateDel;
         default:
-            // ++
             return state;
     }
 };
@@ -68247,26 +68239,21 @@ var allSlugs = exports.allSlugs = function allSlugs() {
     var action = arguments[1];
 
     switch (action.type) {
-        case _actionTypes.FETCH_MOVIES_SLUG_SUCCESS: // ++
-        case _actionTypes.FETCH_SCHEDULE_MOVIES_SUCCESS: // ++
+        case _actionTypes.FETCH_MOVIES_SLUG_SUCCESS:
+        case _actionTypes.FETCH_SCHEDULE_MOVIES_SUCCESS:
         case _actionTypes.FETCH_MOVIES_LABEL_SUCCESS:
-            // ++
             return [].concat(_toConsumableArray(state), _toConsumableArray(action.slugs)).filter(function (el, i, arr) {
                 return arr.indexOf(el) === i;
             });
         case _actionTypes.POST_MOVIE_SUCCESS:
-            // ++
             return [].concat(_toConsumableArray(state), _toConsumableArray(action.movies));
         case _actionTypes.FETCH_MOVIE_SLUG_FAIL:
-            // ++
             return action;
         case _actionTypes.FETCH_MOVIE_DELETE_SUCCESS:
-            // ++
             return [].concat(_toConsumableArray(state)).filter(function (el) {
                 return el !== action.slugName;
             });
         default:
-            // ++
             return state;
     }
 };
@@ -68311,7 +68298,7 @@ var unpublishedMoviesSlugs = function unpublishedMoviesSlugs() {
         case _actionTypes.FETCH_UNPUBLISHED_MOVIESL_SUCCESS:
             return [].concat(_toConsumableArray(state), _toConsumableArray(action.slugs)).filter(function (el, i, arr) {
                 return arr.indexOf(el) === i;
-            });;
+            });
         case _actionTypes.FETCH_MOVIE_DELETE_SUCCESS:
             return [].concat(_toConsumableArray(state)).filter(function (el) {
                 return el !== action.slugName;
@@ -68341,22 +68328,18 @@ var fetching = exports.fetching = function fetching() {
 
     switch (action.type) {
         case _actionTypes.FETCH_MOVIES_SLUG:
-            // ++
             return (0, _ramda.assoc)(action.slugName, true, state);
         case _actionTypes.EDITING_MOVIE_START:
             return (0, _ramda.assoc)(action.movie, true, state);
-        case _actionTypes.FETCH_SCHEDULE_MOVIES_SUCCESS: // ++
-        case _actionTypes.FETCH_MOVIES_LABEL_SUCCESS: // ++
-        case _actionTypes.FETCH_MOVIE_SLUG_FAIL: // ++
+        case _actionTypes.FETCH_SCHEDULE_MOVIES_SUCCESS:
+        case _actionTypes.FETCH_MOVIES_LABEL_SUCCESS:
+        case _actionTypes.FETCH_MOVIE_SLUG_FAIL:
         case _actionTypes.FETCH_MOVIES_SLUG_SUCCESS:
-            // ++
             return (0, _ramda.assoc)(action.slugName, false, state);
-        case _actionTypes.POST_MOVIE_SUCCESS: // ++
+        case _actionTypes.POST_MOVIE_SUCCESS:
         case _actionTypes.EDITING_MOVIE_SUCCESS:
-            // ++
             return (0, _ramda.assoc)(action.movie, false, state);
         default:
-            // ++
             return state;
     }
 };
@@ -68553,7 +68536,7 @@ var unpublishedActorsSlugs = exports.unpublishedActorsSlugs = function unpublish
         case _actionTypes.FETCH_UNPUBLISHED_ACTORS_SUCCESS:
             return [].concat(_toConsumableArray(state), _toConsumableArray(action.slugs)).filter(function (el, i, arr) {
                 return arr.indexOf(el) === i;
-            });;
+            });
         case _actionTypes.FETCH_ACTOR_DELETE_SUCCESS:
             return [].concat(_toConsumableArray(state)).filter(function (el) {
                 return el !== action.slugName;
@@ -68569,7 +68552,6 @@ var checking = exports.checking = function checking() {
 
     switch (action.type) {
         case _actionTypes.CHECK_NAME_ACTOR_SUCCESS:
-            console.log("IN REDUCER: ", action.result);
             return action.result;
         default:
             return state;
@@ -68590,10 +68572,7 @@ var getUnpublishedActors = exports.getUnpublishedActors = function getUnpublishe
 };
 
 var getCheckedNameActor = exports.getCheckedNameActor = function getCheckedNameActor(state) {
-    console.log("here", state);
-    var b = state.checking;
-    console.log(b, "after check");
-    return b;
+    return state.checking;
 };
 
 exports.default = (0, _redux.combineReducers)({

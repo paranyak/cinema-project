@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
-const DB_NAME = 'cinema-project';
+const DB_NAME = 'heroku_t7gvckhq';
 
 let db = null;
 exports.connect = (url, done) => {
