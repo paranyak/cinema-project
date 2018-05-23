@@ -18,7 +18,7 @@ class EditActorPage extends Component {
         this.state = {
             fireRedirect: false,
             movies: [],
-            oldMovies: props.films,
+            oldMovies: props.oldMovies,
             info: '',
             date: '',
             city: '',
@@ -104,7 +104,7 @@ class EditActorPage extends Component {
     }
 
     render() {
-        const {actor, films} = this.props;
+        const {actor, oldMovies} = this.props;
         const {
             fireRedirect,
             info,
@@ -147,7 +147,7 @@ class EditActorPage extends Component {
                 <form className={b()}>
                     <h1 className={b('title')}>EDIT ACTOR</h1>
                     <EditActorImage actorImg={actor.image} callback={this.getStateFromChild}/>
-                    <EditActorInfo actor={actor} films={films} callback={this.getStateFromChild}/>
+                    <EditActorInfo actor={actor} films={oldMovies} callback={this.getStateFromChild}/>
                     <div className={b('btns')}>
                         <button type='submit' className={b('btn', ['submit'])}
                                 disabled={!isEnabled}
@@ -169,15 +169,15 @@ export default connect((state, props) => {
         const slug = props.match.params.slug.toLowerCase();
         const actor = getActorBySlug(slug, state);
         const filmsToFetch = [];
-        const films = actor.movies.map(movieID => {
-            let movie = getMovieBySlug(movieID, state);
+        const films = actor.movies && actor.movies.map(movieSlug => {
+            let movie = getMovieBySlug(movieSlug, state);
             if (!movie) {
-                filmsToFetch.push(movieID);
+                filmsToFetch.push(movieSlug);
             }
             return movie;
         }).filter(movie => movie);
         const isFilmFetching = (slug) => isMovieFetchingSlug(slug, state);
-        return {actor, films, filmsToFetch, isFilmFetching};
+        return {actor, oldMovies: films, filmsToFetch, isFilmFetching};
     },
     (dispatch) => ({
         fetchActorBySlug: (slug) => dispatch(fetchActorsSlug(slug)),

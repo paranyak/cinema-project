@@ -78974,7 +78974,7 @@ var EditActorPage = function (_Component) {
         _this.state = {
             fireRedirect: false,
             movies: [],
-            oldMovies: props.films,
+            oldMovies: props.oldMovies,
             info: '',
             date: '',
             city: '',
@@ -79098,7 +79098,7 @@ var EditActorPage = function (_Component) {
         value: function render() {
             var _props = this.props,
                 actor = _props.actor,
-                films = _props.films;
+                oldMovies = _props.oldMovies;
             var _state2 = this.state,
                 fireRedirect = _state2.fireRedirect,
                 info = _state2.info,
@@ -79145,7 +79145,7 @@ var EditActorPage = function (_Component) {
                         "EDIT ACTOR"
                     ),
                     _react2.default.createElement(_EditActorImage2.default, { actorImg: actor.image, callback: this.getStateFromChild }),
-                    _react2.default.createElement(_EditActorInfo2.default, { actor: actor, films: films, callback: this.getStateFromChild }),
+                    _react2.default.createElement(_EditActorInfo2.default, { actor: actor, films: oldMovies, callback: this.getStateFromChild }),
                     _react2.default.createElement(
                         "div",
                         { className: b('btns') },
@@ -79176,10 +79176,10 @@ exports.default = (0, _reactRedux.connect)(function (state, props) {
     var slug = props.match.params.slug.toLowerCase();
     var actor = (0, _reducers.getActorBySlug)(slug, state);
     var filmsToFetch = [];
-    var films = actor.movies.map(function (movieID) {
-        var movie = (0, _reducers.getMovieBySlug)(movieID, state);
+    var films = actor.movies && actor.movies.map(function (movieSlug) {
+        var movie = (0, _reducers.getMovieBySlug)(movieSlug, state);
         if (!movie) {
-            filmsToFetch.push(movieID);
+            filmsToFetch.push(movieSlug);
         }
         return movie;
     }).filter(function (movie) {
@@ -79188,7 +79188,7 @@ exports.default = (0, _reactRedux.connect)(function (state, props) {
     var isFilmFetching = function isFilmFetching(slug) {
         return (0, _reducers.isMovieFetchingSlug)(slug, state);
     };
-    return { actor: actor, films: films, filmsToFetch: filmsToFetch, isFilmFetching: isFilmFetching };
+    return { actor: actor, oldMovies: films, filmsToFetch: filmsToFetch, isFilmFetching: isFilmFetching };
 }, function (dispatch) {
     return {
         fetchActorBySlug: function fetchActorBySlug(slug) {
