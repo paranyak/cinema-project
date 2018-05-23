@@ -28,7 +28,7 @@ class EditMoviePage extends Component {
             format: [],
             technology: [],
             trailer: '',
-            cast: [],
+            actors: [],
             oldCast: props.oldCast,
             startDate: {},
             label: ''
@@ -76,7 +76,7 @@ class EditMoviePage extends Component {
             format,
             technology,
             trailer,
-            cast,
+            actors,
             oldCast
         } = this.state;
         const {film} = this.props;
@@ -90,18 +90,18 @@ class EditMoviePage extends Component {
 
         const convRating = rating ? parseFloat(rating) : "-.-";
 
-        let newCast = cast;
+        let newCast = actors;
 
-        if (cast && cast.length !== 0 && typeof cast[0] === 'object') {
-            newCast = cast.map(c => c.slugName).filter(slug => slug.trim() !== '');
-            cast.filter(el => el.slugName.trim() !== '')
+        if (actors && actors.length !== 0 && typeof actors[0] === 'object') {
+            newCast = actors.map(c => c.slugName).filter(slug => slug.trim() !== '');
+            actors.filter(el => el.slugName.trim() !== '')
                 .map(el => {
                     const movies = (el.movies.includes(film.slugName)) ? [...el.movies] : [...el.movies, film.slugName];
                     this.props.editActors({movies}, el.slugName);
                 });
             console.log(oldCast, "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
             oldCast.map(o => {
-                const a = cast.filter(n => n.slugName === o.slugName);
+                const a = actors.filter(n => n.slugName === o.slugName);
                 if (a.length === 0) {
                     // delete current movie from Actor with ID we don't use any more
                     const movies = o.movies.filter(el => el !== film.slugName);
@@ -157,7 +157,7 @@ class EditMoviePage extends Component {
                 <form className={b()}>
                     <h1 className={b('title')}>EDIT MOVIE</h1>
                     <EditMovieImage film={film} callback={this.getStateFromChild}/>
-                    <EditMovieInfo film={film} actors={oldCast} callback={this.getStateFromChild}/>
+                    <EditMovieInfo film={film} cast={oldCast} callback={this.getStateFromChild}/>
                     <div className={b('btns')}>
                         <button type='submit' className={b('btn', ['submit'])}
                                 onClick={this.editMovieInDB.bind(this)}>Save
@@ -179,14 +179,14 @@ export default connect((state, props) => {
         const film = getMovieBySlug(slug, state) || [];
         let actorsToFetch = [];
         const isActorFetching = (slug) => isActorFetchingSlug(slug, state);
-        const actors = film.cast && film.cast.map(actorSlug => {
+        const oldCast = film.cast && film.cast.map(actorSlug => {
           let actor = getActorBySlug(actorSlug, state);
           if(!actor) {
             actorsToFetch.push(actorSlug);
           }
           return actor;
         }).filter(actor => actor);
-        return {film, oldCast: actors, isActorFetching, actorsToFetch};
+        return {film, oldCast, isActorFetching, actorsToFetch};
     },
     (dispatch) => ({
         fetchMovieBySlug: slug => dispatch(fetchMovieSlug(slug)),

@@ -40,12 +40,12 @@ class EditActorPage extends Component {
     }
 
     getStateFromChild(keys, values) {
-        keys = keys || []
+        keys = keys || [];
         let requiredFields = [ "info", "date", "city",  "name"];
         let canSubmit = true;
         for (let k = 0; k < keys.length; k++) {
             this.setState({[keys[k]]: values[k]});
-            if(values[k] && requiredFields.includes(keys[k]) &&( values[k].length == 0 || Object.values(values[k]).includes(NaN))){
+            if(values[k] && requiredFields.includes(keys[k]) &&( values[k].length === 0 || Object.values(values[k]).includes(NaN))){
                 canSubmit = false;
             }
         }

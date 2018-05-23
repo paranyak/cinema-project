@@ -78332,7 +78332,7 @@ var EditMoviePage = function (_Component) {
             format: [],
             technology: [],
             trailer: '',
-            cast: [],
+            actors: [],
             oldCast: props.oldCast,
             startDate: {},
             label: ''
@@ -78375,14 +78375,14 @@ var EditMoviePage = function (_Component) {
             var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(e) {
                 var _this3 = this;
 
-                var _state, poster, screenshots, rating, duration, name, label, description, scheduleDate, startDate, genre, format, technology, trailer, cast, oldCast, film, durationIsObject, Schedule, scheduleTime, convRating, newCast, movie;
+                var _state, poster, screenshots, rating, duration, name, label, description, scheduleDate, startDate, genre, format, technology, trailer, actors, oldCast, film, durationIsObject, Schedule, scheduleTime, convRating, newCast, movie;
 
                 return regeneratorRuntime.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
                             case 0:
                                 e.preventDefault();
-                                _state = this.state, poster = _state.poster, screenshots = _state.screenshots, rating = _state.rating, duration = _state.duration, name = _state.name, label = _state.label, description = _state.description, scheduleDate = _state.scheduleDate, startDate = _state.startDate, genre = _state.genre, format = _state.format, technology = _state.technology, trailer = _state.trailer, cast = _state.cast, oldCast = _state.oldCast;
+                                _state = this.state, poster = _state.poster, screenshots = _state.screenshots, rating = _state.rating, duration = _state.duration, name = _state.name, label = _state.label, description = _state.description, scheduleDate = _state.scheduleDate, startDate = _state.startDate, genre = _state.genre, format = _state.format, technology = _state.technology, trailer = _state.trailer, actors = _state.actors, oldCast = _state.oldCast;
                                 film = this.props.film;
                                 durationIsObject = (typeof duration === "undefined" ? "undefined" : _typeof(duration)) === 'object';
                                 Schedule = [];
@@ -78397,16 +78397,16 @@ var EditMoviePage = function (_Component) {
                                 }
 
                                 convRating = rating ? parseFloat(rating) : "-.-";
-                                newCast = cast;
+                                newCast = actors;
 
 
-                                if (cast && cast.length !== 0 && _typeof(cast[0]) === 'object') {
-                                    newCast = cast.map(function (c) {
+                                if (actors && actors.length !== 0 && _typeof(actors[0]) === 'object') {
+                                    newCast = actors.map(function (c) {
                                         return c.slugName;
                                     }).filter(function (slug) {
                                         return slug.trim() !== '';
                                     });
-                                    cast.filter(function (el) {
+                                    actors.filter(function (el) {
                                         return el.slugName.trim() !== '';
                                     }).map(function (el) {
                                         var movies = el.movies.includes(film.slugName) ? [].concat(_toConsumableArray(el.movies)) : [].concat(_toConsumableArray(el.movies), [film.slugName]);
@@ -78414,7 +78414,7 @@ var EditMoviePage = function (_Component) {
                                     });
                                     console.log(oldCast, "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
                                     oldCast.map(function (o) {
-                                        var a = cast.filter(function (n) {
+                                        var a = actors.filter(function (n) {
                                             return n.slugName === o.slugName;
                                         });
                                         if (a.length === 0) {
@@ -78502,7 +78502,7 @@ var EditMoviePage = function (_Component) {
                         "EDIT MOVIE"
                     ),
                     _react2.default.createElement(_EditMovieImage2.default, { film: film, callback: this.getStateFromChild }),
-                    _react2.default.createElement(_EditMovieInfo2.default, { film: film, actors: oldCast, callback: this.getStateFromChild }),
+                    _react2.default.createElement(_EditMovieInfo2.default, { film: film, cast: oldCast, callback: this.getStateFromChild }),
                     _react2.default.createElement(
                         "div",
                         { className: b('btns') },
@@ -78535,7 +78535,7 @@ exports.default = (0, _reactRedux.connect)(function (state, props) {
     var isActorFetching = function isActorFetching(slug) {
         return (0, _reducers.isActorFetchingSlug)(slug, state);
     };
-    var actors = film.cast && film.cast.map(function (actorSlug) {
+    var oldCast = film.cast && film.cast.map(function (actorSlug) {
         var actor = (0, _reducers.getActorBySlug)(actorSlug, state);
         if (!actor) {
             actorsToFetch.push(actorSlug);
@@ -78544,7 +78544,7 @@ exports.default = (0, _reactRedux.connect)(function (state, props) {
     }).filter(function (actor) {
         return actor;
     });
-    return { film: film, oldCast: actors, isActorFetching: isActorFetching, actorsToFetch: actorsToFetch };
+    return { film: film, oldCast: oldCast, isActorFetching: isActorFetching, actorsToFetch: actorsToFetch };
 }, function (dispatch) {
     return {
         fetchMovieBySlug: function fetchMovieBySlug(slug) {
@@ -78791,7 +78791,7 @@ var EditMovieInfo = function (_Component) {
             genre: props.film.genre,
             format: props.film.format,
             technology: props.film.technology,
-            actors: props.actors,
+            actors: props.cast,
             label: props.film.label,
             startDate: props.film.startDate
         };
@@ -78905,7 +78905,7 @@ var EditMovieInfo = function (_Component) {
         value: function render() {
             var _props = this.props,
                 film = _props.film,
-                actors = _props.actors;
+                cast = _props.cast;
             var _state3 = this.state,
                 label = _state3.label,
                 startDate = _state3.startDate;
@@ -78999,7 +78999,7 @@ var EditMovieInfo = function (_Component) {
                     { className: b('title') },
                     "Actors"
                 ),
-                _react2.default.createElement(_AddDynamicList2.default, { type: "actor", items: actors, callback: this.callback }),
+                _react2.default.createElement(_AddDynamicList2.default, { type: "actor", items: cast, callback: this.callback }),
                 _react2.default.createElement(
                     "h3",
                     { className: b('title') },
@@ -79170,7 +79170,7 @@ var EditActorPage = function (_Component) {
             var canSubmit = true;
             for (var k = 0; k < keys.length; k++) {
                 this.setState(_defineProperty({}, keys[k], values[k]));
-                if (values[k] && requiredFields.includes(keys[k]) && (values[k].length == 0 || Object.values(values[k]).includes(NaN))) {
+                if (values[k] && requiredFields.includes(keys[k]) && (values[k].length === 0 || Object.values(values[k]).includes(NaN))) {
                     canSubmit = false;
                 }
             }

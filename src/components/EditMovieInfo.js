@@ -22,7 +22,7 @@ class EditMovieInfo extends Component {
             genre: props.film.genre,
             format: props.film.format,
             technology: props.film.technology,
-            actors: props.actors,
+            actors: props.cast,
             label: props.film.label,
             startDate: props.film.startDate
         };
@@ -101,7 +101,7 @@ class EditMovieInfo extends Component {
     }
 
     render() {
-        const {film, actors} = this.props;
+        const {film, cast} = this.props;
         const {label, startDate} = this.state;
         const values = this.getDataFromFilm(film);
         const durationTime = values[0];
@@ -160,7 +160,7 @@ class EditMovieInfo extends Component {
                                 callback={this.callback}/>
 
                 <h3 className={b('title')}>Actors</h3>
-                <AddDynamicList type='actor' items={actors} callback={this.callback}/>
+                <AddDynamicList type='actor' items={cast} callback={this.callback}/>
 
                 <h3 className={b('title')}>Label</h3>
                 <div>
