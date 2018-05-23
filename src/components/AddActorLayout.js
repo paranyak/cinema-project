@@ -60,8 +60,8 @@ class AddActorLayout extends Component {
           if(!movie.slugName) {
             movie.slugName = slugify(movie.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
           }
-        })
-        // const newMovies = movies.map(m => m.slugName).filter(slug => slug !== '');
+        });
+
         let slugName = slugify(name, {
             replacement: '_',
             remove: /[.:!,;*&@^]/g,
@@ -91,13 +91,6 @@ class AddActorLayout extends Component {
         };
         console.log(actorToAdd, "00000000000000000000000000000000000000000");
         this.props.postData(actorToAdd);
-        // if (movies.length !== 0 && typeof movies[0] === 'object') {
-        //     movies.filter(el => el.slugName.trim() !== '')
-        //         .map(el => {
-        //             const cast = (el.cast.includes(slugName)) ? [...el.cast] : [...el.cast, slugName];
-        //             this.props.editMovies({cast}, el.slugName);
-        //         });
-        // }
 
         this.setState({fireRedirect: true, link: slugName});
     }

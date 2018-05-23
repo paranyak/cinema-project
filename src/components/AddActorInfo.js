@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import block from "../helpers/BEM";
 import "../styles/AddActorInfo.less";
 import NominationsList from "./NominationsList";
-import AddMoviesList from "./AddMoviesList";
+import AddDynamicList from "./AddDynamicList";
 
 const b = block("AddActorInfo");
 
@@ -60,7 +60,7 @@ class AddActorInfo extends Component {
             <NominationsList nominations={[]} callback={this.callback}/>
 
             <h3 className={b("title")}>Movies</h3>
-            <AddMoviesList callback={this.callback}/>
+            <AddDynamicList type='movie' items={[]} callback={this.callback}/>
         </section>
     }
 }
