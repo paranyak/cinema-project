@@ -78230,12 +78230,11 @@ var EditMoviePage = function (_Component) {
     }, {
         key: "getStateFromChild",
         value: function getStateFromChild(keys, values) {
-            var requiredFields = ["startDate", "duration", "name", "description", "scheduleDate", "genre", "format", "technology", "trailer", "rating"];
+            var requiredFields = ["startDate", "duration", "name", "description", "genre", "format", "technology", "trailer", "rating"];
             var canSubmit = true;
             for (var k = 0; k < keys.length; k++) {
-                console.log(keys);
                 this.setState(_defineProperty({}, keys[k], values[k]));
-                if (requiredFields.includes(keys[k]) && values[k] && (values[k].length == 0 || Object.values(values[k]).includes(NaN) || values[k][0] === "")) {
+                if (requiredFields.includes(keys[k]) && values[k] && (values[k].length === 0 || Object.values(values[k]).includes(NaN) || values[k][0] === "")) {
                     canSubmit = false;
                 }
             }
@@ -78285,7 +78284,6 @@ var EditMoviePage = function (_Component) {
                                         var movies = el.movies.includes(film.slugName) ? [].concat(_toConsumableArray(el.movies)) : [].concat(_toConsumableArray(el.movies), [film.slugName]);
                                         _this3.props.editActors({ movies: movies }, el.slugName);
                                     });
-                                    console.log(oldCast, "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
                                     oldCast.map(function (o) {
                                         var a = cast.filter(function (n) {
                                             return n.slugName === o.slugName;
@@ -78630,6 +78628,10 @@ var _TimeRanges = __webpack_require__(341);
 
 var _TimeRanges2 = _interopRequireDefault(_TimeRanges);
 
+var _AddDynamicList = __webpack_require__(337);
+
+var _AddDynamicList2 = _interopRequireDefault(_AddDynamicList);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -78664,7 +78666,7 @@ var EditMovieInfo = function (_Component) {
             genre: props.film.genre,
             format: props.film.format,
             technology: props.film.technology,
-            cast: props.actors,
+            actors: props.actors,
             label: props.film.label,
             startDate: props.film.startDate
         };
@@ -78688,12 +78690,12 @@ var EditMovieInfo = function (_Component) {
                 genre = _state.genre,
                 format = _state.format,
                 technology = _state.technology,
-                cast = _state.cast;
+                actors = _state.actors;
 
             var chosenGenres = genre ? (typeof genre === "undefined" ? "undefined" : _typeof(genre)) === 'object' ? genre : genre.split(', ') : [];
             var chosenTechnologies = technology ? (typeof technology === "undefined" ? "undefined" : _typeof(technology)) === 'object' ? technology : technology.split(',') : [];
             var chosenFormats = format ? (typeof format === "undefined" ? "undefined" : _typeof(format)) === 'object' ? format : format.split(',') : [];
-            this.props.callback(['label', 'startDate', 'rating', 'duration', 'name', 'description', 'scheduleTime', 'scheduleDate', 'genre', 'format', 'technology', 'cast'], [label, startDate, rating, duration, name, description, scheduleTime, scheduleDate, chosenGenres, chosenFormats, chosenTechnologies, cast]);
+            this.props.callback(['label', 'startDate', 'rating', 'duration', 'name', 'description', 'scheduleTime', 'scheduleDate', 'genre', 'format', 'technology', 'cast'], [label, startDate, rating, duration, name, description, scheduleTime, scheduleDate, chosenGenres, chosenFormats, chosenTechnologies, actors]);
         }
     }, {
         key: "componentDidUpdate",
@@ -78710,7 +78712,7 @@ var EditMovieInfo = function (_Component) {
                 genre = _state2.genre,
                 format = _state2.format,
                 technology = _state2.technology,
-                cast = _state2.cast;
+                actors = _state2.actors;
 
             var chosenGenres = genre ? (typeof genre === "undefined" ? "undefined" : _typeof(genre)) === 'object' ? genre : genre.split(', ') : [];
             var chosenTechnologies = technology ? (typeof technology === "undefined" ? "undefined" : _typeof(technology)) === 'object' ? technology : technology.split(',') : [];
@@ -78722,7 +78724,7 @@ var EditMovieInfo = function (_Component) {
             } : {};
 
             if (prevState !== this.state) {
-                this.props.callback(['label', 'startDate', 'rating', 'duration', 'name', 'description', 'scheduleTime', 'scheduleDate', 'genre', 'format', 'technology', 'cast'], [label, stDate, rating, duration, name, description, scheduleTime, scheduleDate, chosenGenres, chosenFormats, chosenTechnologies, cast]);
+                this.props.callback(['label', 'startDate', 'rating', 'duration', 'name', 'description', 'scheduleTime', 'scheduleDate', 'genre', 'format', 'technology', 'cast'], [label, stDate, rating, duration, name, description, scheduleTime, scheduleDate, chosenGenres, chosenFormats, chosenTechnologies, actors]);
             }
         }
     }, {
@@ -78782,13 +78784,9 @@ var EditMovieInfo = function (_Component) {
 
             var timeRanges = [];
             if (schedule) {
-
                 timeRanges = Array.from(new Set(schedule.map(function (el) {
                     return el.split(' ')[1];
                 }))).sort();
-                console.log("KKKKKKKKKKKKKKKKKKKKKKK");
-                console.log(timeRanges);
-                console.log("KKKKKKKKKKKKKKKKKKKKKKK");
             }
 
             return [durationTime, chosenGenres, chosenTechnologies, chosenFormats, from, to, timeRanges];
@@ -78892,7 +78890,7 @@ var EditMovieInfo = function (_Component) {
                     { className: b('title') },
                     "Actors"
                 ),
-                _react2.default.createElement(_EditActorsList2.default, { actors: actors, callback: this.callback }),
+                _react2.default.createElement(_AddDynamicList2.default, { type: "actor", items: actors, callback: this.callback }),
                 _react2.default.createElement(
                     "h3",
                     { className: b('title') },
