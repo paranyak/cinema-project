@@ -65,7 +65,7 @@ class AddMovieLayout extends Component {
         const scheduleTime = this.state.scheduleTime.sort();
         scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
         actors.forEach((a) => {
-            if(!a.slugName) {
+            if (!a.slugName) {
                 a.slugName = slugify(a.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
             }
         });
@@ -96,7 +96,7 @@ class AddMovieLayout extends Component {
                 "day": parseInt(startDate.split('-')[2])
             }
         };
-        console.log('--- MOVIE', movie);
+
         await this.props.postData(movie);
 
         this.setState({fireRedirect: true});
@@ -153,7 +153,7 @@ class AddMovieLayout extends Component {
 }
 
 
-export default connect((state) => {
+export default connect((state, props) => {
         const allActors = getAllActorsSlugs(state);
         return {allActors}
     },

@@ -13,22 +13,18 @@ class EditMovieInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            rating: props.film.rating || 0,
-            duration: props.film.duration || {},
-            scheduleTime: props.film.Schedule ?
-                Array.from(new Set(props.film.Schedule.map(el => el.split(' ')[1]))).sort() :
-            [],
-            scheduleDate: props.film.Schedule ?
-                Array.from(new Set(props.film.Schedule.map(el => el.split(' ')[0]))).sort() :
-            [],
-            name: props.film.name || '',
-            description: props.film.description || '',
-            genre: props.film.genre || '',
-            format: props.film.format || [],
-            technology: props.film.technology || [],
-            actors: props.cast || [],
-            label: props.film.label || '',
-            startDate: props.film.startDate || {}
+            rating: props.film.rating,
+            duration: props.film.duration,
+            scheduleTime: Array.from(new Set(props.film.Schedule.map(el => el.split(' ')[1]))).sort(),
+            scheduleDate: Array.from(new Set(props.film.Schedule.map(el => el.split(' ')[0]))).sort(),
+            name: props.film.name,
+            description: props.film.description,
+            genre: props.film.genre,
+            format: props.film.format,
+            technology: props.film.technology,
+            actors: props.actors,
+            label: props.film.label,
+            startDate: props.film.startDate
         };
         this.onValueChange = this.onValueChange.bind(this);
         this.callback = this.callback.bind(this);
@@ -105,7 +101,7 @@ class EditMovieInfo extends Component {
     }
 
     render() {
-        const {film, cast} = this.props;
+        const {film, actors} = this.props;
         const {label, startDate} = this.state;
         const values = this.getDataFromFilm(film);
         const durationTime = values[0];
@@ -164,7 +160,7 @@ class EditMovieInfo extends Component {
                                 callback={this.callback}/>
 
                 <h3 className={b('title')}>Actors</h3>
-                <AddDynamicList type='actor' items={cast} callback={this.callback}/>
+                <AddDynamicList type='actor' items={actors} callback={this.callback}/>
 
                 <h3 className={b('title')}>Label</h3>
                 <div>

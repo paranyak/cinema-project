@@ -88,7 +88,7 @@ class AddActorLayout extends Component {
             nominations: nominations.filter(el => el !== ''),
             image
         };
-        console.log('---------actorToAdd', actorToAdd);
+        console.log(actorToAdd, "00000000000000000000000000000000000000000");
         this.props.postData(actorToAdd);
 
         this.setState({fireRedirect: true, link: slugName});
@@ -112,7 +112,7 @@ class AddActorLayout extends Component {
             info.length *
             city.length !== 0;
         const lenCancelBtn = (isEnabled) ? '100px' : '250px';
-        console.log('actor', this.state);
+
         return (<div>
             <form className={b()}>
                 <h1 className={b('title')}>ADD ACTOR</h1>

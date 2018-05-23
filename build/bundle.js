@@ -58398,16 +58398,14 @@ var AddMovieLayout = function (_Component) {
                                         "day": parseInt(startDate.split('-')[2])
                                     }
                                 };
-
-                                console.log('--- MOVIE', movie);
-                                _context.next = 11;
+                                _context.next = 10;
                                 return this.props.postData(movie);
 
-                            case 11:
+                            case 10:
 
                                 this.setState({ fireRedirect: true });
 
-                            case 12:
+                            case 11:
                             case "end":
                                 return _context.stop();
                         }
@@ -58490,7 +58488,7 @@ var AddMovieLayout = function (_Component) {
     return AddMovieLayout;
 }(_react.Component);
 
-exports.default = (0, _reactRedux.connect)(function (state) {
+exports.default = (0, _reactRedux.connect)(function (state, props) {
     var allActors = (0, _reducers.getAllActorsSlugs)(state);
     return { allActors: allActors };
 }, function (dispatch) {
@@ -78146,7 +78144,7 @@ var EditMoviePage = function (_Component) {
             poster: '',
             screenshots: [],
             rating: 0,
-            duration: {},
+            duration: '',
             name: '',
             description: '',
             scheduleTime: [],
@@ -78166,7 +78164,7 @@ var EditMoviePage = function (_Component) {
 
     _createClass(EditMoviePage, [{
         key: "componentWillMount",
-        value: function componentWillMount() {
+        value: function componentWillMount(props) {
             var _this2 = this;
 
             if (this.props.actorsToFetch && this.props.isActorFetching) {
@@ -78235,6 +78233,7 @@ var EditMoviePage = function (_Component) {
                                         var movies = el.movies.includes(film.slugName) ? [].concat(_toConsumableArray(el.movies)) : [].concat(_toConsumableArray(el.movies), [film.slugName]);
                                         _this3.props.editActors({ movies: movies }, el.slugName);
                                     });
+                                    console.log(oldCast, "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
                                     oldCast.map(function (o) {
                                         var a = actors.filter(function (n) {
                                             return n.slugName === o.slugName;
@@ -78268,15 +78267,13 @@ var EditMoviePage = function (_Component) {
                                     },
                                     startDate: startDate
                                 };
-
-                                console.log('edit movie', movie);
-                                _context.next = 14;
+                                _context.next = 13;
                                 return this.props.editMovie(movie, film.slugName);
 
-                            case 14:
+                            case 13:
                                 this.setState({ fireRedirect: true });
 
-                            case 15:
+                            case 14:
                             case "end":
                                 return _context.stop();
                         }
@@ -78326,7 +78323,7 @@ var EditMoviePage = function (_Component) {
                         "EDIT MOVIE"
                     ),
                     _react2.default.createElement(_EditMovieImage2.default, { film: film, callback: this.getStateFromChild }),
-                    _react2.default.createElement(_EditMovieInfo2.default, { film: film, cast: oldCast, callback: this.getStateFromChild }),
+                    _react2.default.createElement(_EditMovieInfo2.default, { film: film, actors: oldCast, callback: this.getStateFromChild }),
                     _react2.default.createElement(
                         "div",
                         { className: b('btns') },
@@ -78359,7 +78356,7 @@ exports.default = (0, _reactRedux.connect)(function (state, props) {
     var isActorFetching = function isActorFetching(slug) {
         return (0, _reducers.isActorFetchingSlug)(slug, state);
     };
-    var oldCast = film.cast && film.cast.map(function (actorSlug) {
+    var actors = film.cast && film.cast.map(function (actorSlug) {
         var actor = (0, _reducers.getActorBySlug)(actorSlug, state);
         if (!actor) {
             actorsToFetch.push(actorSlug);
@@ -78368,7 +78365,7 @@ exports.default = (0, _reactRedux.connect)(function (state, props) {
     }).filter(function (actor) {
         return actor;
     });
-    return { film: film, oldCast: oldCast, isActorFetching: isActorFetching, actorsToFetch: actorsToFetch };
+    return { film: film, oldCast: actors, isActorFetching: isActorFetching, actorsToFetch: actorsToFetch };
 }, function (dispatch) {
     return {
         fetchMovieBySlug: function fetchMovieBySlug(slug) {
@@ -78602,22 +78599,22 @@ var EditMovieInfo = function (_Component) {
         var _this = _possibleConstructorReturn(this, (EditMovieInfo.__proto__ || Object.getPrototypeOf(EditMovieInfo)).call(this, props));
 
         _this.state = {
-            rating: props.film.rating || 0,
-            duration: props.film.duration || {},
-            scheduleTime: props.film.Schedule ? Array.from(new Set(props.film.Schedule.map(function (el) {
+            rating: props.film.rating,
+            duration: props.film.duration,
+            scheduleTime: Array.from(new Set(props.film.Schedule.map(function (el) {
                 return el.split(' ')[1];
-            }))).sort() : [],
-            scheduleDate: props.film.Schedule ? Array.from(new Set(props.film.Schedule.map(function (el) {
+            }))).sort(),
+            scheduleDate: Array.from(new Set(props.film.Schedule.map(function (el) {
                 return el.split(' ')[0];
-            }))).sort() : [],
-            name: props.film.name || '',
-            description: props.film.description || '',
-            genre: props.film.genre || '',
-            format: props.film.format || [],
-            technology: props.film.technology || [],
-            actors: props.cast || [],
-            label: props.film.label || '',
-            startDate: props.film.startDate || {}
+            }))).sort(),
+            name: props.film.name,
+            description: props.film.description,
+            genre: props.film.genre,
+            format: props.film.format,
+            technology: props.film.technology,
+            actors: props.actors,
+            label: props.film.label,
+            startDate: props.film.startDate
         };
         _this.onValueChange = _this.onValueChange.bind(_this);
         _this.callback = _this.callback.bind(_this);
@@ -78729,7 +78726,7 @@ var EditMovieInfo = function (_Component) {
         value: function render() {
             var _props = this.props,
                 film = _props.film,
-                cast = _props.cast;
+                actors = _props.actors;
             var _state3 = this.state,
                 label = _state3.label,
                 startDate = _state3.startDate;
@@ -78823,7 +78820,7 @@ var EditMovieInfo = function (_Component) {
                     { className: b('title') },
                     "Actors"
                 ),
-                _react2.default.createElement(_AddDynamicList2.default, { type: "actor", items: cast, callback: this.callback }),
+                _react2.default.createElement(_AddDynamicList2.default, { type: "actor", items: actors, callback: this.callback }),
                 _react2.default.createElement(
                     "h3",
                     { className: b('title') },
@@ -78994,7 +78991,7 @@ var EditActorPage = function (_Component) {
             var canSubmit = true;
             for (var k = 0; k < keys.length; k++) {
                 this.setState(_defineProperty({}, keys[k], values[k]));
-                if (values[k] && requiredFields.includes(keys[k]) && (values[k].length === 0 || Object.values(values[k]).includes(NaN))) {
+                if (values[k] && requiredFields.includes(keys[k]) && (values[k].length == 0 || Object.values(values[k]).includes(NaN))) {
                     canSubmit = false;
                 }
             }
@@ -79018,7 +79015,7 @@ var EditActorPage = function (_Component) {
                                 actor = this.props.actor;
                                 newMovies = movies;
 
-
+                                console.log(movies, "ppppppppppppp");
                                 if (movies.length !== 0 && _typeof(movies[0]) === 'object') {
                                     newMovies = movies.map(function (m) {
                                         return m.slugName;
@@ -79044,6 +79041,7 @@ var EditActorPage = function (_Component) {
                                         }
                                     });
                                 }
+                                console.log(nominations);
                                 actorToAdd = {
                                     movies: newMovies,
                                     name: name,
@@ -79055,15 +79053,13 @@ var EditActorPage = function (_Component) {
                                     }),
                                     image: image
                                 };
-
-                                console.log('edit actor', actorToAdd);
-                                _context.next = 9;
+                                _context.next = 10;
                                 return this.props.editActor(actorToAdd, actor.slugName);
 
-                            case 9:
+                            case 10:
                                 this.setState({ fireRedirect: true });
 
-                            case 10:
+                            case 11:
                             case "end":
                                 return _context.stop();
                         }
@@ -79114,6 +79110,7 @@ var EditActorPage = function (_Component) {
             if (city === undefined) {
                 cCity = '';
             }
+            console.log('--', name, cInfo, cCity);
 
             var isEnabled = name.length * cInfo.length * cCity.length !== 0;
             var lenCancelBtn = isEnabled ? '100px' : '250px';
@@ -79698,7 +79695,7 @@ var AddActorLayout = function (_Component) {
                                     image: image
                                 };
 
-                                console.log('---------actorToAdd', actorToAdd);
+                                console.log(actorToAdd, "00000000000000000000000000000000000000000");
                                 this.props.postData(actorToAdd);
 
                                 this.setState({ fireRedirect: true, link: slugName });
@@ -79734,7 +79731,7 @@ var AddActorLayout = function (_Component) {
 
             var isEnabled = name.length * info.length * city.length !== 0;
             var lenCancelBtn = isEnabled ? '100px' : '250px';
-            console.log('actor', this.state);
+
             return _react2.default.createElement(
                 "div",
                 null,

@@ -19,7 +19,7 @@ class EditMoviePage extends Component {
             poster: '',
             screenshots: [],
             rating: 0,
-            duration: {},
+            duration: '',
             name: '',
             description: '',
             scheduleTime: [],
@@ -36,10 +36,10 @@ class EditMoviePage extends Component {
         this.getStateFromChild = this.getStateFromChild.bind(this);
     }
 
-    componentWillMount() {
+    componentWillMount(props) {
         if (this.props.actorsToFetch && this.props.isActorFetching) {
             this.props.actorsToFetch.forEach((actor) => {
-                if (!this.props.isActorFetching(actor)) {
+                if(!this.props.isActorFetching(actor)) {
                     this.props.fetchActorBySlug(actor);
                 }
             })
@@ -47,12 +47,12 @@ class EditMoviePage extends Component {
     }
 
     getStateFromChild(keys, values) {
-        let requiredFields = ["startDate", "duration", "name", "description", "genre", "format", "technology", "trailer", "rating"];
+        let requiredFields = [ "startDate", "duration", "name", "description", "genre", "format", "technology", "trailer", "rating"];
         let canSubmit = true;
         for (let k = 0; k < keys.length; k++) {
             console.log(keys);
             this.setState({[keys[k]]: values[k]});
-            if (requiredFields.includes(keys[k]) && (values[k] && (values[k].length === 0 || Object.values(values[k]).includes(NaN) || values[k][0] === ""))) {
+            if(requiredFields.includes(keys[k]) && (values[k] && (values[k].length === 0 || Object.values(values[k]).includes(NaN) || values[k][0] === ""))){
                 canSubmit = false;
             }
         }
@@ -99,6 +99,7 @@ class EditMoviePage extends Component {
                     const movies = (el.movies.includes(film.slugName)) ? [...el.movies] : [...el.movies, film.slugName];
                     this.props.editActors({movies}, el.slugName);
                 });
+            console.log(oldCast, "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
             oldCast.map(o => {
                 const a = actors.filter(n => n.slugName === o.slugName);
                 if (a.length === 0) {
@@ -128,7 +129,7 @@ class EditMoviePage extends Component {
             },
             startDate
         };
-        console.log('edit movie', movie);
+
         await this.props.editMovie(movie, film.slugName);
         this.setState({fireRedirect: true})
 
@@ -156,7 +157,7 @@ class EditMoviePage extends Component {
                 <form className={b()}>
                     <h1 className={b('title')}>EDIT MOVIE</h1>
                     <EditMovieImage film={film} callback={this.getStateFromChild}/>
-                    <EditMovieInfo film={film} cast={oldCast} callback={this.getStateFromChild}/>
+                    <EditMovieInfo film={film} actors={oldCast} callback={this.getStateFromChild}/>
                     <div className={b('btns')}>
                         <button type='submit' className={b('btn', ['submit'])}
                                 onClick={this.editMovieInDB.bind(this)}>Save
@@ -178,14 +179,14 @@ export default connect((state, props) => {
         const film = getMovieBySlug(slug, state) || [];
         let actorsToFetch = [];
         const isActorFetching = (slug) => isActorFetchingSlug(slug, state);
-        const oldCast = film.cast && film.cast.map(actorSlug => {
+        const actors = film.cast && film.cast.map(actorSlug => {
             let actor = getActorBySlug(actorSlug, state);
-            if (!actor) {
+            if(!actor) {
                 actorsToFetch.push(actorSlug);
             }
             return actor;
         }).filter(actor => actor);
-        return {film, oldCast, isActorFetching, actorsToFetch};
+        return {film, oldCast: actors, isActorFetching, actorsToFetch};
     },
     (dispatch) => ({
         fetchMovieBySlug: slug => dispatch(fetchMovieSlug(slug)),
