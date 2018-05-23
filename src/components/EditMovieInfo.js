@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import "../styles/EditInfo.less";
 import block from '../helpers/BEM'
 import {genres, formats, technologies} from "../helpers/constants";
-import EditActorsList from "./EditActorsList";
 import EditSelections from "./EditSelections";
 import CalendarRangePicker from "./CalendarRangePicker";
 import TimeRanges from "./TimeRanges";

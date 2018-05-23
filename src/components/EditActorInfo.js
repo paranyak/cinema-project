@@ -10,7 +10,7 @@ class EditActorInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            movies: props.actor.movies,
+            movies: props.films,
             info: props.actor.info,
             date: props.actor.date,
             city: props.actor.city,

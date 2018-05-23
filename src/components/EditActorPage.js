@@ -131,8 +131,6 @@ class EditActorPage extends Component {
         if (city === undefined) {
             cCity = '';
         }
-        console.log('--', name, cInfo, cCity);
-
         const isEnabled =
             name.length *
             cInfo.length *
