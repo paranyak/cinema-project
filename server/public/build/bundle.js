@@ -9652,7 +9652,7 @@ var AddDynamicList = function (_Component) {
                             case 0:
                                 type = this.props.type;
                                 _context.next = 3;
-                                return fetch("http://localhost:3000/" + type + "s/autocomplete/" + e.target.value);
+                                return fetch("https://csucu-cinema-project.herokuapp.com/" + type + "s/autocomplete/" + e.target.value);
 
                             case 3:
                                 response = _context.sent;
