@@ -78,7 +78,7 @@ class AddMovieLayout extends Component {
             slugName,
             image: poster,
             rating: parseFloat(rating).toString(),
-            cast: cast,
+            cast,
             description,
             screenshots,
             trailer,
