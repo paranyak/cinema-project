@@ -1,9 +1,8 @@
 import React, {Component} from "react";
 import "../styles/EditInfo.less";
-import {monthNames} from '../helpers/constants'
 import block from '../helpers/BEM'
 import NominationsList from "./NominationsList";
-import EditMoviesList from "./EditMoviesList";
+import AddDynamicList from "./AddDynamicList";
 
 const b = block("EditInfo");
 
@@ -92,7 +91,7 @@ class EditActorInfo extends Component {
             <NominationsList nominations={actor.nominations} callback={this.callback}/>
 
             <h3 className={b("title")}>Movies</h3>
-            <EditMoviesList movies={films} callback={this.callback}/>
+            <AddDynamicList type={'movie'} items={films} callback={this.callback}/>
         </section>
     }
 }

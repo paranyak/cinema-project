@@ -79266,7 +79266,7 @@ var EditActorPage = function (_Component) {
             var canSubmit = true;
             for (var k = 0; k < keys.length; k++) {
                 this.setState(_defineProperty({}, keys[k], values[k]));
-                if (values[k] && requiredFields.includes(keys[k]) && (values[k].length == 0 || Object.values(values[k]).includes(NaN))) {
+                if (values[k] && requiredFields.includes(keys[k]) && (values[k].length === 0 || Object.values(values[k]).includes(NaN))) {
                     canSubmit = false;
                 }
             }
@@ -79290,7 +79290,6 @@ var EditActorPage = function (_Component) {
                                 actor = this.props.actor;
                                 newMovies = movies;
 
-                                console.log(movies, "ppppppppppppp");
                                 if (movies.length !== 0 && _typeof(movies[0]) === 'object') {
                                     newMovies = movies.map(function (m) {
                                         return m.slugName;
@@ -79328,13 +79327,13 @@ var EditActorPage = function (_Component) {
                                     }),
                                     image: image
                                 };
-                                _context.next = 10;
+                                _context.next = 9;
                                 return this.props.editActor(actorToAdd, actor.slugName);
 
-                            case 10:
+                            case 9:
                                 this.setState({ fireRedirect: true });
 
-                            case 11:
+                            case 10:
                             case "end":
                                 return _context.stop();
                         }
@@ -79376,7 +79375,6 @@ var EditActorPage = function (_Component) {
                         src: "http://www.topdesignmag.com/wp-content/uploads/2012/06/1.-404-not-found-design.jpg" })
                 );
             }
-            console.log(name, info, city);
             var cInfo = info;
             var cCity = city;
             if (info === undefined) {
@@ -79587,8 +79585,6 @@ var _react2 = _interopRequireDefault(_react);
 
 __webpack_require__(377);
 
-var _constants = __webpack_require__(142);
-
 var _BEM = __webpack_require__(6);
 
 var _BEM2 = _interopRequireDefault(_BEM);
@@ -79597,9 +79593,9 @@ var _NominationsList = __webpack_require__(380);
 
 var _NominationsList2 = _interopRequireDefault(_NominationsList);
 
-var _EditMoviesList = __webpack_require__(1022);
+var _AddDynamicList = __webpack_require__(337);
 
-var _EditMoviesList2 = _interopRequireDefault(_EditMoviesList);
+var _AddDynamicList2 = _interopRequireDefault(_AddDynamicList);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -79747,7 +79743,7 @@ var EditActorInfo = function (_Component) {
                     { className: b("title") },
                     "Movies"
                 ),
-                _react2.default.createElement(_EditMoviesList2.default, { movies: films, callback: this.callback })
+                _react2.default.createElement(_AddDynamicList2.default, { type: 'movie', items: films, callback: this.callback })
             );
         }
     }]);
@@ -79822,214 +79818,7 @@ exports.push([module.i, ".NominationsList__button {\n  background-color: #FAE807
 
 
 /***/ }),
-/* 1022 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(2);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _BEM = __webpack_require__(6);
-
-var _BEM2 = _interopRequireDefault(_BEM);
-
-__webpack_require__(378);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var b = (0, _BEM2.default)("EditList");
-
-var EditMoviesList = function (_Component) {
-    _inherits(EditMoviesList, _Component);
-
-    function EditMoviesList(props) {
-        _classCallCheck(this, EditMoviesList);
-
-        var _this = _possibleConstructorReturn(this, (EditMoviesList.__proto__ || Object.getPrototypeOf(EditMoviesList)).call(this, props));
-
-        _this.state = {
-            suggestedMovies: [],
-            movieList: props.movies
-        };
-        return _this;
-    }
-
-    _createClass(EditMoviesList, [{
-        key: "componentWillReceiveProps",
-        value: function componentWillReceiveProps(nextProps) {
-            if (nextProps.movies !== this.state.movieList) {
-                this.setState(_extends({}, this.state, {
-                    movieList: nextProps.movies
-                }));
-            }
-        }
-    }, {
-        key: "createList",
-        value: function createList() {
-            var _this2 = this;
-
-            var _state = this.state,
-                suggestedMovies = _state.suggestedMovies,
-                movieList = _state.movieList;
-
-            console.log(movieList, suggestedMovies);
-            if (movieList && suggestedMovies) {
-                return movieList.map(function (m, j) {
-                    return _react2.default.createElement(
-                        "div",
-                        { key: j },
-                        _react2.default.createElement("input", { name: "name", className: b('input'), placeholder: 'Enter movie title', type: "text",
-                            value: m.name, list: "movies",
-                            onInput: _this2.onListChange.bind(_this2, j), onChange: _this2.onOptionClick.bind(_this2, j) }),
-                        _react2.default.createElement(
-                            "datalist",
-                            { id: "movies" },
-                            suggestedMovies.map(function (movie, i) {
-                                return _react2.default.createElement("option", { key: i, value: movie.name });
-                            })
-                        ),
-                        _react2.default.createElement("input", { type: "button", value: "-", className: b('button'),
-                            onClick: _this2.removeMovie.bind(_this2, j) })
-                    );
-                });
-            } else {
-                return null;
-            }
-        }
-    }, {
-        key: "onListChange",
-        value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(i, e) {
-                var response, suggestedMovies;
-                return regeneratorRuntime.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.next = 2;
-                                return fetch("https://csucu-cinema-project.herokuapp.com/movies/autocomplete/" + e.target.value);
-
-                            case 2:
-                                response = _context.sent;
-
-                                if (response.ok) {
-                                    _context.next = 8;
-                                    break;
-                                }
-
-                                console.log("ERROR IN Choosing Movie");
-                                return _context.abrupt("return", null);
-
-                            case 8:
-                                _context.next = 10;
-                                return response.json();
-
-                            case 10:
-                                suggestedMovies = _context.sent;
-
-                                if (suggestedMovies.length !== 0) {
-                                    this.setState({ suggestedMovies: suggestedMovies });
-                                }
-
-                            case 12:
-                            case "end":
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, this);
-            }));
-
-            function onListChange(_x, _x2) {
-                return _ref.apply(this, arguments);
-            }
-
-            return onListChange;
-        }()
-    }, {
-        key: "onOptionClick",
-        value: function onOptionClick(i, e) {
-            var callback = this.props.callback;
-            var value = e.target.value;
-
-            var filtered = void 0;
-            var slugName = '';
-            var cast = [];
-            if (this.state.suggestedMovies) {
-                filtered = this.state.suggestedMovies.filter(function (f) {
-                    return f.name === value;
-                }); // || f.name.includes(value));
-            }
-
-            if (filtered.length === 1) {
-                slugName = filtered[0].slugName;
-                cast = filtered[0].cast;
-            }
-            var arr = [].concat(_toConsumableArray(this.state.movieList.slice(0, i)), [Object.assign({}, this.state.movieList[i], { name: value, slugName: slugName, cast: cast })], _toConsumableArray(this.state.movieList.slice(i + 1)));
-            this.setState({ movieList: arr });
-            callback('movies', arr);
-        }
-    }, {
-        key: "addMovie",
-        value: function addMovie(e) {
-            e.preventDefault();
-            var callback = this.props.callback;
-
-            var arr = [].concat(_toConsumableArray(this.state.movieList), [{ name: '', slugName: '', cast: [] }]);
-            this.setState({ movieList: arr });
-            callback('movies', arr);
-        }
-    }, {
-        key: "removeMovie",
-        value: function removeMovie(i) {
-            var callback = this.props.callback;
-            var movieList = this.state.movieList;
-
-            var arr = [].concat(_toConsumableArray(movieList.slice(0, i)), _toConsumableArray(movieList.slice(i + 1)));
-            this.setState({ movieList: arr });
-            callback('movies', arr);
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "div",
-                { className: b() },
-                _react2.default.createElement(
-                    "button",
-                    { className: b('button'), onClick: this.addMovie.bind(this) },
-                    "+"
-                ),
-                this.createList()
-            );
-        }
-    }]);
-
-    return EditMoviesList;
-}(_react.Component);
-
-exports.default = EditMoviesList;
-
-/***/ }),
+/* 1022 */,
 /* 1023 */
 /***/ (function(module, exports, __webpack_require__) {
 
