@@ -30,22 +30,22 @@ class EditActorPage extends Component {
     }
 
     componentWillMount(props) {
-      if (this.props.filmsToFetch && this.props.isFilmFetching) {
-        this.props.filmsToFetch.forEach((film) => {
-          if(!this.props.isFilmFetching(film)) {
-            this.props.fetchMovieBySlug(film);
-          }
-        })
-      }
+        if (this.props.filmsToFetch && this.props.isFilmFetching) {
+            this.props.filmsToFetch.forEach((film) => {
+                if (!this.props.isFilmFetching(film)) {
+                    this.props.fetchMovieBySlug(film);
+                }
+            })
+        }
     }
 
     getStateFromChild(keys, values) {
         keys = keys || [];
-        let requiredFields = [ "info", "date", "city",  "name"];
+        let requiredFields = ["info", "date", "city", "name"];
         let canSubmit = true;
         for (let k = 0; k < keys.length; k++) {
             this.setState({[keys[k]]: values[k]});
-            if(values[k] && requiredFields.includes(keys[k]) &&( values[k].length === 0 || Object.values(values[k]).includes(NaN))){
+            if (values[k] && requiredFields.includes(keys[k]) && (values[k].length === 0 || Object.values(values[k]).includes(NaN))) {
                 canSubmit = false;
             }
         }
@@ -68,7 +68,7 @@ class EditActorPage extends Component {
         const {actor} = this.props;
 
         let newMovies = movies;
-        console.log(movies, "ppppppppppppp");
+
         if (movies.length !== 0 && typeof movies[0] === 'object') {
             newMovies = movies.map(m => m.slugName).filter(slugName => slugName.trim() !== '');
             movies.filter(el => el.slugName.trim() !== '')
@@ -85,7 +85,6 @@ class EditActorPage extends Component {
                 }
             });
         }
-        console.log(nominations);
         const actorToAdd = {
             movies: newMovies,
             name,
@@ -95,7 +94,7 @@ class EditActorPage extends Component {
             nominations: nominations.filter(el => el !== ''),
             image
         };
-
+        console.log('edit actor', actorToAdd);
         await this.props.editActor(actorToAdd, actor.slugName);
         this.setState({fireRedirect: true});
     }
@@ -128,12 +127,11 @@ class EditActorPage extends Component {
         let cInfo = info;
         let cCity = city;
         if (info === undefined) {
-          cInfo = '';
+            cInfo = '';
         }
         if (city === undefined) {
-          cCity = '';
+            cCity = '';
         }
-        console.log('--', name, cInfo, cCity);
 
         const isEnabled =
             name.length *
@@ -142,9 +140,9 @@ class EditActorPage extends Component {
         const lenCancelBtn = (isEnabled) ? '100px' : '250px';
         let redirect;
         if (actor.published) {
-          redirect = (<Redirect to={`/actor/${actor.slugName}`}/>)
+            redirect = (<Redirect to={`/actor/${actor.slugName}`}/>)
         } else {
-          redirect = (<Redirect to={`/allactors`}/>)
+            redirect = (<Redirect to={`/allactors`}/>)
         }
 
         return (<div>
@@ -174,11 +172,11 @@ export default connect((state, props) => {
         const actor = getActorBySlug(slug, state);
         const filmsToFetch = [];
         const films = actor.movies.map(movieID => {
-          let movie = getMovieBySlug(movieID, state);
-          if(!movie) {
-            filmsToFetch.push(movieID);
-          }
-          return movie;
+            let movie = getMovieBySlug(movieID, state);
+            if (!movie) {
+                filmsToFetch.push(movieID);
+            }
+            return movie;
         }).filter(movie => movie);
         const isFilmFetching = (slug) => isMovieFetchingSlug(slug, state);
         return {actor, films, filmsToFetch, isFilmFetching};

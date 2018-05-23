@@ -19,7 +19,7 @@ class EditMoviePage extends Component {
             poster: '',
             screenshots: [],
             rating: 0,
-            duration: '',
+            duration: {},
             name: '',
             description: '',
             scheduleTime: [],
@@ -36,23 +36,23 @@ class EditMoviePage extends Component {
         this.getStateFromChild = this.getStateFromChild.bind(this);
     }
 
-    componentWillMount(props) {
-      if (this.props.actorsToFetch && this.props.isActorFetching) {
-        this.props.actorsToFetch.forEach((actor) => {
-          if(!this.props.isActorFetching(actor)) {
-            this.props.fetchActorBySlug(actor);
-          }
-        })
-      }
+    componentWillMount() {
+        if (this.props.actorsToFetch && this.props.isActorFetching) {
+            this.props.actorsToFetch.forEach((actor) => {
+                if (!this.props.isActorFetching(actor)) {
+                    this.props.fetchActorBySlug(actor);
+                }
+            })
+        }
     }
 
     getStateFromChild(keys, values) {
-        let requiredFields = [ "startDate", "duration", "name", "description",  "scheduleDate", "genre", "format", "technology", "trailer", "rating"];
+        let requiredFields = ["startDate", "duration", "name", "description", "genre", "format", "technology", "trailer", "rating"];
         let canSubmit = true;
         for (let k = 0; k < keys.length; k++) {
             console.log(keys);
             this.setState({[keys[k]]: values[k]});
-            if(requiredFields.includes(keys[k]) && (values[k] && (values[k].length == 0 || Object.values(values[k]).includes(NaN) || values[k][0] === ""))){
+            if (requiredFields.includes(keys[k]) && (values[k] && (values[k].length === 0 || Object.values(values[k]).includes(NaN) || values[k][0] === ""))) {
                 canSubmit = false;
             }
         }
@@ -85,7 +85,7 @@ class EditMoviePage extends Component {
         let Schedule = [];
         const scheduleTime = this.state.scheduleTime.sort();
         if (scheduleDate && scheduleTime) {
-          scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
+            scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
         }
 
         const convRating = rating ? parseFloat(rating) : "-.-";
@@ -99,7 +99,6 @@ class EditMoviePage extends Component {
                     const movies = (el.movies.includes(film.slugName)) ? [...el.movies] : [...el.movies, film.slugName];
                     this.props.editActors({movies}, el.slugName);
                 });
-            console.log(oldCast, "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
             oldCast.map(o => {
                 const a = actors.filter(n => n.slugName === o.slugName);
                 if (a.length === 0) {
@@ -129,7 +128,7 @@ class EditMoviePage extends Component {
             },
             startDate
         };
-
+        console.log('edit movie', movie);
         await this.props.editMovie(movie, film.slugName);
         this.setState({fireRedirect: true})
 
@@ -149,9 +148,9 @@ class EditMoviePage extends Component {
         }
         let redirect;
         if (film.published) {
-          redirect = (<Redirect to={`/movie/${film.slugName}`}/>)
+            redirect = (<Redirect to={`/movie/${film.slugName}`}/>)
         } else {
-          redirect = (<Redirect to={`/`}/>)
+            redirect = (<Redirect to={`/`}/>)
         }
         return (<div>
                 <form className={b()}>
@@ -180,11 +179,11 @@ export default connect((state, props) => {
         let actorsToFetch = [];
         const isActorFetching = (slug) => isActorFetchingSlug(slug, state);
         const oldCast = film.cast && film.cast.map(actorSlug => {
-          let actor = getActorBySlug(actorSlug, state);
-          if(!actor) {
-            actorsToFetch.push(actorSlug);
-          }
-          return actor;
+            let actor = getActorBySlug(actorSlug, state);
+            if (!actor) {
+                actorsToFetch.push(actorSlug);
+            }
+            return actor;
         }).filter(actor => actor);
         return {film, oldCast, isActorFetching, actorsToFetch};
     },
