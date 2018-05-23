@@ -209,7 +209,7 @@ class AddActorLayout extends Component {
             };
         }
         movies.forEach((movie) => {
-            if(!movie.slugName) {
+            if (!movie.slugName) {
                 movie.slugName = slugify(movie.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
             }
         });

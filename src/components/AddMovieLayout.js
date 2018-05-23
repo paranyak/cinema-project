@@ -1,3 +1,168 @@
+// import React, {Component} from "react";
+// import "../styles/AddMovieLayout.less";
+// import block from '../helpers/BEM';
+// import AddMovieImages from "./AddMovieImages";
+// import AddMovieInfo from "./AddMovieInfo";
+// import {Redirect} from "react-router";
+// import slugify from 'slugify';
+// import {connect} from "react-redux";
+// import {postMovieToDB} from "../actions/movies";
+// import {editActorBySlug} from "../actions/actors";
+//
+// const b = block("AddMovieLayout");
+//
+//
+// class AddMovieLayout extends Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             fireRedirect: false,
+//             screenshots: [],
+//             actors: [],
+//             scheduleTime: [],
+//             scheduleDate: [],
+//             genre: [],
+//             format: [],
+//             technology: [],
+//             name: '',
+//             description: '',
+//             trailer: '',
+//             rating: '',
+//             duration: '',
+//             startDate: '',
+//             label: '',
+//             poster: ''
+//         };
+//         this.getStateFromChild = this.getStateFromChild.bind(this);
+//     }
+//
+//     getStateFromChild(keys, values) {
+//         for (let k = 0; k < keys.length; k++) {
+//             this.setState({[keys[k]]: values[k]})
+//         }
+//     }
+//
+//     async addMovieToDB(e) {
+//         e.preventDefault();
+//         const {
+//             screenshots,
+//             actors,
+//             scheduleDate,
+//             genre,
+//             format,
+//             technology,
+//             name,
+//             description,
+//             trailer,
+//             rating,
+//             duration,
+//             startDate,
+//             label,
+//             poster
+//         } = this.state;
+//         let Schedule = [];
+//         const scheduleTime = this.state.scheduleTime.sort();
+//         scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
+//
+//         const cast = actors.map(el => el.slugName).filter(slug => slug !== '');
+//         const slugName = slugify(name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
+//
+//         const movie = {
+//             name,
+//             slugName,
+//             image: poster,
+//             rating: parseFloat(rating).toString(),
+//             cast,
+//             description,
+//             screenshots,
+//             trailer,
+//             genre: genre.join(', '),
+//             Schedule,
+//             format: format.filter(f => f !== ''),
+//             technology: technology.filter(t => t !== ''),
+//             duration: {
+//                 "hour": parseInt(duration.split(':')[0]),
+//                 "minute": parseInt(duration.split(':')[1])
+//             },
+//             label,
+//             startDate: {
+//                 "year": parseInt(startDate.split('-')[0]),
+//                 "month": parseInt(startDate.split('-')[1]),
+//                 "day": parseInt(startDate.split('-')[2])
+//             }
+//         };
+//
+//         console.log("MOVIE", movie);
+//         await this.props.postData(movie);
+//
+//         if (actors.length !== 0 && typeof actors[0] === 'object') {
+//             actors.filter(el => el.slugName.trim() !== '')
+//                 .map(el => {
+//                     const movies = (el.dynLst.includes(slugName)) ? [...el.dynLst] : [...el.dynLst, slugName];
+//                     this.props.editActors({movies}, el.slugName);
+//                 });
+//         }
+//
+//         this.setState({fireRedirect: true});
+//     }
+//
+//     cancelAdding() {
+//         console.log('Adding is canceled!!!');
+//         this.setState({fireRedirect: true});
+//     }
+//
+//     render() {
+//         const {
+//             fireRedirect,
+//             genre,
+//             format,
+//             technology,
+//             name,
+//             description,
+//             trailer,
+//             rating,
+//             duration,
+//         } = this.state;
+//         const isEnabled =
+//             genre.filter(f => f !== '').length *
+//             format.filter(f => f !== '').length *
+//             technology.filter(f => f !== '').length *
+//             name.length *
+//             description.length *
+//             trailer.length *
+//             rating.length *
+//             duration.length !== 0;
+//         const lenCancelBtn = (isEnabled) ? '100px' : '250px';
+//         return (<div>
+//                 <form className={b()}>
+//                     <h1 className={b('title')}>ADD MOVIE</h1>
+//                     <AddMovieImages callback={this.getStateFromChild}/>
+//                     <AddMovieInfo callback={this.getStateFromChild}/>
+//                     <div className={b('btns')}>
+//                         <button type='submit'
+//                                 disabled={!isEnabled}
+//                                 className={b('btn', ['submit'])}
+//                                 onClick={this.addMovieToDB.bind(this)}
+//                         >Submit
+//                         </button>
+//                         <button type='button' className={b('btn')} style={{width: lenCancelBtn}}
+//                                 onClick={this.cancelAdding.bind(this)}>Cancel
+//                         </button>
+//                     </div>
+//                 </form>
+//                 {fireRedirect && (<Redirect to={`/`}/>)}
+//             </div>
+//         )
+//     }
+// }
+//
+//
+// export default connect(null, (dispatch) => ({
+//     postData: (movie) => dispatch(postMovieToDB(movie)),
+//     editActors: (actor, slug) => dispatch(editActorBySlug(slug, actor))
+// }))(AddMovieLayout);
+
+
 import React, {Component} from "react";
 import "../styles/AddMovieLayout.less";
 import block from '../helpers/BEM';
@@ -7,7 +172,9 @@ import {Redirect} from "react-router";
 import slugify from 'slugify';
 import {connect} from "react-redux";
 import {postMovieToDB} from "../actions/movies";
+import {postActorToDB} from "../actions/actors";
 import {editActorBySlug} from "../actions/actors";
+import {getAllActorsSlugs} from "../reducers";
 
 const b = block("AddMovieLayout");
 
@@ -18,7 +185,7 @@ class AddMovieLayout extends Component {
         this.state = {
             fireRedirect: false,
             screenshots: [],
-            actors: [],
+            cast: [],
             scheduleTime: [],
             scheduleDate: [],
             genre: [],
@@ -46,7 +213,7 @@ class AddMovieLayout extends Component {
         e.preventDefault();
         const {
             screenshots,
-            actors,
+            cast,
             scheduleDate,
             genre,
             format,
@@ -63,8 +230,13 @@ class AddMovieLayout extends Component {
         let Schedule = [];
         const scheduleTime = this.state.scheduleTime.sort();
         scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
+        cast.forEach((cast) => {
+            if(!cast.slugName) {
+                cast.slugName = slugify(cast.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
+            }
+        });
 
-        const cast = actors.map(el => el.slugName).filter(slug => slug !== '');
+        // const newCast = cast.map(el => el.slugName).filter(slug => slug !== '');
         const slugName = slugify(name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
 
         const movie = {
@@ -92,22 +264,25 @@ class AddMovieLayout extends Component {
             }
         };
 
-        console.log("MOVIE", movie);
         await this.props.postData(movie);
 
-        if (actors.length !== 0 && typeof actors[0] === 'object') {
-            actors.filter(el => el.slugName.trim() !== '')
-                .map(el => {
-                    const movies = (el.dynLst.includes(slugName)) ? [...el.dynLst] : [...el.dynLst, slugName];
-                    this.props.editActors({movies}, el.slugName);
-                });
-        }
+        // if (cast.length !== 0 && typeof cast[0] === 'object') {
+        //     cast.map(el => {
+        //       if (el.slugName.trim() !== "") {
+        //         const movies = (el.movies.includes(slugName)) ? [...el.movies] : [...el.movies, slugName];
+        //         this.props.editActors({movies}, el.slugName);
+        //       } else {
+        //         el.published = false;
+        //         el.slugName = slugify(el.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
+        //         el.movies = [slugName];
+        //       }
+        //   });
+        // }
 
         this.setState({fireRedirect: true});
     }
 
     cancelAdding() {
-        console.log('Adding is canceled!!!');
         this.setState({fireRedirect: true});
     }
 
@@ -133,6 +308,7 @@ class AddMovieLayout extends Component {
             rating.length *
             duration.length !== 0;
         const lenCancelBtn = (isEnabled) ? '100px' : '250px';
+
         return (<div>
                 <form className={b()}>
                     <h1 className={b('title')}>ADD MOVIE</h1>
@@ -157,7 +333,14 @@ class AddMovieLayout extends Component {
 }
 
 
-export default connect(null, (dispatch) => ({
-    postData: (movie) => dispatch(postMovieToDB(movie)),
-    editActors: (actor, slug) => dispatch(editActorBySlug(slug, actor))
-}))(AddMovieLayout);
+export default connect((state, props) => {
+        const allActors = getAllActorsSlugs(state);
+        return {
+            allActors
+        }
+    },
+    (dispatch) => ({
+        postData: (movie) => dispatch(postMovieToDB(movie)),
+        editActors: (actor, slug) => dispatch(editActorBySlug(slug, actor)),
+        postActor: (actor) => dispatch(postActorToDB(actor))
+    }))(AddMovieLayout);

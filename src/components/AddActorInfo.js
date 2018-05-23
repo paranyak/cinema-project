@@ -40,7 +40,6 @@ class AddActorInfo extends Component {
     }
 
     render() {
-        console.log('-----', this.state);
         return <section className={b()}>
             <h3 className={b('title')}>Actor Name</h3>
             <input className={b("input", ['name'])} name='name'
@@ -61,7 +60,7 @@ class AddActorInfo extends Component {
             <NominationsList nominations={[]} callback={this.callback}/>
 
             <h3 className={b("title")}>Movies</h3>
-            <AddDynamicList type='movie' callback={this.callback}/>
+            <AddDynamicList type='movie' items={[]} callback={this.callback}/>
         </section>
     }
 }

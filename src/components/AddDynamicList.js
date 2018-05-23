@@ -9,7 +9,7 @@ class AddDynamicList extends Component {
         super(props);
         this.state = {
             suggestedList: [],
-            chosenItems: []
+            chosenItems: props.items
         }
     }
 
@@ -40,7 +40,6 @@ class AddDynamicList extends Component {
             let suggestedList = await (response.json());
             if (suggestedList.length !== 0) {
                 this.setState({suggestedList});
-                // console.log('sug items', this.state.suggestedList);
             }
         }
     }
@@ -48,26 +47,41 @@ class AddDynamicList extends Component {
     onOptionClick(i, e) {
         const {callback, type} = this.props;
         const {value} = e.target;
-        const filtered = this.state.suggestedList.filter(f => f.name === value);// || f.name.includes(value));
+        const filtered = this.state.suggestedList.filter(f => f.name === value);
         let slugName = '';
         let dynLst = [];
         if (filtered.length === 1) {
             slugName = filtered[0].slugName;
             dynLst = type === 'movie' ? filtered[0].cast : filtered[0].movies;
         }
-        const arr = [
-            ...this.state.chosenItems.slice(0, i),
-            Object.assign({}, this.state.chosenItems[i], {name: value, slugName, dynLst}),
-            ...this.state.chosenItems.slice(i + 1)
-        ];
+        let arr = [];
+        if (type === 'movie') {
+            arr = [
+                ...this.state.chosenItems.slice(0, i),
+                Object.assign({}, this.state.chosenItems[i], {name: value, slugName, cast: dynLst}),
+                ...this.state.chosenItems.slice(i + 1)
+            ];
+        }
+        else {
+            arr = [
+                ...this.state.chosenItems.slice(0, i),
+                Object.assign({}, this.state.chosenItems[i], {name: value, slugName, movies: dynLst}),
+                ...this.state.chosenItems.slice(i + 1)
+            ];
+        }
         this.setState({chosenItems: arr});
-        const str = type === 'movie' ? 'movies' : 'actors';
-        callback(str, arr);
+        callback(`${type}s`, arr);
     }
 
     addItem(e) {
         e.preventDefault();
-        const arr = [...this.state.chosenItems, {name: '', slugName: '', dynLst: []}];
+        let arr = [];
+        if (this.props.type === 'movie') {
+            arr = [...this.state.chosenItems, {name: '', slugName: '', cast: []}];
+        }
+        else {
+            arr = [...this.state.chosenItems, {name: '', slugName: '', movies: []}];
+        }
         this.setState({chosenItems: arr});
     }
 
@@ -79,8 +93,7 @@ class AddDynamicList extends Component {
             ...chosenItems.slice(i + 1)
         ];
         this.setState({chosenItems: arr});
-        const str = type === 'movie' ? 'movies' : 'actors';
-        callback(str, arr);
+        callback(`${type}s`, arr);
     }
 
     render() {

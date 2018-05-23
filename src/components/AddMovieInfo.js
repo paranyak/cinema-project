@@ -91,7 +91,7 @@ class AddMovieInfo extends Component {
                                 callback={this.callback}/>
 
                 <h3 className={b('title')}>Actors</h3>
-                <AddDynamicList type='actor' callback={this.callback}/>
+                <AddDynamicList type='actor' items={[]} callback={this.callback}/>
 
                 <h3 className={b('title')}>Label</h3>
                 <div>
