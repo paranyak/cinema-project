@@ -4,15 +4,11 @@ import filters, * as fromFilters from './filters';
 import actors, * as fromActors from './actors';
 import auth, * as fromAuth from './auth';
 
-
-import {routerReducer} from 'react-router-redux';
-
 const moviesApp = combineReducers({
     movies,
     filters,
     actors,
-    auth,
-    router: routerReducer
+    auth
 });
 
 export default moviesApp;
