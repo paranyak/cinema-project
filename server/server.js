@@ -5,10 +5,12 @@ const actors = require('./routes/actors');
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
-const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/cinema-project';
+const cors = require('cors');
+const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/heroku_t7gvckhq';
 
 const port = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/movies', movies);
@@ -17,7 +19,6 @@ app.use('/actors', actors);
 app.use(express.static(path.join(__dirname + "/public")));
 
 app.use("/*", (req, res) => res.sendFile(path.join(__dirname, "/public/index.html")));
-
 
 db.connect(url, (err) => {
     if (err) {

@@ -1,6 +1,10 @@
 language: node_js
 node_js:
 - 10.0
+install:
+  - npm install
+deploy:
+  skip_cleanup: true
 cache:
   directories:
   - node_modules

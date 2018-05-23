@@ -1,11 +1,11 @@
 import React, {Component} from "react";
-import block from "../helpers/BEM";
-import "../styles/AddMImages.less";
+import block from "../../helpers/BEM";
+import "../../styles/AddMovieImages.less";
 import DragDropImage from "./DragDropImage";
 
-const b = block("AddMImages");
+const b = block("AddMovieImages");
 
-class AddMImages extends Component {
+class AddMovieImages extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -59,4 +59,4 @@ class AddMImages extends Component {
     }
 }
 
-export default AddMImages;
+export default AddMovieImages;

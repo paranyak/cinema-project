@@ -3,8 +3,8 @@ import block from "../helpers/BEM";
 import "../styles/AddActorLayout.less";
 import {connect} from "react-redux";
 import {Redirect} from "react-router";
-import AddAImage from "./AddAImage";
-import AddAInfo from "./AddAInfo";
+import AddActorImage from "./AddActorImage";
+import AddActorInfo from "./AddActorInfo";
 import slugify from "slugify/index";
 import {postActorToDB, checkName} from "../actions/actors";
 import {editMovieBySlug} from "../actions/movies";
@@ -60,8 +60,8 @@ class AddActorLayout extends Component {
           if(!movie.slugName) {
             movie.slugName = slugify(movie.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
           }
-        })
-        // const newMovies = movies.map(m => m.slugName).filter(slug => slug !== '');
+        });
+
         let slugName = slugify(name, {
             replacement: '_',
             remove: /[.:!,;*&@^]/g,
@@ -91,13 +91,6 @@ class AddActorLayout extends Component {
         };
         console.log(actorToAdd, "00000000000000000000000000000000000000000");
         this.props.postData(actorToAdd);
-        // if (movies.length !== 0 && typeof movies[0] === 'object') {
-        //     movies.filter(el => el.slugName.trim() !== '')
-        //         .map(el => {
-        //             const cast = (el.cast.includes(slugName)) ? [...el.cast] : [...el.cast, slugName];
-        //             this.props.editMovies({cast}, el.slugName);
-        //         });
-        // }
 
         this.setState({fireRedirect: true, link: slugName});
     }
@@ -124,8 +117,8 @@ class AddActorLayout extends Component {
         return (<div>
             <form className={b()}>
                 <h1 className={b('title')}>ADD ACTOR</h1>
-                <AddAImage callback={this.getStateFromChild}/>
-                <AddAInfo callback={this.getStateFromChild}/>
+                <AddActorImage callback={this.getStateFromChild}/>
+                <AddActorInfo callback={this.getStateFromChild}/>
                 <div className={b('btns')}>
                     <button type='submit' className={b('btn', ['submit'])}
                             disabled={!isEnabled}

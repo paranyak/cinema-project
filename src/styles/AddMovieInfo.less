@@ -1,7 +1,11 @@
-.AddAImage {
-  float: left;
+.AddMovieInfo {
+  float: right;
   width: 45%;
   margin: 5px;
+  &__title {
+    color: white;
+    margin: 25px 0 5px;
+  }
   &__input {
     width: 100%;
     padding: 8px 20px;
@@ -15,9 +19,20 @@
       font-weight: normal;
       font-family: 'OpenSans', sans-serif;
     }
+
+    &_name {
+      font-size: 19px;
+      font-weight: bold;
+    }
+    &_textarea {
+      resize: none;
+    }
   }
-  &__title {
+  &__radio-btn {
     color: white;
-    margin: 25px 0 5px;
+    &:checked {
+      color: yellow;
+      font-weight: bold;
+    }
   }
 }

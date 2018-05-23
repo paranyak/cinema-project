@@ -18,7 +18,7 @@ class EditActorPage extends Component {
         this.state = {
             fireRedirect: false,
             movies: [],
-            oldMovies: props.films,
+            oldMovies: props.oldMovies,
             info: '',
             date: '',
             city: '',
@@ -30,22 +30,22 @@ class EditActorPage extends Component {
     }
 
     componentWillMount(props) {
-      if (this.props.filmsToFetch && this.props.isFilmFetching) {
-        this.props.filmsToFetch.forEach((film) => {
-          if(!this.props.isFilmFetching(film)) {
-            this.props.fetchMovieBySlug(film);
-          }
-        })
-      }
+        if (this.props.filmsToFetch && this.props.isFilmFetching) {
+            this.props.filmsToFetch.forEach((film) => {
+                if (!this.props.isFilmFetching(film)) {
+                    this.props.fetchMovieBySlug(film);
+                }
+            })
+        }
     }
 
     getStateFromChild(keys, values) {
-        keys = keys || []
-        let requiredFields = [ "info", "date", "city",  "name"];
+        keys = keys || [];
+        let requiredFields = ["info", "date", "city", "name"];
         let canSubmit = true;
         for (let k = 0; k < keys.length; k++) {
             this.setState({[keys[k]]: values[k]});
-            if(values[k] && requiredFields.includes(keys[k]) &&( values[k].length == 0 || Object.values(values[k]).includes(NaN))){
+            if (values[k] && requiredFields.includes(keys[k]) && (values[k].length === 0 || Object.values(values[k]).includes(NaN))) {
                 canSubmit = false;
             }
         }
@@ -68,7 +68,6 @@ class EditActorPage extends Component {
         const {actor} = this.props;
 
         let newMovies = movies;
-        console.log(movies, "ppppppppppppp");
         if (movies.length !== 0 && typeof movies[0] === 'object') {
             newMovies = movies.map(m => m.slugName).filter(slugName => slugName.trim() !== '');
             movies.filter(el => el.slugName.trim() !== '')
@@ -105,7 +104,7 @@ class EditActorPage extends Component {
     }
 
     render() {
-        const {actor, films} = this.props;
+        const {actor, oldMovies} = this.props;
         const {
             fireRedirect,
             info,
@@ -124,17 +123,14 @@ class EditActorPage extends Component {
                 </section>
             );
         }
-        console.log(name, info, city);
         let cInfo = info;
         let cCity = city;
         if (info === undefined) {
-          cInfo = '';
+            cInfo = '';
         }
         if (city === undefined) {
-          cCity = '';
+            cCity = '';
         }
-        console.log('--', name, cInfo, cCity);
-
         const isEnabled =
             name.length *
             cInfo.length *
@@ -142,16 +138,16 @@ class EditActorPage extends Component {
         const lenCancelBtn = (isEnabled) ? '100px' : '250px';
         let redirect;
         if (actor.published) {
-          redirect = (<Redirect to={`/actor/${actor.slugName}`}/>)
+            redirect = (<Redirect to={`/actor/${actor.slugName}`}/>)
         } else {
-          redirect = (<Redirect to={`/allactors`}/>)
+            redirect = (<Redirect to={`/allactors`}/>)
         }
 
         return (<div>
                 <form className={b()}>
                     <h1 className={b('title')}>EDIT ACTOR</h1>
                     <EditActorImage actorImg={actor.image} callback={this.getStateFromChild}/>
-                    <EditActorInfo actor={actor} films={films} callback={this.getStateFromChild}/>
+                    <EditActorInfo actor={actor} films={oldMovies} callback={this.getStateFromChild}/>
                     <div className={b('btns')}>
                         <button type='submit' className={b('btn', ['submit'])}
                                 disabled={!isEnabled}
@@ -173,15 +169,15 @@ export default connect((state, props) => {
         const slug = props.match.params.slug.toLowerCase();
         const actor = getActorBySlug(slug, state);
         const filmsToFetch = [];
-        const films = actor.movies.map(movieID => {
-          let movie = getMovieBySlug(movieID, state);
-          if(!movie) {
-            filmsToFetch.push(movieID);
-          }
-          return movie;
+        const films = actor.movies && actor.movies.map(movieSlug => {
+            let movie = getMovieBySlug(movieSlug, state);
+            if (!movie) {
+                filmsToFetch.push(movieSlug);
+            }
+            return movie;
         }).filter(movie => movie);
         const isFilmFetching = (slug) => isMovieFetchingSlug(slug, state);
-        return {actor, films, filmsToFetch, isFilmFetching};
+        return {actor, oldMovies: films, filmsToFetch, isFilmFetching};
     },
     (dispatch) => ({
         fetchActorBySlug: (slug) => dispatch(fetchActorsSlug(slug)),

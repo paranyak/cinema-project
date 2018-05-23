@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import "../styles/AddMovieLayout.less";
 import block from '../helpers/BEM';
-import AddMImages from "./AddMImages";
-import AddMInfo from "./AddMInfo";
+import AddMovieImages from "./AddMovieImages";
+import AddMovieInfo from "./AddMovieInfo";
 import {Redirect} from "react-router";
 import slugify from 'slugify';
 import {connect} from "react-redux";
@@ -69,9 +69,8 @@ class AddMovieLayout extends Component {
           if(!cast.slugName) {
             cast.slugName = slugify(cast.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
           }
-        })
+        });
 
-        // const newCast = cast.map(el => el.slugName).filter(slug => slug !== '');
         const slugName = slugify(name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
 
         const movie = {
@@ -79,7 +78,7 @@ class AddMovieLayout extends Component {
             slugName,
             image: poster,
             rating: parseFloat(rating).toString(),
-            cast: cast,
+            cast,
             description,
             screenshots,
             trailer,
@@ -100,19 +99,6 @@ class AddMovieLayout extends Component {
         };
 
         await this.props.postData(movie);
-
-        // if (cast.length !== 0 && typeof cast[0] === 'object') {
-        //     cast.map(el => {
-        //       if (el.slugName.trim() !== "") {
-        //         const movies = (el.movies.includes(slugName)) ? [...el.movies] : [...el.movies, slugName];
-        //         this.props.editActors({movies}, el.slugName);
-        //       } else {
-        //         el.published = false;
-        //         el.slugName = slugify(el.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
-        //         el.movies = [slugName];
-        //       }
-        //   });
-        // }
 
         this.setState({fireRedirect: true});
     }
@@ -147,8 +133,8 @@ class AddMovieLayout extends Component {
         return (<div>
                 <form className={b()}>
                     <h1 className={b('title')}>ADD MOVIE</h1>
-                    <AddMImages callback={this.getStateFromChild}/>
-                    <AddMInfo callback={this.getStateFromChild}/>
+                    <AddMovieImages callback={this.getStateFromChild}/>
+                    <AddMovieInfo callback={this.getStateFromChild}/>
                     <div className={b('btns')}>
                         <button type='submit'
                                 disabled={!isEnabled}
