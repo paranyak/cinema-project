@@ -105,7 +105,7 @@ function _curry2(fn) {
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(10);
+var global = __webpack_require__(9);
 var core = __webpack_require__(47);
 var hide = __webpack_require__(27);
 var redefine = __webpack_require__(28);
@@ -163,7 +163,7 @@ if (process.env.NODE_ENV === 'production') {
   module.exports = __webpack_require__(586);
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 3 */
@@ -325,196 +325,6 @@ exports.default = function (b) {
 /* 7 */
 /***/ (function(module, exports) {
 
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
@@ -594,7 +404,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -976,7 +786,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports) {
 
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
@@ -985,6 +795,196 @@ var global = module.exports = typeof window != 'undefined' && window.Math == Mat
   // eslint-disable-next-line no-new-func
   : Function('return this')();
 if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
 
 
 /***/ }),
@@ -1042,7 +1042,7 @@ if (process.env.NODE_ENV !== 'production') {
   module.exports = __webpack_require__(597)();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 14 */
@@ -1050,7 +1050,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 var store = __webpack_require__(109)('wks');
 var uid = __webpack_require__(69);
-var Symbol = __webpack_require__(10).Symbol;
+var Symbol = __webpack_require__(9).Symbol;
 var USE_SYMBOL = typeof Symbol == 'function';
 
 var $exports = module.exports = function (name) {
@@ -1435,7 +1435,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = warning;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 25 */
@@ -1475,7 +1475,7 @@ module.exports = __webpack_require__(16) ? function (object, key, value) {
 /* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(10);
+var global = __webpack_require__(9);
 var hide = __webpack_require__(27);
 var has = __webpack_require__(32);
 var SRC = __webpack_require__(69)('src');
@@ -1989,7 +1989,7 @@ var invariant = function(condition, format, a, b, c, d, e, f) {
 
 module.exports = invariant;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 37 */
@@ -3416,7 +3416,7 @@ var reduce = /*#__PURE__*/Object(__WEBPACK_IMPORTED_MODULE_0__internal_curry3__[
 
 if (__webpack_require__(16)) {
   var LIBRARY = __webpack_require__(70);
-  var global = __webpack_require__(10);
+  var global = __webpack_require__(9);
   var fails = __webpack_require__(11);
   var $export = __webpack_require__(1);
   var $typed = __webpack_require__(119);
@@ -4507,7 +4507,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 }
 
 module.exports = invariant;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 64 */
@@ -4576,7 +4576,7 @@ if (process.env.NODE_ENV !== 'production') {
   module.exports = __webpack_require__(869)();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 67 */
@@ -4735,7 +4735,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 "use strict";
 
-var global = __webpack_require__(10);
+var global = __webpack_require__(9);
 var dP = __webpack_require__(17);
 var DESCRIPTORS = __webpack_require__(16);
 var SPECIES = __webpack_require__(14)('species');
@@ -5033,7 +5033,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = warning;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 85 */
@@ -7488,7 +7488,7 @@ if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' 
 }
 
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(10)))
 
 /***/ }),
 /* 99 */
@@ -8027,7 +8027,7 @@ class ZoneIsAbstractError extends LuxonError {
 /* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(10);
+var global = __webpack_require__(9);
 var SHARED = '__core-js_shared__';
 var store = global[SHARED] || (global[SHARED] = {});
 module.exports = function (key) {
@@ -8200,7 +8200,7 @@ module.exports = function (O, D) {
 
 "use strict";
 
-var global = __webpack_require__(10);
+var global = __webpack_require__(9);
 var $export = __webpack_require__(1);
 var redefine = __webpack_require__(28);
 var redefineAll = __webpack_require__(78);
@@ -8290,7 +8290,7 @@ module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
 /* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(10);
+var global = __webpack_require__(9);
 var hide = __webpack_require__(27);
 var uid = __webpack_require__(69);
 var TYPED = uid('typed_array');
@@ -8332,7 +8332,7 @@ module.exports = __webpack_require__(70) || !__webpack_require__(11)(function ()
   // In FF throws only define methods
   // eslint-disable-next-line no-undef, no-useless-call
   __defineSetter__.call(null, K, function () { /* empty */ });
-  delete __webpack_require__(10)[K];
+  delete __webpack_require__(9)[K];
 });
 
 
@@ -8412,7 +8412,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = emptyObject;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 124 */
@@ -8458,7 +8458,7 @@ if (process.env.NODE_ENV === 'production') {
   module.exports = __webpack_require__(590);
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 125 */
@@ -11760,7 +11760,7 @@ class FixedOffsetZone extends __WEBPACK_IMPORTED_MODULE_1__zone__["a" /* Zone */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(12);
-var document = __webpack_require__(10).document;
+var document = __webpack_require__(9).document;
 // typeof document.createElement is 'object' in old IE
 var is = isObject(document) && isObject(document.createElement);
 module.exports = function (it) {
@@ -11772,7 +11772,7 @@ module.exports = function (it) {
 /* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(10);
+var global = __webpack_require__(9);
 var core = __webpack_require__(47);
 var LIBRARY = __webpack_require__(70);
 var wksExt = __webpack_require__(226);
@@ -11808,7 +11808,7 @@ module.exports = (
 /* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var document = __webpack_require__(10).document;
+var document = __webpack_require__(9).document;
 module.exports = document && document.documentElement;
 
 
@@ -12189,7 +12189,7 @@ var ctx = __webpack_require__(41);
 var invoke = __webpack_require__(232);
 var html = __webpack_require__(161);
 var cel = __webpack_require__(157);
-var global = __webpack_require__(10);
+var global = __webpack_require__(9);
 var process = global.process;
 var setTask = global.setImmediate;
 var clearTask = global.clearImmediate;
@@ -12275,7 +12275,7 @@ module.exports = {
 /* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(10);
+var global = __webpack_require__(9);
 var macrotask = __webpack_require__(179).set;
 var Observer = global.MutationObserver || global.WebKitMutationObserver;
 var process = global.process;
@@ -12376,7 +12376,7 @@ module.exports.f = function (C) {
 
 "use strict";
 
-var global = __webpack_require__(10);
+var global = __webpack_require__(9);
 var DESCRIPTORS = __webpack_require__(16);
 var LIBRARY = __webpack_require__(70);
 var $typed = __webpack_require__(119);
@@ -12657,7 +12657,7 @@ exports[DATA_VIEW] = $DataView;
 /* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(10);
+var global = __webpack_require__(9);
 var navigator = global.navigator;
 
 module.exports = navigator && navigator.userAgent || '';
@@ -12728,7 +12728,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 
 module.exports = checkPropTypes;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 185 */
@@ -14428,7 +14428,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 210 */
@@ -16101,7 +16101,7 @@ LazyLoad.defaultProps = {
 var lazyload = exports.lazyload = _decorator2.default;
 exports.default = LazyLoad;
 exports.forceCheck = lazyLoadHandler;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 225 */
@@ -16285,7 +16285,7 @@ module.exports = function (fn, args, that) {
 /* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $parseInt = __webpack_require__(10).parseInt;
+var $parseInt = __webpack_require__(9).parseInt;
 var $trim = __webpack_require__(80).trim;
 var ws = __webpack_require__(163);
 var hex = /^[-+]?0[xX]/;
@@ -16300,7 +16300,7 @@ module.exports = $parseInt(ws + '08') !== 8 || $parseInt(ws + '0x16') !== 22 ? f
 /* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $parseFloat = __webpack_require__(10).parseFloat;
+var $parseFloat = __webpack_require__(9).parseFloat;
 var $trim = __webpack_require__(80).trim;
 
 module.exports = 1 / $parseFloat(__webpack_require__(163) + '-0') !== -Infinity ? function parseFloat(str) {
@@ -16888,7 +16888,7 @@ module.exports = function (it) {
 var gOPN = __webpack_require__(74);
 var gOPS = __webpack_require__(111);
 var anObject = __webpack_require__(5);
-var Reflect = __webpack_require__(10).Reflect;
+var Reflect = __webpack_require__(9).Reflect;
 module.exports = Reflect && Reflect.ownKeys || function ownKeys(it) {
   var keys = gOPN.f(anObject(it));
   var getSymbols = gOPS.f;
@@ -17156,7 +17156,7 @@ var EventListener = {
 };
 
 module.exports = EventListener;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 261 */
@@ -17671,7 +17671,7 @@ selectorFactory) {
     return __WEBPACK_IMPORTED_MODULE_0_hoist_non_react_statics___default()(Connect, WrappedComponent);
   };
 }
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(10)))
 
 /***/ }),
 /* 267 */
@@ -18166,7 +18166,7 @@ function wrapMapToPropsFunc(mapToProps, methodName) {
     return proxy;
   };
 }
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(10)))
 
 /***/ }),
 /* 273 */
@@ -20638,7 +20638,7 @@ module.exports = function xhrAdapter(config) {
   });
 };
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 332 */
@@ -21187,7 +21187,7 @@ Navbar.propTypes = process.env.NODE_ENV !== "production" ? {
   })
 } : {};
 //# sourceMappingURL=Navbar.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 339 */
@@ -21282,7 +21282,7 @@ Weekday.propTypes = process.env.NODE_ENV !== "production" ? {
   weekdaysShort: _propTypes2.default.arrayOf(_propTypes2.default.string)
 } : {};
 //# sourceMappingURL=Weekday.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 340 */
@@ -22443,11 +22443,13 @@ var withRouter = function withRouter(Component) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+//`http://localhost:${PORT}`;
 
 var movie = exports.movie = function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(id) {
@@ -22456,7 +22458,7 @@ var movie = exports.movie = function () {
                 switch (_context.prev = _context.next) {
                     case 0:
                         _context.next = 2;
-                        return fetch(LOCALHOST + '/movies/byId/' + id, { 'mode': 'no-cors' });
+                        return fetch(LOCALHOST + '/movies/byId/' + id);
 
                     case 2:
                         _context.next = 4;
@@ -22485,7 +22487,7 @@ var movieBySlug = exports.movieBySlug = function () {
                 switch (_context2.prev = _context2.next) {
                     case 0:
                         _context2.next = 2;
-                        return fetch(LOCALHOST + '/movies/bySlugName/' + slugName, { 'mode': 'no-cors' });
+                        return fetch(LOCALHOST + '/movies/bySlugName/' + slugName);
 
                     case 2:
                         _context2.next = 4;
@@ -22514,7 +22516,7 @@ var movieCount = exports.movieCount = function () {
                 switch (_context3.prev = _context3.next) {
                     case 0:
                         _context3.next = 2;
-                        return fetch(LOCALHOST + '/movies/moviesCount', { 'mode': 'no-cors' });
+                        return fetch(LOCALHOST + '/movies/moviesCount');
 
                     case 2:
                         _context3.next = 4;
@@ -22543,7 +22545,7 @@ var moviesSchedule = exports.moviesSchedule = function () {
                 switch (_context4.prev = _context4.next) {
                     case 0:
                         _context4.next = 2;
-                        return fetch(LOCALHOST + '/movies/slugs?Schedule=' + day, { 'mode': 'no-cors' });
+                        return fetch(LOCALHOST + '/movies/slugs?Schedule=' + day);
 
                     case 2:
                         _context4.next = 4;
@@ -22572,7 +22574,7 @@ var labeledMovies = exports.labeledMovies = function () {
                 switch (_context5.prev = _context5.next) {
                     case 0:
                         _context5.next = 2;
-                        return fetch(LOCALHOST + '/movies/slugs?label=' + label, { 'mode': 'no-cors' });
+                        return fetch(LOCALHOST + '/movies/slugs?label=' + label);
 
                     case 2:
                         _context5.next = 4;
@@ -22601,7 +22603,7 @@ var unpublishedMovies = exports.unpublishedMovies = function () {
                 switch (_context6.prev = _context6.next) {
                     case 0:
                         _context6.next = 2;
-                        return fetch(LOCALHOST + '/movies/unpublished-slugs', { 'mode': 'no-cors' });
+                        return fetch(LOCALHOST + '/movies/unpublished-slugs');
 
                     case 2:
                         _context6.next = 4;
@@ -22630,7 +22632,7 @@ var additionalMovies = exports.additionalMovies = function () {
                 switch (_context7.prev = _context7.next) {
                     case 0:
                         _context7.next = 2;
-                        return fetch(LOCALHOST + '/movies/slugs?_page=' + page + '&_limit=' + limit, { 'mode': 'no-cors' });
+                        return fetch(LOCALHOST + '/movies/slugs?_page=' + page + '&_limit=' + limit);
 
                     case 2:
                         _context7.next = 4;
@@ -22659,7 +22661,7 @@ var autocompleteMovies = exports.autocompleteMovies = function () {
                 switch (_context8.prev = _context8.next) {
                     case 0:
                         _context8.next = 2;
-                        return fetch(LOCALHOST + '/movies/autocomplete/' + name, { 'mode': 'no-cors' });
+                        return fetch(LOCALHOST + '/movies/autocomplete/' + name);
 
                     case 2:
                         _context8.next = 4;
@@ -22688,7 +22690,7 @@ var actors = exports.actors = function () {
                 switch (_context9.prev = _context9.next) {
                     case 0:
                         _context9.next = 2;
-                        return fetch(LOCALHOST + '/actors/byId/' + id, { 'mode': 'no-cors' });
+                        return fetch(LOCALHOST + '/actors/byId/' + id);
 
                     case 2:
                         return _context9.abrupt('return', _context9.sent);
@@ -22713,7 +22715,7 @@ var unpublishedActors = exports.unpublishedActors = function () {
                 switch (_context10.prev = _context10.next) {
                     case 0:
                         _context10.next = 2;
-                        return fetch(LOCALHOST + '/actors/unpublished-slugs', { 'mode': 'no-cors' });
+                        return fetch(LOCALHOST + '/actors/unpublished-slugs');
 
                     case 2:
                         _context10.next = 4;
@@ -22742,7 +22744,7 @@ var actorsBySlugName = exports.actorsBySlugName = function () {
                 switch (_context11.prev = _context11.next) {
                     case 0:
                         _context11.next = 2;
-                        return fetch(LOCALHOST + '/actors/bySlugName/' + slugName, { 'mode': 'no-cors' });
+                        return fetch(LOCALHOST + '/actors/bySlugName/' + slugName);
 
                     case 2:
                         return _context11.abrupt('return', _context11.sent);
@@ -22767,7 +22769,7 @@ var additionalActors = exports.additionalActors = function () {
                 switch (_context12.prev = _context12.next) {
                     case 0:
                         _context12.next = 2;
-                        return fetch(LOCALHOST + '/actors/slugs?_page=' + page + '&_limit=' + limit, { 'mode': 'no-cors' });
+                        return fetch(LOCALHOST + '/actors/slugs?_page=' + page + '&_limit=' + limit);
 
                     case 2:
                         _context12.next = 4;
@@ -22796,7 +22798,7 @@ var deleteActor = exports.deleteActor = function () {
                 switch (_context13.prev = _context13.next) {
                     case 0:
                         _context13.next = 2;
-                        return fetch(LOCALHOST + '/actors/' + slugName, { 'mode': 'no-cors' }, {
+                        return fetch(LOCALHOST + '/actors/' + slugName, {
                             method: 'DELETE',
                             headers: { "Content-type": "application/json" }
                         });
@@ -22828,7 +22830,7 @@ var deleteMovie = exports.deleteMovie = function () {
                 switch (_context14.prev = _context14.next) {
                     case 0:
                         _context14.next = 2;
-                        return fetch(LOCALHOST + '/movies/' + slugName, { 'mode': 'no-cors' }, {
+                        return fetch(LOCALHOST + '/movies/' + slugName, {
                             method: 'DELETE',
                             headers: { "Content-type": "application/json" }
                         });
@@ -22865,7 +22867,7 @@ var postMovie = exports.postMovie = function () {
                         headers.append('Content-Type', 'application/json');
 
                         _context15.next = 4;
-                        return fetch('https://csucu-cinema-project.herokuapp.com/movies', { 'mode': 'no-cors' }, {
+                        return fetch('https://csucu-cinema-project.herokuapp.com/movies', {
                             method: 'POST',
                             headers: headers,
                             body: JSON.stringify(movie)
@@ -22903,7 +22905,7 @@ var postActor = exports.postActor = function () {
                         headers.append('Content-Type', 'application/json');
 
                         _context16.next = 4;
-                        return fetch('https://csucu-cinema-project.herokuapp.com/actors', { 'mode': 'no-cors' }, {
+                        return fetch('https://csucu-cinema-project.herokuapp.com/actors', {
                             method: 'POST',
                             headers: headers,
                             body: JSON.stringify(actor)
@@ -22944,7 +22946,7 @@ var checkName = exports.checkName = function () {
                 switch (_context19.prev = _context19.next) {
                     case 0:
                         _context19.next = 2;
-                        return fetch(LOCALHOST + '/' + type + '/name_like=' + name, { 'mode': 'no-cors' });
+                        return fetch(LOCALHOST + '/' + type + '/name_like=' + name);
 
                     case 2:
                         res = _context19.sent;
@@ -22978,11 +22980,7 @@ var checkName = exports.checkName = function () {
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-var PORT = process.env.PORT;
-var LOCALHOST = 'https://csucu-cinema-project.herokuapp.com' || 'http://localhost:' + PORT;
-console.log('local', LOCALHOST);
-
-var editMovie = exports.editMovie = function () {
+var LOCALHOST = 'https://csucu-cinema-project.herokuapp.com';var editMovie = exports.editMovie = function () {
     var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(slugName, movie) {
         var response;
         return regeneratorRuntime.wrap(function _callee17$(_context17) {
@@ -22990,7 +22988,7 @@ var editMovie = exports.editMovie = function () {
                 switch (_context17.prev = _context17.next) {
                     case 0:
                         _context17.next = 2;
-                        return fetch(LOCALHOST + '/movies/' + slugName, { 'mode': 'no-cors' }, {
+                        return fetch(LOCALHOST + '/movies/' + slugName, {
                             method: 'PATCH',
                             headers: { "Content-type": "application/json" },
                             body: JSON.stringify(movie)
@@ -23031,7 +23029,7 @@ var editActor = exports.editActor = function () {
                 switch (_context18.prev = _context18.next) {
                     case 0:
                         _context18.next = 2;
-                        return fetch(LOCALHOST + '/actors/' + slugName, { 'mode': 'no-cors' }, {
+                        return fetch(LOCALHOST + '/actors/' + slugName, {
                             method: 'PATCH',
                             headers: { "Content-type": "application/json" },
                             body: JSON.stringify(actor)
@@ -23063,7 +23061,6 @@ var editActor = exports.editActor = function () {
         return _ref18.apply(this, arguments);
     };
 }();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
 /* 353 */
@@ -25270,7 +25267,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -25320,7 +25317,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -25370,7 +25367,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -25420,7 +25417,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -25821,7 +25818,7 @@ module.exports = __webpack_require__(47);
 "use strict";
 
 // ECMAScript 6 symbols shim
-var global = __webpack_require__(10);
+var global = __webpack_require__(9);
 var has = __webpack_require__(32);
 var DESCRIPTORS = __webpack_require__(16);
 var $export = __webpack_require__(1);
@@ -26379,7 +26376,7 @@ $export($export.G + $export.F * (parseFloat != $parseFloat), { parseFloat: $pars
 
 "use strict";
 
-var global = __webpack_require__(10);
+var global = __webpack_require__(9);
 var has = __webpack_require__(32);
 var cof = __webpack_require__(42);
 var inheritIfRequired = __webpack_require__(164);
@@ -26611,7 +26608,7 @@ $export($export.S, 'Number', { EPSILON: Math.pow(2, -52) });
 
 // 20.1.2.2 Number.isFinite(number)
 var $export = __webpack_require__(1);
-var _isFinite = __webpack_require__(10).isFinite;
+var _isFinite = __webpack_require__(9).isFinite;
 
 $export($export.S, 'Number', {
   isFinite: function isFinite(it) {
@@ -27907,7 +27904,7 @@ __webpack_require__(75)('Array');
 /* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(10);
+var global = __webpack_require__(9);
 var inheritIfRequired = __webpack_require__(164);
 var dP = __webpack_require__(17).f;
 var gOPN = __webpack_require__(74).f;
@@ -28118,7 +28115,7 @@ __webpack_require__(116)('split', 2, function (defined, SPLIT, $split) {
 "use strict";
 
 var LIBRARY = __webpack_require__(70);
-var global = __webpack_require__(10);
+var global = __webpack_require__(9);
 var ctx = __webpack_require__(41);
 var classof = __webpack_require__(97);
 var $export = __webpack_require__(1);
@@ -28429,7 +28426,7 @@ var anObject = __webpack_require__(5);
 var toAbsoluteIndex = __webpack_require__(72);
 var toLength = __webpack_require__(18);
 var isObject = __webpack_require__(12);
-var ArrayBuffer = __webpack_require__(10).ArrayBuffer;
+var ArrayBuffer = __webpack_require__(9).ArrayBuffer;
 var speciesConstructor = __webpack_require__(117);
 var $ArrayBuffer = buffer.ArrayBuffer;
 var $DataView = buffer.DataView;
@@ -28586,7 +28583,7 @@ __webpack_require__(57)('Float64', 8, function (init) {
 var $export = __webpack_require__(1);
 var aFunction = __webpack_require__(25);
 var anObject = __webpack_require__(5);
-var rApply = (__webpack_require__(10).Reflect || {}).apply;
+var rApply = (__webpack_require__(9).Reflect || {}).apply;
 var fApply = Function.apply;
 // MS Edge argumentsList argument is optional
 $export($export.S + $export.F * !__webpack_require__(11)(function () {
@@ -28612,7 +28609,7 @@ var anObject = __webpack_require__(5);
 var isObject = __webpack_require__(12);
 var fails = __webpack_require__(11);
 var bind = __webpack_require__(231);
-var rConstruct = (__webpack_require__(10).Reflect || {}).construct;
+var rConstruct = (__webpack_require__(9).Reflect || {}).construct;
 
 // MS Edge supports only 2 arguments and argumentsList argument is optional
 // FF Nightly sets third argument as `new.target`, but does not create `this` from it
@@ -29359,7 +29356,7 @@ __webpack_require__(122)('WeakSet');
 // https://github.com/tc39/proposal-global
 var $export = __webpack_require__(1);
 
-$export($export.G, { global: __webpack_require__(10) });
+$export($export.G, { global: __webpack_require__(9) });
 
 
 /***/ }),
@@ -29369,7 +29366,7 @@ $export($export.G, { global: __webpack_require__(10) });
 // https://github.com/tc39/proposal-global
 var $export = __webpack_require__(1);
 
-$export($export.S, 'System', { global: __webpack_require__(10) });
+$export($export.S, 'System', { global: __webpack_require__(9) });
 
 
 /***/ }),
@@ -29577,7 +29574,7 @@ $export($export.S, 'Math', { signbit: function signbit(x) {
 
 var $export = __webpack_require__(1);
 var core = __webpack_require__(47);
-var global = __webpack_require__(10);
+var global = __webpack_require__(9);
 var speciesConstructor = __webpack_require__(117);
 var promiseResolve = __webpack_require__(245);
 
@@ -29791,7 +29788,7 @@ $metadata.exp({ metadata: function metadata(metadataKey, metadataValue) {
 // https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-09/sept-25.md#510-globalasap-for-enqueuing-a-microtask
 var $export = __webpack_require__(1);
 var microtask = __webpack_require__(180)();
-var process = __webpack_require__(10).process;
+var process = __webpack_require__(9).process;
 var isNode = __webpack_require__(42)(process) == 'process';
 
 $export($export.G, {
@@ -29810,7 +29807,7 @@ $export($export.G, {
 
 // https://github.com/zenparsing/es-observable
 var $export = __webpack_require__(1);
-var global = __webpack_require__(10);
+var global = __webpack_require__(9);
 var core = __webpack_require__(47);
 var microtask = __webpack_require__(180)();
 var OBSERVABLE = __webpack_require__(14)('observable');
@@ -30013,7 +30010,7 @@ __webpack_require__(75)('Observable');
 /***/ (function(module, exports, __webpack_require__) {
 
 // ie9- setTimeout & setInterval additional parameters fix
-var global = __webpack_require__(10);
+var global = __webpack_require__(9);
 var $export = __webpack_require__(1);
 var userAgent = __webpack_require__(183);
 var slice = [].slice;
@@ -30053,7 +30050,7 @@ $export($export.G + $export.B, {
 var $iterators = __webpack_require__(178);
 var getKeys = __webpack_require__(71);
 var redefine = __webpack_require__(28);
-var global = __webpack_require__(10);
+var global = __webpack_require__(9);
 var hide = __webpack_require__(27);
 var Iterators = __webpack_require__(81);
 var wks = __webpack_require__(14);
@@ -32328,7 +32325,7 @@ module.exports = react;
   })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 587 */
@@ -48022,7 +48019,7 @@ module.exports = reactDom;
   })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 591 */
@@ -48264,7 +48261,7 @@ function createProvider() {
 }
 
 /* harmony default export */ __webpack_exports__["b"] = (createProvider());
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(10)))
 
 /***/ }),
 /* 596 */
@@ -48814,7 +48811,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   return ReactPropTypes;
 };
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 597 */
@@ -49608,7 +49605,7 @@ function combineReducers(reducers) {
     return hasChanged ? nextState : state;
   };
 }
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(10)))
 
 /***/ }),
 /* 614 */
@@ -49797,7 +49794,7 @@ function whenMergePropsIsOmitted(mergeProps) {
 }
 
 /* harmony default export */ __webpack_exports__["a"] = ([whenMergePropsIsFunction, whenMergePropsIsOmitted]);
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(10)))
 
 /***/ }),
 /* 618 */
@@ -49910,7 +49907,7 @@ function finalPropsSelectorFactory(dispatch, _ref2) {
 
   return selectorFactory(mapStateToProps, mapDispatchToProps, mergeProps, dispatch, options);
 }
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(10)))
 
 /***/ }),
 /* 619 */
@@ -50132,7 +50129,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -50167,7 +50164,7 @@ if(false) {
 /* 622 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -50291,7 +50288,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -50326,7 +50323,7 @@ if(false) {
 /* 625 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -58580,7 +58577,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -58615,7 +58612,7 @@ if(false) {
 /* 827 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -58779,7 +58776,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -58814,7 +58811,7 @@ if(false) {
 /* 830 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -58843,7 +58840,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -58878,7 +58875,7 @@ if(false) {
 /* 832 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -59529,7 +59526,7 @@ Dropzone.defaultProps = {
   maxSize: Infinity,
   minSize: 0
 };
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(10)))
 
 /***/ }),
 /* 834 */
@@ -60791,7 +60788,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -60826,7 +60823,7 @@ if(false) {
 /* 858 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -60855,7 +60852,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -60890,7 +60887,7 @@ if(false) {
 /* 860 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -63883,7 +63880,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -63918,7 +63915,7 @@ if(false) {
 /* 864 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -64594,7 +64591,7 @@ DayPicker.DateUtils = DateUtils;
 DayPicker.LocaleUtils = LocaleUtils;
 DayPicker.ModifiersUtils = ModifiersUtils;
 //# sourceMappingURL=DayPicker.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 867 */
@@ -65144,7 +65141,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   return ReactPropTypes;
 };
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 868 */
@@ -65211,7 +65208,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 
 module.exports = checkPropTypes;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 869 */
@@ -65378,7 +65375,7 @@ Caption.propTypes = process.env.NODE_ENV !== "production" ? {
   }).isRequired
 } : {};
 //# sourceMappingURL=Caption.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 871 */
@@ -65636,7 +65633,7 @@ Month.propTypes = process.env.NODE_ENV !== "production" ? {
   onWeekClick: _propTypes2.default.func
 } : {};
 //# sourceMappingURL=Month.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 872 */
@@ -65743,7 +65740,7 @@ Weekdays.propTypes = process.env.NODE_ENV !== "production" ? {
   weekdayElement: _propTypes2.default.oneOfType([_propTypes2.default.element, _propTypes2.default.func, _propTypes2.default.instanceOf(_react2.default.Component)])
 } : {};
 //# sourceMappingURL=Weekdays.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 873 */
@@ -65942,7 +65939,7 @@ Day.propTypes = process.env.NODE_ENV !== "production" ? {
   tabIndex: _propTypes2.default.number
 } : {};
 //# sourceMappingURL=Day.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 874 */
@@ -66038,7 +66035,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -66073,7 +66070,7 @@ if(false) {
 /* 877 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -66102,7 +66099,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -66137,7 +66134,7 @@ if(false) {
 /* 879 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -68397,7 +68394,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -68432,7 +68429,7 @@ if(false) {
 /* 897 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -71901,7 +71898,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -71936,7 +71933,7 @@ if(false) {
 /* 929 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -74524,7 +74521,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -74559,7 +74556,7 @@ if(false) {
 /* 951 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -74588,7 +74585,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -74623,7 +74620,7 @@ if(false) {
 /* 953 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -74764,7 +74761,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -74799,7 +74796,7 @@ if(false) {
 /* 956 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -74828,7 +74825,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -74864,7 +74861,7 @@ if(false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var escape = __webpack_require__(93);
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -74969,7 +74966,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -75005,7 +75002,7 @@ if(false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var escape = __webpack_require__(93);
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -75034,7 +75031,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -75070,7 +75067,7 @@ if(false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var escape = __webpack_require__(93);
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -75795,7 +75792,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -75830,7 +75827,7 @@ if(false) {
 /* 978 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -76685,7 +76682,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -76721,7 +76718,7 @@ if(false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var escape = __webpack_require__(93);
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -76993,7 +76990,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -77028,7 +77025,7 @@ if(false) {
 /* 992 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -77057,7 +77054,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -77092,7 +77089,7 @@ if(false) {
 /* 994 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -77121,7 +77118,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -77157,7 +77154,7 @@ if(false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var escape = __webpack_require__(93);
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -77436,7 +77433,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -77472,7 +77469,7 @@ if(false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var escape = __webpack_require__(93);
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -77630,7 +77627,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -77665,7 +77662,7 @@ if(false) {
 /* 1002 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -77838,7 +77835,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -77873,7 +77870,7 @@ if(false) {
 /* 1005 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -78083,7 +78080,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -78118,7 +78115,7 @@ if(false) {
 /* 1008 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -78581,7 +78578,7 @@ exports.default = EditMovieImage;
 /* 1011 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -78940,7 +78937,7 @@ exports.default = EditMovieInfo;
 /* 1013 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -79143,7 +79140,7 @@ exports.default = EditActorsList;
 /* 1015 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -79157,7 +79154,7 @@ exports.push([module.i, ".EditList__button {\n  background-color: #FAE807;\n  co
 /* 1016 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -79780,7 +79777,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -79815,7 +79812,7 @@ if(false) {
 /* 1021 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -80088,7 +80085,157 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // import React, {Component} from "react";
+// import block from "../helpers/BEM";
+// import "../styles/AddActorLayout.less";
+// import {connect} from "react-redux";
+// import {Redirect} from "react-router";
+// import AddActorImage from "./AddActorImage";
+// import AddActorInfo from "./AddActorInfo";
+// import slugify from "slugify/index";
+// import {postActorToDB, checkName} from "../actions/actors";
+// import {editMovieBySlug} from "../actions/movies";
+// import {getCheckedNameActor} from "../reducers";
+//
+// const b = block("AddActorLayout");
+//
+// class AddActorLayout extends Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             fireRedirect: false,
+//             movies: [],
+//             info: '',
+//             date: '',
+//             city: '',
+//             nominations: [],
+//             image: '',
+//             name: '',
+//             link: ''
+//         };
+//         this.getStateFromChild = this.getStateFromChild.bind(this);
+//     }
+//
+//     getStateFromChild(keys, values) {
+//         for (let k = 0; k < keys.length; k++) {
+//             this.setState({[keys[k]]: values[k]})
+//         }
+//     }
+//
+//     async addActorToDB(e) {
+//         e.preventDefault();
+//         const {
+//             movies,
+//             info,
+//             date,
+//             city,
+//             nominations,
+//             image,
+//             name
+//         } = this.state;
+//
+//         let convDate = date;
+//         if (typeof date === 'string') {
+//             const splitDate = date.split("-");
+//             convDate = {
+//                 year: parseInt(splitDate[0]),
+//                 month: parseInt(splitDate[1]),
+//                 day: parseInt(splitDate[2])
+//             };
+//         }
+//
+//         const newMovies = movies.map(m => m.slugName).filter(slug => slug !== '');
+//
+//         let slugName = slugify(name, {
+//             replacement: '_',
+//             remove: /[.:!,;*&@^]/g,
+//             lower: true
+//         });
+//
+//         await this.props.checkName(name);
+//         if (this.props.checked.slugName) {
+//             if (this.props.checked.city === city) {
+//                 alert("This actor already exist");
+//                 return;
+//             } else {
+//                 console.log("they are with tha same names");
+//                 slugName += "_" + city;
+//             }
+//         }
+//
+//         const actorToAdd = {
+//             movies: newMovies,
+//             slugName,
+//             name,
+//             info,
+//             date: convDate,
+//             city,
+//             nominations: nominations.filter(el => el !== ''),
+//             image
+//         };
+//         console.log('ACTOR', actorToAdd);
+//
+//         this.props.postData(actorToAdd);
+//         if (movies.length !== 0 && typeof movies[0] === 'object') {
+//             movies.filter(el => el.slugName.trim() !== '')
+//                 .map(el => {
+//                     const cast = (el.dynLst.includes(slugName)) ? [...el.dynLst] : [...el.dynLst, slugName];
+//                     this.props.editMovies({cast}, el.slugName);
+//                 });
+//         }
+//
+//         this.setState({fireRedirect: true, link: slugName});
+//     }
+//
+//     cancelAdding() {
+//         this.setState({fireRedirect: true});
+//     }
+//
+//
+//     render() {
+//         const {
+//             fireRedirect,
+//             info,
+//             city,
+//             name
+//         } = this.state;
+//
+//         const isEnabled =
+//             name.length *
+//             info.length *
+//             city.length !== 0;
+//         const lenCancelBtn = (isEnabled) ? '100px' : '250px';
+//         return (<div>
+//             <form className={b()}>
+//                 <h1 className={b('title')}>ADD ACTOR</h1>
+//                 <AddActorImage callback={this.getStateFromChild}/>
+//                 <AddActorInfo callback={this.getStateFromChild}/>
+//                 <div className={b('btns')}>
+//                     <button type='submit' className={b('btn', ['submit'])}
+//                             disabled={!isEnabled}
+//                             onClick={this.addActorToDB.bind(this)}>
+//                         Submit
+//                     </button>
+//                     <button type='button' className={b('btn', ['cancel'])}
+//                             style={{width: lenCancelBtn}} onClick={this.cancelAdding.bind(this)}>
+//                         Cancel
+//                     </button>
+//                 </div>
+//             </form>
+//             {fireRedirect && (<Redirect to={`/`}/>)}
+//         </div>)
+//     }
+// }
+//
+//
+// export default connect((state, props) => {
+//     let checked = getCheckedNameActor(state);
+//     return {checked};
+// }, (dispatch) => ({
+//     checkName: (name) => dispatch(checkName(name, 'actors')),
+//     postData: (actor) => dispatch(postActorToDB(actor)),
+//     editMovies: (movie, slug) => dispatch(editMovieBySlug(slug, movie))
+// }))(AddActorLayout);
 
 var b = (0, _BEM2.default)("AddActorLayout");
 
@@ -80150,6 +80297,7 @@ var AddActorLayout = function (_Component) {
                                         movie.slugName = (0, _index2.default)(movie.name, { replacement: '_', remove: /[.:!,;*&@^]/g, lower: true });
                                     }
                                 });
+                                // const newMovies = movies.map(m => m.slugName).filter(slug => slug !== '');
                                 slugName = (0, _index2.default)(name, {
                                     replacement: '_',
                                     remove: /[.:!,;*&@^]/g,
@@ -80309,7 +80457,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -80344,7 +80492,7 @@ if(false) {
 /* 1025 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -80470,7 +80618,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -80505,7 +80653,7 @@ if(false) {
 /* 1028 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -80682,7 +80830,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(9)(content, options);
+var update = __webpack_require__(8)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -80717,7 +80865,7 @@ if(false) {
 /* 1031 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
