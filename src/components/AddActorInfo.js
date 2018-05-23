@@ -1,12 +1,12 @@
 import React, {Component} from "react";
 import block from "../helpers/BEM";
-import "../styles/AddAInfo.less";
+import "../styles/AddActorInfo.less";
 import NominationsList from "./NominationsList";
-import AddMoviesList from "./AddMoviesList";
+import AddDynamicList from "./AddDynamicList";
 
-const b = block("AddAInfo");
+const b = block("AddActorInfo");
 
-class AddAInfo extends Component {
+class AddActorInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -40,6 +40,7 @@ class AddAInfo extends Component {
     }
 
     render() {
+        console.log('-----', this.state);
         return <section className={b()}>
             <h3 className={b('title')}>Actor Name</h3>
             <input className={b("input", ['name'])} name='name'
@@ -60,9 +61,9 @@ class AddAInfo extends Component {
             <NominationsList nominations={[]} callback={this.callback}/>
 
             <h3 className={b("title")}>Movies</h3>
-            <AddMoviesList callback={this.callback}/>
+            <AddDynamicList type='movie' callback={this.callback}/>
         </section>
     }
 }
 
-export default AddAInfo;
+export default AddActorInfo;

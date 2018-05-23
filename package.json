@@ -8,6 +8,8 @@
     "server": "node server/server.js",
     "start": "npm run webpack | npm run server",
     "test": "jest",
+    "raml": "raml2html docs/api/index.raml > docs/api/index.html",
+    "styleguidist": "npx styleguidist build",
     "export:db": "mongoexport -d cinema-project -c actors -o ./exports/Actors.json && mongoexport -d cinema-project -c movies -o ./exports/Movies.json"
   },
   "keywords": [],

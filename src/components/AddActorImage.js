@@ -1,11 +1,11 @@
 import React, {Component} from "react";
 import block from "../helpers/BEM";
-import "../styles/AddAImage.less";
+import "../styles/AddActorImage.less";
 import DragDropImage from "./DragDropImage";
 
-const b = block("AddAImage");
+const b = block("AddActorImage");
 
-class AddAImage extends Component {
+class AddActorImage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -39,4 +39,4 @@ class AddAImage extends Component {
     }
 }
 
-export default AddAImage;
+export default AddActorImage;

@@ -1,15 +1,13 @@
 import React, {Component} from "react";
 import "../styles/AddMovieLayout.less";
 import block from '../helpers/BEM';
-import AddMImages from "./AddMImages";
-import AddMInfo from "./AddMInfo";
+import AddMovieImages from "./AddMovieImages";
+import AddMovieInfo from "./AddMovieInfo";
 import {Redirect} from "react-router";
 import slugify from 'slugify';
 import {connect} from "react-redux";
 import {postMovieToDB} from "../actions/movies";
-import {postActorToDB} from "../actions/actors";
 import {editActorBySlug} from "../actions/actors";
-import {getAllActorsSlugs} from "../reducers";
 
 const b = block("AddMovieLayout");
 
@@ -20,7 +18,7 @@ class AddMovieLayout extends Component {
         this.state = {
             fireRedirect: false,
             screenshots: [],
-            cast: [],
+            actors: [],
             scheduleTime: [],
             scheduleDate: [],
             genre: [],
@@ -48,7 +46,7 @@ class AddMovieLayout extends Component {
         e.preventDefault();
         const {
             screenshots,
-            cast,
+            actors,
             scheduleDate,
             genre,
             format,
@@ -65,13 +63,8 @@ class AddMovieLayout extends Component {
         let Schedule = [];
         const scheduleTime = this.state.scheduleTime.sort();
         scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
-        cast.forEach((cast) => {
-          if(!cast.slugName) {
-            cast.slugName = slugify(cast.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
-          }
-        })
 
-        // const newCast = cast.map(el => el.slugName).filter(slug => slug !== '');
+        const cast = actors.map(el => el.slugName).filter(slug => slug !== '');
         const slugName = slugify(name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
 
         const movie = {
@@ -79,7 +72,7 @@ class AddMovieLayout extends Component {
             slugName,
             image: poster,
             rating: parseFloat(rating).toString(),
-            cast: cast,
+            cast,
             description,
             screenshots,
             trailer,
@@ -99,25 +92,22 @@ class AddMovieLayout extends Component {
             }
         };
 
+        console.log("MOVIE", movie);
         await this.props.postData(movie);
 
-        // if (cast.length !== 0 && typeof cast[0] === 'object') {
-        //     cast.map(el => {
-        //       if (el.slugName.trim() !== "") {
-        //         const movies = (el.movies.includes(slugName)) ? [...el.movies] : [...el.movies, slugName];
-        //         this.props.editActors({movies}, el.slugName);
-        //       } else {
-        //         el.published = false;
-        //         el.slugName = slugify(el.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
-        //         el.movies = [slugName];
-        //       }
-        //   });
-        // }
+        if (actors.length !== 0 && typeof actors[0] === 'object') {
+            actors.filter(el => el.slugName.trim() !== '')
+                .map(el => {
+                    const movies = (el.dynLst.includes(slugName)) ? [...el.dynLst] : [...el.dynLst, slugName];
+                    this.props.editActors({movies}, el.slugName);
+                });
+        }
 
         this.setState({fireRedirect: true});
     }
 
     cancelAdding() {
+        console.log('Adding is canceled!!!');
         this.setState({fireRedirect: true});
     }
 
@@ -143,12 +133,11 @@ class AddMovieLayout extends Component {
             rating.length *
             duration.length !== 0;
         const lenCancelBtn = (isEnabled) ? '100px' : '250px';
-
         return (<div>
                 <form className={b()}>
                     <h1 className={b('title')}>ADD MOVIE</h1>
-                    <AddMImages callback={this.getStateFromChild}/>
-                    <AddMInfo callback={this.getStateFromChild}/>
+                    <AddMovieImages callback={this.getStateFromChild}/>
+                    <AddMovieInfo callback={this.getStateFromChild}/>
                     <div className={b('btns')}>
                         <button type='submit'
                                 disabled={!isEnabled}
@@ -168,14 +157,7 @@ class AddMovieLayout extends Component {
 }
 
 
-export default connect((state, props) => {
-  const allActors = getAllActorsSlugs(state);
-  return {
-    allActors
-  }
-},
- (dispatch) => ({
+export default connect(null, (dispatch) => ({
     postData: (movie) => dispatch(postMovieToDB(movie)),
-    editActors: (actor, slug) => dispatch(editActorBySlug(slug, actor)),
-    postActor: (actor) => dispatch(postActorToDB(actor))
+    editActors: (actor, slug) => dispatch(editActorBySlug(slug, actor))
 }))(AddMovieLayout);

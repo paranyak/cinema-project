@@ -5,10 +5,12 @@ const actors = require('./routes/actors');
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
-const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/cinema-project';
+var cors = require('cors');
+const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/heroku_t7gvckhq';
 
 const port = process.env.PORT || 3000;
 
+app.use(cors({origin: 'https://csucu-cinema-project.herokuapp.com'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/movies', movies);
