@@ -30,13 +30,13 @@ class EditActorPage extends Component {
     }
 
     componentWillMount(props) {
-        if (this.props.filmsToFetch && this.props.isFilmFetching) {
-            this.props.filmsToFetch.forEach((film) => {
-                if(!this.props.isFilmFetching(film)) {
-                    this.props.fetchMovieBySlug(film);
-                }
-            })
-        }
+      if (this.props.filmsToFetch && this.props.isFilmFetching) {
+        this.props.filmsToFetch.forEach((film) => {
+          if(!this.props.isFilmFetching(film)) {
+            this.props.fetchMovieBySlug(film);
+          }
+        })
+      }
     }
 
     getStateFromChild(keys, values) {
@@ -128,10 +128,10 @@ class EditActorPage extends Component {
         let cInfo = info;
         let cCity = city;
         if (info === undefined) {
-            cInfo = '';
+          cInfo = '';
         }
         if (city === undefined) {
-            cCity = '';
+          cCity = '';
         }
         console.log('--', name, cInfo, cCity);
 
@@ -142,9 +142,9 @@ class EditActorPage extends Component {
         const lenCancelBtn = (isEnabled) ? '100px' : '250px';
         let redirect;
         if (actor.published) {
-            redirect = (<Redirect to={`/actor/${actor.slugName}`}/>)
+          redirect = (<Redirect to={`/actor/${actor.slugName}`}/>)
         } else {
-            redirect = (<Redirect to={`/allactors`}/>)
+          redirect = (<Redirect to={`/allactors`}/>)
         }
 
         return (<div>
@@ -174,11 +174,11 @@ export default connect((state, props) => {
         const actor = getActorBySlug(slug, state);
         const filmsToFetch = [];
         const films = actor.movies.map(movieID => {
-            let movie = getMovieBySlug(movieID, state);
-            if(!movie) {
-                filmsToFetch.push(movieID);
-            }
-            return movie;
+          let movie = getMovieBySlug(movieID, state);
+          if(!movie) {
+            filmsToFetch.push(movieID);
+          }
+          return movie;
         }).filter(movie => movie);
         const isFilmFetching = (slug) => isMovieFetchingSlug(slug, state);
         return {actor, films, filmsToFetch, isFilmFetching};

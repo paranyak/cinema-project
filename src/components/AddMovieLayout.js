@@ -13,13 +13,14 @@ import {getAllActorsSlugs} from "../reducers";
 
 const b = block("AddMovieLayout");
 
+
 class AddMovieLayout extends Component {
     constructor(props) {
         super(props);
         this.state = {
             fireRedirect: false,
             screenshots: [],
-            actors: [],
+            cast: [],
             scheduleTime: [],
             scheduleDate: [],
             genre: [],
@@ -47,7 +48,7 @@ class AddMovieLayout extends Component {
         e.preventDefault();
         const {
             screenshots,
-            actors,
+            cast,
             scheduleDate,
             genre,
             format,
@@ -64,10 +65,10 @@ class AddMovieLayout extends Component {
         let Schedule = [];
         const scheduleTime = this.state.scheduleTime.sort();
         scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
-        actors.forEach((a) => {
-            if (!a.slugName) {
-                a.slugName = slugify(a.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
-            }
+        cast.forEach((cast) => {
+          if(!cast.slugName) {
+            cast.slugName = slugify(cast.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
+          }
         });
 
         const slugName = slugify(name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
@@ -77,7 +78,7 @@ class AddMovieLayout extends Component {
             slugName,
             image: poster,
             rating: parseFloat(rating).toString(),
-            cast: actors,
+            cast: cast,
             description,
             screenshots,
             trailer,
@@ -154,11 +155,13 @@ class AddMovieLayout extends Component {
 
 
 export default connect((state, props) => {
-        const allActors = getAllActorsSlugs(state);
-        return {allActors}
-    },
-    (dispatch) => ({
-        postData: (movie) => dispatch(postMovieToDB(movie)),
-        editActors: (actor, slug) => dispatch(editActorBySlug(slug, actor)),
-        postActor: (actor) => dispatch(postActorToDB(actor))
-    }))(AddMovieLayout);
+  const allActors = getAllActorsSlugs(state);
+  return {
+    allActors
+  }
+},
+ (dispatch) => ({
+    postData: (movie) => dispatch(postMovieToDB(movie)),
+    editActors: (actor, slug) => dispatch(editActorBySlug(slug, actor)),
+    postActor: (actor) => dispatch(postActorToDB(actor))
+}))(AddMovieLayout);

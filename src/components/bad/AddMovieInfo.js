@@ -1,11 +1,11 @@
 import React, {Component} from "react";
-import block from "../helpers/BEM";
-import "../styles/AddMovieInfo.less";
+import block from "../../helpers/BEM";
+import "../../styles/AddMovieInfo.less";
 import {formats, genres, technologies} from "../helpers/constants";
 import EditSelections from "./EditSelections";
-import CastInputs from "./CastInputs";
 import CalendarRangePicker from "./CalendarRangePicker";
 import TimeRanges from "./TimeRanges";
+import AddDynamicList from "./AddDynamicList";
 
 const b = block("AddMovieInfo");
 
@@ -20,7 +20,7 @@ class AddMovieInfo extends Component {
             genre: [],
             format: [],
             technology: [],
-            cast: [],
+            actors: [],
             startDate: {},
             label: '',
             scheduleTime: [],
@@ -31,11 +31,11 @@ class AddMovieInfo extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const {rating, duration, name, description, genre, format, technology, cast, label, scheduleTime, scheduleDate, startDate} = this.state;
+        const {rating, duration, name, description, genre, format, technology, actors, label, scheduleTime, scheduleDate, startDate} = this.state;
         if (prevState !== this.state) {
             this.props.callback(
-                ['rating', 'duration', 'name', 'description', 'genre', 'format', 'technology', 'cast', 'label', 'scheduleTime', 'scheduleDate', 'startDate'],
-                [rating, duration, name, description, genre, format, technology, cast, label, scheduleTime, scheduleDate, startDate]);
+                ['rating', 'duration', 'name', 'description', 'genre', 'format', 'technology', 'actors', 'label', 'scheduleTime', 'scheduleDate', 'startDate'],
+                [rating, duration, name, description, genre, format, technology, actors, label, scheduleTime, scheduleDate, startDate]);
         }
     }
 
@@ -91,7 +91,7 @@ class AddMovieInfo extends Component {
                                 callback={this.callback}/>
 
                 <h3 className={b('title')}>Actors</h3>
-                <CastInputs name='cast' callback={this.callback}/>
+                <AddDynamicList type='actor' items={[]} callback={this.callback}/>
 
                 <h3 className={b('title')}>Label</h3>
                 <div>

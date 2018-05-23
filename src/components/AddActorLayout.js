@@ -57,10 +57,11 @@ class AddActorLayout extends Component {
             };
         }
         movies.forEach((movie) => {
-            if (!movie.slugName) {
-                movie.slugName = slugify(movie.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
-            }
-        });
+          if(!movie.slugName) {
+            movie.slugName = slugify(movie.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
+          }
+        })
+        // const newMovies = movies.map(m => m.slugName).filter(slug => slug !== '');
         let slugName = slugify(name, {
             replacement: '_',
             remove: /[.:!,;*&@^]/g,
@@ -79,7 +80,7 @@ class AddActorLayout extends Component {
         }
 
         const actorToAdd = {
-            movies,
+            movies: movies,
             slugName,
             name,
             info,
@@ -90,6 +91,13 @@ class AddActorLayout extends Component {
         };
         console.log(actorToAdd, "00000000000000000000000000000000000000000");
         this.props.postData(actorToAdd);
+        // if (movies.length !== 0 && typeof movies[0] === 'object') {
+        //     movies.filter(el => el.slugName.trim() !== '')
+        //         .map(el => {
+        //             const cast = (el.cast.includes(slugName)) ? [...el.cast] : [...el.cast, slugName];
+        //             this.props.editMovies({cast}, el.slugName);
+        //         });
+        // }
 
         this.setState({fireRedirect: true, link: slugName});
     }
@@ -137,11 +145,11 @@ class AddActorLayout extends Component {
 
 
 export default connect((state, props) => {
-        let checked = getCheckedNameActor(state);
-        return {checked};
-    }, (dispatch) => ({
-        checkName: (name) => dispatch(checkName(name, 'actors')),
-        postData: (actor) => dispatch(postActorToDB(actor)),
-        editMovies: (movie, slug) => dispatch(editMovieBySlug(slug, movie))
-    })
+    let checked = getCheckedNameActor(state);
+    return {checked};
+}, (dispatch) => ({
+    checkName: (name) => dispatch(checkName(name, 'actors')),
+    postData: (actor) => dispatch(postActorToDB(actor)),
+    editMovies: (movie, slug) => dispatch(editMovieBySlug(slug, movie))
+})
 )(AddActorLayout);
