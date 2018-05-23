@@ -1,11 +1,8 @@
 import React, {Component} from "react";
-import "../styles/EditSelections.less";
-import block from '../helpers/BEM'
+import "../styles/MultiSelection.less";
 import Select from 'react-select';
 
-const b = block("EditSelections");
-
-class EditSelections extends Component {
+class MultiSelection extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -52,4 +49,4 @@ class EditSelections extends Component {
     }
 }
 
-export default EditSelections;
+export default MultiSelection;

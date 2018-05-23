@@ -20923,10 +20923,6 @@ var _react2 = _interopRequireDefault(_react);
 
 __webpack_require__(858);
 
-var _BEM = __webpack_require__(10);
-
-var _BEM2 = _interopRequireDefault(_BEM);
-
 var _reactSelect = __webpack_require__(860);
 
 var _reactSelect2 = _interopRequireDefault(_reactSelect);
@@ -20939,15 +20935,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var b = (0, _BEM2.default)("EditSelections");
+var MultiSelection = function (_Component) {
+    _inherits(MultiSelection, _Component);
 
-var EditSelections = function (_Component) {
-    _inherits(EditSelections, _Component);
+    function MultiSelection(props) {
+        _classCallCheck(this, MultiSelection);
 
-    function EditSelections(props) {
-        _classCallCheck(this, EditSelections);
-
-        var _this = _possibleConstructorReturn(this, (EditSelections.__proto__ || Object.getPrototypeOf(EditSelections)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (MultiSelection.__proto__ || Object.getPrototypeOf(MultiSelection)).call(this, props));
 
         _this.state = {
             value: props.defaultValue
@@ -20955,7 +20949,7 @@ var EditSelections = function (_Component) {
         return _this;
     }
 
-    _createClass(EditSelections, [{
+    _createClass(MultiSelection, [{
         key: "handleSelectChange",
         value: function handleSelectChange(value) {
             var val = value.split(',');
@@ -21003,10 +20997,10 @@ var EditSelections = function (_Component) {
         }
     }]);
 
-    return EditSelections;
+    return MultiSelection;
 }(_react.Component);
 
-exports.default = EditSelections;
+exports.default = MultiSelection;
 
 /***/ }),
 /* 337 */
@@ -60496,9 +60490,9 @@ __webpack_require__(856);
 
 var _constants = __webpack_require__(210);
 
-var _EditSelections = __webpack_require__(336);
+var _MultiSelection = __webpack_require__(336);
 
-var _EditSelections2 = _interopRequireDefault(_EditSelections);
+var _MultiSelection2 = _interopRequireDefault(_MultiSelection);
 
 var _AddDynamicList = __webpack_require__(142);
 
@@ -60645,21 +60639,21 @@ var AddMovieInfo = function (_Component) {
                     { className: b('title') },
                     "Genre"
                 ),
-                _react2.default.createElement(_EditSelections2.default, { options: _constants.genres, defaultValue: '', name: "genre",
+                _react2.default.createElement(_MultiSelection2.default, { options: _constants.genres, defaultValue: '', name: "genre",
                     callback: this.callback }),
                 _react2.default.createElement(
                     "h3",
                     { className: b('title') },
                     "Format"
                 ),
-                _react2.default.createElement(_EditSelections2.default, { options: _constants.formats, defaultValue: '', name: "format",
+                _react2.default.createElement(_MultiSelection2.default, { options: _constants.formats, defaultValue: '', name: "format",
                     callback: this.callback }),
                 _react2.default.createElement(
                     "h3",
                     { className: b('title') },
                     "Technology"
                 ),
-                _react2.default.createElement(_EditSelections2.default, { options: _constants.technologies, defaultValue: '', name: "technology",
+                _react2.default.createElement(_MultiSelection2.default, { options: _constants.technologies, defaultValue: '', name: "technology",
                     callback: this.callback }),
                 _react2.default.createElement(
                     "h3",
@@ -60806,8 +60800,8 @@ var update = __webpack_require__(9)(content, options);
 if(content.locals) module.exports = content.locals;
 
 if(false) {
-	module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./EditSelections.less", function() {
-		var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./EditSelections.less");
+	module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./MultiSelection.less", function() {
+		var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./MultiSelection.less");
 
 		if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 
@@ -78562,9 +78556,9 @@ var _BEM2 = _interopRequireDefault(_BEM);
 
 var _constants = __webpack_require__(210);
 
-var _EditSelections = __webpack_require__(336);
+var _MultiSelection = __webpack_require__(336);
 
-var _EditSelections2 = _interopRequireDefault(_EditSelections);
+var _MultiSelection2 = _interopRequireDefault(_MultiSelection);
 
 var _CalendarRangePicker = __webpack_require__(338);
 
@@ -78815,21 +78809,21 @@ var EditMovieInfo = function (_Component) {
                     { className: b('title') },
                     "Genre"
                 ),
-                _react2.default.createElement(_EditSelections2.default, { options: _constants.genres, defaultValue: chosenGenres, name: "genre",
+                _react2.default.createElement(_MultiSelection2.default, { options: _constants.genres, defaultValue: chosenGenres, name: "genre",
                     callback: this.callback }),
                 _react2.default.createElement(
                     "h3",
                     { className: b('title') },
                     "Format"
                 ),
-                _react2.default.createElement(_EditSelections2.default, { options: _constants.formats, defaultValue: chosenFormats, name: "format",
+                _react2.default.createElement(_MultiSelection2.default, { options: _constants.formats, defaultValue: chosenFormats, name: "format",
                     callback: this.callback }),
                 _react2.default.createElement(
                     "h3",
                     { className: b('title') },
                     "Technology"
                 ),
-                _react2.default.createElement(_EditSelections2.default, { options: _constants.technologies, defaultValue: chosenTechnologies, name: "technology",
+                _react2.default.createElement(_MultiSelection2.default, { options: _constants.technologies, defaultValue: chosenTechnologies, name: "technology",
                     callback: this.callback }),
                 _react2.default.createElement(
                     "h3",

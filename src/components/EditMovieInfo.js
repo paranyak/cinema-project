@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import "../styles/EditInfo.less";
 import block from '../helpers/BEM'
 import {genres, formats, technologies} from "../helpers/constants";
-import EditSelections from "./EditSelections";
+import MultiSelection from "./MultiSelection";
 import CalendarRangePicker from "./CalendarRangePicker";
 import TimeRanges from "./TimeRanges";
 import AddDynamicList from "./AddDynamicList";
@@ -164,15 +164,15 @@ class EditMovieInfo extends Component {
                 <TimeRanges name='scheduleTime' schedule={timeRanges} callbackFromParent={this.callback}/>
 
                 <h3 className={b('title')}>Genre</h3>
-                <EditSelections options={genres} defaultValue={chosenGenres} name='genre'
+                <MultiSelection options={genres} defaultValue={chosenGenres} name='genre'
                                 callback={this.callback}/>
 
                 <h3 className={b('title')}>Format</h3>
-                <EditSelections options={formats} defaultValue={chosenFormats} name='format'
+                <MultiSelection options={formats} defaultValue={chosenFormats} name='format'
                                 callback={this.callback}/>
 
                 <h3 className={b('title')}>Technology</h3>
-                <EditSelections options={technologies} defaultValue={chosenTechnologies} name='technology'
+                <MultiSelection options={technologies} defaultValue={chosenTechnologies} name='technology'
                                 callback={this.callback}/>
 
                 <h3 className={b('title')}>Actors</h3>
