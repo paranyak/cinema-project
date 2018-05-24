@@ -3,17 +3,21 @@
   "$schema": "http://json-schema.org/draft-03/schema",
   "required": true,
   "properties": {
-    "movieTitle": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slugName": {
       "type": "string",
       "required": true
     },
     "image": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "rating": {
       "type": "float",
-      "required": false
+      "required": true
     },
     "description": {
       "type": "string",
@@ -33,19 +37,19 @@
     },
     "genre": {
         "type": "string",
-        "required": false
+        "required": true
     },
     "schedule": {
         "type": "object",
-        "required": true
+        "required": false
     },
     "format": {
         "type": "object",
-        "required": false
+        "required": true
     },
     "technology": {
         "type": "object",
-        "required": false
+        "required": true
     },
     "duration": {
         "type": "object",
@@ -54,13 +58,17 @@
     },
     "label": {
         "type": "string",
-        "required": false,
+        "required": true,
         "possible": ["", "popular", "soon"]
     },
     "startDate": {
         "type": "object",
         "required": true,
         "keys": ["year", "month", "day"]
+    },
+    "published": {
+        "type": "bool",
+        "required": true
     }
   }
 }

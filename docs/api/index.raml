@@ -67,6 +67,26 @@ resourceTypes:
             application/json:
               example: |
                 {"message": "<<resourcePathName|!singularize>> not found" }
+
+    patch:
+      description: |
+        Update information about some <<resourcePathName|!singularize>>.
+      queryParameters:
+        access_token:
+          example: <<examplePatch>>
+          required: true
+          type: Object
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                <<exampleItem>>
+        404:
+          body:
+            application/json:
+              example: |
+                {"message": "<<resourcePathName|!singularize>> not found" }
 traits:
   searchable:
     queryParameters:
@@ -110,14 +130,23 @@ traits:
             required: true
             type: file
 
-  /{movieID}:
+  /{bySlugName}/{movieSlugName}:
     type:
       collection-item:
         exampleItem: !include movie-retrieve.sample
+        examplePatch: !include movie-patch.sample
     get:
       description: Get a specific movie
     patch:
       description: Update the movie
+    delete:
+      description: Delete a specific movie
+  /{movieSlugs}:
+    type:
+      collection:
+        exampleCollection: !include movie-slugs.sample
+    get:
+      description: Get slugs of all movies
 
 
 /actors:
@@ -138,11 +167,20 @@ traits:
             required: true
             type: file
 
-  /{actorName}:
+  /{bySlugName}/{actorSlugName}:
     type:
       collection-item:
         exampleItem: !include actor-retrieve.sample
+        examplePatch: !include actor-patch.sample
     get:
       description: Get a specific actor
     patch:
       description: Update the actor
+    delete:
+      description: Delete a specific actor
+  /{actorSlugs}:
+    type:
+      collection:
+        exampleCollection: !include actor-slugs.sample
+    get:
+      description: Get slugs of all actors

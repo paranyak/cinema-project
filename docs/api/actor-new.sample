@@ -1,10 +1,19 @@
 {
-  "actorName": "kyle_chandler",
-  "info": "Kyle Martin Chandler is an American actor, best known[citation needed] for his role as Gary Hobson on Early Edition and as Coach Eric Taylor in the drama series Friday Night Lights, for which he won a Primetime Emmy Award in 2011. He has starred in the films King Kong (2005), The Day the Earth Stood Still (2008), Super 8 (2011), Argo (2012), Zero Dark Thirty (2012), The Wolf of Wall Street (2013), Carol (2015), and Manchester by the Sea (2016).[1] In 2015, he began starring on Netflix's drama series Bloodline, for which he received his fourth and fifth Primetime Emmy Award nominations.",
-  "date": "September 17, 1965",
-  "city": "Buffalo, New York, United States",
-  "nominations": [
-    "Премія EMMI за найкращу чоловічу роль у драматичному серіалі"
+  "_id": "5b00177e795bf21b28b74f16",
+  "date": {
+    "year": 1971,
+    "month": 11,
+    "day": 10
+  },
+  "movies": [
+    "dear_dictator"
   ],
-  "image": "Cinema Project/kau8mlqjziqnwhkgiqqq"
+  "nominations": [],
+  "name": "Katie Holmes",
+  "slugName": "katie_holmes",
+  "info": "Walton Sanders Goggins Jr. (born November 10, 1971) is an American actor. He co_produced and starred in the 2001 short film The Accountant, which won an Academy Award for Best Live Action Short Film.[2] He was nominated for the Primetime Emmy Award for Outstanding Supporting Actor in a Drama Series in the FX series Justified.",
+  "city": "Бірмінгем, Алабама, США",
+  "image": "Cinema Project/nspas0foy199urrzg0ht",
+  "published": true,
+  "__v": 1
 }
