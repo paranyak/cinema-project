@@ -5,7 +5,6 @@ var ObjectID = require('mongodb').ObjectID;
 
 router.get('/byId/:id', async (req, res) => {
     const id = req.params.id;
-    console.log('--------------------', id);
     const actor = await db.get().collection('actors').findOne({_id: ObjectID(id)});
     try {
         res.send(actor);
@@ -73,15 +72,28 @@ router.post('/', async (req, res) => {
     actor.movies.forEach(async (movie) => {
       await db.get().collection('movies').findOneAndUpdate({slugName: movie}, {$push: {cast: actor.slugName}})
     });
-    console.log(savedActor.ops[0]);
     res.send(savedActor.ops[0])
 });
 
 router.patch('/:slugName', async (req, res) => {
-    req.body.published = true;
-    const actor = await db.get().collection('actors').findOneAndUpdate({slugName: req.params.slugName}, {$set: req.body}, {returnOriginal: false});
-    res.send(actor.value)
+    let actor = req.body;
+    actor.published = true;
 
+    actor.movies = await Promise.all(actor.movies.map(async (movie) => {
+      if(!movie._id) {
+        movie.published = false;
+        let member = await db.get().collection('movies').save(movie);
+        return member.ops[0].slugName;
+      }
+      return movie.slugName;
+    }));
+
+    const savedActor = await db.get().collection('actors').findOneAndUpdate({slugName: req.params.slugName}, {$set: req.body}, {returnOriginal: false});
+
+    actor.movies.forEach(async (movie) => {
+      await db.get().collection('movies').findOneAndUpdate({slugName: movie}, {$push: {cast: savedActor.value.slugName}})
+    });
+    res.send(savedActor.value)
 });
 
 router.delete('/:slugName', async (req, res) => {

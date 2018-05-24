@@ -12,7 +12,6 @@ router.get('/moviesCount', async function (req, res) {
 router.get('/byId/:id', async function (req, res) {
     const id = req.params.id;
     const movie = await db.get().collection('movies').findOne({_id: ObjectID(id)});
-    console.log("By id", movie);
     res.send(movie);
 });
 
@@ -110,15 +109,31 @@ router.post('/', async (req, res) => {
 });
 
 router.patch('/:slugName', async (req, res) => {
-    req.body.published = true;
-    const movie = await db.get().collection('movies').findOneAndUpdate({slugName: req.params.slugName}, {$set: req.body}, {returnOriginal: false});
-    res.send(movie.value);
+    let movie = req.body;
+    movie.published = true;
+
+    movie.cast = await Promise.all(movie.cast.map(async (cast) => {
+      if(!cast._id) {
+        cast.published = false;
+        let member = await db.get().collection('actors').save(cast);
+        console.log("______________________________");
+        console.log(member);
+        return member.ops[0].slugName;
+      }
+      return cast.slugName;
+    }));
+
+    const savedMovie =  await db.get().collection('movies').findOneAndUpdate({slugName: req.params.slugName}, {$set: req.body}, {returnOriginal: false});
+    movie.cast.forEach(async (cast) => {
+      console.log(savedMovie.value.slugName);
+      await db.get().collection('actors').findOneAndUpdate({slugName: cast}, {$push: {movies: savedMovie.value.slugName}});
+    });
+
+    res.send(savedMovie.value);
 });
 
 router.delete('/:slugName', async (req, res) => {
-    console.log("In delete");
     const movie = await db.get().collection('movies').findOneAndDelete({slugName: req.params.slugName});
-    console.log("Movie in del router", movie);
     res.send(movie.value)
 });
 

@@ -9,6 +9,8 @@ import {Redirect} from "react-router";
 import EditActorImage from "./EditActorImage";
 import EditActorInfo from "./EditActorInfo";
 import {getActorBySlug, getMovieBySlug, isMovieFetchingSlug} from "../reducers";
+import slugify from 'slugify';
+
 
 const b = block("Editor");
 
@@ -66,28 +68,37 @@ class EditActorPage extends Component {
             oldMovies
         } = this.state;
         const {actor} = this.props;
-
+        console.log(movies);
+        console.log("+++++++++++++++++=");
         let newMovies = movies;
-        console.log(movies, "ppppppppppppp");
-        if (movies.length !== 0 && typeof movies[0] === 'object') {
-            newMovies = movies.map(m => m.slugName).filter(slugName => slugName.trim() !== '');
-            movies.filter(el => el.slugName.trim() !== '')
-                .map(el => {
-                    const cast = (el.cast.includes(actor.slugName)) ? [...el.cast] : [...el.cast, actor.slugName];
-                    this.props.editMovies({cast}, el.slugName);
-                });
-            oldMovies.map(o => {
-                const a = movies.filter(n => n.slugName === o.slugName);
-                if (a.length === 0) {
-                    // delete current actor from Movie with ID we don't use any more
-                    const cast = o.cast.filter(el => el !== actor.slugName);
-                    this.props.editMovies({cast}, o.slugName);
-                }
-            });
-        }
+        // console.log(movies, "ppppppppppppp");
+        // if (movies.length !== 0 && typeof movies[0] === 'object') {
+        //     newMovies = movies.map(m => m.slugName).filter(slugName => slugName.trim() !== '');
+        //     movies.filter(el => el.slugName.trim() !== '')
+        //         .map(el => {
+        //             const cast = (el.cast.includes(actor.slugName)) ? [...el.cast] : [...el.cast, actor.slugName];
+        //             this.props.editMovies({cast}, el.slugName);
+        //         });
+        //     oldMovies.map(o => {
+        //         const a = movies.filter(n => n.slugName === o.slugName);
+        //         if (a.length === 0) {
+        //             // delete current actor from Movie with ID we don't use any more
+        //             const cast = o.cast.filter(el => el !== actor.slugName);
+        //             this.props.editMovies({cast}, o.slugName);
+        //         }
+        //     });
+        // }
+        console.log(movies);
+        movies.forEach((movie) => {
+          if(!movie.slugName) {
+            console.log("oooooooooooooooooooooooo");
+            movie.slugName = slugify(movie.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
+          }
+        })
+
         console.log(nominations);
         const actorToAdd = {
-            movies: newMovies,
+            movies,
             name,
             info,
             date,

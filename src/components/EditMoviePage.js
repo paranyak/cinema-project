@@ -8,6 +8,8 @@ import {editMovieBySlug, fetchMovieSlug} from '../actions/movies';
 import {connect} from "react-redux";
 import block from '../helpers/BEM'
 import {Redirect} from 'react-router'
+import slugify from 'slugify';
+
 
 const b = block("Editor");
 
@@ -92,27 +94,33 @@ class EditMoviePage extends Component {
 
         let newCast = cast;
 
-        if (cast && cast.length !== 0 && typeof cast[0] === 'object') {
-            newCast = cast.map(c => c.slugName).filter(slug => slug.trim() !== '');
-            cast.filter(el => el.slugName.trim() !== '')
-                .map(el => {
-                    const movies = (el.movies.includes(film.slugName)) ? [...el.movies] : [...el.movies, film.slugName];
-                    this.props.editActors({movies}, el.slugName);
-                });
-            console.log(oldCast, "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
-            oldCast.map(o => {
-                const a = cast.filter(n => n.slugName === o.slugName);
-                if (a.length === 0) {
-                    // delete current movie from Actor with ID we don't use any more
-                    const movies = o.movies.filter(el => el !== film.slugName);
-                    this.props.editActors({movies}, o.slugName);
-                }
-            });
-        }
+        // if (cast && cast.length !== 0 && typeof cast[0] === 'object') {
+        //     newCast = cast.map(c => c.slugName).filter(slug => slug.trim() !== '');
+        //     cast.filter(el => el.slugName.trim() !== '')
+        //         .map(el => {
+        //             const movies = (el.movies.includes(film.slugName)) ? [...el.movies] : [...el.movies, film.slugName];
+        //             this.props.editActors({movies}, el.slugName);
+        //         });
+        //     console.log(oldCast, "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
+        //     oldCast.map(o => {
+        //         const a = cast.filter(n => n.slugName === o.slugName);
+        //         if (a.length === 0) {
+        //             // delete current movie from Actor with ID we don't use any more
+        //             const movies = o.movies.filter(el => el !== film.slugName);
+        //             this.props.editActors({movies}, o.slugName);
+        //         }
+        //     });
+        // }
+
+        cast.forEach((cast) => {
+          if(!cast.slugName) {
+            cast.slugName = slugify(cast.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
+          }
+        })
 
         const movie = {
             name,
-            cast: newCast,
+            cast,
             image: poster,
             rating: convRating,
             description,
