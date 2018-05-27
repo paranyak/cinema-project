@@ -1,146 +1,185 @@
 [
   {
-    "movieID": 0,
-    "movieTitle": "Red Sparrow",
-    "image": "Cinema Project/ymgt4tyhaqkhybywwkut",
-    "rating": 6.7,
-    "description": "Ballerina Dominika Egorova is recruited to 'Sparrow School,' a Russian intelligence service where she is forced to use her body as a weapon. Her first mission, targeting a C.I.A. agent, threatens to unravel the security of both nations.",
-    "cast": [1, 2, 3],
-    "screenshots": [
-        "Cinema Project/jp4qjm88k0x5kwejkfas",
-        "Cinema Project/ccibyqtkshuevstojwbo",
-        "Cinema Project/ssiwpffjj6yrlqhpgmz5"
-    ],
-    "trailer": "https://www.youtube.com/embed/PmUL6wMpMWw?autoplay=0",
-    "genre": "Mystery, Thriller",
-    "schedule": [
-        "22-03-2018 10:15",
-        "22-03-2018 11:00",
-        "22-03-2018 12:50",
-        "22-03-2018 13:40",
-        "22-03-2018 15:25",
-        "22-03-2018 16:20",
-        "22-03-2018 18:00",
-        "22-03-2018 19:00",
-        "22-03-2018 21:40",
-        "22-03-2018 22:30"
-    ],
-    "format": ["2D"],
-    "technology": ["Cinetech+"],
-    "duration": {
-        "hour": 2,
-        "minute": 19
-    },
-    "label": "popular",
-    "startDate": {
-        "year": 2018,
-        "month": 3,
-        "day": 1
-    }
-  },
-  {
-    "movieID": 1,
-    "movieName": "The Hurricane Heist",
-    "image": "Cinema Project/a2xmwnhiqaaeu4eysnir",
-    "rating": 4.8,
-    "cast": [4, 0, 5],
-    "description": "Thieves attempt a massive heist against the U.S. Treasury as a Category 5 hurricane approaches one of its Mint facilities.",
-    "screenshots": [
-      "Cinema Project/fplxprob1xwzaou7c12u",
-      "Cinema Project/qwlddtw6ucbwawmvkjhu",
-      "Cinema Project/jhp2a7bwimom9gvgouoi",
-      "Cinema Project/ffbfdkffieff3vchrrra"
-    ],
-    "trailer": "https://www.youtube.com/embed/56whWF2NJrM?autoplay=0",
-    "genre": "Action, Thriller",
-    "Schedule": [
-      "22-03-2018 10:00",
-      "22-03-2018 18:35",
-      "22-03-2018 20:20",
-      "22-03-2018 22:35"
-    ],
-    "format": ["2D"],
-    "technology": ["Cinetech+"],
+    "_id": "5b00177e795bf21b28b74eea",
     "duration": {
       "hour": 1,
-      "minute": 40
+      "minute": 49
     },
+    "startDate": {
+      "year": 2018,
+      "month": 3,
+      "day": 8
+    },
+    "screenshots": [
+      "Cinema Project/s7yuprx5ukg9vobcbivs",
+      "Cinema Project/n7xj4tnekeqdgvvxixqx",
+      "Cinema Project/d3xy2racptrc4jmrhoqh",
+      "Cinema Project/gxeej2v2phygcv3nlrs3"
+    ],
+    "Schedule": [
+      "12-03-2018 10:30",
+      "12-03-2018 14:40",
+      "12-03-2018 15:00",
+      "12-03-2018 16:30",
+      "12-03-2018 17:40",
+      "12-03-2018 20:00"
+    ],
+    "cast": [
+      "crystal_reed",
+      "anastasia_phillips",
+      "emilia_jones"
+    ],
+    "name": "Ghostland",
+    "slugName": "ghostland",
+    "image": "Cinema Project/mso6i6jkrjwt0e5z9bgm",
+    "rating": "6.6",
+    "description": "The story follows a mother of two who inherits a home from her Aunt. On the first night in the new home she is confronted with murderous intruders and fights for her daughters lives. Sixteen years later when the daughters reunite at the house, and that is when things get strange.",
+    "trailer": "",
+    "genre": "Horror",
+    "format": "3D,2D",
+    "technology": "Cinetech+,IMAX",
     "label": "",
+    "published": true,
+    "__v": 3
+  },
+  {
+    "_id": "5b00177e795bf21b28b74ed5",
+    "duration": {
+      "hour": 2,
+      "minute": 19
+    },
     "startDate": {
       "year": 2018,
       "month": 3,
       "day": 1
-    }
+    },
+    "screenshots": [
+      "Cinema Project/jp4qjm88k0x5kwejkfas",
+      "Cinema Project/ccibyqtkshuevstojwbo",
+      "Cinema Project/ssiwpffjj6yrlqhpgmz5"
+    ],
+    "Schedule": [
+      "22-05-2018 10:15",
+      "22-05-2018 11:00",
+      "22-03-2018 12:50",
+      "22-03-2018 13:40",
+      "22-03-2018 15:25",
+      "22-03-2018 16:20",
+      "22-03-2018 18:00",
+      "22-03-2018 19:00",
+      "22-03-2018 21:40",
+      "22-03-2018 22:30"
+    ],
+    "cast": [
+      "joel_edgerton",
+      "jennifer_lawrence",
+      "matthias_schoenaerts"
+    ],
+    "name": "Red Sparrow",
+    "slugName": "red_sparrow",
+    "image": "Cinema Project/ymgt4tyhaqkhybywwkut",
+    "rating": "6.7",
+    "description": "Ballerina Dominika Egorova is recruited to 'Sparrow School,' a Russian intelligence service where she is forced to use her body as a weapon. Her first mission, targeting a C.I.A. agent, threatens to unravel the security of both nations.",
+    "trailer": "https://www.youtube.com/embed/PmUL6wMpMWw?autoplay=0",
+    "genre": "Mystery, Thriller",
+    "format": "2D",
+    "technology": "Cinetech+",
+    "label": "popular",
+    "published": true,
+    "__v": 3
   },
   {
-    "movieID": 2,
-    "movieName": "Game Night",
-    "image": "Cinema Project/du7pyvc5hejwetjlhpkn",
-    "rating": 7.5,
-    "cast": [6, 7, 8],
-    "description": "A group of friends who meet regularly for game nights find themselves trying to solve a murder mystery.",
-    "screenshots": [
-      "Cinema Project/tznfqhh5lumofyjme01v",
-      "Cinema Project/pkxptmjizpdqm9den5bl",
-      "Cinema Project/v3xejq2kqwduqc9bj4rj",
-      "Cinema Project/aixu1swugtfk6jvpqgpz",
-      "Cinema Project/fxs10tpz8hajvoauybmx"
-    ],
-    "trailer": "https://www.youtube.com/embed/qmxMAdV6s4U?autoplay=0",
-    "genre": "Comedy, Crime, Mystery",
-    "Schedule": [
-      "22-03-2018 16:40",
-      "22-03-2018 20:35",
-      "22-03-2018 22:15"
-    ],
-    "format": ["2D"],
-    "technology": ["Cinetech+"],
+    "_id": "5b00177e795bf21b28b74ee0",
     "duration": {
       "hour": 1,
-      "minute": 40
+      "minute": 35
     },
-    "label": "popular",
     "startDate": {
       "year": 2018,
-      "month": 2,
+      "month": 3,
       "day": 22
-    }
+    },
+    "screenshots": [
+      "Cinema Project/mbaarpe4zmmgemxq6yie",
+      "Cinema Project/ex1dcmlpnfmpd1twpeup",
+      "Cinema Project/zra4xe3kp2vuvel6w6ze",
+      "Cinema Project/lstqkie9rt8t3bfjtkdv",
+      "Cinema Project/bldjexr2xvwlmcnz2mua"
+    ],
+    "Schedule": [
+      "12-03-2018 10:15",
+      "12-03-2018 11:00",
+      "12-03-2018 12:50",
+      "12-03-2018 13:40",
+      "12-03-2018 15:25",
+      "13-03-2018 16:20",
+      "13-03-2018 18:00",
+      "13-03-2018 19:00",
+      "13-03-2018 21:40",
+      "13-03-2018 22:30"
+    ],
+    "cast": [
+      "rose_byrne",
+      "james_corden",
+      "domhnall_gleeson"
+    ],
+    "name": "Peter Rabbit",
+    "slugName": "peter_rabbit",
+    "image": "Cinema Project/rdglbhswqjui2essgo8s",
+    "rating": "6.4",
+    "description": "Feature adaptation of Beatrix Potter's classic tale of a rebellious rabbit trying to sneak into a farmer's vegetable garden.",
+    "trailer": "",
+    "genre": "Adventure, Comedy",
+    "format": "2D",
+    "technology": "Cinetech+",
+    "label": "popular",
+    "published": true,
+    "__v": 3
   },
   {
-    "movieID": 3,
-    "movieName": "Black Panther",
-    "image": "Cinema Project/z3n9cwlcvj22k2hhpuu4",
-    "rating": 7.8,
-    "cast": [9, 10, 11],
-    "description": "T'Challa, the King of Wakanda, rises to the throne in the isolated, technologically advanced African nation, but his claim is challenged by a vengeful outsmovieIDer who was a childhood victim of T'Challa's father's mistake.",
-    "screenshots": [
-      "Cinema Project/dlsxjiwi3aefcgv3blb0",
-      "Cinema Project/yheeg5duddnda7zdkp1b",
-      "Cinema Project/cv5ll6br7kg1owtmyxj8",
-      "Cinema Project/ggssxjq1zvoxprzclvdu",
-      "Cinema Project/kuej5pr3loucym3fdmf5",
-      "Cinema Project/v3vet38kbxtpfgfcnfks"
-    ],
-    "trailer": "https://www.youtube.com/embed/xjDjIWPwcPU?autoplay=0",
-    "genre": "Action, Adventure, Sci-Fi",
-    "Schedule": [
-      "22-03-2018 11:00",
-      "22-03-2018 13:40",
-      "22-03-2018 16:20",
-      "22-03-2018 19:00",
-      "22-03-2018 21:40"
-    ],
-    "format": ["3D"],
-    "technology": ["Cinetech+", "IMAX"],
+    "_id": "5b00177e795bf21b28b74eed",
     "duration": {
-      "hour": 2,
-      "minute": 14
+      "hour": 1,
+      "minute": 46
     },
-    "label": "popular",
     "startDate": {
       "year": 2018,
-      "month": 2,
-      "day": 15
-    }
+      "month": 3,
+      "day": 23
+    },
+    "screenshots": [
+      "Cinema Project/zqrcsgyxbqpflq05sdvm",
+      "Cinema Project/spbvp7frcvetnvjkigoj",
+      "Cinema Project/qyteqlof4myrzgydpb36"
+    ],
+    "Schedule": [
+      "29-03-2018 14:00",
+      "29-03-2018 19:40",
+      "30-03-2018 14:00",
+      "30-03-2018 19:40",
+      "31-03-2018 14:00",
+      "31-03-2018 19:40",
+      "01-04-2018 14:00",
+      "01-04-2018 19:40",
+      "02-04-2018 14:00",
+      "02-04-2018 19:40"
+    ],
+    "cast": [
+      "zoe_saldana",
+      "madison_wolfe",
+      "imogen_poots"
+    ],
+    "name": "I Kill Giants",
+    "slugName": "i_kill_giants",
+    "image": "Cinema Project/q0bysxa5lk2wvd2s6uwf",
+    "rating": "6.6",
+    "description": "Barbara Thorson struggles through life by escaping into a fantasy life of magic and monsters.",
+    "trailer": "",
+    "genre": "Drama, Fantasy, Thriller",
+    "format": "2D",
+    "technology": "Cinetech+",
+    "label": "popular",
+    "published": true,
+    "__v": 3
   }
 ]
