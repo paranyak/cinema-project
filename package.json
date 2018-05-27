@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "webpack": "webpack --watch",
+    "server:dev":"nodemon server/server.js",
     "server": "node server/server.js",
-    "start": "npm run webpack | npm run server",
+    "start": "npm run webpack | MONGODB_URI=mongodb://localhost/cinema-project npm run server:dev",
     "test": "jest",
     "raml": "raml2html docs/api/index.raml > docs/api/index.html",
     "styleguidist": "npx styleguidist build",
@@ -28,6 +29,7 @@
     "jest": "^22.4.3",
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
+    "nodemon": "^1.17.5",
     "react-styleguidist": "^7.0.8",
     "style-loader": "^0.20.3",
     "svg-url-loader": "^2.3.2",
@@ -68,5 +70,9 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "slugify": "^1.2.9"
-  }
+  },
+  "nodemonConfig": {
+   "ignore": ["test/*", "docs/*", "src/*", "build/*", "server/public/*"],
+   "delay": "1000"
+ }
 }
