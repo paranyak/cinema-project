@@ -32,7 +32,7 @@ class AddDynamicList extends Component {
 
     async onListChange(i, e) {
         const {type} = this.props;
-        const response = await fetch(`http://localhost:3000/${type}s/autocomplete/${e.target.value}`);// 'posts' to get work the url
+        const response = await fetch(`https://csucu-cinema-project.herokuapp.com/${type}s/autocomplete/${e.target.value}`);// 'posts' to get work the url
         if (!response.ok) {
             console.log("ERROR IN Choosing ", type);
             return null;

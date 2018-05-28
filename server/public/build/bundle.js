@@ -4569,11 +4569,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(866)(isValidElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(868)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(868)();
+  module.exports = __webpack_require__(870)();
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
@@ -9267,6 +9267,207 @@ exports.default = DragDropImage;
 
 
 Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _BEM = __webpack_require__(10);
+
+var _BEM2 = _interopRequireDefault(_BEM);
+
+__webpack_require__(862);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var b = (0, _BEM2.default)("AddDynamicList");
+
+var AddDynamicList = function (_Component) {
+    _inherits(AddDynamicList, _Component);
+
+    function AddDynamicList(props) {
+        _classCallCheck(this, AddDynamicList);
+
+        var _this = _possibleConstructorReturn(this, (AddDynamicList.__proto__ || Object.getPrototypeOf(AddDynamicList)).call(this, props));
+
+        _this.state = {
+            suggestedList: [],
+            chosenItems: props.items
+        };
+        return _this;
+    }
+
+    _createClass(AddDynamicList, [{
+        key: "createList",
+        value: function createList() {
+            var _this2 = this;
+
+            var _state = this.state,
+                suggestedList = _state.suggestedList,
+                chosenItems = _state.chosenItems;
+            var type = this.props.type;
+
+            return chosenItems.map(function (item, j) {
+                return _react2.default.createElement(
+                    "div",
+                    { key: j },
+                    _react2.default.createElement("input", { name: "name", className: b('input'), placeholder: "Enter " + type + " name", type: "text",
+                        value: item.name, list: type + "s",
+                        onInput: _this2.onListChange.bind(_this2, j), onChange: _this2.onOptionClick.bind(_this2, j) }),
+                    _react2.default.createElement(
+                        "datalist",
+                        { id: type + "s" },
+                        suggestedList.map(function (sug, i) {
+                            return _react2.default.createElement("option", { key: i, value: sug.name });
+                        })
+                    ),
+                    _react2.default.createElement("input", { type: "button", value: "-", className: b('button'),
+                        onClick: _this2.removeItem.bind(_this2, j) })
+                );
+            });
+        }
+    }, {
+        key: "onListChange",
+        value: function () {
+            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(i, e) {
+                var type, response, suggestedList;
+                return regeneratorRuntime.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                type = this.props.type;
+                                _context.next = 3;
+                                return fetch("https://csucu-cinema-project.herokuapp.com/" + type + "s/autocomplete/" + e.target.value);
+
+                            case 3:
+                                response = _context.sent;
+
+                                if (response.ok) {
+                                    _context.next = 9;
+                                    break;
+                                }
+
+                                console.log("ERROR IN Choosing ", type);
+                                return _context.abrupt("return", null);
+
+                            case 9:
+                                _context.next = 11;
+                                return response.json();
+
+                            case 11:
+                                suggestedList = _context.sent;
+
+                                if (suggestedList.length !== 0) {
+                                    this.setState({ suggestedList: suggestedList });
+                                }
+
+                            case 13:
+                            case "end":
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, this);
+            }));
+
+            function onListChange(_x, _x2) {
+                return _ref.apply(this, arguments);
+            }
+
+            return onListChange;
+        }()
+    }, {
+        key: "onOptionClick",
+        value: function onOptionClick(i, e) {
+            var _props = this.props,
+                callback = _props.callback,
+                type = _props.type;
+            var value = e.target.value;
+
+            var filtered = this.state.suggestedList.filter(function (f) {
+                return f.name === value;
+            });
+            var slugName = '';
+            var dynLst = [];
+            if (filtered.length === 1) {
+                slugName = filtered[0].slugName;
+                dynLst = type === 'movie' ? filtered[0].cast : filtered[0].movies;
+            }
+            var arr = [];
+            if (type === 'movie') {
+                arr = [].concat(_toConsumableArray(this.state.chosenItems.slice(0, i)), [Object.assign({}, this.state.chosenItems[i], { name: value, slugName: slugName, cast: dynLst })], _toConsumableArray(this.state.chosenItems.slice(i + 1)));
+            } else {
+                arr = [].concat(_toConsumableArray(this.state.chosenItems.slice(0, i)), [Object.assign({}, this.state.chosenItems[i], { name: value, slugName: slugName, movies: dynLst })], _toConsumableArray(this.state.chosenItems.slice(i + 1)));
+            }
+            this.setState({ chosenItems: arr });
+            callback(type + "s", arr);
+        }
+    }, {
+        key: "addItem",
+        value: function addItem(e) {
+            e.preventDefault();
+            var arr = [];
+            if (this.props.type === 'movie') {
+                arr = [].concat(_toConsumableArray(this.state.chosenItems), [{ name: '', slugName: '', cast: [] }]);
+            } else {
+                arr = [].concat(_toConsumableArray(this.state.chosenItems), [{ name: '', slugName: '', movies: [] }]);
+            }
+            this.setState({ chosenItems: arr });
+        }
+    }, {
+        key: "removeItem",
+        value: function removeItem(i) {
+            var _props2 = this.props,
+                callback = _props2.callback,
+                type = _props2.type;
+            var chosenItems = this.state.chosenItems;
+
+            var arr = [].concat(_toConsumableArray(chosenItems.slice(0, i)), _toConsumableArray(chosenItems.slice(i + 1)));
+            this.setState({ chosenItems: arr });
+            callback(type + "s", arr);
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                { className: b() },
+                _react2.default.createElement(
+                    "button",
+                    { className: b('button'), onClick: this.addItem.bind(this) },
+                    "+"
+                ),
+                this.createList()
+            );
+        }
+    }]);
+
+    return AddDynamicList;
+}(_react.Component);
+
+exports.default = AddDynamicList;
+
+/***/ }),
+/* 143 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.formatDay = formatDay;
@@ -9316,7 +9517,7 @@ exports.default = {
 //# sourceMappingURL=LocaleUtils.js.map
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9336,7 +9537,7 @@ var TAB = exports.TAB = 9;
 //# sourceMappingURL=keys.js.map
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9379,7 +9580,7 @@ exports.default = {
 //# sourceMappingURL=classNames.js.map
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9406,9 +9607,9 @@ exports.hasOwnProp = hasOwnProp;
 
 var _DateUtils = __webpack_require__(89);
 
-var _LocaleUtils = __webpack_require__(142);
+var _LocaleUtils = __webpack_require__(143);
 
-var _classNames = __webpack_require__(144);
+var _classNames = __webpack_require__(145);
 
 var _classNames2 = _interopRequireDefault(_classNames);
 
@@ -9559,207 +9760,6 @@ function hasOwnProp(obj, prop) {
   return Object.prototype.hasOwnProperty.call(obj, prop);
 }
 //# sourceMappingURL=Helpers.js.map
-
-/***/ }),
-/* 146 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(2);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _BEM = __webpack_require__(10);
-
-var _BEM2 = _interopRequireDefault(_BEM);
-
-__webpack_require__(877);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var b = (0, _BEM2.default)("AddDynamicList");
-
-var AddDynamicList = function (_Component) {
-    _inherits(AddDynamicList, _Component);
-
-    function AddDynamicList(props) {
-        _classCallCheck(this, AddDynamicList);
-
-        var _this = _possibleConstructorReturn(this, (AddDynamicList.__proto__ || Object.getPrototypeOf(AddDynamicList)).call(this, props));
-
-        _this.state = {
-            suggestedList: [],
-            chosenItems: props.items
-        };
-        return _this;
-    }
-
-    _createClass(AddDynamicList, [{
-        key: "createList",
-        value: function createList() {
-            var _this2 = this;
-
-            var _state = this.state,
-                suggestedList = _state.suggestedList,
-                chosenItems = _state.chosenItems;
-            var type = this.props.type;
-
-            return chosenItems.map(function (item, j) {
-                return _react2.default.createElement(
-                    "div",
-                    { key: j },
-                    _react2.default.createElement("input", { name: "name", className: b('input'), placeholder: "Enter " + type + " name", type: "text",
-                        value: item.name, list: type + "s",
-                        onInput: _this2.onListChange.bind(_this2, j), onChange: _this2.onOptionClick.bind(_this2, j) }),
-                    _react2.default.createElement(
-                        "datalist",
-                        { id: type + "s" },
-                        suggestedList.map(function (sug, i) {
-                            return _react2.default.createElement("option", { key: i, value: sug.name });
-                        })
-                    ),
-                    _react2.default.createElement("input", { type: "button", value: "-", className: b('button'),
-                        onClick: _this2.removeItem.bind(_this2, j) })
-                );
-            });
-        }
-    }, {
-        key: "onListChange",
-        value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(i, e) {
-                var type, response, suggestedList;
-                return regeneratorRuntime.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                type = this.props.type;
-                                _context.next = 3;
-                                return fetch("http://localhost:3000/" + type + "s/autocomplete/" + e.target.value);
-
-                            case 3:
-                                response = _context.sent;
-
-                                if (response.ok) {
-                                    _context.next = 9;
-                                    break;
-                                }
-
-                                console.log("ERROR IN Choosing ", type);
-                                return _context.abrupt("return", null);
-
-                            case 9:
-                                _context.next = 11;
-                                return response.json();
-
-                            case 11:
-                                suggestedList = _context.sent;
-
-                                if (suggestedList.length !== 0) {
-                                    this.setState({ suggestedList: suggestedList });
-                                }
-
-                            case 13:
-                            case "end":
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, this);
-            }));
-
-            function onListChange(_x, _x2) {
-                return _ref.apply(this, arguments);
-            }
-
-            return onListChange;
-        }()
-    }, {
-        key: "onOptionClick",
-        value: function onOptionClick(i, e) {
-            var _props = this.props,
-                callback = _props.callback,
-                type = _props.type;
-            var value = e.target.value;
-
-            var filtered = this.state.suggestedList.filter(function (f) {
-                return f.name === value;
-            });
-            var slugName = '';
-            var dynLst = [];
-            if (filtered.length === 1) {
-                slugName = filtered[0].slugName;
-                dynLst = type === 'movie' ? filtered[0].cast : filtered[0].movies;
-            }
-            var arr = [];
-            if (type === 'movie') {
-                arr = [].concat(_toConsumableArray(this.state.chosenItems.slice(0, i)), [Object.assign({}, this.state.chosenItems[i], { name: value, slugName: slugName, cast: dynLst })], _toConsumableArray(this.state.chosenItems.slice(i + 1)));
-            } else {
-                arr = [].concat(_toConsumableArray(this.state.chosenItems.slice(0, i)), [Object.assign({}, this.state.chosenItems[i], { name: value, slugName: slugName, movies: dynLst })], _toConsumableArray(this.state.chosenItems.slice(i + 1)));
-            }
-            this.setState({ chosenItems: arr });
-            callback(type + "s", arr);
-        }
-    }, {
-        key: "addItem",
-        value: function addItem(e) {
-            e.preventDefault();
-            var arr = [];
-            if (this.props.type === 'movie') {
-                arr = [].concat(_toConsumableArray(this.state.chosenItems), [{ name: '', slugName: '', cast: [] }]);
-            } else {
-                arr = [].concat(_toConsumableArray(this.state.chosenItems), [{ name: '', slugName: '', movies: [] }]);
-            }
-            this.setState({ chosenItems: arr });
-        }
-    }, {
-        key: "removeItem",
-        value: function removeItem(i) {
-            var _props2 = this.props,
-                callback = _props2.callback,
-                type = _props2.type;
-            var chosenItems = this.state.chosenItems;
-
-            var arr = [].concat(_toConsumableArray(chosenItems.slice(0, i)), _toConsumableArray(chosenItems.slice(i + 1)));
-            this.setState({ chosenItems: arr });
-            callback(type + "s", arr);
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "div",
-                { className: b() },
-                _react2.default.createElement(
-                    "button",
-                    { className: b('button'), onClick: this.addItem.bind(this) },
-                    "+"
-                ),
-                this.createList()
-            );
-        }
-    }]);
-
-    return AddDynamicList;
-}(_react.Component);
-
-exports.default = AddDynamicList;
 
 /***/ }),
 /* 147 */
@@ -14665,7 +14665,7 @@ exports.getModifiersForDay = getModifiersForDay;
 
 var _DateUtils = __webpack_require__(89);
 
-var _Helpers = __webpack_require__(145);
+var _Helpers = __webpack_require__(146);
 
 /**
  * Return `true` if a date matches the specified modifier.
@@ -21080,13 +21080,13 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(862);
+__webpack_require__(864);
 
-var _reactDayPicker = __webpack_require__(864);
+var _reactDayPicker = __webpack_require__(866);
 
 var _reactDayPicker2 = _interopRequireDefault(_reactDayPicker);
 
-var _getDatesFromRange = __webpack_require__(874);
+var _getDatesFromRange = __webpack_require__(876);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21233,11 +21233,11 @@ var _propTypes = __webpack_require__(66);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _classNames = __webpack_require__(144);
+var _classNames = __webpack_require__(145);
 
 var _classNames2 = _interopRequireDefault(_classNames);
 
-var _keys = __webpack_require__(143);
+var _keys = __webpack_require__(144);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21502,7 +21502,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(875);
+__webpack_require__(877);
 
 var _BEM = __webpack_require__(10);
 
@@ -58302,170 +58302,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // import React, {Component} from "react";
-// import "../styles/AddMovieLayout.less";
-// import block from '../helpers/BEM';
-// import AddMovieImages from "./AddMovieImages";
-// import AddMovieInfo from "./AddMovieInfo";
-// import {Redirect} from "react-router";
-// import slugify from 'slugify';
-// import {connect} from "react-redux";
-// import {postMovieToDB} from "../actions/movies";
-// import {editActorBySlug} from "../actions/actors";
-//
-// const b = block("AddMovieLayout");
-//
-//
-// class AddMovieLayout extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             fireRedirect: false,
-//             screenshots: [],
-//             actors: [],
-//             scheduleTime: [],
-//             scheduleDate: [],
-//             genre: [],
-//             format: [],
-//             technology: [],
-//             name: '',
-//             description: '',
-//             trailer: '',
-//             rating: '',
-//             duration: '',
-//             startDate: '',
-//             label: '',
-//             poster: ''
-//         };
-//         this.getStateFromChild = this.getStateFromChild.bind(this);
-//     }
-//
-//     getStateFromChild(keys, values) {
-//         for (let k = 0; k < keys.length; k++) {
-//             this.setState({[keys[k]]: values[k]})
-//         }
-//     }
-//
-//     async addMovieToDB(e) {
-//         e.preventDefault();
-//         const {
-//             screenshots,
-//             actors,
-//             scheduleDate,
-//             genre,
-//             format,
-//             technology,
-//             name,
-//             description,
-//             trailer,
-//             rating,
-//             duration,
-//             startDate,
-//             label,
-//             poster
-//         } = this.state;
-//         let Schedule = [];
-//         const scheduleTime = this.state.scheduleTime.sort();
-//         scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
-//
-//         const cast = actors.map(el => el.slugName).filter(slug => slug !== '');
-//         const slugName = slugify(name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
-//
-//         const movie = {
-//             name,
-//             slugName,
-//             image: poster,
-//             rating: parseFloat(rating).toString(),
-//             cast,
-//             description,
-//             screenshots,
-//             trailer,
-//             genre: genre.join(', '),
-//             Schedule,
-//             format: format.filter(f => f !== ''),
-//             technology: technology.filter(t => t !== ''),
-//             duration: {
-//                 "hour": parseInt(duration.split(':')[0]),
-//                 "minute": parseInt(duration.split(':')[1])
-//             },
-//             label,
-//             startDate: {
-//                 "year": parseInt(startDate.split('-')[0]),
-//                 "month": parseInt(startDate.split('-')[1]),
-//                 "day": parseInt(startDate.split('-')[2])
-//             }
-//         };
-//
-//         console.log("MOVIE", movie);
-//         await this.props.postData(movie);
-//
-//         if (actors.length !== 0 && typeof actors[0] === 'object') {
-//             actors.filter(el => el.slugName.trim() !== '')
-//                 .map(el => {
-//                     const movies = (el.dynLst.includes(slugName)) ? [...el.dynLst] : [...el.dynLst, slugName];
-//                     this.props.editActors({movies}, el.slugName);
-//                 });
-//         }
-//
-//         this.setState({fireRedirect: true});
-//     }
-//
-//     cancelAdding() {
-//         console.log('Adding is canceled!!!');
-//         this.setState({fireRedirect: true});
-//     }
-//
-//     render() {
-//         const {
-//             fireRedirect,
-//             genre,
-//             format,
-//             technology,
-//             name,
-//             description,
-//             trailer,
-//             rating,
-//             duration,
-//         } = this.state;
-//         const isEnabled =
-//             genre.filter(f => f !== '').length *
-//             format.filter(f => f !== '').length *
-//             technology.filter(f => f !== '').length *
-//             name.length *
-//             description.length *
-//             trailer.length *
-//             rating.length *
-//             duration.length !== 0;
-//         const lenCancelBtn = (isEnabled) ? '100px' : '250px';
-//         return (<div>
-//                 <form className={b()}>
-//                     <h1 className={b('title')}>ADD MOVIE</h1>
-//                     <AddMovieImages callback={this.getStateFromChild}/>
-//                     <AddMovieInfo callback={this.getStateFromChild}/>
-//                     <div className={b('btns')}>
-//                         <button type='submit'
-//                                 disabled={!isEnabled}
-//                                 className={b('btn', ['submit'])}
-//                                 onClick={this.addMovieToDB.bind(this)}
-//                         >Submit
-//                         </button>
-//                         <button type='button' className={b('btn')} style={{width: lenCancelBtn}}
-//                                 onClick={this.cancelAdding.bind(this)}>Cancel
-//                         </button>
-//                     </div>
-//                 </form>
-//                 {fireRedirect && (<Redirect to={`/`}/>)}
-//             </div>
-//         )
-//     }
-// }
-//
-//
-// export default connect(null, (dispatch) => ({
-//     postData: (movie) => dispatch(postMovieToDB(movie)),
-//     editActors: (actor, slug) => dispatch(editActorBySlug(slug, actor))
-// }))(AddMovieLayout);
-
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var b = (0, _BEM2.default)("AddMovieLayout");
 
@@ -58532,7 +58369,6 @@ var AddMovieLayout = function (_Component) {
                                     }
                                 });
 
-                                // const newCast = cast.map(el => el.slugName).filter(slug => slug !== '');
                                 slugName = (0, _slugify2.default)(name, { replacement: '_', remove: /[.:!,;*&@^]/g, lower: true });
                                 movie = {
                                     name: name,
@@ -58566,19 +58402,6 @@ var AddMovieLayout = function (_Component) {
                                 return this.props.postData(movie);
 
                             case 10:
-
-                                // if (cast.length !== 0 && typeof cast[0] === 'object') {
-                                //     cast.map(el => {
-                                //       if (el.slugName.trim() !== "") {
-                                //         const movies = (el.movies.includes(slugName)) ? [...el.movies] : [...el.movies, slugName];
-                                //         this.props.editActors({movies}, el.slugName);
-                                //       } else {
-                                //         el.published = false;
-                                //         el.slugName = slugify(el.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
-                                //         el.movies = [slugName];
-                                //       }
-                                //   });
-                                // }
 
                                 this.setState({ fireRedirect: true });
 
@@ -60677,6 +60500,10 @@ var _EditSelections = __webpack_require__(336);
 
 var _EditSelections2 = _interopRequireDefault(_EditSelections);
 
+var _AddDynamicList = __webpack_require__(142);
+
+var _AddDynamicList2 = _interopRequireDefault(_AddDynamicList);
+
 var _CalendarRangePicker = __webpack_require__(338);
 
 var _CalendarRangePicker2 = _interopRequireDefault(_CalendarRangePicker);
@@ -60684,10 +60511,6 @@ var _CalendarRangePicker2 = _interopRequireDefault(_CalendarRangePicker);
 var _TimeRanges = __webpack_require__(341);
 
 var _TimeRanges2 = _interopRequireDefault(_TimeRanges);
-
-var _AddDynamicList = __webpack_require__(146);
-
-var _AddDynamicList2 = _interopRequireDefault(_AddDynamicList);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60746,7 +60569,7 @@ var AddMovieInfo = function (_Component) {
                 startDate = _state.startDate;
 
             if (prevState !== this.state) {
-                this.props.callback(['rating', 'duration', 'name', 'description', 'genre', 'format', 'technology', 'actors', 'label', 'scheduleTime', 'scheduleDate', 'startDate'], [rating, duration, name, description, genre, format, technology, actors, label, scheduleTime, scheduleDate, startDate]);
+                this.props.callback(['rating', 'duration', 'name', 'description', 'genre', 'format', 'technology', 'cast', 'label', 'scheduleTime', 'scheduleDate', 'startDate'], [rating, duration, name, description, genre, format, technology, actors, label, scheduleTime, scheduleDate, startDate]);
             }
         }
     }, {
@@ -64011,8 +63834,8 @@ var update = __webpack_require__(9)(content, options);
 if(content.locals) module.exports = content.locals;
 
 if(false) {
-	module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./CalendarRangePicker.less", function() {
-		var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./CalendarRangePicker.less");
+	module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./AddDynamicList.less", function() {
+		var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./AddDynamicList.less");
 
 		if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 
@@ -64046,13 +63869,77 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, ".DayPicker {\n  display: inline-block;\n}\n.DayPicker-wrapper {\n  position: relative;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  padding-bottom: 1rem;\n  flex-direction: row;\n}\n.DayPicker-Months {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  background-color: #484848;\n}\n.DayPicker-Month {\n  display: table;\n  border-collapse: collapse;\n  border-spacing: 0;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  margin: 0 1rem;\n  margin-top: 1rem;\n}\n.DayPicker-NavButton {\n  position: absolute;\n  cursor: pointer;\n  top: 1rem;\n  right: 1.5rem;\n  margin-top: 2px;\n  color: #8b9898;\n  width: 1.25rem;\n  height: 1.25rem;\n  display: inline-block;\n  background-size: 50%;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n.DayPicker-NavButton:hover {\n  opacity: 0.8;\n}\n.DayPicker-NavButton--prev {\n  margin-right: 1.5rem;\n  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAwCAYAAAB5R9gVAAAABGdBTUEAALGPC/xhBQAAAVVJREFUWAnN2G0KgjAYwPHpGfRkaZeqvgQaK+hY3SUHrk1YzNLay/OiEFp92I+/Mp2F2Mh2lLISWnflFjzH263RQjzMZ19wgs73ez0o1WmtW+dgA01VxrE3p6l2GLsnBy1VYQOtVSEH/atCCgqpQgKKqYIOiq2CBkqtggLKqQIKgqgCBjpJ2Y5CdJ+zrT9A7HHSTA1dxUdHgzCqJIEwq0SDsKsEg6iqBIEoq/wEcVRZBXFV+QJxV5mBtlDFB5VjYTaGZ2sf4R9PM7U9ZU+lLuaetPP/5Die3ToO1+u+MKtHs06qODB2zBnI/jBd4MPQm1VkY79Tb18gB+C62FdBFsZR6yeIo1YQiLJWMIiqVjQIu1YSCLNWFgijVjYIuhYYCKoWKAiiFgoopxYaKLUWOii2FgkophYp6F3r42W5A9s9OcgNvva8xQaysKXlFytoqdYmQH6tF3toSUo0INq9AAAAAElFTkSuQmCC');\n}\n.DayPicker-NavButton--next {\n  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAwCAYAAAB5R9gVAAAABGdBTUEAALGPC/xhBQAAAXRJREFUWAnN119ugjAcwPHWzJ1gnmxzB/BBE0n24m4xfNkTaOL7wOtsl3AXMMb+Vjaa1BG00N8fSEibPpAP3xAKKs2yjzTPH9RAjhEo9WzPr/Vm8zgE0+gXATAxxuxtqeJ9t5tIwv5AtQAApsfT6TPdbp+kUBcgVwvO51KqVhMkXKsVJFXrOkigVhCIs1Y4iKlWZxB1rX4gwlpRIIpa8SDkWmggrFq4IIRaJKCYWnSgnrXIQV1r8YD+1Vrn+bReagysIFfLABRt31v8oBu1xEBttfRbltmfjgEcWh9snUS2kNdBK6WN1vrOWxObWsz+fjxevsxmB1GQDfINWiev83nhaoiB/CoOU438oPrhXS0WpQ9xc1ZQWxWHqUYe0I0qrKCQKjygDlXIQV2r0IF6ViEBxVTBBSFUQQNhVYkHIVeJAtkNsbQ7c1LtzP6FsObhb2rCKv7NBIGoq4SDmKoEgTirXAcJVGkFSVVpgoSrXICGUMUH/QBZNSUy5XWUhwAAAABJRU5ErkJggg==');\n}\n.DayPicker-NavButton--interactionDisabled {\n  display: none;\n}\n.DayPicker-Caption {\n  padding: 0 0.5rem;\n  display: table-caption;\n  text-align: left;\n  margin-bottom: 0.5rem;\n  color: #FAE807;\n}\n.DayPicker-Caption > div {\n  font-size: 1.15rem;\n  font-weight: 500;\n}\n.DayPicker-Weekdays {\n  margin-top: 1rem;\n  display: table-header-group;\n}\n.DayPicker-WeekdaysRow {\n  display: table-row;\n}\n.DayPicker-Weekday {\n  display: table-cell;\n  padding: 0.5rem;\n  font-size: 0.875em;\n  text-align: center;\n  color: #8b9898;\n}\n.DayPicker-Weekday abbr[title] {\n  border-bottom: none;\n  text-decoration: none;\n}\n.DayPicker-Body {\n  display: table-row-group;\n}\n.DayPicker-Week {\n  display: table-row;\n}\n.DayPicker-Day {\n  display: table-cell;\n  padding: 0.5rem;\n  text-align: center;\n  cursor: pointer;\n  vertical-align: middle;\n  outline: none;\n}\n.DayPicker-WeekNumber {\n  display: table-cell;\n  padding: 0.5rem;\n  text-align: right;\n  vertical-align: middle;\n  min-width: 1rem;\n  font-size: 0.75em;\n  cursor: pointer;\n  color: #8b9898;\n  border-right: 1px solid #eaecec;\n}\n.DayPicker--interactionDisabled .DayPicker-Day {\n  cursor: default;\n}\n.DayPicker-Footer {\n  padding-top: 0.5rem;\n}\n.DayPicker-TodayButton {\n  border: none;\n  background-image: none;\n  background-color: transparent;\n  box-shadow: none;\n  cursor: pointer;\n  color: #e2d214;\n  font-size: 0.875em;\n}\n/* Default modifiers */\n.DayPicker-Day--today {\n  color: #FAE807;\n  font-weight: 700;\n}\n.DayPicker-Day--outside {\n  cursor: default;\n  color: #8b9898;\n}\n.DayPicker-Day--disabled {\n  color: #666;\n  cursor: default;\n  /* background-color: #eff1f1; */\n}\n/* Example modifiers */\n.DayPicker-Day--sunday {\n  background-color: #f7f8f8;\n}\n.DayPicker-Day--sunday:not(.DayPicker-Day--today) {\n  color: #dce0e0;\n}\n.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {\n  position: relative;\n  color: #f0f8ff;\n  background-color: #FAE807;\n  border-radius: 100%;\n}\n.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {\n  background-color: #fffb72;\n}\n.DayPicker:not(.DayPicker--interactionDisabled) .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {\n  background-color: #f0f8ff;\n  border-radius: 50%;\n}\n/* DayPickerInput */\n.DayPickerInput {\n  display: inline-block;\n}\n.DayPickerInput-OverlayWrapper {\n  position: relative;\n}\n.DayPickerInput-Overlay {\n  left: 0;\n  z-index: 1;\n  position: absolute;\n  background: white;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);\n}\n.Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {\n  background-color: #f0f8ff !important;\n  color: #FAE807;\n}\n.Selectable .DayPicker-Day {\n  border-radius: 0 !important;\n}\n.Selectable .DayPicker-Day--start {\n  border-top-left-radius: 50% !important;\n  border-bottom-left-radius: 50% !important;\n}\n.Selectable .DayPicker-Day--end {\n  border-top-right-radius: 50% !important;\n  border-bottom-right-radius: 50% !important;\n}\n.link {\n  background-color: transparent;\n  border: none;\n  color: #FAE807;\n}\n.Message {\n  color: #8b9898;\n}\n", ""]);
+exports.push([module.i, ".AddDynamicList__button {\n  background-color: #FAE807;\n  color: #373737;\n  font-weight: bold;\n  padding: 5.5px 10px;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 14px;\n  opacity: 0.9;\n}\n.AddDynamicList__input {\n  width: 60%;\n  padding: 8px 20px;\n  margin: 8px 8px 8px 0;\n  display: inline-block;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-sizing: border-box;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 /* 864 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(865);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(9)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {
+	module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./CalendarRangePicker.less", function() {
+		var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./CalendarRangePicker.less");
+
+		if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+
+		var locals = (function(a, b) {
+			var key, idx = 0;
+
+			for(key in a) {
+				if(!b || a[key] !== b[key]) return false;
+				idx++;
+			}
+
+			for(key in b) idx--;
+
+			return idx === 0;
+		}(content.locals, newContent.locals));
+
+		if(!locals) throw new Error('Aborting CSS HMR due to changed css-modules locals.');
+
+		update(newContent);
+	});
+
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 865 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(8)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".DayPicker {\n  display: inline-block;\n}\n.DayPicker-wrapper {\n  position: relative;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  padding-bottom: 1rem;\n  flex-direction: row;\n}\n.DayPicker-Months {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  background-color: #484848;\n}\n.DayPicker-Month {\n  display: table;\n  border-collapse: collapse;\n  border-spacing: 0;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  margin: 0 1rem;\n  margin-top: 1rem;\n}\n.DayPicker-NavButton {\n  position: absolute;\n  cursor: pointer;\n  top: 1rem;\n  right: 1.5rem;\n  margin-top: 2px;\n  color: #8b9898;\n  width: 1.25rem;\n  height: 1.25rem;\n  display: inline-block;\n  background-size: 50%;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n.DayPicker-NavButton:hover {\n  opacity: 0.8;\n}\n.DayPicker-NavButton--prev {\n  margin-right: 1.5rem;\n  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAwCAYAAAB5R9gVAAAABGdBTUEAALGPC/xhBQAAAVVJREFUWAnN2G0KgjAYwPHpGfRkaZeqvgQaK+hY3SUHrk1YzNLay/OiEFp92I+/Mp2F2Mh2lLISWnflFjzH263RQjzMZ19wgs73ez0o1WmtW+dgA01VxrE3p6l2GLsnBy1VYQOtVSEH/atCCgqpQgKKqYIOiq2CBkqtggLKqQIKgqgCBjpJ2Y5CdJ+zrT9A7HHSTA1dxUdHgzCqJIEwq0SDsKsEg6iqBIEoq/wEcVRZBXFV+QJxV5mBtlDFB5VjYTaGZ2sf4R9PM7U9ZU+lLuaetPP/5Die3ToO1+u+MKtHs06qODB2zBnI/jBd4MPQm1VkY79Tb18gB+C62FdBFsZR6yeIo1YQiLJWMIiqVjQIu1YSCLNWFgijVjYIuhYYCKoWKAiiFgoopxYaKLUWOii2FgkophYp6F3r42W5A9s9OcgNvva8xQaysKXlFytoqdYmQH6tF3toSUo0INq9AAAAAElFTkSuQmCC');\n}\n.DayPicker-NavButton--next {\n  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAwCAYAAAB5R9gVAAAABGdBTUEAALGPC/xhBQAAAXRJREFUWAnN119ugjAcwPHWzJ1gnmxzB/BBE0n24m4xfNkTaOL7wOtsl3AXMMb+Vjaa1BG00N8fSEibPpAP3xAKKs2yjzTPH9RAjhEo9WzPr/Vm8zgE0+gXATAxxuxtqeJ9t5tIwv5AtQAApsfT6TPdbp+kUBcgVwvO51KqVhMkXKsVJFXrOkigVhCIs1Y4iKlWZxB1rX4gwlpRIIpa8SDkWmggrFq4IIRaJKCYWnSgnrXIQV1r8YD+1Vrn+bReagysIFfLABRt31v8oBu1xEBttfRbltmfjgEcWh9snUS2kNdBK6WN1vrOWxObWsz+fjxevsxmB1GQDfINWiev83nhaoiB/CoOU438oPrhXS0WpQ9xc1ZQWxWHqUYe0I0qrKCQKjygDlXIQV2r0IF6ViEBxVTBBSFUQQNhVYkHIVeJAtkNsbQ7c1LtzP6FsObhb2rCKv7NBIGoq4SDmKoEgTirXAcJVGkFSVVpgoSrXICGUMUH/QBZNSUy5XWUhwAAAABJRU5ErkJggg==');\n}\n.DayPicker-NavButton--interactionDisabled {\n  display: none;\n}\n.DayPicker-Caption {\n  padding: 0 0.5rem;\n  display: table-caption;\n  text-align: left;\n  margin-bottom: 0.5rem;\n  color: #FAE807;\n}\n.DayPicker-Caption > div {\n  font-size: 1.15rem;\n  font-weight: 500;\n}\n.DayPicker-Weekdays {\n  margin-top: 1rem;\n  display: table-header-group;\n}\n.DayPicker-WeekdaysRow {\n  display: table-row;\n}\n.DayPicker-Weekday {\n  display: table-cell;\n  padding: 0.5rem;\n  font-size: 0.875em;\n  text-align: center;\n  color: #8b9898;\n}\n.DayPicker-Weekday abbr[title] {\n  border-bottom: none;\n  text-decoration: none;\n}\n.DayPicker-Body {\n  display: table-row-group;\n}\n.DayPicker-Week {\n  display: table-row;\n}\n.DayPicker-Day {\n  display: table-cell;\n  padding: 0.5rem;\n  text-align: center;\n  cursor: pointer;\n  vertical-align: middle;\n  outline: none;\n}\n.DayPicker-WeekNumber {\n  display: table-cell;\n  padding: 0.5rem;\n  text-align: right;\n  vertical-align: middle;\n  min-width: 1rem;\n  font-size: 0.75em;\n  cursor: pointer;\n  color: #8b9898;\n  border-right: 1px solid #eaecec;\n}\n.DayPicker--interactionDisabled .DayPicker-Day {\n  cursor: default;\n}\n.DayPicker-Footer {\n  padding-top: 0.5rem;\n}\n.DayPicker-TodayButton {\n  border: none;\n  background-image: none;\n  background-color: transparent;\n  box-shadow: none;\n  cursor: pointer;\n  color: #e2d214;\n  font-size: 0.875em;\n}\n/* Default modifiers */\n.DayPicker-Day--today {\n  color: #FAE807;\n  font-weight: 700;\n}\n.DayPicker-Day--outside {\n  cursor: default;\n  color: #8b9898;\n}\n.DayPicker-Day--disabled {\n  color: #666;\n  cursor: default;\n  /* background-color: #eff1f1; */\n}\n/* Example modifiers */\n.DayPicker-Day--sunday {\n  background-color: #f7f8f8;\n}\n.DayPicker-Day--sunday:not(.DayPicker-Day--today) {\n  color: #dce0e0;\n}\n.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {\n  position: relative;\n  color: #f0f8ff;\n  background-color: #FAE807;\n  border-radius: 100%;\n}\n.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {\n  background-color: #fffb72;\n}\n.DayPicker:not(.DayPicker--interactionDisabled) .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {\n  background-color: #f0f8ff;\n  border-radius: 50%;\n}\n/* DayPickerInput */\n.DayPickerInput {\n  display: inline-block;\n}\n.DayPickerInput-OverlayWrapper {\n  position: relative;\n}\n.DayPickerInput-Overlay {\n  left: 0;\n  z-index: 1;\n  position: absolute;\n  background: white;\n  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);\n}\n.Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {\n  background-color: #f0f8ff !important;\n  color: #FAE807;\n}\n.Selectable .DayPicker-Day {\n  border-radius: 0 !important;\n}\n.Selectable .DayPicker-Day--start {\n  border-top-left-radius: 50% !important;\n  border-bottom-left-radius: 50% !important;\n}\n.Selectable .DayPicker-Day--end {\n  border-top-right-radius: 50% !important;\n  border-bottom-right-radius: 50% !important;\n}\n.link {\n  background-color: transparent;\n  border: none;\n  color: #FAE807;\n}\n.Message {\n  color: #8b9898;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 866 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -64062,13 +63949,13 @@ exports.push([module.i, ".DayPicker {\n  display: inline-block;\n}\n.DayPicker-w
 /* eslint-disable no-var */
 /* eslint-env node */
 
-var DayPicker = __webpack_require__(865);
+var DayPicker = __webpack_require__(867);
 var DateUtils = __webpack_require__(89);
-var LocaleUtils = __webpack_require__(142);
+var LocaleUtils = __webpack_require__(143);
 var ModifiersUtils = __webpack_require__(212);
 var Weekday = __webpack_require__(340);
 var Navbar = __webpack_require__(339);
-var PropTypes = __webpack_require__(873);
+var PropTypes = __webpack_require__(875);
 
 module.exports = DayPicker;
 module.exports.DateUtils = DateUtils;
@@ -64080,7 +63967,7 @@ module.exports.PropTypes = PropTypes;
 
 
 /***/ }),
-/* 865 */
+/* 867 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64102,7 +63989,7 @@ var _propTypes = __webpack_require__(66);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Caption = __webpack_require__(869);
+var _Caption = __webpack_require__(871);
 
 var _Caption2 = _interopRequireDefault(_Caption);
 
@@ -64110,7 +63997,7 @@ var _Navbar = __webpack_require__(339);
 
 var _Navbar2 = _interopRequireDefault(_Navbar);
 
-var _Month = __webpack_require__(870);
+var _Month = __webpack_require__(872);
 
 var _Month2 = _interopRequireDefault(_Month);
 
@@ -64118,7 +64005,7 @@ var _Weekday = __webpack_require__(340);
 
 var _Weekday2 = _interopRequireDefault(_Weekday);
 
-var _Helpers = __webpack_require__(145);
+var _Helpers = __webpack_require__(146);
 
 var Helpers = _interopRequireWildcard(_Helpers);
 
@@ -64126,7 +64013,7 @@ var _DateUtils = __webpack_require__(89);
 
 var DateUtils = _interopRequireWildcard(_DateUtils);
 
-var _LocaleUtils = __webpack_require__(142);
+var _LocaleUtils = __webpack_require__(143);
 
 var LocaleUtils = _interopRequireWildcard(_LocaleUtils);
 
@@ -64134,11 +64021,11 @@ var _ModifiersUtils = __webpack_require__(212);
 
 var ModifiersUtils = _interopRequireWildcard(_ModifiersUtils);
 
-var _classNames = __webpack_require__(144);
+var _classNames = __webpack_require__(145);
 
 var _classNames2 = _interopRequireDefault(_classNames);
 
-var _keys = __webpack_require__(143);
+var _keys = __webpack_require__(144);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -64720,7 +64607,7 @@ DayPicker.ModifiersUtils = ModifiersUtils;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
-/* 866 */
+/* 868 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64739,7 +64626,7 @@ var warning = __webpack_require__(84);
 var assign = __webpack_require__(83);
 
 var ReactPropTypesSecret = __webpack_require__(211);
-var checkPropTypes = __webpack_require__(867);
+var checkPropTypes = __webpack_require__(869);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -65270,7 +65157,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
-/* 867 */
+/* 869 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65337,7 +65224,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
-/* 868 */
+/* 870 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65402,7 +65289,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 869 */
+/* 871 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65422,11 +65309,11 @@ var _propTypes = __webpack_require__(66);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _LocaleUtils = __webpack_require__(142);
+var _LocaleUtils = __webpack_require__(143);
 
 var _LocaleUtils2 = _interopRequireDefault(_LocaleUtils);
 
-var _keys = __webpack_require__(143);
+var _keys = __webpack_require__(144);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65504,7 +65391,7 @@ Caption.propTypes = process.env.NODE_ENV !== "production" ? {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
-/* 870 */
+/* 872 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65524,21 +65411,21 @@ var _propTypes = __webpack_require__(66);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Weekdays = __webpack_require__(871);
+var _Weekdays = __webpack_require__(873);
 
 var _Weekdays2 = _interopRequireDefault(_Weekdays);
 
-var _Day = __webpack_require__(872);
+var _Day = __webpack_require__(874);
 
 var _Day2 = _interopRequireDefault(_Day);
 
-var _keys = __webpack_require__(143);
+var _keys = __webpack_require__(144);
 
 var _ModifiersUtils = __webpack_require__(212);
 
 var ModifiersUtils = _interopRequireWildcard(_ModifiersUtils);
 
-var _Helpers = __webpack_require__(145);
+var _Helpers = __webpack_require__(146);
 
 var Helpers = _interopRequireWildcard(_Helpers);
 
@@ -65762,7 +65649,7 @@ Month.propTypes = process.env.NODE_ENV !== "production" ? {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
-/* 871 */
+/* 873 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65869,7 +65756,7 @@ Weekdays.propTypes = process.env.NODE_ENV !== "production" ? {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
-/* 872 */
+/* 874 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65893,9 +65780,9 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _DateUtils = __webpack_require__(89);
 
-var _Helpers = __webpack_require__(145);
+var _Helpers = __webpack_require__(146);
 
-var _classNames = __webpack_require__(144);
+var _classNames = __webpack_require__(145);
 
 var _classNames2 = _interopRequireDefault(_classNames);
 
@@ -66068,7 +65955,7 @@ Day.propTypes = process.env.NODE_ENV !== "production" ? {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
-/* 873 */
+/* 875 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66110,7 +65997,7 @@ exports.default = PrimitiveTypes;
 //# sourceMappingURL=PropTypes.js.map
 
 /***/ }),
-/* 874 */
+/* 876 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66143,11 +66030,11 @@ var getDates = exports.getDates = function getDates(startDate, endDate) {
 };
 
 /***/ }),
-/* 875 */
+/* 877 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(876);
+var content = __webpack_require__(878);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -66193,70 +66080,6 @@ if(false) {
 }
 
 /***/ }),
-/* 876 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(8)(false);
-// imports
-
-
-// module
-exports.push([module.i, ".TimeRanges__button {\n  background-color: #FAE807;\n  color: #373737;\n  font-weight: bold;\n  padding: 5.5px 10px;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 14px;\n  opacity: 0.9;\n}\n.TimeRanges__time-input {\n  width: 115px;\n  padding: 5px 20px;\n  margin: 8px 8px 8px 0;\n  display: inline-block;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-sizing: border-box;\n}\n.TimeRanges__add-time {\n  color: #8b9898;\n  margin: 6px 0;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 877 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(878);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(9)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {
-	module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./AddDynamicList.less", function() {
-		var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./AddDynamicList.less");
-
-		if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-
-		var locals = (function(a, b) {
-			var key, idx = 0;
-
-			for(key in a) {
-				if(!b || a[key] !== b[key]) return false;
-				idx++;
-			}
-
-			for(key in b) idx--;
-
-			return idx === 0;
-		}(content.locals, newContent.locals));
-
-		if(!locals) throw new Error('Aborting CSS HMR due to changed css-modules locals.');
-
-		update(newContent);
-	});
-
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
 /* 878 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -66265,7 +66088,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, ".AddDynamicList__button {\n  background-color: #FAE807;\n  color: #373737;\n  font-weight: bold;\n  padding: 5.5px 10px;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 14px;\n  opacity: 0.9;\n}\n.AddDynamicList__input {\n  width: 60%;\n  padding: 8px 20px;\n  margin: 8px 8px 8px 0;\n  display: inline-block;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-sizing: border-box;\n}\n", ""]);
+exports.push([module.i, ".TimeRanges__button {\n  background-color: #FAE807;\n  color: #373737;\n  font-weight: bold;\n  padding: 5.5px 10px;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n  font-size: 14px;\n  opacity: 0.9;\n}\n.TimeRanges__time-input {\n  width: 115px;\n  padding: 5px 20px;\n  margin: 8px 8px 8px 0;\n  display: inline-block;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-sizing: border-box;\n}\n.TimeRanges__add-time {\n  color: #8b9898;\n  margin: 6px 0;\n}\n", ""]);
 
 // exports
 
@@ -78357,12 +78180,11 @@ var EditMoviePage = function (_Component) {
     }, {
         key: "getStateFromChild",
         value: function getStateFromChild(keys, values) {
-            var requiredFields = ["startDate", "duration", "name", "description", "scheduleDate", "genre", "format", "technology", "trailer", "rating"];
+            var requiredFields = ["startDate", "duration", "name", "description", "genre", "format", "technology", "trailer", "rating"];
             var canSubmit = true;
             for (var k = 0; k < keys.length; k++) {
-                console.log(keys);
                 this.setState(_defineProperty({}, keys[k], values[k]));
-                if (requiredFields.includes(keys[k]) && values[k] && (values[k].length == 0 || Object.values(values[k]).includes(NaN) || values[k][0] === "")) {
+                if (requiredFields.includes(keys[k]) && values[k] && (values[k].length === 0 || Object.values(values[k]).includes(NaN) || values[k][0] === "")) {
                     canSubmit = false;
                 }
             }
@@ -78412,7 +78234,6 @@ var EditMoviePage = function (_Component) {
                                         var movies = el.movies.includes(film.slugName) ? [].concat(_toConsumableArray(el.movies)) : [].concat(_toConsumableArray(el.movies), [film.slugName]);
                                         _this3.props.editActors({ movies: movies }, el.slugName);
                                     });
-                                    console.log(oldCast, "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
                                     oldCast.map(function (o) {
                                         var a = cast.filter(function (n) {
                                             return n.slugName === o.slugName;
@@ -78741,10 +78562,6 @@ var _BEM2 = _interopRequireDefault(_BEM);
 
 var _constants = __webpack_require__(210);
 
-var _AddDynamicList = __webpack_require__(146);
-
-var _AddDynamicList2 = _interopRequireDefault(_AddDynamicList);
-
 var _EditSelections = __webpack_require__(336);
 
 var _EditSelections2 = _interopRequireDefault(_EditSelections);
@@ -78756,6 +78573,10 @@ var _CalendarRangePicker2 = _interopRequireDefault(_CalendarRangePicker);
 var _TimeRanges = __webpack_require__(341);
 
 var _TimeRanges2 = _interopRequireDefault(_TimeRanges);
+
+var _AddDynamicList = __webpack_require__(142);
+
+var _AddDynamicList2 = _interopRequireDefault(_AddDynamicList);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -78780,12 +78601,12 @@ var EditMovieInfo = function (_Component) {
         _this.state = {
             rating: props.film.rating,
             duration: props.film.duration,
-            scheduleTime: Array.from(new Set(props.film.Schedule.map(function (el) {
+            scheduleTime: props.film.Schedule ? Array.from(new Set(props.film.Schedule.map(function (el) {
                 return el.split(' ')[1];
-            }))).sort(),
-            scheduleDate: Array.from(new Set(props.film.Schedule.map(function (el) {
+            }))).sort() : [],
+            scheduleDate: props.film.Schedule ? Array.from(new Set(props.film.Schedule.map(function (el) {
                 return el.split(' ')[0];
-            }))).sort(),
+            }))).sort() : [],
             name: props.film.name,
             description: props.film.description,
             genre: props.film.genre,
@@ -78817,10 +78638,10 @@ var EditMovieInfo = function (_Component) {
                 technology = _state.technology,
                 actors = _state.actors;
 
-            var chosenGenres = (typeof genre === "undefined" ? "undefined" : _typeof(genre)) === 'object' ? genre : genre.split(', ');
-            var chosenTechnologies = (typeof technology === "undefined" ? "undefined" : _typeof(technology)) === 'object' ? technology : technology.split(',');
-            var chosenFormats = (typeof format === "undefined" ? "undefined" : _typeof(format)) === 'object' ? format : format.split(',');
-            this.props.callback(['label', 'startDate', 'rating', 'duration', 'name', 'description', 'scheduleTime', 'scheduleDate', 'genre', 'format', 'technology', 'actors'], [label, startDate, rating, duration, name, description, scheduleTime, scheduleDate, chosenGenres, chosenFormats, chosenTechnologies, actors]);
+            var chosenGenres = genre ? (typeof genre === "undefined" ? "undefined" : _typeof(genre)) === 'object' ? genre : genre.split(', ') : [];
+            var chosenTechnologies = technology ? (typeof technology === "undefined" ? "undefined" : _typeof(technology)) === 'object' ? technology : technology.split(',') : [];
+            var chosenFormats = format ? (typeof format === "undefined" ? "undefined" : _typeof(format)) === 'object' ? format : format.split(',') : [];
+            this.props.callback(['label', 'startDate', 'rating', 'duration', 'name', 'description', 'scheduleTime', 'scheduleDate', 'genre', 'format', 'technology', 'cast'], [label, startDate, rating, duration, name, description, scheduleTime, scheduleDate, chosenGenres, chosenFormats, chosenTechnologies, actors]);
         }
     }, {
         key: "componentDidUpdate",
@@ -78839,17 +78660,17 @@ var EditMovieInfo = function (_Component) {
                 technology = _state2.technology,
                 actors = _state2.actors;
 
-            var chosenGenres = (typeof genre === "undefined" ? "undefined" : _typeof(genre)) === 'object' ? genre : genre.split(', ');
-            var chosenTechnologies = (typeof technology === "undefined" ? "undefined" : _typeof(technology)) === 'object' ? technology : technology.split(',');
-            var chosenFormats = (typeof format === "undefined" ? "undefined" : _typeof(format)) === 'object' ? format : format.split(',');
-            var stDate = (typeof startDate === "undefined" ? "undefined" : _typeof(startDate)) === 'object' ? startDate : {
+            var chosenGenres = genre ? (typeof genre === "undefined" ? "undefined" : _typeof(genre)) === 'object' ? genre : genre.split(', ') : [];
+            var chosenTechnologies = technology ? (typeof technology === "undefined" ? "undefined" : _typeof(technology)) === 'object' ? technology : technology.split(',') : [];
+            var chosenFormats = format ? (typeof format === "undefined" ? "undefined" : _typeof(format)) === 'object' ? format : format.split(',') : [];
+            var stDate = startDate ? (typeof startDate === "undefined" ? "undefined" : _typeof(startDate)) === 'object' ? startDate : {
                 year: parseInt(startDate.split('-')[0]),
                 month: parseInt(startDate.split('-')[1]),
                 day: parseInt(startDate.split('-')[2])
-            };
+            } : {};
 
             if (prevState !== this.state) {
-                this.props.callback(['label', 'startDate', 'rating', 'duration', 'name', 'description', 'scheduleTime', 'scheduleDate', 'genre', 'format', 'technology', 'actors'], [label, stDate, rating, duration, name, description, scheduleTime, scheduleDate, chosenGenres, chosenFormats, chosenTechnologies, actors]);
+                this.props.callback(['label', 'startDate', 'rating', 'duration', 'name', 'description', 'scheduleTime', 'scheduleDate', 'genre', 'format', 'technology', 'cast'], [label, stDate, rating, duration, name, description, scheduleTime, scheduleDate, chosenGenres, chosenFormats, chosenTechnologies, actors]);
             }
         }
     }, {
@@ -78869,34 +78690,50 @@ var EditMovieInfo = function (_Component) {
     }, {
         key: "getDataFromFilm",
         value: function getDataFromFilm(film) {
-            var hour = (film.duration.hour > 9 ? '' : '0') + film.duration.hour.toString();
-            var minute = (film.duration.minute > 9 ? '' : '0') + film.duration.minute.toString();
-            var durationTime = hour + ':' + minute;
-            var chosenGenres = _typeof(film.genre) === 'object' ? film.genre : film.genre.split(', ');
-            var chosenTechnologies = _typeof(film.technology) === 'object' ? film.technology : film.technology.split(',');
-            var chosenFormats = _typeof(film.format) === 'object' ? film.format : film.format.split(',');
-
-            var schedule = film.Schedule;
+            var hour = "";
+            var minute = "";
+            var durationTime = "";
+            var chosenGenres = [];
+            var chosenTechnologies = [];
+            var chosenFormats = [];
+            var schedule = "";
             var from = undefined;
             var to = undefined;
-            if (schedule.length !== 0) {
-                var fromSch = schedule[0].split(' ')[0];
-                var fromReverse = fromSch.split('-').reverse().join('-');
+            if (film.duration) {
+                hour = (film.duration.hour > 9 ? '' : '0') + film.duration.hour.toString();
+                minute = (film.duration.minute > 9 ? '' : '0') + film.duration.minute.toString();
+                durationTime = hour + ':' + minute;
+            }
+            if (film.genre || film.technology || film.format) {
+                chosenGenres = _typeof(film.genre) === 'object' ? film.genre : film.genre.split(', ');
+                chosenTechnologies = _typeof(film.technology) === 'object' ? film.technology : film.technology.split(',');
+                chosenFormats = _typeof(film.format) === 'object' ? film.format : film.format.split(',');
+            }
+            if (film.Schedule) {
+                schedule = film.Schedule;
+                if (schedule.length !== 0) {
+                    var fromSch = schedule[0].split(' ')[0];
+                    var fromReverse = fromSch.split('-').reverse().join('-');
 
-                var toSch = schedule[schedule.length - 1].split(' ')[0];
-                var toReverse = toSch.split('-').reverse().join('-');
+                    var toSch = schedule[schedule.length - 1].split(' ')[0];
+                    var toReverse = toSch.split('-').reverse().join('-');
 
-                from = fromReverse;
-                to = toReverse;
+                    from = fromReverse;
+                    to = toReverse;
 
-                if (new Date(fromReverse).getTime() > new Date(toReverse).getTime()) {
-                    from = toReverse;
-                    to = fromReverse;
+                    if (new Date(fromReverse).getTime() > new Date(toReverse).getTime()) {
+                        from = toReverse;
+                        to = fromReverse;
+                    }
                 }
             }
-            var timeRanges = Array.from(new Set(schedule.map(function (el) {
-                return el.split(' ')[1];
-            }))).sort();
+
+            var timeRanges = [];
+            if (schedule) {
+                timeRanges = Array.from(new Set(schedule.map(function (el) {
+                    return el.split(' ')[1];
+                }))).sort();
+            }
 
             return [durationTime, chosenGenres, chosenTechnologies, chosenFormats, from, to, timeRanges];
         }
@@ -79137,7 +78974,7 @@ var EditActorPage = function (_Component) {
         _this.state = {
             fireRedirect: false,
             movies: [],
-            oldMovies: props.films,
+            oldMovies: props.oldMovies,
             info: '',
             date: '',
             city: '',
@@ -79170,7 +79007,7 @@ var EditActorPage = function (_Component) {
             var canSubmit = true;
             for (var k = 0; k < keys.length; k++) {
                 this.setState(_defineProperty({}, keys[k], values[k]));
-                if (values[k] && requiredFields.includes(keys[k]) && (values[k].length == 0 || Object.values(values[k]).includes(NaN))) {
+                if (values[k] && requiredFields.includes(keys[k]) && (values[k].length === 0 || Object.values(values[k]).includes(NaN))) {
                     canSubmit = false;
                 }
             }
@@ -79194,7 +79031,6 @@ var EditActorPage = function (_Component) {
                                 actor = this.props.actor;
                                 newMovies = movies;
 
-                                console.log(movies, "ppppppppppppp");
                                 if (movies.length !== 0 && _typeof(movies[0]) === 'object') {
                                     newMovies = movies.map(function (m) {
                                         return m.slugName;
@@ -79232,13 +79068,13 @@ var EditActorPage = function (_Component) {
                                     }),
                                     image: image
                                 };
-                                _context.next = 10;
+                                _context.next = 9;
                                 return this.props.editActor(actorToAdd, actor.slugName);
 
-                            case 10:
+                            case 9:
                                 this.setState({ fireRedirect: true });
 
-                            case 11:
+                            case 10:
                             case "end":
                                 return _context.stop();
                         }
@@ -79262,7 +79098,7 @@ var EditActorPage = function (_Component) {
         value: function render() {
             var _props = this.props,
                 actor = _props.actor,
-                films = _props.films;
+                oldMovies = _props.oldMovies;
             var _state2 = this.state,
                 fireRedirect = _state2.fireRedirect,
                 info = _state2.info,
@@ -79280,7 +79116,6 @@ var EditActorPage = function (_Component) {
                         src: "http://www.topdesignmag.com/wp-content/uploads/2012/06/1.-404-not-found-design.jpg" })
                 );
             }
-            console.log(name, info, city);
             var cInfo = info;
             var cCity = city;
             if (info === undefined) {
@@ -79289,8 +79124,6 @@ var EditActorPage = function (_Component) {
             if (city === undefined) {
                 cCity = '';
             }
-            console.log('--', name, cInfo, cCity);
-
             var isEnabled = name.length * cInfo.length * cCity.length !== 0;
             var lenCancelBtn = isEnabled ? '100px' : '250px';
             var redirect = void 0;
@@ -79312,7 +79145,7 @@ var EditActorPage = function (_Component) {
                         "EDIT ACTOR"
                     ),
                     _react2.default.createElement(_EditActorImage2.default, { actorImg: actor.image, callback: this.getStateFromChild }),
-                    _react2.default.createElement(_EditActorInfo2.default, { actor: actor, films: films, callback: this.getStateFromChild }),
+                    _react2.default.createElement(_EditActorInfo2.default, { actor: actor, films: oldMovies, callback: this.getStateFromChild }),
                     _react2.default.createElement(
                         "div",
                         { className: b('btns') },
@@ -79343,10 +79176,10 @@ exports.default = (0, _reactRedux.connect)(function (state, props) {
     var slug = props.match.params.slug.toLowerCase();
     var actor = (0, _reducers.getActorBySlug)(slug, state);
     var filmsToFetch = [];
-    var films = actor.movies.map(function (movieID) {
-        var movie = (0, _reducers.getMovieBySlug)(movieID, state);
+    var films = actor.movies && actor.movies.map(function (movieSlug) {
+        var movie = (0, _reducers.getMovieBySlug)(movieSlug, state);
         if (!movie) {
-            filmsToFetch.push(movieID);
+            filmsToFetch.push(movieSlug);
         }
         return movie;
     }).filter(function (movie) {
@@ -79355,7 +79188,7 @@ exports.default = (0, _reactRedux.connect)(function (state, props) {
     var isFilmFetching = function isFilmFetching(slug) {
         return (0, _reducers.isMovieFetchingSlug)(slug, state);
     };
-    return { actor: actor, films: films, filmsToFetch: filmsToFetch, isFilmFetching: isFilmFetching };
+    return { actor: actor, oldMovies: films, filmsToFetch: filmsToFetch, isFilmFetching: isFilmFetching };
 }, function (dispatch) {
     return {
         fetchActorBySlug: function fetchActorBySlug(slug) {
@@ -79499,7 +79332,7 @@ var _NominationsList = __webpack_require__(379);
 
 var _NominationsList2 = _interopRequireDefault(_NominationsList);
 
-var _AddDynamicList = __webpack_require__(146);
+var _AddDynamicList = __webpack_require__(142);
 
 var _AddDynamicList2 = _interopRequireDefault(_AddDynamicList);
 
@@ -79524,11 +79357,11 @@ var EditActorInfo = function (_Component) {
         var _this = _possibleConstructorReturn(this, (EditActorInfo.__proto__ || Object.getPrototypeOf(EditActorInfo)).call(this, props));
 
         _this.state = {
-            movies: props.actor.movies,
+            movies: props.films,
             info: props.actor.info,
             date: props.actor.date,
             city: props.actor.city,
-            nominations: props.actor.nominations,
+            nominations: props.actor.nominations || [],
             name: props.actor.name
         };
         _this.onValueChange = _this.onValueChange.bind(_this);
@@ -79595,11 +79428,17 @@ var EditActorInfo = function (_Component) {
                 films = _props.films;
             var date = actor.date;
 
-            var month = (date.month > 9 ? '' : '0') + date.month.toString();
-            var day = (date.day > 9 ? '' : '0') + date.day.toString();
-            var year = date.year.toString();
-            var birthDate = year + '-' + month + '-' + day;
-
+            var month = void 0;
+            var day = void 0;
+            var year = void 0;
+            var birthDate = void 0;
+            if (date) {
+                month = (date.month > 9 ? '' : '0') + date.month.toString();
+                day = (date.day > 9 ? '' : '0') + date.day.toString();
+                year = date.year.toString();
+                birthDate = year + '-' + month + '-' + day;
+            }
+            actor.nominations = actor.nominations || [];
             return _react2.default.createElement(
                 "section",
                 { className: b() },
@@ -79643,7 +79482,7 @@ var EditActorInfo = function (_Component) {
                     { className: b("title") },
                     "Movies"
                 ),
-                _react2.default.createElement(_AddDynamicList2.default, { type: "movie", items: films, callback: this.callback })
+                _react2.default.createElement(_AddDynamicList2.default, { type: 'movie', items: films, callback: this.callback })
             );
         }
     }]);
@@ -79772,157 +79611,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // import React, {Component} from "react";
-// import block from "../helpers/BEM";
-// import "../styles/AddActorLayout.less";
-// import {connect} from "react-redux";
-// import {Redirect} from "react-router";
-// import AddActorImage from "./AddActorImage";
-// import AddActorInfo from "./AddActorInfo";
-// import slugify from "slugify/index";
-// import {postActorToDB, checkName} from "../actions/actors";
-// import {editMovieBySlug} from "../actions/movies";
-// import {getCheckedNameActor} from "../reducers";
-//
-// const b = block("AddActorLayout");
-//
-// class AddActorLayout extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             fireRedirect: false,
-//             movies: [],
-//             info: '',
-//             date: '',
-//             city: '',
-//             nominations: [],
-//             image: '',
-//             name: '',
-//             link: ''
-//         };
-//         this.getStateFromChild = this.getStateFromChild.bind(this);
-//     }
-//
-//     getStateFromChild(keys, values) {
-//         for (let k = 0; k < keys.length; k++) {
-//             this.setState({[keys[k]]: values[k]})
-//         }
-//     }
-//
-//     async addActorToDB(e) {
-//         e.preventDefault();
-//         const {
-//             movies,
-//             info,
-//             date,
-//             city,
-//             nominations,
-//             image,
-//             name
-//         } = this.state;
-//
-//         let convDate = date;
-//         if (typeof date === 'string') {
-//             const splitDate = date.split("-");
-//             convDate = {
-//                 year: parseInt(splitDate[0]),
-//                 month: parseInt(splitDate[1]),
-//                 day: parseInt(splitDate[2])
-//             };
-//         }
-//
-//         const newMovies = movies.map(m => m.slugName).filter(slug => slug !== '');
-//
-//         let slugName = slugify(name, {
-//             replacement: '_',
-//             remove: /[.:!,;*&@^]/g,
-//             lower: true
-//         });
-//
-//         await this.props.checkName(name);
-//         if (this.props.checked.slugName) {
-//             if (this.props.checked.city === city) {
-//                 alert("This actor already exist");
-//                 return;
-//             } else {
-//                 console.log("they are with tha same names");
-//                 slugName += "_" + city;
-//             }
-//         }
-//
-//         const actorToAdd = {
-//             movies: newMovies,
-//             slugName,
-//             name,
-//             info,
-//             date: convDate,
-//             city,
-//             nominations: nominations.filter(el => el !== ''),
-//             image
-//         };
-//         console.log('ACTOR', actorToAdd);
-//
-//         this.props.postData(actorToAdd);
-//         if (movies.length !== 0 && typeof movies[0] === 'object') {
-//             movies.filter(el => el.slugName.trim() !== '')
-//                 .map(el => {
-//                     const cast = (el.dynLst.includes(slugName)) ? [...el.dynLst] : [...el.dynLst, slugName];
-//                     this.props.editMovies({cast}, el.slugName);
-//                 });
-//         }
-//
-//         this.setState({fireRedirect: true, link: slugName});
-//     }
-//
-//     cancelAdding() {
-//         this.setState({fireRedirect: true});
-//     }
-//
-//
-//     render() {
-//         const {
-//             fireRedirect,
-//             info,
-//             city,
-//             name
-//         } = this.state;
-//
-//         const isEnabled =
-//             name.length *
-//             info.length *
-//             city.length !== 0;
-//         const lenCancelBtn = (isEnabled) ? '100px' : '250px';
-//         return (<div>
-//             <form className={b()}>
-//                 <h1 className={b('title')}>ADD ACTOR</h1>
-//                 <AddActorImage callback={this.getStateFromChild}/>
-//                 <AddActorInfo callback={this.getStateFromChild}/>
-//                 <div className={b('btns')}>
-//                     <button type='submit' className={b('btn', ['submit'])}
-//                             disabled={!isEnabled}
-//                             onClick={this.addActorToDB.bind(this)}>
-//                         Submit
-//                     </button>
-//                     <button type='button' className={b('btn', ['cancel'])}
-//                             style={{width: lenCancelBtn}} onClick={this.cancelAdding.bind(this)}>
-//                         Cancel
-//                     </button>
-//                 </div>
-//             </form>
-//             {fireRedirect && (<Redirect to={`/`}/>)}
-//         </div>)
-//     }
-// }
-//
-//
-// export default connect((state, props) => {
-//     let checked = getCheckedNameActor(state);
-//     return {checked};
-// }, (dispatch) => ({
-//     checkName: (name) => dispatch(checkName(name, 'actors')),
-//     postData: (actor) => dispatch(postActorToDB(actor)),
-//     editMovies: (movie, slug) => dispatch(editMovieBySlug(slug, movie))
-// }))(AddActorLayout);
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var b = (0, _BEM2.default)("AddActorLayout");
 
@@ -79984,7 +79673,7 @@ var AddActorLayout = function (_Component) {
                                         movie.slugName = (0, _index2.default)(movie.name, { replacement: '_', remove: /[.:!,;*&@^]/g, lower: true });
                                     }
                                 });
-                                // const newMovies = movies.map(m => m.slugName).filter(slug => slug !== '');
+
                                 slugName = (0, _index2.default)(name, {
                                     replacement: '_',
                                     remove: /[.:!,;*&@^]/g,
@@ -80027,13 +79716,6 @@ var AddActorLayout = function (_Component) {
 
                                 console.log(actorToAdd, "00000000000000000000000000000000000000000");
                                 this.props.postData(actorToAdd);
-                                // if (movies.length !== 0 && typeof movies[0] === 'object') {
-                                //     movies.filter(el => el.slugName.trim() !== '')
-                                //         .map(el => {
-                                //             const cast = (el.cast.includes(slugName)) ? [...el.cast] : [...el.cast, slugName];
-                                //             this.props.editMovies({cast}, el.slugName);
-                                //         });
-                                // }
 
                                 this.setState({ fireRedirect: true, link: slugName });
 
@@ -80377,7 +80059,7 @@ var _NominationsList = __webpack_require__(379);
 
 var _NominationsList2 = _interopRequireDefault(_NominationsList);
 
-var _AddDynamicList = __webpack_require__(146);
+var _AddDynamicList = __webpack_require__(142);
 
 var _AddDynamicList2 = _interopRequireDefault(_AddDynamicList);
 

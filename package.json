@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "webpack": "webpack --watch",
-    "server": "node server.js",
+    "server": "node server/server.js",
     "start": "npm run webpack | npm run server",
     "test": "jest",
     "raml": "raml2html docs/api/index.raml > docs/api/index.html",

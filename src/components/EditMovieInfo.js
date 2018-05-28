@@ -2,10 +2,10 @@ import React, {Component} from "react";
 import "../styles/EditInfo.less";
 import block from '../helpers/BEM'
 import {genres, formats, technologies} from "../helpers/constants";
-import AddDynamicList from "./AddDynamicList";
 import EditSelections from "./EditSelections";
 import CalendarRangePicker from "./CalendarRangePicker";
 import TimeRanges from "./TimeRanges";
+import AddDynamicList from "./AddDynamicList";
 
 const b = block("EditInfo");
 
@@ -15,8 +15,8 @@ class EditMovieInfo extends Component {
         this.state = {
             rating: props.film.rating,
             duration: props.film.duration,
-            scheduleTime: Array.from(new Set(props.film.Schedule.map(el => el.split(' ')[1]))).sort(),
-            scheduleDate: Array.from(new Set(props.film.Schedule.map(el => el.split(' ')[0]))).sort(),
+            scheduleTime: props.film.Schedule ? Array.from(new Set(props.film.Schedule.map(el => el.split(' ')[1]))).sort() : [],
+            scheduleDate: props.film.Schedule ? Array.from(new Set(props.film.Schedule.map(el => el.split(' ')[0]))).sort() : [],
             name: props.film.name,
             description: props.film.description,
             genre: props.film.genre,
@@ -32,30 +32,30 @@ class EditMovieInfo extends Component {
 
     componentDidMount() {
         const {label, startDate, rating, duration, name, description, scheduleTime, scheduleDate, genre, format, technology, actors} = this.state;
-        const chosenGenres = (typeof genre === 'object') ? genre : genre.split(', ');
-        const chosenTechnologies = (typeof technology === 'object') ? technology : technology.split(',');
-        const chosenFormats = (typeof format === 'object') ? format : format.split(',');
+        const chosenGenres = genre ? ((typeof genre === 'object') ? genre : genre.split(', ')) : [];
+        const chosenTechnologies = technology ? ((typeof technology === 'object') ? technology : technology.split(',')) : [];
+        const chosenFormats = format ? ((typeof format === 'object') ? format : format.split(',')) : [];
         this.props.callback(
-            ['label', 'startDate', 'rating', 'duration', 'name', 'description', 'scheduleTime', 'scheduleDate', 'genre', 'format', 'technology', 'actors'],
+            ['label', 'startDate', 'rating', 'duration', 'name', 'description', 'scheduleTime', 'scheduleDate', 'genre', 'format', 'technology', 'cast'],
             [label, startDate, rating, duration, name, description, scheduleTime, scheduleDate, chosenGenres, chosenFormats, chosenTechnologies, actors]);
     }
 
     componentDidUpdate(prevProps, prevState) {
         const {label, rating, startDate, duration, name, description, scheduleTime, scheduleDate, genre, format, technology, actors} = this.state;
-        const chosenGenres = (typeof genre === 'object') ? genre : genre.split(', ');
-        const chosenTechnologies = (typeof technology === 'object') ? technology : technology.split(',');
-        const chosenFormats = (typeof format === 'object') ? format : format.split(',');
-        const stDate = (typeof startDate === 'object') ?
+        const chosenGenres = genre ? ((typeof genre === 'object') ? genre : genre.split(', ')) : [];
+        const chosenTechnologies = technology ? ((typeof technology === 'object') ? technology : technology.split(',')) : [];
+        const chosenFormats = format ? ((typeof format === 'object') ? format : format.split(',')) : [];
+        const stDate = startDate ? ((typeof startDate === 'object') ?
             startDate :
             {
                 year: parseInt(startDate.split('-')[0]),
                 month: parseInt(startDate.split('-')[1]),
                 day: parseInt(startDate.split('-')[2])
-            };
+            }) : {};
 
         if (prevState !== this.state) {
             this.props.callback(
-                ['label', 'startDate', 'rating', 'duration', 'name', 'description', 'scheduleTime', 'scheduleDate', 'genre', 'format', 'technology', 'actors'],
+                ['label', 'startDate', 'rating', 'duration', 'name', 'description', 'scheduleTime', 'scheduleDate', 'genre', 'format', 'technology', 'cast'],
                 [label, stDate, rating, duration, name, description, scheduleTime, scheduleDate, chosenGenres, chosenFormats, chosenTechnologies, actors]);
         }
     }
@@ -70,32 +70,48 @@ class EditMovieInfo extends Component {
     }
 
     getDataFromFilm(film) {
-        const hour = (film.duration.hour > 9 ? '' : '0') + film.duration.hour.toString();
-        const minute = (film.duration.minute > 9 ? '' : '0') + film.duration.minute.toString();
-        const durationTime = hour + ':' + minute;
-        const chosenGenres = (typeof film.genre === 'object') ? film.genre : film.genre.split(', ');
-        const chosenTechnologies = (typeof film.technology === 'object') ? film.technology : film.technology.split(',');
-        const chosenFormats = (typeof film.format === 'object') ? film.format : film.format.split(',');
-
-        const schedule = film.Schedule;
+        let hour = "";
+        let minute = "";
+        let durationTime = "";
+        let chosenGenres = [];
+        let chosenTechnologies = [];
+        let chosenFormats = [];
+        let schedule = "";
         let from = undefined;
         let to = undefined;
-        if (schedule.length !== 0) {
-            const fromSch = schedule[0].split(' ')[0];
-            const fromReverse = fromSch.split('-').reverse().join('-');
+        if (film.duration) {
+            hour = (film.duration.hour > 9 ? '' : '0') + film.duration.hour.toString();
+            minute = (film.duration.minute > 9 ? '' : '0') + film.duration.minute.toString();
+            durationTime = hour + ':' + minute;
+        }
+        if (film.genre || film.technology || film.format) {
+            chosenGenres = (typeof film.genre === 'object') ? film.genre : film.genre.split(', ');
+            chosenTechnologies = (typeof film.technology === 'object') ? film.technology : film.technology.split(',');
+            chosenFormats = (typeof film.format === 'object') ? film.format : film.format.split(',');
+        }
+        if (film.Schedule) {
+            schedule = film.Schedule;
+            if (schedule.length !== 0) {
+                const fromSch = schedule[0].split(' ')[0];
+                const fromReverse = fromSch.split('-').reverse().join('-');
 
-            const toSch = schedule[schedule.length - 1].split(' ')[0];
-            const toReverse = toSch.split('-').reverse().join('-');
+                const toSch = schedule[schedule.length - 1].split(' ')[0];
+                const toReverse = toSch.split('-').reverse().join('-');
 
-            from = fromReverse;
-            to = toReverse;
+                from = fromReverse;
+                to = toReverse;
 
-            if (new Date(fromReverse).getTime() > new Date(toReverse).getTime()) {
-                from = toReverse;
-                to = fromReverse;
+                if (new Date(fromReverse).getTime() > new Date(toReverse).getTime()) {
+                    from = toReverse;
+                    to = fromReverse;
+                }
             }
         }
-        const timeRanges = Array.from(new Set(schedule.map(el => el.split(' ')[1]))).sort();
+
+        let timeRanges = [];
+        if (schedule) {
+            timeRanges = Array.from(new Set(schedule.map(el => el.split(' ')[1]))).sort();
+        }
 
         return [durationTime, chosenGenres, chosenTechnologies, chosenFormats, from, to, timeRanges];
     }

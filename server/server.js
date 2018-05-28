@@ -10,7 +10,7 @@ const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/heroku_t7gvckh
 
 const port = process.env.PORT || 3000;
 
-app.use(cors({origin: 'https://localhost:5000'}));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/movies', movies);
