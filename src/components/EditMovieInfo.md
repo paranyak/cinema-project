@@ -1,4 +1,9 @@
-EditMovieInfo example:
+------
+### Arguments:
++ **film**  object, which have all information about movie.
++ **callback**  function, which add all changed (or added information) to one object. This object we will POST after clicking button 'ADD'.This function is called every time a field is changed.
++ **firstArg, secondArg** argument of functions. firstArg is string which represent type of image, which we sent. secondArg is array, which have data which we add or remove.
++ **actors**   array of objects, where each object represents information about Actor. For example, *{name: 'Actors Name', _id: "12345", movies: [list of all movies]}*
 
 ```js
 const film={
@@ -47,7 +52,6 @@ const film={
     "__v" : 3
 };
 
-func = () => {};
 
 const oldCast = [
     {name: 'A0', _id: "5af369c999de722ecc00f499", movies: []},
@@ -55,6 +59,6 @@ const oldCast = [
     {name: 'A2', _id: "5af369c999de722ecc00f49a", movies: []}
 ];
 
-<EditMovieInfo film={film} actors={oldCast} callback={func} /> 
+<EditMovieInfo film={film} actors={oldCast} callback={(firstArg, secondArg) => {return;}} />
 
 ```

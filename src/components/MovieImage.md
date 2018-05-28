@@ -1,4 +1,6 @@
-MovieImage example:
+------
+### Arguments:
++ **film**   object which represents all data from Movie. For this component we need only image and screenshots fields.
 
 ```js
 <MovieImage film={{
