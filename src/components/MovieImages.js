@@ -1,17 +1,17 @@
 import React, {Component} from "react";
-import "../styles/EditImage.less";
+import "../styles/ImageFields.less";
 import block from '../helpers/BEM'
 import DragDropImage from './DragDropImage';
 
-const b = block("EditImage");
+const b = block("ImageFields");
 
-class EditMovieImage extends Component {
+class MovieImages extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            poster: props.film.image,
-            screenshots: props.film.screenshots,
-            trailer: props.film.trailer
+            poster: props.film.image || '',
+            screenshots: props.film.screenshots || [],
+            trailer: props.film.trailer || ''
         };
         this.myCallback = this.myCallback.bind(this);
         this.myCallback2 = this.myCallback2.bind(this);
@@ -45,19 +45,20 @@ class EditMovieImage extends Component {
 
     render() {
         const {film} = this.props;
+        const {poster, screenshots} = this.state;
         return (
             <section className={b()}>
                 <h3 className={b('title')}>Poster</h3>
-                <DragDropImage value={film.image} name='poster' callbackFromParent={this.myCallback2}
+                <DragDropImage value={poster} name='poster' callbackFromParent={this.myCallback2}
                                callbackInRemove={this.myCallback2}/>
                 <h3 className={b('title')}>Screenshots</h3>
-                <DragDropImage value={film.screenshots} name='screenshots' callbackFromParent={this.myCallback}
+                <DragDropImage value={screenshots} name='screenshots' callbackFromParent={this.myCallback}
                                callbackInRemove={this.myCallback2}/>
                 <h3 className={b('title')}>Trailer</h3>
-                <input className={b('input')} type="url" defaultValue={film.trailer} name='trailer' onChange={this.onInputChange.bind(this)}/>
+                <input className={b('input')} placeholder='Please, enter the movie trailer link' type="url" defaultValue={film.trailer} name='trailer' onChange={this.onInputChange.bind(this)}/>
             </section>
         )
     }
 }
 
-export default EditMovieImage;
+export default MovieImages;

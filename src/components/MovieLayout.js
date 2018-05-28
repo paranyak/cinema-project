@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import MovieImage from "./MovieImage";
-import MovieInfo from "./MovieInfo";
+import MovieLayoutImage from "./MovieLayoutImage";
+import MovieLayoutInfo from "./MovieLayoutInfo";
 import "../styles/MovieLayout.less"
 import block from "../helpers/BEM";
 import {getCurrentUser, getMovieBySlug} from "../reducers";
@@ -40,8 +40,8 @@ class MovieLayout extends Component {
             <div>
                 <div className={b()}>
                     {additional}
-                    <MovieInfo film={film}/>
-                    <MovieImage film={film}/>
+                    <MovieLayoutInfo film={film}/>
+                    <MovieLayoutImage film={film}/>
                 </div>
             </div>
         )

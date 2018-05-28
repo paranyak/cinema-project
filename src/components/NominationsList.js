@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import "../styles/NominationsList.less";
+import "../styles/DynamicList.less";
 import block from '../helpers/BEM'
 
-const b = block("NominationsList");
+const b = block("DynamicList");
 
 class NominationsList extends Component {
     constructor(props) {

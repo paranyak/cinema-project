@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "webpack": "webpack --watch",
-    "server:dev":"nodemon server/server.js",
+    "server:dev": "nodemon server/server.js",
     "server": "node server/server.js",
-    "start": "npm run webpack | MONGODB_URI=mongodb://localhost/cinema-project npm run server:dev",
+    "start": "npm run webpack | cross-env MONGODB_URI=mongodb://localhost/cinema-project npm run server:dev",
     "test": "jest",
     "raml": "raml2html docs/api/index.raml > docs/api/index.html",
     "styleguidist": "npx styleguidist build",
@@ -38,6 +38,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
+    "cross-env": "^5.1.6",
     "css-scroll-snap-polyfill": "^0.1.2",
     "heroku": "^7.0.47",
     "history": "^4.7.2",
@@ -72,7 +73,13 @@
     "slugify": "^1.2.9"
   },
   "nodemonConfig": {
-   "ignore": ["test/*", "docs/*", "src/*", "build/*", "server/public/*"],
-   "delay": "1000"
- }
+    "ignore": [
+      "test/*",
+      "docs/*",
+      "src/*",
+      "build/*",
+      "server/public/*"
+    ],
+    "delay": "1000"
+  }
 }

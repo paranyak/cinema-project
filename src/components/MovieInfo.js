@@ -1,55 +1,201 @@
-import React, {Component} from 'react'
-import Actors from "./Actors";
-import "../styles/MovieInfo.less";
-import block from "../helpers/BEM";
+import React, {Component} from "react";
+import "../styles/InfoFields.less";
+import block from '../helpers/BEM'
+import {genres, formats, technologies} from "../helpers/constants";
+import MultiSelection from "./MultiSelection";
+import CalendarRangePicker from "./CalendarRangePicker";
+import TimeRanges from "./TimeRanges";
+import DynamicList from "./DynamicList";
 
-const b = block("MovieInfo");
+const b = block("InfoFields");
 
 class MovieInfo extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            rating: props.film.rating || '',
+            duration: props.film.duration || '',
+            scheduleTime: props.film.Schedule ? Array.from(new Set(props.film.Schedule.map(el => el.split(' ')[1]))).sort() : [],
+            scheduleDate: props.film.Schedule ? Array.from(new Set(props.film.Schedule.map(el => el.split(' ')[0]))).sort() : [],
+            name: props.film.name || '',
+            description: props.film.description || '',
+            genre: props.film.genre || '',
+            format: props.film.format || [],
+            technology: props.film.technology || [],
+            actors: props.actors || [],
+            label: props.film.label || '',
+            startDate: props.film.startDate || ''
+        };
+        this.onValueChange = this.onValueChange.bind(this);
+        this.callback = this.callback.bind(this);
+    }
+
+    componentDidMount() {
+        const {label, startDate, rating, duration, name, description, scheduleTime, scheduleDate, genre, format, technology, actors} = this.state;
+        const chosenGenres = genre ? ((typeof genre === 'object') ? genre : genre.split(', ')) : [];
+        const chosenTechnologies = technology ? ((typeof technology === 'object') ? technology : technology.split(',')) : [];
+        const chosenFormats = format ? ((typeof format === 'object') ? format : format.split(',')) : [];
+        this.props.callback(
+            ['label', 'startDate', 'rating', 'duration', 'name', 'description', 'scheduleTime', 'scheduleDate', 'genre', 'format', 'technology', 'cast'],
+            [label, startDate, rating, duration, name, description, scheduleTime, scheduleDate, chosenGenres, chosenFormats, chosenTechnologies, actors]);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        const {label, rating, startDate, duration, name, description, scheduleTime, scheduleDate, genre, format, technology, actors} = this.state;
+        const chosenGenres = genre ? ((typeof genre === 'object') ? genre : genre.split(', ')) : [];
+        const chosenTechnologies = technology ? ((typeof technology === 'object') ? technology : technology.split(',')) : [];
+        const chosenFormats = format ? ((typeof format === 'object') ? format : format.split(',')) : [];
+        const stDate = startDate ? ((typeof startDate === 'object') ?
+            startDate :
+            {
+                year: parseInt(startDate.split('-')[0]),
+                month: parseInt(startDate.split('-')[1]),
+                day: parseInt(startDate.split('-')[2])
+            }) : {};
+
+        if (prevState !== this.state) {
+            this.props.callback(
+                ['label', 'startDate', 'rating', 'duration', 'name', 'description', 'scheduleTime', 'scheduleDate', 'genre', 'format', 'technology', 'cast'],
+                [label, stDate, rating, duration, name, description, scheduleTime, scheduleDate, chosenGenres, chosenFormats, chosenTechnologies, actors]);
+        }
+    }
+
+    onValueChange(e) {
+        const {name, value} = e.target;
+        this.setState({[name]: value})
+    }
+
+    callback(name, value) {
+        this.setState({[name]: value})
+    }
+
+    getDataFromFilm(film) {
+        let hour = "";
+        let minute = "";
+        let durationTime = "";
+        let chosenGenres = [];
+        let chosenTechnologies = [];
+        let chosenFormats = [];
+        let schedule = "";
+        let from = undefined;
+        let to = undefined;
+        if (film.duration) {
+            hour = (film.duration.hour > 9 ? '' : '0') + film.duration.hour.toString();
+            minute = (film.duration.minute > 9 ? '' : '0') + film.duration.minute.toString();
+            durationTime = hour + ':' + minute;
+        }
+        if (film.genre || film.technology || film.format) {
+            chosenGenres = (typeof film.genre === 'object') ? film.genre : film.genre.split(', ');
+            chosenTechnologies = (typeof film.technology === 'object') ? film.technology : film.technology.split(',');
+            chosenFormats = (typeof film.format === 'object') ? film.format : film.format.split(',');
+        }
+        if (film.Schedule) {
+            schedule = film.Schedule;
+            if (schedule.length !== 0) {
+                const fromSch = schedule[0].split(' ')[0];
+                const fromReverse = fromSch.split('-').reverse().join('-');
+
+                const toSch = schedule[schedule.length - 1].split(' ')[0];
+                const toReverse = toSch.split('-').reverse().join('-');
+
+                from = fromReverse;
+                to = toReverse;
+
+                if (new Date(fromReverse).getTime() > new Date(toReverse).getTime()) {
+                    from = toReverse;
+                    to = fromReverse;
+                }
+            }
+        }
+
+        let timeRanges = [];
+        if (schedule) {
+            timeRanges = Array.from(new Set(schedule.map(el => el.split(' ')[1]))).sort();
+        }
+
+        return [durationTime, chosenGenres, chosenTechnologies, chosenFormats, from, to, timeRanges];
+    }
+
     render() {
-        const {film} = this.props;
-        const strokeFull = film.rating * 10;
-        const strokeEmpty = 100 - strokeFull;
-        const strokeArray = "" + strokeFull + " " + strokeEmpty + "";
-        const format = (typeof film.format === 'string') ? film.format : film.format.join(", ");
-        const technology = (typeof film.technology === 'string') ? film.technology : film.technology.join(", ");
+        const {film, actors} = this.props;
+        const {label, startDate} = this.state;
+        const values = this.getDataFromFilm(film);
+        const durationTime = values[0];
+        const chosenGenres = values[1];
+        const chosenTechnologies = values[2];
+        const chosenFormats = values[3];
+        const from = (values[4] === undefined) ? undefined : new Date(values[4]);
+        const to = (values[5] === undefined) ? undefined : new Date(values[5]);
+        const timeRanges = values[6];
+        let stDate = startDate;
+        if (typeof startDate === 'object') {
+            const year = startDate.year;
+            const month = (startDate.month > 9 ? '' : 0) + startDate.month.toString();
+            const day = (startDate.day > 9 ? '' : 0) + startDate.day.toString();
+            stDate = year + '-' + month + '-' + day;
+        }
 
         return (
             <section className={b()}>
-                <h1 className={b("name")}>{film.name}</h1>
-                <p className={b("description")}> {film.description}</p>
-                <div className={b("extra")}>
-                    <div className={b("rating")}>
-                        <span className={b("rating-value")}>{film.rating}</span>
-                        <svg width="100%" height="100%" viewBox="0 0 42 42" className={b("donut")}>
-                            <circle className={b("donut-ring")} cx="21" cy="21" r="15.91549430918954" fill="transparent"
-                                    stroke="transparent" strokeWidth="3"></circle>
-                            <circle className={b("donut-segment")} cx="21" cy="21" r="15.91549430918954"
-                                    fill="transparent" stroke="#FAE807" strokeWidth="3" strokeDasharray={strokeArray}
-                                    strokeDashoffset="25"></circle>
-                        </svg>
-                    </div>
-                    <p className={b("genre")}>
-                        Genre
-                        <span className={b("value")}>{film.genre}</span>
-                    </p>
-                    <p className={b("duration")}>
-                        Duration
-                        <span className={b("value")}>{film.duration.hour}h {film.duration.minute}m </span>
-                    </p>
-                    <p className={b("format")}>
-                        Format
-                        <span className={b("value")}>{format}</span>
-                    </p>
-                    <p className={b("technology")}>
-                        Technology
-                        <span className={b("value")}>{technology}</span>
-                    </p>
-                </div>
-                <section className={"Actors"}>
-                    {film.cast.map(actor => <Actors id={actor} key={actor}/>)}
-                </section>
+                <h3 className={b('title')}>Movie Title</h3>
+                <input className={b("input", ['name'])} name='name' defaultValue={film.name}
+                       onChange={this.onValueChange} placeholder='Please, enter the movie title'/>
 
+                <h3 className={b('title')}>Description</h3>
+                <textarea className={b('input', ['textarea'])} defaultValue={film.description}
+                          placeholder='Please, enter the movie description' name='description' rows="5"
+                          onChange={this.onValueChange}/>
+
+                <h3 className={b('title')}>Rating</h3>
+                <input type='number' min='0' max='10' name='rating' className={b("input", ['rating'])}
+                       step='0.1' defaultValue={film.rating} onChange={this.onValueChange}/>
+
+                <h3 className={b('title')}>Duration</h3>
+                <input name='duration' type='time' className={b("input", ['duration'])} defaultValue={durationTime}
+                       onChange={this.onValueChange}/>
+
+                <h3 className={b('title')}>Start Date</h3>
+                <input type="date" onChange={this.onValueChange} defaultValue={stDate} name='startDate'
+                       className={b('input')}/>
+
+                <h3 className={b('title')}>Schedule</h3>
+                <CalendarRangePicker from={from} to={to} name='scheduleDate'
+                                     startDate={stDate} callbackFromParent={this.callback}/>
+                <TimeRanges name='scheduleTime' schedule={timeRanges} callbackFromParent={this.callback}/>
+
+                <h3 className={b('title')}>Genre</h3>
+                <MultiSelection options={genres} defaultValue={chosenGenres} name='genre'
+                                callback={this.callback}/>
+
+                <h3 className={b('title')}>Format</h3>
+                <MultiSelection options={formats} defaultValue={chosenFormats} name='format'
+                                callback={this.callback}/>
+
+                <h3 className={b('title')}>Technology</h3>
+                <MultiSelection options={technologies} defaultValue={chosenTechnologies} name='technology'
+                                callback={this.callback}/>
+
+                <h3 className={b('title')}>Actors</h3>
+                <DynamicList type='actor' items={actors} callback={this.callback}/>
+
+                <h3 className={b('title')}>Label</h3>
+                <div>
+                    <label className={b('radio-btn')}>
+                        <input type="radio" onChange={this.onValueChange} name="label" value="popular"
+                               checked={label === 'popular'}/>
+                        Popular
+                    </label>
+                    <label className={b('radio-btn')}>
+                        <input type="radio" onChange={this.onValueChange} name="label" value="soon"
+                               checked={label === 'soon'}/>
+                        Soon on the screens
+                    </label>
+                    <label className={b('radio-btn')}>
+                        <input type="radio" onChange={this.onValueChange} name="label" value=""
+                               checked={label === ''}/>
+                        None of the above
+                    </label>
+                </div>
             </section>
         )
     }
