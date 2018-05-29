@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import "../styles/AddMovieLayout.less";
 import block from '../helpers/BEM';
-import AddMovieImages from "./AddMovieImages";
-import AddMovieInfo from "./AddMovieInfo";
+import MovieImages from "./MovieImages";
+import MovieInfo from "./MovieInfo";
 import {Redirect} from "react-router";
 import slugify from 'slugify';
 import {connect} from "react-redux";
@@ -66,12 +66,15 @@ class AddMovieLayout extends Component {
         const scheduleTime = this.state.scheduleTime.sort();
         scheduleDate.map(d => scheduleTime.map(t => Schedule.push(d + ' ' + t)));
         cast.forEach((cast) => {
-          if(!cast.slugName) {
-            cast.slugName = slugify(cast.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
-          }
+            if (!cast.slugName) {
+                cast.slugName = slugify(cast.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
+            }
         });
 
         const slugName = slugify(name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
+
+        const durIsObj = (typeof duration === 'object');
+        const stDateIsObj = (typeof startDate === 'object');
 
         const movie = {
             name,
@@ -86,12 +89,12 @@ class AddMovieLayout extends Component {
             Schedule,
             format: format.filter(f => f !== ''),
             technology: technology.filter(t => t !== ''),
-            duration: {
+            duration: durIsObj ? duration : {
                 "hour": parseInt(duration.split(':')[0]),
                 "minute": parseInt(duration.split(':')[1])
             },
             label,
-            startDate: {
+            startDate: stDateIsObj ? startDate : {
                 "year": parseInt(startDate.split('-')[0]),
                 "month": parseInt(startDate.split('-')[1]),
                 "day": parseInt(startDate.split('-')[2])
@@ -118,6 +121,7 @@ class AddMovieLayout extends Component {
             trailer,
             rating,
             duration,
+            startDate
         } = this.state;
         const isEnabled =
             genre.filter(f => f !== '').length *
@@ -127,14 +131,15 @@ class AddMovieLayout extends Component {
             description.length *
             trailer.length *
             rating.length *
+            Object.keys(startDate).length *
             duration.length !== 0;
         const lenCancelBtn = (isEnabled) ? '100px' : '250px';
 
         return (<div>
                 <form className={b()}>
                     <h1 className={b('title')}>ADD MOVIE</h1>
-                    <AddMovieImages callback={this.getStateFromChild}/>
-                    <AddMovieInfo callback={this.getStateFromChild}/>
+                    <MovieImages film={{}} callback={this.getStateFromChild}/>
+                    <MovieInfo film={{}} actors={[]} callback={this.getStateFromChild}/>
                     <div className={b('btns')}>
                         <button type='submit'
                                 disabled={!isEnabled}
@@ -154,14 +159,12 @@ class AddMovieLayout extends Component {
 }
 
 
-export default connect((state, props) => {
-  const allActors = getAllActorsSlugs(state);
-  return {
-    allActors
-  }
-},
- (dispatch) => ({
-    postData: (movie) => dispatch(postMovieToDB(movie)),
-    editActors: (actor, slug) => dispatch(editActorBySlug(slug, actor)),
-    postActor: (actor) => dispatch(postActorToDB(actor))
-}))(AddMovieLayout);
+export default connect((state) => {
+        const allActors = getAllActorsSlugs(state);
+        return {allActors}
+    },
+    (dispatch) => ({
+        postData: (movie) => dispatch(postMovieToDB(movie)),
+        editActors: (actor, slug) => dispatch(editActorBySlug(slug, actor)),
+        postActor: (actor) => dispatch(postActorToDB(actor))
+    }))(AddMovieLayout);

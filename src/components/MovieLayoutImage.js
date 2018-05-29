@@ -1,15 +1,15 @@
 import React, {Component} from "react";
 
-import "../styles/MovieImage.less";
+import "../styles/MovieLayoutImage.less";
 import block from "../helpers/BEM";
 
-const b = block("MovieImage");
+const b = block("MovieLayoutImage");
 const linkMain = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_275,h_408/';
 const linkScr = 'https://res.cloudinary.com/dtnnkdylh/image/upload/w_160,h_100,c_fill,g_center/';
 let linkScrCarousel = '';//https://res.cloudinary.com/dtnnkdylh/image/upload/w_600/';
 const linkScrModal = 'https://res.cloudinary.com/dtnnkdylh/image/upload/h_80/';
 
-class MovieImage extends Component {
+class MovieLayoutImage extends Component {
     constructor(props) {
         super(props);
         this.state = {sources: [], currentId: 0};
@@ -147,4 +147,4 @@ class MovieImage extends Component {
     }
 }
 
-export default MovieImage;
+export default MovieLayoutImage;

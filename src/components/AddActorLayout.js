@@ -3,8 +3,8 @@ import block from "../helpers/BEM";
 import "../styles/AddActorLayout.less";
 import {connect} from "react-redux";
 import {Redirect} from "react-router";
-import AddActorImage from "./AddActorImage";
-import AddActorInfo from "./AddActorInfo";
+import ActorImage from "./ActorImage";
+import ActorInfo from "./ActorInfo";
 import slugify from "slugify/index";
 import {postActorToDB, checkName} from "../actions/actors";
 import {editMovieBySlug} from "../actions/movies";
@@ -117,8 +117,8 @@ class AddActorLayout extends Component {
         return (<div>
             <form className={b()}>
                 <h1 className={b('title')}>ADD ACTOR</h1>
-                <AddActorImage callback={this.getStateFromChild}/>
-                <AddActorInfo callback={this.getStateFromChild}/>
+                <ActorImage actorImg='' callback={this.getStateFromChild}/>
+                <ActorInfo actor={{}} films={[]} callback={this.getStateFromChild}/>
                 <div className={b('btns')}>
                     <button type='submit' className={b('btn', ['submit'])}
                             disabled={!isEnabled}

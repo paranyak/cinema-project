@@ -1,6 +1,4 @@
 import React, {Component} from "react";
-import EditMovieImage from "./EditMovieImage";
-import EditMovieInfo from "./EditMovieInfo";
 import "../styles/Editor.less"
 import {getActorBySlug, getMovieBySlug, isActorFetchingSlug} from "../reducers";
 import {editActorBySlug, fetchActorsSlug} from '../actions/actors';
@@ -8,6 +6,8 @@ import {editMovieBySlug, fetchMovieSlug} from '../actions/movies';
 import {connect} from "react-redux";
 import block from '../helpers/BEM'
 import {Redirect} from 'react-router'
+import MovieImages from "./MovieImages";
+import MovieInfo from "./MovieInfo";
 
 const b = block("Editor");
 
@@ -154,8 +154,8 @@ class EditMoviePage extends Component {
         return (<div>
                 <form className={b()}>
                     <h1 className={b('title')}>EDIT MOVIE</h1>
-                    <EditMovieImage film={film} callback={this.getStateFromChild}/>
-                    <EditMovieInfo film={film} actors={oldCast} callback={this.getStateFromChild}/>
+                    <MovieImages film={film} callback={this.getStateFromChild}/>
+                    <MovieInfo film={film} actors={oldCast} callback={this.getStateFromChild}/>
                     <div className={b('btns')}>
                         <button type='submit' className={b('btn', ['submit'])}
                                 onClick={this.editMovieInDB.bind(this)}>Save

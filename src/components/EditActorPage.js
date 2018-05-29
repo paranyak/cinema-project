@@ -6,8 +6,8 @@ import {editMovieBySlug} from '../actions/movies';
 import block from "../helpers/BEM";
 import {connect} from "react-redux";
 import {Redirect} from "react-router";
-import EditActorImage from "./EditActorImage";
-import EditActorInfo from "./EditActorInfo";
+import ActorImage from "./ActorImage";
+import ActorInfo from "./ActorInfo";
 import {getActorBySlug, getMovieBySlug, isMovieFetchingSlug} from "../reducers";
 
 const b = block("Editor");
@@ -146,8 +146,8 @@ class EditActorPage extends Component {
         return (<div>
                 <form className={b()}>
                     <h1 className={b('title')}>EDIT ACTOR</h1>
-                    <EditActorImage actorImg={actor.image} callback={this.getStateFromChild}/>
-                    <EditActorInfo actor={actor} films={oldMovies} callback={this.getStateFromChild}/>
+                    <ActorImage actorImg={actor.image} callback={this.getStateFromChild}/>
+                    <ActorInfo actor={actor} films={oldMovies} callback={this.getStateFromChild}/>
                     <div className={b('btns')}>
                         <button type='submit' className={b('btn', ['submit'])}
                                 disabled={!isEnabled}

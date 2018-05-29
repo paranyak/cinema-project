@@ -1,15 +1,15 @@
 import React, {Component} from "react";
-import block from "../helpers/BEM";
-import "../styles/AddActorImage.less";
+import "../styles/ImageFields.less";
+import block from '../helpers/BEM'
 import DragDropImage from "./DragDropImage";
 
-const b = block("AddActorImage");
+const b = block("ImageFields");
 
-class AddActorImage extends Component {
+class ActorImage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            actor: ''
+            actor: props.actorImg
         };
         this.myCallback2 = this.myCallback2.bind(this);
     }
@@ -31,12 +31,13 @@ class AddActorImage extends Component {
     }
 
     render() {
+        const {actorImg} = this.props;
         return <div className={b()}>
             <h3 className={b('title')}>Actor Image</h3>
-            <DragDropImage value={''} name='actor' callbackFromParent={this.myCallback2}
+            <DragDropImage value={actorImg} name='actor' callbackFromParent={this.myCallback2}
                            callbackInRemove={this.myCallback2}/>
         </div>;
     }
 }
 
-export default AddActorImage;
+export default ActorImage;

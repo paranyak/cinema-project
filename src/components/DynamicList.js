@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import block from "../helpers/BEM";
-import "../styles/AddDynamicList.less";
+import "../styles/DynamicList.less";
 
-const b = block("AddDynamicList");
+const b = block("DynamicList");
 
-class AddDynamicList extends Component {
+class DynamicList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -104,4 +104,4 @@ class AddDynamicList extends Component {
     }
 }
 
-export default AddDynamicList;
+export default DynamicList;

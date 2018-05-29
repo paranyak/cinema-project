@@ -1,21 +1,21 @@
 import React, {Component} from "react";
-import "../styles/EditInfo.less";
+import "../styles/InfoFields.less";
 import block from '../helpers/BEM'
 import NominationsList from "./NominationsList";
-import AddDynamicList from "./AddDynamicList";
+import DynamicList from "./DynamicList";
 
-const b = block("EditInfo");
+const b = block("InfoFields");
 
-class EditActorInfo extends Component {
+class ActorInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            movies: props.films,
-            info: props.actor.info,
-            date: props.actor.date,
-            city: props.actor.city,
+            movies: props.films || [],
+            info: props.actor.info || '',
+            date: props.actor.date || "",
+            city: props.actor.city || '',
             nominations: props.actor.nominations || [],
-            name: props.actor.name
+            name: props.actor.name || ''
         };
         this.onValueChange = this.onValueChange.bind(this);
         this.callback = this.callback.bind(this);
@@ -63,10 +63,10 @@ class EditActorInfo extends Component {
         let year;
         let birthDate;
         if (date) {
-          month = (date.month > 9 ? '' : '0') + date.month.toString();
-          day = (date.day > 9 ? '' : '0') + date.day.toString();
-          year = date.year.toString();
-          birthDate = year + '-' + month + '-' + day;
+            month = (date.month > 9 ? '' : '0') + date.month.toString();
+            day = (date.day > 9 ? '' : '0') + date.day.toString();
+            year = date.year.toString();
+            birthDate = year + '-' + month + '-' + day;
         }
         actor.nominations = actor.nominations || [];
         return <section className={b()}>
@@ -85,15 +85,15 @@ class EditActorInfo extends Component {
                    defaultValue={birthDate}/>
 
             <h3 className={b("title")}>City of birth</h3>
-            <input className={b("input")} name='city' defaultValue={actor.city} onChange={this.onValueChange}/>
+            <input className={b("input")} placeholder='Please, enter the city of the actor birth' name='city' defaultValue={actor.city} onChange={this.onValueChange}/>
 
             <h3 className={b("title")}>Nominations</h3>
             <NominationsList nominations={actor.nominations} callback={this.callback}/>
 
             <h3 className={b("title")}>Movies</h3>
-            <AddDynamicList type={'movie'} items={films} callback={this.callback}/>
+            <DynamicList type={'movie'} items={films} callback={this.callback}/>
         </section>
     }
 }
 
-export default EditActorInfo;
+export default ActorInfo;
