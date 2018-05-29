@@ -5,7 +5,7 @@ const db = require('../db');
 router.get('/bySlugName/:slugName', async (req, res) => {
     const slugName = req.params.slugName;
     const actor = await db.get().collection('actors').findOne({slugName});
-    res.send(actor);
+    //res.send(actor);
     if (actor) {
         res.send(actor);
     }
