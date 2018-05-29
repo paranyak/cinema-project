@@ -2,17 +2,12 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-router.get('/bySlugName/:slugName', async (req, res) => {
+router.get('/:slugName', async (req, res) => {
     const slugName = req.params.slugName;
     const actor = await db.get().collection('actors').findOne({slugName});
     res.send(actor);
-    if (actor) {
-        res.send(actor);
-    }
-    else {
-        res.status(404).send('Sorry, no such data in DB')
-    }
-
+    if (actor) res.send(actor);
+    else res.status(404).send('Sorry, no such data in DB');
 });
 
 router.get('/unpublished-slugs', async (req, res) => {

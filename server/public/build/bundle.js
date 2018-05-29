@@ -1146,7 +1146,6 @@ var getMoviesAutocomplete = exports.getMoviesAutocomplete = function getMoviesAu
 };
 
 var getMovieBySlug = exports.getMovieBySlug = function getMovieBySlug(slugName, state) {
-    console.log('state', state);
     return fromMovies.getMovieBySlug(slugName, state.movies);
 };
 
@@ -68471,7 +68470,6 @@ var getLabeledMovies = exports.getLabeledMovies = function getLabeledMovies(labe
 };
 
 var getMovieBySlug = exports.getMovieBySlug = function getMovieBySlug(slugName, state) {
-    console.log('slug', state.bySlug[slugName]);
     return state.bySlug[slugName];
 };
 
