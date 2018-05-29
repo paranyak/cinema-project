@@ -39,7 +39,7 @@ router.get('/slugs', async function (req, res) {
     else res.status(404);
 });
 
-router.get('/bySlugName/:slug', async (req, res) => {
+router.get('/:slug', async (req, res) => {
     const slugName = req.params.slug;
     const movie = await db.get().collection('movies').findOne({slugName});
     if (movie) res.send(movie);
