@@ -1,4 +1,17 @@
-const LOCALHOST = 'https://csucu-cinema-project.herokuapp.com';//`http://localhost:${PORT}`;
+let LOCALHOST;
+
+const hostname = window && window.location && window.location.hostname;
+console.log(hostname);
+switch (hostname) {
+    case 'localhost':
+        LOCALHOST = 'http://localhost:3000';
+        break;
+    default:
+        LOCALHOST = 'https://csucu-cinema-project.herokuapp.com'; //'mongodb://localhost:27017/heroku_t7gvckhq'; //`http://localhost:${PORT}`;
+        break;
+
+}
+console.log(LOCALHOST);
 
 export async function movie(id) {
     return await ((await fetch(`${LOCALHOST}/movies/byId/${id}`)).json());

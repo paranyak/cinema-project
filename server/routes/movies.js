@@ -4,6 +4,7 @@ const db = require('../db');
 
 router.get('/moviesCount', async function (req, res) {
     const movieCount = await db.get().collection('movies').find({published: true}, {fields: {slugName: true}}).count();
+    console.log('hello');
     if (movieCount) res.send(movieCount.toString());
     else res.status(404);
 });
@@ -39,7 +40,7 @@ router.get('/slugs', async function (req, res) {
     else res.status(404);
 });
 
-router.get('/:slug', async (req, res) => {
+router.get('/bySlugName/:slug', async (req, res) => {
     const slugName = req.params.slug;
     const movie = await db.get().collection('movies').findOne({slugName});
     if (movie) res.send(movie);

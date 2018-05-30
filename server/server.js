@@ -8,6 +8,8 @@ const path = require('path');
 const cors = require('cors');
 const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/heroku_t7gvckhq';
 
+console.log('url', url);
+
 const port = process.env.PORT || 3000;
 
 app.use(cors());
@@ -19,6 +21,11 @@ app.use('/actors', actors);
 app.use(express.static(path.join(__dirname + "/public")));
 
 app.use("/*", (req, res) => res.sendFile(path.join(__dirname, "/public/index.html")));
+const testFunc = async () => {
+    return await db.get().collection('movies')
+        .find({published: false}, {fields: {slugName: true}})
+        .toArray();
+};
 
 db.connect(url, (err) => {
     if (err) {
@@ -26,6 +33,7 @@ db.connect(url, (err) => {
         process.exit(1)
     } else {
         console.log("Connected successfully to server");
+        testFunc().then(movies =>  console.log(movies));
         app.listen(port, () => {
             console.log('Our Server is running')
         })

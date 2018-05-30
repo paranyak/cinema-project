@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-router.get('/:slugName', async (req, res) => {
+router.get('/bySlugName/:slugName', async (req, res) => {
     const slugName = req.params.slugName;
     const actor = await db.get().collection('actors').findOne({slugName});
     res.send(actor);
