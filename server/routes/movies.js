@@ -4,6 +4,7 @@ const db = require('../db');
 
 router.get('/moviesCount', async function (req, res) {
     const movieCount = await db.get().collection('movies').find({published: true}, {fields: {slugName: true}}).count();
+    console.log('hello');
     if (movieCount) res.send(movieCount.toString());
     else res.status(404);
 });

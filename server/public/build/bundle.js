@@ -22704,8 +22704,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-//`http://localhost:${PORT}`;
-
 var movie = exports.movie = function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(id) {
         return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -23235,7 +23233,22 @@ var checkName = exports.checkName = function () {
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-var LOCALHOST = 'https://csucu-cinema-project.herokuapp.com';var editMovie = exports.editMovie = function () {
+var LOCALHOST = void 0;
+
+var hostname = window && window.location && window.location.hostname;
+console.log(hostname);
+switch (hostname) {
+    case 'localhost':
+        LOCALHOST = 'http://localhost:3000';
+        break;
+    default:
+        LOCALHOST = 'https://csucu-cinema-project.herokuapp.com'; //'mongodb://localhost:27017/heroku_t7gvckhq'; //`http://localhost:${PORT}`;
+        break;
+
+}
+console.log(LOCALHOST);
+
+var editMovie = exports.editMovie = function () {
     var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(slugName, movie) {
         var response;
         return regeneratorRuntime.wrap(function _callee17$(_context17) {
