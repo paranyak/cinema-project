@@ -57,11 +57,14 @@ export const fetchMoviesSlugSuccess = (slugName, slugs, movies = []) => ({
     slugName, movies, slugs
 });
 
-export const fetchMoviesByLabelSuccess = (slugs, movies, label) => ({
-    type: FETCH_MOVIES_LABEL_SUCCESS,
-    slugName: 'carousel',
-    movies, slugs, label
-});
+export const fetchMoviesByLabelSuccess = (slugs, movies, label, metaData) => {
+    console.log(slugs, movies, label, metaData);
+    return {
+        type: FETCH_MOVIES_LABEL_SUCCESS,
+        slugName: 'carousel',
+        movies, slugs, label, metaData
+    }
+};
 
 export const fetchUnpublishedMoviesSuccess = (slugs, movies) => ({
     type: FETCH_UNPUBLISHED_MOVIESL_SUCCESS,
@@ -84,9 +87,9 @@ export const fetchMovieSlug = (slugName) => async (dispatch) => {
     movies.slugName = movies['slugName'];
     movies = normalize([movies], moviesListSchemaSlug);
     if (movies.entities.movies[slugName].published) {
-      dispatch(fetchMoviesSlugSuccess(slugName, movies.result, movies.entities.movies));
+        dispatch(fetchMoviesSlugSuccess(slugName, movies.result, movies.entities.movies));
     } else {
-      dispatch(fetchUnpublishedMoviesSuccess(movies.result, movies.entities.movies));
+        dispatch(fetchUnpublishedMoviesSuccess(movies.result, movies.entities.movies));
     }
 };
 
@@ -106,13 +109,22 @@ export const fetchMoviesSchedule = (day) => async (dispatch) => {
 export const fetchMoviesByLabel = (label) => async (dispatch) => {
     dispatch(fetchMoviesSlugStart('carousel'));
     if (label === 'unpublished') {
-      let movies = await fromApi.unpublishedMovies();
-      movies = normalize(movies, moviesListSchemaSlug);
-      dispatch(fetchUnpublishedMoviesSuccess(movies.result, movies.entities.movies));
+        let movies = await fromApi.unpublishedMovies();
+        movies = normalize(movies, moviesListSchemaSlug);
+        dispatch(fetchUnpublishedMoviesSuccess(movies.result, movies.entities.movies));
     } else {
-      let movies = await fromApi.labeledMovies(label);
-      movies = normalize(movies, moviesListSchemaSlug);
-      dispatch(fetchMoviesByLabelSuccess(movies.result, movies.entities.movies, label));
+
+        console.log("before search)))");
+        let moviesData = await fromApi.labeledMovies(label);
+        let movies = [];
+        if (moviesData.result) {
+            console.log("AFTER SEARCH)))", moviesData, moviesData.result);
+             movies = normalize(moviesData.result, moviesListSchemaSlug);
+        }else{
+            movies = normalize([], moviesListSchemaSlug);
+        }
+        dispatch(fetchMoviesByLabelSuccess(movies.result, movies.entities.movies, label, moviesData.metaData));
+
     }
 };
 
@@ -127,8 +139,9 @@ export const fetchAutocompleteMovies = (name) => async (dispatch) => {
 
 export const fetchAdditionalMovies = (limit, page) => async (dispatch) => {
     dispatch(fetchMoviesSlugStart('additional'));
-    let movies = await fromApi.additionalMovies(limit, page);
-    movies = normalize(movies, moviesListSchemaSlug);
+    let moviesData = await fromApi.additionalMovies(limit, page);
+    console.log("AFTER SEARCH ADD:", moviesData, moviesData.result);
+    let movies = normalize(moviesData.result, moviesListSchemaSlug);
     dispatch(fetchMoviesSlugSuccess('additional', movies.result, movies.entities.movies));
 };
 

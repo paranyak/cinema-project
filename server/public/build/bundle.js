@@ -2499,11 +2499,12 @@ var fetchMoviesSlugSuccess = exports.fetchMoviesSlugSuccess = function fetchMovi
     };
 };
 
-var fetchMoviesByLabelSuccess = exports.fetchMoviesByLabelSuccess = function fetchMoviesByLabelSuccess(slugs, movies, label) {
+var fetchMoviesByLabelSuccess = exports.fetchMoviesByLabelSuccess = function fetchMoviesByLabelSuccess(slugs, movies, label, metaData) {
+    console.log(slugs, movies, label, metaData);
     return {
         type: _actionTypes.FETCH_MOVIES_LABEL_SUCCESS,
         slugName: 'carousel',
-        movies: movies, slugs: slugs, label: label
+        movies: movies, slugs: slugs, label: label, metaData: metaData
     };
 };
 
@@ -2630,7 +2631,7 @@ var fetchMoviesSchedule = exports.fetchMoviesSchedule = function fetchMoviesSche
 var fetchMoviesByLabel = exports.fetchMoviesByLabel = function fetchMoviesByLabel(label) {
     return function () {
         var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(dispatch) {
-            var movies, _movies;
+            var movies, moviesData, _movies;
 
             return regeneratorRuntime.wrap(function _callee4$(_context4) {
                 while (1) {
@@ -2651,20 +2652,28 @@ var fetchMoviesByLabel = exports.fetchMoviesByLabel = function fetchMoviesByLabe
 
                             movies = (0, _normalizr.normalize)(movies, _schema.moviesListSchemaSlug);
                             dispatch(fetchUnpublishedMoviesSuccess(movies.result, movies.entities.movies));
-                            _context4.next = 14;
+                            _context4.next = 16;
                             break;
 
                         case 9:
-                            _context4.next = 11;
+
+                            console.log("before search)))");
+                            _context4.next = 12;
                             return fromApi.labeledMovies(label);
 
-                        case 11:
-                            _movies = _context4.sent;
+                        case 12:
+                            moviesData = _context4.sent;
+                            _movies = [];
 
-                            _movies = (0, _normalizr.normalize)(_movies, _schema.moviesListSchemaSlug);
-                            dispatch(fetchMoviesByLabelSuccess(_movies.result, _movies.entities.movies, label));
+                            if (moviesData.result) {
+                                console.log("AFTER SEARCH)))", moviesData, moviesData.result);
+                                _movies = (0, _normalizr.normalize)(moviesData.result, _schema.moviesListSchemaSlug);
+                            } else {
+                                _movies = (0, _normalizr.normalize)([], _schema.moviesListSchemaSlug);
+                            }
+                            dispatch(fetchMoviesByLabelSuccess(_movies.result, _movies.entities.movies, label, moviesData.metaData));
 
-                        case 14:
+                        case 16:
                         case "end":
                             return _context4.stop();
                     }
@@ -2715,7 +2724,7 @@ var fetchAutocompleteMovies = exports.fetchAutocompleteMovies = function fetchAu
 var fetchAdditionalMovies = exports.fetchAdditionalMovies = function fetchAdditionalMovies(limit, page) {
     return function () {
         var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(dispatch) {
-            var movies;
+            var moviesData, movies;
             return regeneratorRuntime.wrap(function _callee6$(_context6) {
                 while (1) {
                     switch (_context6.prev = _context6.next) {
@@ -2725,12 +2734,14 @@ var fetchAdditionalMovies = exports.fetchAdditionalMovies = function fetchAdditi
                             return fromApi.additionalMovies(limit, page);
 
                         case 3:
-                            movies = _context6.sent;
+                            moviesData = _context6.sent;
 
-                            movies = (0, _normalizr.normalize)(movies, _schema.moviesListSchemaSlug);
+                            console.log("AFTER SEARCH ADD:", moviesData, moviesData.result);
+                            movies = (0, _normalizr.normalize)(moviesData.result, _schema.moviesListSchemaSlug);
+
                             dispatch(fetchMoviesSlugSuccess('additional', movies.result, movies.entities.movies));
 
-                        case 6:
+                        case 7:
                         case "end":
                             return _context6.stop();
                     }
@@ -23199,7 +23210,7 @@ var checkName = exports.checkName = function () {
                 switch (_context19.prev = _context19.next) {
                     case 0:
                         _context19.next = 2;
-                        return fetch(LOCALHOST + '/' + type + '/name_like=' + name);
+                        return fetch(LOCALHOST + '/' + type + '/bySlugName/' + name);
 
                     case 2:
                         res = _context19.sent;
@@ -68349,8 +68360,9 @@ var movieCount = exports.movieCount = function movieCount() {
     var action = arguments[1];
 
     switch (action.type) {
-        case _actionTypes.FETCH_MOVIES_COUNT_SUCCESS:
-            return action.movies;
+        case _actionTypes.FETCH_MOVIES_LABEL_SUCCESS:
+            console.log(action, action.metaData.count);
+            return action.metaData.count;
         default:
             return state;
     }
@@ -75768,7 +75780,7 @@ var AllMovies = function (_Component) {
     _createClass(AllMovies, [{
         key: "componentWillMount",
         value: function componentWillMount() {
-            this.props.moviesCount();
+            console.log("WILL MOUNT");
             this.props.fetchAllMovies(this.state.items, 1);
         }
     }, {
@@ -75783,6 +75795,7 @@ var AllMovies = function (_Component) {
             if (nextProps.count !== this.props.count) {
                 var allM = document.querySelector("#root");
                 allM.style.height = this.calculateHeight(nextProps.count);
+                console.log(allM.style.height, nextProps.count);
             }
             if (this.props.count && this.props.films.length === this.props.count) {
                 this.setState(_extends({}, this.state, { hasMoreItems: false }));
@@ -75807,7 +75820,7 @@ var AllMovies = function (_Component) {
         key: "calculateHeight",
         value: function calculateHeight(count) {
             var columnType = this.getColumnType();
-            var height = count / columnType * 501 + 1000;
+            var height = count / columnType * 501 + 1800;
             return height + 'px';
         }
     }, {
@@ -75872,9 +75885,6 @@ var AllMovies = function (_Component) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
-        moviesCount: function moviesCount() {
-            dispatch((0, _movies.fetchMoviesCount)());
-        },
         fetchAllMovies: function fetchAllMovies(labels, pages) {
             dispatch((0, _movies.fetchAdditionalMovies)(labels, pages));
         },
@@ -79085,7 +79095,7 @@ var AddActorLayout = function (_Component) {
         key: "addActorToDB",
         value: function () {
             var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(e) {
-                var _state, movies, info, date, city, nominations, image, name, convDate, splitDate, slugName, actorToAdd;
+                var _state, movies, info, date, city, nominations, image, name, convDate, splitDate, slugName, slugExist, actorToAdd;
 
                 return regeneratorRuntime.wrap(function _callee$(_context) {
                     while (1) {
@@ -79115,28 +79125,49 @@ var AddActorLayout = function (_Component) {
                                     remove: /[.:!,;*&@^]/g,
                                     lower: true
                                 });
-                                _context.next = 8;
-                                return this.props.checkName(name);
+                                slugExist = true;
 
-                            case 8:
+                            case 7:
+                                if (!slugExist) {
+                                    _context.next = 25;
+                                    break;
+                                }
+
+                                console.log("check slug", slugName);
+                                _context.next = 11;
+                                return this.props.checkName(slugName);
+
+                            case 11:
                                 if (!this.props.checked.slugName) {
-                                    _context.next = 16;
+                                    _context.next = 22;
                                     break;
                                 }
 
                                 if (!(this.props.checked.city === city)) {
-                                    _context.next = 14;
+                                    _context.next = 18;
                                     break;
                                 }
 
                                 alert("This actor already exist");
+                                slugExist = false;
                                 return _context.abrupt("return");
 
-                            case 14:
+                            case 18:
                                 console.log("they are with tha same names");
-                                slugName += "_" + city;
+                                slugName += "_" + Math.random();
 
-                            case 16:
+                            case 20:
+                                _context.next = 23;
+                                break;
+
+                            case 22:
+                                slugExist = false;
+
+                            case 23:
+                                _context.next = 7;
+                                break;
+
+                            case 25:
                                 actorToAdd = {
                                     movies: movies,
                                     slugName: slugName,
@@ -79155,7 +79186,7 @@ var AddActorLayout = function (_Component) {
 
                                 this.setState({ fireRedirect: true, link: slugName });
 
-                            case 20:
+                            case 29:
                             case "end":
                                 return _context.stop();
                         }

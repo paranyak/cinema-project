@@ -4,7 +4,6 @@ const db = require('../db');
 
 router.get('/moviesCount', async function (req, res) {
     const movieCount = await db.get().collection('movies').find({published: true}, {fields: {slugName: true}}).count();
-    console.log('hello');
     if (movieCount) res.send(movieCount.toString());
     else res.status(404);
 });
@@ -21,6 +20,7 @@ router.get('/slugs', async function (req, res) {
     let dbQuery;
     let params = {published: true};
     let query = req.query;
+
     if (query['label']) {
         params.label = query['label'];
     }
@@ -35,9 +35,15 @@ router.get('/slugs', async function (req, res) {
         let limit = +query['_limit'];
         dbQuery = dbQuery.limit(limit).skip((page - 1) * limit);
     }
+
+    let metaData = {};
+    metaData.params = params;
+    metaData.count = await db.get().collection('movies').find({published: true}, {fields: {slugName: true}}).count();
+    console.log("META:",metaData);
+
     const movies = await dbQuery.toArray();
-    if (movies) res.send(movies.map(el => el.slugName));
-    else res.status(404);
+    if (movies) res.send({metaData: metaData, result: movies.map(el => el.slugName)});
+    else res.send({metaData: metaData, error: true});
 });
 
 router.get('/bySlugName/:slug', async (req, res) => {

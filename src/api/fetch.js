@@ -131,7 +131,7 @@ export const editActor = async (slugName, actor) => {
 
 
 export async function checkName(name, type) {
-    let res = await fetch(`${LOCALHOST}/${type}/name_like=${name}`);
+    let res = await fetch(`${LOCALHOST}/${type}/bySlugName/${name}`);
     if (res.ok) {
         return await res.json();
     }

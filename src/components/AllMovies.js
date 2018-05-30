@@ -22,7 +22,7 @@ class AllMovies extends Component {
     }
 
     componentWillMount() {
-        this.props.moviesCount();
+        console.log("WILL MOUNT");
         this.props.fetchAllMovies(this.state.items, 1);
     }
 
@@ -36,6 +36,7 @@ class AllMovies extends Component {
         if (nextProps.count !== this.props.count) {
             let allM = document.querySelector("#root");
             allM.style.height = this.calculateHeight(nextProps.count);
+            console.log(allM.style.height, nextProps.count);
         }
         if (this.props.count && this.props.films.length === this.props.count) {
             this.setState({...this.state, hasMoreItems: false});
@@ -63,7 +64,7 @@ class AllMovies extends Component {
 
     calculateHeight(count) {
         let columnType = this.getColumnType();
-        let height = ((count) / columnType) * 501 + 1000;
+        let height = ((count) / columnType) * 501 + 1800;
         return height + 'px';
     }
 
@@ -114,9 +115,6 @@ class AllMovies extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        moviesCount: () => {
-            dispatch(fetchMoviesCount())
-        },
         fetchAllMovies: (labels, pages) => {
             dispatch(fetchAdditionalMovies(labels, pages))
         },

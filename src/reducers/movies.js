@@ -41,8 +41,9 @@ export const bySlug = (state = {}, action) => {
 
 export const movieCount = (state = {}, action) => {
     switch (action.type) {
-        case FETCH_MOVIES_COUNT_SUCCESS:
-            return action.movies;
+        case FETCH_MOVIES_LABEL_SUCCESS:
+            console.log(action,  action.metaData.count);
+            return action.metaData.count;
         default:
             return state;
     }
