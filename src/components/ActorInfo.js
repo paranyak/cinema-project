@@ -68,6 +68,7 @@ class ActorInfo extends Component {
             year = date.year.toString();
             birthDate = year + '-' + month + '-' + day;
         }
+        console.log(actor, films);
         actor.nominations = actor.nominations || [];
         return <section className={b()}>
             <h3 className={b('title')}>Actor Name</h3>

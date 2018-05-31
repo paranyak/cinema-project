@@ -21620,6 +21620,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(2);
@@ -21634,9 +21636,9 @@ __webpack_require__(343);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -21656,12 +21658,25 @@ var DynamicList = function (_Component) {
 
         _this.state = {
             suggestedList: [],
-            chosenItems: props.items
+            chosenItems: [].concat(_toConsumableArray(props.items))
         };
         return _this;
     }
 
     _createClass(DynamicList, [{
+        key: "componentWillReceiveProps",
+        value: function componentWillReceiveProps(nextProps) {
+            if (nextProps.items !== this.props.items) {
+                var items = [].concat(_toConsumableArray(this.state.chosenItems), _toConsumableArray(nextProps.items));
+                items = items.filter(function (item, i, arr) {
+                    return arr.indexOf(item) === i;
+                });
+                this.setState(_extends({}, this.state, {
+                    chosenItems: items
+                }));
+            }
+        }
+    }, {
         key: "createList",
         value: function createList() {
             var _this2 = this;
@@ -21752,15 +21767,17 @@ var DynamicList = function (_Component) {
             });
             var slugName = '';
             var dynLst = [];
+            var _id = void 0;
             if (filtered.length === 1) {
                 slugName = filtered[0].slugName;
                 dynLst = type === 'movie' ? filtered[0].cast : filtered[0].movies;
+                _id = filtered[0]._id;
             }
             var arr = [];
             if (type === 'movie') {
-                arr = [].concat(_toConsumableArray(this.state.chosenItems.slice(0, i)), [Object.assign({}, this.state.chosenItems[i], { name: value, slugName: slugName, cast: dynLst })], _toConsumableArray(this.state.chosenItems.slice(i + 1)));
+                arr = [].concat(_toConsumableArray(this.state.chosenItems.slice(0, i)), [Object.assign({}, this.state.chosenItems[i], { name: value, slugName: slugName, cast: dynLst, _id: _id })], _toConsumableArray(this.state.chosenItems.slice(i + 1)));
             } else {
-                arr = [].concat(_toConsumableArray(this.state.chosenItems.slice(0, i)), [Object.assign({}, this.state.chosenItems[i], { name: value, slugName: slugName, movies: dynLst })], _toConsumableArray(this.state.chosenItems.slice(i + 1)));
+                arr = [].concat(_toConsumableArray(this.state.chosenItems.slice(0, i)), [Object.assign({}, this.state.chosenItems[i], { name: value, slugName: slugName, movies: dynLst, _id: _id })], _toConsumableArray(this.state.chosenItems.slice(i + 1)));
             }
             this.setState({ chosenItems: arr });
             callback(type + "s", arr);
@@ -23120,7 +23137,7 @@ var postMovie = exports.postMovie = function () {
                         headers.append('Content-Type', 'application/json');
 
                         _context15.next = 4;
-                        return fetch('https://csucu-cinema-project.herokuapp.com/movies', {
+                        return fetch(LOCALHOST + '/movies', {
                             method: 'POST',
                             headers: headers,
                             body: JSON.stringify(movie)
@@ -23158,7 +23175,7 @@ var postActor = exports.postActor = function () {
                         headers.append('Content-Type', 'application/json');
 
                         _context16.next = 4;
-                        return fetch('https://csucu-cinema-project.herokuapp.com/actors', {
+                        return fetch(LOCALHOST + '/actors', {
                             method: 'POST',
                             headers: headers,
                             body: JSON.stringify(actor)
@@ -25798,6 +25815,7 @@ var ActorInfo = function (_Component) {
                 year = date.year.toString();
                 birthDate = year + '-' + month + '-' + day;
             }
+            console.log(actor, films);
             actor.nominations = actor.nominations || [];
             return _react2.default.createElement(
                 "section",
@@ -77611,7 +77629,7 @@ exports.push([module.i, ".ActorLayout {\n  width: 90%;\n  min-height: 600px;\n  
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -77649,87 +77667,87 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var b = (0, _BEM2.default)("Login");
 
 var Login = function (_Component) {
-    _inherits(Login, _Component);
+  _inherits(Login, _Component);
 
-    function Login(props) {
-        _classCallCheck(this, Login);
+  function Login(props) {
+    _classCallCheck(this, Login);
 
-        var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
 
-        _this.state = {
-            email: '',
-            password: ''
-        };
-        _this.handleSubmit = _this.handleSubmit.bind(_this);
-        return _this;
+    _this.state = {
+      email: '',
+      password: ''
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
+  }
+
+  _createClass(Login, [{
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      event.preventDefault();
+      var _state = this.state,
+          email = _state.email,
+          password = _state.password;
+
+      this.props.loginUser(email, password);
     }
+  }, {
+    key: "handleChange",
+    value: function handleChange(event, label) {
+      this.setState(_extends({}, this.state, _defineProperty({}, label, event.target.value)));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
 
-    _createClass(Login, [{
-        key: "handleSubmit",
-        value: function handleSubmit(event) {
-            event.preventDefault();
-            var _state = this.state,
-                email = _state.email,
-                password = _state.password;
+      return _react2.default.createElement(
+        "div",
+        { className: b() },
+        _react2.default.createElement(
+          "h1",
+          { className: b('header') },
+          "Login"
+        ),
+        _react2.default.createElement(
+          "form",
+          { className: b('form'), onSubmit: this.handleSubmit },
+          _react2.default.createElement("input", { className: b('input', ['above']), value: this.state.email, onChange: function onChange(event) {
+              return _this2.handleChange(event, 'email');
+            }, type: "email", name: "email", placeholder: "E-mail" }),
+          _react2.default.createElement("input", { className: b('input', ['below']), value: this.state.password, onChange: function onChange(event) {
+              return _this2.handleChange(event, 'password');
+            }, type: "password", name: "password", placeholder: "Password" }),
+          _react2.default.createElement(
+            "span",
+            { style: { display: this.props.error ? 'block' : 'none' }, className: b('message') },
+            this.props.error ? this.props.error.message : ''
+          ),
+          _react2.default.createElement("input", { className: b('submit'), type: "submit", value: "Submit" })
+        ),
+        _react2.default.createElement(
+          _reactRouterDom.NavLink,
+          { to: "/signup", className: b('signup') },
+          "Sign up"
+        )
+      );
+    }
+  }]);
 
-            this.props.loginUser(email, password);
-        }
-    }, {
-        key: "handleChange",
-        value: function handleChange(event, label) {
-            this.setState(_extends({}, this.state, _defineProperty({}, label, event.target.value)));
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var _this2 = this;
-
-            return _react2.default.createElement(
-                "div",
-                { className: b() },
-                _react2.default.createElement(
-                    "h1",
-                    { className: b('header') },
-                    "Login"
-                ),
-                _react2.default.createElement(
-                    "form",
-                    { className: b('form'), onSubmit: this.handleSubmit },
-                    _react2.default.createElement("input", { className: b('input', ['above']), value: this.state.email, onChange: function onChange(event) {
-                            return _this2.handleChange(event, 'email');
-                        }, type: "email", name: "email", placeholder: "E-mail" }),
-                    _react2.default.createElement("input", { className: b('input', ['below']), value: this.state.password, onChange: function onChange(event) {
-                            return _this2.handleChange(event, 'password');
-                        }, type: "password", name: "password", placeholder: "Password" }),
-                    _react2.default.createElement(
-                        "span",
-                        { style: { display: this.props.error ? 'block' : 'none' }, className: b('message') },
-                        this.props.error ? this.props.error.message : ''
-                    ),
-                    _react2.default.createElement("input", { className: b('submit'), type: "submit", value: "Submit" })
-                ),
-                _react2.default.createElement(
-                    _reactRouterDom.NavLink,
-                    { to: "/signup", className: b('signup') },
-                    "Sign up"
-                )
-            );
-        }
-    }]);
-
-    return Login;
+  return Login;
 }(_react.Component);
 
 exports.default = (0, _reactRedux.connect)(function (state, props) {
-    return {
-        error: (0, _index.getAuthError)(state)
-    };
+  return {
+    error: (0, _index.getAuthError)(state)
+  };
 }, function (dispatch) {
-    return {
-        loginUser: function loginUser(email, password) {
-            return dispatch((0, _auth.loginUser)(email, password));
-        }
-    };
+  return {
+    loginUser: function loginUser(email, password) {
+      return dispatch((0, _auth.loginUser)(email, password));
+    }
+  };
 })(Login);
 
 /***/ }),
