@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import MoviePoster from "./MoviePoster";
 import InfiniteScroll from "react-infinite-scroller";
 import {getAllMoviesSlugs, isMovieFetchingSlug} from "../reducers";
-import {fetchAdditionalMovies, fetchMoviesCount} from "../actions/movies"
+import {fetchAdditionalMovies} from "../actions/movies"
 import {replace} from 'react-router-redux';
 import LazyLoad from 'react-lazyload'
 import {getMoviesCount} from "../reducers/index";
