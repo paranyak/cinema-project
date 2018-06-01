@@ -21,9 +21,9 @@ export async function movieBySlug(slugName) {
     return await ((await fetch(`${LOCALHOST}/movies/bySlugName/${slugName}`)).json());
 }
 
-export async function movieCount() {
-    return await ((await fetch(`${LOCALHOST}/movies/moviesCount`)).json());
-}
+// export async function movieCount() {
+//     return await ((await fetch(`${LOCALHOST}/movies/moviesCount`)).json());
+// }
 
 export async function moviesSchedule(day) {
     return await ((await fetch(`${LOCALHOST}/movies/slugs?Schedule=${day}`)).json())
@@ -131,7 +131,7 @@ export const editActor = async (slugName, actor) => {
 
 
 export async function checkName(name, type) {
-    let res = await fetch(`${LOCALHOST}/${type}/name_like=${name}`);
+    let res = await fetch(`${LOCALHOST}/${type}/bySlugName/${name}`);
     if (res.ok) {
         return await res.json();
     }

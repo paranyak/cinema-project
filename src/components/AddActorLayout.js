@@ -57,9 +57,9 @@ class AddActorLayout extends Component {
             };
         }
         movies.forEach((movie) => {
-          if(!movie.slugName) {
-            movie.slugName = slugify(movie.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
-          }
+            if (!movie.slugName) {
+                movie.slugName = slugify(movie.name, {replacement: '_', remove: /[.:!,;*&@^]/g, lower: true});
+            }
         });
 
         let slugName = slugify(name, {
@@ -68,16 +68,25 @@ class AddActorLayout extends Component {
             lower: true
         });
 
-        await this.props.checkName(name);
-        if (this.props.checked.slugName) {
-            if (this.props.checked.city === city) {
-                alert("This actor already exist");
-                return;
-            } else {
-                console.log("they are with tha same names");
-                slugName += "_" + city;
+        let slugExist = true;
+        while (slugExist) {
+            console.log("check slug", slugName);
+            await this.props.checkName(slugName);
+            if (this.props.checked.slugName) {
+                if (this.props.checked.city === city) {
+                    alert("This actor already exist");
+                    slugExist=false;
+                    return;
+                } else {
+                    console.log("they are with tha same names");
+                    slugName += "_" + Math.random();
+                }
+            }
+            else {
+                slugExist=false;
             }
         }
+
 
         const actorToAdd = {
             movies: movies,
@@ -138,11 +147,11 @@ class AddActorLayout extends Component {
 
 
 export default connect((state, props) => {
-    let checked = getCheckedNameActor(state);
-    return {checked};
-}, (dispatch) => ({
-    checkName: (name) => dispatch(checkName(name, 'actors')),
-    postData: (actor) => dispatch(postActorToDB(actor)),
-    editMovies: (movie, slug) => dispatch(editMovieBySlug(slug, movie))
-})
+        let checked = getCheckedNameActor(state);
+        return {checked};
+    }, (dispatch) => ({
+        checkName: (name) => dispatch(checkName(name, 'actors')),
+        postData: (actor) => dispatch(postActorToDB(actor)),
+        editMovies: (movie, slug) => dispatch(editMovieBySlug(slug, movie))
+    })
 )(AddActorLayout);

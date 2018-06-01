@@ -2417,7 +2417,7 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.editMovieBySlug = exports.postMovieToDB = exports.fetchDeleteMovie = exports.fetchAdditionalMovies = exports.fetchAutocompleteMovies = exports.fetchMoviesByLabel = exports.fetchMoviesSchedule = exports.fetchMoviesCount = exports.fetchMovieSlug = exports.clearMoviesAutocomplete = exports.fetchMoviesByScheduleSuccess = exports.fetchUnpublishedMoviesSuccess = exports.fetchMoviesByLabelSuccess = exports.fetchMoviesSlugSuccess = exports.fetchAutocompleteMoviesSuccess = exports.editingMovieSuccess = exports.postMovieSuccess = exports.fetchMovieSlugFail = exports.fetchMoviesDeleteSuccess = exports.fetchMoviesCountSuccess = exports.fetchMoviesCountStart = exports.editingMovieStart = exports.moviePostStart = exports.fetchMoviesSlugStart = undefined;
+exports.editMovieBySlug = exports.postMovieToDB = exports.fetchDeleteMovie = exports.fetchAdditionalMovies = exports.fetchAutocompleteMovies = exports.fetchMoviesByLabel = exports.fetchMoviesSchedule = exports.fetchMovieSlug = exports.clearMoviesAutocomplete = exports.fetchMoviesByScheduleSuccess = exports.fetchUnpublishedMoviesSuccess = exports.fetchMoviesByLabelSuccess = exports.fetchMoviesSlugSuccess = exports.fetchAutocompleteMoviesSuccess = exports.editingMovieSuccess = exports.postMovieSuccess = exports.fetchMovieSlugFail = exports.fetchMoviesDeleteSuccess = exports.fetchMoviesCountSuccess = exports.fetchMoviesCountStart = exports.editingMovieStart = exports.moviePostStart = exports.fetchMoviesSlugStart = undefined;
 
 var _actionTypes = __webpack_require__(59);
 
@@ -2493,33 +2493,34 @@ var fetchAutocompleteMoviesSuccess = exports.fetchAutocompleteMoviesSuccess = fu
 
 var fetchMoviesSlugSuccess = exports.fetchMoviesSlugSuccess = function fetchMoviesSlugSuccess(slugName, slugs) {
     var movies = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+    var metaData = arguments[3];
     return {
         type: _actionTypes.FETCH_MOVIES_SLUG_SUCCESS,
-        slugName: slugName, movies: movies, slugs: slugs
+        slugName: slugName, movies: movies, slugs: slugs, metaData: metaData
     };
 };
 
-var fetchMoviesByLabelSuccess = exports.fetchMoviesByLabelSuccess = function fetchMoviesByLabelSuccess(slugs, movies, label) {
+var fetchMoviesByLabelSuccess = exports.fetchMoviesByLabelSuccess = function fetchMoviesByLabelSuccess(slugs, movies, label, metaData) {
     return {
         type: _actionTypes.FETCH_MOVIES_LABEL_SUCCESS,
         slugName: 'carousel',
-        movies: movies, slugs: slugs, label: label
-    };
+        movies: movies, slugs: slugs, label: label, metaData: metaData };
 };
 
-var fetchUnpublishedMoviesSuccess = exports.fetchUnpublishedMoviesSuccess = function fetchUnpublishedMoviesSuccess(slugs, movies) {
+var fetchUnpublishedMoviesSuccess = exports.fetchUnpublishedMoviesSuccess = function fetchUnpublishedMoviesSuccess(slugs, movies, metaData) {
     return {
         type: _actionTypes.FETCH_UNPUBLISHED_MOVIESL_SUCCESS,
         slugs: slugs,
-        movies: movies
+        movies: movies,
+        metaData: metaData
     };
 };
 
-var fetchMoviesByScheduleSuccess = exports.fetchMoviesByScheduleSuccess = function fetchMoviesByScheduleSuccess(slugs, movies) {
-    return {
+var fetchMoviesByScheduleSuccess = exports.fetchMoviesByScheduleSuccess = function fetchMoviesByScheduleSuccess(slugs, movies, metaData) {
+    console.log(metaData);return {
         type: _actionTypes.FETCH_SCHEDULE_MOVIES_SUCCESS,
         slugName: 'schedule',
-        movies: movies, slugs: slugs
+        movies: movies, slugs: slugs, metaData: metaData
     };
 };
 
@@ -2530,7 +2531,7 @@ var clearMoviesAutocomplete = exports.clearMoviesAutocomplete = function clearMo
 var fetchMovieSlug = exports.fetchMovieSlug = function fetchMovieSlug(slugName) {
     return function () {
         var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch) {
-            var movies;
+            var moviesData, movies;
             return regeneratorRuntime.wrap(function _callee$(_context) {
                 while (1) {
                     switch (_context.prev = _context.next) {
@@ -2540,14 +2541,21 @@ var fetchMovieSlug = exports.fetchMovieSlug = function fetchMovieSlug(slugName) 
                             return fromApi.movieBySlug(slugName);
 
                         case 3:
-                            movies = _context.sent;
+                            moviesData = _context.sent;
+                            movies = [];
 
-                            movies.slugName = movies['slugName'];
-                            movies = (0, _normalizr.normalize)([movies], _schema.moviesListSchemaSlug);
-                            if (movies.entities.movies[slugName].published) {
-                                dispatch(fetchMoviesSlugSuccess(slugName, movies.result, movies.entities.movies));
+                            if (moviesData.result) {
+                                movies = moviesData.result;
+                                movies.slugName = movies['slugName'];
+                                movies = (0, _normalizr.normalize)([movies], _schema.moviesListSchemaSlug);
                             } else {
-                                dispatch(fetchUnpublishedMoviesSuccess(movies.result, movies.entities.movies));
+                                movies = (0, _normalizr.normalize)([], _schema.moviesListSchemaSlug);
+                            }
+
+                            if (movies.entities.movies[slugName].published) {
+                                dispatch(fetchMoviesSlugSuccess(slugName, movies.result, movies.entities.movies, moviesData.metaData));
+                            } else {
+                                dispatch(fetchUnpublishedMoviesSuccess(movies.result, movies.entities.movies, moviesData.metaData));
                             }
 
                         case 7:
@@ -2564,24 +2572,30 @@ var fetchMovieSlug = exports.fetchMovieSlug = function fetchMovieSlug(slugName) 
     }();
 };
 
-var fetchMoviesCount = exports.fetchMoviesCount = function fetchMoviesCount() {
+var fetchMoviesSchedule = exports.fetchMoviesSchedule = function fetchMoviesSchedule(day) {
     return function () {
         var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(dispatch) {
-            var movies;
+            var moviesData, movies;
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
                 while (1) {
                     switch (_context2.prev = _context2.next) {
                         case 0:
-                            dispatch(fetchMoviesCountStart());
+                            dispatch(fetchMoviesSlugStart('schedule'));
                             _context2.next = 3;
-                            return fromApi.movieCount();
+                            return fromApi.moviesSchedule(day);
 
                         case 3:
-                            movies = _context2.sent;
+                            moviesData = _context2.sent;
+                            movies = [];
 
-                            dispatch(fetchMoviesCountSuccess(movies));
+                            if (moviesData.result) {
+                                movies = (0, _normalizr.normalize)(moviesData.result, _schema.moviesListSchemaSlug);
+                            } else {
+                                movies = (0, _normalizr.normalize)([], _schema.moviesListSchemaSlug);
+                            }
+                            dispatch(fetchMoviesByScheduleSuccess(movies.result, movies.entities.movies, moviesData.metaData));
 
-                        case 5:
+                        case 7:
                         case "end":
                             return _context2.stop();
                     }
@@ -2595,25 +2609,54 @@ var fetchMoviesCount = exports.fetchMoviesCount = function fetchMoviesCount() {
     }();
 };
 
-var fetchMoviesSchedule = exports.fetchMoviesSchedule = function fetchMoviesSchedule(day) {
+var fetchMoviesByLabel = exports.fetchMoviesByLabel = function fetchMoviesByLabel(label) {
     return function () {
         var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(dispatch) {
-            var movies;
+            var moviesData, movies, _moviesData, _movies;
+
             return regeneratorRuntime.wrap(function _callee3$(_context3) {
                 while (1) {
                     switch (_context3.prev = _context3.next) {
                         case 0:
-                            dispatch(fetchMoviesSlugStart('schedule'));
-                            _context3.next = 3;
-                            return fromApi.moviesSchedule(day);
+                            dispatch(fetchMoviesSlugStart('carousel'));
 
-                        case 3:
-                            movies = _context3.sent;
+                            if (!(label === 'unpublished')) {
+                                _context3.next = 10;
+                                break;
+                            }
 
-                            movies = (0, _normalizr.normalize)(movies, _schema.moviesListSchemaSlug);
-                            dispatch(fetchMoviesByScheduleSuccess(movies.result, movies.entities.movies));
+                            _context3.next = 4;
+                            return fromApi.unpublishedMovies();
 
-                        case 6:
+                        case 4:
+                            moviesData = _context3.sent;
+                            movies = [];
+
+                            if (moviesData.result) {
+                                movies = (0, _normalizr.normalize)(moviesData.result, _schema.moviesListSchemaSlug);
+                            } else {
+                                movies = (0, _normalizr.normalize)([], _schema.moviesListSchemaSlug);
+                            }
+                            dispatch(fetchUnpublishedMoviesSuccess(movies.result, movies.entities.movies));
+                            _context3.next = 16;
+                            break;
+
+                        case 10:
+                            _context3.next = 12;
+                            return fromApi.labeledMovies(label);
+
+                        case 12:
+                            _moviesData = _context3.sent;
+                            _movies = [];
+
+                            if (_moviesData.result) {
+                                _movies = (0, _normalizr.normalize)(_moviesData.result, _schema.moviesListSchemaSlug);
+                            } else {
+                                _movies = (0, _normalizr.normalize)([], _schema.moviesListSchemaSlug);
+                            }
+                            dispatch(fetchMoviesByLabelSuccess(_movies.result, _movies.entities.movies, label, _moviesData.metaData));
+
+                        case 16:
                         case "end":
                             return _context3.stop();
                     }
@@ -2627,44 +2670,27 @@ var fetchMoviesSchedule = exports.fetchMoviesSchedule = function fetchMoviesSche
     }();
 };
 
-var fetchMoviesByLabel = exports.fetchMoviesByLabel = function fetchMoviesByLabel(label) {
+var fetchAutocompleteMovies = exports.fetchAutocompleteMovies = function fetchAutocompleteMovies(name) {
     return function () {
         var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(dispatch) {
-            var movies, _movies;
-
+            var movies;
             return regeneratorRuntime.wrap(function _callee4$(_context4) {
                 while (1) {
                     switch (_context4.prev = _context4.next) {
                         case 0:
-                            dispatch(fetchMoviesSlugStart('carousel'));
+                            dispatch(fetchMoviesSlugStart('autocomplete'));
+                            _context4.next = 3;
+                            return fromApi.autocompleteMovies(name);
 
-                            if (!(label === 'unpublished')) {
-                                _context4.next = 9;
-                                break;
-                            }
-
-                            _context4.next = 4;
-                            return fromApi.unpublishedMovies();
-
-                        case 4:
+                        case 3:
                             movies = _context4.sent;
 
-                            movies = (0, _normalizr.normalize)(movies, _schema.moviesListSchemaSlug);
-                            dispatch(fetchUnpublishedMoviesSuccess(movies.result, movies.entities.movies));
-                            _context4.next = 14;
-                            break;
+                            movies.forEach(function (movie) {
+                                movie.id = movie['_id'];
+                            });
+                            dispatch(fetchAutocompleteMoviesSuccess(movies));
 
-                        case 9:
-                            _context4.next = 11;
-                            return fromApi.labeledMovies(label);
-
-                        case 11:
-                            _movies = _context4.sent;
-
-                            _movies = (0, _normalizr.normalize)(_movies, _schema.moviesListSchemaSlug);
-                            dispatch(fetchMoviesByLabelSuccess(_movies.result, _movies.entities.movies, label));
-
-                        case 14:
+                        case 6:
                         case "end":
                             return _context4.stop();
                     }
@@ -2678,25 +2704,23 @@ var fetchMoviesByLabel = exports.fetchMoviesByLabel = function fetchMoviesByLabe
     }();
 };
 
-var fetchAutocompleteMovies = exports.fetchAutocompleteMovies = function fetchAutocompleteMovies(name) {
+var fetchAdditionalMovies = exports.fetchAdditionalMovies = function fetchAdditionalMovies(limit, page) {
     return function () {
         var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(dispatch) {
-            var movies;
+            var moviesData, movies;
             return regeneratorRuntime.wrap(function _callee5$(_context5) {
                 while (1) {
                     switch (_context5.prev = _context5.next) {
                         case 0:
-                            dispatch(fetchMoviesSlugStart('autocomplete'));
+                            dispatch(fetchMoviesSlugStart('additional'));
                             _context5.next = 3;
-                            return fromApi.autocompleteMovies(name);
+                            return fromApi.additionalMovies(limit, page);
 
                         case 3:
-                            movies = _context5.sent;
+                            moviesData = _context5.sent;
+                            movies = (0, _normalizr.normalize)(moviesData.result, _schema.moviesListSchemaSlug);
 
-                            movies.forEach(function (movie) {
-                                movie.id = movie['_id'];
-                            });
-                            dispatch(fetchAutocompleteMoviesSuccess(movies));
+                            dispatch(fetchMoviesSlugSuccess('additional', movies.result, movies.entities.movies));
 
                         case 6:
                         case "end":
@@ -2712,25 +2736,22 @@ var fetchAutocompleteMovies = exports.fetchAutocompleteMovies = function fetchAu
     }();
 };
 
-var fetchAdditionalMovies = exports.fetchAdditionalMovies = function fetchAdditionalMovies(limit, page) {
+var fetchDeleteMovie = exports.fetchDeleteMovie = function fetchDeleteMovie(slugName) {
     return function () {
         var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(dispatch) {
-            var movies;
             return regeneratorRuntime.wrap(function _callee6$(_context6) {
                 while (1) {
                     switch (_context6.prev = _context6.next) {
                         case 0:
-                            dispatch(fetchMoviesSlugStart('additional'));
+                            dispatch(fetchMoviesSlugStart('delete'));
                             _context6.next = 3;
-                            return fromApi.additionalMovies(limit, page);
+                            return fromApi.deleteMovie(slugName);
 
                         case 3:
-                            movies = _context6.sent;
+                            dispatch(fetchMoviesDeleteSuccess(slugName));
+                            dispatch((0, _reactRouterRedux.push)('/'));
 
-                            movies = (0, _normalizr.normalize)(movies, _schema.moviesListSchemaSlug);
-                            dispatch(fetchMoviesSlugSuccess('additional', movies.result, movies.entities.movies));
-
-                        case 6:
+                        case 5:
                         case "end":
                             return _context6.stop();
                     }
@@ -2744,27 +2765,46 @@ var fetchAdditionalMovies = exports.fetchAdditionalMovies = function fetchAdditi
     }();
 };
 
-var fetchDeleteMovie = exports.fetchDeleteMovie = function fetchDeleteMovie(slugName) {
+var postMovieToDB = exports.postMovieToDB = function postMovieToDB(movie) {
     return function () {
         var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(dispatch) {
+            var result, res;
             return regeneratorRuntime.wrap(function _callee7$(_context7) {
                 while (1) {
                     switch (_context7.prev = _context7.next) {
                         case 0:
-                            dispatch(fetchMoviesSlugStart('delete'));
+                            dispatch(moviePostStart(movie));
                             _context7.next = 3;
-                            return fromApi.deleteMovie(slugName);
+                            return fromApi.postMovie(movie);
 
                         case 3:
-                            dispatch(fetchMoviesDeleteSuccess(slugName));
-                            dispatch((0, _reactRouterRedux.push)('/'));
+                            result = _context7.sent;
+                            _context7.prev = 4;
+                            _context7.next = 7;
+                            return result;
 
-                        case 5:
+                        case 7:
+                            res = _context7.sent;
+
+                            res.slugName = res['slugName'];
+                            res = (0, _normalizr.normalize)([res], _schema.moviesListSchemaSlug);
+                            dispatch(postMovieSuccess(res.result, res.entities.movies));
+                            _context7.next = 17;
+                            break;
+
+                        case 13:
+                            _context7.prev = 13;
+                            _context7.t0 = _context7["catch"](4);
+
+                            console.error('you got an error!!!');
+                            return _context7.abrupt("return", null);
+
+                        case 17:
                         case "end":
                             return _context7.stop();
                     }
                 }
-            }, _callee7, undefined);
+            }, _callee7, undefined, [[4, 13]]);
         }));
 
         return function (_x10) {
@@ -2773,91 +2813,42 @@ var fetchDeleteMovie = exports.fetchDeleteMovie = function fetchDeleteMovie(slug
     }();
 };
 
-var postMovieToDB = exports.postMovieToDB = function postMovieToDB(movie) {
+var editMovieBySlug = exports.editMovieBySlug = function editMovieBySlug(slugName, movie) {
     return function () {
         var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(dispatch) {
-            var result, res;
+            var result;
             return regeneratorRuntime.wrap(function _callee8$(_context8) {
                 while (1) {
                     switch (_context8.prev = _context8.next) {
                         case 0:
-                            dispatch(moviePostStart(movie));
-                            _context8.next = 3;
-                            return fromApi.postMovie(movie);
-
-                        case 3:
-                            result = _context8.sent;
-                            _context8.prev = 4;
-                            _context8.next = 7;
-                            return result;
-
-                        case 7:
-                            res = _context8.sent;
-
-                            res.slugName = res['slugName'];
-                            res = (0, _normalizr.normalize)([res], _schema.moviesListSchemaSlug);
-                            dispatch(postMovieSuccess(res.result, res.entities.movies));
-                            // }
-                            _context8.next = 17;
-                            break;
-
-                        case 13:
-                            _context8.prev = 13;
-                            _context8.t0 = _context8["catch"](4);
-
-                            console.error('you got an error!!!');
-                            return _context8.abrupt("return", null);
-
-                        case 17:
-                        case "end":
-                            return _context8.stop();
-                    }
-                }
-            }, _callee8, undefined, [[4, 13]]);
-        }));
-
-        return function (_x11) {
-            return _ref8.apply(this, arguments);
-        };
-    }();
-};
-
-var editMovieBySlug = exports.editMovieBySlug = function editMovieBySlug(slugName, movie) {
-    return function () {
-        var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(dispatch) {
-            var result;
-            return regeneratorRuntime.wrap(function _callee9$(_context9) {
-                while (1) {
-                    switch (_context9.prev = _context9.next) {
-                        case 0:
                             dispatch(editingMovieStart(movie));
-                            _context9.prev = 1;
-                            _context9.next = 4;
+                            _context8.prev = 1;
+                            _context8.next = 4;
                             return fromApi.editMovie(slugName, movie);
 
                         case 4:
-                            result = _context9.sent;
+                            result = _context8.sent;
 
                             dispatch(editingMovieSuccess(result, slugName));
-                            _context9.next = 11;
+                            _context8.next = 11;
                             break;
 
                         case 8:
-                            _context9.prev = 8;
-                            _context9.t0 = _context9["catch"](1);
+                            _context8.prev = 8;
+                            _context8.t0 = _context8["catch"](1);
 
                             dispatch(fromFetch.editingFail());
 
                         case 11:
                         case "end":
-                            return _context9.stop();
+                            return _context8.stop();
                     }
                 }
-            }, _callee9, undefined, [[1, 8]]);
+            }, _callee8, undefined, [[1, 8]]);
         }));
 
-        return function (_x12) {
-            return _ref9.apply(this, arguments);
+        return function (_x11) {
+            return _ref8.apply(this, arguments);
         };
     }();
 };
@@ -4047,11 +4038,11 @@ var fetchActorsSlugStart = exports.fetchActorsSlugStart = function fetchActorsSl
     return { type: _actionTypes.FETCH_ACTOR_SLUG, slugName: slugName };
 };
 
-var fetchUnpublishedActorsSuccess = exports.fetchUnpublishedActorsSuccess = function fetchUnpublishedActorsSuccess(slugs, actors) {
+var fetchUnpublishedActorsSuccess = exports.fetchUnpublishedActorsSuccess = function fetchUnpublishedActorsSuccess(slugs, actors, metaData) {
     return {
         type: _actionTypes.FETCH_UNPUBLISHED_ACTORS_SUCCESS,
         slugs: slugs,
-        actors: actors
+        actors: actors, metaData: metaData
     };
 };
 
@@ -4072,9 +4063,10 @@ var postActorSuccess = exports.postActorSuccess = function postActorSuccess(slug
 
 var fetchActorsSlugSuccess = exports.fetchActorsSlugSuccess = function fetchActorsSlugSuccess(slugName, slugs) {
     var actors = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+    var metaData = arguments[3];
     return {
         type: _actionTypes.FETCH_ACTOR_SLUG_SUCCESS,
-        slugName: slugName, actors: actors, slugs: slugs
+        slugName: slugName, actors: actors, slugs: slugs, metaData: metaData
     };
 };
 
@@ -4099,7 +4091,6 @@ var checkingNameSuccess = exports.checkingNameSuccess = function checkingNameSuc
 };
 
 var checkingNameActor = exports.checkingNameActor = function checkingNameActor(name) {
-    console.log("here bleat");
     return { type: _actionTypes.CHECK_NAME_ACTOR, name: name };
 };
 
@@ -4108,7 +4099,7 @@ var checkingNameActor = exports.checkingNameActor = function checkingNameActor(n
 var fetchUnpublishedActors = exports.fetchUnpublishedActors = function fetchUnpublishedActors() {
     return function () {
         var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch) {
-            var actors;
+            var actorData, actors;
             return regeneratorRuntime.wrap(function _callee$(_context) {
                 while (1) {
                     switch (_context.prev = _context.next) {
@@ -4118,12 +4109,16 @@ var fetchUnpublishedActors = exports.fetchUnpublishedActors = function fetchUnpu
                             return fromApi.unpublishedActors();
 
                         case 3:
-                            actors = _context.sent;
+                            actorData = _context.sent;
+                            actors = [];
 
-                            actors = (0, _normalizr.normalize)(actors, _schema.actorsListSchemaSlug);
-                            dispatch(fetchUnpublishedActorsSuccess(actors.result, actors.entities.actors));
+                            if (actorData.result) {
+                                actors = actorData.result;
+                                actors = (0, _normalizr.normalize)(actors, _schema.actorsListSchemaSlug);
+                            }
+                            dispatch(fetchUnpublishedActorsSuccess(actors.result, actors.entities.actors, actorData.metaData));
 
-                        case 6:
+                        case 7:
                         case "end":
                             return _context.stop();
                     }
@@ -4140,7 +4135,7 @@ var fetchUnpublishedActors = exports.fetchUnpublishedActors = function fetchUnpu
 var fetchAdditionalActors = exports.fetchAdditionalActors = function fetchAdditionalActors(limit, page) {
     return function () {
         var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(dispatch) {
-            var actors;
+            var actorsData, actors;
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
                 while (1) {
                     switch (_context2.prev = _context2.next) {
@@ -4150,12 +4145,16 @@ var fetchAdditionalActors = exports.fetchAdditionalActors = function fetchAdditi
                             return fromApi.additionalActors(limit, page);
 
                         case 3:
-                            actors = _context2.sent;
+                            actorsData = _context2.sent;
+                            actors = [];
 
+                            if (actorsData.result) {
+                                actors = actorsData.result;
+                            }
                             actors = (0, _normalizr.normalize)(actors, _schema.actorsListSchemaSlug);
-                            dispatch(fetchActorsSlugSuccess('additional', actors.result, actors.entities.actors));
+                            dispatch(fetchActorsSlugSuccess('additional', actors.result, actors.entities.actors, actorsData.metaData));
 
-                        case 6:
+                        case 8:
                         case "end":
                             return _context2.stop();
                     }
@@ -4201,8 +4200,7 @@ var fetchDeleteActor = exports.fetchDeleteActor = function fetchDeleteActor(slug
 var fetchActorsSlug = exports.fetchActorsSlug = function fetchActorsSlug(slugName) {
     return function () {
         var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(dispatch) {
-            var response, actor, actors, _actors;
-
+            var actorData, actor;
             return regeneratorRuntime.wrap(function _callee4$(_context4) {
                 while (1) {
                     switch (_context4.prev = _context4.next) {
@@ -4212,36 +4210,28 @@ var fetchActorsSlug = exports.fetchActorsSlug = function fetchActorsSlug(slugNam
                             return fromApi.actorsBySlugName(slugName);
 
                         case 3:
-                            response = _context4.sent;
+                            _context4.next = 5;
+                            return _context4.sent.json();
 
-                            if (response.ok) {
-                                _context4.next = 10;
-                                break;
-                            }
+                        case 5:
+                            actorData = _context4.sent;
+                            actor = [];
 
-                            actor = { slugName: slugName, error: true };
-                            actors = (0, _normalizr.normalize)([actor], _schema.actorsListSchemaSlug);
-
-                            dispatch(fetchActorSlugFail(slugName, actors.result, actors.entities.actors));
-                            _context4.next = 16;
-                            break;
-
-                        case 10:
-                            _context4.next = 12;
-                            return response.json();
-
-                        case 12:
-                            _actors = _context4.sent;
-
-                            _actors.slugName = _actors['slugName'];
-                            _actors = (0, _normalizr.normalize)([_actors], _schema.actorsListSchemaSlug);
-                            if (_actors.entities.actors[slugName].published) {
-                                dispatch(fetchActorsSlugSuccess(slugName, _actors.result, _actors.entities.actors));
+                            if (actorData.result) {
+                                actor = actorData.result;
+                                actor.slugName = actor['slugName'];
+                                actor = (0, _normalizr.normalize)([actor], _schema.actorsListSchemaSlug);
+                                if (actor.entities.actors[slugName].published) {
+                                    dispatch(fetchActorsSlugSuccess(slugName, actor.result, actor.entities.actors, actorData.metaData));
+                                } else {
+                                    dispatch(fetchUnpublishedActorsSuccess(actor.result, actor.entities.actors, actorData.metaData));
+                                }
                             } else {
-                                dispatch(fetchUnpublishedActorsSuccess(_actors.result, _actors.entities.actors));
+                                actor = (0, _normalizr.normalize)([{ slugName: slugName, error: true }], _schema.actorsListSchemaSlug);
+                                dispatch(fetchActorSlugFail(slugName, actor.result, actor.entities.actors));
                             }
 
-                        case 16:
+                        case 8:
                         case "end":
                             return _context4.stop();
                     }
@@ -4346,7 +4336,7 @@ var editActorBySlug = exports.editActorBySlug = function editActorBySlug(slugNam
 var checkName = exports.checkName = function checkName(name, type) {
     return function () {
         var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(dispatch) {
-            var result;
+            var actorData, result;
             return regeneratorRuntime.wrap(function _callee7$(_context7) {
                 while (1) {
                     switch (_context7.prev = _context7.next) {
@@ -4356,11 +4346,17 @@ var checkName = exports.checkName = function checkName(name, type) {
                             return fromApi.checkName(name, type);
 
                         case 3:
-                            result = _context7.sent;
+                            actorData = _context7.sent;
+                            result = {};
 
+                            if (actorData.result) {
+                                result = actorData.result;
+                            } else {
+                                result = actorData.error;
+                            }
                             dispatch(checkingNameSuccess(result));
 
-                        case 5:
+                        case 7:
                         case "end":
                             return _context7.stop();
                     }
@@ -22762,14 +22758,18 @@ var movieBySlug = exports.movieBySlug = function () {
     };
 }();
 
-var movieCount = exports.movieCount = function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+// export async function movieCount() {
+//     return await ((await fetch(`${LOCALHOST}/movies/moviesCount`)).json());
+// }
+
+var moviesSchedule = exports.moviesSchedule = function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(day) {
         return regeneratorRuntime.wrap(function _callee3$(_context3) {
             while (1) {
                 switch (_context3.prev = _context3.next) {
                     case 0:
                         _context3.next = 2;
-                        return fetch(LOCALHOST + '/movies/moviesCount');
+                        return fetch(LOCALHOST + '/movies/slugs?Schedule=' + day);
 
                     case 2:
                         _context3.next = 4;
@@ -22786,19 +22786,19 @@ var movieCount = exports.movieCount = function () {
         }, _callee3, this);
     }));
 
-    return function movieCount() {
+    return function moviesSchedule(_x3) {
         return _ref3.apply(this, arguments);
     };
 }();
 
-var moviesSchedule = exports.moviesSchedule = function () {
-    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(day) {
+var labeledMovies = exports.labeledMovies = function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(label) {
         return regeneratorRuntime.wrap(function _callee4$(_context4) {
             while (1) {
                 switch (_context4.prev = _context4.next) {
                     case 0:
                         _context4.next = 2;
-                        return fetch(LOCALHOST + '/movies/slugs?Schedule=' + day);
+                        return fetch(LOCALHOST + '/movies/slugs?label=' + label);
 
                     case 2:
                         _context4.next = 4;
@@ -22815,19 +22815,19 @@ var moviesSchedule = exports.moviesSchedule = function () {
         }, _callee4, this);
     }));
 
-    return function moviesSchedule(_x3) {
+    return function labeledMovies(_x4) {
         return _ref4.apply(this, arguments);
     };
 }();
 
-var labeledMovies = exports.labeledMovies = function () {
-    var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(label) {
+var unpublishedMovies = exports.unpublishedMovies = function () {
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
         return regeneratorRuntime.wrap(function _callee5$(_context5) {
             while (1) {
                 switch (_context5.prev = _context5.next) {
                     case 0:
                         _context5.next = 2;
-                        return fetch(LOCALHOST + '/movies/slugs?label=' + label);
+                        return fetch(LOCALHOST + '/movies/unpublished-slugs');
 
                     case 2:
                         _context5.next = 4;
@@ -22844,19 +22844,19 @@ var labeledMovies = exports.labeledMovies = function () {
         }, _callee5, this);
     }));
 
-    return function labeledMovies(_x4) {
+    return function unpublishedMovies() {
         return _ref5.apply(this, arguments);
     };
 }();
 
-var unpublishedMovies = exports.unpublishedMovies = function () {
-    var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+var additionalMovies = exports.additionalMovies = function () {
+    var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(limit, page) {
         return regeneratorRuntime.wrap(function _callee6$(_context6) {
             while (1) {
                 switch (_context6.prev = _context6.next) {
                     case 0:
                         _context6.next = 2;
-                        return fetch(LOCALHOST + '/movies/unpublished-slugs');
+                        return fetch(LOCALHOST + '/movies/slugs?_page=' + page + '&_limit=' + limit);
 
                     case 2:
                         _context6.next = 4;
@@ -22873,19 +22873,19 @@ var unpublishedMovies = exports.unpublishedMovies = function () {
         }, _callee6, this);
     }));
 
-    return function unpublishedMovies() {
+    return function additionalMovies(_x5, _x6) {
         return _ref6.apply(this, arguments);
     };
 }();
 
-var additionalMovies = exports.additionalMovies = function () {
-    var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(limit, page) {
+var autocompleteMovies = exports.autocompleteMovies = function () {
+    var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(name) {
         return regeneratorRuntime.wrap(function _callee7$(_context7) {
             while (1) {
                 switch (_context7.prev = _context7.next) {
                     case 0:
                         _context7.next = 2;
-                        return fetch(LOCALHOST + '/movies/slugs?_page=' + page + '&_limit=' + limit);
+                        return fetch(LOCALHOST + '/movies/autocomplete/' + name);
 
                     case 2:
                         _context7.next = 4;
@@ -22902,28 +22902,24 @@ var additionalMovies = exports.additionalMovies = function () {
         }, _callee7, this);
     }));
 
-    return function additionalMovies(_x5, _x6) {
+    return function autocompleteMovies(_x7) {
         return _ref7.apply(this, arguments);
     };
 }();
 
-var autocompleteMovies = exports.autocompleteMovies = function () {
-    var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(name) {
+var actors = exports.actors = function () {
+    var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(id) {
         return regeneratorRuntime.wrap(function _callee8$(_context8) {
             while (1) {
                 switch (_context8.prev = _context8.next) {
                     case 0:
                         _context8.next = 2;
-                        return fetch(LOCALHOST + '/movies/autocomplete/' + name);
+                        return fetch(LOCALHOST + '/actors/byId/' + id);
 
                     case 2:
-                        _context8.next = 4;
-                        return _context8.sent.json();
-
-                    case 4:
                         return _context8.abrupt('return', _context8.sent);
 
-                    case 5:
+                    case 3:
                     case 'end':
                         return _context8.stop();
                 }
@@ -22931,24 +22927,28 @@ var autocompleteMovies = exports.autocompleteMovies = function () {
         }, _callee8, this);
     }));
 
-    return function autocompleteMovies(_x7) {
+    return function actors(_x8) {
         return _ref8.apply(this, arguments);
     };
 }();
 
-var actors = exports.actors = function () {
-    var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(id) {
+var unpublishedActors = exports.unpublishedActors = function () {
+    var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
         return regeneratorRuntime.wrap(function _callee9$(_context9) {
             while (1) {
                 switch (_context9.prev = _context9.next) {
                     case 0:
                         _context9.next = 2;
-                        return fetch(LOCALHOST + '/actors/byId/' + id);
+                        return fetch(LOCALHOST + '/actors/unpublished-slugs');
 
                     case 2:
+                        _context9.next = 4;
+                        return _context9.sent.json();
+
+                    case 4:
                         return _context9.abrupt('return', _context9.sent);
 
-                    case 3:
+                    case 5:
                     case 'end':
                         return _context9.stop();
                 }
@@ -22956,28 +22956,24 @@ var actors = exports.actors = function () {
         }, _callee9, this);
     }));
 
-    return function actors(_x8) {
+    return function unpublishedActors() {
         return _ref9.apply(this, arguments);
     };
 }();
 
-var unpublishedActors = exports.unpublishedActors = function () {
-    var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+var actorsBySlugName = exports.actorsBySlugName = function () {
+    var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(slugName) {
         return regeneratorRuntime.wrap(function _callee10$(_context10) {
             while (1) {
                 switch (_context10.prev = _context10.next) {
                     case 0:
                         _context10.next = 2;
-                        return fetch(LOCALHOST + '/actors/unpublished-slugs');
+                        return fetch(LOCALHOST + '/actors/bySlugName/' + slugName);
 
                     case 2:
-                        _context10.next = 4;
-                        return _context10.sent.json();
-
-                    case 4:
                         return _context10.abrupt('return', _context10.sent);
 
-                    case 5:
+                    case 3:
                     case 'end':
                         return _context10.stop();
                 }
@@ -22985,24 +22981,28 @@ var unpublishedActors = exports.unpublishedActors = function () {
         }, _callee10, this);
     }));
 
-    return function unpublishedActors() {
+    return function actorsBySlugName(_x9) {
         return _ref10.apply(this, arguments);
     };
 }();
 
-var actorsBySlugName = exports.actorsBySlugName = function () {
-    var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(slugName) {
+var additionalActors = exports.additionalActors = function () {
+    var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(limit, page) {
         return regeneratorRuntime.wrap(function _callee11$(_context11) {
             while (1) {
                 switch (_context11.prev = _context11.next) {
                     case 0:
                         _context11.next = 2;
-                        return fetch(LOCALHOST + '/actors/bySlugName/' + slugName);
+                        return fetch(LOCALHOST + '/actors/slugs?_page=' + page + '&_limit=' + limit);
 
                     case 2:
+                        _context11.next = 4;
+                        return _context11.sent.json();
+
+                    case 4:
                         return _context11.abrupt('return', _context11.sent);
 
-                    case 3:
+                    case 5:
                     case 'end':
                         return _context11.stop();
                 }
@@ -23010,19 +23010,22 @@ var actorsBySlugName = exports.actorsBySlugName = function () {
         }, _callee11, this);
     }));
 
-    return function actorsBySlugName(_x9) {
+    return function additionalActors(_x10, _x11) {
         return _ref11.apply(this, arguments);
     };
 }();
 
-var additionalActors = exports.additionalActors = function () {
-    var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(limit, page) {
+var deleteActor = exports.deleteActor = function () {
+    var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(slugName) {
         return regeneratorRuntime.wrap(function _callee12$(_context12) {
             while (1) {
                 switch (_context12.prev = _context12.next) {
                     case 0:
                         _context12.next = 2;
-                        return fetch(LOCALHOST + '/actors/slugs?_page=' + page + '&_limit=' + limit);
+                        return fetch(LOCALHOST + '/actors/' + slugName, {
+                            method: 'DELETE',
+                            headers: { "Content-type": "application/json" }
+                        });
 
                     case 2:
                         _context12.next = 4;
@@ -23039,19 +23042,19 @@ var additionalActors = exports.additionalActors = function () {
         }, _callee12, this);
     }));
 
-    return function additionalActors(_x10, _x11) {
+    return function deleteActor(_x12) {
         return _ref12.apply(this, arguments);
     };
 }();
 
-var deleteActor = exports.deleteActor = function () {
+var deleteMovie = exports.deleteMovie = function () {
     var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(slugName) {
         return regeneratorRuntime.wrap(function _callee13$(_context13) {
             while (1) {
                 switch (_context13.prev = _context13.next) {
                     case 0:
                         _context13.next = 2;
-                        return fetch(LOCALHOST + '/actors/' + slugName, {
+                        return fetch(LOCALHOST + '/movies/' + slugName, {
                             method: 'DELETE',
                             headers: { "Content-type": "application/json" }
                         });
@@ -23071,31 +23074,37 @@ var deleteActor = exports.deleteActor = function () {
         }, _callee13, this);
     }));
 
-    return function deleteActor(_x12) {
+    return function deleteMovie(_x13) {
         return _ref13.apply(this, arguments);
     };
 }();
 
-var deleteMovie = exports.deleteMovie = function () {
-    var _ref14 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14(slugName) {
+var postMovie = exports.postMovie = function () {
+    var _ref14 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14(movie) {
+        var headers;
         return regeneratorRuntime.wrap(function _callee14$(_context14) {
             while (1) {
                 switch (_context14.prev = _context14.next) {
                     case 0:
-                        _context14.next = 2;
-                        return fetch(LOCALHOST + '/movies/' + slugName, {
-                            method: 'DELETE',
-                            headers: { "Content-type": "application/json" }
+                        headers = new Headers();
+
+                        headers.append('Content-Type', 'application/json');
+
+                        _context14.next = 4;
+                        return fetch('https://csucu-cinema-project.herokuapp.com/movies', {
+                            method: 'POST',
+                            headers: headers,
+                            body: JSON.stringify(movie)
                         });
 
-                    case 2:
-                        _context14.next = 4;
+                    case 4:
+                        _context14.next = 6;
                         return _context14.sent.json();
 
-                    case 4:
+                    case 6:
                         return _context14.abrupt('return', _context14.sent);
 
-                    case 5:
+                    case 7:
                     case 'end':
                         return _context14.stop();
                 }
@@ -23103,14 +23112,14 @@ var deleteMovie = exports.deleteMovie = function () {
         }, _callee14, this);
     }));
 
-    return function deleteMovie(_x13) {
+    return function postMovie(_x14) {
         return _ref14.apply(this, arguments);
     };
 }();
 
-var postMovie = exports.postMovie = function () {
-    var _ref15 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(movie) {
-        var headers;
+var postActor = exports.postActor = function () {
+    var _ref15 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(actor) {
+        var headers, response;
         return regeneratorRuntime.wrap(function _callee15$(_context15) {
             while (1) {
                 switch (_context15.prev = _context15.next) {
@@ -23120,44 +23129,6 @@ var postMovie = exports.postMovie = function () {
                         headers.append('Content-Type', 'application/json');
 
                         _context15.next = 4;
-                        return fetch('https://csucu-cinema-project.herokuapp.com/movies', {
-                            method: 'POST',
-                            headers: headers,
-                            body: JSON.stringify(movie)
-                        });
-
-                    case 4:
-                        _context15.next = 6;
-                        return _context15.sent.json();
-
-                    case 6:
-                        return _context15.abrupt('return', _context15.sent);
-
-                    case 7:
-                    case 'end':
-                        return _context15.stop();
-                }
-            }
-        }, _callee15, this);
-    }));
-
-    return function postMovie(_x14) {
-        return _ref15.apply(this, arguments);
-    };
-}();
-
-var postActor = exports.postActor = function () {
-    var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(actor) {
-        var headers, response;
-        return regeneratorRuntime.wrap(function _callee16$(_context16) {
-            while (1) {
-                switch (_context16.prev = _context16.next) {
-                    case 0:
-                        headers = new Headers();
-
-                        headers.append('Content-Type', 'application/json');
-
-                        _context16.next = 4;
                         return fetch('https://csucu-cinema-project.herokuapp.com/actors', {
                             method: 'POST',
                             headers: headers,
@@ -23165,69 +23136,69 @@ var postActor = exports.postActor = function () {
                         });
 
                     case 4:
-                        response = _context16.sent;
+                        response = _context15.sent;
 
                         if (response.ok) {
-                            _context16.next = 8;
+                            _context15.next = 8;
                             break;
                         }
 
                         alert('Your form was not submitted!');
-                        return _context16.abrupt('return', null);
+                        return _context15.abrupt('return', null);
 
                     case 8:
-                        return _context16.abrupt('return', response.json());
+                        return _context15.abrupt('return', response.json());
 
                     case 9:
                     case 'end':
-                        return _context16.stop();
+                        return _context15.stop();
                 }
             }
-        }, _callee16, this);
+        }, _callee15, this);
     }));
 
     return function postActor(_x15) {
-        return _ref16.apply(this, arguments);
+        return _ref15.apply(this, arguments);
     };
 }();
 
 var checkName = exports.checkName = function () {
-    var _ref19 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee19(name, type) {
+    var _ref18 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee18(name, type) {
         var res;
-        return regeneratorRuntime.wrap(function _callee19$(_context19) {
+        return regeneratorRuntime.wrap(function _callee18$(_context18) {
             while (1) {
-                switch (_context19.prev = _context19.next) {
+                switch (_context18.prev = _context18.next) {
                     case 0:
-                        _context19.next = 2;
-                        return fetch(LOCALHOST + '/' + type + '/name_like=' + name);
+                        _context18.next = 2;
+                        return fetch(LOCALHOST + '/' + type + '/bySlugName/' + name);
 
                     case 2:
-                        res = _context19.sent;
+                        res = _context18.sent;
 
                         if (!res.ok) {
-                            _context19.next = 7;
+                            _context18.next = 7;
                             break;
                         }
 
-                        _context19.next = 6;
+                        _context18.next = 6;
                         return res.json();
 
                     case 6:
-                        return _context19.abrupt('return', _context19.sent);
+                        return _context18.abrupt('return', _context18.sent);
 
                     case 7:
-                        return _context19.abrupt('return', res.json());
+                        return _context18.abrupt('return', res.json());
 
                     case 8:
                     case 'end':
-                        return _context19.stop();
+                        return _context18.stop();
                 }
             }
-        }, _callee19, this);
+        }, _callee18, this);
     }));
 
     return function checkName(_x20, _x21) {
-        return _ref19.apply(this, arguments);
+        return _ref18.apply(this, arguments);
     };
 }();
 
@@ -23249,17 +23220,58 @@ switch (hostname) {
 console.log(LOCALHOST);
 
 var editMovie = exports.editMovie = function () {
-    var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(slugName, movie) {
+    var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(slugName, movie) {
+        var response;
+        return regeneratorRuntime.wrap(function _callee16$(_context16) {
+            while (1) {
+                switch (_context16.prev = _context16.next) {
+                    case 0:
+                        _context16.next = 2;
+                        return fetch(LOCALHOST + '/movies/' + slugName, {
+                            method: 'PATCH',
+                            headers: { "Content-type": "application/json" },
+                            body: JSON.stringify(movie)
+                        });
+
+                    case 2:
+                        response = _context16.sent;
+
+                        if (response.ok) {
+                            _context16.next = 6;
+                            break;
+                        }
+
+                        alert('Your form was not submitted!');
+                        return _context16.abrupt('return', null);
+
+                    case 6:
+                        return _context16.abrupt('return', response.json());
+
+                    case 7:
+                    case 'end':
+                        return _context16.stop();
+                }
+            }
+        }, _callee16, undefined);
+    }));
+
+    return function editMovie(_x16, _x17) {
+        return _ref16.apply(this, arguments);
+    };
+}();
+
+var editActor = exports.editActor = function () {
+    var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(slugName, actor) {
         var response;
         return regeneratorRuntime.wrap(function _callee17$(_context17) {
             while (1) {
                 switch (_context17.prev = _context17.next) {
                     case 0:
                         _context17.next = 2;
-                        return fetch(LOCALHOST + '/movies/' + slugName, {
+                        return fetch(LOCALHOST + '/actors/' + slugName, {
                             method: 'PATCH',
                             headers: { "Content-type": "application/json" },
-                            body: JSON.stringify(movie)
+                            body: JSON.stringify(actor)
                         });
 
                     case 2:
@@ -23284,49 +23296,8 @@ var editMovie = exports.editMovie = function () {
         }, _callee17, undefined);
     }));
 
-    return function editMovie(_x16, _x17) {
-        return _ref17.apply(this, arguments);
-    };
-}();
-
-var editActor = exports.editActor = function () {
-    var _ref18 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee18(slugName, actor) {
-        var response;
-        return regeneratorRuntime.wrap(function _callee18$(_context18) {
-            while (1) {
-                switch (_context18.prev = _context18.next) {
-                    case 0:
-                        _context18.next = 2;
-                        return fetch(LOCALHOST + '/actors/' + slugName, {
-                            method: 'PATCH',
-                            headers: { "Content-type": "application/json" },
-                            body: JSON.stringify(actor)
-                        });
-
-                    case 2:
-                        response = _context18.sent;
-
-                        if (response.ok) {
-                            _context18.next = 6;
-                            break;
-                        }
-
-                        alert('Your form was not submitted!');
-                        return _context18.abrupt('return', null);
-
-                    case 6:
-                        return _context18.abrupt('return', response.json());
-
-                    case 7:
-                    case 'end':
-                        return _context18.stop();
-                }
-            }
-        }, _callee18, undefined);
-    }));
-
     return function editActor(_x18, _x19) {
-        return _ref18.apply(this, arguments);
+        return _ref17.apply(this, arguments);
     };
 }();
 
@@ -68349,8 +68320,10 @@ var movieCount = exports.movieCount = function movieCount() {
     var action = arguments[1];
 
     switch (action.type) {
-        case _actionTypes.FETCH_MOVIES_COUNT_SUCCESS:
-            return action.movies;
+        case _actionTypes.FETCH_MOVIES_LABEL_SUCCESS:
+        case _actionTypes.FETCH_SCHEDULE_MOVIES_SUCCESS:
+            // console.log("COUNT:",action,  action.metaData.count);
+            return action.metaData.count;
         default:
             return state;
     }
@@ -75768,7 +75741,7 @@ var AllMovies = function (_Component) {
     _createClass(AllMovies, [{
         key: "componentWillMount",
         value: function componentWillMount() {
-            this.props.moviesCount();
+            console.log("WILL MOUNT");
             this.props.fetchAllMovies(this.state.items, 1);
         }
     }, {
@@ -75783,6 +75756,7 @@ var AllMovies = function (_Component) {
             if (nextProps.count !== this.props.count) {
                 var allM = document.querySelector("#root");
                 allM.style.height = this.calculateHeight(nextProps.count);
+                console.log(allM.style.height, nextProps.count);
             }
             if (this.props.count && this.props.films.length === this.props.count) {
                 this.setState(_extends({}, this.state, { hasMoreItems: false }));
@@ -75807,7 +75781,7 @@ var AllMovies = function (_Component) {
         key: "calculateHeight",
         value: function calculateHeight(count) {
             var columnType = this.getColumnType();
-            var height = count / columnType * 501 + 1000;
+            var height = count / columnType * 501 + 1800;
             return height + 'px';
         }
     }, {
@@ -75872,9 +75846,6 @@ var AllMovies = function (_Component) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
-        moviesCount: function moviesCount() {
-            dispatch((0, _movies.fetchMoviesCount)());
-        },
         fetchAllMovies: function fetchAllMovies(labels, pages) {
             dispatch((0, _movies.fetchAdditionalMovies)(labels, pages));
         },
@@ -79085,7 +79056,7 @@ var AddActorLayout = function (_Component) {
         key: "addActorToDB",
         value: function () {
             var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(e) {
-                var _state, movies, info, date, city, nominations, image, name, convDate, splitDate, slugName, actorToAdd;
+                var _state, movies, info, date, city, nominations, image, name, convDate, splitDate, slugName, slugExist, actorToAdd;
 
                 return regeneratorRuntime.wrap(function _callee$(_context) {
                     while (1) {
@@ -79115,28 +79086,49 @@ var AddActorLayout = function (_Component) {
                                     remove: /[.:!,;*&@^]/g,
                                     lower: true
                                 });
-                                _context.next = 8;
-                                return this.props.checkName(name);
+                                slugExist = true;
 
-                            case 8:
+                            case 7:
+                                if (!slugExist) {
+                                    _context.next = 25;
+                                    break;
+                                }
+
+                                console.log("check slug", slugName);
+                                _context.next = 11;
+                                return this.props.checkName(slugName);
+
+                            case 11:
                                 if (!this.props.checked.slugName) {
-                                    _context.next = 16;
+                                    _context.next = 22;
                                     break;
                                 }
 
                                 if (!(this.props.checked.city === city)) {
-                                    _context.next = 14;
+                                    _context.next = 18;
                                     break;
                                 }
 
                                 alert("This actor already exist");
+                                slugExist = false;
                                 return _context.abrupt("return");
 
-                            case 14:
+                            case 18:
                                 console.log("they are with tha same names");
-                                slugName += "_" + city;
+                                slugName += "_" + Math.random();
 
-                            case 16:
+                            case 20:
+                                _context.next = 23;
+                                break;
+
+                            case 22:
+                                slugExist = false;
+
+                            case 23:
+                                _context.next = 7;
+                                break;
+
+                            case 25:
                                 actorToAdd = {
                                     movies: movies,
                                     slugName: slugName,
@@ -79155,7 +79147,7 @@ var AddActorLayout = function (_Component) {
 
                                 this.setState({ fireRedirect: true, link: slugName });
 
-                            case 20:
+                            case 29:
                             case "end":
                                 return _context.stop();
                         }

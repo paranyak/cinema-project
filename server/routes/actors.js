@@ -4,27 +4,24 @@ const db = require('../db');
 
 router.get('/bySlugName/:slugName', async (req, res) => {
     const slugName = req.params.slugName;
+    let metaData = {};
+    metaData.params = req.params;
     const actor = await db.get().collection('actors').findOne({slugName});
-    res.send(actor);
-    if (actor) res.send(actor);
-    else res.status(404).send('Sorry, no such data in DB');
+    if (actor) res.send({metaData : metaData, result: actor});
+    else res.send({metaData: metaData, error: true});
 });
 
 router.get('/unpublished-slugs', async (req, res) => {
     const actors = await db.get().collection('actors')
         .find({published: false}, {fields: {slugName: true}})
         .toArray();
-    if (actors) res.send(actors.map(el => el.slugName));
-    else res.status(404).send('Sorry, no such data in DB');
-
+    let metaData = {};
+    metaData.unpublishedCount = actors.length;
+    metaData.count = await db.get().collection('actors').find({published: true}, {fields: {slugName: true}}).count();
+    if (actors) res.send({metaData: metaData, result:actors.map(el => el.slugName)});
+    else res.send({metaData: metaData, error: true});
 });
 
-router.get('/name_like=:name', async (req, res) => {
-    let name = req.params.name;
-    const actor = await db.get().collection('actors').findOne({"name": name});
-    if (actor) res.send(actor);
-    else res.status(404).send({actor});
-});
 
 router.get('/slugs', async (req, res) => {
     let params = {published: true};
@@ -37,8 +34,21 @@ router.get('/slugs', async (req, res) => {
         dbQuery = dbQuery.limit(limit).skip((page - 1) * limit);
     }
     const actors = await dbQuery.toArray();
-    if (actors) res.send(actors.map(el => el.slugName));
-    else res.status(404);
+
+    let metaData = {};
+    metaData.params = req.query;
+    metaData.count = await actors.length;
+    metaData.totalCount = await db.get().collection('actors').find({published: true}, {fields: {slugName: true}}).count();
+    if (actors) res.send({metaData: metaData, result:actors.map(el => el.slugName)});
+    else res.send({metaData: metaData, error: true});
+
+});
+
+router.get('/name_like=:name', async (req, res) => {
+    let name = req.params.name;
+    const actor = await db.get().collection('actors').findOne({"name": name});
+    if (actor) res.send(actor);
+    else res.status(404).send({actor});
 });
 
 router.get('/autocomplete/:query', async (req, res) => {
@@ -52,6 +62,8 @@ router.get('/autocomplete/:query', async (req, res) => {
     if (actors) res.send(actors);
     else res.status(404);
 });
+
+
 
 
 router.post('/', async (req, res) => {
