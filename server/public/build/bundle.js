@@ -2494,7 +2494,7 @@ var fetchAutocompleteMoviesSuccess = exports.fetchAutocompleteMoviesSuccess = fu
 var fetchMoviesSlugSuccess = exports.fetchMoviesSlugSuccess = function fetchMoviesSlugSuccess(slugName, slugs) {
     var movies = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
     var metaData = arguments[3];
-    console.log("one movie:", slugs, movies, metaData);return {
+    return {
         type: _actionTypes.FETCH_MOVIES_SLUG_SUCCESS,
         slugName: slugName, movies: movies, slugs: slugs, metaData: metaData
     };
@@ -2536,16 +2536,12 @@ var fetchMovieSlug = exports.fetchMovieSlug = function fetchMovieSlug(slugName) 
                 while (1) {
                     switch (_context.prev = _context.next) {
                         case 0:
-                            console.log("FETCH MOVIE SLUG");
                             dispatch(fetchMoviesSlugStart(slugName));
-
-                            _context.next = 4;
+                            _context.next = 3;
                             return fromApi.movieBySlug(slugName);
 
-                        case 4:
+                        case 3:
                             moviesData = _context.sent;
-
-                            console.log("MOVIE", moviesData.result);
                             movies = [];
 
                             if (moviesData.result) {
@@ -2562,7 +2558,7 @@ var fetchMovieSlug = exports.fetchMovieSlug = function fetchMovieSlug(slugName) 
                                 dispatch(fetchUnpublishedMoviesSuccess(movies.result, movies.entities.movies, moviesData.metaData));
                             }
 
-                        case 9:
+                        case 7:
                         case "end":
                             return _context.stop();
                     }
@@ -4042,11 +4038,11 @@ var fetchActorsSlugStart = exports.fetchActorsSlugStart = function fetchActorsSl
     return { type: _actionTypes.FETCH_ACTOR_SLUG, slugName: slugName };
 };
 
-var fetchUnpublishedActorsSuccess = exports.fetchUnpublishedActorsSuccess = function fetchUnpublishedActorsSuccess(slugs, actors) {
+var fetchUnpublishedActorsSuccess = exports.fetchUnpublishedActorsSuccess = function fetchUnpublishedActorsSuccess(slugs, actors, metaData) {
     return {
         type: _actionTypes.FETCH_UNPUBLISHED_ACTORS_SUCCESS,
         slugs: slugs,
-        actors: actors
+        actors: actors, metaData: metaData
     };
 };
 
@@ -4067,9 +4063,10 @@ var postActorSuccess = exports.postActorSuccess = function postActorSuccess(slug
 
 var fetchActorsSlugSuccess = exports.fetchActorsSlugSuccess = function fetchActorsSlugSuccess(slugName, slugs) {
     var actors = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+    var metaData = arguments[3];
     return {
         type: _actionTypes.FETCH_ACTOR_SLUG_SUCCESS,
-        slugName: slugName, actors: actors, slugs: slugs
+        slugName: slugName, actors: actors, slugs: slugs, metaData: metaData
     };
 };
 
@@ -4094,7 +4091,6 @@ var checkingNameSuccess = exports.checkingNameSuccess = function checkingNameSuc
 };
 
 var checkingNameActor = exports.checkingNameActor = function checkingNameActor(name) {
-    console.log("here bleat");
     return { type: _actionTypes.CHECK_NAME_ACTOR, name: name };
 };
 
@@ -4103,7 +4099,7 @@ var checkingNameActor = exports.checkingNameActor = function checkingNameActor(n
 var fetchUnpublishedActors = exports.fetchUnpublishedActors = function fetchUnpublishedActors() {
     return function () {
         var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch) {
-            var actors;
+            var actorData, actors;
             return regeneratorRuntime.wrap(function _callee$(_context) {
                 while (1) {
                     switch (_context.prev = _context.next) {
@@ -4113,12 +4109,16 @@ var fetchUnpublishedActors = exports.fetchUnpublishedActors = function fetchUnpu
                             return fromApi.unpublishedActors();
 
                         case 3:
-                            actors = _context.sent;
+                            actorData = _context.sent;
+                            actors = [];
 
-                            actors = (0, _normalizr.normalize)(actors, _schema.actorsListSchemaSlug);
-                            dispatch(fetchUnpublishedActorsSuccess(actors.result, actors.entities.actors));
+                            if (actorData.result) {
+                                actors = actorData.result;
+                                actors = (0, _normalizr.normalize)(actors, _schema.actorsListSchemaSlug);
+                            }
+                            dispatch(fetchUnpublishedActorsSuccess(actors.result, actors.entities.actors, actorData.metaData));
 
-                        case 6:
+                        case 7:
                         case "end":
                             return _context.stop();
                     }
@@ -4135,7 +4135,7 @@ var fetchUnpublishedActors = exports.fetchUnpublishedActors = function fetchUnpu
 var fetchAdditionalActors = exports.fetchAdditionalActors = function fetchAdditionalActors(limit, page) {
     return function () {
         var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(dispatch) {
-            var actors;
+            var actorsData, actors;
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
                 while (1) {
                     switch (_context2.prev = _context2.next) {
@@ -4145,12 +4145,16 @@ var fetchAdditionalActors = exports.fetchAdditionalActors = function fetchAdditi
                             return fromApi.additionalActors(limit, page);
 
                         case 3:
-                            actors = _context2.sent;
+                            actorsData = _context2.sent;
+                            actors = [];
 
+                            if (actorsData.result) {
+                                actors = actorsData.result;
+                            }
                             actors = (0, _normalizr.normalize)(actors, _schema.actorsListSchemaSlug);
-                            dispatch(fetchActorsSlugSuccess('additional', actors.result, actors.entities.actors));
+                            dispatch(fetchActorsSlugSuccess('additional', actors.result, actors.entities.actors, actorsData.metaData));
 
-                        case 6:
+                        case 8:
                         case "end":
                             return _context2.stop();
                     }
@@ -4196,8 +4200,7 @@ var fetchDeleteActor = exports.fetchDeleteActor = function fetchDeleteActor(slug
 var fetchActorsSlug = exports.fetchActorsSlug = function fetchActorsSlug(slugName) {
     return function () {
         var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(dispatch) {
-            var response, actor, actors, _actors;
-
+            var actorData, actor;
             return regeneratorRuntime.wrap(function _callee4$(_context4) {
                 while (1) {
                     switch (_context4.prev = _context4.next) {
@@ -4207,36 +4210,28 @@ var fetchActorsSlug = exports.fetchActorsSlug = function fetchActorsSlug(slugNam
                             return fromApi.actorsBySlugName(slugName);
 
                         case 3:
-                            response = _context4.sent;
+                            _context4.next = 5;
+                            return _context4.sent.json();
 
-                            if (response.ok) {
-                                _context4.next = 10;
-                                break;
-                            }
+                        case 5:
+                            actorData = _context4.sent;
+                            actor = [];
 
-                            actor = { slugName: slugName, error: true };
-                            actors = (0, _normalizr.normalize)([actor], _schema.actorsListSchemaSlug);
-
-                            dispatch(fetchActorSlugFail(slugName, actors.result, actors.entities.actors));
-                            _context4.next = 16;
-                            break;
-
-                        case 10:
-                            _context4.next = 12;
-                            return response.json();
-
-                        case 12:
-                            _actors = _context4.sent;
-
-                            _actors.slugName = _actors['slugName'];
-                            _actors = (0, _normalizr.normalize)([_actors], _schema.actorsListSchemaSlug);
-                            if (_actors.entities.actors[slugName].published) {
-                                dispatch(fetchActorsSlugSuccess(slugName, _actors.result, _actors.entities.actors));
+                            if (actorData.result) {
+                                actor = actorData.result;
+                                actor.slugName = actor['slugName'];
+                                actor = (0, _normalizr.normalize)([actor], _schema.actorsListSchemaSlug);
+                                if (actor.entities.actors[slugName].published) {
+                                    dispatch(fetchActorsSlugSuccess(slugName, actor.result, actor.entities.actors, actorData.metaData));
+                                } else {
+                                    dispatch(fetchUnpublishedActorsSuccess(actor.result, actor.entities.actors, actorData.metaData));
+                                }
                             } else {
-                                dispatch(fetchUnpublishedActorsSuccess(_actors.result, _actors.entities.actors));
+                                actor = (0, _normalizr.normalize)([{ slugName: slugName, error: true }], _schema.actorsListSchemaSlug);
+                                dispatch(fetchActorSlugFail(slugName, actor.result, actor.entities.actors));
                             }
 
-                        case 16:
+                        case 8:
                         case "end":
                             return _context4.stop();
                     }
@@ -4341,7 +4336,7 @@ var editActorBySlug = exports.editActorBySlug = function editActorBySlug(slugNam
 var checkName = exports.checkName = function checkName(name, type) {
     return function () {
         var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(dispatch) {
-            var result;
+            var actorData, result;
             return regeneratorRuntime.wrap(function _callee7$(_context7) {
                 while (1) {
                     switch (_context7.prev = _context7.next) {
@@ -4351,11 +4346,17 @@ var checkName = exports.checkName = function checkName(name, type) {
                             return fromApi.checkName(name, type);
 
                         case 3:
-                            result = _context7.sent;
+                            actorData = _context7.sent;
+                            result = {};
 
+                            if (actorData.result) {
+                                result = actorData.result;
+                            } else {
+                                result = actorData.error;
+                            }
                             dispatch(checkingNameSuccess(result));
 
-                        case 5:
+                        case 7:
                         case "end":
                             return _context7.stop();
                     }

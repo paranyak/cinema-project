@@ -52,10 +52,10 @@ export const editingMovieSuccess = (movie, slugName) => ({
 
 export const fetchAutocompleteMoviesSuccess = (movies = []) => ({type: FETCH_AUTOCOMPLETE_MOVIES_SUCCESS, movies});
 
-export const fetchMoviesSlugSuccess = (slugName, slugs, movies = [], metaData) => { console.log("one movie:",slugs, movies, metaData); return {
+export const fetchMoviesSlugSuccess = (slugName, slugs, movies = [], metaData) => ({
     type: FETCH_MOVIES_SLUG_SUCCESS,
     slugName, movies, slugs, metaData
-}};
+});
 
 export const fetchMoviesByLabelSuccess = (slugs, movies, label, metaData) => ({
         type: FETCH_MOVIES_LABEL_SUCCESS,
@@ -79,12 +79,8 @@ export const clearMoviesAutocomplete = () => ({type: CLEAR_MOVIES_AUTOCOMPLETE})
 
 
 export const fetchMovieSlug = (slugName) => async (dispatch) => {
-    console.log("FETCH MOVIE SLUG");
     dispatch(fetchMoviesSlugStart(slugName));
-
-
     let moviesData = await fromApi.movieBySlug(slugName);
-    console.log("MOVIE", moviesData.result);
     let movies = [];
     if (moviesData.result) {
         movies = moviesData.result;
