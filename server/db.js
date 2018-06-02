@@ -1,24 +1,18 @@
-const MongoClient = require('mongodb').MongoClient;
+const MongoClient = require("mongodb").MongoClient
 
-
-
-let db = null;
+let db = null
 exports.connect = (url, done) => {
-    if (db) return done();
+  if (db) return done()
 
-    const DB_NAME = url === 'mongodb://localhost:27017/cinema-project'? 'cinema-project' : 'heroku_t7gvckhq';
-    console.log(DB_NAME);
+  const DB_NAME = url === "mongodb://localhost:27017/cinema-project" ? "cinema-project" : "heroku_t7gvckhq"
+  console.log(DB_NAME)
 
-    MongoClient.connect(url, (err, client) => {
-        if (err) return console.error(err);
+  MongoClient.connect(url, (err, client) => {
+    if (err) return console.error(err)
 
-        db = client.db(DB_NAME);
+    db = client.db(DB_NAME)
+    done()
+  })
+}
 
-        // console.log(db);
-        done()
-    })
-};
-
-exports.get = () => {
-    return db;
-};
+exports.get = () => db

@@ -7,7 +7,7 @@
     "webpack": "webpack --watch",
     "server:dev": "nodemon server/server.js",
     "server": "node server/server.js",
-    "start": "cross-env MONGODB_URI=mongodb://localhost:27017/cinema-project npm run webpack | cross-env MONGODB_URI=mongodb://localhost:27017/cinema-project npm run server:dev",
+    "start": "cross-env  npm run webpack | cross-env npm run server:dev",
     "test": "jest",
     "raml": "raml2html docs/api/index.raml > docs/api/index.html",
     "styleguidist": "npx styleguidist build",
@@ -17,38 +17,27 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-flow": "^6.23.0",
-    "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.10",
-    "jest": "^22.4.3",
-    "less": "^3.0.1",
-    "less-loader": "^4.1.0",
+    "heroku": "^7.0.47",
+    "json-server": "^0.12.1",
     "nodemon": "^1.17.5",
+    "react-scripts": "^2.0.0-next.66cc7a90",
     "react-styleguidist": "^7.0.8",
-    "style-loader": "^0.20.3",
-    "svg-url-loader": "^2.3.2",
-    "webpack": "^3.11.0"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.0"
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "babel-polyfill": "^6.26.0",
     "cross-env": "^5.1.6",
     "css-scroll-snap-polyfill": "^0.1.2",
-    "heroku": "^7.0.47",
+    "dotenv": "^5.0.1",
+    "firebase": "^5.0.4",
     "history": "^4.7.2",
-    "json-server": "^0.12.1",
     "lodash": "^4.17.5",
     "luxon": "0.5.3",
     "mongodb": "^3.0.7",
     "mongoose": "^5.0.17",
     "normalizr": "^3.2.4",
-    "npm": "^6.0.1",
     "path": "^0.12.7",
     "query-string": "^6.0.0",
     "ramda": "^0.25.0",
@@ -81,5 +70,18 @@
       "server/public/*"
     ],
     "delay": "1000"
+  },
+  "browserslist": {
+    "development": [
+      "last 2 chrome versions",
+      "last 2 firefox versions",
+      "last 2 edge versions"
+    ],
+    "production": [
+      ">1%",
+      "last 4 versions",
+      "Firefox ESR",
+      "not ie < 11"
+    ]
   }
 }

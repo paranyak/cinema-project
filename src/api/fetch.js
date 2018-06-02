@@ -1,75 +1,64 @@
-let LOCALHOST;
+let API_PATH = process.env.REACT_APP_API_ENDPOINT;
 
-const hostname = window && window.location && window.location.hostname;
-console.log(hostname);
-switch (hostname) {
-    case 'localhost':
-        LOCALHOST = 'http://localhost:3000';
-        break;
-    default:
-        LOCALHOST = 'https://csucu-cinema-project.herokuapp.com'; //'mongodb://localhost:27017/heroku_t7gvckhq'; //`http://localhost:${PORT}`;
-        break;
-
-}
-console.log(LOCALHOST);
+console.log(API_PATH);
 
 export async function movie(id) {
-    return await ((await fetch(`${LOCALHOST}/movies/byId/${id}`)).json());
+    return await ((await fetch(`${API_PATH}/movies/byId/${id}`)).json());
 }
 
 export async function movieBySlug(slugName) {
-    return await ((await fetch(`${LOCALHOST}/movies/bySlugName/${slugName}`)).json());
+    return await ((await fetch(`${API_PATH}/movies/bySlugName/${slugName}`)).json());
 }
 
 // export async function movieCount() {
-//     return await ((await fetch(`${LOCALHOST}/movies/moviesCount`)).json());
+//     return await ((await fetch(`${API_PATH}/movies/moviesCount`)).json());
 // }
 
 export async function moviesSchedule(day) {
-    return await ((await fetch(`${LOCALHOST}/movies/slugs?Schedule=${day}`)).json())
+    return await ((await fetch(`${API_PATH}/movies/slugs?Schedule=${day}`)).json())
 }
 
 export async function labeledMovies(label) {
-    return await ((await fetch(`${LOCALHOST}/movies/slugs?label=${label}`)).json())
+    return await ((await fetch(`${API_PATH}/movies/slugs?label=${label}`)).json())
 }
 
 export async function unpublishedMovies() {
-    return await ((await fetch(`${LOCALHOST}/movies/unpublished-slugs`)).json())
+    return await ((await fetch(`${API_PATH}/movies/unpublished-slugs`)).json())
 }
 
 export async function additionalMovies(limit, page) {
-    return await ((await fetch(`${LOCALHOST}/movies/slugs?_page=${page}&_limit=${limit}`)).json());
+    return await ((await fetch(`${API_PATH}/movies/slugs?_page=${page}&_limit=${limit}`)).json());
 }
 
 export async function autocompleteMovies(name) {
-    return await ((await fetch(`${LOCALHOST}/movies/autocomplete/${name}`)).json());
+    return await ((await fetch(`${API_PATH}/movies/autocomplete/${name}`)).json());
 }
 
 export async function actors(id) {
-    return await fetch(`${LOCALHOST}/actors/byId/${id}`)
+    return await fetch(`${API_PATH}/actors/byId/${id}`)
 }
 
 export async function unpublishedActors() {
-    return await ((await fetch(`${LOCALHOST}/actors/unpublished-slugs`)).json())
+    return await ((await fetch(`${API_PATH}/actors/unpublished-slugs`)).json())
 }
 
 export async function actorsBySlugName(slugName) {
-    return await fetch(`${LOCALHOST}/actors/bySlugName/${slugName}`)
+    return await fetch(`${API_PATH}/actors/bySlugName/${slugName}`)
 }
 
 export async function additionalActors(limit, page) {
-    return await ((await fetch(`${LOCALHOST}/actors/slugs?_page=${page}&_limit=${limit}`)).json())
+    return await ((await fetch(`${API_PATH}/actors/slugs?_page=${page}&_limit=${limit}`)).json())
 }
 
 export async function deleteActor(slugName) {
-    return await ((await fetch(`${LOCALHOST}/actors/${slugName}`, {
+    return await ((await fetch(`${API_PATH}/actors/${slugName}`, {
         method: 'DELETE',
         headers: {"Content-type": "application/json"},
     })).json());
 }
 
 export async function deleteMovie(slugName) {
-    return await  ((await fetch(`${LOCALHOST}/movies/${slugName}`, {
+    return await  ((await fetch(`${API_PATH}/movies/${slugName}`, {
         method: 'DELETE',
         headers: {"Content-type": "application/json"},
     })).json());
@@ -104,7 +93,7 @@ export async function postActor(actor) {
 }
 
 export const editMovie = async (slugName, movie) => {
-    const response = await fetch(`${LOCALHOST}/movies/${slugName}`, {
+    const response = await fetch(`${API_PATH}/movies/${slugName}`, {
         method: 'PATCH',
         headers: {"Content-type": "application/json"},
         body: JSON.stringify(movie)
@@ -117,7 +106,7 @@ export const editMovie = async (slugName, movie) => {
 };
 
 export const editActor = async (slugName, actor) => {
-    const response = await fetch(`${LOCALHOST}/actors/${slugName}`, {
+    const response = await fetch(`${API_PATH}/actors/${slugName}`, {
         method: 'PATCH',
         headers: {"Content-type": "application/json"},
         body: JSON.stringify(actor)
@@ -131,7 +120,7 @@ export const editActor = async (slugName, actor) => {
 
 
 export async function checkName(name, type) {
-    let res = await fetch(`${LOCALHOST}/${type}/bySlugName/${name}`);
+    let res = await fetch(`${API_PATH}/${type}/bySlugName/${name}`);
     if (res.ok) {
         return await res.json();
     }
