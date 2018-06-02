@@ -1,4 +1,5 @@
 let API_PATH = process.env.REACT_APP_API_ENDPOINT;
+export const CLOUDINARY_PATH = process.env.REACT_APP_CLOUDINARY_PATH || ""
 
 console.log(API_PATH);
 
