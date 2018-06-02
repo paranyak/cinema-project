@@ -1,13 +1,15 @@
 import React, { Component } from "react"
+
 import "../styles/MoviePoster.scss"
 import block from "../helpers/BEM"
+
 import { connect } from "react-redux"
 import { getMovieBySlug } from "../reducers"
 import { fetchMovieSlug } from "../actions/movies"
 import { Link } from "react-router-dom"
 
 const b = block("MoviePoster")
-const link = "https://res.cloudinary.com/dtnnkdylh/image/upload/w_275,h_408/"
+const link = "https://res.cloudinary.com/dtnnkdylh/image/upload/c_fit,w_275,h_408/"
 
 class MoviePoster extends Component {
   render() {

@@ -98,7 +98,9 @@ class MovieLayoutImage extends Component {
   getTrailer(film) {
     if (this.isUrl(film.trailer)) {
       //TODO: fix Some super unique title
-      return <iframe title="Some super unique title" className={b("trailer")} width="325" height="245" src={film.trailer} />
+      return (
+        <iframe title="Some super unique title" className={b("trailer")} width="325" height="245" src={film.trailer} />
+      )
     }
 
     return null
@@ -122,7 +124,12 @@ class MovieLayoutImage extends Component {
         <section className={b("screenshots")}>
           {(film.screenshots || []).map((screen, ind) => (
             <picture key={"screenshot" + ind.toString()}>
-              <img alt="" src={linkScr + screen} className={b("screen")} onClick={e => this.mainImageHandler(e, ind + 1)} />
+              <img
+                alt=""
+                src={linkScr + screen}
+                className={b("screen")}
+                onClick={e => this.mainImageHandler(e, ind + 1)}
+              />
             </picture>
           ))}
         </section>

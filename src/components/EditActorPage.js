@@ -78,7 +78,7 @@ class EditActorPage extends Component {
         }
       })
     }
-    console.log(nominations)
+
     const actorToAdd = {
       movies: newMovies,
       name,
