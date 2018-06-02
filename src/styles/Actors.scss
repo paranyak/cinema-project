@@ -1,7 +1,7 @@
-@import "SiteColors.less";
+@import "SiteColors";
 
 .Actors {
-  color: @white-text;
+  color: var(--white-text);
   margin-top: 70px;
   margin-bottom: 50px;
   @media (max-width: 768px) {

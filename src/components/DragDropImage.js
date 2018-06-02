@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../styles/DragDropImage.less";
+import "../styles/DragDropImage.scss";
 import block from '../helpers/BEM'
 import Dropzone from 'react-dropzone'
 import axios from "axios/index";

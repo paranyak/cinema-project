@@ -1,8 +1,8 @@
-@import "SiteColors.less";
+@import "SiteColors";
 
 .HomeLayout {
   width: 90%;
-  background-color: @layout-grey;
+  background-color: var(--layout-grey);
   margin: auto auto 90px;
   box-shadow: 10px 21px 94px 6px rgba(0, 0, 1, 1);
   padding-top: 40px;
@@ -10,6 +10,6 @@
   text-align: center;
   
   &__title {
-    color: @white-text;
+    color: var(--white-text);
   }
 }

@@ -1,4 +1,4 @@
-@import "SiteColors.less";
+@import "SiteColors";
 
 .ActorPoster {
   min-width: 250px;
@@ -7,7 +7,7 @@
   display: inline-block;
   &__image {
     border-radius: 100%;
-    border: 4px solid @time;
+    border: 4px solid var(--time);
     margin: auto;
     height: 200px;
     width: 200px;
@@ -18,6 +18,6 @@
     }
   }
   &__name {
-    color: @time;
+    color: var(--time);
   }
 }

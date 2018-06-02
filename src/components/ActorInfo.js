@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../styles/InfoFields.less";
+import "../styles/InfoFields.scss";
 import block from '../helpers/BEM'
 import NominationsList from "./NominationsList";
 import DynamicList from "./DynamicList";

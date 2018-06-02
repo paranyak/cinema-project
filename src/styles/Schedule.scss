@@ -1,4 +1,4 @@
-@import "SiteColors.less";
+@import "SiteColors";
 
 .Schedule {
   padding: 20px;
@@ -11,7 +11,7 @@
   &__day {
     padding: 15px 3px;
     color: #343434;
-    background-color: @time;
+    background-color: var(--time);
     border: none;
     position: absolute;
     height: 50px;
@@ -25,7 +25,7 @@
   &__time-string {
     display: flex;
     width: 85%;
-    border: 1px solid @time;
+    border: 1px solid var(--time);
     border-bottom: none;
     background-color: #575757;
   }
@@ -35,13 +35,13 @@
     margin-top: 12px;
     border-radius: 5px;
     &_after {
-      background: @main-yellow;
+      background: var(--main-yellow);
     }
     &_before {
       background: #575757;
     }
     &:hover {
-      background: @time;
+      background: var(--time);
     }
   }
   &__real-time-line {
@@ -57,8 +57,8 @@
     display: block;
     position: relative;
     padding: 10px 0;
-    background-color: @layout-grey;
-    border: 1px solid @time;
+    background-color: var(--layout-grey);
+    border: 1px solid var(--time);
     width: 85%;
   }
 
@@ -68,7 +68,7 @@
     text-align: center;
     border-left: 1px solid #ccc;
     padding: 3px 0;
-    color: @time;
+    color: var(--time);
     &:first-child {
       border-left: none;
     }
@@ -85,7 +85,7 @@
     position: relative;
   }
   &__film {
-    background-color: @time;
+    background-color: var(--time);
     display: flex;
     margin-bottom: 4px;
   }

@@ -1,14 +1,14 @@
-@import "SiteColors.less";
+@import "SiteColors";
 
 .Filter {
-  background-color: @main-yellow;
+  background-color: var(--main-yellow);
   width: 14%;
   box-shadow: 5px 0 15px 2px #000001;
-  color: @layout-grey;
+  color: var(--layout-grey);
   box-sizing: border-box;
   padding: 20px 20px 10px;
   &__group {
-    border-top: 2px solid @layout-grey;
+    border-top: 2px solid var(--layout-grey);
     padding: 10px 0;
   }
   &__header {
@@ -34,7 +34,7 @@
       opacity: 0;
       cursor: pointer;
       &:checked ~ .Filter__checkmark {
-          background-color: @layout-grey;
+          background-color: var(--layout-grey);
       }
       &:checked ~ .Filter__checkmark:after {
         display: block;
@@ -46,9 +46,9 @@
       left: 0;
       height: 15px;
       width: 15px;
-      background-color: @time;
+      background-color: var(--time);
       border-radius: 100%;
-      border: 2px solid @layout-grey;
+      border: 2px solid var(--layout-grey);
       &:after {
         content: "";
         position: absolute;
@@ -57,7 +57,7 @@
         top: 3px;
         width: 7px;
         height: 4px;
-        border: solid @main-yellow;
+        border: solid var(--main-yellow);
         border-width: 0 2.5px 2.5px 0;
         -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);

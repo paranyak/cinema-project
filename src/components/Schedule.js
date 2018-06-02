@@ -7,7 +7,7 @@ import {DateTime} from "luxon/src/datetime.js";
 import ReactTooltip from 'react-tooltip';
 import {push} from 'react-router-redux';
 import {connect} from "react-redux";
-import "../styles/Schedule.less";
+import "../styles/Schedule.scss";
 import block from "../helpers/BEM";
 import {fetchMovieSlug} from '../actions/movies';
 import {getAllMoviesSlugs, getMovieBySlug, isMovieFetchingSlug} from "../reducers";

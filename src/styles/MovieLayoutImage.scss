@@ -1,4 +1,4 @@
-@import "SiteColors.less";
+@import "SiteColors";
 
 .MovieLayoutImage {
   max-width: 450px;
@@ -20,7 +20,7 @@
     margin-left: 40px;
     margin-top: -40px;
     box-shadow: 10px 21px 94px 6px rgba(0, 0, 1, 1);
-    border-bottom: @main-yellow 10px solid;
+    border-bottom: var(--main-yellow) 10px solid;
     background-color: white;
     height: 408px;
     width: 275px;

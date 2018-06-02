@@ -1,9 +1,9 @@
-@import "SiteColors.less";
+@import "SiteColors";
 
 .MovieLayout {
   width: 90%;
   min-height: 700px;
-  background-color: @layout-grey;
+  background-color: var(--layout-grey);
   margin: auto auto 90px;
   box-shadow: 10px 21px 94px 6px rgba(0, 0, 1, 1);
   &__edit-icon {

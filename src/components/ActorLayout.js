@@ -9,7 +9,7 @@ import {
 } from "../reducers";
 import {fetchActorsSlug, fetchDeleteActor} from '../actions/actors';
 import {fetchMovieSlug} from '../actions/movies';
-import "../styles/ActorLayout.less"
+import "../styles/ActorLayout.scss"
 import block from "../helpers/BEM";
 import {connect} from "react-redux";
 import {monthNames} from "../helpers/constants";

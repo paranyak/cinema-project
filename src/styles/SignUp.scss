@@ -1,8 +1,8 @@
-@import "SiteColors.less";
+@import "SiteColors";
 
 .SignUp{
   width: 35%;
-  background-color: @layout-grey  ;
+  background-color: var(--layout-grey)  ;
   margin: auto;
   padding: 30px;
   padding-bottom: 50px;
@@ -10,7 +10,7 @@
   box-shadow: 10px 21px 94px 6px rgba(0, 0, 1, 1);
   text-align: center;
   &__header {
-    color: @time;
+    color: var(--time);
   }
   &__input {
     width: 55%;
@@ -18,10 +18,10 @@
     display: block;
     margin: auto;
     font-size: 16px;
-    color: @layout-grey;
-    background-color: @time;
+    color: var(--layout-grey);
+    background-color: var(--time);
     border: none;
-    border-bottom: 2px solid @layout-grey;
+    border-bottom: 2px solid var(--layout-grey);
     outline: none;
     &_below {
       border-bottom-left-radius: 10px;
@@ -35,11 +35,11 @@
   }
   &__submit {
     width: 40%;
-    background-color: @main-yellow;
+    background-color: var(--main-yellow);
     border: none;
     border-radius: 7px;
     padding: 8px 0;
-    color: @layout-grey;
+    color: var(--layout-grey);
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 10px;
@@ -47,15 +47,15 @@
   &__message {
     width: 55%;
     margin: auto;
-    background-color: @poster-grey;
+    background-color: var(--poster-grey);
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 10px;
     padding: 10px;
-    color: @time;
-    border: 2px solid @time;
+    color: var(--time);
+    border: 2px solid var(--time);
   }
   &__signup {
-    color: @time;
+    color: var(--time);
   }
 }

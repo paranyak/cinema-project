@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from "react-redux";
 import {fetchActorsSlug} from '../actions/actors';
-import "../styles/Actors.less";
+import "../styles/Actors.scss";
 import block from "../helpers/BEM";
 import {getActorBySlug} from "../reducers";
 

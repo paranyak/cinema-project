@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../styles/CalendarRangePicker.less";
+import "../styles/CalendarRangePicker.scss";
 import DayPicker, {DateUtils} from 'react-day-picker';
 import {getDates} from "../helpers/getDatesFromRange";
 

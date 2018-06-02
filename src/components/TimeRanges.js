@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../styles/TimeRanges.less";
+import "../styles/TimeRanges.scss";
 import block from '../helpers/BEM'
 
 const b = block("TimeRanges");

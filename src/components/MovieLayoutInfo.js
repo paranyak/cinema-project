@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Actors from "./Actors";
-import "../styles/MovieLayoutInfo.less";
+import "../styles/MovieLayoutInfo.scss";
 import block from "../helpers/BEM";
 
 const b = block("MovieLayoutInfo");

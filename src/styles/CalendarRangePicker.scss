@@ -1,4 +1,4 @@
-@import "SiteColors.less";
+@import "SiteColors";
 
 .DayPicker {
   display: inline-block;
@@ -18,7 +18,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: @poster-grey;
+  background-color: var(--poster-grey);
 }
 
 .DayPicker-Month {
@@ -73,7 +73,7 @@
   display: table-caption;
   text-align: left;
   margin-bottom: 0.5rem;
-  color: @main-yellow;
+  color: var(--main-yellow);
 }
 
 .DayPicker-Caption > div {
@@ -153,7 +153,7 @@
 /* Default modifiers */
 
 .DayPicker-Day--today {
-  color: @main-yellow;
+  color: var(--main-yellow);
   font-weight: 700;
 }
 
@@ -214,7 +214,7 @@
 }
 .Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
   background-color: #f0f8ff !important;
-  color: #ffbe00;//@main-yellow;
+  color: #ffbe00;//var(--main-yellow);
 }
 .Selectable .DayPicker-Day {
   border-radius: 0 !important;
@@ -231,7 +231,7 @@
 .link {
   background-color: transparent;
   border: none;
-  color: @main-yellow;
+  color: var(--main-yellow);
 }
 
 .Message {

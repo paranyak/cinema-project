@@ -1,6 +1,6 @@
 import React, { Component } from "react"
-import "../styles/Layout.less"
-import "../styles/common.less"
+import "../styles/Layout.scss"
+import "../styles/common.scss"
 import block from "../helpers/BEM"
 import AddMovieLayout from "./AddMovieLayout"
 import Navigation from "./Navigation"

@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-import "../styles/MovieLayoutImage.less"
+import "../styles/MovieLayoutImage.scss"
 import block from "../helpers/BEM"
 
 const b = block("MovieLayoutImage")

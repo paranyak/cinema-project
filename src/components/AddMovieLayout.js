@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../styles/AddMovieLayout.less";
+import "../styles/AddMovieLayout.scss";
 import block from '../helpers/BEM';
 import MovieImages from "./MovieImages";
 import MovieInfo from "./MovieInfo";

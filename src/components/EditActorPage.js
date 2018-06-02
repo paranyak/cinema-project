@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../styles/Editor.less";
+import "../styles/Editor.scss";
 import {editActorBySlug, fetchActorsSlug} from '../actions/actors';
 import {fetchMovieSlug} from '../actions/movies';
 import {editMovieBySlug} from '../actions/movies';

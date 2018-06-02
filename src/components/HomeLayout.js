@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../styles/HomeLayout.less";
+import "../styles/HomeLayout.scss";
 import MovieCarousel from "./MovieCarousel";
 // import UnpublishedMovies from "./UnpublishedMovies";
 import AllMovies from "./AllMovies";

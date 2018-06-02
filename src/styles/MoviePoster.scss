@@ -1,9 +1,9 @@
-@import "SiteColors.less";
+@import "SiteColors";
 
 .MoviePoster {
   margin: 5px;
   display: inline-block;
-  background-color: @poster-grey;
+  background-color: var(--poster-grey);
   font-size: 14px;
   height: 491px;
   width: 275px;
@@ -30,7 +30,7 @@
     margin: 0;
   }
   &__genre {
-    color: @main-yellow;
+    color: var(--main-yellow);
     width: 205px;
     white-space: nowrap;
     overflow: hidden;
@@ -42,7 +42,7 @@
     border: 1px solid;
     padding: 5px 7px;
     border-radius: 3px;
-    color: @main-yellow;
+    color: var(--main-yellow);
     float: right;
     margin-top: -50px;
   }

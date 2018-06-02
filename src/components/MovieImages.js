@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../styles/ImageFields.less";
+import "../styles/ImageFields.scss";
 import block from '../helpers/BEM'
 import DragDropImage from './DragDropImage';
 

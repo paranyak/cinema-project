@@ -1,18 +1,18 @@
-@import 'SiteColors.less';
+@import 'SiteColors';
 
-.AddMovieLayout {
+.AddActorLayout {
   width: 90%;
   padding: 15px;
-  background-color: @layout-grey;
+  background-color: var(--layout-grey);
   margin: auto auto 90px;
   box-shadow: 10px 21px 94px 6px rgba(0, 0, 1, 1);
   &__btns {
     margin: auto;
     clear: both;
-    width: 250px;
+    width: 240px;
   }
   &__btn {
-    background-color: @main-yellow;
+    background-color: var(--main-yellow);
     color: #373737;
     font-weight: bold;
     border: none;
@@ -28,12 +28,8 @@
       opacity: 1;
     }
   }
-  &__radio-btn {
-    color: white;
-    display: block;
-  }
   &__title {
-    color: @main-yellow;
+    color: var(--main-yellow);
     margin: 25px 0 5px;
     text-align: center;
   }

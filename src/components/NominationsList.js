@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../styles/DynamicList.less";
+import "../styles/DynamicList.scss";
 import block from '../helpers/BEM'
 
 const b = block("DynamicList");

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../styles/MultiSelection.less";
+import "../styles/MultiSelection.scss";
 import Select from 'react-select';
 
 class MultiSelection extends Component {

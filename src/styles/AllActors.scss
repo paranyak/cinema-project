@@ -1,4 +1,4 @@
-@import "SiteColors.less";
+@import "SiteColors";
 
 
 .AllActors {
@@ -14,7 +14,7 @@
     justify-content: center;
   }
   &__title {
-    color: @white-text;
+    color: var(--white-text);
     text-align: center;
     display: block;
     font-size: 32px;

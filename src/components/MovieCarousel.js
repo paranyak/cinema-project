@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../styles/MovieCarousel.less";
+import "../styles/MovieCarousel.scss";
 import block from "../helpers/BEM";
 import scrollTo from '../helpers/scrollTo';
 import checkScrollPosition from '../helpers/checkScrollPosition';

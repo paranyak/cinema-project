@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../styles/AllMovies.less";
+import "../styles/AllMovies.scss";
 import block from "../helpers/BEM";
 import {connect} from "react-redux";
 import MoviePoster from "./MoviePoster";

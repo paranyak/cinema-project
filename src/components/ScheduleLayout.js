@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Filter from "./Filter";
 import Schedule from "./Schedule";
-import "../styles/ScheduleLayout.less";
+import "../styles/ScheduleLayout.scss";
 import {connect} from "react-redux";
 import {getAllFilters} from "../reducers";
 import {changeDate, setFilters} from "../actions/filter";

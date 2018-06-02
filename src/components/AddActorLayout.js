@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import block from "../helpers/BEM";
-import "../styles/AddActorLayout.less";
+import "../styles/AddActorLayout.scss";
 import {connect} from "react-redux";
 import {Redirect} from "react-router";
 import ActorImage from "./ActorImage";

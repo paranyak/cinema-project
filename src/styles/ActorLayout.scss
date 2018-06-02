@@ -1,9 +1,9 @@
-@import "SiteColors.less";
+@import "SiteColors";
 
 .ActorLayout {
   width: 90%;
   min-height: 600px;
-  background-color: @layout-grey;
+  background-color: var(--layout-grey);
   margin: auto auto 90px;
   box-shadow: 10px 21px 94px 6px rgba(0, 0, 1, 1);
   &__edit-icon {
@@ -45,7 +45,7 @@
     margin-left: 40px;
     margin-top: -40px;
     box-shadow: 10px 21px 94px 6px rgba(0, 0, 1, 1);
-    border-bottom: @main-yellow 10px solid;
+    border-bottom: var(--main-yellow) 10px solid;
     height: 408px;
     width: 275px;
     background-color: white;
@@ -61,7 +61,7 @@
     }
   }
   &__general {
-    color: @white-text;
+    color: var(--white-text);
     margin-right: 40px;
     padding-top: 20px;
     float: right;
@@ -81,13 +81,13 @@
   }
   &__info {
     font-size: 16px;
-    color: @white-text;
+    color: var(--white-text);
     opacity: 0.6;
   }
   &__extra {
     display: grid;
     grid-template-columns: 50% 50%;
-    color: @white-text;
+    color: var(--white-text);
     font-weight: bold;
     padding-top: 40px;
     @media (max-width: 768px) {
@@ -116,7 +116,7 @@
     padding: 0;
   }
   &__movie-link {
-    color: @white-text;
+    color: var(--white-text);
     float: right;
     margin-right: 20px;
     opacity: 0.6;

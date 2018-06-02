@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import MovieLayoutImage from "./MovieLayoutImage";
 import MovieLayoutInfo from "./MovieLayoutInfo";
-import "../styles/MovieLayout.less"
+import "../styles/MovieLayout.scss"
 import block from "../helpers/BEM";
 import {getCurrentUser, getMovieBySlug} from "../reducers";
 import {fetchMovieSlug, fetchDeleteMovie} from '../actions/movies';

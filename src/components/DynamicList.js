@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import block from "../helpers/BEM";
-import "../styles/DynamicList.less";
+import "../styles/DynamicList.scss";
 
 const b = block("DynamicList");
 

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../styles/Login.less";
+import "../styles/Login.scss";
 import block from "../helpers/BEM";
 import {NavLink} from 'react-router-dom';
 import {connect} from "react-redux";

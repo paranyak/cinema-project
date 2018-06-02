@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../styles/SignUp.less";
+import "../styles/SignUp.scss";
 import block from "../helpers/BEM";
 import {NavLink} from 'react-router-dom';
 import {signUpUser} from '../actions/auth';

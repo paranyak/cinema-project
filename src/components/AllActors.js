@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "../styles/AllActors.less";
+import "../styles/AllActors.scss";
 import block from "../helpers/BEM";
 import {connect} from "react-redux";
 import ActorPoster from "./ActorPoster";

@@ -1,10 +1,10 @@
-@import "SiteColors.less";
+@import "SiteColors";
 
 .ScheduleLayout {
   display: flex;
   width: 90%;
   margin: auto auto 90px;
   box-shadow: 10px 21px 94px 6px rgba(0, 0, 1, 1);
-  background-color: @layout-grey;
+  background-color: var(--layout-grey);
   justify-content: space-between;
 }
