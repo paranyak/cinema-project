@@ -60,7 +60,7 @@ class DragDropImage extends Component {
             return <div>
                 <p className={b('message')}>Click on the image you want to remove</p>
                 {images.map((el, i) => <picture key={i}>
-                    <img src={link + el} className={b('image')} onClick={this.removeImage.bind(this, i)}/>
+                    <img alt="" src={link + el} className={b('image')} onClick={this.removeImage.bind(this, i)}/>
                 </picture>)}
             </div>
         }

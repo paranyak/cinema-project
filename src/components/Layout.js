@@ -27,10 +27,6 @@ import firebase from "../api/auth"
 const b = block("Layout")
 
 class Layout extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentWillMount() {
     firebase.auth().onAuthStateChanged(user => {
       this.props.setUser(user)

@@ -40,7 +40,7 @@ class ActorLayout extends Component {
         if (actor && actor.error) {
             return (
                 <section className={b("error")}>
-                    <img width="100%"
+                    <img alt="" width="100%"
                          src="http://www.topdesignmag.com/wp-content/uploads/2012/06/1.-404-not-found-design.jpg"/>
                 </section>
             );
@@ -66,7 +66,7 @@ class ActorLayout extends Component {
         }
         let image;
         if (actor.image) {
-          image = (<img className={b("image")} src={link + actor.image}/>)
+          image = (<img alt="" className={b("image")} src={link + actor.image}/>)
         } else {
           image = (<span className={b("image", ["undefined"])}></span>)
         }

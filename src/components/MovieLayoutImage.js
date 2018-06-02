@@ -55,7 +55,6 @@ class MovieLayoutImage extends Component {
   }
 
   mainImageHandler(e, id) {
-    const h = 0.5 * window.screen.height
     const w = 0.5 * window.screen.width
     linkScrCarousel = "https://res.cloudinary.com/dtnnkdylh/image/upload/w_" + Math.floor(w).toString() + "/"
     this.setState({ currentId: id })
@@ -92,13 +91,14 @@ class MovieLayoutImage extends Component {
   }
 
   isUrl(str) {
-    let regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/
+    let regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-/]))?/
     return regex.test(str)
   }
 
   getTrailer(film) {
     if (this.isUrl(film.trailer)) {
-      return <iframe className={b("trailer")} width="325" height="245" src={film.trailer} />
+      //TODO: fix Some super unique title
+      return <iframe title="Some super unique title" className={b("trailer")} width="325" height="245" src={film.trailer} />
     }
 
     return null
@@ -110,7 +110,7 @@ class MovieLayoutImage extends Component {
     if (film.image) {
       image = (
         <picture>
-          <img src={linkMain + film.image} className={b("main")} onClick={e => this.mainImageHandler(e, 0)} />
+          <img alt="" src={linkMain + film.image} className={b("main")} onClick={e => this.mainImageHandler(e, 0)} />
         </picture>
       )
     } else {
@@ -122,7 +122,7 @@ class MovieLayoutImage extends Component {
         <section className={b("screenshots")}>
           {(film.screenshots || []).map((screen, ind) => (
             <picture key={"screenshot" + ind.toString()}>
-              <img src={linkScr + screen} className={b("screen")} onClick={e => this.mainImageHandler(e, ind + 1)} />
+              <img alt="" src={linkScr + screen} className={b("screen")} onClick={e => this.mainImageHandler(e, ind + 1)} />
             </picture>
           ))}
         </section>
@@ -132,8 +132,7 @@ class MovieLayoutImage extends Component {
             &times;
           </span>
           <picture>
-            {/*<source media="(min-width: 650px)" srcSet=""/>*/}
-            <img className={b("modal-content")} id="img01" />
+            <img alt="" className={b("modal-content")} id="img01" />
           </picture>
           <div className={b("arrow-left")} />
           <div className={b("arrow-right")} />
@@ -141,6 +140,7 @@ class MovieLayoutImage extends Component {
             {this.state.sources.map((screen, ind) => (
               <picture key={"modal" + ind.toString()}>
                 <img
+                  alt=""
                   src={linkScrModal + screen}
                   className={b("screen-modal")}
                   onClick={e => this.changeImage(e, ind)}

@@ -19,7 +19,7 @@ class Actors extends Component {
         return (
             <div className={b("item")} style={{display: actor.published ? '' : 'none'}}>
                 <Link className={b("actor-link")} to={`/actor/${actor.slugName}`}>
-                    <img className={b("image")} src={link + actor.image}/>
+                    <img alt="" className={b("image")} src={link + actor.image}/>
                 </Link>
                 <p className={b("name")}>
                     {actor.name}

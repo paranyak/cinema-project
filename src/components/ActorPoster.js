@@ -18,7 +18,7 @@ class ActorPoster extends Component {
         let image;
         if (actor.image) {
           image = (<picture>
-              <img src={link + actor.image} className={b("image")}/>
+              <img alt="" src={link + actor.image} className={b("image")}/>
           </picture>)
         } else {
           image = (<span className={b("image", ["undefined"])}></span>)
