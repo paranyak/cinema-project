@@ -80,7 +80,7 @@ export async function postMovie(movie) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    return await ((await fetch('https://csucu-cinema-project.herokuapp.com/movies', {
+    return await ((await fetch(`${LOCALHOST}/movies`, {
         method: 'POST',
         headers,
         body: JSON.stringify(movie)
@@ -91,7 +91,7 @@ export async function postActor(actor) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    const response = await fetch('https://csucu-cinema-project.herokuapp.com/actors', {
+    const response = await fetch(`${LOCALHOST}/actors`, {
         method: 'POST',
         headers,
         body: JSON.stringify(actor)
