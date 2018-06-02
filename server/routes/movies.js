@@ -2,25 +2,28 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-router.get('/moviesCount', async function (req, res) {
-    const movieCount = await db.get().collection('movies').find({published: true}, {fields: {slugName: true}}).count();
-    console.log('hello');
-    if (movieCount) res.send(movieCount.toString());
-    else res.status(404);
-});
+// router.get('/moviesCount', async function (req, res) {
+//     const movieCount = await db.get().collection('movies').find({published: true}, {fields: {slugName: true}}).count();
+//     if (movieCount) res.send(movieCount.toString());
+//     else res.status(404);
+// });
 
 router.get('/unpublished-slugs', async function (req, res) {
     const movies = await db.get().collection('movies')
         .find({published: false}, {fields: {slugName: true}})
         .toArray();
-    if (movies) res.send(movies.map(el => el.slugName));
-    else res.status(404);
+    let metaData = {};
+    metaData.unpublishedCount = movies.length;
+    metaData.count = await db.get().collection('movies').find({published: true}, {fields: {slugName: true}}).count();
+    if (movies) res.send({metaData: metaData, result: movies.map(el => el.slugName)});
+    else res.send({metaData: metaData, error: true});
 });
 
 router.get('/slugs', async function (req, res) {
     let dbQuery;
     let params = {published: true};
     let query = req.query;
+
     if (query['label']) {
         params.label = query['label'];
     }
@@ -35,16 +38,22 @@ router.get('/slugs', async function (req, res) {
         let limit = +query['_limit'];
         dbQuery = dbQuery.limit(limit).skip((page - 1) * limit);
     }
+
+    let metaData = {};
+    metaData.params = params;
+    metaData.count = await db.get().collection('movies').find({published: true}, {fields: {slugName: true}}).count();
     const movies = await dbQuery.toArray();
-    if (movies) res.send(movies.map(el => el.slugName));
-    else res.status(404);
+    if (movies) res.send({metaData: metaData, result: movies.map(el => el.slugName)});
+    else res.send({metaData: metaData, error: true});
 });
 
 router.get('/bySlugName/:slug', async (req, res) => {
     const slugName = req.params.slug;
+    let metaData = {};
+    metaData.params = req.params;
     const movie = await db.get().collection('movies').findOne({slugName});
-    if (movie) res.send(movie);
-    else res.status(404);
+    if (movie) res.send({metaData : metaData, result: movie});
+    else res.send({metaData: metaData, error: true});
 });
 
 

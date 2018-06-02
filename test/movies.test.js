@@ -397,19 +397,12 @@ describe('Movies Reducers', () => {
     it('get default state in movieCount with undefined state', () => {
         expect(moviesReducers.movieCount(undefined, {})).toEqual({});
     });
-    it('handle FETCH_MOVIES_COUNT_SUCCESS in movieCount with undefined state', () => {
-        expect(moviesReducers.movieCount(undefined, moviesActions.fetchMoviesCountSuccess(34)
-        )).toEqual(34);
-    });
+
     it('get default state in movieCount with defined state', () => {
         expect(moviesReducers.movieCount({popular: ['mo', 'm3'], soon: ['m1', 'm4']}, {}))
             .toEqual({popular: ['mo', 'm3'], soon: ['m1', 'm4']});
     });
-    it('handle FETCH_MOVIES_COUNT_SUCCESS in movieCount with defined state', () => {
-        expect(moviesReducers.movieCount({popular: ['mo', 'm3'], soon: ['m1', 'm4']},
-            moviesActions.fetchMoviesCountSuccess(45)
-        )).toEqual(45);
-    });
+
 
 
 });

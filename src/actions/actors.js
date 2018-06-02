@@ -23,10 +23,10 @@ export const editingActorStart = (actor) => ({type: EDITING_ACTOR_START, actor})
 export const fetchActorsSlugStart = (slugName) => ({type: FETCH_ACTOR_SLUG, slugName});
 
 
-export const fetchUnpublishedActorsSuccess = (slugs, actors) => ({
+export const fetchUnpublishedActorsSuccess = (slugs, actors, metaData) => ({
     type: FETCH_UNPUBLISHED_ACTORS_SUCCESS,
     slugs,
-    actors
+    actors, metaData
 });
 
 export const actorPostStart = (actor) => ({type: POST_ACTOR_START, actor});
@@ -38,9 +38,9 @@ export const postActorSuccess = (slugName, actors) => ({
     actors, slugName
 });
 
-export const fetchActorsSlugSuccess = (slugName, slugs, actors = []) => ({
+export const fetchActorsSlugSuccess = (slugName, slugs, actors = [], metaData) => ({
     type: FETCH_ACTOR_SLUG_SUCCESS,
-    slugName, actors, slugs
+    slugName, actors, slugs, metaData
 });
 
 export const fetchActorSlugFail = (slugName, slugs, actors = []) => ({
@@ -57,26 +57,31 @@ export const checkingNameSuccess = (result) => ({
     result
 });
 
-export const checkingNameActor = (name) => {
-    console.log("here bleat");
-    return {type: CHECK_NAME_ACTOR, name}
-};
+export const checkingNameActor = (name) => ({type: CHECK_NAME_ACTOR, name});
 
 
 // -------------------------------------------------------
 
 export const fetchUnpublishedActors = () => async (dispatch) => {
     dispatch(fetchActorsSlugStart('unpublished'));
-    let actors = await fromApi.unpublishedActors();
-    actors = normalize(actors, actorsListSchemaSlug);
-    dispatch(fetchUnpublishedActorsSuccess(actors.result, actors.entities.actors));
+    let actorData = await fromApi.unpublishedActors();
+    let actors = [];
+    if (actorData.result) {
+        actors = actorData.result;
+        actors = normalize(actors, actorsListSchemaSlug);
+    }
+    dispatch(fetchUnpublishedActorsSuccess(actors.result, actors.entities.actors, actorData.metaData));
 };
 
 export const fetchAdditionalActors = (limit, page) => async (dispatch) => {
     dispatch(fetchActorsSlugStart('additional'));
-    let actors = await fromApi.additionalActors(limit, page);
+    let actorsData = await fromApi.additionalActors(limit, page);
+    let actors = [];
+    if(actorsData.result){
+        actors = actorsData.result;
+     }
     actors = normalize(actors, actorsListSchemaSlug);
-    dispatch(fetchActorsSlugSuccess('additional', actors.result, actors.entities.actors));
+    dispatch(fetchActorsSlugSuccess('additional', actors.result, actors.entities.actors, actorsData.metaData));
 };
 
 export const fetchDeleteActor = (slugName) => async (dispatch) => {
@@ -88,20 +93,20 @@ export const fetchDeleteActor = (slugName) => async (dispatch) => {
 
 export const fetchActorsSlug = (slugName) => async (dispatch) => {
     dispatch(fetchActorsSlugStart(slugName));
-    let response = await fromApi.actorsBySlugName(slugName);
-    if (!response.ok) {
-        let actor = {slugName, error: true};
-        let actors = normalize([actor], actorsListSchemaSlug);
-        dispatch(fetchActorSlugFail(slugName, actors.result, actors.entities.actors));
-    } else {
-        let actors = await ((response).json());
-        actors.slugName = actors['slugName'];
-        actors = normalize([actors], actorsListSchemaSlug);
-        if (actors.entities.actors[slugName].published) {
-            dispatch(fetchActorsSlugSuccess(slugName, actors.result, actors.entities.actors));
+    let actorData = await (await fromApi.actorsBySlugName(slugName)).json();
+    let actor = [];
+    if (actorData.result) {
+        actor = actorData.result;
+        actor.slugName = actor['slugName'];
+        actor = normalize([actor], actorsListSchemaSlug);
+        if (actor.entities.actors[slugName].published) {
+            dispatch(fetchActorsSlugSuccess(slugName, actor.result, actor.entities.actors, actorData.metaData));
         } else {
-            dispatch(fetchUnpublishedActorsSuccess(actors.result, actors.entities.actors));
+            dispatch(fetchUnpublishedActorsSuccess(actor.result, actor.entities.actors, actorData.metaData));
         }
+    } else {
+        actor = normalize([{slugName, error: true}], actorsListSchemaSlug);
+        dispatch(fetchActorSlugFail(slugName, actor.result, actor.entities.actors));
     }
 };
 
@@ -135,6 +140,12 @@ export const editActorBySlug = (slugName, actor) => async (dispatch) => {
 
 export const checkName = (name, type) => async (dispatch) => {
     dispatch(checkingNameActor(name));
-    const result = await fromApi.checkName(name, type);
+    const actorData = await fromApi.checkName(name, type);
+    let result = {};
+    if(actorData.result){
+        result = actorData.result;
+    }else{
+        result= actorData.error;
+    }
     dispatch(checkingNameSuccess(result));
 };
