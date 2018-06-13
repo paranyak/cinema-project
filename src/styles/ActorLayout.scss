@@ -18,7 +18,6 @@
     &:hover {
       opacity: 1;
     }
-
   }
   &__delete-icon {
     width: 40px;
@@ -108,7 +107,8 @@
     }
   }
 
-  &__nominations, &__movies {
+  &__nominations,
+  &__movies {
     grid-column-start: 1;
     grid-column-end: 3;
   }

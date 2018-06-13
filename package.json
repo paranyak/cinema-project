@@ -6,15 +6,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-
     "server": "node server/server.js",
     "server:dev": "nodemon server/server.js",
-
     "test": "jest",
     "raml": "raml2html docs/api/index.raml > docs/api/index.html",
     "styleguidist": "npx styleguidist build",
-    "export:db":
-      "mongoexport -d cinema-project -c actors -o ./exports/Actors.json && mongoexport -d cinema-project -c movies -o ./exports/Movies.json"
+    "export:db": "mongoexport -d cinema-project -c actors -o ./exports/Actors.json && mongoexport -d cinema-project -c movies -o ./exports/Movies.json"
   },
   "keywords": [],
   "author": "",
@@ -67,11 +64,26 @@
     "slugify": "^1.2.9"
   },
   "nodemonConfig": {
-    "ignore": ["test/*", "docs/*", "src/*", "build/*", "server/public/*"],
+    "ignore": [
+      "test/*",
+      "docs/*",
+      "src/*",
+      "build/*",
+      "server/public/*"
+    ],
     "delay": "1000"
   },
   "browserslist": {
-    "development": ["last 2 chrome versions", "last 2 firefox versions", "last 2 edge versions"],
-    "production": [">1%", "last 4 versions", "Firefox ESR", "not ie < 11"]
+    "development": [
+      "last 2 chrome versions",
+      "last 2 firefox versions",
+      "last 2 edge versions"
+    ],
+    "production": [
+      ">1%",
+      "last 4 versions",
+      "Firefox ESR",
+      "not ie < 11"
+    ]
   }
 }

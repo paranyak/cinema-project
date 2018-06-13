@@ -30,7 +30,7 @@ const MovieImage = ({ slugName, published, image }) =>
 
 const MoviePoster = ({ name, genre, rating, slugName, image, published }) => (
   <article className={b()}>
-    <MovieImage slugName={slugName} published={published} image={image} />s
+    <MovieImage slugName={slugName} published={published} image={image} />
     <footer className={b("additional-info")}>
       <h3 className={b("name")}>{name}</h3>
       <p className={b("genre")}>{genre}</p>

@@ -1,12 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from 'react-redux';
-import Layout from "./components/Layout";
-import initStore from "./initStore";
-import createHistory from 'history/createBrowserHistory'
-import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
+import React from "react"
+import ReactDOM from "react-dom"
+import { Provider } from "react-redux"
+import Layout from "./components/Layout"
+import initStore from "./initStore"
+import createHistory from "history/createBrowserHistory"
+import { ConnectedRouter, routerMiddleware } from "react-router-redux"
 
-const history = createHistory();
+const history = createHistory()
 export const middleware = routerMiddleware(history)
 
 ReactDOM.render(
@@ -15,5 +15,5 @@ ReactDOM.render(
       <Layout />
     </ConnectedRouter>
   </Provider>,
-  document.getElementById("root")
-);
+  document.getElementById("root"),
+)
