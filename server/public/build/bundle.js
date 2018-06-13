@@ -21616,6 +21616,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(2);
@@ -21630,9 +21632,9 @@ __webpack_require__(343);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -21652,12 +21654,25 @@ var DynamicList = function (_Component) {
 
         _this.state = {
             suggestedList: [],
-            chosenItems: props.items
+            chosenItems: [].concat(_toConsumableArray(props.items))
         };
         return _this;
     }
 
     _createClass(DynamicList, [{
+        key: "componentWillReceiveProps",
+        value: function componentWillReceiveProps(nextProps) {
+            if (nextProps.items !== this.props.items) {
+                var items = [].concat(_toConsumableArray(this.state.chosenItems), _toConsumableArray(nextProps.items));
+                items = items.filter(function (item, i, arr) {
+                    return arr.indexOf(item) === i;
+                });
+                this.setState(_extends({}, this.state, {
+                    chosenItems: items
+                }));
+            }
+        }
+    }, {
         key: "createList",
         value: function createList() {
             var _this2 = this;
@@ -21748,15 +21763,17 @@ var DynamicList = function (_Component) {
             });
             var slugName = '';
             var dynLst = [];
+            var _id = void 0;
             if (filtered.length === 1) {
                 slugName = filtered[0].slugName;
                 dynLst = type === 'movie' ? filtered[0].cast : filtered[0].movies;
+                _id = filtered[0]._id;
             }
             var arr = [];
             if (type === 'movie') {
-                arr = [].concat(_toConsumableArray(this.state.chosenItems.slice(0, i)), [Object.assign({}, this.state.chosenItems[i], { name: value, slugName: slugName, cast: dynLst })], _toConsumableArray(this.state.chosenItems.slice(i + 1)));
+                arr = [].concat(_toConsumableArray(this.state.chosenItems.slice(0, i)), [Object.assign({}, this.state.chosenItems[i], { name: value, slugName: slugName, cast: dynLst, _id: _id })], _toConsumableArray(this.state.chosenItems.slice(i + 1)));
             } else {
-                arr = [].concat(_toConsumableArray(this.state.chosenItems.slice(0, i)), [Object.assign({}, this.state.chosenItems[i], { name: value, slugName: slugName, movies: dynLst })], _toConsumableArray(this.state.chosenItems.slice(i + 1)));
+                arr = [].concat(_toConsumableArray(this.state.chosenItems.slice(0, i)), [Object.assign({}, this.state.chosenItems[i], { name: value, slugName: slugName, movies: dynLst, _id: _id })], _toConsumableArray(this.state.chosenItems.slice(i + 1)));
             }
             this.setState({ chosenItems: arr });
             callback(type + "s", arr);
@@ -23091,7 +23108,7 @@ var postMovie = exports.postMovie = function () {
                         headers.append('Content-Type', 'application/json');
 
                         _context14.next = 4;
-                        return fetch('https://csucu-cinema-project.herokuapp.com/movies', {
+                        return fetch(LOCALHOST + '/movies', {
                             method: 'POST',
                             headers: headers,
                             body: JSON.stringify(movie)
@@ -23129,7 +23146,7 @@ var postActor = exports.postActor = function () {
                         headers.append('Content-Type', 'application/json');
 
                         _context15.next = 4;
-                        return fetch('https://csucu-cinema-project.herokuapp.com/actors', {
+                        return fetch(LOCALHOST + '/actors', {
                             method: 'POST',
                             headers: headers,
                             body: JSON.stringify(actor)
@@ -25769,6 +25786,7 @@ var ActorInfo = function (_Component) {
                 year = date.year.toString();
                 birthDate = year + '-' + month + '-' + day;
             }
+            console.log(actor, films);
             actor.nominations = actor.nominations || [];
             return _react2.default.createElement(
                 "section",

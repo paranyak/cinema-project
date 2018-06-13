@@ -9,8 +9,19 @@ class DynamicList extends Component {
         super(props);
         this.state = {
             suggestedList: [],
-            chosenItems: props.items
+            chosenItems: [...props.items]
         }
+    }
+
+    componentWillReceiveProps(nextProps) {
+      if(nextProps.items !== this.props.items) {
+        let items = [...this.state.chosenItems, ...nextProps.items];
+        items = items.filter((item, i, arr) => arr.indexOf(item) === i);
+        this.setState({
+          ...this.state,
+          chosenItems: items
+        })
+      }
     }
 
     createList() {
@@ -50,22 +61,24 @@ class DynamicList extends Component {
         const filtered = this.state.suggestedList.filter(f => f.name === value);
         let slugName = '';
         let dynLst = [];
+        let _id;
         if (filtered.length === 1) {
             slugName = filtered[0].slugName;
             dynLst = type === 'movie' ? filtered[0].cast : filtered[0].movies;
+            _id = filtered[0]._id;
         }
         let arr = [];
         if (type === 'movie') {
             arr = [
                 ...this.state.chosenItems.slice(0, i),
-                Object.assign({}, this.state.chosenItems[i], {name: value, slugName, cast: dynLst}),
+                Object.assign({}, this.state.chosenItems[i], {name: value, slugName, cast: dynLst, _id}),
                 ...this.state.chosenItems.slice(i + 1)
             ];
         }
         else {
             arr = [
                 ...this.state.chosenItems.slice(0, i),
-                Object.assign({}, this.state.chosenItems[i], {name: value, slugName, movies: dynLst}),
+                Object.assign({}, this.state.chosenItems[i], {name: value, slugName, movies: dynLst, _id}),
                 ...this.state.chosenItems.slice(i + 1)
             ];
         }
