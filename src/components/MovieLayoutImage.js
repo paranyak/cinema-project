@@ -4,9 +4,9 @@ import "../styles/MovieLayoutImage.scss"
 import block from "../helpers/BEM"
 
 const b = block("MovieLayoutImage")
-const linkMain = "https://res.cloudinary.com/dtnnkdylh/image/upload/w_275,h_408/"
+const linkMain = "https://res.cloudinary.com/dtnnkdylh/image/upload/w_275,h_408,c_fill/"
 const linkScr = "https://res.cloudinary.com/dtnnkdylh/image/upload/w_160,h_100,c_fill,g_center/"
-let linkScrCarousel = "" //https://res.cloudinary.com/dtnnkdylh/image/upload/w_600/';
+let linkScrCarousel = "";
 const linkScrModal = "https://res.cloudinary.com/dtnnkdylh/image/upload/h_80/"
 
 class MovieLayoutImage extends Component {

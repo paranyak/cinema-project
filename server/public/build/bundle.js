@@ -75122,7 +75122,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, ".MoviePoster {\n  margin: 5px;\n  display: inline-block;\n  background-color: #484848;\n  font-size: 14px;\n  height: 491px;\n  width: 275px;\n}\n.MoviePoster__image {\n  height: 408px;\n  width: 275px;\n}\n.MoviePoster__image_undefined {\n  display: inline-block;\n  background: url(" + escape(__webpack_require__(369)) + ") no-repeat center;\n  background-size: 300px 300px;\n}\n.MoviePoster__additional-info {\n  margin: 13px;\n}\n.MoviePoster__name {\n  font-size: 19px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  color: white;\n  width: 205px;\n  margin: 0;\n}\n.MoviePoster__genre {\n  color: #FAE807;\n  width: 205px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  margin: 10px 0;\n  font-size: 16px;\n}\n.MoviePoster__rating {\n  border: 1px solid;\n  padding: 5px 7px;\n  border-radius: 3px;\n  color: #FAE807;\n  float: right;\n  margin-top: -50px;\n}\n", ""]);
+exports.push([module.i, ".MoviePoster {\n  margin: 5px;\n  display: inline-block;\n  background-color: #484848;\n  font-size: 14px;\n  height: 491px;\n  width: 275px;\n}\n.MoviePoster__image {\n  height: 408px;\n  width: 275px;\n  object-fit: cover;\n}\n.MoviePoster__image_undefined {\n  display: inline-block;\n  background: url(" + escape(__webpack_require__(369)) + ") no-repeat center;\n  background-size: 300px 300px;\n}\n.MoviePoster__additional-info {\n  margin: 13px;\n}\n.MoviePoster__name {\n  font-size: 19px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  color: white;\n  width: 205px;\n  margin: 0;\n}\n.MoviePoster__genre {\n  color: #FAE807;\n  width: 205px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  margin: 10px 0;\n  font-size: 16px;\n}\n.MoviePoster__rating {\n  border: 1px solid;\n  padding: 5px 7px;\n  border-radius: 3px;\n  color: #FAE807;\n  float: right;\n  margin-top: -50px;\n}\n", ""]);
 
 // exports
 
@@ -77600,7 +77600,7 @@ exports.push([module.i, ".ActorLayout {\n  width: 90%;\n  min-height: 600px;\n  
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -77638,87 +77638,87 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var b = (0, _BEM2.default)("Login");
 
 var Login = function (_Component) {
-  _inherits(Login, _Component);
+    _inherits(Login, _Component);
 
-  function Login(props) {
-    _classCallCheck(this, Login);
+    function Login(props) {
+        _classCallCheck(this, Login);
 
-    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
 
-    _this.state = {
-      email: '',
-      password: ''
-    };
-    _this.handleSubmit = _this.handleSubmit.bind(_this);
-    return _this;
-  }
-
-  _createClass(Login, [{
-    key: "handleSubmit",
-    value: function handleSubmit(event) {
-      event.preventDefault();
-      var _state = this.state,
-          email = _state.email,
-          password = _state.password;
-
-      this.props.loginUser(email, password);
+        _this.state = {
+            email: '',
+            password: ''
+        };
+        _this.handleSubmit = _this.handleSubmit.bind(_this);
+        return _this;
     }
-  }, {
-    key: "handleChange",
-    value: function handleChange(event, label) {
-      this.setState(_extends({}, this.state, _defineProperty({}, label, event.target.value)));
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
 
-      return _react2.default.createElement(
-        "div",
-        { className: b() },
-        _react2.default.createElement(
-          "h1",
-          { className: b('header') },
-          "Login"
-        ),
-        _react2.default.createElement(
-          "form",
-          { className: b('form'), onSubmit: this.handleSubmit },
-          _react2.default.createElement("input", { className: b('input', ['above']), value: this.state.email, onChange: function onChange(event) {
-              return _this2.handleChange(event, 'email');
-            }, type: "email", name: "email", placeholder: "E-mail" }),
-          _react2.default.createElement("input", { className: b('input', ['below']), value: this.state.password, onChange: function onChange(event) {
-              return _this2.handleChange(event, 'password');
-            }, type: "password", name: "password", placeholder: "Password" }),
-          _react2.default.createElement(
-            "span",
-            { style: { display: this.props.error ? 'block' : 'none' }, className: b('message') },
-            this.props.error ? this.props.error.message : ''
-          ),
-          _react2.default.createElement("input", { className: b('submit'), type: "submit", value: "Submit" })
-        ),
-        _react2.default.createElement(
-          _reactRouterDom.NavLink,
-          { to: "/signup", className: b('signup') },
-          "Sign up"
-        )
-      );
-    }
-  }]);
+    _createClass(Login, [{
+        key: "handleSubmit",
+        value: function handleSubmit(event) {
+            event.preventDefault();
+            var _state = this.state,
+                email = _state.email,
+                password = _state.password;
 
-  return Login;
+            this.props.loginUser(email, password);
+        }
+    }, {
+        key: "handleChange",
+        value: function handleChange(event, label) {
+            this.setState(_extends({}, this.state, _defineProperty({}, label, event.target.value)));
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _this2 = this;
+
+            return _react2.default.createElement(
+                "div",
+                { className: b() },
+                _react2.default.createElement(
+                    "h1",
+                    { className: b('header') },
+                    "Login"
+                ),
+                _react2.default.createElement(
+                    "form",
+                    { className: b('form'), onSubmit: this.handleSubmit },
+                    _react2.default.createElement("input", { className: b('input', ['above']), value: this.state.email, onChange: function onChange(event) {
+                            return _this2.handleChange(event, 'email');
+                        }, type: "email", name: "email", placeholder: "E-mail" }),
+                    _react2.default.createElement("input", { className: b('input', ['below']), value: this.state.password, onChange: function onChange(event) {
+                            return _this2.handleChange(event, 'password');
+                        }, type: "password", name: "password", placeholder: "Password" }),
+                    _react2.default.createElement(
+                        "span",
+                        { style: { display: this.props.error ? 'block' : 'none' }, className: b('message') },
+                        this.props.error ? this.props.error.message : ''
+                    ),
+                    _react2.default.createElement("input", { className: b('submit'), type: "submit", value: "Submit" })
+                ),
+                _react2.default.createElement(
+                    _reactRouterDom.NavLink,
+                    { to: "/signup", className: b('signup') },
+                    "Sign up"
+                )
+            );
+        }
+    }]);
+
+    return Login;
 }(_react.Component);
 
 exports.default = (0, _reactRedux.connect)(function (state, props) {
-  return {
-    error: (0, _index.getAuthError)(state)
-  };
+    return {
+        error: (0, _index.getAuthError)(state)
+    };
 }, function (dispatch) {
-  return {
-    loginUser: function loginUser(email, password) {
-      return dispatch((0, _auth.loginUser)(email, password));
-    }
-  };
+    return {
+        loginUser: function loginUser(email, password) {
+            return dispatch((0, _auth.loginUser)(email, password));
+        }
+    };
 })(Login);
 
 /***/ }),

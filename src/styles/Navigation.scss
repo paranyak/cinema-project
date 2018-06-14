@@ -1,4 +1,4 @@
- @import "SiteColors";
+@import "SiteColors";
 
 .Navigation {
   background-color: var(--main-yellow);
@@ -57,31 +57,37 @@
   &__search {
     float: left;
     margin-left: 15px;
-    width: 25%;
+    width: 200px;
     margin-top: 2px;
-  }
-  &__search input{
-    width: 90%;
-    padding: 6px;
-    font-size: 16px;
-    border-radius: 15px;
-    color: var(--layout-grey);
-    border: none;
-    outline: none;
-    background-color: #f9f3d9;
-  }
-  &__search > div {
-    background-color: #f9f3d9;
-    width: 100%;
-    border-radius: 15px;
-    border: 2px solid var(--layout-grey);
-  }
-  &__search ul {
-    list-style-type: none;
+    & input {
+      padding: 10px 15px;
+      font-size: 14px;
+      border-radius: 15px;
+      border: none;
+      outline: none;
+      background-color: #fff;
+      box-sizing: border-box;
+
+    }
+    & > div {
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 15px;
+    }
+    & ul {
+      list-style-type: none;
+    }
   }
   &__option {
     text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 190px;
     color: var(--layout-grey);
-    font-size: 17px;
+    font-size: 15px;
+    padding: 5px 0;
+    text-align: center;
+    display: inline-block;
+    margin: 0 0 10px -37px;
   }
 }

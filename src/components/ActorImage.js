@@ -11,10 +11,10 @@ class ActorImage extends Component {
         this.state = {
             actor: props.actorImg
         };
-        this.myCallback2 = this.myCallback2.bind(this);
+        this.getStateFromChild = this.getStateFromChild.bind(this);
     }
 
-    myCallback2(name, item) {
+    getStateFromChild(name, item) {
         this.setState({[name]: item})
     }
 
@@ -34,8 +34,8 @@ class ActorImage extends Component {
         const {actorImg} = this.props;
         return <div className={b()}>
             <h3 className={b('title')}>Actor Image</h3>
-            <DragDropImage value={actorImg} name='actor' callbackFromParent={this.myCallback2}
-                           callbackInRemove={this.myCallback2}/>
+            <DragDropImage value={actorImg} name='actor' callbackFromParent={this.getStateFromChild}
+                           callbackInRemove={this.getStateFromChild}/>
         </div>;
     }
 }

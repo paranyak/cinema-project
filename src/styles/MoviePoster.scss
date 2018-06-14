@@ -10,8 +10,6 @@
   &__image {
     height: 408px;
     width: 275px;
-    object-fit: cover;
-
     &_undefined {
       display: inline-block;
       background: url("icons/photo.svg") no-repeat center;

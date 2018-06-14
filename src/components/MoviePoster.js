@@ -15,22 +15,27 @@ import block from "../helpers/BEM"
 
 const b = block("MoviePoster")
 
-const MovieImage = ({ slugName, published, image }) =>
-  published ? (
-    <Link to={`/movie/${slugName}`}>
-      <picture>
-        <img alt="" src={CLOUDINARY_PATH + "/c_fit,w_275,h_408/" + image} className={b("image")} />
+const MovieImage = ({ slugName, published, image }) => {
+  const imgIns = image
+    ? <picture>
+        <img alt="" src={CLOUDINARY_PATH + "/c_fill,w_275,h_408/" + image} className={b("image")}/>
       </picture>
+    : <span className={b("image", ["undefined"])}/>
+
+  return published ? (
+    <Link to={`/movie/${slugName}`}>
+      {imgIns}
     </Link>
   ) : (
     <Link to={`/edit-movie/${slugName}`}>
-      <span className={b("image", ["undefined"])} />
+      <span className={b("image", ["undefined"])}/>
     </Link>
   )
+}
 
 const MoviePoster = ({ name, genre, rating, slugName, image, published }) => (
   <article className={b()}>
-    <MovieImage slugName={slugName} published={published} image={image} />
+    <MovieImage slugName={slugName} published={published} image={image}/>
     <footer className={b("additional-info")}>
       <h3 className={b("name")}>{name}</h3>
       <p className={b("genre")}>{genre}</p>
