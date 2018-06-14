@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-core": "^7.0.0-0",
     "cross-env": "^5.1.6",
     "css-scroll-snap-polyfill": "^0.1.2",
     "dotenv": "^5.0.1",

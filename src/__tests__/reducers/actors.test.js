@@ -1,6 +1,6 @@
-import * as actorsReducers from '../src/reducers/actors';
-import * as actorsActions from '../src/actions/actors'
-import {FETCH_ACTOR_SLUG_FAIL} from "../src/helpers/actionTypes";
+import * as actorsReducers from '../../reducers/actors';
+import * as actorsActions from '../../actions/actors'
+import {FETCH_ACTOR_SLUG_FAIL} from "../../helpers/actionTypes";
 
 describe('Actors Reducers', () => {
     it('get default state in bySlug with undefined state', () => {
@@ -150,25 +150,6 @@ describe('Actors Reducers', () => {
         expect(actorsReducers.allSlugs(['actor_0', 'actor_10'], actorsActions.fetchActorsSlugSuccess(
             'actor_1', ['actor_1', 'actor_2', 'actor_3'], [{'name': 'Actor 2', 'role': 'Superhero2'}])
         )).toEqual(["actor_0", "actor_10", "actor_1", "actor_2", "actor_3"]);
-    });
-
-    // --
-    it('handle POST_ACTOR_SUCCESS in allSlugs with defined state', () => {
-        expect(actorsReducers.allSlugs({
-                '0': [{"name": "Actor 1", "role": "Superhero"}],
-                '3': [{"name": "Actor 3", "role": "Superhero3"}]
-            }, actorsActions.postActorSuccess(
-            'actor_1', [{'name': 'Actor 2', 'role': 'Superhero2'}])
-        )).toEqual([{"name": "Actor 2", "role": "Superhero2"}]);
-    });
-    // --
-    it('handle FETCH_ACTOR_DELETE_SUCCESS in allSlugs with defined state', () => {
-        expect(actorsReducers.allSlugs({
-                'actor_0': [{"name": "Actor 1", "role": "Superhero"}],
-                'actor_1': [{"name": "Actor 3", "role": "Superhero3"}]
-            }, actorsActions.fetchActorsDeleteSuccess(
-            'actor_1')
-        )).toEqual([]);
     });
 
     it('handle FETCH_ACTOR_SLUG_FAIL in allSlugs with defined state', () => {
