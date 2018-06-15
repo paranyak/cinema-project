@@ -22,7 +22,7 @@ export const bySlug = (state = {}, action) => {
         ...action.actors,
       }
     case POST_ACTOR_SUCCESS:
-      return { ...state, ...action.actors }
+      return { ...state, ...action.actor }
     case FETCH_ACTOR_SLUG_FAIL:
       return action
     case EDITING_ACTOR_SUCCESS:
@@ -43,7 +43,7 @@ export const allSlugs = (state = [], action) => {
     case FETCH_ACTOR_SLUG_SUCCESS:
       return [...state, ...action.slugs].filter((el, i, arr) => arr.indexOf(el) === i)
     case POST_ACTOR_SUCCESS:
-      return [...state, ...action.actors]
+      return [...state, ...action.actor]
     case FETCH_ACTOR_SLUG_FAIL:
       return action
     case FETCH_ACTOR_DELETE_SUCCESS:

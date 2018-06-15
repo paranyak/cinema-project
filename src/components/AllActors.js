@@ -54,18 +54,18 @@ class AllActors extends Component {
     }
 
     render() {
-        let role = this.props.user && this.props.user.role;
-        let additional = '';
-        if (role === 'admin') {
-            additional = (<div>
-              <h1 className={b('title')}>Unpublished</h1>
-              <MovieCarousel label={"unpublished"} movie={false}/>
-            </div>)
-        }
+        // let role = this.props.user && this.props.user.role;
+        // let additional = '';
+        // if (role === 'admin') {
+        //     additional = (<div>
+              {/*<h1 className={b('title')}>Unpublished</h1>*/}
+              {/*<MovieCarousel label={"unpublished"} movie={false}/>*/}
+            // </div>)
+        // }
         if (this.props.actors.length !== 0) {
             return (
                 <section className={b()}>
-                    {additional}
+                    {/*{additional}*/}
                     <InfiniteScroll
                         loadMore={this.loadMore.bind(this)}
                         hasMore={this.state.hasMoreItems}

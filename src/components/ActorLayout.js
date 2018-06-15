@@ -61,7 +61,7 @@ class ActorLayout extends Component {
                 <Link to={`/edit-actor/${actor.slugName}`}>
                     <span className={b('edit-icon')}></span>
                 </Link>
-                <span className={b('delete-icon')} onClick={() => this.deleteActor(actor.slugName)}></span>
+                {/*<span className={b('delete-icon')} onClick={() => this.deleteActor(actor.slugName)}></span>*/}
             </div>)
         }
         let image;

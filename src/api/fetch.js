@@ -9,10 +9,6 @@ export async function movieBySlug(slugName) {
   return await (await fetch(`${API_PATH}/movies/bySlugName/${slugName}`)).json()
 }
 
-// export async function movieCount() {
-//     return await ((await fetch(`${API_PATH}/movies/moviesCount`)).json());
-// }
-
 export async function moviesSchedule(day) {
   return await (await fetch(`${API_PATH}/movies/slugs?Schedule=${day}`)).json()
 }

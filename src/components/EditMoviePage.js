@@ -164,6 +164,8 @@ class EditMoviePage extends Component {
     } else {
       redirect = <Redirect to={`/`} />
     }
+    console.log('state', this.state);
+
     return (
       <div>
         <form className={b()}>

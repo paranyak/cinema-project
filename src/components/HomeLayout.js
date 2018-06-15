@@ -11,19 +11,19 @@ const b = block("HomeLayout")
 
 class HomeLayout extends Component {
   render() {
-    let role = this.props.user && this.props.user.role
-    let additional = ""
-    if (role === "admin") {
-      additional = (
-        <div>
-          <h1 className={b("title")}>Unpublished</h1>
-          <MovieCarousel label={"unpublished"} movie={true} />
-        </div>
-      )
-    }
+    // let role = this.props.user && this.props.user.role
+    // let additional = ""
+    // if (role === "admin") {
+    //   additional = (
+    //     <div>
+    //       <h1 className={b("title")}>Unpublished</h1>
+    //       <MovieCarousel label={"unpublished"} movie={true} />
+    //     </div>
+    //   )
+    // }
     return (
       <div className={b()}>
-        {additional}
+        {/*{additional}*/}
         <h1 className={b("title")}>Popular</h1>
         <MovieCarousel label={"popular"} movie={true} />
         <h1 className={b("title")}>Soon on the screens</h1>

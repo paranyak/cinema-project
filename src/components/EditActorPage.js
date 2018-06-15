@@ -130,6 +130,7 @@ class EditActorPage extends Component {
     } else {
       redirect = <Redirect to={`/allactors`} />
     }
+    console.log('state', this.state);
 
     return (
       <div>

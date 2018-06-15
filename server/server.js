@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use("/movies", movies)
 app.use("/actors", actors)
 
-app.use(express.static(path.join(__dirname + "/public")))
+app.use(express.static(path.join(__dirname + "/../build")))
 
 app.use("/*", (req, res) => res.sendFile(path.join(__dirname, "/public/index.html")))
 const testFunc = async () => {

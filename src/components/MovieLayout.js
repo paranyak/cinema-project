@@ -32,7 +32,7 @@ class MovieLayout extends Component {
                     <Link to={`/edit-movie/${film.slugName}`}>
                         <span className={b('edit-icon')}></span>
                     </Link>
-                    <span className={b('delete-icon')} onClick={() => this.deleteMovie(film.slugName)}></span>
+                    {/*<span className={b('delete-icon')} onClick={() => this.deleteMovie(film.slugName)}></span>*/}
                 </div>
             )
         }

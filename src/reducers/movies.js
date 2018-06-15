@@ -55,7 +55,7 @@ export const allSlugs = (state = [], action) => {
     case FETCH_MOVIES_LABEL_SUCCESS:
       return [...state, ...action.slugs].filter((el, i, arr) => arr.indexOf(el) === i)
     case POST_MOVIE_SUCCESS:
-      return [...state, ...action.movies]
+      return [...state, ...action.movie]
     case FETCH_MOVIE_SLUG_FAIL:
       return action
     case FETCH_MOVIE_DELETE_SUCCESS:

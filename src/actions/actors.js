@@ -33,9 +33,9 @@ export const actorPostStart = actor => ({ type: POST_ACTOR_START, actor })
 
 export const fetchActorsDeleteSuccess = slugName => ({ type: FETCH_ACTOR_DELETE_SUCCESS, slugName })
 
-export const postActorSuccess = (slugName, actors) => ({
+export const postActorSuccess = (slugName, actor) => ({
   type: POST_ACTOR_SUCCESS,
-  actors,
+  actor,
   slugName,
 })
 
